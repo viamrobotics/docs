@@ -1,21 +1,19 @@
 // :snippet-start: add-metadata
 import { createViamClient, createRobotClient, RobotClient } from "@viamrobotics/sdk";
 // :remove-start:
-import pkg from "@koush/wrtc";
-const {
-    RTCPeerConnection,
-    RTCSessionDescription,
-    RTCIceCandidate,
-    MediaStream,
-    MediaStreamTrack
-} = pkg;
+import * as connectNode from "@connectrpc/connect-node";
+import * as wrtc from "node-datachannel/polyfill";
 
-// Set up global WebRTC classes
-global.RTCPeerConnection = RTCPeerConnection;
-global.RTCSessionDescription = RTCSessionDescription;
-global.RTCIceCandidate = RTCIceCandidate;
-global.MediaStream = MediaStream;
-global.MediaStreamTrack = MediaStreamTrack;
+// Register a Node-compatible gRPC transport.
+globalThis.VIAM = {
+    GRPC_TRANSPORT_FACTORY: (opts: any) =>
+        connectNode.createGrpcTransport({ httpVersion: "2", ...opts }),
+};
+
+// Register WebRTC polyfills on the global object.
+for (const key in wrtc) {
+    (global as any)[key] = (wrtc as any)[key];
+}
 // :remove-end:
 
 // Configuration constants – replace with your actual values

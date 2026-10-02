@@ -1,5 +1,6 @@
 ---
 title: Machine FQDN
+capabilities: ["glossary", "docs"]
 id: machine-fqdn
 full_link:
 short_description: The fully qualified domain name (FQDN) of a machine in the Viam platform.

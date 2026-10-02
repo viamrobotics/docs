@@ -5,6 +5,8 @@ childTitleEndOverwrite: "Board Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in board models."
+capabilities: ["hw-compute", "section-index"]
+diataxis: reference
 no_list: true
 tags: ["board", "components"]
 icon: true

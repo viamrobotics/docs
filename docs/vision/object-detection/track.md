@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Track detected objects across consecutive video frames with persistent IDs using the object-tracker module."
+capabilities: ["vision-service"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/vision-detection/track-objects-across-frames/

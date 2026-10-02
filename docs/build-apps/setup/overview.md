@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "The pattern every Viam app project follows: create a project, install the SDK, configure credentials, and verify the connection."
+capabilities: ["sdks"]
+diataxis: explanation
 date: "2026-04-13"
 ---
 

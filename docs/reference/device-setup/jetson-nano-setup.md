@@ -6,6 +6,8 @@ type: "docs"
 images: ["/installation/thumbnails/jetson-nano-dev-kit.png"]
 imageAlt: "Jetson Nano"
 description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
+capabilities: ["device-provisioning"]
+diataxis: how-to
 no_list: true
 aliases:
   - /operate/reference/prepare/jetson-nano-setup/
@@ -109,9 +111,7 @@ To use your Jetson board, follow the [setup guide](/set-up-a-machine/first-machi
 
 ### Install `curl`
 
-If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
-
-If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
+If `curl` is not installed on your Nano, run `sudo apt install curl` before proceeding with installation.
 
 ### Barrel jack power supply polarity
 

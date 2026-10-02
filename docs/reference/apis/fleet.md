@@ -4,6 +4,8 @@ linkTitle: "Fleet management"
 weight: 10
 type: "docs"
 description: "Use the fleet management API with Viam's client SDKs to manage your machine fleet with code."
+capabilities: ["org-management", "sdks"]
+diataxis: reference
 tags:
   [
     "cloud",

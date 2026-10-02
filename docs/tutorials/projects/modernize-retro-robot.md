@@ -9,6 +9,7 @@ images: ["/tutorials/maiv/maiv_front.gif"]
 tags:
   ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
 description: "Modernize the Omnibot 2000 from the 1980s with Viam and AI."
+capabilities: ["hw-mobility", "hw-actuation", "hw-camera", "docs"]
 imageAlt: "The front of the Ombibot 2000 robot"
 authors: ["Matt Vella"]
 languages: []

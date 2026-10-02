@@ -3,4 +3,7 @@
 {{- range .Aliases -}}
 {{ . }} {{ $p.RelPermalink }}
 {{ end }}
-{{- end -}}
+{{- if eq $p.Kind "section" -}}
+{{ (strings.TrimSuffix "/" $p.RelPermalink) }}.md {{ $p.RelPermalink }}index.md 200
+{{ end -}}
+{{ end }}

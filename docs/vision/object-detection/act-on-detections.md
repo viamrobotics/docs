@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Build a module that uses vision service results to control machine behavior."
+capabilities: ["module-development", "vision-service"]
+diataxis: how-to
 aliases:
   - /vision/act/
   - /vision/how-to/act-on-detections/

@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Understand the two kinds of modules and how to extend your machine with custom hardware drivers and application logic."
+capabilities: ["module-development", "inline-modules"]
+diataxis: overview
 aliases:
   - /operate/modules/
   - /operate/modules/advanced/
@@ -23,6 +25,10 @@ capture its data, and call its API from a script. The next step is making
 them work **together**. A camera detects an object, and a motor responds. A
 temperature sensor crosses a threshold, and a notification fires. A movement
 sensor reports position, and an arm adjusts.
+
+To learn module development step by step, take the free Viam 102 course:
+
+{{< course "viam-102" >}}
 
 ## Two kinds of modules
 

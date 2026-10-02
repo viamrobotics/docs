@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Define collision geometry so the motion planner computes safe, collision-free paths."
+capabilities: ["motion-planning"]
+diataxis: explanation
 aliases:
   - /work-cell-layout/define-obstacles/
   - /build/work-cell-layout/define-obstacles/
@@ -151,6 +153,7 @@ Practical consequences:
 
 {{< cards >}}
 {{% card link="/motion-planning/obstacles/configure-workspace-obstacles/" noimage="true" %}}
+{{% card link="/motion-planning/obstacles/verify-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/avoid-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/attach-detach-geometries/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/allow-frame-collisions/" noimage="true" %}}

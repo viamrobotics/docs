@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Use the CONTROL tab or the Viam mobile app to remotely test and operate your machines."
+capabilities: ["teleop", "mobile-app"]
+diataxis: reference
 aliases:
   - /manage/troubleshoot/teleoperate/default-interface/
   - /fleet/control/
@@ -49,6 +51,25 @@ Each configured component and service appears as a card. What you can do depends
 
 You can switch between machine parts directly from the CONTROL tab using the part selector at the top.
 
+### Code sandbox
+
+The CONTROL tab includes a TypeScript code sandbox.
+Click **Sandbox** in the sidebar under **Code** to open it.
+
+The sandbox editor is pre-filled with a starter program based on the machine's configured resources.
+You can edit the code, run it, and see output in the console below the editor.
+The sandbox runs against your live machine using the page's existing connection, so you do not need to supply an API key or address.
+
+Use the sandbox to:
+
+- Test SDK calls interactively before writing a full application
+- Experiment with component and service methods on a live machine
+- Prototype a sequence of commands without setting up a local development environment
+
+Programs are not persisted.
+Navigating away from the sandbox discards your code.
+Use the download button to save your program as a file before leaving.
+
 ## Viam mobile app
 
 The Viam mobile app provides similar access from your phone:
@@ -59,8 +80,11 @@ The Viam mobile app provides similar access from your phone:
 - Adjust component settings
 - Switch between components
 - Restart machines
+- View a machine's configuration as read-only JSON, and copy it
+- Apply organization control layouts, which set which resource cards a machine shows and in what order (users with permission can also create and edit them)
 - [View machine logs](/monitor/troubleshoot/#check-logs)
 - [Upload images from your phone to the cloud](/data/capture-sync/upload-other-data/)
+- Browse JPEG and PNG images synced from your organization's machines in the **Data** tab, filtered by location and machine
 
 The mobile app is available on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 

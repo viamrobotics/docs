@@ -1,5 +1,6 @@
 ---
 title: Part
+capabilities: ["glossary", "docs"]
 id: part
 full_link: /reference/glossary/part/
 short_description: A single-board computer, desktop, laptop, or other computer running viam-server, the hardware components attached to it, and any services or other resources running on it.

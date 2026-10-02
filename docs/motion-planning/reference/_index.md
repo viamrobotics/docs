@@ -5,12 +5,14 @@ weight: 200
 layout: "docs"
 type: "docs"
 description: "Configuration, API, and technical reference for the motion service."
+capabilities: ["motion-planning", "section-index"]
+diataxis: reference
 ---
 
 The motion service turns a high-level "move to this pose" request into a
 collision-free joint trajectory. This reference documents what you
-configure, what the API exposes, and the formats and algorithms it uses
-under the hood. For conceptual background, see
+configure, what the API exposes, and the formats and algorithms behind
+those requests. For conceptual background, see
 [How motion planning works](/motion-planning/how-planning-works/); for
 task-based guidance, start from the [section landing](/motion-planning/).
 
@@ -29,4 +31,5 @@ task-based guidance, start from the [section landing](/motion-planning/).
 {{% card link="/motion-planning/reference/kinematics/" noimage="true" %}}
 {{% card link="/motion-planning/reference/orientation-vectors/" noimage="true" %}}
 {{% card link="/motion-planning/reference/algorithms/" noimage="true" %}}
+{{% card link="/visualization/reference/world-state/" noimage="true" %}}
 {{< /cards >}}

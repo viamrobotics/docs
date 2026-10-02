@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Understand the JSON configuration that defines your machine's components, and how to edit it."
+capabilities: ["machine-config"]
+diataxis: explanation
 date: "2025-03-07"
 aliases:
   - /hardware-components/configure-components/
@@ -105,7 +107,11 @@ You can edit your machine's configuration in two ways:
 Both views edit the same underlying configuration. Changes in one are
 reflected in the other.
 
+In either view, you can also describe a change in plain language and have the
+[AI assistant](/hardware/ai-assistant/) stage it for you to review and save.
+
 ## Related
 
+- [Configure a machine with the AI assistant](/hardware/ai-assistant/): describe a change and review the staged edit the assistant proposes.
 - [Add a component](/hardware/common-components/): find the right type and follow step-by-step guides for each component.
 - [Fragments](/hardware/fragments/): save and reuse working configurations.

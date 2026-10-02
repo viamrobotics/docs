@@ -1,5 +1,6 @@
 ---
 title: Board
+capabilities: ["glossary", "docs"]
 id: board
 full_link: /components/board/
 short_description: A board is the signal wire hub of a machine that provides access to GPIO pins.

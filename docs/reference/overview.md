@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Technical reference for the Viam platform: APIs, SDKs, built-in components and services, runtime behavior, supported hardware, and term definitions."
+capabilities: ["section-index"]
+diataxis: overview
 date: "2026-04-18"
 ---
 
@@ -18,6 +20,7 @@ Technical reference for the Viam platform. Use this section when you need author
 | [SDKs](/reference/sdks/)                 | Python, Go, TypeScript, Flutter, and C++ SDK reference                            |
 | [viam-server](/reference/viam-server/)   | viam-server runtime: lifecycle, configuration, logging, CLI options               |
 | [viam-agent](/reference/viam-agent/)     | viam-agent reference: subsystems, version control, system configuration           |
+| [MCP server](/reference/mcp/)            | Viam MCP server                                                                   |
 | [Triggers](/reference/triggers/)         | Trigger configuration reference                                                   |
 | [Device setup](/reference/device-setup/) | Hardware-specific setup for supported single-board computers and microcontrollers |
 | [Glossary](/reference/glossary/)         | Term definitions for the Viam platform                                            |

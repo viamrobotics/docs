@@ -173,7 +173,8 @@ top-level README](../../README.md#continuous-integration).
 #### `pr-labeler.yml`—_PR Test Label Manager_
 
 - **Purpose:** When a PR opens, adds the `safe to build` label if the author is
-  a `viamrobotics` org member; otherwise posts a welcome comment.
+  a `viamrobotics` org member, or dependabot / viam-overwatch pushing a
+  same-repo branch; otherwise posts a welcome comment.
 - **Trigger:** `pull_request_target` (`opened`).
 - **Blocking:** No.
 - **Secrets:** `PR_TOKEN`.
@@ -220,9 +221,11 @@ calls the local composite action `.github/actions/report-ci-failure`:
   `issues: write`. No external service or extra secret is required.
 
 This replaced the previous `atlassian/gajira-*` Jira integration, which had
-stopped authenticating and left the scheduled jobs unmonitored. A Claude Code
-Remote routine triages open `ci-failure` issues—opening a fix PR when the cause
-is clear, or commenting on the issue when it is not.
+stopped authenticating and left the scheduled jobs unmonitored. A scheduled
+Claude Code session then triages open `ci-failure` issues daily—opening a fix PR
+when the cause is clear, or commenting on the issue when it is not. See
+[CI failure triage](ci-failure-triage.md) for the full flow, setup, and the
+triage prompt.
 
 ## Helper scripts
 

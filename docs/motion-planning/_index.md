@@ -9,6 +9,8 @@ noedit: true
 open_on_desktop: true
 overview: true
 description: "Plan and execute collision-free movements for robot arms and gantries."
+capabilities: ["motion-planning", "section-index"]
+diataxis: overview
 notoc: true
 aliases:
   - /operate/mobility/
@@ -65,6 +67,11 @@ fake components so you can run it on any machine:
 {{% card link="/motion-planning/quickstarts/frame-system/" noimage="true" %}}
 {{< /cards >}}
 
+For a guided introduction, the free Viam 101 course walks through building a
+palletizing arm application in simulation:
+
+{{< course "viam-101" >}}
+
 ## How it works
 
 Each `Move` request to the motion service runs the same pipeline: it reads
@@ -80,7 +87,7 @@ returns a collision-free path from the current pose to your target.
 {{< cards >}}
 {{% card link="/motion-planning/frame-system/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/" noimage="true" %}}
+{{% card link="/visualization/3d-scene/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/" noimage="true" %}}
 {{< /cards >}}
 
@@ -89,7 +96,7 @@ returns a collision-free path from the current pose to your target.
 {{< cards >}}
 {{% card link="/motion-planning/move-gantry/" noimage="true" %}}
 {{% card link="/motion-planning/verify-a-plan/" noimage="true" %}}
-{{% card link="/motion-planning/debug-motion-with-cli/" noimage="true" %}}
+{{% card link="/motion-planning/debug-motion-plan/" noimage="true" %}}
 {{< /cards >}}
 
 ## Concept pages

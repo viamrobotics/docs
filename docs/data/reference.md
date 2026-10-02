@@ -5,6 +5,8 @@ weight: 999
 layout: "docs"
 type: "docs"
 description: "Data schema, query operators, configuration fields, supported resources, and storage behavior."
+capabilities: ["data-storage", "data-capture"]
+diataxis: reference
 aliases:
   - /data/query-reference/
   - /manage/data/query/
@@ -253,7 +255,7 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 | `name` | string | **Required** | Fully qualified resource name (for example, `rdk:component:sensor/my-sensor`). |
 | `method` | string | **Required** | Depends on the component or service type. See [Supported resources](#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time and will not sync to the cloud. |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz. For example, `0.5` = one reading every 2 seconds. |
-| `additional_params` | object | Optional | Method-specific parameters. For example, `DoCommand` requires a `docommand_input` object; `GetImages` accepts a `filter_source_names` list. |
+| `additional_params` | object | Optional | Method-specific parameters. For example, `DoCommand` requires a `docommand_input` object; `GetImages` accepts a `filter_source_names` list (the **Filter by source names** field in the data capture UI). |
 | `disabled` | boolean | Optional | Whether capture is disabled for this method. |
 | `tags` | array of strings | Optional | Tags applied to data captured by this specific method. Added alongside any tags set at the service level. |
 | `capture_directory` | string | Optional | Override the capture directory for this specific resource. If not set, uses the service-level `capture_dir`. |
@@ -291,7 +293,41 @@ The following settings are processed by the Viam cloud platform, not by `viam-se
 | `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the default data store. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
 | `recent_data_store` | object | Inside a `capture_methods[]` entry | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
+A resource-level `retention_policy` covers one component or service. To apply one retention period to everything the part captures, set a [part-level retention policy](#part-level-retention-policy) instead.
+
 For remote parts capture, see [Capture from multi-part machines](/data/capture-sync/remote-parts-capture/).
+
+### Part-level retention policy
+
+A part-level retention policy applies one retention period to all data a machine {{< glossary_tooltip term_id="part" text="part" >}} captures, across every component and service. The Viam cloud platform deletes the part's captured data (binary and tabular) from the default data store when the retention period passes. The policy covers the default data store only: a [hot data store](/data/hot-data-store/) keeps its own rolling window of recent data, set by `stored_hours`.
+
+Set the policy in **JSON** mode on the **CONFIGURE** tab. `data_retention_policy` is a top-level field in the part's configuration, alongside `components` and `services`:
+
+```json
+{
+  "components": [
+    {
+      "name": "my-sensor",
+      "api": "rdk:component:sensor",
+      "model": "rdk:builtin:fake"
+    }
+  ],
+  "data_retention_policy": {
+    "days": 30
+  }
+}
+```
+
+<!-- prettier-ignore -->
+| Name | Type | Description |
+| --- | --- | --- |
+| `days` | int | Number of days to keep the part's captured data in the default data store. Days are UTC calendar days: the platform deletes data once its capture day is `days` or more days in the past. Must be a positive whole number. The platform ignores other values. |
+
+The part-level policy supports one option: `days`. Set size-based limits (`binary_limit_gb` and `tabular_limit_gb`) per resource in a [resource-level `retention_policy`](#platform-managed-capture-settings).
+
+When a resource also has its own `retention_policy`, the shorter of the two retention periods applies to that resource's data. For example, set a long period for the whole part and a shorter period for a high-volume resource, such as a camera.
+
+A {{< glossary_tooltip term_id="fragment" text="fragment" >}} can include `data_retention_policy` to set the policy for every part that uses the fragment. A `data_retention_policy` set directly on a part takes precedence over one from a fragment.
 
 ## Local storage
 

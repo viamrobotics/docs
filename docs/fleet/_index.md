@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 manualLink: "/fleet/overview/"
 description: "Scale from one machine to a fleet: templatize configuration with fragments, provision devices, deploy software and ML models, and manage updates."
+capabilities: ["section-index", "fleet-deployment"]
 aliases:
   - /cloud/
   - /product-overviews/fleet-management/

@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Project 2D detections into 3D point cloud objects, and read depth data from a depth camera to measure distance to detected objects."
+capabilities: ["vision-service", "section-index"]
+diataxis: overview
 date: "2026-04-14"
 ---
 

@@ -4,6 +4,8 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Camera models available in the Micro-RDK."
+capabilities: ["hw-camera", "section-index"]
+diataxis: reference
 tags: ["camera", "components", "Micro-RDK"]
 no_list: true
 ---

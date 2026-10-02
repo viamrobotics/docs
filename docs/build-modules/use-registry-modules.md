@@ -5,6 +5,8 @@ weight: 3
 layout: "docs"
 type: "docs"
 description: "Before writing a module, check whether one already exists. The registry has more than hardware drivers."
+capabilities: ["module-registry"]
+diataxis: how-to
 date: "2026-04-17"
 aliases:
   - /registry/

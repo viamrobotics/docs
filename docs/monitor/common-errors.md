@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
+capabilities: ["logging"]
+diataxis: reference
 aliases:
   - /dev/tools/common-errors/
 ---
@@ -104,16 +106,17 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Related Error:** `dlopen(): error loading libfuse.so.2`
 
-**Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
-FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with `viam-server`.
-For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well to support `viam-server`.
+**Description:** On 32-bit ARM Linux (armhf), `viam-server` is distributed as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
+On 64-bit Linux (aarch64, x86_64) and macOS, install `viam-server` using [`viam-agent`](/reference/viam-agent/) instead. You will not encounter this error with `viam-agent`.
+
+FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with the AppImage.
+For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well.
 
 In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
-FUSE is not required for macOS installations of `viam-server`.
 
 {{% alert title="Important" color="note" %}}
-`viam-server` requires FUSE version 2 (`libfuse2`), _not_ FUSE version 3 (`fuse3` or `libfuse3`) or versions of FUSE previous to FUSE version 2 (`fuse`).
-To support a `viam-server` installation, you must install `libfuse2`.
+The AppImage requires FUSE version 2 (`libfuse2`), _not_ FUSE version 3 (`fuse3` or `libfuse3`) or versions of FUSE previous to FUSE version 2 (`fuse`).
+To resolve this error, you must install `libfuse2`.
 {{% /alert %}}
 
 **Solution:** If you receive this error, install FUSE version 2 on your Linux system according to one of the following steps:
@@ -237,7 +240,7 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 
 ### Failed to connect to robot within time limit {#conn-time-out}
 
-**Full Error:** `failed to connect to machine within time limit. check network connection, whether the viam-server is running, and try again. see https://docs.viam.com/dev/tools/common-errors/#conn-time-out for troubleshooting steps`
+**Full Error:** `failed to connect to machine within time limit. check network connection, whether the viam-server is running, and try again.`
 
 **Description:** This error occurs when the host fails to connect to the robot within the time limit.
 

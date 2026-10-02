@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/home-assistant/index.html"
 tags: ["APIs", "python"]
 description: "Learn how to install the integration through the Home Assistant Community Store (HACS) and use a vision service to detect people from a camera connected to Home Assistant."
+capabilities: ["vision-service", "ml-models", "hw-camera", "docs"]
 images: ["/codelabs/peopledetection.png"]
 imageAlt: "person detection"
 authors: ["Nick Hehr"]

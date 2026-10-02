@@ -5,6 +5,8 @@ weight: 32
 layout: "docs"
 type: "docs"
 description: "Store a rolling window of recent data for fast queries while continuing to write all data to blob storage."
+capabilities: ["data-storage"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /data/query/hot-data-store/

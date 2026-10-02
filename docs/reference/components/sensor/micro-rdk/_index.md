@@ -4,6 +4,8 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Sensor models available in the Micro-RDK."
+capabilities: ["section-index", "hw-sensing"]
+diataxis: reference
 tags: ["sensor", "components", "Micro-RDK"]
 no_list: true
 ---

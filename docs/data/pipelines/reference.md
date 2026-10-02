@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Configuration fields, run statuses, cron schedule syntax, data source types, and execution limits."
+capabilities: ["data-pipelines"]
+diataxis: reference
 date: "2026-03-27"
 ---
 
@@ -92,11 +94,21 @@ Each pipeline run record contains:
 
 When `enable_backfill` is `true`:
 
-- On pipeline creation, Viam processes historical time windows backward from the creation time to the earliest available data.
+- On pipeline creation, Viam processes historical time windows backward from the creation time to the creation date of the organization's oldest location.
 - When data syncs with a delay (machine was offline), the pipeline automatically reruns affected time windows to include the late-arriving data.
-- Backfill processes in batches of up to 10 concurrent time windows with a 2-minute delay between batches.
-- For `standard` data source, backfill may provision an Atlas Data Federation instance for faster historical queries.
+- Backfill processes in batches of up to 10 concurrent time windows with a 1-minute delay between batches.
+- Backfill always queries `standard` storage, even for a `hot-storage` pipeline, because the hot data store keeps only recent data.
 - Backfill results replace any existing results for the same time window.
+
+Each backfill time window is a separate query, and your organization is billed for the compute time each query uses.
+The cost depends on how many windows the backfill covers, not on how much data your organization has.
+To estimate the size of a backfill:
+
+- **Number of windows** ≈ (pipeline creation time − oldest location's creation date) ÷ schedule interval.
+  For irregular schedules, such as weekdays only, count the cron ticks in that range instead.
+  For example, an hourly pipeline in an organization whose oldest location is a year old runs about 8,760 backfill queries.
+- **Minimum duration** ≈ number of windows ÷ 10, in minutes, because backfill runs batches of 10 windows with a 1-minute delay between batches.
+  For example, 8,760 windows take at least about 14.6 hours.
 
 When `enable_backfill` is `false`:
 
@@ -142,7 +154,7 @@ Deleting a pipeline removes its sink collection and every result stored in it. E
 | Execution start delay            | 2 minutes after scheduled time                                 |
 | Hung run detection               | 2x execution timeout (currently 10 minutes) in `STARTED` state |
 | Backfill batch size              | 10 concurrent time windows                                     |
-| Backfill throttle                | 2-minute delay between batches                                 |
+| Backfill throttle                | 1-minute delay between batches                                 |
 
 ## Permissions
 

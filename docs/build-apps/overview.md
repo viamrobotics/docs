@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Build software that uses a Viam SDK to talk to your machines and the Viam cloud, from web dashboards to long-running backend services."
+capabilities: ["sdks", "viam-apps"]
+diataxis: explanation
 date: "2026-04-10"
 aliases:
   - /operate/control/

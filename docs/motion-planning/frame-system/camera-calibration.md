@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Compute camera intrinsic and distortion parameters for accurate 2D-to-3D projection."
+capabilities: ["frame-system", "hw-camera"]
+diataxis: how-to
 aliases:
   - /work-cell-layout/calibrate-camera-to-robot/
   - /build/work-cell-layout/calibrate-camera-to-robot/
@@ -233,10 +235,10 @@ fmt.Printf("  z=%.1f mm\n", pt.Z)
 If the computed position is within 10-20 mm of the measured position at a
 working distance of 500-1000 mm, your calibration is good.
 
-For a visual sanity check, open the [3D SCENE tab](/motion-planning/3d-scene/).
+For a visual sanity check, open the [3D SCENE tab](/visualization/3d-scene/).
 The camera frame should sit in the correct position and orientation relative
 to the arm, and any visible obstacles should appear in plausible locations.
-See [Calibrate frame offsets](/motion-planning/3d-scene/calibrate-frame-offsets/)
+See [Measuring between frames](/visualization/3d-scene/measuring-between-frames/)
 for the full workflow.
 
 ## Troubleshooting

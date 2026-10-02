@@ -5,6 +5,8 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Reference for viam-agent: installation, subsystems, version control, advanced settings, system configuration, and network management."
+capabilities: ["viam-agent"]
+diataxis: reference
 date: "2026-04-17"
 aliases:
   - /manage/reference/viam-agent/
@@ -52,8 +54,19 @@ Control which versions of `viam-agent` and `viam-server` run on the machine.
 
 In the machine settings card in the Viam app, open **Settings** and expand **Software Updates**:
 
-- **Agent version**: choose `stable` (the default, tracks the latest stable release), a specific semver release such as `5.6.77`, or a URL to a custom binary.
+- **Agent version**: choose a release channel, a specific semver release such as `1.4.0`, or a URL to a custom binary.
 - **viam-server version**: same options as agent.
+
+The available release channels are:
+
+<!-- prettier-ignore -->
+| Channel | Description |
+| -------- | --------------------------------------------------------- |
+| `stable` | Newest tested release. The default; use it in production. |
+| `rc` | Newest release candidate. |
+| `dev` | Newest build off `main`. Use for debugging only. |
+
+To pin to a specific build, use its exact published version, for example `1.4.0`, `1.5.0-rc0`, or `1.4.1-dev.16-c2c9600c6`. The version must exist for the machine's platform.
 
 When you change a version, the cloud sends an update instruction to `viam-agent` on the machine's next check cycle. The agent downloads and installs the new binary using the atomic swap mechanism described above.
 
@@ -65,16 +78,40 @@ To control when updates are applied, configure a [maintenance window](/fleet/man
 
 In the machine settings card, open **Settings** and expand **Advanced**:
 
-| Field                               | Type    | Default | Description                                                                                                                                                                                                                                 |
-| ----------------------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `debug`                             | boolean | `false` | Enable debug logging for `viam-agent`.                                                                                                                                                                                                      |
-| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting `viam-server`. Useful for ensuring the latest version runs on boot.                                                                                                          |
-| `disable_viam_server`               | boolean | `false` | Prevent `viam-agent` from starting `viam-server`. For development use.                                                                                                                                                                      |
-| `disable_network_configuration`     | boolean | `false` | Disable `viam-agent`'s network and hotspot management.                                                                                                                                                                                      |
-| `disable_system_configuration`      | boolean | `false` | Disable `viam-agent`'s system configuration management (OS updates, log forwarding).                                                                                                                                                        |
-| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                                                                                                                            |
-| `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules.                                                                                                                                                                              |
-| `disable_log_deduplication`         | boolean | `false` | Disable log deduplication for `viam-agent`. By default, `viam-agent` collapses noisy log messages (those that repeat more than 3 times within one minute) into a single message with a repeat count. Set to `true` to print every log line. |
+| Field                               | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------------------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `debug`                             | boolean | `false` | Enable debug logging for `viam-agent`.                                                                                                                                                                                                                                                                                                                                       |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting `viam-server`. Useful for ensuring the latest version runs on boot.                                                                                                                                                                                                                                           |
+| `disable_viam_server`               | boolean | `false` | Prevent `viam-agent` from starting `viam-server`. For development use.                                                                                                                                                                                                                                                                                                       |
+| `disable_network_configuration`     | boolean | `false` | Disable `viam-agent`'s network and hotspot management.                                                                                                                                                                                                                                                                                                                       |
+| `disable_system_configuration`      | boolean | `false` | Disable `viam-agent`'s system configuration management (OS updates, log forwarding).                                                                                                                                                                                                                                                                                         |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                                                                                                                                                                                                                                                             |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules. See [Set viam-server environment variables](#set-viam-server-environment-variables).                                                                                                                                                                                                                          |
+| `disable_log_deduplication`         | boolean | `false` | Disable log deduplication for `viam-agent`. By default, `viam-agent` collapses noisy log messages (those that repeat more than 3 times within one minute) into a single message with a repeat count. Set to `true` to print every log line.                                                                                                                                  |
+| `block_downloads_on_low_disk`       | boolean | `false` | Refuse `viam-agent` self-updates and downloads of the `viam-server` binary when a download would leave less than 10MB free on the `viam-agent` cache volume. When `false`, `viam-agent` logs a low-disk-space warning and downloads anyway. Does not cover module or package downloads; see [Set viam-server environment variables](#set-viam-server-environment-variables). |
+
+### Set viam-server environment variables
+
+Use `viam_server_env` to set [`viam-server` environment variables](/reference/viam-server/#environment-variables) on machines that `viam-agent` manages. `viam-agent` passes these variables to `viam-server`, and `viam-server` passes them on to its modules. A value set here overrides the same variable in `viam-agent`'s own environment.
+
+For example, `block_downloads_on_low_disk` covers only downloads that `viam-agent` makes. To also block the module and package downloads that `viam-server` makes, set `VIAM_ENABLE_DISK_SPACE_BLOCK`:
+
+```json
+{
+  "agent": {
+    "advanced_settings": {
+      "block_downloads_on_low_disk": true,
+      "viam_server_env": {
+        "VIAM_ENABLE_DISK_SPACE_BLOCK": "true"
+      }
+    }
+  }
+}
+```
+
+Values must be strings, as in the example: write `"true"`, not `true`. If any value isn't a string, `viam-agent` ignores all of the machine's agent settings from the cloud, including network settings, and uses its defaults instead.
+
+Changing `viam_server_env` restarts `viam-server` the next time a restart is allowed.
 
 ## System configuration
 
@@ -90,11 +127,12 @@ In the machine settings card, open **Settings** and expand **System**:
 The `"all"` and `"security"` modes delegate scheduling to the operating system's built-in upgrade timer (`unattended-upgrades` on Debian). The `"managed-all"` and `"managed-security"` modes let `viam-agent` control the upgrade schedule directly, which also enables upgrade support on Ubuntu and RPM-based distributions (Fedora, RHEL, Rocky Linux, AlmaLinux, CentOS).
 
 When using a managed mode, `viam-agent` disables the OS's built-in upgrade timer and runs upgrades itself at the configured interval. If an upgrade requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+It also defers reboots while any package manager transaction is in progress, whether started by `viam-agent` itself or by an external tool, to prevent interrupting an installation mid-transaction.
 
-| Mode                                  | Supported distributions                                                                                                   | Schedule controlled by     | Reboot coordination          |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ---------------------------- |
-| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                                                   | OS (`unattended-upgrades`) | None                         |
-| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM), and Windows (PSWindowsUpdate) | `viam-agent`               | Waits for maintenance window |
+| Mode                                  | Supported distributions                                                                                                   | Schedule controlled by     | Reboot coordination                                        |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------- |
+| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                                                   | OS (`unattended-upgrades`) | None                                                       |
+| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM), and Windows (PSWindowsUpdate) | `viam-agent`               | Waits for maintenance window and active installs to finish |
 
 The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. On Windows, managed modes use the `PSWindowsUpdate` PowerShell module. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 

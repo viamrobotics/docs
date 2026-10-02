@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/drive-rover-ts/"
 tags: ["APIs", "python"]
 description: "Drive a rover in a square using the Viam TypeScript SDK."
+capabilities: ["hw-mobility", "sdks", "docs"]
 images: ["/codelabs/ts-rover.png"]
 imageAlt: "An overhead view of a rover next to a UI to move it"
 authors: ["Joyce Lin"]

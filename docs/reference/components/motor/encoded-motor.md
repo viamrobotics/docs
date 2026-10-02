@@ -4,6 +4,8 @@ linkTitle: "Encoded Motors"
 weight: 90
 type: "docs"
 description: "Reference for the encoded-motor motor model. How to configure an encoded motor."
+capabilities: ["hw-actuation"]
+diataxis: reference
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/operate/reference/components/motor/encoded-motor/"

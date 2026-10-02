@@ -4,6 +4,8 @@ linkTitle: "gpio"
 weight: 10
 type: "docs"
 description: "Reference for the gpio motor model. Brushed or brushless DC motors with a microcontroller."
+capabilities: ["hw-actuation"]
+diataxis: reference
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/operate/reference/components/motor/gpio-micro-rdk/"

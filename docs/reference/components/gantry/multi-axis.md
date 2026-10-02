@@ -4,6 +4,8 @@ linkTitle: "multi-axis"
 weight: 80
 type: "docs"
 description: "Reference for the multi-axis gantry model. Multi-axis gantry."
+capabilities: ["hw-gantry"]
+diataxis: reference
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:

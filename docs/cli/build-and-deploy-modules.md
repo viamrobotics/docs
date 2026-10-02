@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Scaffold, build, upload, and version modules from the command line."
+capabilities: ["cli", "module-development"]
+diataxis: how-to
 ---
 
 Scaffold a new module, iterate on it locally with hot-reload, upload it to the registry, and manage versions and cloud builds.
@@ -145,6 +147,13 @@ viam module upload --version=1.0.0 --platform=linux/arm64 dist/archive-arm64.tar
 
 For CI/CD workflows, use cloud builds to compile your module on Viam's build infrastructure.
 
+{{% alert title="C++ build environment" color="note" %}}
+On Linux, cloud builds compile C++ modules in an Ubuntu 20.04 (focal) environment by default.
+To build in Debian 11 (bullseye) instead, set `"distro": "bullseye"` in the `build` object of your module's `meta.json`.
+To match this environment locally and add any libraries your module needs, install build dependencies with `apt-get` in your module's setup step.
+The [C++ example module](https://github.com/viamrobotics/module-example-cpp) follows this pattern in its `apt-setup.sh` script.
+{{% /alert %}}
+
 Start a cloud build:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -161,6 +170,12 @@ Build from a specific git ref:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build start --version=1.0.0 --ref=main
+```
+
+Build from your local source directory without pushing to GitHub first:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build start --version=1.0.0 --from-source --platforms=linux/amd64,linux/arm64 --wait
 ```
 
 Build locally to test before pushing:

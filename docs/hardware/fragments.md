@@ -5,6 +5,8 @@ weight: 12
 layout: "docs"
 type: "docs"
 description: "Capture working hardware configurations and keep them consistent across your fleet."
+capabilities: ["machine-config"]
+diataxis: explanation
 date: "2025-03-07"
 ---
 

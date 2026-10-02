@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Build a module that monitors sensors, coordinates components, or runs automation logic."
+capabilities: ["module-development"]
+diataxis: how-to
 date: "2025-03-06"
 aliases:
   - /development/write-a-logic-module/

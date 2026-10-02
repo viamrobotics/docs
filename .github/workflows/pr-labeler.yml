@@ -20,8 +20,17 @@ jobs:
           github-token: ${{ secrets.PR_TOKEN }}
           script: |
             let prNumber = context.payload.pull_request && context.payload.pull_request.number;
+            const pr = context.payload.pull_request;
+            const sender = context.payload.sender.login;
+            // Non-member bots that push same-repo branches; forks never take this path.
+            const trustedBots = ["dependabot[bot]", "viam-overwatch[bot]"];
+            const isFork = pr.head.repo?.full_name !== pr.base.repo.full_name;
+            if (!isFork && trustedBots.includes(sender)) {
+              await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
+              return;
+            }
             try {
-              let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: context.payload.sender.login});
+              let orgResp = await github.rest.orgs.checkMembershipForUser({org: "viamrobotics", username: sender});
               if (orgResp.status === 204) {
                 await github.rest.issues.addLabels({owner: "viamrobotics", repo: "docs", issue_number: prNumber, labels: ["safe to build"]});
               }

@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "MQL patterns for common robotics use cases and tips for writing effective pipeline queries."
+capabilities: ["data-pipelines"]
+diataxis: reference
 date: "2026-03-27"
 ---
 

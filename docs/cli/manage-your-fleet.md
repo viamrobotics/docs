@@ -5,6 +5,8 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Monitor machines, view logs, access remote shells, and deploy software from the command line."
+capabilities: ["cli", "fleet-deployment"]
+diataxis: how-to
 ---
 
 Monitor machine status, stream logs, connect to remote machines with a shell, copy files, and deploy software packages across your fleet.
@@ -114,7 +116,8 @@ Copy a directory recursively:
 viam machines part cp --part=<part-id> -r ./local-dir machine:/home/user/
 ```
 
-Preserve file permissions and timestamps:
+File permissions are preserved by default, respecting the destination `umask`.
+Use `--preserve` to also keep modification timestamps and force exact permission bits (overriding the destination `umask`):
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part cp --part=<part-id> -r --preserve ./local-dir machine:/home/user/
@@ -130,6 +133,22 @@ viam machines part tunnel \
   --part=<part-id> \
   --local-port=8080 \
   --destination-port=8080
+```
+
+If the destination port is not already in the machine's tunnel configuration, the CLI adds it automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+
+To tunnel directly without internet access, pass the machine address and API key.
+The destination port must already be configured on the machine:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part tunnel \
+  --part=<part-id> \
+  --local-port=8080 \
+  --destination-port=8080 \
+  --address=my-machine.local:8080 \
+  --key-id=<key-id> \
+  --key=<key-value>
 ```
 
 ## Run component and service methods

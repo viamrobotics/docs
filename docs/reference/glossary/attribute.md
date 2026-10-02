@@ -1,5 +1,6 @@
 ---
 title: Attribute
+capabilities: ["glossary", "docs"]
 id: attribute
 full_link:
 short_description: A configuration parameter of a resource.

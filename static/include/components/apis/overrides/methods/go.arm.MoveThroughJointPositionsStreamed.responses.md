@@ -1,0 +1,1 @@
+The channel acknowledgments arrive on while the arm executes. `Response` carries no fields today. The caller must drain this channel for the duration of the call, and closes it only after the call returns.

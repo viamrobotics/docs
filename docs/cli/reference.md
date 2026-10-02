@@ -4,6 +4,8 @@ linkTitle: "CLI reference"
 weight: 90
 type: "docs"
 description: "Complete command reference for the Viam CLI: every command, subcommand, flag, and alias."
+capabilities: ["cli"]
+diataxis: reference
 date: "2026-04-25"
 # updated: ""  # When the content was last entirely checked
 ---
@@ -22,6 +24,7 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
+| `--check-connection-interval` | For commands that connect to a machine: check the connection on this interval (a Go duration, for example `30s` or `1m`) and close the client if a faulty connection cannot be repaired. Default: `0` (disabled). |
 | `--config`, `-c` | Load configuration from `FILE`. |
 | `--debug`, `--vvv` | Enable debug logging. Default: `false`. |
 | `--disable-profiles`, `--disable-profile` | Disable usage of [profiles](#profiles), falling back to default behavior. Default: `false`. |
@@ -999,7 +1002,8 @@ viam machines part status --part=<part id>
 viam machines part run --part=<part id> --method=<method> [--data=<data>] [--stream=<interval>]
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part history --part=<part id>
+viam machines part history --part=<part id> [--start=<timestamp>] [--end=<timestamp>] [--count=<n>]
+viam machines part config --part=<part id> [--at=<timestamp>]
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
 viam machines part add-job --part=<part id> [--config=<json or path>]
 viam machines part update-job --part=<part id> --name=<job name> --config=<json or path>
@@ -1105,9 +1109,11 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago, unless `--range` is set. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--range` | Duration string in minutes, hours, or days (for example, `10m`, `10h`, `10d`) that sets a relative time window. Resolved against whichever of `--start` and `--end` is present: with only `--end`, the window is `[end - range, end]`; with only `--start`, the window is `[start, start + range]`; with neither, the window is `[now - range, now]`. Cannot be used together with both `--start` and `--end`. | Optional |
+| `--order` | Order in which logs are returned by time. Accepted values: `asc` (oldest first), `desc` (newest first). Default: `desc`. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 | `--location` | ID of the location that the machine belongs to. | Optional |
@@ -1199,9 +1205,9 @@ viam machines part logs --part=myrover-main --tail=true
 | `--errors` | Return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. | Optional |
+| `--start` | Filter logs to include only those after the start time. Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 
@@ -1237,7 +1243,7 @@ viam machines part restart --part=123
 Display the configuration history for a machine part.
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part history --part=<part id>
+viam machines part history --part=<part id> [--start=<timestamp>] [--end=<timestamp>] [--count=<n>]
 ```
 
 <!-- prettier-ignore -->
@@ -1248,6 +1254,33 @@ viam machines part history --part=<part id>
 | `--location` | Location name. | Optional |
 | `--machine` | Machine ID or name. | Optional |
 | `--filter-by-email` | Show only history entries saved by this email address. | Optional |
+| `--start` | ISO-8601 timestamp in RFC 3339 format for the start of the time range filter (for example, `2025-01-15T14:00:00Z`). | Optional |
+| `--end` | ISO-8601 timestamp in RFC 3339 format for the end of the time range filter (for example, `2025-01-15T15:00:00Z`). | Optional |
+| `--count` | Maximum number of history entries to list. Set to `0` for every entry in the range. Default: `100`. | Optional |
+
+### `machines part config`
+
+Print a machine part's config JSON to stdout with keys sorted for clean diffs.
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part config --part=<part id>
+```
+
+To retrieve the config that was in effect at a past point in time, pass `--at` with an ISO-8601 timestamp.
+The command walks the part's history to find the config that was active at that moment:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part config --part=<part id> --at=2025-01-15T14:00:00Z
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+| `--at` | ISO-8601 timestamp in RFC 3339 format. Returns the config that was in effect at that time. Default: current config. | Optional |
 
 ### `machines part cp`
 
@@ -1260,7 +1293,7 @@ viam machines part cp --part=123 my_file machine:/home/user/
 # Recursively copy a directory to a machine:
 viam machines part cp --part=123 -r my_dir machine:/home/user/
 
-# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+# Copy multiple files to a machine with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
@@ -1269,7 +1302,7 @@ viam machines part cp --part=123 machine:my_file ~/Downloads/
 # Recursively copy a directory from a machine to a local destination:
 viam machines part cp --part=123 -r machine:my_dir ~/Downloads/
 
-# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+# Copy multiple files from the machine to a local destination with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
@@ -1278,23 +1311,38 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
-| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | Optional |
+| `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, overriding the destination `umask`. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
 
 ### `machines part tunnel`
 
-Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/fleet/system-settings/).
+Tunnel connections from a local port to a destination port on a machine part.
+
+By default, the tunnel resolves the machine and authenticates through app.viam.com.
+To tunnel directly without internet access, provide all three of `--address`, `--key-id`, and `--key`.
+
+If the destination port is not already listed in the machine's `traffic_tunnel_endpoints` configuration, the CLI attempts to add it automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+When tunneling directly, the destination port must already be configured.
+See [Configure tunneling](/fleet/system-settings/#configure-networking-settings-for-tunneling).
 
 ```sh {class="command-line" data-prompt="$"}
-# tunnel connections to the specified port on a machine part
-viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
+# tunnel through app.viam.com (default)
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222
+
+# tunnel directly to a machine without internet
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222 \
+  --address=my-machine.local:8080 --key-id=<key-id> --key=<key-value>
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--destination-port` | The port on a machine part to tunnel to. | **Required** |
+| `--destination-port` | The port on the machine part to tunnel to. | **Required** |
 | `--local-port` | The local port from which to tunnel. | **Required** |
+| `--address` | Machine FQDN to dial directly. Requires `--key-id` and `--key`. | Optional |
+| `--key-id` | ID of the machine API key. Requires `--address` and `--key`. | Optional |
+| `--key` | Value of the machine API key. Requires `--address` and `--key-id`. | Optional |
 
 ### `machines part get-ftdc`
 
@@ -1309,6 +1357,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
+| `--viam-home-dir` | Path to the target machine's [VIAM_HOME](/reference/viam-server/#environment-variables) directory. Use when the machine uses a non-default VIAM_HOME location, for example when managed by `viam-agent`. Default: `~/.viam`. | Optional |
 
 ### `machines part create`
 
@@ -1528,7 +1577,8 @@ Add a trigger to a machine part. Run without `--config` to use an interactive fo
 
 Trigger configs support the following event types:
 
-- `part_online`: liveness check.
+- `part_online`: fires on each online state transition.
+- `part_offline`: fires on each offline state transition.
 - `part_data_ingested`: fires when data of the specified types is ingested.
 - `conditional_data_ingested`: fires when data ingested by a specific data capture method matches a condition.
 - `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
@@ -1544,7 +1594,7 @@ viam machines part add-trigger --part=<part id>
 
 # add a trigger from inline JSON
 viam machines part add-trigger --part=<part id> \
-    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com","seconds_between_notifications":60}]}'
+    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com"}]}'
 
 # add a trigger from a JSON file
 viam machines part add-trigger --part=<part id> --config ./trigger.json
@@ -1648,6 +1698,7 @@ viam module build logs --build-id=<build-id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 viam module download [command options]
+viam module versions [--id=<module-id>] [--latest] [--count=<n>]
 viam module local-app-testing --app-url http://localhost:3000
 ```
 
@@ -1860,7 +1911,7 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 
 ### `module reload-local`
 
-Build a module locally and run it on a target machine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine.
+Build a module locally and run it on a target machine. Rebuild and restart if it is already running. The module is loaded to <FILE><VIAM_HOME>/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine, where `<VIAM_HOME>` is the machine's Viam home directory (typically `~/.viam` on Linux).
 
 ```sh {class="command-line" data-prompt="$"}
 # build and configure a module running on your local machine without shipping a tarball.
@@ -1878,9 +1929,10 @@ viam module reload-local --local
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
+| `--file` | Path to a pre-built module tarball to upload. Implies `--no-build` and does not require `build.path` in `meta.json`. Cannot be combined with `--local`. | Optional |
 | `--no-build` | Skip build step. Default: `false`. | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | Optional |
-| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | Optional |
+| `--home` | Remote machine home directory under which `<home>/.viam` is used as the module destination. By default the CLI queries the machine for its `VIAM_HOME`; pass `--home` only if the machine cannot be reached or reports a wrong value. | Optional |
 | `--name` | The name of the module. For example: `hello-world`. | Optional |
 
 ### `module restart`
@@ -1911,6 +1963,9 @@ viam module build start --version "0.1.2"
 
 # initiate a cloud build for a private GitHub repo
 viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnopqrstuvwxyzABCD
+
+# build from local source without pushing to GitHub
+viam module build start --version "0.1.2" --from-source --platforms linux/amd64,linux/arm64 --wait
 ```
 
 <!-- prettier-ignore -->
@@ -1919,9 +1974,13 @@ viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnop
 | `--version` | The version of your module to set for this build. See [Using the `--version` argument](#using-the---version-argument). | **Required** |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 | `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | Optional |
-| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | Optional |
-| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | Optional |
+| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. Ignored when `--from-source` is set. | Optional |
+| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. Ignored when `--from-source` is set. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
+| `--from-source` | Package your local source directory and upload it to the cloud builder instead of building from a git ref. `.gitignore` is honored when packaging. | Optional |
+| `--path` | Path to the local source directory to upload. Only used with `--from-source`. Default: `.`. | Optional |
+| `--wait` | Wait for the build to finish. Surfaces failed-platform logs and returns a non-zero exit code on failure. Only used with `--from-source`. | Optional |
+| `--no-progress` | Hide the progress spinner. Only used with `--from-source`. | Optional |
 
 ### `module build local`
 
@@ -1992,6 +2051,28 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--version` | The version of the module to download. Defaults to `latest`. | Optional |
 | `--platform` | The architecture of the module binary to download. See [Using the `--platform` argument](#using-the---platform-argument). | Optional |
 | `--destination` | Output directory for downloaded package. Default: `.`. | Optional |
+
+### `module versions`
+
+List a module's released versions and their platforms.
+
+```sh {class="command-line" data-prompt="$"}
+# list all released versions, newest first
+viam module versions --id=acme:my-module
+
+# show only the latest version for each platform
+viam module versions --id=acme:my-module --latest
+
+# show the 5 newest versions
+viam module versions --id=acme:my-module --count=5
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). If omitted, reads the module ID from `meta.json` in the current directory. | Optional |
+| `--latest` | Print the latest version for each platform instead of the full list. | Optional |
+| `--count` | Show only the N newest versions. Default: all versions. | Optional |
 
 ### `module local-app-testing`
 
@@ -2136,7 +2217,7 @@ pip3 install -r requirements.txt
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand %}}
@@ -2163,7 +2244,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -2197,7 +2278,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -2213,7 +2294,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -2714,6 +2795,64 @@ viam profiles remove --profile-name=<name-of-profile-to-remove>
 | -------- | ----------- | --------- |
 | `--profile-name` | Name of the profile to remove. | **Required** |
 
+## `fragment` (alias `fragments`)
+
+The `fragment` command lets you list, inspect, and view revision history for configuration fragments.
+To add or remove a fragment from a machine part, use [`machines part fragments add`](#machines-part-fragments-add) and [`machines part fragments remove`](#machines-part-fragments-remove).
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment list [--organization=<org id or name>]
+viam fragment get --fragment=<fragment id> [--version=<revision or tag>]
+viam fragment history --fragment=<fragment id> [--count=<n>]
+```
+
+### `fragment list`
+
+List all fragments for an organization.
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment list
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--organization` | Organization name or ID. If omitted, uses the default organization or the first organization alphabetically. | Optional |
+
+### `fragment get`
+
+Print a fragment's config JSON to stdout.
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment get --fragment=<fragment id>
+```
+
+To retrieve a specific revision or tag, pass `--version`:
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment get --fragment=<fragment id> --version=3
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--fragment` | Fragment ID to fetch. | **Required** |
+| `--version` | Fragment revision number or tag to fetch. Default: latest. | Optional |
+
+### `fragment history`
+
+Display revision history for a fragment.
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment history --fragment=<fragment id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--fragment` | Fragment ID whose history to display. | **Required** |
+| `--count` | Maximum number of history entries to list. Set to `0` for every entry. Default: `10`. | Optional |
+
 ## `resource`
 
 The `resource` command enables, disables, or updates individual resources (components and services) on a machine part. Use it to temporarily disable a resource without removing it from the configuration, or to update attributes without using the Viam app.
@@ -3083,6 +3222,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 
 The `update` command updates the CLI to the latest version.
 If the CLI was installed with Homebrew, it updates through Homebrew.
+If the CLI was installed with apt, it updates through apt.
 Otherwise, it downloads and replaces the binary directly.
 
 ```sh {class="command-line" data-prompt="$"}

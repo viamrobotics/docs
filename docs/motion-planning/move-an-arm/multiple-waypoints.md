@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Plan a single continuous trajectory through an ordered list of intermediate goals using armplanning.PlanMotion."
+capabilities: ["motion-planning"]
+diataxis: how-to
 ---
 
 Sometimes you need the arm to pass through a specific approach point before
@@ -25,6 +27,13 @@ destination, so multi-waypoint planning runs in Go alongside the planner rather
 than over the service API. For the difference between planning in process and
 calling the service, see [Verify a motion plan](/motion-planning/verify-a-plan/).
 {{% /alert %}}
+
+## Prerequisites
+
+- A running machine with an arm component configured.
+- A [frame system](/motion-planning/frame-system/) configured for the arm.
+- A Go program or module that imports the RDK. Planning runs in-process,
+  not over the service API.
 
 ## Why route through ordered goals
 
@@ -101,6 +110,7 @@ goals := []*armplanning.PlanState{
     }, nil),
 }
 
+// second return is plan metadata
 plan, _, err := armplanning.PlanMotion(ctx, logger, &armplanning.PlanRequest{
     FrameSystem: fs,
     StartState:  startState,

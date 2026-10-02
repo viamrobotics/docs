@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Reference for module developers: lifecycle, interfaces, meta.json schema, CLI commands, environment variables, and registry rules."
+capabilities: ["module-development"]
+diataxis: reference
 date: "2025-03-05"
 aliases:
   - /operate/modules/advanced/logging/
@@ -83,6 +85,49 @@ If a module process crashes, `viam-server` automatically restarts it:
 
 If the module keeps crashing, `viam-server` retries indefinitely. Check the
 **LOGS** tab for crash tracebacks.
+
+### Module status states
+
+While the machine runs, `viam-server` tracks every configured module through a
+fixed set of lifecycle states, from download through running. The
+[`GetMachineStatus`](/reference/apis/robot/#getmachinestatus) method reports the
+current state of each module in a `ModuleStatus` message, so you can tell whether
+a module is still downloading, starting up, running, or failing.
+
+`ModuleStatus.state` is one of the following values. Each maps to what the module
+process is doing at that point:
+
+| State               | What the module is doing                                                                                                                                         |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `STATE_UNSPECIFIED` | The state is unknown or unset.                                                                                                                                   |
+| `STATE_PENDING`     | The module is configured, but `viam-server` has not yet started it, for example because a required package is still downloading. Next state: `STATE_STARTING`.   |
+| `STATE_STARTING`    | The module process has spawned, and `viam-server` is waiting for it to send a `Ready` response and register its models. Next state: `STATE_READY`.               |
+| `STATE_READY`       | The module has sent its `Ready` response, registered its models, and is running. If it exits with an error, it moves to `STATE_UNHEALTHY`.                       |
+| `STATE_UNHEALTHY`   | The module failed to start, exited unexpectedly, or is restarting after a crash. Any failure in another state moves to this state.                               |
+| `STATE_CLOSING`     | The module process is shutting down, because you removed the module or because it is restarting during a reconfigure. On a restart it moves to `STATE_STARTING`. |
+
+This per-module state is separate from the machine-level state (`initializing` or
+`running`) that `GetMachineStatus` also reports. For how the machine-level state
+changes when a module crashes, see [Crash recovery](#crash-recovery).
+
+Alongside `state`, each `ModuleStatus` reports:
+
+- `module_name`: the configured name of the module.
+- `last_updated`: the time of the module's most recent state transition. Use it to
+  see how long the module has been in its current state.
+- `error`: the error that caused the module to enter `STATE_UNHEALTHY`. The error
+  persists until the module returns to `STATE_READY`, where it is empty.
+- `consecutive_failures`: the number of times the module has entered
+  `STATE_UNHEALTHY` since it was last ready. This count resets to zero when the
+  module reaches `STATE_READY` or you reconfigure it. A count that keeps climbing
+  indicates a module stuck in a restart loop, such as a Python module with a syntax
+  error.
+
+To diagnose a module that failed to start, read its `ModuleStatus` from
+`GetMachineStatus`. A module in `STATE_UNHEALTHY` reports the cause in `error` and
+the time it entered that state in `last_updated`. A rising `consecutive_failures`
+count indicates a restart loop, where the module fails and retries repeatedly. For
+the full crash traceback, check the **LOGS** tab.
 
 ### Communication
 
@@ -240,12 +285,15 @@ if __name__ == '__main__':
 
 The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                                                                 | Python                                                                                |
-| ------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)                       | Default (`viam-server` destroys and re-creates the resource)                          |
-| In-place reconfigure     | Implement `Reconfigure()` (replace the `AlwaysRebuild` embed with your own method) | Not supported; resources always rebuild (the `Reconfigurable` protocol is deprecated) |
-| No-op close              | Embed `resource.TriviallyCloseable`                                                | Default on `ResourceBase`                                                             |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig`                                           | Default on `EasyResource`                                                             |
+| To get this behavior   | Go                                       | Python                    |
+| ---------------------- | ---------------------------------------- | ------------------------- |
+| No-op close            | Embed `resource.TriviallyCloseable`      | Default on `ResourceBase` |
+| Skip config validation | Embed `resource.TriviallyValidateConfig` | Default on `EasyResource` |
+
+`viam-server` always rebuilds modular resources when their configuration
+or dependencies change. It closes the existing resource instance and
+creates a new one using the constructor. In-place reconfiguration is not
+supported for modular resources in any language.
 
 ## Logging
 
@@ -331,16 +379,54 @@ defined in `proto/viam/module/v1/module.proto`:
 
 All RPCs are initiated by `viam-server` and handled by the module:
 
-| RPC                   | Purpose                                                  |
-| --------------------- | -------------------------------------------------------- |
-| `Ready`               | Handshake: module returns its supported API/model pairs. |
-| `AddResource`         | Create a new resource instance from config.              |
-| `ReconfigureResource` | Update an existing resource with new config.             |
-| `RemoveResource`      | Destroy a resource instance.                             |
-| `ValidateConfig`      | Validate config and return implicit dependencies.        |
+| RPC                   | Purpose                                                                                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Ready`               | Handshake: module returns its supported API/model pairs.                                                                                           |
+| `AddResource`         | Create a new resource instance from config.                                                                                                        |
+| `ReconfigureResource` | No longer called by `viam-server`. Config changes go through `RemoveResource` + `AddResource` instead. The RPC name is retained for compatibility. |
+| `RemoveResource`      | Destroy a resource instance.                                                                                                                       |
+| `ValidateConfig`      | Validate config and return implicit dependencies.                                                                                                  |
 
 The module also connects back to the parent `viam-server` to access other
 resources (dependencies) on the machine.
+
+## Request metadata (Go)
+
+To send extra key-value data along with a request, such as a trace or job ID,
+attach it to the request's context with the
+`go.viam.com/rdk/utils/contextutils/metadata` package. The Go client,
+`viam-server`, and Go modules forward this metadata on every gRPC call, so a
+resource can read metadata that a client set, including across module
+boundaries. It arrives only if every hop in between passes its `ctx` on to the
+next call.
+
+```go {class="line-numbers linkable-line-numbers"}
+import "go.viam.com/rdk/utils/contextutils/metadata"
+
+// In a client, or in a module before it calls a dependency:
+ctx = metadata.Set(ctx, "job-id", "1234")
+readings, err := tempSensor.Readings(ctx, nil)
+
+// In the resource that handles the call:
+func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+    if jobID, ok := metadata.Get(ctx, "job-id"); ok {
+        s.logger.CInfof(ctx, "reading for job %s", jobID)
+    }
+    // ...
+}
+```
+
+| Function                             | Description                                             |
+| ------------------------------------ | ------------------------------------------------------- |
+| `metadata.Set(ctx, key, value, ...)` | Return a new context with the key-value pairs added.    |
+| `metadata.Get(ctx, key)`             | Return the value for a key and whether it was found.    |
+| `metadata.Delete(ctx, keys...)`      | Return a new context without the given keys.            |
+| `metadata.FromContext(ctx)`          | Return a copy of all metadata as a `map[string]string`. |
+| `metadata.All(ctx)`                  | Return an iterator over all metadata keys and values.   |
+
+Use lowercase keys. On the wire, each key is sent as a gRPC metadata header
+named `viam-metadata-<key>`, and gRPC lowercases header names, so a key set as
+`JobID` arrives as `jobid`.
 
 ## meta.json schema
 
@@ -395,6 +481,7 @@ The full schema is available at `https://dl.viam.dev/module.schema.json`.
 | `build.path`                 | string | No       | Path to built artifact. Default: `module.tar.gz`.                                                                                                    |
 | `build.arch`                 | array  | No       | Target platforms. Default: `["linux/amd64", "linux/arm64"]`.                                                                                         |
 | `build.darwin_deps`          | array  | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                                                        |
+| `build.distro`               | string | No       | Linux distribution for cloud builds (for example, `bullseye`). Default: `focal` (Ubuntu 20.04).                                                      |
 | `applications`               | array  | No       | Viam applications provided by the module. See [Applications](#applications).                                                                         |
 
 ### Applications
@@ -473,7 +560,9 @@ All module CLI commands are under `viam module`. You must be logged in
 | `viam module build logs --id <build-id>`     | Stream logs from a cloud build job.               |
 
 `build start` flags: `--ref` (git ref, default: `main`), `--platforms`,
-`--token` (for private repos), `--workdir`.
+`--token` (for private repos), `--workdir`, `--from-source` (upload local
+source instead of building from a git ref), `--path`, `--wait`,
+`--no-progress`.
 
 During builds, the environment variables `VIAM_BUILD_OS` and `VIAM_BUILD_ARCH`
 are set to the target platform. See [Environment variables](#environment-variables).
@@ -506,15 +595,16 @@ resource instance), `--id` (module ID), `--cloud-config` (path to
 `viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
 containing `meta.json`), `--local` (run entrypoint directly on localhost).
 
-`reload-local` flags: `--part-id` (target machine part), `--no-build` (skip
-build), `--local` (run entrypoint directly on localhost instead of bundling),
-`--module` (path to `meta.json`), `--model-name` (add a resource to config
-with this model triple), `--name` (name the added resource),
-`--resource-name` (name the resource instance), `--id` (module ID,
-alternative to `--name`), `--cloud-config` (path to `viam.json`, alternative
-to `--part-id`), `--workdir` (subdirectory containing `meta.json`),
-`--home-dir` (remote user's home directory), `--no-progress` (hide transfer
-progress).
+`reload-local` flags: `--part-id` (target machine part), `--file` (path to a
+pre-built tarball; implies `--no-build`, does not require `build.path` in
+`meta.json`), `--no-build` (skip build), `--local` (run entrypoint directly
+on localhost instead of bundling), `--module` (path to `meta.json`),
+`--model-name` (add a resource to config with this model triple), `--name`
+(name the added resource), `--resource-name` (name the resource instance),
+`--id` (module ID, alternative to `--name`), `--cloud-config` (path to
+`viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
+containing `meta.json`), `--home` (override the remote machine's home
+directory), `--no-progress` (hide transfer progress).
 
 ## Environment variables
 

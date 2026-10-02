@@ -4,6 +4,18 @@
 [build.environment]
   HUGO_VERSION = "0.152.2"
 
+# Both match "/*"; order here is authoritative (Netlify docs), not file-name
+# alphabetization. agent-traffic must run first — markdown-negotiation's
+# rewrite() branch skips context.next(), so reversed order would silently
+# drop analytics for negotiated requests.
+[[edge_functions]]
+  path = "/*"
+  function = "agent-traffic"
+
+[[edge_functions]]
+  path = "/*"
+  function = "markdown-negotiation"
+
 [[redirects]]
   from = "/data/"
   to = "/data/overview/"
@@ -60,7 +72,7 @@
 
 [[redirects]]
   from = "/set-up-a-machine/"
-  to = "/set-up-a-machine/overview/"
+  to = "/set-up-a-machine/first-machine/"
   status = 301
   force = true
 
@@ -195,13 +207,13 @@
 
 [[redirects]]
   from = "/reference/apis/components/"
-  to = "/reference/apis/"
+  to = "/reference/apis/components/overview/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/reference/apis/services/"
-  to = "/reference/apis/"
+  to = "/reference/apis/services/overview/"
   status = 301
   force = true
 
@@ -293,8 +305,13 @@
   status = 301
 
 [[redirects]]
+  from = "/dev/reference/apis/components/encode/*"
+  to = "/reference/apis/components/encoder/:splat"
+  status = 301
+
+[[redirects]]
   from = "/dev/reference/apis/*"
-  to = "/reference/apis/"
+  to = "/reference/apis/:splat"
   status = 301
 
 [[redirects]]
@@ -353,7 +370,7 @@
 # operate/hello-world/
 [[redirects]]
   from = "/operate/hello-world/first-project/gazebo-setup/"
-  to = "/try/gazebo-setup/"
+  to = "/try/quality-inspection/gazebo-setup/"
   status = 301
 
 [[redirects]]
@@ -549,6 +566,21 @@
   to = "/motion-planning/"
   status = 301
 
+# Capitalized SLAM API aliases consolidated to the lowercase canonical page.
+# A Hugo alias here would create a /SLAM/ stub that shadows the real /slam/
+# page on case-insensitive serving, so redirect at the edge instead.
+[[redirects]]
+  from = "/reference/apis/services/SLAM/"
+  to = "/reference/apis/services/slam/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dev/reference/apis/services/SLAM/"
+  to = "/reference/apis/services/slam/"
+  status = 301
+  force = true
+
 # Old IA paths from previous site versions
 [[redirects]]
   from = "/architecture/*"
@@ -740,7 +772,7 @@
   # (for development) turn true for extra diagnostic logging
   debug = true
 
-  skipPatterns = ["/tags/"]
+  skipPatterns = ["/tags/", "/reference/apis/services/SLAM/", "/dev/reference/apis/services/SLAM/"]
 
 [[context.deploy-preview.plugins]]
   package = "@eggnstone/netlify-plugin-no-more-404"
@@ -749,7 +781,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/tags/"]
+  skipPatterns = ["/tags/", "/reference/apis/services/SLAM/", "/dev/reference/apis/services/SLAM/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -759,4 +791,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/tags/"]
+  skipPatterns = ["/tags/", "/reference/apis/services/SLAM/", "/dev/reference/apis/services/SLAM/"]

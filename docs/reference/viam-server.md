@@ -5,6 +5,8 @@ weight: 6
 layout: "docs"
 type: "docs"
 description: "viam-server is the open-source, on-machine portion of the Viam platform."
+capabilities: ["viam-server"]
+diataxis: reference
 date: "2026-04-17"
 aliases:
   - /operate/reference/viam-server/
@@ -296,7 +298,7 @@ Enabling debug level logs will take precedence over all logging configuration se
 
 ## Environment variables
 
-You can set the following environment variables to configure `viam-server` behavior without command-line flags:
+You can set the following environment variables to configure `viam-server` behavior without command-line flags. On machines that `viam-agent` manages, set them through the agent's [`viam_server_env`](/reference/viam-agent/#set-viam-server-environment-variables) setting.
 
 <!-- prettier-ignore -->
 | Variable | Description |
@@ -308,6 +310,7 @@ You can set the following environment variables to configure `viam-server` behav
 | `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Override the default 2-minute per-resource configuration timeout. |
 | `VIAM_LOGFILE` | Path to a log file. `viam-server` writes logs to this file in addition to standard output. This differs from the `-log-file` flag, which writes to the file instead of standard output. |
 | `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger and Event Tracing for Windows (ETW). Only relevant on Windows. |
+| `VIAM_ENABLE_DISK_SPACE_BLOCK` | If set to `true` (or any value starting with `t`, `T`, or `1`), `viam-server` refuses to download, copy, or unpack a package or module when doing so would leave less than 10MB free on the target volume. When unset (the default), `viam-server` logs a warning about low disk space and proceeds. `viam-agent` has a separate setting for its own downloads. |
 
 ## Install `viam-server` without the web UI
 
@@ -319,54 +322,16 @@ If you need to install `viam-server` without the web UI, you can run the followi
 
 {{< tabs >}}
 {{% tab name="Linux (Aarch64)" %}}
-{{< tabs >}}
-{{% tab name="Install manually" %}}
-
-```bash {class="line-numbers linkable-line-numbers"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server
-```
-
-Next, to make the `viam-server` executable and install as a system service, run the following command:
-
-```bash {class="line-numbers linkable-line-numbers"}
-chmod 755 viam-server && sudo ./viam-server --aix-install
-```
-
-The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Linux (x86_64)" %}}
 
-{{< tabs >}}
-{{% tab name="Install manually" %}}
-
-```bash {class="line-numbers linkable-line-numbers"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server
-```
-
-Next, to make the `viam-server` executable and install as a system service, run the following command:
-
-```bash {class="line-numbers linkable-line-numbers"}
-chmod 755 viam-server && sudo ./viam-server --aix-install
-```
-
-The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{% tab name="Install using viam-agent" %}}
-
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
@@ -374,19 +339,25 @@ sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/a
 The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
-{{< /tabs >}}
-{{% /tab %}}
 {{% tab name="macOS" %}}
 
 ```bash {class="line-numbers linkable-line-numbers"}
-brew tap viamrobotics/brews && brew install viam-server
+brew trust viamrobotics/brews && brew tap viamrobotics/brews && brew install viam-server
 ```
 
-The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
+The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE> on Apple silicon and at <FILE>/usr/local/bin/viam-server</FILE> on Intel Macs.
+The tap ships bottles for Apple silicon only, so on an Intel Mac brew builds `viam-server` from source, which takes considerably longer.
 
-The brew installation of `viam-server` CANNOT be run as a system service in the
-background. If you would like to run `viam-server` in the background, install
-[`viam-agent`](/reference/viam-agent/) instead.
+To run `viam-server` in the background, save your machine configuration to <FILE>$(brew --prefix)/etc/viam.json</FILE>, then start it as a launchd service:
+
+```sh {class="command-line" data-prompt="$"}
+brew services start viam-server
+```
+
+The service restarts `viam-server` if it exits and writes logs to <FILE>$(brew --prefix)/var/log/viam-server.log</FILE>.
+
+[`viam-agent`](/reference/viam-agent/) does not support macOS, so brew is the only way to keep `viam-server` running in the background on a Mac.
+Upgrade it yourself with `brew upgrade viam-server`; nothing updates it from the cloud.
 
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}
@@ -398,7 +369,16 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
-Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi) and follow the on-screen instructions to complete the installation.
+To install `viam-agent` on native Windows, open **Command Prompt as administrator** and run the following command.
+Replace `<KEY_ID>` and `<KEY>` with an [API key](/organization/api-keys/) that can access your machine, and `<PART_ID>` with your machine part's ID.
+To copy the part ID, click the **Live** / **Offline** status dropdown at the top of your machine's page, then click **Part ID**.
+
+```bat {class="line-numbers linkable-line-numbers"}
+mkdir C:\etc 2>nul & curl -fsSL -H "key_id:<KEY_ID>" -H "key:<KEY>" "https://app.viam.com/api/json1/config?id=<PART_ID>&client=true" -o C:\etc\viam.json && curl -fsSL "https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi" -o "%TEMP%\viam-agent.msi" && msiexec /i "%TEMP%\viam-agent.msi" /qn /norestart
+```
+
+This command fetches the machine configuration, downloads the installer, and installs `viam-agent` silently.
+Use Cmd, not PowerShell.
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>C:\opt\viam\cache</FILE>.
 

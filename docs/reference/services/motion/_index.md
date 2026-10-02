@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "The motion service enables your machine to plan and move its components relative to itself, other machines, and the world."
+capabilities: ["motion-planning"]
+diataxis: reference
 date: "2026-04-18"
 aliases:
   - /operate/reference/services/motion/
@@ -20,7 +22,7 @@ The motion service:
 
 The motion service can:
 
-- use motion [planning algorithms](algorithms/) locally on your machine to plan coordinated motion across many components.
+- use motion [planning algorithms](/motion-planning/reference/algorithms/) locally on your machine to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
 ## Configuration

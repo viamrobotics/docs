@@ -1,0 +1,29 @@
+{{- /*
+  /llms-full.txt: full text of pages flagged `full: true` in
+  data/llms_pages.yaml, rendered through render-page-markdown.html -- the
+  same partial every page's own .md mirror uses. Generated via Hugo Pipes.
+  See CLAUDE.md's "Agent discoverability files" section for why, and for
+  why this file is deliberately not linked from every page's <head> the
+  way llms.txt/sitetree.json are.
+*/ -}}
+{{- $out := slice -}}
+{{- range site.Data.llms_pages.sections -}}
+  {{- range .pages -}}
+    {{- if .full -}}
+      {{- with site.GetPage .path -}}
+        {{- $out = $out | append (partial "render-page-markdown.html" .) -}}
+      {{- else -}}
+        {{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $full := delimit $out "\n\n---\n\n" -}}
+{{- if gt (len $full) 200000 -}}
+  {{- warnf "llms-full.txt is %d bytes, over the 200KB sanity threshold -- review data/llms_pages.yaml's `full: true` entries" (len $full) -}}
+{{- end -}}
+# Viam — agent-facing pages, full text
+
+> The full text of the pages flagged for full inclusion in [llms.txt]({{ "llms.txt" | absURL }}), inlined here so an agent can read them in one fetch instead of following each link separately.
+
+{{ $full }}

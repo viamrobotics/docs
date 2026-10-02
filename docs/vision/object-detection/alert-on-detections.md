@@ -5,6 +5,8 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Send email, webhook, or push notification alerts when your vision service detects specific objects or classifications."
+capabilities: ["triggers-alerts", "vision-service"]
+diataxis: how-to
 aliases:
   - /vision/alert/
   - /vision/how-to/alert-on-detections/

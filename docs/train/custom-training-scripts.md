@@ -9,6 +9,8 @@ languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
 description: "Use or write custom training scripts to train ML models on the Viam platform with any framework or logic."
+capabilities: ["ml-training"]
+diataxis: how-to
 date: "2024-12-04"
 updated: "2025-10-13"
 ---
@@ -282,7 +284,7 @@ Once a training script is in the registry, whether you uploaded it or are using 
 
 Every custom training job runs inside a Viam-hosted container on GPU-backed
 cloud infrastructure. Containers are based on Python 3.10 with TensorFlow
-pre-installed. The currently supported versions are `tf:2.16` and `tf:2.17`.
+pre-installed. The currently supported versions are `tf:2.16`, `tf:2.17`, and `tf:2.21`.
 To use a different framework (PyTorch, scikit-learn, or anything installable
 with pip), add it to the `install_requires` list in `setup.py`; Viam
 installs the packages in the container before running your script.

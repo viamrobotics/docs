@@ -4,6 +4,8 @@ linkTitle: "Network connectivity"
 weight: 80
 type: "docs"
 description: "When you connect to a machine, the machine automatically chooses the best connection over local LAN, WAN or the internet."
+capabilities: ["sdks"]
+diataxis: reference
 tags:
   ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 aliases:
@@ -66,6 +68,78 @@ const machine = await VIAM.createRobotClient({
 
 Port `8080` is the `viam-server` default; use a different port if your machine is configured to listen on one.
 
+## Choose the WebRTC connection route
+
+By default, a WebRTC connection tries every route it can find and prefers a direct peer-to-peer connection, falling back to relay through a TURN server if no direct route works.
+To test a specific route, or to work around a network that blocks one, you can restrict which routes the SDK uses:
+
+- **Force relay:** use only TURN relay candidates. Use this to check that your machine is reachable through a TURN server.
+- **Force peer-to-peer:** remove all TURN servers, so the SDK only uses direct routes. Use this to check whether a direct connection works without relay fallback.
+  Do not combine it with force relay: the connection fails, because force peer-to-peer removes the TURN servers that force relay needs.
+- **TURN URI:** use only the TURN server from the signaling server's list whose URI matches, for example `turn:turn.viam.com:443`.
+  It has no effect when you force peer-to-peer.
+  The Go and TypeScript SDKs can also override the scheme (`turn` or `turns`), transport (`tcp` or `udp`), and port of the matched TURN server.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Set `force_relay`, `force_p2p`, or `turn_uri` on the connection's `DialOptions`:
+
+```python {class="line-numbers linkable-line-numbers" data-line="5"}
+opts = RobotClient.Options.with_api_key(
+    api_key='<API-KEY>',
+    api_key_id='<API-KEY-ID>'
+)
+opts.dial_options.force_relay = True
+machine = await RobotClient.at_address('<MACHINE-ADDRESS>', opts)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Pass `client.WithForceRelay()`, `client.WithForceP2P()`, `client.WithTurnURI(uri)`, `client.WithTurnScheme(scheme)`, `client.WithTurnTransport(transport)`, or `client.WithTurnPort(port)` to `client.WithDialOptions`:
+
+```go {class="line-numbers linkable-line-numbers" data-line="13"}
+machine, err := client.New(
+    context.Background(),
+    "<MACHINE-ADDRESS>",
+    logger,
+    client.WithDialOptions(
+        client.WithEntityCredentials(
+            "<API-KEY-ID>",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "<API-KEY>",
+            },
+        ),
+        client.WithForceRelay(),
+    ),
+)
+```
+
+If you also pass `client.WithWebRTCOptions`, put it before these options. `WithWebRTCOptions` replaces all WebRTC options set before it.
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+Set `forceRelay`, `forceP2P`, `turnUri`, `turnScheme`, `turnTransport`, or `turnPort` in the options you pass to `createRobotClient`:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="8"}
+const machine = await VIAM.createRobotClient({
+  host: "<MACHINE-ADDRESS>",
+  credentials: {
+    type: "api-key",
+    payload: "<API-KEY>",
+    authEntity: "<API-KEY-ID>",
+  },
+  forceRelay: true,
+  signalingAddress: "https://app.viam.com:443",
+});
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Connectivity Issues
 
 When a machine loses its connection to the internet but is still connected to a LAN or WAN:
@@ -95,3 +169,53 @@ There are a couple of exceptions to the general timeout behavior:
 ### Configure a connection timeout
 
 When connecting to a machine using the [robot API](/reference/apis/robot/) from a supported [Viam SDK](/reference/apis/), you can configure an [optional timeout](/reference/apis/sessions/#change-the-session-timeout) to account for intermittent or delayed network connectivity.
+
+### Log connection details from an SDK client
+
+To see more detail about what your client does while it connects to a machine, turn on the SDK's debug logging before you connect.
+Debug logging also records other client activity, such as individual gRPC calls, so expect verbose output.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+Use a debug logger and pass `client.WithDialDebug()` in the same `client.WithDialOptions` call as your credentials:
+
+```go {class="line-numbers linkable-line-numbers" data-line="1,15"}
+logger := logging.NewDebugLogger("client")
+
+machine, err := client.New(
+    context.Background(),
+    "<MACHINE-ADDRESS>",
+    logger,
+    client.WithDialOptions(
+        client.WithEntityCredentials(
+            "<API-KEY-ID>",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "<API-KEY>",
+            },
+        ),
+        client.WithDialDebug(),
+    ),
+)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+Pass a debug log writer to `setDebugLogWriter` before you create the client.
+This requires `@viamrobotics/sdk` v0.72.0 or later:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="1"}
+VIAM.setDebugLogWriter(VIAM.createConsoleLogWriter());
+
+const machine = await VIAM.createRobotClient({
+  // your connection options
+});
+```
+
+The console writer logs each entry with `console.debug`, which most browsers only show when you enable the **Verbose** log level in the developer console.
+To send entries somewhere else or turn logging off, see [`setDebugLogWriter`](https://ts.viam.dev/functions/setDebugLogWriter.html).
+
+{{% /tab %}}
+{{< /tabs >}}

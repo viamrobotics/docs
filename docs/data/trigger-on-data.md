@@ -5,6 +5,8 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email, webhook, or push notifications when data from the machine is synced."
+capabilities: ["triggers-alerts"]
+diataxis: how-to
 date: "2025-09-12"
 aliases:
 ---
@@ -66,6 +68,7 @@ For the full attribute reference for all trigger types, see [Trigger configurati
    1. Click **Add webhook**.
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
+   1. Optionally, check **Use basic authentication** and enter a username and password to include HTTP basic authentication credentials with each webhook request.
    1. Write your cloud function to process the webhook payload.
       Use your cloud function to process data or interact with external APIs, such as Twilio, PagerDuty, or Zapier.
 
@@ -165,7 +168,11 @@ For the full header and body reference, see [Webhook attributes](/reference/trig
 
 ## Notification interval
 
-The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
+The `seconds_between_notifications` field sets the minimum time between notifications for data triggers (`part_data_ingested` and `conditional_data_ingested`). If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour).
+
+The interval is tracked per recipient, not per trigger. If two triggers send the same event type from the same machine part (or, for conditional triggers, the same component and method) to the same email address or webhook URL, they share one notification history: each trigger waits its own interval from the last notification either trigger sent, and the recipient receives one notification at a time, not one per trigger. When both triggers fire on the same events, the shorter non-zero interval sets the rate. To send a notification for every event, set `seconds_between_notifications` to `0` for all of these triggers.
+
+This field is ignored for `part_online` and `part_offline` triggers, which fire on every state transition. It is also ignored for `conditional_logs_ingested` triggers, where the check interval is always one hour.
 
 ## Machine telemetry triggers
 

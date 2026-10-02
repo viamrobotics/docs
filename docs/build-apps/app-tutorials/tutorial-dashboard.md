@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Build a TypeScript web dashboard for a single Viam machine. Displays a camera feed, a live sensor reading, and a motor control button, with a connection status indicator."
+capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

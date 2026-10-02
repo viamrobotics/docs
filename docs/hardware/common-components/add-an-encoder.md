@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Add and configure an encoder to track motor position and direction."
+capabilities: ["hw-sensing"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/encoder/

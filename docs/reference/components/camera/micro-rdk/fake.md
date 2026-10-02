@@ -4,6 +4,8 @@ linkTitle: "fake"
 weight: 20
 type: "docs"
 description: "Reference for the fake camera model on Micro-RDK. Returns a static circle-in-diamond image for testing."
+capabilities: ["hw-camera"]
+diataxis: reference
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:

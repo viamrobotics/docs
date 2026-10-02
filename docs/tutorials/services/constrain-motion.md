@@ -4,6 +4,8 @@ linkTitle: "Add motion constraints"
 type: "docs"
 weight: 60
 description: "Use constraints and transforms with the motion service."
+capabilities: ["motion-planning", "frame-system", "docs"]
+diataxis: tutorial
 videos:
   [
     "/tutorials/videos/motion_constraints.webm",

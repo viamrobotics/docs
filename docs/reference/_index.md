@@ -9,6 +9,7 @@ noedit: true
 open_on_desktop: true
 manualLink: "/reference/overview/"
 description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, and more."
+capabilities: ["section-index"]
 aliases:
   - /operate/reference/
   - /dev/reference/

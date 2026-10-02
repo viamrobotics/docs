@@ -4,6 +4,8 @@ linkTitle: "APIs"
 weight: 10
 type: "docs"
 description: "Access and control your machine or fleet with the SDKs' client libraries for the resource and robot APIs."
+capabilities: ["section-index", "sdks"]
+diataxis: overview
 images: ["/general/code.png"]
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
@@ -11,11 +13,6 @@ aliases:
   - /program/apis/
   - /build/program/apis/
   - /appendix/apis/
-  - /reference/apis/services/SLAM/
-  - /reference/apis/services/slam/
-  - /dev/reference/apis/services/SLAM/
-  - /dev/reference/apis/services/slam/
-  - /appendix/apis/services/slam/
 no_list: true
 date: "2024-10-01"
 # updated: ""  # When the content was last entirely checked
@@ -111,7 +108,6 @@ See every service API and its methods at a glance in one compact grid.
 {{% card link="/reference/apis/services/vision/" customTitle="Vision service API" noimage="True" %}}
 {{% card link="/reference/apis/services/ml/" customTitle="ML model service API" noimage="True" %}}
 {{% card link="/reference/apis/services/motion/" customTitle="Motion service API" noimage="True" %}}
-{{% card link="/reference/apis/services/navigation/" customTitle="Navigation service API" noimage="True" %}}
 {{% card link="/reference/apis/services/generic/" customTitle="Generic service API" noimage="True" %}}
 {{% card link="/reference/apis/services/base-rc/" customTitle="Base Remote Control service API" noimage="True" %}}
 {{% card link="/reference/apis/services/discovery/" customTitle="Discovery service API" noimage="True" %}}

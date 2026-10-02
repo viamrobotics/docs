@@ -10,13 +10,17 @@ Given a destination pose and a component to move to that destination, `Move` wil
 
 The motion service takes the volumes associated with all configured machine components (local and remote) into account for each request to ensure that the machine does not collide with itself or other known objects.
 
+`component_name` is the name of the component to move, as a string. Earlier SDK versions took a `ResourceName` message here; passing one now fails with `bad argument type for built-in operation`. Poses are in millimeters and degrees. If the path must avoid something that is not in the frame system, pass it as an obstacle in `world_state`.
+
+A linear constraint makes `Move` solve for a straight-line path and refuse a curved fallback, so a segment with no direct solution returns `linear with cbirrt not allowed and no direct solutions found`. Keep the linear constraint for a short final approach and plan the rest as a free move. Read that error as the specific straight line being infeasible, not the goal being unreachable.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The `ResourceName` of the piece of the robot that should arrive at the destination. Note that `move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
-- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/motion-planning/frame-system/).
+- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/reference/services/frame-system/).
 - `world_state` ([viam.proto.common.WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (optional): Data structure specifying information about the world around the machine.
   Used to augment the motion solving process.
   `world_state` includes obstacles and transforms:
@@ -110,13 +114,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination to move to, which can a pose in the
-  reference frame of any frame in the robot's frame system.
-- `componentName` (string) (required): Component on the robot to move to the specified
-  destination.
-- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the
-  world state. Augment the frame system of the robot by specifying
-  additional transforms to add to it for the duration of the Move.
+- `destination` ([PoseInFrame](https://ts.viam.dev/types/PoseInFrame.html)) (required): Destination to move to, which can a pose in the reference frame of any
+  frame in the robot's frame system.
+- `componentName` (string) (required): Component on the robot to move to the specified destination.
+- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the world state. Augment
+  the frame system of the robot by specifying additional transforms to add to it for the
+  duration of the Move.
 - `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Constrain the way the robot will move.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
@@ -152,6 +155,31 @@ const moved = await motion.move(goalPoseInFrame, gripperName);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#move).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `destination` [PoseInFrame](https://flutter.viam.dev/viam_sdk/PoseInFrame-class.html) (required)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `worldState` [WorldState](https://flutter.viam.dev/viam_protos.common.common/WorldState-class.html)? (optional)
+- `constraints` [Constraints](https://flutter.viam.dev/viam_protos.service.motion/Constraints-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final destination = PoseInFrame(referenceFrame: 'world', pose: Pose(x: 100, y: 0, z: 100, oZ: 1));
+final success = await myMotionService.move(destination, 'myArm');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/move.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -208,7 +236,7 @@ The configuration you want to set across this machine for this motion service. T
 - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan. By default this is set to 2.6 m which is an appropriate value for outdoor usage. When you use the `MoveOnMap()` method from the **CONTROL** tab, the default is overwritten to 0.5 m for testing.
 - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
 - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
-- `obstacles` ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry)) (optional): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
+- `obstacles` ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)) (optional): Obstacles, specified in the SLAM frame coordinate system, to be considered when planning the motion of the component.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -300,12 +328,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Specify a destination to, which can be any `Pose` with
-  respect to the SLAM map's origin.
-- `componentName` (string) (required): Component on the robot to move to the specified
-  destination.
-- `slamServiceName` (string) (required): Name of the `SLAM` service from which the SLAM map
-  is requested.
+- `destination` ([Pose](https://ts.viam.dev/types/Pose.html)) (required): Specify a destination to, which can be any `Pose` with respect to the SLAM
+  map's origin.
+- `componentName` (string) (required): Component on the robot to move to the specified destination.
+- `slamServiceName` (string) (required): Name of the `SLAM` service from which the SLAM map is requested.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Optional obstacles to be considered for motion planning.
 - `extra` (None) (optional)
@@ -335,14 +361,35 @@ const baseName = 'my_base';
 const slamServiceName = 'my_slam_service';
 
 // Move the base to Y=10 (location of 0,10,0) relative to map origin
-const executionId = await motion.moveOnMap(
-  myPose,
-  baseName,
-  slamServiceName
-);
+const executionId = await motion.moveOnMap(myPose, baseName, slamServiceName);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonmap).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `destination` [Pose](https://flutter.viam.dev/viam_sdk/Pose-class.html) (required)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `slamServiceName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `motionConfiguration` [MotionConfiguration](https://flutter.viam.dev/viam_protos.service.motion/MotionConfiguration-class.html)? (optional)
+- `obstacles` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final executionId = await myMotionService.moveOnMap(Pose(x: 1000, y: 0, z: 0), 'myBase', 'mySlamService');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/moveOnMap.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -377,7 +424,7 @@ Make sure the [movement sensor](/reference/components/movement-sensor/) you use 
 {{< alert title="Stability Notice" color="alert" >}}
 
 The `heading` parameter is experimental.
-Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/reference/services/motion/algorithms/).
+Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/motion-planning/reference/algorithms/).
 
 Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoGeometry` objects.
 Translation in obstacles is not supported by the [navigation service](/reference/services/navigation/).
@@ -392,7 +439,7 @@ Translation in obstacles is not supported by the [navigation service](/reference
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The `ResourceName` of the base to move.
 - `destination` ([viam.proto.common.GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint)) (required): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) _(lat, lng)_.
 - `movement_sensor_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The `ResourceName` of the [movement sensor](/reference/components/movement-sensor/) that you want to use to check the machine's location.
-- `obstacles` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoGeometry)) (optional): Obstacles to consider when planning the motion of the component, with each represented as a `GeoGeometry`. <ul><li> Default: `None` </li></ul>
+- `obstacles` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)) (optional): Obstacles to consider when planning the motion of the component, with each represented as a `GeoGeometry`. <ul><li> Default: `None` </li></ul>
 - `heading` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): The compass heading, in degrees, that the machine's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` `0`: North, `90`: East, `180`: South, `270`: West </li><li>Default: `None`</li></ul>
 - `configuration` ([viam.proto.service.motion.MotionConfiguration](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.MotionConfiguration)) (optional): 
 The configuration you want to set across this machine for this motion service. This parameter and each of its fields are optional.
@@ -403,7 +450,7 @@ The configuration you want to set across this machine for this motion service. T
 - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
 - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
 - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
-- `bounding_regions` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoGeometry)) (optional): Set of obstacles which the robot must remain within while navigating.
+- `bounding_regions` ([Sequence[viam.proto.common.GeoGeometry]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)) (optional): Set of obstacles which the robot must remain within while navigating.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -496,14 +543,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `destination` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Destination for the component to move to, represented
-  as a `GeoPoint`.
+- `destination` ([GeoPoint](https://ts.viam.dev/types/GeoPoint.html)) (required): Destination for the component to move to, represented as a `GeoPoint`.
 - `componentName` (string) (required): The name of the component to move.
-- `movementSensorName` (string) (required): The name of the `Movement Sensor` used to check
-  the robot's location.
+- `movementSensorName` (string) (required): The name of the `Movement Sensor` used to check the robot's
+  location.
 - `heading` (number) (optional): Compass heading, in degrees, to achieve at destination.
-- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of
-  the component.
+- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of the component.
 - `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
 - `extra` (None) (optional)
@@ -531,20 +576,53 @@ const movementSensorName = 'my_movement_sensor';
 const globeExecutionId = await motion.moveOnGlobe(
   destination,
   baseName,
-  movementSensorName
+  movementSensorName,
 );
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonglobe).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `destination` [GeoPoint](https://flutter.viam.dev/viam_sdk/GeoPoint-class.html) (required)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `movementSensorName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `heading` [double](https://api.flutter.dev/flutter/dart-core/double-class.html)? (optional)
+- `obstacles` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoGeometry](https://flutter.viam.dev/viam_protos.common.common/GeoGeometry-class.html)>? (optional)
+- `boundingRegions` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoGeometry](https://flutter.viam.dev/viam_protos.common.common/GeoGeometry-class.html)>? (optional)
+- `motionConfiguration` [MotionConfiguration](https://flutter.viam.dev/viam_protos.service.motion/MotionConfiguration-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final executionId = await myMotionService.moveOnGlobe(
+  GeoPoint(latitude: 40.7, longitude: -73.9),
+  'myBase',
+  'myMovementSensor',
+);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/moveOnGlobe.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPose
 
-`GetPose` gets the location and orientation of a component within the [frame system](/motion-planning/frame-system/).
+`GetPose` gets the location and orientation of a component within the [frame system](/reference/services/frame-system/).
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
 You can use the `supplemental_transforms` argument to augment the machine's existing frame system with supplemental frames.
+
+`component_name` is the component's name as a string; earlier SDK versions took a `ResourceName` message, which now fails with `bad argument type for built-in operation`. To convert a pose you already have from one frame to another, use the machine client's `TransformPose` instead.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -670,6 +748,29 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `destinationFrame` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `supplementalTransforms` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PoseInFrame](https://flutter.viam.dev/viam_sdk/PoseInFrame-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final pose = await myMotionService.getPose('myArm', 'world');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/getPose.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### StopPlan
@@ -761,6 +862,27 @@ await motion.stopPlan(baseName);
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopplan).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+await myMotionService.stopPlan('myBase');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/stopPlan.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ListPlanStatuses
@@ -783,7 +905,7 @@ All repeated fields are in chronological order.
 
 **Returns:**
 
-- ([Sequence[viam.proto.service.motion.PlanStatusWithID]](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.PlanStatusWithID)): :   List of last known statuses with the
+- ([Sequence[viam.proto.service.motion.PlanStatusWithID]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   List of last known statuses with the
     associated IDs of all plans within the TTL ordered by timestamp in ascending order.
 
 **Example:**
@@ -827,8 +949,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which
-  are executing.
+- `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which are executing.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -846,6 +967,27 @@ const response = await motion.listPlanStatuses();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listplanstatuses).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `onlyActivePlans` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[PlanStatusWithID](https://flutter.viam.dev/viam_protos.service.motion/PlanStatusWithID-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final statuses = await myMotionService.listPlanStatuses(onlyActivePlans: true);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/listPlanStatuses.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -952,6 +1094,29 @@ const response = await motion.getPlan(baseName);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getplan).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `lastPlanOnly` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)? (optional)
+- `executionId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[MotionPlan](https://flutter.viam.dev/viam_sdk/MotionPlan.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final plan = await myMotionService.getPlan('myBase');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/getPlan.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1081,8 +1246,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1100,12 +1265,92 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#docommand).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the motion service as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await service.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myMotionSvc, err := motion.FromProvider(machine, "my_motion_svc")
+
+status, err := myMotionSvc.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getstatus).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1172,6 +1417,19 @@ motion.name
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#name).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}

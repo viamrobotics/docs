@@ -3,6 +3,8 @@ title: "Drive a Rover (like SCUTTLE or Yahboom) Using a Gamepad"
 linkTitle: "Drive a Rover with a Gamepad"
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
+capabilities: ["hw-mobility", "hw-sensing", "docs"]
+diataxis: tutorial
 videos:
   [
     "/tutorials/videos/scuttle-gamepad-preview.webm",
@@ -229,5 +231,5 @@ You can now drive your rover with a wireless controller.
 If you'd like to do more with your rover, check out one of these tutorials:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}

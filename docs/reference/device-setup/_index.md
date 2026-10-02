@@ -5,6 +5,8 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Board-specific setup instructions for single-board computers and microcontrollers supported by Viam."
+capabilities: ["section-index", "device-provisioning"]
+diataxis: overview
 aliases:
   - /operate/reference/prepare/
 ---
@@ -30,6 +32,12 @@ Before installing Viam on a single-board computer, follow the setup guide for yo
 | Board | Guide                                                   |
 | ----- | ------------------------------------------------------- |
 | ESP32 | [Set up an ESP32](/reference/device-setup/setup-micro/) |
+
+## Robot kits
+
+| Kit        | Guide                                                         |
+| ---------- | ------------------------------------------------------------- |
+| Viam Rover | [Set up your Viam Rover](/reference/device-setup/viam-rover/) |
 
 ## After setup
 

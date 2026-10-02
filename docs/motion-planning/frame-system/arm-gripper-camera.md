@@ -5,16 +5,18 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Configure frames for a table-mounted arm with an attached gripper and wrist-mounted camera."
+capabilities: ["frame-system"]
+diataxis: how-to
 aliases:
   - /motion-planning/frame-system-how-to/arm-gripper-camera/
 ---
 
 A table-mounted arm, a gripper bolted to the end effector, and a camera
-clamped near the wrist is the most common manipulation setup. The camera moves
+clamped near the wrist is a common manipulation setup. The camera moves
 with the arm, so its view is always centered on wherever the arm is reaching.
-The motion service and vision pipelines do not know that on their own; you
-have to declare three frame relationships: arm-to-world, gripper-to-arm, and
-camera-to-arm. This guide walks through all three.
+You declare three frame relationships (arm-to-world, gripper-to-arm, and
+camera-to-arm) so the frame system can compute where the gripper and camera
+sit as the arm moves. This guide walks through all three.
 
 ## Frame hierarchy
 
@@ -28,6 +30,7 @@ world
 
 The arm is a direct child of the world frame.
 The gripper and camera are both children of the arm, so they move with the arm automatically as it changes position.
+`table-surface` is workspace obstacle geometry, configured separately; see [Define obstacles](/motion-planning/obstacles/).
 
 ## Steps
 
@@ -39,12 +42,12 @@ base means the arm's translation is `(0, 0, 0)` and every measurement
 starts from the arm. Using a table corner gives you a visible landmark
 but requires measuring arm-base-to-corner first.
 
-Every frame on the machine is defined relative to this point, so you
+Every frame on the machine ultimately resolves to this point, so you
 will refer to it every time you add or adjust a frame.
 
 ### 2. Add a frame to the arm
 
-In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
+In the **CONFIGURE** tab, click the arm component's card and find the **Frame** section (arms always show it). Click **Set defaults** to initialize the frame with parent `world`, zero translation, and identity orientation. Then edit the values. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
 
 If the arm base is your world frame origin:
 
@@ -96,14 +99,14 @@ For example, if the arm's +x points opposite to your intended +x, rotate 180 deg
 
 ### 4. Add a frame to the gripper
 
-In the sidebar, click your gripper component to open its card. On the card, click **Frame**.
+In the sidebar, click your gripper component to open its card. Find the **Frame** section (grippers always show it) and click **Set defaults** to initialize the frame with parent `world`, zero translation, and identity orientation.
 
 #### Pick where the gripper frame origin sits
 
-A point near the center of the gripper jaws is usually the most
-convenient frame origin. The point you pick here is what `translation`
-measures _to_, and what gets moved to a target pose when you later call
-the motion service.
+The tool center point, between the tips of the gripper jaws, is usually
+the most convenient frame origin. The point you pick here is what
+`translation` measures _to_, and what gets moved to a target pose when
+you later call the motion service.
 
 #### Configure the frame
 
@@ -112,8 +115,8 @@ the offset in mm from the arm's end effector to the gripper frame
 origin, and `orientation` to the gripper's rotation relative to the arm.
 
 For a parallel-jaw gripper that bolts directly to the arm's end effector
-with the frame origin at the jaw tip, the offset is the gripper's body
-length. 120 mm is typical:
+with the frame origin at the tool center point between the jaw tips, the
+offset is the gripper's body length. 120 mm is typical:
 
 ```json
 {
@@ -132,17 +135,17 @@ gripper above, use `z: 170`.
 
 A wrong `translation.z` produces silent failures: motion plans validate,
 then the physical gripper tip lands short or long of the target, or the
-planner returns "outside workspace" for poses the arm can clearly reach.
+planner fails to find a plan for poses the arm can clearly reach.
 
 Click **Save**.
 
 #### Check whether the gripper has a kinematics file
 
-Some grippers ship with a kinematics file that describes the position of
-the jaws as they open and close, along with collision geometry for the
-jaw linkages. If the gripper has one, the motion planner already knows
-the gripper's volume and you do not need to add collision geometry to
-the gripper frame.
+Some gripper modules include a kinematics file that describes the position
+of the jaws as they open and close, along with collision geometry for the
+jaw linkages. If the gripper has one, the motion planner already has the
+gripper's collision geometry, so leave the gripper frame's `geometry`
+field empty.
 
 Call `GetKinematics` on the gripper (or check the module source). If
 the call returns kinematics data, verify the gripper renders as expected
@@ -173,7 +176,7 @@ For a camera mounted 30 mm to the side and 60 mm above the end effector:
 }
 ```
 
-If the camera is tilted downward (for example, angled 30 degrees toward the gripper), add a rotation around the x axis:
+If the camera is tilted (for example, angled 30 degrees toward the gripper jaws), set `(x, y, z)` to the direction the lens points in the arm's end effector frame:
 
 ```json
 {
@@ -181,10 +184,13 @@ If the camera is tilted downward (for example, angled 30 degrees toward the grip
   "translation": { "x": 0, "y": 30, "z": 60 },
   "orientation": {
     "type": "ov_degrees",
-    "value": { "x": 1, "y": 0, "z": 0, "th": -30 }
+    "value": { "x": 0, "y": -0.5, "z": 0.87, "th": 0 }
   }
 }
 ```
+
+`(0, -0.5, 0.87)` tips the lens 30 degrees away from the tool axis, back
+toward the gripper jaws. Viam normalizes the vector for you.
 
 Click **Save**.
 
@@ -217,8 +223,8 @@ If the parent is `"world"`, the frame stays fixed in space when the arm moves.
 {{< expand "Camera image appears rotated or flipped" >}}
 
 The camera's orientation in the frame system must match its physical mounting orientation.
-If the camera is mounted upside down, add a 180-degree rotation around the z axis.
-If the image is mirrored, check whether you need to rotate around the x or y axis.
+If the image appears rotated (for example, the camera is mounted upside down), adjust `th`, which spins the camera about the lens axis: `th: 180` corrects an upside-down mounting.
+If image motion runs along the wrong axis, re-check the pointing vector `(x, y, z)` against the direction the lens actually aims.
 
 {{< /expand >}}
 

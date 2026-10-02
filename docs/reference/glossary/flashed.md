@@ -1,5 +1,6 @@
 ---
 title: Flash
+capabilities: ["glossary", "docs"]
 id: flash
 full_link:
 short_description: The process of writing an operating system or firmware to a device's storage medium.

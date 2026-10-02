@@ -4,6 +4,8 @@ linkTitle: "image_file"
 weight: 31
 type: "docs"
 description: "Reference for the image_file camera model. Serves color or depth image frames from a file path."
+capabilities: ["hw-camera"]
+diataxis: reference
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:

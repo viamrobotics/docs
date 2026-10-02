@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Permit specific pairs of frames to collide so the motion planner stops flagging expected contact as a collision failure."
+capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/allow-frame-collisions/
 ---
@@ -244,7 +246,7 @@ silencing them can mask real hardware problems.
    reject those.
 3. Visually confirm the motion in the **3D SCENE** tab before running on
    hardware. See
-   [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/).
+   [Debug a motion plan](/motion-planning/debug-motion-plan/).
 
 ## Troubleshooting
 
@@ -288,5 +290,5 @@ geometry is usually the right answer.
   other three constraint types (Linear, Orientation, Pseudolinear).
 - [Define obstacles](/motion-planning/obstacles/): the obstacle geometry
   that the planner checks against.
-- [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/):
+- [Debug a motion plan](/motion-planning/debug-motion-plan/):
   visualize frame overlaps in the **3D SCENE** tab.

@@ -25,6 +25,35 @@ uuids = await worldstatestore.list_uuids()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.list_uuids).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([][]byte)](https://pkg.go.dev/builtin#byte)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// List the world state uuids of a WorldStateStore Service.
+uuids, err := myWorldStateStoreService.ListUUIDs(ctx, nil)
+if err != nil {
+  logger.Fatal(err)
+}
+// Print out the world state
+for _, uuid := range uuids {
+  fmt.Printf("UUID: %v", uuid)
+}
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/worldstatestore#Service).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -39,10 +68,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const worldStateStore = new VIAM.WorldStateStoreClient(
-  machine,
-  'builtin'
-);
+const worldStateStore = new VIAM.WorldStateStoreClient(machine, 'builtin');
 
 // Get all transform UUIDs
 const uuids = await worldStateStore.listUUIDs();
@@ -81,6 +107,34 @@ transform = await worldstatestore.get_transform(uuid=b"some-uuid")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.get_transform).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `uuid` [([]byte)](https://pkg.go.dev/builtin#byte)
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(*commonpb.Transform)](https://pkg.go.dev/go.viam.com/api/common/v1#Transform)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// Get the transform by uuid.
+obj, err := myWorldStateStoreService.GetTransform(ctx, myUUID, nil)
+if err != nil {
+  logger.Fatal(err)
+}
+// Print out the transform.
+fmt.Printf("Name: %v\nPose: %+v\nMetadata: %+v\nGeometry: %+v", obj.Name, obj.Pose, obj.Metadata, obj.Geometry)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/worldstatestore#Service).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -96,10 +150,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const worldStateStore = new VIAM.WorldStateStoreClient(
-  machine,
-  'builtin'
-);
+const worldStateStore = new VIAM.WorldStateStoreClient(machine, 'builtin');
 
 // Get a specific transform by UUID
 const transform = await worldStateStore.getTransform(uuid);
@@ -135,7 +186,55 @@ async for change in worldstatestore.stream_transform_changes():
     print(f"Transform {change.transform.uuid} {change.change_type}")
 ```
 
+Each `change` carries a `change_type` (one of `TRANSFORM_CHANGE_TYPE_ADDED`, `TRANSFORM_CHANGE_TYPE_UPDATED`, `TRANSFORM_CHANGE_TYPE_REMOVED`, or `TRANSFORM_CHANGE_TYPE_UNSPECIFIED` from `viam.proto.service.worldstatestore`) and an `updated_fields` field mask:
+
+- For `TRANSFORM_CHANGE_TYPE_ADDED`, `updated_fields` is empty; use the whole transform.
+- For `TRANSFORM_CHANGE_TYPE_UPDATED`, `updated_fields.paths` lists the field paths that changed, so you can apply a partial update instead of replacing the whole transform.
+- For `TRANSFORM_CHANGE_TYPE_REMOVED`, `updated_fields.paths` holds the transform's UUID path.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.stream_transform_changes).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(*TransformChangeStream)](https://pkg.go.dev/go.viam.com/rdk/services/worldstatestore#TransformChangeStream)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+changes, err := myWorldStateStoreService.StreamTransformChanges(ctx, nil)
+if err != nil {
+  logger.Fatal(err)
+}
+for {
+  change, err := changes.Next()
+  if err == io.EOF {
+    break
+  }
+  if err != nil {
+    logger.Fatal(err)
+  }
+  fmt.Printf("Change: %v\n", change)
+}
+```
+
+Each `TransformChange` carries a `ChangeType` (one of `pb.TransformChangeType_TRANSFORM_CHANGE_TYPE_ADDED`, `_UPDATED`, `_REMOVED`, or `_UNSPECIFIED`) and an `UpdatedFields []string`:
+
+- For an added transform, `UpdatedFields` is empty; use the whole transform.
+- For an updated transform, `UpdatedFields` lists the field paths that changed, so you can apply a partial update instead of replacing the whole transform.
+- For a removed transform, `UpdatedFields` holds the transform's UUID path.
+
+`StreamTransformChanges` returns a `*TransformChangeStream`, not a channel: call `Next()` repeatedly until it returns `io.EOF`, as shown above.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/worldstatestore#Service).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -152,21 +251,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const worldStateStore = new VIAM.WorldStateStoreClient(
-  machine,
-  'builtin'
-);
+const worldStateStore = new VIAM.WorldStateStoreClient(machine, 'builtin');
 
 // Stream transform changes
 const stream = worldStateStore.streamTransformChanges();
 for await (const change of stream) {
-  console.log(
-    'Transform change:',
-    change.changeType,
-    change.transform
-  );
+  console.log('Transform change:', change.changeType, change.transform);
 }
 ```
+
+Each `change` carries a `changeType` (one of `TransformChangeType.ADDED`, `.UPDATED`, `.REMOVED`, or `.UNSPECIFIED`) and an `updatedFields` field mask:
+
+- For `ADDED`, `updatedFields` is `undefined`; use the whole transform.
+- For `UPDATED`, `updatedFields.paths` lists the field paths that changed, so you can apply a partial update instead of replacing the whole transform.
+- For `REMOVED`, `updatedFields.paths` holds the transform's UUID path.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/WorldStateStoreClient.html#streamtransformchanges).
 
@@ -208,12 +306,36 @@ await my_world_state_store_svc.do_command(command=my_command)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.do_command).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myWorldStateStoreSvc, err := worldstatestore.FromProvider(machine, "my_world_state_store_svc")
+
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myWorldStateStoreSvc.DoCommand(context.Background(), command)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -231,12 +353,71 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/WorldStateStoreClient.html#docommand).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the world state store service as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await service.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStoreClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myWorldStateStoreSvc, err := worldstatestore.FromProvider(machine, "my_world_state_store_svc")
+
+status, err := myWorldStateStoreSvc.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/WorldStateStoreClient.html#getstatus).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -263,6 +444,27 @@ my_world_state_store_svc_name = WorldStateStoreClient.get_resource_name("my_worl
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myWorldStateStoreSvc, err := worldstatestore.FromProvider(machine, "my_world_state_store_svc")
+
+err = myWorldStateStoreSvc.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -309,6 +511,27 @@ await my_world_state_store_svc.close()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myWorldStateStoreSvc, err := worldstatestore.FromProvider(machine, "my_world_state_store_svc")
+
+err = myWorldStateStoreSvc.Close(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -34,6 +34,18 @@ title = "Viam Documentation"
 languageName ="English"
 weight = 1
 
+# Top navbar tab for the free courses, which live off-site. Tutorials adds
+# itself to menu.main from docs/tutorials/_index.md's frontmatter (weight 10).
+# params.class hides it on phones, where layouts/partials/sidebar-tree.html
+# lists it with the other off-site links instead.
+[[menu.main]]
+  name = "Courses"
+  url = "https://learn.viam.com"
+  weight = 20
+  post = '<i class="fas fa-external-link-alt fa-sm nav-external-icon" aria-hidden="true"></i><span class="sr-only"> (opens in a new tab)</span>'
+  [menu.main.params]
+    class = "d-none d-md-flex"
+
 [sitemap]
   changefreq = 'monthly'
   priority = 0.8
@@ -52,8 +64,12 @@ weight = 1
 disableAliases = true
 
 [outputs]
-home = ["HTML", "REDIR"]
-section = ["HTML", "Typesense"]
+home = ["HTML", "REDIR", "MARKDOWN"]
+section = ["HTML", "Typesense", "MARKDOWN"]
+page = ["HTML", "MARKDOWN"]
+# Taxonomy/terms pages (/tags/*) are intentionally excluded from Markdown.
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
 
 [outputFormats.REDIR]
 mediaType = "text/netlify"
@@ -61,10 +77,27 @@ baseName = "_redirects"
 isPlainText = true
 notAlternative = true
 
+[outputFormats.MARKDOWN]
+mediaType = "text/markdown"
+isPlainText = true
+isHTML = false
+ugly = true
+notAlternative = true
+
 [outputFormats.Typesense]
 baseName = "typesense"
 isPlainText = true
 mediaType = "application/json"
+notAlternative = true
+
+[outputFormats.TUTORIALCATALOG]
+# Deliberately not added to [outputs] section above -- see
+# list.tutorialcatalog.md's header comment. Scoped to /tutorials/ only
+# via that section's own outputs: frontmatter override.
+mediaType = "text/markdown"
+baseName = "catalog"
+isPlainText = true
+isHTML = false
 notAlternative = true
 
 [outputFormats.RSS]

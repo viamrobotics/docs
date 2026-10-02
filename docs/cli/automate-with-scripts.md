@@ -5,6 +5,8 @@ weight: 80
 layout: "docs"
 type: "docs"
 description: "Use the Viam CLI in shell scripts, CI/CD pipelines, and provisioning workflows."
+capabilities: ["cli"]
+diataxis: how-to
 ---
 
 Combine CLI commands into shell scripts, CI/CD pipelines, and provisioning workflows to automate common Viam operations.
@@ -198,6 +200,8 @@ When running without a terminal, commands that normally prompt for user input in
 - `viam machines part fragments remove` requires `--fragment`.
 
 If you omit a required flag in non-interactive mode, the CLI prints an error listing the missing flags.
+
+When stdout is not a terminal (for example, when output is piped or redirected), the CLI also hides progress spinners automatically. File-transfer progress in `viam machines part cp` still requires `--no-progress`.
 
 ## Tips for scripting
 

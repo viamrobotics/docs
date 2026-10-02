@@ -5,6 +5,8 @@ titleMustBeLong: true
 weight: 120
 type: "docs"
 description: "Give commands to register callbacks for events, allowing you to use input devices to control your machines."
+capabilities: ["hw-sensing", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/controller.svg"]
 date: "2022-01-01"

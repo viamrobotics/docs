@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "From zero to an arm moving under motion service control, using a fake arm that runs on any machine."
+capabilities: ["motion-planning"]
+diataxis: tutorial
 ---
 
 This quickstart configures a fake arm with UR5e kinematics,
@@ -115,9 +117,10 @@ pose. Next you will add the motion service call that plans a path and
 executes it, plus a verification read after the motion completes.
 
 Add the arm to the frame system so the motion service can plan
-its movements. On the arm's card, click **Frame**. The default values
-(parent `world`, zero translation and rotation) place the arm's base
-at the world origin, so you don't need to change anything:
+its movements. On the arm's card, find the **Frame** section (arms
+always show it). Click **Set defaults** to accept the default values
+(parent `world`, zero translation and rotation), which place the arm's
+base at the world origin:
 
 ```json
 {
@@ -198,10 +201,12 @@ Under the hood, the motion service:
 1. Asked the frame system for the arm's current joint state.
 2. Used the UR5e kinematics from the fake module to compute where the
    end effector is right now.
-3. Ran the cBiRRT planner to find a joint-space path from the current
-   configuration to one that places the end effector at the target
-   pose.
-4. Smoothed the path and commanded the fake arm to follow it.
+3. Solved inverse kinematics for a configuration that places the end
+   effector at the target pose, then checked the straight line through
+   joint space to it for collisions. With an empty workspace, that
+   direct path succeeds; in a cluttered one, the planner falls back to
+   the [cBiRRT search algorithm](/motion-planning/how-planning-works/).
+4. Commanded the fake arm to follow the path.
 
 Because the fake arm has no obstacles and no real dynamics, every
 step is instantaneous and deterministic. With a real arm, the same

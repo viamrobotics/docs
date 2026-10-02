@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Move an arm along a straight line or with a fixed orientation using motion constraints."
+capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /tutorials/services/constrain-motion/
   - /motion-planning/motion-how-to/move-arm-with-constraints/
@@ -58,6 +60,10 @@ await motion_service.move(
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+The Go tabs on this page continue from
+[Move an arm to a pose](/motion-planning/move-an-arm/move-to-pose/):
+`motionService` and `destination` are defined there.
 
 ```go
 import "go.viam.com/rdk/motionplan"
@@ -157,7 +163,7 @@ constraints := &motionplan.Constraints{
 
 ### 4. Use proportional tolerances
 
-`PseudolinearConstraint` scales the tolerance with the motion distance. Useful
+`PseudolinearConstraint` scales the tolerance with the motion distance. Use it
 when the same code handles both short and long moves.
 
 {{< tabs >}}

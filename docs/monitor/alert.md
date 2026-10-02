@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure triggers to receive email, webhook, or push notifications when machines need attention."
+capabilities: ["triggers-alerts"]
+diataxis: how-to
 aliases:
   - /manage/troubleshoot/alert/
   - /build/configure/webhooks/
@@ -101,6 +103,7 @@ Wait a minute for data to capture and sync, then refresh.
    - **Email specific addresses**: toggle on, add addresses, set alert frequency.
    - **Email all machine owners**: toggle on, set alert frequency.
    - **Webhook**: click **Add webhook**, enter your cloud function URL, set alert frequency.
+     Optionally, check **Use basic authentication** to include HTTP basic authentication credentials with each request.
      See [Trigger configuration](/reference/triggers/#webhook-attributes) for webhook payload details.
    - **Push notifications**: click **Add push notifications**, choose the target mobile app, add recipient email addresses or enable notifications for all machine owners, and set alert frequency.
      Recipients must be machine owners or operators.
@@ -234,7 +237,7 @@ The notification interval for log triggers is always one hour.
    Click **+** in the left sidebar and select **Trigger**.
 1. Enter a name and click **Create**.
 1. Select **Part is online** as the trigger **Type**.
-1. Add notification methods and set the alert frequency.
+1. Add notification methods.
 1. Click **Save**.
 
 {{% /tab %}}
@@ -250,13 +253,14 @@ The notification interval for log triggers is always one hour.
     "notifications": [
       {
         "type": "email",
-        "value": "you@example.com",
-        "seconds_between_notifications": 600
+        "value": "you@example.com"
       }
     ]
   }
 ]
 ```
+
+Part online triggers fire on every state transition, so you receive a notification each time the part comes online.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -270,7 +274,7 @@ The notification interval for log triggers is always one hour.
    Click **+** in the left sidebar and select **Trigger**.
 1. Enter a name and click **Create**.
 1. Select **Part is offline** as the trigger **Type**.
-1. Add notification methods and set the alert frequency.
+1. Add notification methods.
 1. Click **Save**.
 
 {{% /tab %}}
@@ -286,13 +290,14 @@ The notification interval for log triggers is always one hour.
     "notifications": [
       {
         "type": "email",
-        "value": "you@example.com",
-        "seconds_between_notifications": 300
+        "value": "you@example.com"
       }
     ]
   }
 ]
 ```
+
+Part offline triggers fire on every state transition, so you receive a notification each time the part goes offline.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -302,16 +307,20 @@ This prevents false alerts from brief network interruptions.
 
 ## Manage alert frequency
 
-Every notification method has a `seconds_between_notifications` setting that controls the minimum time between consecutive alerts.
+For data and conditional triggers, each notification method has a `seconds_between_notifications` setting that controls the minimum time between consecutive alerts.
 If a trigger fires more frequently than this interval, Viam suppresses the extra notifications.
+The interval is tracked per recipient, not per trigger. If two triggers send the same event type from the same machine part (or, for conditional triggers, the same component and method) to the same email address or webhook URL, they share one notification history: each trigger waits its own interval from the last notification either trigger sent, and the recipient receives one notification at a time, not one per trigger. When both triggers fire on the same events, the shorter non-zero interval sets the rate. To send a notification for every event, set `seconds_between_notifications` to `0` for all of these triggers.
 
 Set this value based on how quickly you need to respond:
 
-- **Critical alerts** (machine offline, safety thresholds): 60-300 seconds
+- **Safety thresholds**: 60-300 seconds
 - **Operational alerts** (elevated CPU, low battery): 300-600 seconds
 - **Informational alerts** (data sync confirmations): 3600 seconds or more
 
 Starting with a longer interval and shortening it as needed is better than starting short and dealing with notification noise.
+
+Part online and part offline triggers do not use this setting.
+They fire on every state transition, so you receive a notification each time the machine comes online or goes offline.
 
 ## Use the CLI
 

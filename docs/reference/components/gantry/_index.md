@@ -5,6 +5,8 @@ childTitleEndOverwrite: "Gantry Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in gantry models."
+capabilities: ["hw-gantry", "section-index"]
+diataxis: reference
 no_list: true
 tags: ["gantry", "components"]
 icon: true

@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "The transport paths the SDK uses, the session safety mechanism, and what the SDK reconnects automatically."
+capabilities: ["sdks"]
+diataxis: explanation
 date: "2026-04-10"
 aliases:
   - /operate/reference/sessions/
@@ -32,7 +34,7 @@ When you use the WebRTC transport, the SDK needs two pieces of configuration in 
 
 **ICE servers.** Optional. The SDK needs ICE servers (STUN and optionally TURN) to traverse NATs. If you do not pass `iceServers`, the SDK defaults to Twilio's public STUN server at `stun:global.stun.twilio.com:3478`. Override `iceServers` if you have custom STUN or TURN requirements for your network.
 
-Most apps never change either field. See [the connectivity reference](/reference/sdks/connectivity/) for advanced options like TURN-only relay mode, forced peer-to-peer, and custom TURN URI overrides.
+Most apps never change either field. See [Choose the WebRTC connection route](/reference/sdks/connectivity/#choose-the-webrtc-connection-route) for advanced options like TURN-only relay mode, forced peer-to-peer, and custom TURN URI overrides.
 
 ## Sessions
 

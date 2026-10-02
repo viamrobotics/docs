@@ -18,6 +18,7 @@ go_resource_overrides = {
     "data_manager": "datamanager",
     "audio_in": "audioin",
     "audio_out": "audioout",
+    "world_state_store": "worldstatestore",
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -114,9 +115,6 @@ class GoParser:
 
         for resource in viam_resources:
 
-            if resource == "world_state_store":
-                print(f'Skipping Resource: {resource}')
-                continue
             ## Determine URL form for Go depending on type (like 'component'):
             if type in ("component", "service") and resource in go_resource_overrides:
                 url = f"{self.scrape_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
@@ -248,6 +246,13 @@ class GoParser:
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
                                 ## using the method_name as key:
 
+                                ## HACK: RDK's own StreamTransformChanges doc comment example uses "for change := range changes",
+                                ## but *TransformChangeStream is a plain struct with a Next() method, not a rangeable type, so
+                                ## that example does not compile. Override with the Next()/io.EOF loop the type's own doc comment
+                                ## describes (rdk services/worldstatestore/world_state_store.go, TransformChangeStream.Next):
+                                if resource == "world_state_store" and method_name == "StreamTransformChanges":
+                                    this_method_dict["code_sample"] = 'changes, err := myWorldStateStoreService.StreamTransformChanges(ctx, nil)\nif err != nil {\n  logger.Fatal(err)\n}\nfor {\n  change, err := changes.Next()\n  if err == io.EOF {\n    break\n  }\n  if err != nil {\n    logger.Fatal(err)\n  }\n  fmt.Printf("Change: %v\\n", change)\n}\n'
+
                                 self.go_methods[type][resource][method_name] = this_method_dict
 
                         ## If this Go interface inherits from another interface, also fetch data for those inherited methods:
@@ -284,6 +289,19 @@ class GoParser:
                                         if resource == "slam":
                                             self.go_methods[type][resource]['DoCommand']['code_sample'] = 'mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := mySLAMService.DoCommand(context.Background(), command)\n'
 
+                                self.go_methods[type][resource]['Status'] = {'proto': 'GetStatus', \
+                                    'description': 'Status returns the current status of the resource as a map of key-value pairs.', \
+                                    'usage': 'Status(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                                if type == "component":
+                                    self.go_methods[type][resource]['Status']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromProvider(machine, "my_' + resource + '")\n\nstatus, err := my' + resource.title().replace("_", "") + '.Status(context.Background())\n'
+                                    if resource == "generic_component":
+                                        self.go_methods[type][resource]['Status']['code_sample'] = 'myGenericComponent, err := generic.FromProvider(machine, "my_generic_component")\n\nstatus, err := myGenericComponent.Status(context.Background())\n'
+                                else:
+                                    self.go_methods[type][resource]['Status']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource.replace("_", "") + '.FromProvider(machine, "my_' + resource + '_svc")\n\nstatus, err := my' + resource.title().replace("_", "") + 'Svc.Status(context.Background())\n'
+                                    if resource == "slam":
+                                        self.go_methods[type][resource]['Status']['code_sample'] = 'mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")\n\nstatus, err := mySLAMService.Status(context.Background())\n'
+
                                 self.go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
                                     'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
@@ -302,7 +320,7 @@ class GoParser:
                                         elif resource == "mlmodel":
                                             self.go_methods[type][resource]['Close']['code_sample'] = 'my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")\n\nerr := my_mlmodel.Close(context.Background())\n'
                                         else:
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource.replace("_", "") + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
 
                                 self.go_methods[type][resource]['Name'] = {'proto': 'Name', \
                                     'description': 'Get the name of the resource.', \
@@ -322,7 +340,7 @@ class GoParser:
                                         elif resource == "mlmodel":
                                             self.go_methods[type][resource]['Name']['code_sample'] = 'my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")\n\nerr := my_mlmodel.Name()\n'
                                         else:
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource.replace("_", "") + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
 
                             ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
                             ## then add the two inherited methods manually: IsMoving() and Stop():
@@ -365,7 +383,9 @@ class GoParser:
                                     self.go_methods[type][resource]['Readings']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
                             ## Similarly, if the resource being considered inherits from framesystem.InputEnabled (Arm, for example),
-                            ## then add the one inherited method manually: Kinematics():
+                            ## then add its three inherited methods manually: Kinematics(), CurrentInputs(), and GoToInputs().
+                            ## These are documented on the framesystem.InputEnabled interface page, not the resource's own
+                            ## pkg.go.dev page, so the inline method scraper above does not find them.
                             if '\tframesystem.InputEnabled' in resource_interface.text:
                                 self.go_methods[type][resource]['Kinematics'] = {'proto': 'GetKinematics', \
                                     'description': 'Kinematics returns the kinematics model of the resource.', \
@@ -374,6 +394,14 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Kinematics example:" in code_sample_tag.text)
                                 if code_sample:
                                     self.go_methods[type][resource]['Kinematics']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                self.go_methods[type][resource]['CurrentInputs'] = {'proto': 'GetCurrentInputs', \
+                                    'description': 'CurrentInputs returns the current inputs of the resource.', \
+                                    'usage': 'CurrentInputs(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/go.viam.com/rdk/referenceframe#Input">[]referenceframe.Input</a>, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
+                                self.go_methods[type][resource]['GoToInputs'] = {'proto': 'GoToInputs', \
+                                    'description': 'GoToInputs moves the resource to the specified inputs, in order.', \
+                                    'usage': 'GoToInputs(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, inputSteps ...<a href="/go.viam.com/rdk/referenceframe#Input">[]referenceframe.Input</a>) <a href="/builtin#error">error</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
 
                 ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
                 if resource == 'slam':
@@ -421,8 +449,15 @@ class GoParser:
                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
                     'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromProvider(machine, "my_' + resource.lower() + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'}
 
+                self.go_methods[type][resource]['Status'] = {'proto': 'GetStatus', \
+                    'description': 'Status returns the current status of the resource as a map of key-value pairs.', \
+                    'usage': 'Status(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
+                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromProvider(machine, "my_' + resource.lower() + '")\n\nstatus, err := my' + resource.title().replace("_", "") + '.Status(context.Background())\n'}
+
                 if resource == "generic_service":
                     self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromProvider(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
+                    self.go_methods[type][resource]['Status']['code_sample'] = 'myGenericService, err := generic.FromProvider(machine, "my_generic_service")\n\nstatus, err := myGenericService.Status(context.Background())\n'
 
             elif type == "app":
                 soup = make_soup(url)
@@ -439,7 +474,16 @@ class GoParser:
                 for method in go_methods_raw:
                     this_method_dict = {}
                     method_name = method.find('a', class_='Documentation-source').text
-                    method_link = method.find('a', class_='Documentation-idLink')['href']
+                    id_link_tag = method.find('a', class_='Documentation-idLink')
+                    if id_link_tag:
+                        method_link = id_link_tag['href']
+                    else:
+                        # pkg.go.dev wraps deprecated methods in <details>/<summary> and
+                        # omits the Documentation-idLink permalink anchor for them, but the
+                        # heading id (e.g. "DataClient.TabularDataByFilter") is still present
+                        # and matches the anchor idLink would otherwise have pointed to.
+                        header_tag = method.find(attrs={"data-kind": "method"})
+                        method_link = url + '#' + header_tag['id']
 
                     # Get all text after the Documentation-declaration div
                     declaration_div = method.find('div', class_='Documentation-declaration')

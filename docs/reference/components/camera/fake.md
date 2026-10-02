@@ -4,6 +4,8 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Reference for the fake camera model. Returns a static gradient image and point cloud for testing."
+capabilities: ["hw-camera"]
+diataxis: reference
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:

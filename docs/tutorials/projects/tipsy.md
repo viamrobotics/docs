@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://www.viam.com/post/autonomous-drink-carrying-robot"
 tags: ["raspberry pi", "app", "board", "motor", "camera"]
 description: "Create an autonomous drink carrying robot with motion sensing and machine learning."
+capabilities: ["hw-mobility", "vision-service", "ml-models", "docs"]
 images: ["/tutorials/tipsy/tipsy-preview.gif"]
 videoAlt: "Tipsy robot carrying drinks"
 videos:

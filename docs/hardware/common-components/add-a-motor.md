@@ -5,6 +5,8 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Add and configure a motor component and test it from the Viam app."
+capabilities: ["hw-actuation"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/motor/

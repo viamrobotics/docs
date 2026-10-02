@@ -5,6 +5,8 @@ weight: 31
 layout: "docs"
 type: "docs"
 description: "Reduce data volume, bandwidth, and storage costs by filtering data on the machine before syncing to the cloud."
+capabilities: ["data-capture"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/data/filter-at-the-edge/
@@ -220,7 +222,7 @@ For filtering needs that go beyond what the `filtered-camera` module provides, y
 
 The pattern is: write a module that wraps an existing component, evaluates its data against your criteria, and only returns data worth capturing. Configure data capture on the wrapper component instead of the raw component.
 
-See [Write a module](/build-modules/write-a-driver-module/) for the general module development guide. The key technique is accessing the source component through the `dependencies` parameter in your module's `reconfigure` method.
+See [Write a module](/build-modules/write-a-driver-module/) for the general module development guide. The key technique is accessing the source component through the `dependencies` parameter in your module's constructor.
 
 ## Manage local storage
 

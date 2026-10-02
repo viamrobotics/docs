@@ -18,5 +18,6 @@
 | [`GetGeometries`](/reference/apis/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the frame of the board. |  |
 | [`Reconfigure`](/reference/apis/components/board/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/reference/apis/components/board/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| [`GetStatus`](/reference/apis/components/board/#getstatus) | Get the current status of the board as a map of key-value pairs describing its state. |  |
 | [`GetResourceName`](/reference/apis/components/board/#getresourcename) | Get the `ResourceName` for this board. |  |
 | [`Close`](/reference/apis/components/board/#close) | Safely shut down the resource and prevent further use. |  |

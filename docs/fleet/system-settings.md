@@ -5,6 +5,8 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Configure network connections, OS updates, tunneling, TLS, and log forwarding for deployed machines."
+capabilities: ["fleet-deployment"]
+diataxis: reference
 aliases:
   - /manage/fleet/system-settings/
 ---
@@ -17,8 +19,22 @@ Control which versions of `viam-agent` and `viam-server` run on each machine.
 
 Manage version selection in the Viam app, not in your machine's JSON configuration. In the machine settings card, open **Settings** and expand **Software Updates**:
 
-- **Agent version**: choose `stable`, a specific semver release such as `5.6.77`, or a URL to a custom binary.
-- **viam-server version**: choose `stable`, a specific semver release, or a URL to a custom binary.
+- **Agent version**: choose a release channel, a specific semver release such as `1.4.0`, or a URL to a custom binary.
+- **viam-server version**: same options as agent.
+
+The available release channels are:
+
+<!-- prettier-ignore -->
+| Channel | Description |
+| -------- | --------------------------------------------------------- |
+| `stable` | Newest tested release. The default; use it in production. |
+| `rc` | Newest release candidate. |
+| `dev` | Newest build off `main`. Use for debugging only. |
+
+To pin to a specific build, use its exact published version, for example `1.4.0`, `1.5.0-rc0`, or `1.4.1-dev.16-c2c9600c6`. The version must exist for the machine's platform.
+
+If Viam deprecates a version that a machine is pinned to, that version can no longer be installed, and Viam adds a warning to the machine's logs.
+To fix this, choose a different version in **Software Updates**.
 
 When you change a version, the cloud sends an update instruction to viam-agent on the machine. The agent downloads and installs the new version on its next check cycle. To control when the new version actually starts, configure a [maintenance window](/fleet/manage-versions/#maintenance-windows). To verify the new version landed across the fleet, see [verify a rollout across the fleet](/fleet/manage-versions/#verify-a-rollout-across-the-fleet).
 
@@ -26,15 +42,16 @@ When you change a version, the cloud sends an update instruction to viam-agent o
 
 In the machine settings card, open **Settings** and expand **Advanced**:
 
-| Field                               | Type    | Default | Description                                                                 |
-| ----------------------------------- | ------- | ------- | --------------------------------------------------------------------------- |
-| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                        |
-| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                        |
-| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                       |
-| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.          |
-| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules.                |
-| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.              |
-| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server. |
+| Field                               | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `block_downloads_on_low_disk`       | boolean | `false` | Refuse agent self-updates and downloads of the viam-server binary when a download would leave less than 10MB free on the cache volume. When `false`, the agent logs a warning and downloads anyway. To also block module and package downloads, see [Set viam-server environment variables](/reference/viam-agent/#set-viam-server-environment-variables). |
+| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                                                                                                                                                                                                                                                                                                       |
+| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                                                                                                                                                                                                                                                                                                       |
+| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                                                                                                                                                                                                                                                                                                      |
+| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.                                                                                                                                                                                                                                                                                         |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules. See [Set viam-server environment variables](/reference/viam-agent/#set-viam-server-environment-variables).                                                                                                                                                                                    |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.                                                                                                                                                                                                                                                                                             |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server.                                                                                                                                                                                                                                                                                |
 
 ## Configure additional networks
 
@@ -56,7 +73,11 @@ In the machine settings card, open **Settings** and expand **Known Networks**. C
 
 ## Configure tunneling {#configure-networking-settings-for-tunneling}
 
-Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection. You must list allowed ports in the machine configuration.
+Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection.
+
+If you run `viam machines part tunnel` and the destination port is not already configured, the CLI attempts to add it to the machine config automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+You can also list allowed ports manually in the machine configuration:
 
 ```json
 {
@@ -80,6 +101,14 @@ To connect through the tunnel, use the CLI:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080
+```
+
+To tunnel directly to a machine without internet access, pass the machine address and API key credentials.
+The destination port must already be configured in `traffic_tunnel_endpoints`:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080 \
+  --address=my-machine.local:8080 --key-id=<key-id> --key=<key-value>
 ```
 
 ## Disable TLS
@@ -126,6 +155,7 @@ Managed modes work on apt-based distributions (Debian, Ubuntu, Raspberry Pi OS),
 When using a managed mode (`"managed-all"` or `"managed-security"`), you can also set `os_managed_upgrade_interval_hours` to control how often `viam-agent` checks for and installs updates. The default is `24` hours. The minimum value is `1` hour.
 
 If an upgrade in a managed mode requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+It also defers reboots while any package manager transaction is in progress, whether started by `viam-agent` itself or by an external tool, to prevent interrupting an installation mid-transaction.
 
 The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 

@@ -5,6 +5,7 @@ type: "docs"
 layout: "empty"
 canonical: "https://www.viam.com/post/foam-dart-launcher"
 description: "Build a foam dart launcher with a wheeled rover and a Raspberry Pi."
+capabilities: ["hw-mobility", "hw-actuation", "hw-compute", "docs"]
 videos: ["/tutorials/videos/foam-dart.webm", "/tutorials/videos/foam-dart.mp4"]
 videoAlt: "Robot launching a dart."
 images: ["/tutorials/videos/foam-dart.gif"]

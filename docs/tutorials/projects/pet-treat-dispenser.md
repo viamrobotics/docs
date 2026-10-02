@@ -5,6 +5,7 @@ type: "docs"
 layout: "empty"
 canonical: "https://www.viam.com/post/smart-pet-feeder"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."
+capabilities: ["ml-models", "vision-service", "hw-actuation", "docs"]
 tags: ["raspberry pi", "app", "board", "motor"]
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/pet-treat-dispenser/preview.png"]

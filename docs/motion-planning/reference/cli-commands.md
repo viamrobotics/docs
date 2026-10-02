@@ -5,6 +5,8 @@ weight: 45
 layout: "docs"
 type: "docs"
 description: "Reference for the Viam CLI commands that inspect the frame system and test motion from the command line."
+capabilities: ["cli", "motion-planning"]
+diataxis: reference
 ---
 
 `viam machines part motion` exposes four commands that wrap the frame system and motion service RPCs. Use them to inspect frame configuration and test motion from the command line, without writing code.
@@ -150,11 +152,11 @@ position.
 - **Quick reachability test**: run `get-pose` to read the current pose, then run `set-pose` with a small offset to confirm the motion service can drive the arm. Start with small offsets; large ones risk collisions.
 
 For a step-by-step debugging workflow using these commands, see
-[Debug motion with the CLI](/motion-planning/debug-motion-with-cli/).
+[Debug a motion plan](/motion-planning/debug-motion-plan/).
 
 ## What's next
 
-- [Debug motion with the CLI](/motion-planning/debug-motion-with-cli/):
+- [Debug a motion plan](/motion-planning/debug-motion-plan/):
   step-by-step debugging using these commands.
 - [Frame system](/motion-planning/frame-system/): the concept the CLI
   inspects.

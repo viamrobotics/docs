@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Understand how Viam represents hardware, add components to your machine, and configure them."
+capabilities: ["machine-config"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /program/extend/modular-resources/configure/
@@ -90,6 +92,10 @@ Your code stays the same.
 The process for adding any component is the same whether you're adding a motor,
 a sensor, a board, or anything else. For step-by-step guides for specific
 hardware, see [Add a component](/hardware/common-components/).
+
+You can also describe the component you want in plain language and have the
+[AI assistant](/hardware/ai-assistant/) stage the change for you to review, then
+follow the same review and save steps below.
 
 ### 1. Open your machine in the Viam app
 
@@ -192,6 +198,7 @@ correctly.
 
 ## Related
 
+- [Configure a machine with the AI assistant](/hardware/ai-assistant/): describe a change and review the staged edit the assistant proposes.
 - [Add a component](/hardware/common-components/): step-by-step guides for
   each component type.
 - [Capture and sync data](/data/capture-sync/capture-and-sync-data/): once your component

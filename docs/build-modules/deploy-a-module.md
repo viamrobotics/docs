@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Pick a deployment path for your module: hot-reload onto one machine, or release a versioned package through the registry."
+capabilities: ["module-development"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /operate/modules/deploy-a-module/
@@ -72,7 +74,8 @@ The target machine must be online (visible in the Viam app). The CLI connects ov
 
 **Useful flags:**
 
-- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`.
+- `--file <path>` uploads a pre-built tarball without running the build step or requiring `build.path` in `meta.json`. Use this when you build the archive outside the CLI (for example, in CI or with a custom script).
+- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`. Unlike `--file`, this still requires `build.path` in `meta.json` to locate the archive.
 - `--local` runs the module from source files on your laptop instead of shipping a tarball. Use this only when the target machine is your laptop. In `--local` mode, `viam module restart` picks up Python source edits without a rebuild.
 
 For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
@@ -138,7 +141,9 @@ With prep complete, follow one of the two sections below to publish your module.
 
 ### Publish with cloud build (recommended) {#release-with-cloud-build}
 
-Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. Both paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+Cloud build is a Viam-side build service that compiles your module for every target platform listed in `meta.json`'s `build.arch`. By default, cloud build clones your GitHub repo. Both default-mode paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+
+Alternatively, pass `--from-source` to upload your local source directory directly to the cloud builder without requiring a GitHub repo or a git push. See the [CLI reference](/cli/reference/#module-build-start) for the full flag list.
 
 If you don't have a GitHub repo yet, push your module's code to one. From your module's root directory:
 
@@ -354,6 +359,15 @@ This means the binary was compiled for the wrong architecture. For example, you 
 - Use [cloud build](#release-with-cloud-build) to compile for all target platforms automatically.
 - If deploying manually, cross-compile with the correct `GOOS` and `GOARCH` before uploading.
 - Verify the platform flag in your `upload` command matches the binary's architecture (for example, `--platform=linux/arm64` for an `arm64` target).
+
+{{< /expand >}}
+
+{{< expand "Module fails to start or keeps restarting" >}}
+
+- Read the module's lifecycle state from [`GetMachineStatus`](/reference/apis/robot/#getmachinestatus). A module in `STATE_UNHEALTHY` reports the cause in its `error` field and the time it entered that state in `last_updated`.
+- Check `consecutive_failures`. A count that keeps climbing indicates a restart loop, such as a module failing repeatedly on a syntax error.
+- For the state list and field details, see [Module status states](/build-modules/module-reference/#module-status-states).
+- Check the module logs in the **LOGS** tab for the full traceback.
 
 {{< /expand >}}
 

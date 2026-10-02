@@ -6,11 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Hands-on guided tutorials to experience Viam end-to-end."
+capabilities: ["section-index", "docs"]
 manualLink: "/try/overview/"
 date: "2025-01-30"
-aliases:
-  - /operate/hello-world/
-  - /operate/hello-world/first-project/
-  - /operate/hello-world/quickstart/
-  - /operate/hello-world/tutorial-desk-safari/
 ---

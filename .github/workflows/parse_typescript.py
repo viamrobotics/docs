@@ -138,7 +138,7 @@ class TypeScriptParser:
                 param_object = {}
                 if method.find('div', class_="tsd-parameters"):
                     parameters = method.find('div', class_="tsd-parameters")
-                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").children
+                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").find_all('li', recursive=False)
 
                     for param in parameter_list:
                         param_name = param.find('span', class_="tsd-kind-parameter").text
@@ -149,7 +149,16 @@ class TypeScriptParser:
                                 param_description = param_description.replace('\n', '\n  ').rstrip()
 
                         signature = method.find(class_='tsd-signature').text
-                        param_type = md(str(param.find(class_="tsd-signature-type"))).strip()
+                        ## Namespace-qualified types (like appApi.Visibility) render as a namespace
+                        ## link, a '.', then the type link. Keep all of it, joined the way TypeDoc shows it:
+                        param_type_tag = param.find(class_="tsd-signature-type")
+                        param_type_parts = [param_type_tag]
+                        while param_type_tag is not None and 'tsd-kind-namespace' in param_type_tag.get('class', []):
+                            param_type_tag = param_type_tag.find_next_sibling(class_="tsd-signature-type")
+                            if param_type_tag is None:
+                                break
+                            param_type_parts.append(param_type_tag)
+                        param_type = '.'.join(md(str(part)).strip() for part in param_type_parts)
 
                         if param_description:
                             param_usage = "%s (%s) - %s" % (param_name, param_type, param_description)
@@ -166,9 +175,9 @@ class TypeScriptParser:
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
                 returns = " ".join(returns.split())
                 return_description = ""
-                if method.find('h4', class_="tsd-returns-title").next_sibling:
-                    if not method.find('h4', class_="tsd-returns-title").next_sibling.get('class'):
-                        return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
+                if method.find('h4', class_="tsd-returns-title").find_next_sibling():
+                    if not method.find('h4', class_="tsd-returns-title").find_next_sibling().get('class'):
+                        return_description = md(str(method.find('h4', class_="tsd-returns-title").find_next_sibling())).strip()
                     else:
                         return_description = None
                 else:

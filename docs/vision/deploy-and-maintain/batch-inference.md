@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Use the viam infer CLI command to run a deployed ML model against images already captured to the Viam Cloud. Useful for labeling assistance, dataset validation, and running large or GPU-only models."
+capabilities: ["cli", "ml-models"]
+diataxis: how-to
 date: "2026-04-14"
 aliases:
   - /data-ai/ai/run-inference/
@@ -25,6 +27,7 @@ Use `viam infer` to run a deployed ML model against an image that is already sto
 - The [Viam CLI](/cli/) installed and authenticated (`viam login`).
 - An image captured to the Viam Cloud with a known binary data ID.
 - A deployed ML model in the Viam [registry](https://app.viam.com/registry) (yours or shared with you).
+  The model's framework must be TensorFlow, TensorFlow Lite, or ONNX; cloud inference rejects models in other frameworks.
 - Your organization ID and the model's organization ID.
 
 ## 1. Find the binary data ID

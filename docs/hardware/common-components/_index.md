@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Every component type Viam supports, with step-by-step guides for adding each one to your machine."
+capabilities: ["machine-config"]
+diataxis: overview
 aliases:
   - /hardware-components/components/
   - /hardware/components/

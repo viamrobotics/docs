@@ -1,5 +1,6 @@
 ---
 title: Jobs
+capabilities: ["glossary", "docs"]
 id: job
 full_link: /manage/software/scheduled-jobs/
 short_description: Automated tasks that run on machines at specified intervals to perform routine operations.

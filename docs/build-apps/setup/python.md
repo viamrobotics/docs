@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Set up a project for writing a Viam app in Python: a control script, a backend service, a data pipeline, or any other Python program that talks to a Viam machine."
+capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-13"
 ---
 
@@ -42,6 +44,14 @@ If you need the ML model service, install with the optional dependency:
 ```sh {class="command-line" data-prompt="$"}
 pip install 'viam-sdk[mlmodel]'
 ```
+
+For OpenTelemetry request tracing in a Python module, install the `tracing` extra:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[tracing]'
+```
+
+See [OpenTelemetry distributed tracing](/data/overview/#opentelemetry-distributed-tracing) for how to enable it.
 
 ## Configure credentials
 

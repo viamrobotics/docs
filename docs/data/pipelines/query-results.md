@@ -5,6 +5,8 @@ weight: 15
 layout: "docs"
 type: "docs"
 description: "Query the output of a data pipeline from the Viam app, Python, Go, or TypeScript."
+capabilities: ["data-pipelines"]
+diataxis: how-to
 date: "2026-03-27"
 ---
 

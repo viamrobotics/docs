@@ -4,6 +4,8 @@ linkTitle: "Button"
 weight: 60
 type: "docs"
 description: "Give commands for getting presses from a physical button."
+capabilities: ["hw-sensing", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/button.svg"]
 date: "2025-02-20"

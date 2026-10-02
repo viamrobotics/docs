@@ -1,0 +1,22 @@
+# Accepted Diataxis modes for docs frontmatter.
+#
+# Every docs/ page should carry a single diataxis: <mode> frontmatter field
+# using one of the modes below. scripts/check-diataxis.py reads this file and
+# warns (without failing CI) if a page has no diataxis: field or uses a mode
+# that isn't listed here.
+#
+# This field is deliberately a single scalar, not a list like capabilities:.
+# The diagnostic value of Diataxis is that a page serves exactly one mode; a
+# page that seems to need two modes is a page that wants splitting, and a list
+# would hide that. capabilities: answers "what subject does this cover";
+# diataxis: answers "what mode is it written in". They are orthogonal.
+
+diataxis:
+  # ------------------------------------------------------------ the four modes
+  tutorial: Learning-oriented. A guided lesson the reader completes start to finish, with a guaranteed outcome. Teaches by doing; the reader is a beginner and the author picks the path.
+  how-to: Goal-oriented. Steps to accomplish one real task, for a reader who already knows what they want. Assumes competence, omits explanation.
+  reference: Information-oriented. Dry, complete, consistent description of the machinery - APIs, config fields, CLI commands, schemas. Consulted, not read through.
+  explanation: Understanding-oriented. Context, rationale, and how something works under the hood. Read away from the keyboard.
+
+  # ---------------------------------------------------------------- structural
+  overview: Not a Diataxis mode. Section index or navigational hub whose job is to route the reader onward. Applied to real hub pages (_index.md, overview.md) that render content of their own; redirect stubs carry no diataxis field at all.

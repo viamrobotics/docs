@@ -3,6 +3,8 @@ title: "Configure a Rover like Yahboom or SCUTTLE"
 linkTitle: "Configure a Rover"
 type: "docs"
 description: "Configure a rover like the a Yahboom 4WD Rover or a SCUTTLE robot on the Viam platform."
+capabilities: ["hw-mobility", "hw-actuation", "hw-camera", "docs"]
+diataxis: tutorial
 images: ["/tutorials/scuttlebot/scuttle-on-floor-cropped.png"]
 imageAlt: "A SCUTTLE robot on a carpeted floor."
 tags: ["base", "camera", "scuttle", "yahboom"]
@@ -28,7 +30,7 @@ This tutorial will guide you through configuring a rover.
 If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
 {{< alert title="Viam Rover" color="note" >}}
-If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/try/viam-rover/fragments/) instead.
+If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/reference/device-setup/viam-rover/fragments/) instead.
 {{< /alert >}}
 
 ## Requirements
