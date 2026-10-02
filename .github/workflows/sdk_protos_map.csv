@@ -305,7 +305,6 @@ mlmodel,Infer,,infer,Infer,,
 mlmodel,Metadata,,metadata,Metadata,,
 ## HACK:  proto for DoCommand or Close (and/or inherited in Go SDK), manually mapping:
 mlmodel,Reconfigure,,,Reconfigure,,
-mlmodel,DoCommand,,,DoCommand,,
 mlmodel,GetStatus,,get_status,Status,,
 mlmodel,GetResourceName,,get_resource_name,Name,,
 mlmodel,Close,,close,Close,,

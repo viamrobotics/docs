@@ -32,7 +32,9 @@ Create a pipeline that runs a scheduled MQL aggregation against your captured da
    - **Schedule**: A cron expression in UTC that sets how often the pipeline runs and the data time window for each run.
      Expand **Show examples** for common cron patterns, or see [Cron schedule](/data/pipelines/reference/#cron-schedule) for the full syntax.
    - **Enable backfill**: Toggle on to process all historical data when the pipeline is created.
-     This can take a while for large datasets.
+     The helper text shows the date the backfill starts from, which is the creation date of your organization's oldest location.
+     Backfill can take a while and incurs compute costs.
+     See [Backfill behavior](/data/pipelines/reference/#backfill-behavior).
 
 1. Click **Next** to proceed to the **Query** step.
 1. Build your MQL aggregation pipeline using the visual stage editor or switch to text mode with the **Stages** / **Text** toggle.
