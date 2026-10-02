@@ -112,6 +112,7 @@ APPROACH = 40  # mm, hover height above a pose before descending
 GRASP_DEPTH = 9  # mm, how far below the cube's top face the fingertips descend before closing
 GRIP_PERCENTAGE = 20  # percentage, the gripper width that holds your cubes; start wide, calibrate down
 
+
 class Palletizer:
     def __init__(self, robot):
         self.robot = robot
@@ -136,6 +137,7 @@ Below the `Palletizer` class, add a `main` function you'll use to give your robo
 STEPS = {
     # Expose Palletizer methods as commands
 }
+
 
 async def main(verb):
     robot = await helpers.connect()
@@ -252,9 +254,9 @@ Once you have determined the appropriate percentage, adjust the `GRIP_PERCENTAGE
         hover = down_pose(staging.x, staging.y, staging.z + APPROACH)
         grasp = down_pose(staging.x, staging.y, staging.z - GRASP_DEPTH)
         await self.move_gripper(hover)
-        await self.grip_percentage(GRIP_PERCENTAGE * 3) # open the gripper wider than the cube
+        await self.grip_percentage(GRIP_PERCENTAGE * 3)  # open the gripper wider than the cube
         await self.move_gripper(grasp)
-        await self.grip_percentage(GRIP_PERCENTAGE) # close the gripper on the cube
+        await self.grip_percentage(GRIP_PERCENTAGE)  # close the gripper on the cube
         await asyncio.sleep(.5)
         await self.move_gripper(hover)
 ```
@@ -291,7 +293,7 @@ The gripper hovers above the staging pose, descends, closes on the cube, and lif
         hover = down_pose(target.x, target.y, target.z + APPROACH)
         await self.move_gripper(hover)
         await self.move_gripper(down_pose(target.x, target.y, target.z - GRASP_DEPTH))
-        await self.grip_percentage(GRIP_PERCENTAGE + 2) # release the cube
+        await self.grip_percentage(GRIP_PERCENTAGE + 2)  # release the cube
         await self.move_gripper(hover)
         self.placed.append(target)
 ```
