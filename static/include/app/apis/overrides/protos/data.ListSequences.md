@@ -1,0 +1,1 @@
+List the sequences in an organization.

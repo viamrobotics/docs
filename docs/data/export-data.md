@@ -21,6 +21,8 @@ You can download machine data to your computer with the Viam CLI.
 
 If you prefer to manage your data with code, see the [data client API documentation](/reference/apis/data-client/).
 
+To export a dataset of sequences, see [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
+
 ## Prerequisites
 
 {{< expand "Install the Viam CLI and authenticate" >}}

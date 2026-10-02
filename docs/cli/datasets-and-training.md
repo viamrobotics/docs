@@ -129,6 +129,10 @@ viam dataset export \
   --only-jsonl
 ```
 
+For a sequence dataset, `export` starts an export job, waits for it, and writes `<dataset-id>.zip` (three Parquet files) plus a `binary_data/` folder of images to the destination.
+Add `--only-parquet` to skip the images.
+See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
+
 ### Merge datasets
 
 Combine multiple datasets into a new one:

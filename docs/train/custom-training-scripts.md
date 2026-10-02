@@ -161,6 +161,17 @@ For classification, read `classification_annotations`.
 For object detection, read `bounding_box_annotations`.
 See the [example training script](https://github.com/viam-modules/classification-tflite) for complete parsing functions that handle both annotation types.
 
+### Sequence dataset inputs
+
+A job on a [sequence dataset](/train/create-a-dataset/) doesn't get a `--dataset_file`.
+Instead, your script receives three Parquet files: `--binary_data_file`, `--tabular_data_file`, and `--sequences_file`.
+The images are files on disk, and the Parquet files hold their metadata and your readings.
+Join the three files on `sequence_id`.
+See [Sequence dataset format](/train/sequence-dataset-format/) for the columns.
+To record and export a sequence dataset to test your script on, follow the [sequences tutorial](/data/sequences-tutorial/).
+
+Only custom training jobs accept sequence datasets.
+
 ### Accessing Viam APIs
 
 The platform provides `API_KEY` and `API_KEY_ID` environment variables if your script needs to call [Viam APIs](/reference/apis/) during training, for example, to query additional data:
@@ -218,6 +229,9 @@ viam dataset export --destination=<destination> --dataset-id=<dataset-id>
 This downloads the binary data files and a `dataset.jsonl` metadata file.
 To download only the JSONL file without binary data, add `--only-jsonl`.
 
+For a sequence dataset, the export is a zip of Parquet files plus the images.
+See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
+
 You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
 
 ### Test locally with Docker
@@ -235,6 +249,9 @@ viam training-script test-local \
 
 The `--dataset-file` path is relative to `--dataset-root`.
 The command mounts your script, dataset, and output directories into the container.
+
+`test-local` gives your script only `--dataset_file`, so it can't run a script written for a sequence dataset.
+To test one, run the script directly against the files from a [sequence dataset export](/train/sequence-dataset-format/).
 
 To match a specific cloud container version, use `--container-version`.
 Run `viam train containers list` to list available container versions with their framework versions and end-of-life dates.

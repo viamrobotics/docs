@@ -1,0 +1,1 @@
+Get the binary data, such as images, that falls inside a sequence's time range and resources.

@@ -503,6 +503,15 @@ data,DeleteIndex,,delete_index,,,
 data,ListIndexes,,list_indexes,,,
 data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,,
 data,UpdateBoundingBox,,update_bounding_box,,,
+data,CreateSequence,,create_sequence,CreateSequence,,createSequence
+data,GetSequence,,get_sequence,GetSequence,,getSequence
+data,UpdateSequence,,update_sequence,UpdateSequence,,updateSequence
+data,DeleteSequence,,delete_sequence,DeleteSequence,,deleteSequence
+data,ListSequences,,list_sequences,ListSequences,,listSequences
+data,SequencesByDatasetID,,sequences_by_dataset_id,SequencesByDatasetID,,sequencesByDatasetID
+data,GetSequenceBinaryData,,get_sequence_binary_data,,,getSequenceBinaryData
+data,AddSequencesToDataset,,add_sequences_to_dataset,AddSequencesToDataset,,addSequencesToDataset
+data,RemoveSequencesFromDataset,,remove_sequences_from_dataset,RemoveSequencesFromDataset,,removeSequencesFromDataset
 
 ## Dataset
 dataset,CreateDataset,,create_dataset,CreateDataset,createDataset,createDataset
@@ -511,6 +520,8 @@ dataset,RenameDataset,,rename_dataset,RenameDataset,renameDataset,renameDataset
 dataset,ListDatasetsByOrganizationID,,list_datasets_by_organization_id,ListDatasetsByOrganizationID,listDatasetsByOrganizationID,listDatasetsByOrganizationID
 ## TE: yes PySDK is singular:
 dataset,ListDatasetsByIDs,,list_dataset_by_ids,ListDatasetsByIDs,listDatasetsByIDs,listDatasetsByIds
+dataset,StartSequenceDatasetExport,,start_sequence_dataset_export,,,startSequenceDatasetExport
+dataset,GetSequenceDatasetExport,,get_sequence_dataset_export,,,getSequenceDatasetExport
 
 ## Datasync
 data_sync,DataCaptureUpload,,,,,
