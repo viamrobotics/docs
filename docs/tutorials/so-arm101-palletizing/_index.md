@@ -12,7 +12,7 @@ platformarea: ["mobility", "core"]
 tags: ["tutorial", "workshop", "arm", "motion", "frame-system"]
 workshop: "so-arm101-palletizing"
 workshop_overview: true
-time_estimate: "2 hours"
+time_estimate: "90 minutes"
 hardware:
   - "SO-ARM101 (5-DOF + gripper)"
   - "Eight 16 mm cubes"
