@@ -1,0 +1,1 @@
+Update the mutable fields of a sequence.

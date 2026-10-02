@@ -502,6 +502,14 @@ data,DeleteIndex,,delete_index,,,
 data,ListIndexes,,list_indexes,,,
 data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,,
 data,UpdateBoundingBox,,update_bounding_box,,,
+data,CreateSequence,,,CreateSequence,,
+data,GetSequence,,,GetSequence,,
+data,ListSequences,,,ListSequences,,
+data,UpdateSequence,,,UpdateSequence,,
+data,DeleteSequence,,,DeleteSequence,,
+data,AddSequencesToDataset,,,AddSequencesToDataset,,
+data,RemoveSequencesFromDataset,,,RemoveSequencesFromDataset,,
+data,SequencesByDatasetID,,,SequencesByDatasetID,,
 
 ## Dataset
 dataset,CreateDataset,,create_dataset,CreateDataset,createDataset,createDataset

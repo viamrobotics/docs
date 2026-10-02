@@ -1,0 +1,1 @@
+Create a new sequence, a named time range of binary data from the machine resources you specify.

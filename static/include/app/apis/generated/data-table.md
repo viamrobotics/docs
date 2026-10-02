@@ -34,3 +34,11 @@
 | [`ListIndexes`](/reference/apis/data-client/#listindexes) | List all custom indexes for an organization. |
 | [`RemoveTagsFromBinaryDataByFilter`](/reference/apis/data-client/#removetagsfrombinarydatabyfilter) | Remove tags from binary data by filter. |
 | [`UpdateBoundingBox`](/reference/apis/data-client/#updateboundingbox) | Update an existing bounding box on an image. You can change the label, position, or dimensions of the bounding box. |
+| [`CreateSequence`](/reference/apis/data-client/#createsequence) | Create a new sequence, a named time range of binary data from the machine resources you specify. |
+| [`GetSequence`](/reference/apis/data-client/#getsequence) | Get a sequence by ID. |
+| [`ListSequences`](/reference/apis/data-client/#listsequences) | List the sequences in an organization. |
+| [`UpdateSequence`](/reference/apis/data-client/#updatesequence) | Update the mutable fields of a sequence. |
+| [`DeleteSequence`](/reference/apis/data-client/#deletesequence) | Delete a sequence by ID. |
+| [`AddSequencesToDataset`](/reference/apis/data-client/#addsequencestodataset) | Add sequences to a dataset by sequence ID. |
+| [`RemoveSequencesFromDataset`](/reference/apis/data-client/#removesequencesfromdataset) | Remove sequences from a dataset by sequence ID. |
+| [`SequencesByDatasetID`](/reference/apis/data-client/#sequencesbydatasetid) | List the sequences that belong to a dataset. |

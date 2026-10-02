@@ -1,0 +1,1 @@
+Get a sequence by ID.

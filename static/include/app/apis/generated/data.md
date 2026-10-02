@@ -3084,3 +3084,176 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### CreateSequence
+
+Create a new sequence, a named time range of binary data from the machine resources you specify.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+- `resources` [([]SequenceResourceFilter)](https://pkg.go.dev/go.viam.com/rdk/app#SequenceResourceFilter)
+- `tags` [([]string)](https://pkg.go.dev/builtin#string)
+- `startTime` [(time.Time)](https://pkg.go.dev/time#Time)
+- `endTime` [(time.Time)](https://pkg.go.dev/time#Time)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateSequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetSequence
+
+Get a sequence by ID.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Sequence)](https://pkg.go.dev/go.viam.com/rdk/app#Sequence)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetSequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListSequences
+
+List the sequences in an organization.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `pageSize` [(uint32)](https://pkg.go.dev/builtin#uint32)
+
+**Returns:**
+
+- [(*ListSequencesPage)](https://pkg.go.dev/go.viam.com/rdk/app#ListSequencesPage)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListSequences).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateSequence
+
+Update the mutable fields of a sequence.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*UpdateSequenceOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateSequenceOptions)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateSequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteSequence
+
+Delete a sequence by ID.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteSequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddSequencesToDataset
+
+Add sequences to a dataset by sequence ID.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+- `sequenceIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.AddSequencesToDataset).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveSequencesFromDataset
+
+Remove sequences from a dataset by sequence ID.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+- `sequenceIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveSequencesFromDataset).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### SequencesByDatasetID
+
+List the sequences that belong to a dataset.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+- `pageSize` [(uint32)](https://pkg.go.dev/builtin#uint32)
+
+**Returns:**
+
+- [(*SequencesByDatasetIDPage)](https://pkg.go.dev/go.viam.com/rdk/app#SequencesByDatasetIDPage)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.SequencesByDatasetID).
+
+{{% /tab %}}
+{{< /tabs >}}
