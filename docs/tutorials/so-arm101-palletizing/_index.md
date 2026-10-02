@@ -7,6 +7,8 @@ description: "Build a desktop palletizing robot with an affordable SO-ARM101 arm
 authors: []
 level: "Intermediate"
 languages: ["python"]
+images: ["/tutorials/so-arm101-palletizing/hero-cell-overview.jpg"]
+imageAlt: "An SO-ARM101 arm carrying a die toward a partly built stack of dice on a printed pallet mat."
 viamresources: ["arm", "gripper", "motion", "frame_system"]
 platformarea: ["mobility", "core"]
 tags: ["tutorial", "workshop", "arm", "motion", "frame-system"]
