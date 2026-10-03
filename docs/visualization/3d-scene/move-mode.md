@@ -76,7 +76,7 @@ Arms with fewer than six joints can reach far fewer orientations than six-joint 
 
 ## Save plans for replay
 
-Plans from Move mode are saved only if the motion service selected in the move controls is configured to save them. See [Motion service configuration](/motion-planning/reference/motion-service/#configuration-attributes). Every preview writes a plan file, including previews you never run, and a **Move** after a preview writes a second one.
+Plans from Move mode are saved only if the motion service selected in the move controls is configured to save them. See [Save plans for replay](/motion-planning/visualize-a-motion-plan/#save-plans-for-replay). Every preview writes a plan file, including previews you never run, and a **Move** after a preview writes a second one.
 
 ## What's next
 

@@ -32,28 +32,7 @@ The **Motion Plan Replayer** loads plans the motion service saved and steps thro
 
 Replay also shows something the scene can't show otherwise: the obstacles a request passed in its `WorldState`. Those obstacles never appear in the live scene, but a saved plan records them, and a replayed plan draws them in place.
 
-### Save plans
-
-The motion service saves plans only when its configuration tells it to:
-
-- `plan_file_path` sets the directory for plan files. It's required by both settings below.
-- `log_planner_errors: true` saves plans that fail. A failed plan's file holds the request only, with no trajectory, but replaying it still shows the scene the planner was working in.
-- `log_slow_plan_threshold_ms` saves plans that take longer than that many milliseconds. Set it to `-1` to save every plan, which is what captures successful plans for replay.
-
-These settings apply only to the motion service you configure them on, and to plans requested through that service. In Move mode, check which service the move controls use. See [Motion service configuration](/motion-planning/reference/motion-service/#configuration-attributes).
-
-Then add the plan directory to the data manager's `additional_sync_paths` so the files reach the cloud (see [Upload external data](/data/capture-sync/upload-other-data/)). Syncing walks the `tag=` subdirectories the service writes and carries those tags to the cloud, which is how the replayer finds the plans. For example:
-
-```json
-{
-  "name": "data_manager-1",
-  "api": "rdk:service:data_manager",
-  "model": "rdk:builtin:builtin",
-  "attributes": {
-    "additional_sync_paths": ["${environment.HOME}/.viam/plans"]
-  }
-}
-```
+Replay needs saved plans: the motion service has to be configured to save them, and the files synced to the cloud. To set that up, see [Save plans for replay](/motion-planning/visualize-a-motion-plan/#save-plans-for-replay).
 
 ### Load and play a plan
 

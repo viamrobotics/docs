@@ -22,9 +22,46 @@ use the rendered path to debug a plan that failed or moved unexpectedly.
 
 ## Replay a saved plan in the 3D scene
 
-If the plan already ran, you don't need to write any code to see it. The motion service can save plans as files, and the **3D SCENE** tab's Motion Plan Replayer steps through them, with the obstacles each plan was planned against. See [Replay a saved plan](/visualization/3d-scene/monitor-mode/#replay-a-saved-plan).
+If the plan already ran, you don't need to write any code to see it. The motion service can
+save plans as files, and the **3D SCENE** tab's Motion Plan Replayer steps through them,
+with the obstacles each plan was planned against. To replay plans, set the motion service up
+to save them and sync them to the cloud, then
+[replay them in Monitor mode](/visualization/3d-scene/monitor-mode/#replay-a-saved-plan).
 
-Replay shows a plan the service already computed. To render a plan you are computing yourself, or to keep visuals live while the machine runs, publish the plan as custom visuals instead.
+### Save plans for replay
+
+The motion service saves plans only when its configuration tells it to:
+
+- `plan_file_path` sets the directory for plan files. It's required by both settings below.
+- `log_planner_errors: true` saves plans that fail. A failed plan's file holds the request
+  only, with no trajectory, but replaying it still shows the scene the planner was working
+  in.
+- `log_slow_plan_threshold_ms` saves plans that take longer than that many milliseconds. Set
+  it to `-1` to save every plan, which is what captures successful plans for replay.
+
+These settings apply only to the motion service you configure them on, and to plans
+requested through that service. See
+[Motion service configuration](/motion-planning/reference/motion-service/#configuration-attributes).
+
+Then add the plan directory to the data manager's `additional_sync_paths` so the files reach
+the cloud (see [Upload external data](/data/capture-sync/upload-other-data/)). Syncing walks
+the `tag=` subdirectories the service writes and carries those tags to the cloud, which is
+how the replayer finds the plans. For example:
+
+```json
+{
+  "name": "data_manager-1",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
+  "attributes": {
+    "additional_sync_paths": ["${environment.HOME}/.viam/plans"]
+  }
+}
+```
+
+Replay shows a plan the service already computed. To render a plan you are computing
+yourself, or to keep visuals live while the machine runs, publish the plan as custom visuals
+instead.
 
 ## Prerequisites
 
