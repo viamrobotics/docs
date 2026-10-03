@@ -28,7 +28,7 @@ To read where an arm's end effector is, expand the arm in the **World** panel an
 
 ## Replay a saved plan
 
-The **Motion Plan Replayer** loads plans the motion service saved and steps through them in the scene. It's the way to see a plan the service already computed, from your code or from [Move mode](/visualization/3d-scene/move-mode/), without writing any code.
+The **Motion Plan Replayer** loads plans the motion service saved and steps through them in the scene. It shows a plan the motion service already computed, whatever requested it: your code, a module, the CLI, or [Move mode](/visualization/3d-scene/move-mode/).
 
 Replay also shows something the scene can't show otherwise: the obstacles a request passed in its `WorldState`. Those obstacles never appear in the live scene, but a saved plan records them, and a replayed plan draws them in place.
 

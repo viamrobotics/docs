@@ -26,7 +26,7 @@ what it draws.
 
 ## Modes
 
-The scene has three modes. The mode decides what you can do and which tools appear.
+The scene has three modes. The mode determines what you can do and which tools appear.
 
 | Mode                                             | What it's for                                                                         |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------- |
