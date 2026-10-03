@@ -43,7 +43,7 @@ This has the following sub-options:
 ```python {class="line-numbers linkable-line-numbers"}
 # Move a gripper with a linear constraint
 moved = await motion.move(
-    component_name=my_gripper,
+    component_name="my-gripper",
     destination=PoseInFrame(
         reference_frame="my_frame",
         pose=goal_pose),
@@ -99,7 +99,7 @@ If set to zero, a movement with identical starting and ending orientations will 
 ```python {class="line-numbers linkable-line-numbers"}
 # Move a gripper with an orientation constraint
 moved = await motion.move(
-    component_name=my_gripper,
+    component_name="my-gripper",
     destination=PoseInFrame(
         reference_frame="my_frame",
         pose=goal_pose),
