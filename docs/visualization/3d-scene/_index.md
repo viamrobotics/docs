@@ -28,11 +28,11 @@ what it draws.
 
 The scene has three modes. The mode decides what you can do and which tools appear.
 
-| Mode                                             | What it's for                                                                                      |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| [Monitor](/visualization/3d-scene/monitor-mode/) | Watch the machine's live state, read any frame's pose, and replay saved motion plans. The default. |
-| [Build](/visualization/3d-scene/build-mode/)     | Edit frames and geometry, then save them to the machine's configuration.                           |
-| [Move](/visualization/3d-scene/move-mode/)       | Plan a move to a target pose, preview it, and run it on the machine.                               |
+| Mode                                             | What it's for                                                                         |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [Monitor](/visualization/3d-scene/monitor-mode/) | Watch the machine's live state, read any frame's pose, and replay saved motion plans. |
+| [Build](/visualization/3d-scene/build-mode/)     | Edit frames and geometry, then save them to the machine's configuration.              |
+| [Move](/visualization/3d-scene/move-mode/)       | Plan a move to a target pose, preview it, and run it on the machine.                  |
 
 In every mode, the **World** panel lists every entity in the scene, and selecting one shows
 its details. [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/) let you drive

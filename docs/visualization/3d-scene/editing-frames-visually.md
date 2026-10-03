@@ -23,7 +23,7 @@ Visual editing is most useful while you are still figuring out where things go. 
 
 ## Switch to build mode
 
-The tab opens in **Monitor** mode, which watches live data and keeps every field read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
+In **Monitor** mode, every field is read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
 
 In Build mode, an editing banner appears with **Undo** and **Redo** buttons for stepping back through your frame edits. The scene keeps following the machine's live state while you edit.
 

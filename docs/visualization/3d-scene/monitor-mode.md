@@ -9,7 +9,7 @@ capabilities: ["scene-3d", "motion-planning"]
 diataxis: explanation
 ---
 
-Monitor mode is where the 3D scene starts. It shows your machine as it is: its frames, its configured geometry, and, when the machine is online, live poses, point clouds, and custom visuals. Nothing in Monitor mode changes your machine or its configuration, so it's the safe place to look around.
+Monitor mode shows your machine as it is: its frames, its configured geometry, and, when the machine is online, live poses, point clouds, and custom visuals. Nothing in Monitor mode changes your machine or its configuration, so it's the safe place to look around.
 
 ## Live and configured state
 
