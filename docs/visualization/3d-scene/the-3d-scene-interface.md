@@ -41,7 +41,7 @@ The **Appearance** tab holds **color**, **opacity**, and **show axes helper**: h
 The panel header shows the entity's name and type, a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a **Copy details to clipboard** button that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
-**Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used.
+**Mode toggle** (top-right): four buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. **Replay** (play icon) opens the **Motion Plan Replayer**. The tab opens in monitor mode and remembers the mode you last used.
 
 Next to the mode toggle, in the same top-right strip:
 
@@ -55,7 +55,7 @@ Next to the mode toggle, in the same top-right strip:
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **Isolate selection** (`/`): hides every entity except the selected ones, so you can inspect them without clutter. Click it or press `/` again to show everything.
 
-Monitor mode adds the **Motion Plan Replayer** (play icon), which imports plans the motion
+Replay mode shows the **Motion Plan Replayer** panel, which imports plans the motion
 service dumped and steps through their trajectories. See
 [Visualize a motion plan](/motion-planning/visualize-a-motion-plan/#replay-a-saved-plan-in-the-3d-scene).
 
