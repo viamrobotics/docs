@@ -42,9 +42,10 @@ the cloud (see [Upload external data](/data/capture-sync/upload-other-data/)). S
 walks the `tag=` subdirectories the service writes and carries those tags to the cloud,
 which is how the import dialog finds the plans.
 
-With plans synced, open the **3D SCENE** tab in monitor mode:
+With plans synced, open the **3D SCENE** tab:
 
-1. Open the **Motion Plan Replayer** panel from the top-center toolbar.
+1. Click **Replay** (play icon) in the mode toggle at the top right. The
+   **Motion Plan Replayer** panel opens.
 2. Click **Import from data**, then pick up to five plans. The dialog lists synced files
    tagged `motion-plan`, which are plans that succeeded, and `motion-plan-err`, which are
    plans that failed. It searches the current machine by default; widen it to the whole
