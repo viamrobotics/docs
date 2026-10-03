@@ -22,46 +22,46 @@ use the rendered path to debug a plan that failed or moved unexpectedly.
 
 ## Replay a saved plan in the 3D scene
 
-If the plan already ran, you do not need to write any code to see it. The motion service
-dumps qualifying plans as JSON files, and the **3D SCENE** tab replays those files step by
-step.
+If the plan already ran, you don't need to write any code to see it. The motion service can
+save plans as files, and the **3D SCENE** tab's Motion Plan Replayer steps through them,
+with the obstacles each plan was planned against. To replay plans, set the motion service up
+to save them and sync them to the cloud, then
+[replay them in Monitor mode](/visualization/3d-scene/monitor-mode/#replay-a-saved-plan).
 
-The service does not dump every plan. Configure which ones it keeps
-(see [Motion service configuration](/motion-planning/reference/motion-service/)):
+### Save plans for replay
 
-- `plan_file_path` is where the dumps go. On its own it writes nothing; it is required by
-  both of the settings below.
-- `log_planner_errors: true` dumps a plan that failed. A failed dump is the request only,
-  with no trajectory to replay, but it still shows the world the planner was working in.
-- `log_slow_plan_threshold_ms` dumps a plan that took longer than that many milliseconds.
-  This is what captures successful plans, trajectory included, so set it if you want to
-  replay plans that worked.
+The motion service saves plans only when its configuration tells it to:
+
+- `plan_file_path` sets the directory for plan files. It's required by both settings below.
+- `log_planner_errors: true` saves plans that fail. A failed plan's file holds the request
+  only, with no trajectory, but replaying it still shows the scene the planner was working
+  in.
+- `log_slow_plan_threshold_ms` saves plans that take longer than that many milliseconds. Set
+  it to `-1` to save every plan, which is what captures successful plans for replay.
+
+These settings apply only to the motion service you configure them on, and to plans
+requested through that service. See
+[Motion service configuration](/motion-planning/reference/motion-service/#configuration-attributes).
 
 Then add the plan directory to the data manager's `additional_sync_paths` so the files reach
-the cloud (see [Upload external data](/data/capture-sync/upload-other-data/)). Syncing
-walks the `tag=` subdirectories the service writes and carries those tags to the cloud,
-which is how the import dialog finds the plans.
+the cloud (see [Upload external data](/data/capture-sync/upload-other-data/)). Syncing walks
+the `tag=` subdirectories the service writes and carries those tags to the cloud, which is
+how the replayer finds the plans. For example:
 
-With plans synced, open the **3D SCENE** tab in monitor mode:
-
-1. Open the **Motion Plan Replayer** panel from the top-center toolbar.
-2. Click **Import from data**, then pick up to five plans. The dialog lists synced files
-   tagged `motion-plan`, which are plans that succeeded, and `motion-plan-err`, which are
-   plans that failed. It searches the current machine by default; widen it to the whole
-   organization if the plan ran elsewhere. You can also upload a plan JSON from your
-   computer instead.
-3. Select a plan to render it. A plan that failed is a request without a trajectory, so it
-   renders the scene it planned against with nothing to step through.
-4. Scrub the trajectory with the player at the bottom of the viewport: play and pause, step
-   one position at a time, jump to either end, or drag the slider. Each step moves the arm's
-   links and joints to their pose at that step, with the plan's obstacles in place.
-
-Select a plan's entity to change its color, opacity, or axes helper in the Details panel;
-those edits hold as you scrub. Plan frames render without axes helpers by default.
+```json
+{
+  "name": "data_manager-1",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
+  "attributes": {
+    "additional_sync_paths": ["${environment.HOME}/.viam/plans"]
+  }
+}
+```
 
 Replay shows a plan the service already computed. To render a plan you are computing
-yourself, or to keep visuals live while the machine runs, publish the plan as custom
-visuals instead.
+yourself, or to keep visuals live while the machine runs, publish the plan as custom visuals
+instead.
 
 ## Prerequisites
 

@@ -4,13 +4,14 @@ title: "Visualizing with the 3D scene"
 weight: 5
 layout: "docs"
 type: "docs"
-description: "What the 3D scene renders, where each element comes from, and how built-in configuration content differs from custom visuals a module publishes at runtime."
+description: "The 3D scene's Monitor, Build, and Move modes, where to start for common tasks, and where each element in the scene comes from."
 capabilities: ["scene-3d"]
 diataxis: explanation
 aliases:
   - /visualization/visualizing-with-the-3d-scene/
   - /visualization/3d-scene-tools/
   - /motion-planning/3d-scene/
+  - /visualization/3d-scene/the-3d-scene-interface/
 ---
 
 The **3D SCENE** tab renders your machine in an interactive 3D view: the frames of every
@@ -20,9 +21,53 @@ otherwise read as JSON numbers into a picture you can inspect, so you can confir
 sits where its frame configuration places it or watch a motion plan against the obstacles
 around it.
 
-This page describes what the scene shows, where each element comes from, and how the scene
-stays current. For the tab's panels, navigation, and settings, see
-[The 3D scene interface](/visualization/3d-scene/the-3d-scene-interface/).
+This page covers the scene's modes, where to start for common tasks, and how the scene gets
+what it draws.
+
+## Modes
+
+The scene has three modes. The mode determines what you can do and which tools appear.
+
+| Mode                                             | What it's for                                                                         |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [Monitor](/visualization/3d-scene/monitor-mode/) | Watch the machine's live state, read any frame's pose, and replay saved motion plans. |
+| [Build](/visualization/3d-scene/build-mode/)     | Edit frames and geometry, then save them to the machine's configuration.              |
+| [Move](/visualization/3d-scene/move-mode/)       | Plan a move to a target pose, preview it, and run it on the machine.                  |
+
+In every mode, the **World** panel lists every entity in the scene, and selecting one shows
+its details. [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/) let you drive
+components and read their values without leaving the scene. For navigation, shortcuts, and
+settings, see [3D scene controls and settings](/visualization/3d-scene/controls-and-settings/).
+
+## Start from what you want to do
+
+| I want to…                                                         | Start here                                                                              |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| See whether the scene matches my real machine                      | [Measuring between frames](/visualization/3d-scene/measuring-between-frames/)           |
+| Enter frame offsets or add collision geometry without editing JSON | [Editing frames visually](/visualization/3d-scene/editing-frames-visually/)             |
+| Try a move safely before it runs                                   | [Move mode](/visualization/3d-scene/move-mode/)                                         |
+| Drive a component or watch its readings without leaving the scene  | [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/)                           |
+| See what the motion planner saw when a plan failed or surprised me | [Replay a saved plan](/visualization/3d-scene/monitor-mode/#replay-a-saved-plan)        |
+| Understand why the planner ignores something I can see             | [Visuals and collisions](/visualization/visuals-and-collisions/)                        |
+| Check that a depth camera's point cloud lines up with the world    | [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/) |
+| Tune a 3D segmenter against the live view                          | [Vision services in the 3D scene](/visualization/perception/vision-services/)           |
+| See what a camera or end effector sees from its mount              | [Frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov)                        |
+| Draw my module's own visuals in the scene                          | [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)          |
+| Preview spatial data from a Go script without deploying            | [Viam Visualization](/visualization/viam-visualization/)                                |
+| Fix something that looks wrong                                     | [Troubleshoot the 3D scene](/visualization/troubleshoot-the-3d-scene/)                  |
+
+## Visualization, not simulation
+
+The 3D scene shows your machine; it doesn't simulate physics. Everything it draws comes from
+your machine's configuration or from live data, so what you see is what the machine reports.
+
+Two things let you try motion without risking hardware:
+
+- [Move mode](/visualization/3d-scene/move-mode/) previews a planned move in the scene
+  before anything moves, so you can see the motion before you run it.
+- Simulated and fake components report poses and accept commands without moving anything
+  physical. With a fake arm, the whole scene works without hardware. See
+  [Try it with a fake arm](/hardware/common-components/add-an-arm/#try-it-with-a-fake-arm).
 
 ## What the scene renders
 
@@ -78,14 +123,3 @@ redrawing everything, so a busy scene keeps up as the underlying data changes.
 
 To publish your own custom visuals this way, see
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
-
-## What's next
-
-{{< cards >}}
-{{% card link="/visualization/3d-scene/the-3d-scene-interface/" noimage="true" %}}
-{{% card link="/visualization/3d-scene/measuring-between-frames/" noimage="true" %}}
-{{% card link="/visualization/3d-scene/editing-frames-visually/" noimage="true" %}}
-{{% card link="/visualization/3d-scene/3d-scene-widgets/" noimage="true" %}}
-{{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
-{{% card link="/visualization/publish-visuals-from-a-module/" noimage="true" %}}
-{{< /cards >}}

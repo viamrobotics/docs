@@ -1,7 +1,7 @@
 ---
 linkTitle: "Editing frames visually"
 title: "Editing frames visually"
-weight: 30
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Add, edit, and attach geometry to frames directly in the 3D scene."
@@ -23,9 +23,9 @@ Visual editing is most useful while you are still figuring out where things go. 
 
 ## Switch to build mode
 
-The tab opens in **Monitor** mode, which watches live data and keeps every field read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
+In **Monitor** mode, every field is read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
 
-Build mode pauses live updates so the poses you edit hold still, and a **Live updates paused** banner appears with **Undo** and **Redo** buttons for stepping back through your frame edits. Switch back to **Monitor** to resume live data.
+In Build mode, an editing banner appears with **Undo** and **Redo** buttons for stepping back through your frame edits. The scene keeps following the machine's live state while you edit.
 
 ## Add a frame to a component
 
@@ -90,20 +90,7 @@ To delete a frame, remove it from the component's configuration on the CONFIGURE
 
 ## Edit frames with AI
 
-The **3D SCENE** tab includes an AI scene builder that lets you edit frames using natural language instead of entering values manually.
-Type a prompt describing the change you want, and the AI interprets your request and applies the frame updates to the scene.
-
-You can use natural language to:
-
-- Move components ("move the camera 50 mm to the left")
-- Rotate components ("rotate the gripper 90 degrees around the z-axis")
-- Re-parent frames ("attach the sensor to the arm instead of the base")
-- Add, resize, or change collision geometry ("add a 100 mm box to the sensor", "make the arm's capsule wider")
-
-The AI edits only the frames of existing components.
-It cannot add new components to or remove components from the machine configuration.
-
-After the AI applies changes, save or discard buttons appear in the **3D SCENE** tab.
+To describe a frame change in words instead of entering values, use the AI Scene Builder. See [Build mode](/visualization/3d-scene/build-mode/#edit-frames-with-ai).
 
 ## When to edit JSON instead
 
