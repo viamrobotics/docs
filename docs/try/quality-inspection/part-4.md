@@ -61,7 +61,7 @@ var Inspector = resource.NewModel("your-namespace", "inspection-module", "inspec
 
 func init() {
     resource.RegisterService(generic.API, Inspector,
-        resource.Registration[resource.Resource, *Config]{
+        resource.Registration[resource.Resource, Config]{
             Constructor: newInspectionModuleInspector,
         },
     )
