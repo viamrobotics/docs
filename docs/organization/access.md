@@ -76,6 +76,80 @@ You must have the **Owner** role to be able to limit permissions.
    You can also remove the user by clicking on **Remove user**.
    {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true class="shadow" >}}
 
+### Restrict API calls on a machine
+
+Roles decide who can reach a machine.
+To limit which API methods a user or API key can call on specific resources of one machine, add a `user_permissions` list to the `auth` section of the machine's JSON config.
+`viam-server` enforces it on every gRPC request from a client.
+Requires `viam-server` v1.8.0 or later.
+
+You must have the **Owner** role on the machine to edit its config.
+
+1. On the machine's **CONFIGURE** tab, switch to **JSON** mode.
+2. Add an `auth` object at the top level of the config, or add to the existing one, with a `user_permissions` list.
+   For example, this config lets one API key read images from `cam1` only, and lets everyone else call `GetMachineStatus`:
+
+   ```json
+   {
+     "auth": {
+       "user_permissions": [
+         {
+           "user": { "type": "api-key-id", "id": "<api-key-id>" },
+           "permissions": [
+             {
+               "resources": ["cam1"],
+               "allowed_methods": [
+                 "/viam.component.camera.v1.CameraService/GetImages"
+               ]
+             }
+           ]
+         },
+         {
+           "user": { "type": "default" },
+           "permissions": [
+             {
+               "resources": ["_machine"],
+               "allowed_methods": [
+                 "/viam.robot.v1.RobotService/GetMachineStatus"
+               ]
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
+
+3. Click **Save**.
+   The machine applies the change when it picks up the new config, without a restart.
+
+Each entry has a `user` and a list of `permissions`:
+
+<!-- prettier-ignore -->
+| Field | Description |
+| ----- | ----------- |
+| `user.type` | `api-key-id` for an API key, `app-user-id` for a Viam user, or `default` for any authenticated caller that has no entry of its own. |
+| `user.id` | The API key ID (not the key), or the user ID. Find a member's user ID in the `user_id` field returned by [`ListOrganizationMembers`](/reference/apis/fleet/#listorganizationmembers). Leave it out for `default`. |
+| `permissions[].resources` | Resource names the methods may be called on, such as `["cam1", "cam2"]`. Use `_machine` for methods that don't address a single resource, such as `RobotService` methods and `ListStreams`. |
+| `permissions[].allowed_methods` | Fully qualified gRPC method names, such as `/viam.component.camera.v1.CameraService/GetImages`. |
+
+How `viam-server` applies the list:
+
+- If `user_permissions` is empty or absent, every caller is unrestricted.
+- Once it has any entry, a caller may call only the methods its own entry grants.
+  A caller with no entry gets the `default` entry's permissions, or none if there is no `default` entry.
+- Unauthenticated connections are fully restricted.
+- If a user appears in more than one entry, `viam-server` logs an error and fully restricts that user until you fix the config.
+  An entry with an unknown `type` is ignored with a warning.
+- A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning naming the method, resource, and caller.
+  When a change removes access, `viam-server` closes the open streams, including video, of the callers who lost it.
+- Calls from modules running on the machine are not checked.
+
+{{< alert title="Caution" color="caution" >}}
+Viam app pages that talk to the machine, such as the **CONTROL** tab, connect as your user.
+Give your own user ID, or the `default` entry, the methods those pages need, or they fail with permission errors.
+{{< /alert >}}
+
 ### Remove an organization from a shared location
 
 You must have the **Owner** role to be able to share locations.
