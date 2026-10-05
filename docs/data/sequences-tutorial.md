@@ -18,8 +18,8 @@ By the end, you will have followed the whole path that a training script starts 
 **What you need:**
 
 - A machine connected to the Viam app (if you don't have one yet, follow [Set up a machine](/set-up-a-machine/))
-- The [Viam CLI](/cli/overview/), installed and logged in
-- Python 3 on your laptop or desktop, for step 7, and for steps 5 and 6 if you follow the **CLI and Python** tabs
+- The [Viam CLI](/cli/overview/), installed and authenticated on your computer
+- Python 3 installed on your computer
 
 We will use a fake camera and a fake sensor, so this tutorial works without physical hardware.
 

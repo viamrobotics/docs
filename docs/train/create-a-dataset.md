@@ -22,7 +22,7 @@ You can't change it later.
 Both types are created the same way.
 They differ in how you add data and in what you can do with the dataset afterward.
 
-|                  | Image dataset                             | Sequence dataset                                                                                         |
+|                  | Binary dataset                            | Sequence dataset                                                                                         |
 | ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | Holds            | Individual images                         | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
 | Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |

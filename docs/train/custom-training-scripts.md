@@ -16,7 +16,7 @@ updated: "2025-10-13"
 ---
 
 Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
-For anything else, you can use a custom training script: a different framework, custom preprocessing, non-image data, or a training pipeline you want to share with your organization.
+Custom training scripts are available for other use cases like a different framework, custom preprocessing, non-image data, or a training pipeline you want to share with your organization.
 
 Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
 If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).
@@ -131,7 +131,7 @@ if __name__ == "__main__":
 The critical parts:
 
 - **Parse arguments**: Accept `--dataset_file` and `--model_output_directory` at minimum.
-- **Read the dataset**: Each line in the JSONLines file is a JSON object. For image datasets, each object has an `image_path` and either `classification_annotations`, `bounding_box_annotations`, or both. Non-image datasets will have a different structure depending on how the data was captured.
+- **Read the dataset**: Each line in the JSONLines file is a JSON object. For image datasets, each object has an `image_path` and either `classification_annotations`, `bounding_box_annotations`, or both. Non-image datasets will have a [different structure](/train/sequence-dataset-format/) depending on how the data was captured.
 - **Save to the output directory**: When the job completes, Viam packages everything in this directory and publishes it to the registry as a new model version. Files in a `tmp/` subdirectory are excluded: use it for intermediate work.
 
 If the script exits with a non-zero status or produces no files in the output directory, the training job is marked as failed.

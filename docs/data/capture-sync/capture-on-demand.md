@@ -44,7 +44,7 @@ When the sensor stops listing a component, the component returns to its own capt
 If it has none, it stops capturing.
 If the data management service has `capture_disabled` set to `true`, it ignores the sensor.
 
-## 1. Add the `capture-control` sensor {#add-the-sensor}
+## 1. Add the `capture-control` sensor to your machine {#add-the-sensor}
 
 The sensor is the model `viam:capture-control:capture-control-sensor`.
 Configure it with the components and methods to record:
@@ -64,30 +64,6 @@ Configure it with the components and methods to record:
 | `resources`                    | Required  | The components and methods to control. At least one.                                                                                                                                                                          |
 | `default_capture_frequency_hz` | Optional  | Frequency the sensor sends from startup until the first `start_capture`, and when `start_capture` doesn't give one. Default `0`, which captures nothing. Any other value captures continuously until you send `stop_capture`. |
 | `default_tags`                 | Optional  | Tags used when `start_capture` doesn't give any.                                                                                                                                                                              |
-
-{{< tabs >}}
-{{% tab name="Viam app" %}}
-
-1. On your machine's **CONFIGURE** tab, click **+**, select **Blocks**, and search for **capture-control**. Select the `viam:capture-control:capture-control-sensor` model.
-2. Name it `my-capture-sensor` and click **Add to machine**.
-3. In the sensor's attributes, paste the JSON above.
-4. Click **Save**.
-
-{{% /tab %}}
-{{% tab name="CLI and SDK" %}}
-
-The CLI can't add a registry module to a machine.
-`viam machines part add-resource` adds the sensor's entry but not the `viam:capture-control` module entry, so `viam-server` can't build the sensor.
-Use the [Viam MCP server](/reference/mcp/) instead, which adds the module for you.
-Ask your MCP client something like:
-
-> On my machine `<machine-name>`, add a sensor named `my-capture-sensor` with the model `viam:capture-control:capture-control-sensor` and the attributes shown above.
-
-The client calls the `add_machine_config_item` tool.
-If the module wasn't already on the machine, its result includes a `module_added` entry for `viam:capture-control`.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{< alert title="The module turns capture off between recordings" color="caution" >}}
 While the module isn't recording, it tells the data management service to capture the components in `resources` at 0 Hz.
@@ -117,36 +93,6 @@ Set `capture_control_sensor` on the data management service, with the sensor's n
 }
 ```
 
-{{< tabs >}}
-{{% tab name="Viam app" %}}
-
-1. On your machine's **CONFIGURE** tab, find your data management service.
-2. Switch to **JSON** mode.
-3. Add `capture_control_sensor` to the service's `attributes`, as shown above.
-4. Click **Save**.
-
-{{% /tab %}}
-{{% tab name="CLI and SDK" %}}
-
-If your machine has no data management service yet, add one.
-Its API is `rdk:service:data_manager`, which `--resource-subtype` doesn't accept, so pass `--api`:
-
-```sh {class="command-line" data-prompt="$"}
-viam machines part add-resource --part=$VIAM_PART_ID \
-  --name=data-manager --api=rdk:service:data_manager --model-name=builtin
-```
-
-Then set the attribute.
-`--config` replaces all of the service's existing attributes, so include any you already have:
-
-```sh {class="command-line" data-prompt="$"}
-viam resource update --part=$VIAM_PART_ID --resource-name=data-manager \
-  --config '{"capture_control_sensor": {"name": "my-capture-sensor", "key": "overrides"}}'
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 Within a moment, the service starts applying the sensor's readings.
 
 ## 3. Start and stop recording {#start-and-stop-recording}
@@ -170,36 +116,6 @@ Sending it again with the same tags continues the same sequence.
 
 The sensor forgets its state when its configuration changes.
 Changing its configuration, or restarting the module or `viam-server`, ends any recording in progress.
-
-{{< tabs >}}
-{{% tab name="Viam app" %}}
-
-1. On the **CONFIGURE** tab, expand the **Test** section of `my-capture-sensor` and find **DoCommand**.
-2. Send `{"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}`.
-3. Wait for the moment you want to record to pass.
-4. Send `{"stop_capture": true}`.
-
-{{% /tab %}}
-{{% tab name="CLI and SDK" %}}
-
-```sh {class="command-line" data-prompt="$"}
-viam machines part run --part=$VIAM_PART_ID \
-  --component=my-capture-sensor --method=DoCommand \
-  --data='{"command": {"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}}'
-```
-
-After the moment you want to record has passed:
-
-```sh {class="command-line" data-prompt="$"}
-viam machines part run --part=$VIAM_PART_ID \
-  --component=my-capture-sensor --method=DoCommand \
-  --data='{"command": {"stop_capture": true}}'
-```
-
-To send the commands from code, call `do_command` on the sensor with the same dictionary.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 To check that recording started, look for log messages that begin `capture control sensor enabling capture for`, and for `sequence started`.
 If `default_capture_frequency_hz` is above `0`, the capture message begins `capture control sensor changing capture_frequency_hz for` instead.
