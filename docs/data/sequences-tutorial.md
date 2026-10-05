@@ -37,7 +37,9 @@ If you use those tabs, expand **Set up for the CLI and Python path** and finish 
    viam machines part list --machine=<machine-id>
    ```
 
-2. Create an API key for the SDK scripts:
+2. Create an API key for the SDK scripts.
+   The scripts list sequences and manage datasets, which need an organization API key.
+   Creating a sequence on its own only needs a key with access to the machine part.
 
    ```sh {class="command-line" data-prompt="$"}
    viam organizations api-key create --org-id=<org-id> --name=sequences-tutorial

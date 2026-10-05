@@ -3084,3 +3084,472 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### CreateSequence
+
+Create a sequence: a saved time window of one machine part's captured data, with tags. You provide the part ID, the resources to include, and the start and end times.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+- `resources` [([]SequenceResourceFilter)](https://pkg.go.dev/go.viam.com/rdk/app#SequenceResourceFilter)
+- `tags` [([]string)](https://pkg.go.dev/builtin#string)
+- `startTime` [(time.Time)](https://pkg.go.dev/time#Time)
+- `endTime` [(time.Time)](https://pkg.go.dev/time#Time)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateSequence).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `partId` (string) (required): The ID of the part that owns the sequence.
+- `resources` (PartialMessage) (required): The resource filters for the sequence.
+- `sequenceTags` (string) (optional): Optional tags for the sequence.
+- `startTime` (Date) (optional): Optional start time of the sequence.
+- `endTime` (Date) (optional): Optional end time of the sequence.
+
+**Returns:**
+
+- (Promise<string>): The ID of the created sequence.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const sequenceId = await dataClient.createSequence(
+  'part-id',
+  [
+    {
+      resourceName: 'my-sensor',
+      methodName: 'Readings',
+    },
+  ],
+  ['tag1', 'tag2'],
+  new Date('2025-01-01'),
+  new Date('2025-12-31'),
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#createsequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetSequence
+
+Get a sequence by its ID.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Sequence)](https://pkg.go.dev/go.viam.com/rdk/app#Sequence)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetSequence).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the sequence.
+
+**Returns:**
+
+- (Promise<[Sequence](https://ts.viam.dev/interfaces/Sequence.html)>): The sequence.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const sequence = await dataClient.getSequence('sequence-id');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getsequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateSequence
+
+Update the resources, tags, start time, or end time of a sequence. Only the fields listed in the field mask change.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*UpdateSequenceOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateSequenceOptions)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateSequence).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the sequence to update.
+- `resources` (PartialMessage) (optional): The updated resource filters.
+- `sequenceTags` (string) (optional): The updated tags.
+- `startTime` (Date) (optional): The updated start time.
+- `endTime` (Date) (optional): The updated end time.
+- `fieldMask` (PartialMessage) (optional): Optional field mask specifying which fields to update.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await dataClient.updateSequence(
+  'sequence-id',
+  [
+    {
+      partId: 'part-id',
+      resourceName: 'my-sensor',
+      methodName: 'Readings',
+    },
+  ],
+  ['tag1'],
+  new Date('2025-01-01'),
+  new Date('2025-12-31'),
+  { paths: ['resources', 'sequence_tags'] },
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#updatesequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteSequence
+
+Delete a sequence by its ID.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteSequence).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `id` (string) (required): The ID of the sequence to delete.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await dataClient.deleteSequence('sequence-id');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletesequence).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListSequences
+
+List the sequences in an organization.
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `pageSize` [(uint32)](https://pkg.go.dev/builtin#uint32)
+
+**Returns:**
+
+- [(*ListSequencesPage)](https://pkg.go.dev/go.viam.com/rdk/app#ListSequencesPage)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListSequences).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `pageToken` (string) (optional): Optional page token for pagination.
+- `pageSize` (number) (optional): Optional page size.
+
+**Returns:**
+
+- (Promise<{ nextPageToken: string; sequences: [Sequence](https://ts.viam.dev/interfaces/Sequence.html)[] }>): The list of sequences and a next page token.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const { sequences, nextPageToken } = await dataClient.listSequences(
+  '123abc45-1234-5678-90ab-cdef12345678',
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#listsequences).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### SequencesByDatasetID
+
+List the sequences that belong to a sequence dataset.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset.
+- `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional page token for pagination.
+- `page_size` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): Optional page size for pagination.
+- `count_only` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): If True, return only the count of sequences without fetching the actual data.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[Sequence[viam.proto.app.data.Sequence], [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): :   A tuple containing:
+    :   * A list of sequences in the dataset.
+        * The next page token (empty string if no more pages).
+        * The total count of sequences.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.sequences_by_dataset_id).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+- `pageSize` [(uint32)](https://pkg.go.dev/builtin#uint32)
+
+**Returns:**
+
+- [(*SequencesByDatasetIDPage)](https://pkg.go.dev/go.viam.com/rdk/app#SequencesByDatasetIDPage)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.SequencesByDatasetID).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `datasetId` (string) (required): The ID of the dataset.
+- `pageToken` (string) (optional): Optional page token for pagination.
+- `pageSize` (number) (optional): Optional page size.
+
+**Returns:**
+
+- (Promise<{ nextPageToken: string; sequences: [Sequence](https://ts.viam.dev/interfaces/Sequence.html)[] }>): The list of sequences and a next page token.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const { sequences, nextPageToken } = await dataClient.sequencesByDatasetID(
+  '12ab3de4f56a7bcd89ef0ab1',
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#sequencesbydatasetid).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetSequenceBinaryData
+
+Get the binary data, such as images, that falls inside a sequence's time range and resources.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `sequence_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the sequence.
+- `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional page token for pagination.
+- `page_size` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): Optional page size for pagination.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[List[viam.proto.app.data.BinaryData], [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing:
+    :   * A list of binary data in the sequence.
+        * The next page token (empty string if no more pages).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_sequence_binary_data).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `sequenceId` (string) (required): The ID of the sequence.
+- `pageToken` (string) (optional): Optional page token for pagination.
+- `pageSize` (number) (optional): Optional page size.
+
+**Returns:**
+
+- (Promise<{ data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]; nextPageToken: string }>): The binary data records and a next page token.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const { data, nextPageToken } = await dataClient.getSequenceBinaryData('sequence-id');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getsequencebinarydata).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddSequencesToDataset
+
+Add sequences to a sequence dataset.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to add sequences to.
+- `sequence_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The IDs of the sequences to add to the dataset.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_sequences_to_dataset).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+- `sequenceIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.AddSequencesToDataset).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `sequenceIds` (string) (required): The IDs of the sequences to add to the dataset.
+- `datasetId` (string) (required): The ID of the dataset to add the sequences to.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await dataClient.addSequencesToDataset(
+  ['sequence-id-1', 'sequence-id-2'],
+  '12ab3de4f56a7bcd89ef0ab1',
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#addsequencestodataset).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveSequencesFromDataset
+
+Remove sequences from a sequence dataset.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to remove sequences from.
+- `sequence_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The IDs of the sequences to remove from the dataset.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_sequences_from_dataset).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+- `sequenceIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveSequencesFromDataset).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `sequenceIds` (string) (required): The IDs of the sequences to remove from the dataset.
+- `datasetId` (string) (required): The ID of the dataset to remove the sequences from.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await dataClient.removeSequencesFromDataset(
+  ['sequence-id-1', 'sequence-id-2'],
+  '12ab3de4f56a7bcd89ef0ab1',
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#removesequencesfromdataset).
+
+{{% /tab %}}
+{{< /tabs >}}

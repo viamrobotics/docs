@@ -475,7 +475,6 @@ The Go SDK doesn't.
 - Managed [training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
 - Sequence exports run queries against your organization's data, and tabular queries count toward your data query usage.
-  <!-- TODO(eng): confirm whether tabular queries in a sequence export count toward data query usage. No usage accounting found in the export path. -->
 
 ## Troubleshooting
 

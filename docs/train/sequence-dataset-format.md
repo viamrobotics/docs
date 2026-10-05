@@ -38,29 +38,29 @@ In a training job, `path` is an absolute path, starting with `/gcs/`, that your 
 
 One row per image in each sequence.
 
-| Column            | Type                                                      | Description                                                                |
-| ----------------- | --------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `sequence_id`     | string                                                    | ID of the sequence the image belongs to.                                   |
-| `timestamp`       | timestamp (microseconds)                                  | When Viam received the image. This isn't the time the machine captured it. |
-| `part_id`         | string                                                    | ID of the machine part that captured the image.                            |
-| `component_name`  | string                                                    | Name of the resource that produced the image.                              |
-| `method_name`     | string                                                    | Method that produced the image, for example `GetImages`.                   |
-| `path`            | string                                                    | Location of the image file. See [Export layout](#export-layout).           |
-| `classifications` | list of `{label, confidence}`                             | Classification annotations on the image.                                   |
-| `bounding_boxes`  | list of `{label, confidence, x_min, y_min, x_max, y_max}` | Bounding box annotations, with coordinates normalized to the image size.   |
+| Column            | Type                                                      | Description                                                              |
+| ----------------- | --------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `sequence_id`     | string                                                    | ID of the sequence the image belongs to.                                 |
+| `timestamp`       | timestamp (microseconds)                                  | When the machine captured the image.                                     |
+| `part_id`         | string                                                    | ID of the machine part that captured the image.                          |
+| `component_name`  | string                                                    | Name of the resource that produced the image.                            |
+| `method_name`     | string                                                    | Method that produced the image, for example `GetImages`.                 |
+| `path`            | string                                                    | Location of the image file. See [Export layout](#export-layout).         |
+| `classifications` | list of `{label, confidence}`                             | Classification annotations on the image.                                 |
+| `bounding_boxes`  | list of `{label, confidence, x_min, y_min, x_max, y_max}` | Bounding box annotations, with coordinates normalized to the image size. |
 
 ## `tabular_data.parquet`
 
 One row per reading in each sequence.
 
-| Column           | Type                     | Description                                                                  |
-| ---------------- | ------------------------ | ---------------------------------------------------------------------------- |
-| `sequence_id`    | string                   | ID of the sequence the reading belongs to.                                   |
-| `timestamp`      | timestamp (microseconds) | When Viam received the reading. This isn't the time the machine captured it. |
-| `part_id`        | string                   | ID of the machine part that captured the reading.                            |
-| `component_name` | string                   | Name of the resource that produced the reading.                              |
-| `method_name`    | string                   | Method that produced the reading, for example `Readings`.                    |
-| `payload`        | string                   | The reading, as a JSON string.                                               |
+| Column           | Type                     | Description                                               |
+| ---------------- | ------------------------ | --------------------------------------------------------- |
+| `sequence_id`    | string                   | ID of the sequence the reading belongs to.                |
+| `timestamp`      | timestamp (microseconds) | When the machine captured the reading.                    |
+| `part_id`        | string                   | ID of the machine part that captured the reading.         |
+| `component_name` | string                   | Name of the resource that produced the reading.           |
+| `method_name`    | string                   | Method that produced the reading, for example `Readings`. |
+| `payload`        | string                   | The reading, as a JSON string.                            |
 
 ## `sequences.parquet`
 

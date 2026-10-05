@@ -23,10 +23,12 @@ To follow the whole path from capture to exported training files, see the [seque
 
 A sequence is a saved filter over data you already captured, not a copy of it.
 When you read a sequence, Viam returns the images and readings that match its part, resources, and time window.
-This has three consequences:
+Each sequence belongs to exactly one machine part, though it can include resources on that part's remotes.
+This has four consequences:
 
 - **Data must be captured during the window.** A sequence only selects data that [data capture](/data/capture-sync/capture-and-sync-data/) recorded and synced. If capture wasn't running on a resource while the sequence was open, the sequence has nothing from that resource.
-- **Deleting data removes it from the sequence.** If you [delete](/data/delete-data/) images or readings inside the window, they no longer appear in the sequence.
+- **Deleting data removes it from the sequence, not the sequence itself.** If you [delete](/data/delete-data/) images or readings inside the window, they no longer appear in the sequence, but the sequence stays, even if no data is left in it.
+- **Deleting a sequence keeps its data.** Deleting a sequence removes only the sequence. The images and readings it selected stay in Viam.
 - **Editing the window changes the contents.** If you change a sequence's start time, end time, or resources, it selects a different set of data.
 
 A sequence can hold two kinds of data:
@@ -104,7 +106,8 @@ Give it the machine part's ID, the resources and methods to include, and a start
 Tags are optional.
 
 1. Connect a data client.
-   See [Set up a connection](/data/query-data-from-code/#set-up-a-connection) for the setup code and the API key it needs.
+   See [Set up a connection](/data/query-data-from-code/#set-up-a-connection) for the setup code.
+   `CreateSequence` only needs an API key with access to the machine part. The other sequence methods, such as `ListSequences` and `AddSequencesToDataset`, need an organization API key.
 2. Find the part ID.
    At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
 3. Find when the data was captured.
@@ -170,6 +173,8 @@ sequenceID, err := dataClient.CreateSequence(
    The list shows each sequence's time range, machine part, resources, and tags.
 2. Click a sequence to open it.
 3. Pick a resource, shown as `<resource name> · <method>`, to see its images or readings during the window.
+4. To work with that resource's data in the rest of the **DATA** tab, click **View in data gallery** for images or **View in query page** for readings.
+   Each opens the resource's data, filtered to the sequence's part and time window.
 
 To copy a sequence's ID, click the **Sequence actions** menu on its row and select **Copy sequence ID**.
 
@@ -185,7 +190,7 @@ Use the Python, TypeScript, or Go SDK.
 
 - **Edit:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change, and the field mask is required.
   The Python SDK's `update_sequence` builds the field mask for you from the arguments you pass, and raises an error if you pass none of them. Pass `sequence_tags=[]` to clear a sequence's tags.
-- **Delete:** `DeleteSequence` deletes a sequence by its ID.
+- **Delete:** `DeleteSequence` deletes a sequence by its ID. The images and readings in its window aren't deleted.
 
 See the [data client API](/reference/apis/data-client/) for each method's parameters.
 
@@ -198,7 +203,7 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 ## Limitations {#limits}
 
 - **Images are the only binary data.** See [How a sequence works](#how-a-sequence-works).
-- **A sequence belongs to one machine part.** To combine data from several parts, record a sequence on each part and add them all to one dataset.
+- **A sequence belongs to one machine part.** It can include resources on that part's remotes. To combine data from several parts, record a sequence on each part and add them all to one dataset.
 - **A crash loses the open sequence.** If `viam-server` stops uncleanly while a sequence is open, the data manager can't tell when the sequence ended. It moves the sequence to `failed/sequences/` in the capture directory and doesn't upload it. A normal shutdown closes open sequences so they upload on the next sync.
 - **Editing and deleting need an SDK.** The Viam app and the CLI can't edit or delete a sequence.
 - **Managed training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).

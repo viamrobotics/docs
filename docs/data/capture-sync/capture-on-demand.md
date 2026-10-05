@@ -139,8 +139,9 @@ If the service can't find the component, or the method isn't capturable, it logs
 
 ## What happens when the sensor fails
 
-If the sensor's `Readings` returns an error, or its output can't be parsed, the service reverts every component to its own capture settings and closes any open sequences.
-An error in the middle of a recording therefore splits it into two sequences.
+If the sensor's `Readings` returns an error, the service reverts every component to its own capture settings and closes any open sequences.
+If the readings return but can't be parsed, the service closes any open sequences but leaves capture as it was.
+Either failure in the middle of a recording therefore splits it into two sequences.
 If the readings don't contain the key set in `capture_control_sensor`, the service also reverts every component, without logging a warning.
 It logs a warning and keeps polling, so capture picks up again as soon as the sensor returns valid readings.
 
