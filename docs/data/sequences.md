@@ -103,6 +103,16 @@ To mark a window of data you already captured, create the sequence from code.
 Give it the machine part's ID, the resources and methods to include, and a start and end time.
 Tags are optional.
 
+1. Connect a data client.
+   See [Set up a connection](/data/query-data-from-code/#set-up-a-connection) for the setup code and the API key it needs.
+2. Find the part ID.
+   At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
+3. Find when the data was captured.
+   In the [**DATA** tab](https://app.viam.com/data/all), filter by the machine and the resource, and note the capture times of the first and last images or readings you want.
+4. Create the sequence.
+   The window includes data captured exactly at the start and end times.
+   The examples give both times in UTC. If the times you noted are in another time zone, convert them or pass that time zone instead.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
