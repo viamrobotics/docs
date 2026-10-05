@@ -146,40 +146,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
-### DoCommand
-
-Execute model-specific commands that are not otherwise defined by the service API.
-Most models do not implement `DoCommand`.
-Any available model-specific commands should be covered in the model's documentation.
-If you are implementing your own ML model service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
-
-**Returns:**
-
-- [(map[string]interface{})](https://pkg.go.dev/builtin#string): The command response.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-myMlmodelSvc, err := mlmodel.FromProvider(machine, "my_mlmodel_svc")
-
-command := map[string]interface{}{"cmd": "test", "data1": 500}
-result, err := myMlmodelSvc.DoCommand(context.Background(), command)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetStatus
 
 Get the current status of the ML model service as a map of key-value pairs describing its state.

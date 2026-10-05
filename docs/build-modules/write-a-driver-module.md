@@ -191,13 +191,16 @@ Find `validate_config` in your class and add validation:
 Find the `Validate` method on your `Config` struct and add validation:
 
 ```go
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if cfg.SourceURL == "" {
         return nil, nil, fmt.Errorf("source_url is required")
     }
     return nil, nil, nil // No required or optional dependencies
 }
 ```
+
+`Validate` has a value receiver, so it gets a copy of the config. Changes it
+makes to `cfg` are discarded; set default values in your constructor instead.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -243,13 +246,13 @@ needs custom handling.
 
 The generator produces two constructor functions: a private
 `newMySensorModuleMySensor` that unpacks the raw config and delegates to a
-public `NewMySensor` that takes a typed `*Config`. The split lets tests call
+public `NewMySensor` that takes a typed `Config`. The split lets tests call
 `NewMySensor` directly with a typed config. Leave
 `newMySensorModuleMySensor` alone and update `NewMySensor` to initialize any
 state your module needs:
 
 ```go
-func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
+func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf Config, logger logging.Logger) (sensor.Sensor, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     timeout := time.Duration(conf.PollInterval) * time.Second
@@ -278,7 +281,7 @@ type mySensorModuleMySensor struct {
     name resource.Name
 
     logger logging.Logger
-    cfg    *Config
+    cfg    Config
 
     cancelCtx  context.Context
     cancelFunc func()
@@ -525,7 +528,7 @@ type Config struct {
     PollInterval float64 `json:"poll_interval"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if cfg.SourceURL == "" {
         return nil, nil, fmt.Errorf("source_url is required")
     }
@@ -534,7 +537,7 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 
 func init() {
     resource.RegisterComponent(sensor.API, MySensor,
-        resource.Registration[sensor.Sensor, *Config]{
+        resource.Registration[sensor.Sensor, Config]{
             Constructor: newMySensorModuleMySensor,
         },
     )
@@ -546,7 +549,7 @@ type mySensorModuleMySensor struct {
     name resource.Name
 
     logger logging.Logger
-    cfg    *Config
+    cfg    Config
 
     cancelCtx  context.Context
     cancelFunc func()
@@ -554,14 +557,14 @@ type mySensorModuleMySensor struct {
 }
 
 func newMySensorModuleMySensor(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (sensor.Sensor, error) {
-    conf, err := resource.NativeConfig[*Config](rawConf)
+    conf, err := resource.NativeConfig[Config](rawConf)
     if err != nil {
         return nil, err
     }
     return NewMySensor(ctx, deps, rawConf.ResourceName(), conf, logger)
 }
 
-func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
+func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf Config, logger logging.Logger) (sensor.Sensor, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     timeout := time.Duration(conf.PollInterval) * time.Second
@@ -837,7 +840,7 @@ var TempConverter = resource.NewModel("my-org", "my-sensor-module", "temp-conver
 
 func init() {
     resource.RegisterComponent(sensor.API, TempConverter,
-        resource.Registration[sensor.Sensor, *ConverterConfig]{
+        resource.Registration[sensor.Sensor, ConverterConfig]{
             Constructor: newMySensorModuleTempConverter,
         },
     )
@@ -847,7 +850,7 @@ type ConverterConfig struct {
     SourceSensor string `json:"source_sensor"`
 }
 
-func (cfg *ConverterConfig) Validate(path string) ([]string, []string, error) {
+func (cfg ConverterConfig) Validate(path string) ([]string, []string, error) {
     if cfg.SourceSensor == "" {
         return nil, nil, fmt.Errorf("source_sensor is required")
     }
@@ -861,7 +864,7 @@ type mySensorModuleTempConverter struct {
     name resource.Name
 
     logger logging.Logger
-    cfg    *ConverterConfig
+    cfg    ConverterConfig
 
     cancelCtx  context.Context
     cancelFunc func()
@@ -874,7 +877,7 @@ func newMySensorModuleTempConverter(
     rawConf resource.Config,
     logger logging.Logger,
 ) (sensor.Sensor, error) {
-    conf, err := resource.NativeConfig[*ConverterConfig](rawConf)
+    conf, err := resource.NativeConfig[ConverterConfig](rawConf)
     if err != nil {
         return nil, err
     }
@@ -885,7 +888,7 @@ func NewTempConverter(
     ctx context.Context,
     deps resource.Dependencies,
     name resource.Name,
-    conf *ConverterConfig,
+    conf ConverterConfig,
     logger logging.Logger,
 ) (sensor.Sensor, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())

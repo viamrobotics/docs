@@ -205,14 +205,14 @@ Embed these in your resource struct to get default implementations:
 
 ### Useful functions
 
-| Function                          | Description                                                                          |
-| --------------------------------- | ------------------------------------------------------------------------------------ |
-| `resource.NativeConfig[*T](conf)` | Convert config attributes to a typed struct.                                         |
-| `<api>.FromProvider(deps, name)`  | Type-safe dependency lookup (for example, `sensor.FromProvider(deps, "my-sensor")`). |
-| `conf.ResourceName().AsNamed()`   | Create a `Named` implementation from config.                                         |
-| `module.ModularMain(models...)`   | Convenience entry point for simple modules.                                          |
-| `module.NewModuleFromArgs(ctx)`   | Create a module from CLI args (for custom entry points).                             |
-| `module.NewLoggerFromArgs(name)`  | Create a logger that routes to `viam-server`.                                        |
+| Function                         | Description                                                                                                      |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `resource.NativeConfig[T](conf)` | Convert config attributes to a typed struct. `T` must be the config type in the model's `resource.Registration`. |
+| `<api>.FromProvider(deps, name)` | Type-safe dependency lookup (for example, `sensor.FromProvider(deps, "my-sensor")`).                             |
+| `conf.ResourceName().AsNamed()`  | Create a `Named` implementation from config.                                                                     |
+| `module.ModularMain(models...)`  | Convenience entry point for simple modules.                                                                      |
+| `module.NewModuleFromArgs(ctx)`  | Create a module from CLI args (for custom entry points).                                                         |
+| `module.NewLoggerFromArgs(name)` | Create a logger that routes to `viam-server`.                                                                    |
 
 ## Resource interfaces (Python)
 
@@ -481,6 +481,7 @@ The full schema is available at `https://dl.viam.dev/module.schema.json`.
 | `build.path`                 | string | No       | Path to built artifact. Default: `module.tar.gz`.                                                                                                    |
 | `build.arch`                 | array  | No       | Target platforms. Default: `["linux/amd64", "linux/arm64"]`.                                                                                         |
 | `build.darwin_deps`          | array  | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                                                        |
+| `build.distro`               | string | No       | Linux distribution for cloud builds (for example, `bullseye`). Default: `focal` (Ubuntu 20.04).                                                      |
 | `applications`               | array  | No       | Viam applications provided by the module. See [Applications](#applications).                                                                         |
 
 ### Applications

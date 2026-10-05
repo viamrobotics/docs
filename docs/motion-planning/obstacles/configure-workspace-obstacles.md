@@ -186,7 +186,9 @@ The component's frame positions the whole group.
 
 ## Configure a single primitive
 
-For a single primitive shape when you do not want to add the `erh:vmodutils` module, use a `generic`/`fake` component:
+For a single primitive shape when you do not want to add the `erh:vmodutils` module, use a `generic`/`fake` component.
+The **3D SCENE** tab can create one for you: see [Add an obstacle](/visualization/3d-scene/editing-frames-visually/#add-an-obstacle).
+To add it from the **CONFIGURE** tab instead:
 
 1. Click the **+** icon and select **Blocks**.
 2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.

@@ -37,6 +37,17 @@ Build mode pauses live updates so the poses you edit hold still, and a **Live up
 The component appears in the scene at the world frame origin with default values (zero translation, identity orientation, no geometry).
 You can then reposition it using the Details panel.
 
+## Add an obstacle
+
+To add a box that motion planning avoids without leaving the tab:
+
+1. In the **World** panel header, click **Add object** (**+**) and select **Obstacle**.
+2. In the **New obstacle** dialog, keep the suggested name (`obstacle-1`, `obstacle-2`, and so on) or enter your own, and click **Create**.
+
+The scene switches to build mode and adds a `generic` component with the `fake` model, a frame at the world origin, and a 100 mm box geometry, and selects it.
+Resize and position it using the Details panel, then [save your changes](#save-your-changes).
+For obstacle patterns beyond a single box, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
+
 ## Edit a frame's position and orientation
 
 1. Select the component in the **World** panel on the upper-left, or by clicking it in the 3D viewport.
