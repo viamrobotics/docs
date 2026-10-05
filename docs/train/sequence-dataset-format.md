@@ -93,8 +93,8 @@ A custom training job on a sequence dataset passes your script the path to each 
 | `--sequences_file`         | Path to `sequences.parquet`.                    |
 | `--model_output_directory` | Where to write the trained model. Viam sets it. |
 
-A job on a sequence dataset doesn't get `--dataset_file`, which binary datasets use.
-A job on a binary dataset gets only `--dataset_file`.
+A job on a sequence dataset doesn't get `--dataset_file`.
+A job on a binary dataset gets `--dataset_file` and none of the three Parquet file arguments.
 Your own arguments can't reuse `--dataset_file`, `--model_output_directory`, or the three sequence file names.
 
 See [Custom training scripts](/train/custom-training-scripts/).

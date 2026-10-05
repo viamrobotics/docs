@@ -43,7 +43,7 @@ They differ in how you add data and in what you can do with the dataset afterwar
    Use a name that reflects the task, such as `inspection-parts-v1` or
    `package-detection`. Dataset names must be unique within your organization.
 4. Set **Data type**:
-   - **Binary Data** for an image dataset. This is the default.
+   - **Binary Data** for a binary dataset. This is the default.
    - **Sequence Data** for a sequence dataset.
 5. Click **Create dataset** again.
 
@@ -52,7 +52,7 @@ Your empty dataset now appears in the list.
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-This creates an image dataset. Image datasets don't support sequences.
+This creates a binary dataset. Binary datasets don't support sequences.
 The CLI can't create sequence datasets.
 
 ```sh {class="command-line" data-prompt="$"}
@@ -65,7 +65,7 @@ SDK operations.
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-This creates an image dataset and a sequence dataset. Python supports both types.
+This creates a binary dataset and a sequence dataset. Python supports both types.
 
 ```python
 import asyncio
@@ -88,7 +88,7 @@ async def main():
     viam_client = await connect()
     data_client = viam_client.data_client
 
-    # Image dataset (the default type). Holds images only, no sequences.
+    # Binary dataset (the default type). Holds images only, no sequences.
     dataset_id = await data_client.create_dataset(
         name="my-inspection-dataset",
         organization_id=ORG_ID,
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-This creates an image dataset. Image datasets don't support sequences.
+This creates a binary dataset. Binary datasets don't support sequences.
 The Go SDK can't create sequence datasets.
 
 ```go
@@ -144,7 +144,7 @@ func main() {
 
     dataClient := viamClient.DataClient()
 
-    // Image dataset (the default type). Holds images only, no sequences.
+    // Binary dataset (the default type). Holds images only, no sequences.
     datasetID, err := dataClient.CreateDataset(
         ctx, "my-inspection-dataset", orgID)
     if err != nil {
@@ -175,7 +175,7 @@ the top navigation bar and then clicking **Settings**.
 ## Add data
 
 How you add data depends on the dataset type.
-An image dataset holds images only, and a sequence dataset holds sequences only.
+A binary dataset holds images only, and a sequence dataset holds sequences only.
 
 ### Add images
 
@@ -309,9 +309,9 @@ A sequence dataset needs no annotation or quality check before export.
 Sequence tags are set when you create or update the sequence.
 Skip to [Export a dataset](#export-a-dataset).
 
-## Prepare an image dataset for training
+## Prepare a binary dataset for training
 
-Before you train on an image dataset, label its images and check that it meets the platform requirements.
+Before you train on a binary dataset, label its images and check that it meets the platform requirements.
 
 ### Annotate your images
 
@@ -416,7 +416,7 @@ for _, ds := range datasets {
 Export a dataset to inspect it locally or to train outside Viam.
 For both types, `viam dataset export` writes the full dataset to a local directory.
 
-### Export an image dataset
+### Export a binary dataset
 
 To export the images together with their annotations, use the
 [Viam CLI](/cli/):
@@ -491,7 +491,7 @@ The Go SDK doesn't.
 
 {{< /expand >}}
 
-{{< expand "Images not appearing in an image dataset" >}}
+{{< expand "Images not appearing in a binary dataset" >}}
 
 - **Sync delay.** Images must sync from the machine to the cloud before they
   are available to add to a dataset. Wait a minute and check the **DATA** tab
@@ -505,7 +505,7 @@ The Go SDK doesn't.
 
 {{< /expand >}}
 
-{{< expand "Label imbalance warnings in an image dataset" >}}
+{{< expand "Label imbalance warnings in a binary dataset" >}}
 
 - **Collect more data for underrepresented labels.** The most effective fix is
   to capture more images of the minority class under varied conditions.
@@ -518,7 +518,7 @@ The Go SDK doesn't.
 
 ## What's next
 
-**Image datasets:**
+**Binary datasets:**
 
 - [Annotate images](/train/annotate-images/) -- label your images with tags
   or bounding boxes for training.

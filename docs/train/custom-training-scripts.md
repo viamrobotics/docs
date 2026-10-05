@@ -16,7 +16,8 @@ updated: "2025-10-13"
 ---
 
 Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
-Custom training scripts are available for other use cases like a different framework, custom preprocessing, non-image data, or a training pipeline you want to share with your organization.
+Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), or a training pipeline you want to share with your organization.
+Managed training doesn't accept sequence datasets, so training on one always requires a custom training script.
 
 Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
 If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).
@@ -25,8 +26,9 @@ If a training script there fits your needs, skip ahead to [Submit a training job
 
 When you submit a custom training job, Viam:
 
-1. Pulls your dataset and writes a JSONLines metadata file plus the
-   underlying image files into the container.
+1. Pulls your dataset and writes it into the container:
+   - For a binary dataset, a JSONLines metadata file plus the image files.
+   - For a sequence dataset, three Parquet files plus the image files.
 2. Runs your script inside a Viam-hosted Docker container with GPU access
    and a framework version you select.
 3. Packages the artifacts your script writes to the output directory and
@@ -71,16 +73,21 @@ setup(
 
 ### training.py
 
-Your script receives two required command-line arguments from the platform:
+Your script always receives `--model_output_directory`.
+The arguments that point to the dataset depend on the dataset type.
+A job on a binary dataset passes these arguments:
 
 | Argument                   | Description                                                                                                                     |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `--dataset_file`           | Path to a [JSONLines](https://jsonlines.org/) file containing dataset metadata: file paths and annotations for each data point. |
 | `--model_output_directory` | Directory where your script must save its model artifacts.                                                                      |
 
+A job on a sequence dataset passes three Parquet file paths instead of `--dataset_file`.
+See [Sequence dataset inputs](#sequence-dataset-inputs).
+
 You can add custom arguments (like `--num_epochs` or `--labels`) and pass them when you submit the training job.
 
-Here is the overall shape of a training script:
+Here is the overall shape of a training script for a binary dataset:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import argparse
@@ -130,15 +137,15 @@ if __name__ == "__main__":
 
 The critical parts:
 
-- **Parse arguments**: Accept `--dataset_file` and `--model_output_directory` at minimum.
-- **Read the dataset**: Each line in the JSONLines file is a JSON object. For image datasets, each object has an `image_path` and either `classification_annotations`, `bounding_box_annotations`, or both. Non-image datasets will have a [different structure](/train/sequence-dataset-format/) depending on how the data was captured.
+- **Parse arguments**: Accept `--model_output_directory` plus the dataset arguments for your dataset type: `--dataset_file` for a binary dataset, or the three [sequence file arguments](#sequence-dataset-inputs) for a sequence dataset.
+- **Read the dataset**: For a binary dataset, each line in the JSONLines file is a JSON object with an `image_path` and either `classification_annotations`, `bounding_box_annotations`, or both. For a sequence dataset, read the three Parquet files instead.
 - **Save to the output directory**: When the job completes, Viam packages everything in this directory and publishes it to the registry as a new model version. Files in a `tmp/` subdirectory are excluded: use it for intermediate work.
 
 If the script exits with a non-zero status or produces no files in the output directory, the training job is marked as failed.
 
-### Dataset file format
+### Binary dataset file format
 
-Each line of the dataset file is a JSON object like this:
+Each line of the `--dataset_file` file is a JSON object like this:
 
 ```json
 {
@@ -165,12 +172,11 @@ See the [example training script](https://github.com/viam-modules/classification
 
 A job on a [sequence dataset](/train/create-a-dataset/) doesn't get a `--dataset_file`.
 Instead, your script receives three Parquet files: `--binary_data_file`, `--tabular_data_file`, and `--sequences_file`.
+It still receives `--model_output_directory`.
 The images are files on disk, and the Parquet files hold their metadata and your readings.
 Join the three files on `sequence_id`.
 See [Sequence dataset format](/train/sequence-dataset-format/) for the columns.
 To record and export a sequence dataset to test your script on, follow the [sequences tutorial](/data/sequences-tutorial/).
-
-Only custom training jobs accept sequence datasets.
 
 ### Accessing Viam APIs
 
@@ -226,10 +232,11 @@ Before submitting a cloud training job, test your script locally against an expo
 viam dataset export --destination=<destination> --dataset-id=<dataset-id>
 ```
 
-This downloads the binary data files and a `dataset.jsonl` metadata file.
-To download only the JSONL file without binary data, add `--only-jsonl`.
+For a binary dataset, this downloads the image files and a `dataset.jsonl` metadata file.
+To download only the JSONL file without the images, add `--only-jsonl`.
 
-For a sequence dataset, the export is a zip of Parquet files plus the images.
+For a sequence dataset, this downloads a zip of three Parquet files plus the images.
+To download only the zip without the images, add `--only-parquet`.
 See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 
 You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
@@ -238,6 +245,9 @@ You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data
 
 The `test-local` command runs your training script inside the same Docker container that cloud training uses.
 This catches problems that plain Python testing misses: missing system dependencies, Python version differences, and package conflicts.
+
+`test-local` passes your script only `--dataset_file`, so it works only with scripts for binary datasets.
+To test a script for a sequence dataset, [run it directly](#run-without-docker).
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script test-local \
@@ -249,9 +259,6 @@ viam training-script test-local \
 
 The `--dataset-file` path is relative to `--dataset-root`.
 The command mounts your script, dataset, and output directories into the container.
-
-`test-local` gives your script only `--dataset_file`, so it can't run a script written for a sequence dataset.
-To test one, run the script directly against the files from a [sequence dataset export](/train/sequence-dataset-format/).
 
 To match a specific cloud container version, use `--container-version`.
 Run `viam train containers list` to list available container versions with their framework versions and end-of-life dates.
@@ -272,12 +279,29 @@ The training containers are built for linux/x86_64 (amd64).
 On ARM systems like Apple Silicon Macs, Docker uses Rosetta 2 emulation automatically, which may be slower but ensures your script runs in the same environment as cloud training.
 {{% /alert %}}
 
-If you prefer a quick check without Docker, you can run your script directly:
+### Run without Docker
+
+For a quick check without Docker, run your script directly.
+For a binary dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m model.training --dataset_file=<path/to/dataset.jsonl> \
     --model_output_directory=<output-dir>
 ```
+
+For a sequence dataset, unzip the export first, then pass the three Parquet files:
+
+```sh {class="command-line" data-prompt="$"}
+python3 -m model.training \
+    --binary_data_file=<unzipped-dir>/binary_data.parquet \
+    --tabular_data_file=<unzipped-dir>/tabular_data.parquet \
+    --sequences_file=<unzipped-dir>/sequences.parquet \
+    --model_output_directory=<output-dir>
+```
+
+In an export, the `path` column in `binary_data.parquet` is relative to the export directory.
+In a cloud training job, `path` is an absolute path.
+Resolve relative paths against the export directory so the same script works in both places.
 
 ### Package and upload
 
