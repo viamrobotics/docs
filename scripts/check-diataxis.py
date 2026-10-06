@@ -30,7 +30,11 @@ DOCS_DIR = pathlib.Path("docs")
 DIATAXIS_FILE = pathlib.Path("data/diataxis.yaml")
 GLOSSARY_DIR = "docs/reference/glossary/"
 STUB_KEYS = ("manualLink", "manualLinkRelref", "canonical", "empty_node")
-EXCLUDE = {"docs/tutorials/template.md", "docs/tutorials/pick-and-place/_phase-template.md"}
+EXCLUDE = {
+    "docs/tutorials/template.md",
+    "docs/tutorials/pick-and-place/_phase-template.md",
+    "docs/tutorials/so-arm101-palletizing/_phase-template.md",
+}
 
 
 def load_accepted_modes():

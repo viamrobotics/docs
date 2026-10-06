@@ -13,7 +13,11 @@ import yaml
 
 DOCS_DIR = pathlib.Path("docs")
 CAPABILITIES_FILE = pathlib.Path("data/capabilities.yaml")
-EXCLUDE = {"docs/tutorials/template.md", "docs/tutorials/pick-and-place/_phase-template.md"}
+EXCLUDE = {
+    "docs/tutorials/template.md",
+    "docs/tutorials/pick-and-place/_phase-template.md",
+    "docs/tutorials/so-arm101-palletizing/_phase-template.md",
+}
 
 
 def load_accepted_capabilities():
