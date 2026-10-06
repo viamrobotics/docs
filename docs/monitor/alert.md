@@ -187,6 +187,7 @@ In the **Data capture** section of your sensor's configuration, toggle the switc
 ## Alert on machine logs
 
 Configure a trigger that fires when machine logs of a specified level appear.
+To alert only on specific log lines, also set a message regular expression: the trigger then fires only for logs at the selected levels whose message matches it.
 Viam checks for matching logs once per hour.
 
 {{< tabs >}}
@@ -197,6 +198,9 @@ Viam checks for matching logs once per hour.
 1. Enter a name and click **Create**.
 1. Select **Conditional logs ingestion** as the trigger **Type**.
 1. Select the log levels to alert on: **Error**, **Warn**, or **Info**.
+1. Optionally, enter a regular expression in **Message Regex (optional)**.
+   The trigger then only alerts on logs whose message matches it.
+   The expression matches anywhere in the message, so `trajectory generation failed` matches any log line that contains that text.
 1. Add notification methods (email, webhook, or push notification) and set the alert frequency.
 1. Click **Save**.
 
@@ -209,7 +213,8 @@ Viam checks for matching logs once per hour.
     "name": "error-log-alert",
     "event": {
       "type": "conditional_logs_ingested",
-      "log_levels": ["error", "warn"]
+      "log_levels": ["error", "warn"],
+      "log_message_regex": "trajectory generation .* failed"
     },
     "notifications": [
       {
@@ -220,6 +225,11 @@ Viam checks for matching logs once per hour.
   }
 ]
 ```
+
+`log_message_regex` is optional.
+When set, the trigger only alerts on logs at the listed levels whose message matches the expression anywhere in the text.
+The expression uses [Go regular expression syntax](https://pkg.go.dev/regexp/syntax).
+If it does not compile, the trigger ignores it and alerts on every log at the listed levels.
 
 The notification interval for log triggers is always one hour.
 
