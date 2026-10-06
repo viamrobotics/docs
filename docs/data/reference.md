@@ -215,11 +215,9 @@ The sensor named in `capture_control_sensor` returns a map from its `Readings` m
 
 **Overrides list** (the key you choose):
 
-<!-- TODO(eng): confirm bare resource_name values resolve for resources on a remote part. The lookup is keyed by ShortName(), which keeps the remote: prefix. -->
-
 | Name                   | Type             | Required? | Description                                                                                                                                                           |
 | ---------------------- | ---------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resource_name`        | string           | Required  | Short name of the resource, without a remote part prefix.                                                                                                             |
+| `resource_name`        | string           | Required  | Name of the resource. For a resource on a remote, use its name without the remote prefix, for example `cam`, not `my-remote:cam`.                                     |
 | `method`               | string           | Required  | Capture method, for example `GetImages`.                                                                                                                              |
 | `capture_frequency_hz` | float            | Optional  | Overrides the configured frequency. `0` disables capture. Required to capture a resource that has no data capture configured. If omitted, the frequency is unchanged. |
 | `tags`                 | array of strings | Optional  | Replaces the data management service's `tags` for this resource and method.                                                                                           |

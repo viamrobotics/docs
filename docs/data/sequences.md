@@ -203,7 +203,7 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 ## Limitations {#limits}
 
 - **Images are the only binary data.** See [How a sequence works](#how-a-sequence-works).
-- **A sequence belongs to one machine part.** It can include resources on that part's remotes. To combine data from several parts, record a sequence on each part and add them all to one dataset.
+- **A sequence belongs to one machine part.** It can include resources on that part's remotes. Name them without the remote prefix, for example `cam`, not `my-remote:cam`. To combine data from several parts, record a sequence on each part and add them all to one dataset.
 - **A crash loses the open sequence.** If `viam-server` stops uncleanly while a sequence is open, the data manager can't tell when the sequence ended. It moves the sequence to `failed/sequences/` in the capture directory and doesn't upload it. A normal shutdown closes open sequences so they upload on the next sync.
 - **Editing and deleting need an SDK.** The Viam app and the CLI can't edit or delete a sequence.
 - **Managed training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).
