@@ -4,7 +4,7 @@ title: "Visualizing with the 3D scene"
 weight: 5
 layout: "docs"
 type: "docs"
-description: "The 3D scene's Monitor, Build, and Move modes, where to start for common tasks, and where each element in the scene comes from."
+description: "The 3D scene's Monitor, Build, Move, and Replay modes, where to start for common tasks, and where each element in the scene comes from."
 capabilities: ["scene-3d"]
 diataxis: explanation
 aliases:
@@ -27,13 +27,14 @@ what it draws.
 
 ## Modes
 
-The scene has three modes. The mode determines what you can do and which tools appear.
+The scene has four modes. The mode determines what you can do and which tools appear.
 
-| Mode                                             | What it's for                                                                         |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------- |
-| [Monitor](/visualization/3d-scene/monitor-mode/) | Watch the machine's live state, read any frame's pose, and replay saved motion plans. |
-| [Build](/visualization/3d-scene/build-mode/)     | Edit frames and geometry, then save them to the machine's configuration.              |
-| [Move](/visualization/3d-scene/move-mode/)       | Plan a move to a target pose, preview it, and run it on the machine.                  |
+| Mode                                             | What it's for                                                                 |
+| ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| [Monitor](/visualization/3d-scene/monitor-mode/) | Watch the machine's live state and read any frame's pose.                     |
+| [Build](/visualization/3d-scene/build-mode/)     | Edit frames and geometry, then save them to the machine's configuration.      |
+| [Move](/visualization/3d-scene/move-mode/)       | Plan a move to a target pose, preview it, and run it on the machine.          |
+| [Replay](/visualization/3d-scene/replay-mode/)   | Step through saved motion plans, with the obstacles each was planned against. |
 
 In every mode, the **World** panel lists every entity in the scene, and selecting one shows
 its details. [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/) let you drive
@@ -50,7 +51,7 @@ settings, see [3D scene controls and settings](/visualization/3d-scene/controls-
 | Add a table or wall the planner should avoid                            | [Build mode: add frames and obstacles](/visualization/3d-scene/build-mode/#add-frames-and-obstacles) |
 | Move the arm to a pose without writing code, and preview the move first | [Move mode](/visualization/3d-scene/move-mode/)                                                      |
 | Drive a component or watch its readings without leaving the scene       | [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/)                                        |
-| See what the motion planner saw when a plan failed or surprised me      | [Replay a saved plan](/visualization/3d-scene/monitor-mode/#replay-a-saved-plan)                     |
+| See what the motion planner saw when a plan failed or surprised me      | [Replay mode](/visualization/3d-scene/replay-mode/)                                                  |
 | Understand why the planner ignores something I can see                  | [Visuals and collisions](/visualization/visuals-and-collisions/)                                     |
 | Check that a depth camera's point cloud lines up with the world         | [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/)              |
 | Tune a 3D segmenter against the live view                               | [Vision services in the 3D scene](/visualization/perception/vision-services/)                        |

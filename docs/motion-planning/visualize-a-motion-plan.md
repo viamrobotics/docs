@@ -23,10 +23,10 @@ use the rendered path to debug a plan that failed or moved unexpectedly.
 ## Replay a saved plan in the 3D scene
 
 If the plan already ran, you don't need to write any code to see it. The motion service can
-save plans as files, and the **3D SCENE** tab's Motion Plan Replayer steps through them,
+save plans as files, and the **3D SCENE** tab's Replay mode steps through them,
 with the obstacles each plan was planned against. To replay plans, set the motion service up
 to save them and sync them to the cloud, then
-[replay them in Monitor mode](/visualization/3d-scene/monitor-mode/#replay-a-saved-plan).
+[open them in Replay mode](/visualization/3d-scene/replay-mode/).
 
 ### Save plans for replay
 

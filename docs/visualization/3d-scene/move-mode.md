@@ -59,7 +59,7 @@ Some flagged collisions are intended. A gripper that must touch an object to pic
 
 ## Obstacles and constraints for one move
 
-Obstacles in **World state** change the plan without appearing in the scene. A move that takes an unexpected route around empty space usually has a **World state** obstacle in the way. To see a request's obstacles after the fact, save plans and replay them in [Monitor mode](/visualization/3d-scene/monitor-mode/): a replayed plan draws the obstacles it was planned against.
+Obstacles in **World state** change the plan without appearing in the scene. A move that takes an unexpected route around empty space usually has a **World state** obstacle in the way. To see a request's obstacles after the fact, save plans and replay them in [Replay mode](/visualization/3d-scene/replay-mode/): a replayed plan draws the obstacles it was planned against.
 
 A constraint limits the path, not just the target, so it can turn a plan the planner would otherwise find into a failure. For example, a linear constraint whose straight line crosses an obstacle fails, where the same move without the constraint would route around the obstacle.
 
@@ -80,6 +80,6 @@ Plans from Move mode are saved only if the motion service selected in the move c
 
 ## What's next
 
-- [Monitor mode](/visualization/3d-scene/monitor-mode/): replay a saved plan and see the obstacles it was planned against.
+- [Replay mode](/visualization/3d-scene/replay-mode/): step through a saved plan and see the obstacles it was planned against.
 - [How motion planning works](/motion-planning/how-planning-works/): what the planner does with your request.
 - [Debug a motion plan](/motion-planning/debug-motion-plan/): check frames, obstacles, and reach when a plan fails.
