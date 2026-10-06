@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Record three sequences of camera images and sensor readings, collect them into a sequence dataset, and export the dataset for training."
 capabilities: ["data-capture", "sequences", "datasets"]
-diataxis: how-to
+diataxis: tutorial
 date: "2026-09-29"
 ---
 
@@ -56,12 +56,10 @@ If you use those tabs, expand **Set up for the CLI and Python path** and finish 
 
 4. Make a working directory and install the Python SDK in it:
 
-   <!-- TODO(python-sdk): pin the minimum viam-sdk version that includes list_sequences, for example "viam-sdk>=X.Y.Z", once the release ships. -->
-
    ```sh {class="command-line" data-prompt="$"}
    mkdir sequences-tutorial && cd sequences-tutorial
    python3 -m venv .venv && source .venv/bin/activate
-   pip install viam-sdk pandas pyarrow
+   pip install "viam-sdk>=0.83.1" pandas pyarrow
    ```
 
 {{% /expand %}}
