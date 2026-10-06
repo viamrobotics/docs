@@ -124,7 +124,7 @@ For example:
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Return the built-in motion service as a required dependency.
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
   deps := []string{motion.Named("builtin").String()}
   return deps, nil, nil
 }

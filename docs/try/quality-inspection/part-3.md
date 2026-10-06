@@ -324,7 +324,7 @@ type Config struct {
     VisionService string `json:"vision"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if cfg.Camera == "" {
         return nil, nil, fmt.Errorf("camera is required")
     }
@@ -349,7 +349,7 @@ type inspectionModuleInspector struct {
 
     name   resource.Name
     logger logging.Logger
-    cfg    *Config
+    cfg    Config
 
     cancelCtx  context.Context
     cancelFunc func()
@@ -373,7 +373,7 @@ The constructor extracts the vision service from the dependencies map and stores
 Update `NewInspector` in `module.go`:
 
 ```go
-func NewInspector(ctx context.Context, deps resource.Dependencies, name resource.Name, cfg *Config, logger logging.Logger) (resource.Resource, error) {
+func NewInspector(ctx context.Context, deps resource.Dependencies, name resource.Name, cfg Config, logger logging.Logger) (resource.Resource, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     detector, err := vision.FromProvider(deps, cfg.VisionService)
@@ -470,7 +470,7 @@ func realMain() error {
     }
     defer machine.Close(ctx)
 
-    cfg := &inspectionmodule.Config{
+    cfg := inspectionmodule.Config{
         Camera:        "inspection-cam",
         VisionService: "vision-service",
     }
