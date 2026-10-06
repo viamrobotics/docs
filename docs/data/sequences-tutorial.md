@@ -315,7 +315,7 @@ SEQUENCE_IDS=$(python list_sequences.py)
 echo $SEQUENCE_IDS
 ```
 
-You should see three sequences, one for each tag, each 10 to 15 seconds long, with `test-camera · GetImages` and `test-sensor · Readings` as resources.
+You should see three sequences, one for each tag, each about 15 seconds long, with `test-camera · GetImages` and `test-sensor · Readings` as resources.
 The script matches on tags, so if you run the tutorial again, it also lists the sequences from earlier runs.
 
 {{% /tab %}}
@@ -409,6 +409,9 @@ See [Create a dataset](/train/create-a-dataset/).
 
 ## 7. Export the dataset
 
+On both tabs, the export and inspection steps run in a terminal.
+Run every command in this step from the same directory, because the inspection script reads the export from `./demos`.
+
 Copy the dataset's ID from the dataset page, or use `$DATASET_ID` from the **CLI and Python** tab, then run:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -433,7 +436,7 @@ sequences = pd.read_parquet("demos/parquet/sequences.parquet")
 binary = pd.read_parquet("demos/parquet/binary_data.parquet")
 tabular = pd.read_parquet("demos/parquet/tabular_data.parquet")
 
-print(sequences[["sequence_id", "tags", "start_at", "end_at"]])
+print(sequences[["sequence_id", "tags", "start_at", "end_at"]].to_string())
 print("images per sequence:")
 print(binary.groupby("sequence_id").size())
 print("readings per sequence:")
@@ -446,7 +449,7 @@ Run it:
 python inspect_export.py demos/<dataset-id>.zip
 ```
 
-You should see three sequences, each with 20 to 30 images and about as many readings, two per second of recording.
+You should see three sequences, each with roughly 30 images and about as many readings: two per second of recording, for about 15 seconds.
 The rows in the two data files link to a sequence through `sequence_id`.
 See [Sequence dataset format](/train/sequence-dataset-format/) for every column.
 

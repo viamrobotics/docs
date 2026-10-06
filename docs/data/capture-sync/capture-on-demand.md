@@ -26,8 +26,8 @@ To control when captured data uploads, rather than what is captured, see [Condit
 
 ## Before you start
 
-- A machine running `viam-server` v0.130.0 or later, with a data management service, such as `data_manager/builtin`, configured.
-  Capture control sensors need v0.116.0, sequences need v0.127.0, and capturing components that have no data capture configured needs v0.130.0.
+- A machine running the latest version of `viam-server`, with a data management service, such as `data_manager/builtin`, configured.
+  The minimum versions are v0.116.0 for capture control sensors, v0.127.0 for sequences, and v0.130.0 for capturing components that have no data capture configured.
 - The components you want to record, such as a camera and an arm, configured on the machine.
 
 ## How capture on demand works
@@ -38,7 +38,7 @@ It polls the sensor's `Readings` method 10 times per second and applies what the
 The `capture-control` module is a ready-made capture control sensor.
 You list the components it controls in its configuration, then send it `DoCommand` calls to start and stop recording.
 
-While the sensor lists a component, the frequency and tags it sets temporarily override that component's capture settings.
+While the sensor lists a component, the frequency it sets overrides that component's capture frequency, and the tags it sets replace the data management service's `tags` for that component. The two lists of tags aren't merged.
 Your component configuration is left unchanged.
 When the sensor stops listing a component, the component returns to its own capture settings.
 If it has none, it stops capturing.

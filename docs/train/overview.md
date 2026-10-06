@@ -76,8 +76,8 @@ larger models that require more compute. Use **PyTorch** or **ONNX** when you
 are importing an existing model or need framework-specific features not
 available in TensorFlow.
 
-Datasets come in two types. A dataset of images is the default, and managed
-training works only on these. A [sequence dataset](/train/create-a-dataset/)
+Datasets come in two types. A binary dataset, which holds images, is the
+default, and managed training works only on these. A [sequence dataset](/train/create-a-dataset/)
 holds time windows of images and readings, for tasks such as sequence
 classification. You train on a sequence dataset with a
 [custom training script](/train/custom-training-scripts/), because managed

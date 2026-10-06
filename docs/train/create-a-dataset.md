@@ -4,7 +4,7 @@ title: "Create a dataset"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "Create a dataset of images or sequences for training an ML model."
+description: "Create a binary or sequence dataset for training an ML model."
 capabilities: ["datasets", "sequences"]
 diataxis: how-to
 date: "2025-01-30"
@@ -474,7 +474,8 @@ The Go SDK doesn't.
   You can't add images to it, and you can't [merge](/cli/datasets-and-training/#merge-datasets) sequence datasets.
 - Managed [training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
-- Sequence exports run queries against your organization's data, and tabular queries count toward your data query usage.
+- Sequence exports query your organization's tabular data, and those queries count toward your organization's usage.
+  See [Billing](/organization/billing/).
 
 ## Troubleshooting
 

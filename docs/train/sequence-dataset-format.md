@@ -53,14 +53,14 @@ One row per image in each sequence.
 
 One row per reading in each sequence.
 
-| Column           | Type                     | Description                                               |
-| ---------------- | ------------------------ | --------------------------------------------------------- |
-| `sequence_id`    | string                   | ID of the sequence the reading belongs to.                |
-| `timestamp`      | timestamp (microseconds) | When the machine captured the reading.                    |
-| `part_id`        | string                   | ID of the machine part that captured the reading.         |
-| `component_name` | string                   | Name of the resource that produced the reading.           |
-| `method_name`    | string                   | Method that produced the reading, for example `Readings`. |
-| `payload`        | string                   | The reading, as a JSON string.                            |
+| Column           | Type                     | Description                                                                                                        |
+| ---------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `sequence_id`    | string                   | ID of the sequence the reading belongs to.                                                                         |
+| `timestamp`      | timestamp (microseconds) | When the machine captured the reading.                                                                             |
+| `part_id`        | string                   | ID of the machine part that captured the reading.                                                                  |
+| `component_name` | string                   | Name of the resource that produced the reading.                                                                    |
+| `method_name`    | string                   | Method that produced the reading, for example `Readings`.                                                          |
+| `payload`        | string                   | The method's response, as a JSON string. For a sensor's `Readings`, for example: `{"readings":{"a":1.0,"b":2.0}}`. |
 
 ## `sequences.parquet`
 
@@ -81,6 +81,7 @@ Join `binary_data.parquet` and `tabular_data.parquet` to `sequences.parquet` on 
 
 The export doesn't resample or align the data.
 Each resource keeps its own sample rate, so a script that needs images and readings at the same moments has to match them itself, for example by nearest timestamp.
+All timestamps are in UTC, and libraries such as pandas load them as timezone-aware UTC values.
 
 ## Training script arguments
 

@@ -33,7 +33,7 @@ This has four consequences:
 
 A sequence can hold two kinds of data:
 
-- **Images**, from the camera methods `ReadImage` and `GetImages`, or the vision service method `CaptureAllFromCamera`. These are the only binary data a sequence accepts. Other binary data, such as point clouds, is rejected. A sequence returns only JPEG and PNG images.
+- **Images**, from the camera methods `ReadImage` and `GetImages`, or the vision service method `CaptureAllFromCamera`. These are the only binary data a sequence accepts. Other binary data, such as point clouds, is rejected. A sequence includes only JPEG and PNG images. Images in other formats, such as depth images, are left out of the sequence and its exports without an error, so a camera that captures only other formats produces a sequence with no images.
 - **Readings** from any other capture method, such as sensor readings or joint positions, stored as tabular data.
 
 Sequence tags label the sequence as a whole.
@@ -61,7 +61,7 @@ For example:
 
 ## Creating sequences
 
-There are currently two ways to create sequences: either live readings from a machine, or from a set of existing data.
+You can create a sequence as a machine records data, or afterward from data you already captured.
 
 ### From a running machine
 
@@ -114,7 +114,7 @@ Tags are optional.
    In the [**DATA** tab](https://app.viam.com/data/all), filter by the machine and the resource, and note the capture times of the first and last images or readings you want.
 4. Create the sequence.
    The window includes data captured exactly at the start and end times.
-   The examples give both times in UTC. If the times you noted are in another time zone, convert them or pass that time zone instead.
+   The examples give both times in UTC. If the times you noted are in another time zone, convert them to UTC first.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -179,6 +179,7 @@ sequenceID, err := dataClient.CreateSequence(
 To copy a sequence's ID, click the **Sequence actions** menu on its row and select **Copy sequence ID**.
 
 From code, `ListSequences` lists the sequences in an organization and `GetSequence` returns one by ID. The Python, TypeScript, and Go SDKs have these methods.
+`ListSequences` returns one page at a time, 50 sequences by default, with a token for the next page. To list every sequence, pass that token back until it comes back empty.
 `GetSequenceBinaryData` returns the images inside a sequence, from Python or TypeScript.
 There is no API for a sequence's readings. View them in the Viam app, or [export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 See the [data client API](/reference/apis/data-client/).
