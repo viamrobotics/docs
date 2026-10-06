@@ -3089,6 +3089,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 Create a sequence: a saved time window of one machine part's captured data, with tags. You provide the part ID, the resources to include, and the start and end times.
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the part that the sequence belongs to.
+- `resources` ([List[viam.proto.app.data.SequenceResourceFilter]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.SequenceResourceFilter)) (required): The resources (source identifiers) that the sequence includes.
+- `start_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (required): The start of the time range the sequence applies to.
+- `end_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (required): The end of the time range the sequence applies to.
+- `sequence_tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional tags to attach to the sequence.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The ID of the newly created sequence.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_sequence).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -3148,6 +3166,20 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 Get a sequence by its ID.
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the sequence.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([viam.proto.app.data.Sequence](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Sequence)): :   The requested sequence.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_sequence).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -3188,6 +3220,28 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 Update the resources, tags, start time, or end time of a sequence. Only the fields listed in the field mask change.
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the sequence to update.
+- `resources` ([List[viam.proto.app.data.SequenceResourceFilter]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.SequenceResourceFilter)) (optional): New resources for the sequence.
+- `sequence_tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): New tags for the sequence.
+- `start_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): New start of the time range.
+- `end_time` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): New end of the time range.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- (ValueError): If no updatable field is provided.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.update_sequence).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -3246,6 +3300,20 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 Delete a sequence by its ID.
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the sequence to delete.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_sequence).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -3285,6 +3353,24 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 List the sequences in an organization.
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization.
+- `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional page token for pagination.
+- `page_size` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): Optional page size for pagination.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[List[viam.proto.app.data.Sequence], [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing:
+    :   * A list of sequences in the organization.
+        * The next page token (empty string if no more pages).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_sequences).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
