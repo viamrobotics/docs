@@ -5,6 +5,8 @@ type: "docs"
 slug: "pack-from-python"
 weight: 40
 description: "Build palletizer.py method by method and drive a static bottom-layer pack from your own code."
+capabilities: ["sdks", "motion-planning", "hw-actuation", "docs"]
+diataxis: tutorial
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 4
