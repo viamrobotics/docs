@@ -58,6 +58,11 @@ Both paths open the same dialog and land you in the same editor.
 The browser opens the code editor with a working template that includes all
 necessary imports and method stubs.
 
+The editor runs in a cloud sandbox that provides code checking. Click
+**Connect** in the editor to start it; you can edit the code once it connects.
+The sandbox disconnects after 5 minutes of inactivity. Your code stays in the
+editor, and **Reconnect** starts a new sandbox.
+
 ### 2. Understand the template
 
 The editor opens a single file -- your module's main source file. The template

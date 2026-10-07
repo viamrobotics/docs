@@ -53,12 +53,18 @@ You can switch between machine parts directly from the CONTROL tab using the par
 
 ### Code sandbox
 
-The CONTROL tab includes a TypeScript code sandbox.
-Click **Sandbox** in the sidebar under **Code** to open it.
+The CONTROL tab includes a code sandbox for TypeScript, Python, and Go programs.
+Click **Sandbox** in the sidebar under **Code** to open it, and pick a language with the toggle in the editor header.
 
 The sandbox editor is pre-filled with a starter program based on the machine's configured resources.
 You can edit the code, run it, and see output in the console below the editor.
-The sandbox runs against your live machine using the page's existing connection, so you do not need to supply an API key or address.
+You do not need to supply an API key or address:
+
+- **TypeScript** programs run in your browser, against your live machine using the page's existing connection.
+- **Python** and **Go** programs run in a cloud sandbox. Click **Connect** in the editor to start the sandbox; the editor and **Run** are unavailable until it connects. The sandbox provides code checking and runs your program with a temporary API key for this machine, which Viam revokes when the run ends.
+
+A cloud sandbox disconnects after 5 minutes of inactivity, and after 3 hours in any case.
+Your code stays in the editor; click **Reconnect** to start a new sandbox.
 
 Use the sandbox to:
 
