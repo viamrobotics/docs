@@ -448,6 +448,34 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Get the pose of a component in the frame system of the machine, relative to a specified destination frame.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the component whose pose should be returned.
+- `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The name of the reference frame to express the pose in. An empty string defaults to world.
+- `supplemental_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): Transforms used to augment the machine’s frame system while computing the pose.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): :   The pose of the component and the reference frame it is expressed in.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get the pose of "my_gripper" relative to the "world" reference frame.
+gripper_pose = await machine.get_pose("my_gripper")
+print(f"gripper pose in world: {gripper_pose}")
+
+# Get the same pose relative to the origin frame of "my_arm".
+gripper_pose_in_arm = await machine.get_pose("my_gripper", destination_frame="my_arm")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_pose).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
