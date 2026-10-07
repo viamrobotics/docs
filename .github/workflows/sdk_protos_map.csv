@@ -536,6 +536,10 @@ mltraining,GetTrainingJob,,get_training_job,GetTrainingJob,,getTrainingJob
 mltraining,ListTrainingJobs,,list_training_jobs,ListTrainingJobs,,listTrainingJobs
 mltraining,CancelTrainingJob,,cancel_training_job,CancelTrainingJob,,cancelTrainingJob
 mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,DeleteCompletedTrainingJob,,deleteCompletedTrainingJob
+mltraining,ListContainers,,list_containers,,,
+mltraining,GetContainer,,get_container,,,
+mltraining,RegisterCustomTrainingContainer,,register_custom_training_container,,,
+mltraining,DeleteCustomTrainingContainer,,delete_custom_training_container,,,
 
 ## Robot
 ## Omitting some Flutter methods from w until we can determine what they do
