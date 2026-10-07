@@ -13,6 +13,8 @@ time_estimate: "NN minutes"
 prev: "/tutorials/so-arm101-palletizing/previous-slug/"
 next: "/tutorials/so-arm101-palletizing/next-slug/"
 languages: ["python"]
+capabilities: [] # REQUIRED once published: one or more tags from data/capabilities.yaml
+diataxis: tutorial # REQUIRED once published: one mode from data/diataxis.yaml
 draft: true # set to false when this phase is ready to publish
 headless: true # REMOVE this line when you copy the template to a real phase page
 ---
