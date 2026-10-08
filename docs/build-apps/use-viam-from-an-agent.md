@@ -96,10 +96,10 @@ Plan the long part of the approach as a free move to the standoff pose, then one
 
 `component_name` is the component's name as a string. Earlier versions of the SDKs took a `ResourceName` message here. If you pass one now, the call fails with `bad argument type for built-in operation`, which is the protobuf library rejecting the message where it expects a string. The same applies to `get_pose`.
 
-`get_pose` reports where a component's frame is, in any other frame:
+`get_pose` on the machine client reports where a component's frame is, in any other frame (Python SDK v0.83.0 and later):
 
 ```python
-gripper_in_world = await motion.get_pose(component_name="pick-grip", destination_frame="world")
+gripper_in_world = await machine.get_pose(component_name="pick-grip", destination_frame="world")
 ```
 
 ### Units and frames

@@ -40,7 +40,7 @@ Navigate mobile bases and manage the resulting plans. The builtin motion service
 
 ### GetPose (deprecated)
 
-Returns a component's pose. Deprecated in favor of the robot service's `GetPose`. Python callers still use this motion-service method today; see the [Frame system API reference](/motion-planning/reference/frame-system-api/).
+Returns a component's pose. Deprecated in favor of the robot service's `GetPose`, which Python SDK v0.83.0 and later expose as `RobotClient.get_pose`. See the [Frame system API reference](/motion-planning/reference/frame-system-api/).
 
 ### DoCommand
 
