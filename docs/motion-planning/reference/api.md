@@ -40,7 +40,7 @@ Navigate mobile bases and manage the resulting plans. The builtin motion service
 
 ### GetPose (deprecated)
 
-Returns a component's pose. Deprecated in favor of the robot service's `GetPose`, which Python SDK v0.83.0 and later expose as `RobotClient.get_pose`. See the [Frame system API reference](/motion-planning/reference/frame-system-api/).
+Returns a component's pose. Deprecated in favor of the machine client's [`GetPose`](/reference/apis/robot/#getpose), which takes the same parameters and returns the same result: `machine.get_pose` in Python (SDK v0.83.0 and later), `machine.GetPose` in Go, and `machine.getPose` in TypeScript. The Flutter SDK has no machine-client version, so Flutter callers still use the [motion service's `GetPose`](/reference/apis/services/motion/#getpose). See the [Frame system API reference](/motion-planning/reference/frame-system-api/).
 
 ### DoCommand
 
