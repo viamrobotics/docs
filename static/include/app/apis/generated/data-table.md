@@ -34,3 +34,12 @@
 | [`ListIndexes`](/reference/apis/data-client/#listindexes) | List all custom indexes for an organization. |
 | [`RemoveTagsFromBinaryDataByFilter`](/reference/apis/data-client/#removetagsfrombinarydatabyfilter) | Remove tags from binary data by filter. |
 | [`UpdateBoundingBox`](/reference/apis/data-client/#updateboundingbox) | Update an existing bounding box on an image. You can change the label, position, or dimensions of the bounding box. |
+| [`CreateSequence`](/reference/apis/data-client/#createsequence) | Create a sequence: a saved time window of one machine part's captured data, with tags. You provide the part ID, the resources to include, and the start and end times. |
+| [`GetSequence`](/reference/apis/data-client/#getsequence) | Get a sequence by its ID. |
+| [`UpdateSequence`](/reference/apis/data-client/#updatesequence) | Update the resources, tags, start time, or end time of a sequence. Only the fields listed in the field mask change. |
+| [`DeleteSequence`](/reference/apis/data-client/#deletesequence) | Delete a sequence by its ID. |
+| [`ListSequences`](/reference/apis/data-client/#listsequences) | List the sequences in an organization. |
+| [`SequencesByDatasetID`](/reference/apis/data-client/#sequencesbydatasetid) | List the sequences that belong to a sequence dataset. |
+| [`GetSequenceBinaryData`](/reference/apis/data-client/#getsequencebinarydata) | Get the binary data, such as images, that falls inside a sequence's time range and resources. |
+| [`AddSequencesToDataset`](/reference/apis/data-client/#addsequencestodataset) | Add sequences to a sequence dataset. |
+| [`RemoveSequencesFromDataset`](/reference/apis/data-client/#removesequencesfromdataset) | Remove sequences from a sequence dataset. |
