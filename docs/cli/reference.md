@@ -2946,7 +2946,9 @@ viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
 viam train list --org-id=<org-id> --job-status=<job-status>
-viam train containers list
+viam train containers list [--org-id=<org-id>] [--include-uris]
+viam train containers register --uri=<image-uri> --description=<description> [--org-id=<org-id>]
+viam train containers delete --id=<container-id>
 ```
 
 ### `train submit managed`
@@ -3075,11 +3077,55 @@ viam train list --org-id=123 --job-status=completed
 
 ### `train containers list`
 
-List supported Docker container images for custom training.
+List the Docker container images available for custom training.
+Without `--org-id`, the list contains the Viam-provided containers.
+With `--org-id`, it also contains the custom containers registered to that organization.
 
 ```sh {class="command-line" data-prompt="$"}
-viam train containers list
+viam train containers list --org-id=123
 ```
+
+The command prints a JSON array with one object per container: `Name`, `Description`, `ID`, `CreatedOn`, and `Visibility`, plus `EndOfLife` and `Framework` when the container has them, and `URI` with `--include-uris`.
+Dates use RFC 3339 format.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--org-id` | The organization ID whose custom containers to include. Aliases: `--org`, `--organization`. | Optional |
+| `--include-uris` | Include each container's image URI in the output. | Optional |
+
+### `train containers register`
+
+Register a Docker image as a custom training container for your organization.
+The image must be a publicly readable `linux/amd64` image on Docker Hub.
+Registering a container requires organization owner permissions.
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers register --org-id=123 --uri=my-docker-user/my-training-image:1.0 --description="My training image"
+```
+
+The command prints the ID of the registered container.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--uri` | The Docker image URI of the container. | **Required** |
+| `--description` | A description of the container, used as its display name. | **Required** |
+| `--org-id` | The organization ID that will own the container. Defaults to the organization set with `viam defaults set-org`. | Optional |
+
+### `train containers delete`
+
+Delete a custom training container that your organization registered.
+Deleting a container requires organization owner permissions.
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers delete --id=abc123
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--id` | The ID of the container to delete, as shown by `viam train containers list`. | **Required** |
 
 ## `training-script`
 
