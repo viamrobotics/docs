@@ -4,13 +4,14 @@ title: "Visualizing with the 3D scene"
 weight: 5
 layout: "docs"
 type: "docs"
-description: "What the 3D scene renders, where each element comes from, and how built-in configuration content differs from custom visuals a module publishes at runtime."
+description: "The 3D scene's Monitor, Build, Move, and Replay modes, where to start for common tasks, and where each element in the scene comes from."
 capabilities: ["scene-3d"]
 diataxis: explanation
 aliases:
   - /visualization/visualizing-with-the-3d-scene/
   - /visualization/3d-scene-tools/
   - /motion-planning/3d-scene/
+  - /visualization/3d-scene/the-3d-scene-interface/
 ---
 
 The **3D SCENE** tab renders your machine in an interactive 3D view: the frames of every
@@ -18,11 +19,61 @@ component, the geometry attached to them, point clouds from depth cameras, and a
 visuals a module publishes while the machine runs. It turns configuration you would
 otherwise read as JSON numbers into a picture you can inspect, so you can confirm a gripper
 sits where its frame configuration places it or watch a motion plan against the obstacles
-around it.
+around it. In Build and Move modes, the scene does more than show your machine: you can edit
+its configuration and command it to move.
 
-This page describes what the scene shows, where each element comes from, and how the scene
-stays current. For the tab's panels, navigation, and settings, see
-[The 3D scene interface](/visualization/3d-scene/the-3d-scene-interface/).
+This page covers the scene's modes, where to start for common tasks, and how the scene gets
+what it draws.
+
+## Modes
+
+The scene has four modes. The mode determines what you can do and which tools appear.
+
+| Mode                                             | What it's for                                                                 |
+| ------------------------------------------------ | ----------------------------------------------------------------------------- |
+| [Monitor](/visualization/3d-scene/monitor-mode/) | Watch the machine's live state and read any frame's pose.                     |
+| [Build](/visualization/3d-scene/build-mode/)     | Edit frames and geometry, then save them to the machine's configuration.      |
+| [Move](/visualization/3d-scene/move-mode/)       | Plan a move to a target pose, preview it, and run it on the machine.          |
+| [Replay](/visualization/3d-scene/replay-mode/)   | Step through saved motion plans, with the obstacles each was planned against. |
+
+In every mode, the **World** panel lists every entity in the scene, and selecting one shows
+its details. [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/) let you drive
+components and read their values without leaving the scene. For navigation, shortcuts, and
+settings, see [3D scene controls and settings](/visualization/3d-scene/controls-and-settings/).
+
+## Start from what you want to do
+
+| I want to…                                                              | Start here                                                                                           |
+| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| See whether the scene matches my real machine                           | [Measuring between frames](/visualization/3d-scene/measuring-between-frames/)                        |
+| Find where my end effector is right now                                 | [Monitor mode: read a frame's pose](/visualization/3d-scene/monitor-mode/#read-a-frames-pose)        |
+| Enter frame offsets or add collision geometry without editing JSON      | [Editing frames visually](/visualization/3d-scene/editing-frames-visually/)                          |
+| Add a table or wall the planner should avoid                            | [Build mode: add frames and obstacles](/visualization/3d-scene/build-mode/#add-frames-and-obstacles) |
+| Move the arm to a pose without writing code, and preview the move first | [Move mode](/visualization/3d-scene/move-mode/)                                                      |
+| Drive a component or watch its readings without leaving the scene       | [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/)                                        |
+| See what the motion planner saw when a plan failed or surprised me      | [Replay mode](/visualization/3d-scene/replay-mode/)                                                  |
+| Understand why the planner ignores something I can see                  | [Visuals and collisions](/visualization/visuals-and-collisions/)                                     |
+| Check that a depth camera's point cloud lines up with the world         | [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/)              |
+| Tune a 3D segmenter against the live view                               | [Vision services in the 3D scene](/visualization/perception/vision-services/)                        |
+| See what a camera or end effector sees from its mount                   | [Frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov)                                     |
+| Draw my module's own visuals in the scene                               | [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)                       |
+| Preview spatial data from a Go script without deploying                 | [Viam Visualization](/visualization/viam-visualization/)                                             |
+| Fix something that looks wrong                                          | [Troubleshoot the 3D scene](/visualization/troubleshoot-the-3d-scene/)                               |
+
+## What the scene simulates, and what it doesn't
+
+The scene works with kinematics, not physics. It shows where things are and where a plan
+would take them, and checks for collisions against the geometry you've modeled. It doesn't
+model dynamics, timing, or anything in the workspace that isn't modeled.
+
+To try motion without risking hardware:
+
+- Preview a move in [Move mode](/visualization/3d-scene/move-mode/). The preview plays the
+  planned motion before anything moves. Running the plan, with **Execute plan** or **Move**,
+  moves the machine; see the caution on the Move mode page.
+- Simulated and fake components report poses and accept commands without moving anything
+  physical. With a fake arm, the whole scene works without hardware. See
+  [Try it with a fake arm](/hardware/common-components/add-an-arm/#try-it-with-a-fake-arm).
 
 ## What the scene renders
 
@@ -38,9 +89,8 @@ The scene draws four kinds of element, each with its own appearance:
 
 ## Where each element comes from
 
-Every element in the scene traces back to one source. The **World panel** lists every entity
-in a tree rooted at the world frame, so you can select anything on screen and follow it back
-to the component or module that produced it.
+Every element of your machine's state in the scene traces back to one source. Select an
+entity in the **World** panel to follow it back to the component or module that produced it.
 
 | Element in the scene | Comes from                                                  |
 | -------------------- | ----------------------------------------------------------- |
@@ -49,9 +99,12 @@ to the component or module that produced it.
 | Point cloud          | A depth camera, streamed live when the machine is online    |
 | Custom visual        | A module, published through a world state store service     |
 
-The first three appear because they are part of the machine's configuration, and the scene
-reads that configuration whenever you open the tab. Custom visuals appear only when a module
-publishes them.
+Frames and geometry appear because they are part of the machine's configuration, which the
+scene reads whenever you open the tab. Point clouds stream from depth cameras while the
+machine is online, and custom visuals appear only while a module publishes them.
+
+The scene also draws things that aren't your machine's reported state: a Move mode preview,
+a replayed plan and its obstacles, and Build mode edits you haven't saved yet.
 
 ## Built-in content versus custom visuals
 
@@ -78,14 +131,3 @@ redrawing everything, so a busy scene keeps up as the underlying data changes.
 
 To publish your own custom visuals this way, see
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
-
-## What's next
-
-{{< cards >}}
-{{% card link="/visualization/3d-scene/the-3d-scene-interface/" noimage="true" %}}
-{{% card link="/visualization/3d-scene/measuring-between-frames/" noimage="true" %}}
-{{% card link="/visualization/3d-scene/editing-frames-visually/" noimage="true" %}}
-{{% card link="/visualization/3d-scene/3d-scene-widgets/" noimage="true" %}}
-{{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
-{{% card link="/visualization/publish-visuals-from-a-module/" noimage="true" %}}
-{{< /cards >}}
