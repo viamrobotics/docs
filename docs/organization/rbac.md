@@ -29,6 +29,8 @@ Because roles are assigned at a specific level in the [resource hierarchy](/orga
 | Org admin manages billing, members, and config | Organization Owner                                              |
 | Monitoring dashboard reads data from a site    | Location Operator (using an [API key](/organization/api-keys/)) |
 
+To restrict individual API methods on specific resources of one machine, see [Restrict API calls on a machine](/organization/access/#restrict-api-calls-on-a-machine).
+
 The following sections describe the full permissions for each role and level.
 
 ## Machines
