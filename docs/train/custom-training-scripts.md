@@ -289,7 +289,8 @@ To use a different framework (PyTorch, scikit-learn, or anything installable
 with pip), add it to the `install_requires` list in `setup.py`; Viam
 installs the packages in the container before running your script.
 
-Custom training is part of the Viam platform; see [pricing](https://www.viam.com/product/pricing)
+Custom training jobs run on premium GPUs and are billed at a higher rate than
+[managed training](/train/train-a-model/) jobs; see [pricing](https://www.viam.com/product/pricing)
 for plan details.
 
 To list available containers with their framework versions and end-of-life
