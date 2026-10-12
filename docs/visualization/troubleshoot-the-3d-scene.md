@@ -45,11 +45,13 @@ Work down the camera pipeline:
 1. The camera's toggle is on under **Settings** > **Pointclouds** > **Enabled cameras**.
 2. The camera supports point clouds. A camera that reports `supports_pcd=false` is
    auto-disabled in that list; check its module documentation.
-3. The camera's frame is configured. A point cloud renders at its camera's frame, so a
-   camera with no frame has nowhere to draw.
 
-A point cloud that renders in the wrong place, rather than missing, is a frame problem:
-see [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/).
+A point cloud that renders in the wrong place, rather than missing, is a frame problem.
+A point cloud renders at its camera's frame. If the camera has no frame, the cloud renders
+relative to the world origin instead, and in monitor mode the **World** panel lists it in a
+**Missing parent** folder. Configure the camera's frame to place it. For a camera that has a
+frame, see
+[Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/).
 
 ## A custom visual is missing or stale
 
