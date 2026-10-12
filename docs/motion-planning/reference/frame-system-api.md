@@ -81,14 +81,10 @@ Returns a `PoseInFrame`.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The Python `RobotClient` does not expose `GetPose`. Call `get_pose` on
-the motion service client instead:
+`RobotClient.get_pose` is available in Python SDK v0.83.0 and later:
 
 ```python
-from viam.services.motion import MotionClient
-
-motion_service = MotionClient.from_robot(machine, "builtin")
-gripper_in_world = await motion_service.get_pose(
+gripper_in_world = await machine.get_pose(
     component_name="my-gripper",
     destination_frame="world",
 )
@@ -110,9 +106,9 @@ gripperInWorld, err := machine.GetPose(
 {{% /tab %}}
 {{< /tabs >}}
 
-### Python goes through the motion service, Go through the robot service
+### Robot service and motion service versions
 
-`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK exposes the robot service version as `RobotClient.GetPose`; Go callers go through the robot service. The Python SDK never wrapped the robot service version, so Python callers use `MotionClient.get_pose` and hit the deprecated motion service path.
+`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK exposes the robot service version as `RobotClient.GetPose`, and the Python SDK exposes it as `RobotClient.get_pose` from v0.83.0. Python SDK versions before v0.83.0 have no robot service version, so callers on those versions use `MotionClient.get_pose` and the deprecated motion service path.
 
 The two paths return equivalent results. The CLI's `print-status`,
 `get-pose`, and `set-pose` commands also invoke the deprecated
@@ -171,7 +167,7 @@ compute poses involving that object.
 Supplemental transforms apply only to the current call. They do not
 modify the stored frame system configuration.
 
-**Python kwarg naming.** In Python, `MotionClient.get_pose` takes `supplemental_transforms`; `RobotClient.transform_pose` and `RobotClient.get_frame_system_config` take `additional_transforms`. The proto field and all Go methods use `supplemental_transforms`. Pass the kwarg that matches the client class you call.
+**Python kwarg naming.** In Python, `RobotClient.get_pose` and `MotionClient.get_pose` take `supplemental_transforms`; `RobotClient.transform_pose` and `RobotClient.get_frame_system_config` take `additional_transforms`. The proto field and all Go methods use `supplemental_transforms`. Pass the kwarg that matches the client class you call.
 
 #### Worked example: transform a detected object to the world frame
 
@@ -197,8 +193,8 @@ detected_box = Transform(
     ),
 )
 
-# 2. Ask the motion service where the box sits in the world frame.
-box_in_world = await motion_service.get_pose(
+# 2. Ask the machine where the box sits in the world frame.
+box_in_world = await machine.get_pose(
     component_name="detected-box",
     destination_frame="world",
     supplemental_transforms=[detected_box],

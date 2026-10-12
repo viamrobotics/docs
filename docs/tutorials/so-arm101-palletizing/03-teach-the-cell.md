@@ -5,6 +5,8 @@ type: "docs"
 slug: "teach-the-cell"
 weight: 30
 description: "Move the arm by hand with torque disabled, read two gripper anchor poses from the Motion tab, and compute the pallet grid from them."
+capabilities: ["hw-arm", "frame-system", "docs"]
+diataxis: tutorial
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 3

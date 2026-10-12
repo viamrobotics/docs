@@ -5,6 +5,8 @@ type: "docs"
 slug: "avoid-placed-cubes"
 weight: 50
 description: "Model placed cubes and the held cube in WorldState so the planner stacks the full two layers collision-free."
+capabilities: ["motion-planning", "frame-system", "docs"]
+diataxis: tutorial
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 5

@@ -1,9 +1,13 @@
 # Accepted capability tags for docs frontmatter.
 #
 # Every docs/ page should carry a capabilities: [...] frontmatter field using
-# one or more of the tags below. scripts/check-capabilities.py reads this
-# file and warns (without failing CI) if a page has no capabilities: field or
-# uses a tag that isn't listed here.
+# one or more of the tags below. scripts/frontmatter_rules.py reads this
+# file and fails CI if a published page has no capabilities: field or uses a
+# tag that isn't listed here.
+#
+# Adding, renaming, or removing a tag also requires a matching PR to
+# viamrobotics/docs-health's capability-teams.yaml, merged together. See
+# CLAUDE.md, "Docs health frontmatter".
 
 capabilities:
   # ---------------------------------------------------------------- structural
