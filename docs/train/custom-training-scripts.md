@@ -343,7 +343,8 @@ If your dependencies take a long time to install, build them into a
 [custom training container](/train/custom-containers/) instead so each job
 starts training right away.
 
-Custom training is part of the Viam platform; see [pricing](https://www.viam.com/product/pricing)
+Custom training jobs run on premium GPUs and are billed at a higher rate than
+[managed training](/train/train-a-model/) jobs; see [pricing](https://www.viam.com/product/pricing)
 for plan details.
 
 To list available containers with their IDs, framework versions, and

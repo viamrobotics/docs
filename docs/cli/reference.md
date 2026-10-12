@@ -2954,7 +2954,7 @@ viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
 viam train list --org-id=<org-id> --job-status=<job-status>
-viam train containers list [--org-id=<org-id>]
+viam train containers list [--org-id=<org-id>] [--include-uris]
 viam train containers register --uri=<image-uri> --description=<description> [--org-id=<org-id>]
 viam train containers delete --id=<container-id>
 ```
@@ -3099,8 +3099,8 @@ viam train containers list --org-id=123
 | `--org-id` | The organization ID whose custom training containers to include. Aliases: `--org`, `--organization`. | Optional |
 | `--include-uris` | Include each container's Docker image URI in the output. | Optional |
 
-The command prints a JSON list of containers.
-Each entry includes the container's `Name`, `ID`, `Description`, `Framework`, `Visibility`, `CreatedOn`, and `EndOfLife` date, plus its `URI` when you pass `--include-uris`.
+The command prints a JSON array with one object per container: `Name`, `Description`, `ID`, `CreatedOn`, and `Visibility`, plus `EndOfLife` and `Framework` when the container has them, and `URI` when you pass `--include-uris`.
+Dates use RFC 3339 format.
 Use the `ID` to choose the container when you submit a custom training job.
 
 ### `train containers register`
