@@ -495,3 +495,88 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### StartSequenceDatasetExport
+
+Start an asynchronous export of a sequence dataset. Returns a job ID to poll with GetSequenceDatasetExport.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the sequence dataset to export.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The job ID of the export job.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.start_sequence_dataset_export).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `datasetId` (string) (required): The ID of the sequence dataset to export.
+
+**Returns:**
+
+- (Promise<string>): The job ID of the export job.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const jobId = await dataClient.startSequenceDatasetExport('12ab3de4f56a7bcd89ef0ab1');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#startsequencedatasetexport).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetSequenceDatasetExport
+
+Get the status of a sequence dataset export job. When the job completes, the response includes a short-lived URL for downloading a zip of Parquet files.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `job_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The job ID returned by start_sequence_dataset_export.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([viam.proto.app.dataset.GetSequenceDatasetExportResponse](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.GetSequenceDatasetExportResponse)): :   The export job status and details, including:
+    :   * job\_id: The ID of the export job.
+        * status: The current status (UNSPECIFIED, RUNNING, COMPLETED, or FAILED).
+        * download\_url: A short-lived signed URL for downloading the export (only when COMPLETED).
+        * expires\_at: When the download\_url expires (only when COMPLETED).
+        * error\_message: Error description if the job failed (only when FAILED).
+        * created\_at: When the job was created.
+        * completed\_at: When the job completed (if applicable).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_sequence_dataset_export).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `jobId` (string) (required): The ID of the export job.
+
+**Returns:**
+
+- (Promise<[GetSequenceDatasetExportResponse](https://ts.viam.dev/interfaces/GetSequenceDatasetExportResponse.html)>): The current status of the export job.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const status = await dataClient.getSequenceDatasetExport('job-id');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getsequencedatasetexport).
+
+{{% /tab %}}
+{{< /tabs >}}

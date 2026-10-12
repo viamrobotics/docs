@@ -1,0 +1,1 @@
+Create a sequence: a saved time window of one machine part's captured data, with tags. You provide the part ID, the resources to include, and the start and end times.

@@ -1,0 +1,1 @@
+Get the status of a sequence dataset export job. When the job completes, the response includes a short-lived URL for downloading a zip of Parquet files.

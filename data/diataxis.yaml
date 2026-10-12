@@ -1,9 +1,13 @@
 # Accepted Diataxis modes for docs frontmatter.
 #
-# Every docs/ page should carry a single diataxis: <mode> frontmatter field
-# using one of the modes below. scripts/check-diataxis.py reads this file and
-# warns (without failing CI) if a page has no diataxis: field or uses a mode
-# that isn't listed here.
+# Every published docs/ page carries a single diataxis: <mode> frontmatter
+# field using one of the modes below, except glossary terms and redirect
+# stubs. scripts/frontmatter_rules.py reads this file and fails CI if a page
+# has no diataxis: field or uses a mode that isn't listed here.
+#
+# Changing this list also requires a matching PR to viamrobotics/docs-health,
+# which hardcodes the modes (signals.py, DIATAXIS_MODES). See CLAUDE.md,
+# "Docs health frontmatter".
 #
 # This field is deliberately a single scalar, not a list like capabilities:.
 # The diagnostic value of Diataxis is that a page serves exactly one mode; a

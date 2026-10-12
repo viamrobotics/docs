@@ -642,7 +642,9 @@ viam dataset delete --dataset-id=123
 
 ### `dataset export`
 
-Download all the data from a dataset to a specified output directory in two folders called "data" and "metadata".
+Download all the data from a dataset to a specified output directory.
+For a binary dataset, this writes the image files and a `dataset.jsonl` file.
+For a [sequence dataset](/train/create-a-dataset/), it starts an export job on the server, waits for it, and writes `<dataset-id>.zip` (three Parquet files) plus a `binary_data/` folder of images.
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=./dataset/example --dataset-id=abc
@@ -657,6 +659,11 @@ viam dataset export --destination=./dataset/example --dataset-id=abc
 | `--force-linux-path` | Force the use of Linux-style paths in the dataset.jsonl file. | Optional |
 | `--parallel` | Number of download requests to make in parallel. Default: `100`. | Optional |
 | `--timeout` | Number of seconds to wait for large file downloads. Default: `30`. | Optional |
+| `--poll-interval` | Sequence datasets only. How often to check the export job. Default: `5s`. | Optional |
+| `--max-wait` | Sequence datasets only. How long to wait for the export to finish. Default: `30m`. | Optional |
+| `--only-parquet` | Sequence datasets only. Write the Parquet zip and skip downloading the images. | Optional |
+
+`--only-jsonl` and `--force-linux-path` apply only to binary datasets.
 
 ### `dataset merge`
 
@@ -1312,6 +1319,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
 | `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, overriding the destination `umask`. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
+| `--no-progress`, `-n` | Hide progress of the file transfer. The global `--quiet` option also hides it. Default: `false`. | Optional |
 
 ### `machines part tunnel`
 
@@ -2946,7 +2954,9 @@ viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
 viam train list --org-id=<org-id> --job-status=<job-status>
-viam train containers list
+viam train containers list [--org-id=<org-id>] [--include-uris]
+viam train containers register --uri=<image-uri> --description=<description> [--org-id=<org-id>]
+viam train containers delete --id=<container-id>
 ```
 
 ### `train submit managed`
@@ -3075,11 +3085,55 @@ viam train list --org-id=123 --job-status=completed
 
 ### `train containers list`
 
-List supported Docker container images for custom training.
+List the Docker container images available for custom training.
+Without `--org-id`, the list contains the Viam-provided containers.
+With `--org-id`, it also contains the custom containers registered to that organization.
 
 ```sh {class="command-line" data-prompt="$"}
-viam train containers list
+viam train containers list --org-id=123
 ```
+
+The command prints a JSON array with one object per container: `Name`, `Description`, `ID`, `CreatedOn`, and `Visibility`, plus `EndOfLife` and `Framework` when the container has them, and `URI` with `--include-uris`.
+Dates use RFC 3339 format.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--org-id` | The organization ID whose custom containers to include. Aliases: `--org`, `--organization`. | Optional |
+| `--include-uris` | Include each container's image URI in the output. | Optional |
+
+### `train containers register`
+
+Register a Docker image as a custom training container for your organization.
+The image must be a publicly readable `linux/amd64` image on Docker Hub.
+Registering a container requires organization owner permissions.
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers register --org-id=123 --uri=my-docker-user/my-training-image:1.0 --description="My training image"
+```
+
+The command prints the ID of the registered container.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--uri` | The Docker image URI of the container. | **Required** |
+| `--description` | A description of the container, used as its display name. | **Required** |
+| `--org-id` | The organization ID that will own the container. Defaults to the organization set with `viam defaults set-org`. | Optional |
+
+### `train containers delete`
+
+Delete a custom training container that your organization registered.
+Deleting a container requires organization owner permissions.
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers delete --id=abc123
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--id` | The ID of the container to delete, as shown by `viam train containers list`. | **Required** |
 
 ## `training-script`
 

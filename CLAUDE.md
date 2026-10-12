@@ -2,7 +2,7 @@
 
 ## Pre-PR checks for viam-docs
 
-Run these checks from the worktree directory before committing or pushing. All four must pass.
+Run these checks from the worktree directory before committing or pushing. Steps 1 through 5 must pass.
 
 ### 1. Format with prettier
 
@@ -33,7 +33,15 @@ CI's `vale` job (`.github/workflows/vale-lint.yml`) runs across the whole repo, 
 
 Also pin the vale binary version when running locally. CI's `vale-action` pins `version: 3.12.0`; a newer local install (for example, a bare `brew install vale`) can silently disagree with CI on individual rule behavior—this bit us once when `Viam.DashesSpaces` misfired on 3.12.0 for an em dash sitting directly against a closing backtick with no separating character, a pattern 3.16.0 didn't flag. Download the pinned release from `https://github.com/errata-ai/vale/releases/download/v3.12.0/` if in doubt, rather than trusting whatever `vale` resolves to on `PATH`.
 
-### 4. Build the full site
+### 4. Check capabilities and Diataxis frontmatter
+
+```bash
+python3 scripts/frontmatter_rules.py
+```
+
+Fails if a published page is missing `capabilities:` or `diataxis:`, or uses a value outside `data/capabilities.yaml` / `data/diataxis.yaml`. This is a required CI check. See "Docs health frontmatter" below.
+
+### 5. Build the full site
 
 ```bash
 make build-prod
@@ -41,7 +49,7 @@ make build-prod
 
 This runs a production Hugo build. It catches broken shortcodes, missing pages referenced by links, invalid frontmatter, and template errors. Warnings about old page dates are expected and can be ignored. The build must complete without errors.
 
-### 5. Spot-check in the browser (optional but recommended)
+### 6. Spot-check in the browser (optional but recommended)
 
 Kill any running Hugo servers, clear the `public/` directory, and start a fresh dev server:
 
@@ -56,6 +64,15 @@ Open the changed pages in a browser and verify they render correctly.
 ### Order matters
 
 Run prettier first because it can change line breaks that affect markdownlint results. Run vale after markdownlint because some markdownlint fixes (like adding language tags to code blocks) can resolve vale false positives. Run `make build-prod` last because it is the slowest and catches the broadest class of errors.
+
+## Docs health frontmatter
+
+The docs health dashboard (`viamrobotics/docs-health`, a private repo) rebuilds daily from this repo's `main`. It reads every page's `capabilities:` and `diataxis:` frontmatter and fails the whole run, leaving the dashboard stale, when a published page is missing either field. `scripts/frontmatter_rules.py` (the required `Check docs/ capability and Diataxis frontmatter` CI job) enforces the same rules on every PR, so a PR that passes it can't break that run.
+
+- **Every new published page needs both fields.** `capabilities:` is a list of tags from `data/capabilities.yaml`. `diataxis:` is exactly one mode from `data/diataxis.yaml`. Section `_index.md` hubs that render content use `diataxis: overview`.
+- **Exemptions are defined in one place.** `draft: true` pages skip both fields. Glossary terms (tagged `glossary`) and redirect stubs (`manualLink`, `manualLinkRelref`, `canonical`, `empty_node`) skip `diataxis:` only. Removing a stub key from a page makes it a real page that needs a `diataxis:` mode, which is how this broke once before.
+- **docs-health imports `frontmatter_rules.py`** from its checkout of this repo to decide which pages it scores. Don't rename the module or change the signatures of `load_front_matter`, `exclusion_reason`, or `validate` without a matching docs-health change.
+- **New capability tags and Diataxis modes are allowed, but need a docs-health PR.** docs-health keeps its own copy of both taxonomies: `capability-teams.yaml` maps every capability to an owning team, and `signals.py`'s `DIATAXIS_MODES` lists the modes. Its build refuses to run when `capability-teams.yaml` and `data/capabilities.yaml` disagree. That check fails in both directions, so neither PR can safely land alone: when you add, rename, or remove an entry in either YAML file, open a PR on `viamrobotics/docs-health` that updates the matching entry, link the two PRs to each other, and say in the docs PR description that they must merge together. Merge them back to back on the same day, not straddling the daily 08:00 UTC run. If you can't access docs-health, say so in the PR description so a maintainer can make the change. Don't add a new tag to avoid choosing among the existing ones; prefer the closest existing tag.
 
 ## Generated SDK reference docs
 
