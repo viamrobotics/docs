@@ -247,6 +247,11 @@ You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data
 
 The `test-local` command runs your training script inside the same Docker container that cloud training uses.
 This catches problems that plain Python testing misses: missing system dependencies, Python version differences, and package conflicts.
+Testing locally is free, while a cloud training job bills GPU time from the moment it starts, so it's a cheap way to find a broken script.
+
+`test-local` runs the container without a GPU, so your script runs on the CPU.
+Use a small dataset or a low epoch count, and make sure your script can fall back to the CPU.
+It's a quick check that the script runs, not a substitute for the cloud training job.
 
 `test-local` passes your script only `--dataset_file`, so it works only with scripts for binary datasets.
 To test a script for a sequence dataset, [run it directly](#run-without-docker).
@@ -263,9 +268,8 @@ viam training-script test-local \
 The `--dataset-file` path is relative to `--dataset-root`.
 The command mounts your script, dataset, and output directories into the container.
 
-The `--container-id` flag selects the container to run in, so you test in the same environment the cloud training job uses.
-Run `viam train containers list --org-id=<org-id>` to list available containers with their IDs, framework versions, and end-of-life dates.
-The list includes your organization's [custom training containers](/train/custom-containers/), and `test-local` works with those too.
+The `--container-id` flag selects the container to run in, either a Viam-managed container or a [custom training container](/train/custom-containers/), so you test in the same environment the cloud training job uses.
+To find container IDs, see [Submit a training job](#submit-a-training-job).
 
 You can pass custom arguments with `--custom-args`:
 
@@ -358,7 +362,9 @@ viam train containers list --org-id=<org-id>
 4. In the **Container version** dropdown, select a container that matches the framework your training script uses.
    The dropdown lists Viam-managed containers, marked **(Viam)**, followed by your organization's custom containers, marked **(Custom:** _image_**)**.
    The UI shows a warning if the selected Viam-managed container is approaching its end-of-life date.
-5. Optionally, add custom arguments as key-value pairs in the **Arguments** section.
+5. Optionally, in the **Arguments** section, add arguments to pass to your training script, such as the number of epochs.
+   Viam passes each key and value to the script as a command-line argument, so `num_epochs` and `20` become `--num_epochs=20`.
+   Your script must be written to accept each argument, as `--num_epochs` is in the [example training script](#trainingpy).
 
 {{% /tab %}}
 {{% tab name="CLI" %}}

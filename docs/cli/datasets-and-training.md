@@ -275,8 +275,8 @@ viam training-script test-local \
 
 ## Manage training containers
 
-To run custom training jobs in an environment with your dependencies already installed, register a public Docker Hub image as a [custom training container](/train/custom-containers/).
-You must be an organization owner to register or delete containers.
+For requirements and how custom containers work, see [Custom training containers](/train/custom-containers/).
+To list containers, see [Find your IDs](#find-your-ids).
 
 Register an image:
 
@@ -289,12 +289,6 @@ viam train containers register \
 
 The CLI prints the new container's ID.
 Pass that ID as `--container-id` when you submit a training job or test a script locally.
-
-List the Viam-managed containers and your organization's custom containers:
-
-```sh {class="command-line" data-prompt="$"}
-viam train containers list --org-id=<org-id>
-```
 
 Delete a custom container:
 

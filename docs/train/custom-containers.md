@@ -80,6 +80,7 @@ For example, [Cog](https://cog.run/) can generate a GPU-ready image from a short
 Registering a container tells Viam about your image and gives it a Viam container ID.
 You give Viam the Docker image URI when you register.
 After that, you use the **Viam container ID**, not the Docker image URI or a Docker image ID, everywhere you choose a container.
+The description you give the container is its display name: it's the name the container appears under when you pick a container for a training job.
 
 <!-- Registration isn't available in the Viam web UI yet. Add a Web UI tab here when it is. -->
 
@@ -95,7 +96,6 @@ viam train containers register \
   --org-id=<org-id>
 ```
 
-The `--description` is the name the container appears under when you pick a container for a training job.
 If you omit `--org-id`, the CLI uses the default organization you set with `viam defaults set-org`.
 
 The CLI prints the container ID:
@@ -118,8 +118,6 @@ container_id = await ml_training_client.register_custom_training_container(
 print(container_id)
 ```
 
-Set `description`: it's the name the container appears under when you pick a container for a training job.
-
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -135,7 +133,8 @@ If `python3` or `pip` is missing, the training job fails when it starts.
 
 ## Test locally (optional)
 
-To check that your training script runs in your custom container before you start a cloud training job, pass the container ID to [`viam training-script test-local`](/train/custom-training-scripts/#test-locally-with-docker):
+To check that your script runs in your custom container before you start a cloud training job, pass the container ID to `viam training-script test-local`.
+See [Test locally with Docker](/train/custom-training-scripts/#test-locally-with-docker) for what local testing catches and its limits.
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script test-local \
@@ -145,62 +144,17 @@ viam training-script test-local \
   --model-output-directory=<output-dir>
 ```
 
-The command pulls your image and runs your script in it with Docker, the same way a cloud training job does.
-
 ## Train with the container
 
-Start a custom training job and choose your container.
+Submit a custom training job as described in [Submit a training job](/train/custom-training-scripts/#submit-a-training-job), and choose your container:
 
-{{< tabs >}}
-{{% tab name="Web UI" %}}
-
-1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select the dataset you want to train on.
-2. Click **Train model**.
-3. Select **Train on a custom training script** and follow the prompts.
-4. In the **Container version** dropdown, select your container.
-   The dropdown lists Viam-managed containers, marked **(Viam)**, followed by your organization's custom containers, marked **(Custom:** _image_**)**.
-5. Optionally, add custom arguments as key-value pairs in the **Arguments** section.
-
-{{% /tab %}}
-{{% tab name="CLI" %}}
-
-Pass the container ID to [`viam train submit custom from-registry`](/cli/reference/#train-submit-custom-from-registry):
-
-```sh {class="command-line" data-prompt="$"}
-viam train submit custom from-registry --dataset-id=<dataset-id> \
-  --org-id=<org-id> --model-name=my-model \
-  --model-version=1 --version=1 \
-  --script-name=<namespace>:<script-name> \
-  --container-id=<container-id>
-```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-Pass the container ID as `container_id` to [`submit_custom_training_job`](/reference/apis/ml-training-client/#submitcustomtrainingjob):
-
-```python {class="line-numbers linkable-line-numbers"}
-job_id = await ml_training_client.submit_custom_training_job(
-    org_id="<org-id>",
-    dataset_id="<dataset-id>",
-    registry_item_id="<namespace>:<script-name>",
-    registry_item_version="<script-version>",
-    model_name="my-model",
-    model_version="1",
-    container_id="<container-id>",
-)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+- **Web UI**: select it in the **Container version** dropdown.
+- **CLI**: pass its ID as `--container-id`.
+- **Python**: pass its ID as `container_id`.
 
 Monitor the job the same way as any custom training job.
+The job's **Details** panel shows which container it ran in.
 See [Monitor and debug](/train/custom-training-scripts/#monitor-and-debug).
-
-## Check which container a job used
-
-In the Viam app, open the training job from the [**MODELS** tab](https://app.viam.com/models).
-The **Details** panel shows the container's description under **Container version** and its Viam container ID under **Container ID**.
 
 ## Manage containers
 
@@ -211,15 +165,11 @@ The **Details** panel shows the container's description under **Container versio
 {{< tabs >}}
 {{% tab name="CLI" %}}
 
-To list the Viam-managed containers together with your organization's custom containers, pass your organization ID to [`viam train containers list`](/cli/reference/#train-containers-list):
+Run [`viam train containers list`](/cli/reference/#train-containers-list) with your organization ID:
 
 ```sh {class="command-line" data-prompt="$"}
 viam train containers list --org-id=<org-id>
 ```
-
-Without `--org-id`, the command lists only Viam-managed containers.
-Add `--include-uris` to show each container's image URI.
-Each entry includes the container's `ID`, which you use to train with it or delete it.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -269,7 +219,6 @@ await ml_training_client.delete_custom_training_container(id="<container-id>")
 - Images must be public and on Docker Hub. Private images and other registries, such as GitHub Container Registry or NVIDIA NGC, aren't supported.
 - Viam doesn't host a container registry or build images for you.
 - A custom container belongs to the organization that registered it. You can't share it with other organizations.
-- Hyperparameter tuning doesn't support custom containers.
 
 ## Next steps
 
