@@ -121,4 +121,5 @@ after training without affecting previously trained models.
 {{% card link="/train/train-a-model/" %}}
 {{% card link="/train/deploy-a-model/" %}}
 {{% card link="/train/custom-training-scripts/" %}}
+{{% card link="/train/custom-containers/" %}}
 {{< /cards >}}

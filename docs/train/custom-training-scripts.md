@@ -12,7 +12,7 @@ description: "Use or write custom training scripts to train ML models on the Via
 capabilities: ["ml-training"]
 diataxis: how-to
 date: "2024-12-04"
-updated: "2025-10-13"
+updated: "2026-10-12"
 ---
 
 Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
@@ -29,8 +29,10 @@ When you submit a custom training job, Viam:
 1. Pulls your dataset and writes it into the container:
    - For a binary dataset, a JSONLines metadata file plus the image files.
    - For a sequence dataset, three Parquet files plus the image files.
-2. Runs your script inside a Viam-hosted Docker container with GPU access
-   and a framework version you select.
+2. Runs your script inside a Docker container with GPU access: either a
+   Viam-managed container with a framework version you select, or a
+   [custom training container](/train/custom-containers/) your organization
+   registered.
 3. Packages the artifacts your script writes to the output directory and
    publishes them as a new model version in your organization's registry.
 
@@ -254,14 +256,16 @@ viam training-script test-local \
   --training-script-directory=my-training/ \
   --dataset-file=dataset.jsonl \
   --dataset-root=<destination> \
+  --container-id=<container-id> \
   --model-output-directory=<output-dir>
 ```
 
 The `--dataset-file` path is relative to `--dataset-root`.
 The command mounts your script, dataset, and output directories into the container.
 
-To match a specific cloud container version, use `--container-version`.
-Run `viam train containers list` to list available container versions with their framework versions and end-of-life dates.
+The `--container-id` flag selects the container to run in, so you test in the same environment the cloud training job uses.
+Run `viam train containers list --org-id=<org-id>` to list available containers with their IDs, framework versions, and end-of-life dates.
+The list includes your organization's [custom training containers](/train/custom-containers/), and `test-local` works with those too.
 
 You can pass custom arguments with `--custom-args`:
 
@@ -270,6 +274,7 @@ viam training-script test-local \
   --training-script-directory=my-training/ \
   --dataset-file=dataset.jsonl \
   --dataset-root=<destination> \
+  --container-id=<container-id> \
   --model-output-directory=<output-dir> \
   --custom-args=num_epochs=5,labels="label1 label2"
 ```
@@ -323,21 +328,25 @@ After uploading, your script appears in the [registry](https://app.viam.com/regi
 
 Once a training script is in the registry, whether you uploaded it or are using someone else's, submit a training job to run it against a dataset.
 
-Every custom training job runs inside a Viam-hosted container on GPU-backed
-cloud infrastructure. Containers are based on Python 3.10 with TensorFlow
+Every custom training job runs inside a container on GPU-backed
+cloud infrastructure. Viam-managed containers are based on Python 3.10 with TensorFlow
 pre-installed. The currently supported versions are `tf:2.16`, `tf:2.17`, and `tf:2.21`.
 To use a different framework (PyTorch, scikit-learn, or anything installable
 with pip), add it to the `install_requires` list in `setup.py`; Viam
 installs the packages in the container before running your script.
 
+If your dependencies take a long time to install, build them into a
+[custom training container](/train/custom-containers/) instead so each job
+starts training right away.
+
 Custom training is part of the Viam platform; see [pricing](https://www.viam.com/product/pricing)
 for plan details.
 
-To list available containers with their framework versions and end-of-life
-dates, run:
+To list available containers with their IDs, framework versions, and
+end-of-life dates, including your organization's custom containers, run:
 
 ```sh {class="command-line" data-prompt="$"}
-viam train containers list
+viam train containers list --org-id=<org-id>
 ```
 
 {{< tabs >}}
@@ -346,8 +355,9 @@ viam train containers list
 1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select the dataset you want to train on.
 2. Click **Train model**.
 3. Select **Train on a custom training script** and follow the prompts.
-4. Select a **Container version** that matches the framework your training script uses.
-   The UI shows a warning if the selected container is approaching its end-of-life date.
+4. In the **Container version** dropdown, select a container that matches the framework your training script uses.
+   The dropdown lists Viam-managed containers, marked **(Viam)**, followed by your organization's custom containers, marked **(Custom:** _image_**)**.
+   The UI shows a warning if the selected Viam-managed container is approaching its end-of-life date.
 5. Optionally, add custom arguments as key-value pairs in the **Arguments** section.
 
 {{% /tab %}}
@@ -360,7 +370,7 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --org-id=<org-id> --model-name=my-model \
   --model-version=1 --version=1 \
   --script-name=<namespace>:<script-name> \
-  --container-version=<container-version> \
+  --container-id=<container-id> \
   --args=num_epochs=100,labels="'label1 label2'"
 ```
 
@@ -369,7 +379,8 @@ You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data
 {{% /tab %}}
 {{% tab name="API" %}}
 
-Use the [ML Training Client API](/reference/apis/ml-training-client/#submittrainingjob) to submit training jobs programmatically.
+Use [`submit_custom_training_job`](/reference/apis/ml-training-client/#submitcustomtrainingjob) to submit custom training jobs programmatically.
+Pass the container ID as `container_id`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -381,6 +392,7 @@ Use the [ML Training Client API](/reference/apis/ml-training-client/#submittrain
 
 In the Viam app, go to the **DATA** page, click the [**MODELS** tab](https://app.viam.com/models), and expand **Active Training**.
 Click a job ID to view its logs.
+The **Details** panel shows the container the job runs in, under **Container version** and **Container ID**.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
