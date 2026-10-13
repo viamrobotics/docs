@@ -94,16 +94,7 @@ You have three ways to jog the arm on its Control card, and you can mix them:
 
 - **Joint control (`MoveToJointPositions`)** sets each joint angle directly. Move one joint slider a small amount, press **Execute**, and that joint rotates. It is the most predictable way to make coarse changes and to lift the arm clear before repositioning. You can also use quick move mode (indicated by the lightning bolt icon) to move a joint five degrees at a time.
 - **End-effector control (`MoveToPosition`)** moves the tip of the arm to a Cartesian target instead of setting joints. Press **Current position** to load the arm's current pose into the fields, then change a coordinate and press **Execute**. The values are millimeters in the world frame at the arm base: raising or lowering **z** moves the gripper straight up or down, while **x** and **y** slide it horizontally across the workspace. Change one value by a small amount and watch the arm, or the 3D scene, to learn which way each axis points for your setup. Use this to nudge the gripper in a specific direction without solving for joint angles.
-- **Manual mode** lets you physically manipulate the arm to a desired position. To enter manual mode, go to the arm's **Control** card, then find the **Do command** section. `DoCommand` is a generic method that Viam components and services expose for functionality outside the standard API, letting you send arbitrary commands from the **Control** tab or your code without needing a dedicated method for every action.
-  In the **Input** panel, enter:
-
-  ```json
-  {
-    "enter_manual_mode": true
-  }
-  ```
-
-  Press **Execute**. The **Output** should read, `"status": "entered manual mode"` and you should be able to easily move the arm by hand.
+- **Manual mode (`SetManualMode`)** lets you move the arm to a desired position by hand. Arms that support it show a **ManualMode** row at the top of the Control card. Hold the arm, then press **Enter**. After a countdown set in the **Enable after** field (5 seconds by default), the status changes to **Enabled** and you can guide the arm into position. Manual mode turns off on its own after the number of seconds in the **Enabled for** field (90 by default, 0 for no limit), or press **Exit** when the arm is in place. Some arms hold their own weight in manual mode and others release their joints entirely, so support the arm until you know how yours behaves.
 
 Run these four steps to save and verify the pose:
 
