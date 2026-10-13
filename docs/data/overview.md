@@ -224,12 +224,11 @@ See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/
 
 Robots can generate more data than your network can transfer or your budget can store. Viam provides several tools to control data volume:
 
-- **Capture frequency**: set per-component, from sub-second to infrequent intervals.
-- **Conditional sync**: a sensor on the machine decides whether to sync or hold data.
-- **Edge filtering**: write a custom sensor module that evaluates data before capture and only records what matters.
-- **Retention policies**: configure how long data is retained in the cloud.
+- **Capture less**: lower the capture frequency, use a filtered camera or custom filter module to keep only data that matters, or capture on demand only during specific moments.
+- **Sync selectively**: with conditional sync, a sensor on the machine decides whether to sync or hold data.
+- **Retention policies**: configure how long data is retained in the cloud. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings).
 
-See [Filter at the edge](/data/filter-at-the-edge/) and [Conditional sync](/data/capture-sync/conditional-sync/).
+See the [Capture and sync overview](/data/capture-sync/overview/) to choose among them.
 
 ## Security and data integrity
 

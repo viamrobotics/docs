@@ -613,5 +613,5 @@ go run main.go
   queries you can use to extract insights from your data.
 - [Data pipelines](/data/pipelines/create-a-pipeline/) -- set up
   aggregated views and derived metrics to power your dashboards more efficiently.
-- [Filter at the Edge](/data/filter-at-the-edge/) -- reduce noise in your
+- [Filtered camera](/data/capture-sync/filtered-camera/) -- reduce noise in your
   visualizations by filtering data before it leaves the machine.

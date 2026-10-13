@@ -213,6 +213,6 @@ Now that you understand the data pipeline, you can:
 
 - [Capture data from real hardware](/data/capture-sync/capture-and-sync-data/): configure capture on cameras, motors, or any component.
 - [Record sequences and build a training dataset](/data/sequences-tutorial/): group data into time windows and export them for training.
-- [Filter data at the edge](/data/filter-at-the-edge/): reduce data volume by capturing only what matters.
+- [Control capture and sync](/data/capture-sync/overview/): reduce data volume by capturing only what matters.
 - [Data pipelines](/data/pipelines/create-a-pipeline/): schedule transformations on your captured data.
 - [Visualize your data](/data/visualize-data/): build monitoring dashboards.
