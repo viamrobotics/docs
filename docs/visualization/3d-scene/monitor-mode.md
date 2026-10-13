@@ -18,7 +18,7 @@ What the scene shows depends on whether the machine is online:
 - **Online**: component poses, point clouds, and custom visuals update as the machine runs.
 - **Offline**: the scene shows only the saved configuration, with every component at its configured pose. Point clouds and custom visuals are absent.
 
-The scene fetches each kind of live data at its own rate, which you set under **Settings** > **Connection**. A data stream set to off never updates, so check these rates when part of the scene seems frozen. For other reasons a scene can look wrong, see [Troubleshoot the 3D scene](/visualization/troubleshoot-the-3d-scene/).
+The scene fetches each kind of live data at its own refresh rate, set in **Settings**: pose updates under **Frames**, point clouds under **Pointclouds**, and vision service results under **Vision**. A data stream set to off never updates, so check these rates when part of the scene seems frozen. For other reasons a scene can look wrong, see [Troubleshoot the 3D scene](/visualization/troubleshoot-the-3d-scene/).
 
 ## Read a frame's pose
 

@@ -4,7 +4,7 @@ title: "3D scene controls and settings"
 weight: 90
 layout: "docs"
 type: "docs"
-description: "Navigation and keyboard shortcuts, Details panel fields and the configuration they map to, settings, and importable files for the 3D scene."
+description: "Navigation, where to find keyboard shortcuts, Details panel fields and the configuration they map to, and importable files for the 3D scene."
 capabilities: ["scene-3d"]
 diataxis: reference
 ---
@@ -13,19 +13,21 @@ Look up 3D scene controls and settings here. For what the scene shows and what e
 
 ## Navigation
 
-| Action                   | Mouse             | Keyboard              |
-| ------------------------ | ----------------- | --------------------- |
-| Orbit (rotate view)      | Left-click drag   | Arrow keys            |
-| Pan                      | Right-click drag  |                       |
-| Zoom                     | Scroll wheel      | `R` (in) / `F` (out)  |
-| Strafe camera            |                   | `W`/`A`/`S`/`D`       |
-| Select entity            | Left-click        |                       |
-| Deselect                 | Click empty space |                       |
-| Exit object view         |                   | `Escape`              |
-| Toggle camera mode       |                   | `C`                   |
-| Toggle entity visibility |                   | `H` (selected entity) |
+| Action                                 | Mouse             |
+| -------------------------------------- | ----------------- |
+| Orbit (rotate the view around a point) | Left-click drag   |
+| Pan (slide the view without rotating)  | Right-click drag  |
+| Zoom                                   | Scroll wheel      |
+| Select an entity                       | Left-click        |
+| Deselect                               | Click empty space |
 
-Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you are typing a value in the Details panel. `H` affects only the selected entity, so select an entity, in the viewport or its row in the **World** panel, before pressing it.
+On a trackpad, a two-finger swipe zooms, and pan needs a right-click held while dragging.
+
+## Keyboard shortcuts
+
+The scene has keyboard shortcuts for moving the camera, focusing on, hiding, and isolating entities, switching transform tools, and undoing, redoing, and saving Build mode edits. For the full, current list, open **Settings** > **Keybindings** in the scene.
+
+Keyboard navigation pauses while you type in a field or hold `⌘` (or `Ctrl`).
 
 ## Details panel fields
 
@@ -46,12 +48,7 @@ The panel header can center the camera on the entity, open a [frame POV widget](
 
 ## Settings
 
-Open **Settings** to change how the scene fetches and draws data. The settings other pages refer to:
-
-- **Connection**: how often the scene fetches each data stream, such as poses, point clouds, and vision service results. A stream set to off never updates.
-- **Scene**: the grid, object labels, hover tooltips, line thickness, and how arm models render (**Arm Models**).
-- **Pointclouds**: the default point size and color, and which cameras' point clouds draw (**Enabled cameras**). Cameras that don't support point clouds are turned off.
-- **Vision**: which vision services' results draw in the scene.
+**Settings** controls how the scene fetches and draws data, such as refresh rates, point cloud display, and which vision services render. Pages that rely on a particular setting name it where it matters. Toggle the rest to see what they do.
 
 ## Import files
 

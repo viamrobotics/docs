@@ -34,7 +34,7 @@ A loaded plan appears only in Replay mode. Switching to another mode hides it, s
 
 ## Debug a failed plan with Inspect IK
 
-When a plan fails, the error tells you what collided, but not always whether the goal itself is impossible or only the route to it is blocked. **Inspect IK** answers that. Each plan in Replay mode's list has an **Inspect IK** button, which reruns the inverse kinematics (IK) for the plan's request and lists every candidate arm configuration it finds for the goal. **Back to plans** returns to the plan list.
+When a plan fails, the error tells you what collided, but not always whether the goal itself is impossible or only the route to it is blocked. **Inspect IK** answers that. Each plan in Replay mode's list has an **Inspect IK** button, which reruns the inverse kinematics (IK) for the plan's request and lists every candidate arm configuration it finds for the goal.
 
 Candidates are grouped by seed. Each seed is a different starting point for the search, so different seeds tend to find different arm configurations, such as elbow up or elbow down. You can also sort all candidates by cost; unscored candidates sort last. Each candidate gets one of three statuses:
 

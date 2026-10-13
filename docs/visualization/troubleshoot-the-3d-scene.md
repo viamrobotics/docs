@@ -22,8 +22,9 @@ Two signals tell you what the scene is receiving before you change anything:
 - **Online state.** An offline machine renders the saved frame configuration only, with
   every component at its configured pose. Live poses, point clouds, and custom visuals
   need the machine online and connected.
-- **Polling rates** under **Settings** > **Connection** control how often the scene
-  fetches each data stream. A stream set to off explains a layer that never updates.
+- **Refresh rates** control how often the scene fetches each data stream. Set them in
+  **Settings**: poses under **Frames**, point clouds under **Pointclouds**, and vision
+  results under **Vision**. A stream set to off explains a layer that never updates.
 
 ## A frame or geometry is in the wrong place
 
