@@ -19,6 +19,8 @@ Viam has several ways to control each step.
 Controlling capture changes what is recorded at all, which saves disk space, bandwidth, and storage.
 Controlling sync only changes when recorded data uploads: the machine still writes everything to disk.
 
+For what happens to data after it syncs, see the [Manage data overview](/data/overview/).
+
 ## Choose how to capture
 
 | You want to                                                                   | Use                                                                                                       |

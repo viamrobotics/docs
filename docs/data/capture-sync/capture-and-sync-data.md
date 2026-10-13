@@ -61,6 +61,8 @@ component's data capture is independent -- you can have a camera capturing
 images every 2 seconds and a sensor capturing readings every 10 seconds at the
 same time.
 
+To capture from components on another part of a multi-part machine, see [Multi-part capture](/data/capture-sync/remote-parts-capture/).
+
 ## 4. Sync data from another directory (optional)
 
 You can also sync files from directories outside of the default capture path.

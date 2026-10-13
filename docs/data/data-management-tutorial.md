@@ -207,6 +207,8 @@ You set up a complete data pipeline:
 - **View**: the Data tab in the Viam app showed your synced data with filtering and browsing.
 - **Query**: you queried your data with SQL, both in the app and from your own Python code.
 
+For everything else you can do with captured data, see the [Manage data overview](/data/overview/).
+
 ## What's next
 
 Now that you understand the data pipeline, you can:
