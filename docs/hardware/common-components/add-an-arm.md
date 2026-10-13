@@ -131,9 +131,11 @@ Click **Save**, then expand the **Test** section.
 - Start with slow speeds until you're confident in the configuration.
 - If the arm supports manual mode, a **ManualMode** row appears at the top
   of the card. Press **Enter** to move the arm by hand and **Exit** to
-  return it to software control. Support the arm before you enter manual
-  mode: some arms hold their own weight, but others release their joints
-  entirely.
+  return it to software control.
+
+{{< alert title="Support the arm before you enter manual mode" color="caution" >}}
+Depending on the model, an arm in manual mode either holds its own weight or releases its joints entirely. An arm that releases its joints can drop as soon as manual mode turns on. Until you know how your arm behaves, hold it before you press **Enter**.
+{{< /alert >}}
 
 ## Try it with a fake arm
 
