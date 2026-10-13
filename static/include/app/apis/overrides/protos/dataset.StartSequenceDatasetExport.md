@@ -1,0 +1,1 @@
+Start an asynchronous export of a sequence dataset. Returns a job ID to poll with GetSequenceDatasetExport.

@@ -88,6 +88,8 @@ You must update any configurations that reference your modules using the old nam
 ### Delete an organization
 
 1. Delete all locations in the organization.
+1. Delete all [fragments](/fleet/reuse-configuration/) the organization owns.
+   You can't delete a fragment while any machine uses it, including machines in other organizations.
 1. Click the organization name in the top navigation bar and click **Settings**.
 1. At the bottom of the page, click **Delete organization**.
 
