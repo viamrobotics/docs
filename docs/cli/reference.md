@@ -2948,8 +2948,8 @@ Use a training script to train an ML model on data.
 
 ```sh {class="command-line" data-prompt="$"}
 viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
-viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> --args=<arg-key>=<arg-value> [...named args]
-viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --args=<arg-key>=<arg-value> [...named args]
+viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
 viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
@@ -2985,7 +2985,7 @@ Submit a custom training job with an existing training script in the registry on
 
 ```sh {class="command-line" data-prompt="$"}
 # submit custom training job with an existing training script in the Registry on data in Viam Cloud
-viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript  --args=num_epochs=3,model_type=multi_label
+viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-version=2 --version=1 --script-name=mycompany:MyCustomTrainingScript --container-id=<INSERT CONTAINER ID> --args=num_epochs=3,model_type=multi_label
 ```
 
 <!-- prettier-ignore -->
@@ -2996,7 +2996,7 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id
 | `--model-name` | The name of the ML model. | **Required** |
 | `--script-name` | The registry name of the ML training script to use for training. | **Required** |
 | `--version` | The version of the ML training script to use for training. | **Required** |
-| `--container-version` | Docker container version for training. Use `viam train containers list` to see available versions. | **Required** |
+| `--container-id` | The ID of the training container to run the job in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | Optional |
 
@@ -3006,7 +3006,7 @@ Upload a draft training script and submit a custom training job on data in the V
 
 ```sh {class="command-line" data-prompt="$"}
 # submit custom training job with an uploaded training script on data in Viam Cloud
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --args=num_epochs=3,labels="'green_square blue_star'"
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --container-id=<INSERT CONTAINER ID> --args=num_epochs=3,labels="'green_square blue_star'"
 ```
 
 <!-- prettier-ignore -->
@@ -3018,7 +3018,7 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--model-name` | The name of the ML model. | **Required** |
 | `--path` | The path to the ML training script to upload. | **Required** |
 | `--script-name` | The registry name of the ML training script to use for training. This sets the name on upload. | **Required** |
-| `--container-version` | Docker container version for training. Use `viam train containers list` to see available versions. | **Required** |
+| `--container-id` | The ID of the training container to run the job in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
 | `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`. | Optional |
 | `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | Optional |
 | `--version` | The version of the ML training script to upload. Default: current timestamp. | Optional |
@@ -3085,46 +3085,48 @@ viam train list --org-id=123 --job-status=completed
 
 ### `train containers list`
 
-List the Docker container images available for custom training.
-Without `--org-id`, the list contains the Viam-provided containers.
-With `--org-id`, it also contains the custom containers registered to that organization.
+List the containers you can run custom training jobs in.
+Without `--org-id`, the command lists only Viam-managed containers.
+With `--org-id`, it also lists that organization's [custom training containers](/train/custom-containers/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam train containers list --org-id=123
 ```
 
-The command prints a JSON array with one object per container: `Name`, `Description`, `ID`, `CreatedOn`, and `Visibility`, plus `EndOfLife` and `Framework` when the container has them, and `URI` with `--include-uris`.
-Dates use RFC 3339 format.
-
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--org-id` | The organization ID whose custom containers to include. Aliases: `--org`, `--organization`. | Optional |
-| `--include-uris` | Include each container's image URI in the output. | Optional |
+| `--org-id` | The organization ID whose custom training containers to include. Aliases: `--org`, `--organization`. | Optional |
+| `--include-uris` | Include each container's Docker image URI in the output. | Optional |
+
+The command prints a JSON array with one object per container: `Name`, `Description`, `ID`, `CreatedOn`, and `Visibility`, plus `EndOfLife` and `Framework` when the container has them, and `URI` when you pass `--include-uris`.
+Dates use RFC 3339 format.
+Use the `ID` to choose the container when you submit a custom training job.
 
 ### `train containers register`
 
-Register a Docker image as a custom training container for your organization.
-The image must be a publicly readable `linux/amd64` image on Docker Hub.
-Registering a container requires organization owner permissions.
+Register a public `linux/amd64` Docker Hub image as a [custom training container](/train/custom-containers/) for your organization.
+You must be an organization owner.
 
 ```sh {class="command-line" data-prompt="$"}
-viam train containers register --org-id=123 --uri=my-docker-user/my-training-image:1.0 --description="My training image"
+viam train containers register --uri=docker.io/myuser/my-training-image:1.0 --description="My training environment" --org-id=123
 ```
-
-The command prints the ID of the registered container.
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--uri` | The Docker image URI of the container. | **Required** |
-| `--description` | A description of the container, used as its display name. | **Required** |
-| `--org-id` | The organization ID that will own the container. Defaults to the organization set with `viam defaults set-org`. | Optional |
+| `--uri` | The Docker Hub URI of the image, for example `docker.io/myuser/my-training-image:1.0`. The image must be public and built for `linux/amd64`. | **Required** |
+| `--description` | The container's display name, shown when you choose a container for a training job. | **Required** |
+| `--org-id` | The organization ID to register the container in. Defaults to the organization set with `viam defaults set-org`. | Optional |
+
+The command prints the new container's Viam container ID.
+Use this ID, not the Docker image URI, when you submit a training job or delete the container.
 
 ### `train containers delete`
 
-Delete a custom training container that your organization registered.
-Deleting a container requires organization owner permissions.
+Delete one of your organization's [custom training containers](/train/custom-containers/).
+You must be an organization owner.
+Running training jobs aren't affected.
 
 ```sh {class="command-line" data-prompt="$"}
 viam train containers delete --id=abc123
@@ -3133,7 +3135,7 @@ viam train containers delete --id=abc123
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The ID of the container to delete, as shown by `viam train containers list`. | **Required** |
+| `--id` | The ID of the custom training container to delete. Use `viam train containers list --org-id=<org-id>` to find it. | **Required** |
 
 ## `training-script`
 
@@ -3142,6 +3144,7 @@ Manage training scripts for [custom ML training](/train/custom-training-scripts/
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>
 viam training-script update --org-id=<org-id> --script-name=<script-name> --visibility=<visibility>
+viam training-script test-local --training-script-directory=<script-directory> --dataset-root=<dataset-root> --container-id=<container-id> [...named args]
 ```
 
 ### `training-script upload`
@@ -3183,6 +3186,25 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 | `--visibility` | Visibility of the registry item. Options: `public`, `private`. | **Required** |
 | `--description` | Description of the ML training script. | Optional |
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
+
+### `training-script test-local`
+
+Run an ML training script locally with Docker, in the same container a cloud training job uses.
+See [Test locally with Docker](/train/custom-training-scripts/#test-locally-with-docker).
+
+```sh {class="command-line" data-prompt="$"}
+viam training-script test-local --training-script-directory=my-training/ --dataset-root=./my-dataset/ --container-id=abc123 --model-output-directory=./output/
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--training-script-directory` | The path to the training script directory. It must contain `setup.py` and `model/training.py`. | **Required** |
+| `--dataset-root` | The path to the dataset root directory, where you ran `viam dataset export`. Image paths in the dataset file are relative to this directory. | **Required** |
+| `--container-id` | The ID of the training container to run in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
+| `--dataset-file` | The path to the dataset file, relative to `--dataset-root`. Default: `dataset.jsonl`. | Optional |
+| `--model-output-directory` | The directory to save the trained model in. Default: the current directory. | Optional |
+| `--custom-args` | Custom arguments to pass to the training script, in `key=value` format. | Optional |
 
 ## `traces`
 
