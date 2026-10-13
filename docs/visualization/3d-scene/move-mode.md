@@ -51,9 +51,9 @@ The preview is an approximation. Plans carry no timing, so playback runs at a fi
 
 ## Collisions
 
-The **Collisions** readout checks the selected frame's geometry against everything drawn in the scene, and lists each colliding pair of geometries. It shows what the frame is currently touching, and after a preview, what it would collide with at the target.
+The **Collisions** readout checks for overlapping geometry in the scene, and lists each colliding pair. It shows what the frame is currently touching, and after a preview, what it would collide with at the target. It checks only visible boxes, capsules, cylinders, and spheres, not meshes or point clouds, and it never checks an arm against its own links or against a gripper mounted on it. Hiding an entity removes it from the check.
 
-The readout is a warning, not a gate: you can still run a move it flags. It also checks against geometry the planner never sees, such as custom visuals published by a module. A plan the planner accepts can still show a collision here, and the reverse is true too: obstacles you add in **World state** affect the plan but are not drawn, so the readout doesn't check them. See [Visuals and collisions](/visualization/visuals-and-collisions/).
+The readout is a warning, not a gate: you can still run a move it flags. It also checks against geometry the planner never sees, such as box, capsule, cylinder, or sphere visuals published by a module. A plan the planner accepts can still show a collision here, and the reverse is true too: obstacles you add in **World state** affect the plan but are not drawn, so the readout doesn't check them. See [Visuals and collisions](/visualization/visuals-and-collisions/).
 
 Some flagged collisions are intended. A gripper that must touch an object to pick it up collides with that object at the grasp pose.
 

@@ -17,10 +17,9 @@ Replay needs saved plans: the motion service has to be configured to save them, 
 
 ## Load and play a plan
 
-1. Switch to Replay mode.
-2. Click **Import from data**, then pick up to five plans. The dialog lists synced files tagged `motion-plan`, which are plans that succeeded, and `motion-plan-err`, which are plans that failed. It searches the current machine by default; widen it to the whole organization if the plan ran elsewhere. You can also upload a plan file from your computer.
-3. Choose which loaded plan to show. A failed plan has no trajectory, so it renders the scene it planned against with nothing to step through.
-4. Play, pause, step, or scrub through the plan. Each step moves the arm's links and joints to their pose at that waypoint, with the plan's obstacles in place.
+The **Import from data** dialog lists cloud-synced plan files tagged `motion-plan`, which are plans that succeeded, and `motion-plan-err`, which are plans that failed. It searches the current machine by default; widen it to the whole organization if the plan ran elsewhere. You can also upload a plan file from your computer.
+
+Select a loaded plan to display it in the scene. A failed plan has no trajectory, so it renders the scene it planned against with nothing to step through. Play, pause, step, or scrub through a plan: each step moves the arm's links and joints to their pose at that waypoint, with the plan's obstacles in place.
 
 ## What replay shows
 

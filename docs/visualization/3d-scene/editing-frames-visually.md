@@ -14,7 +14,7 @@ aliases:
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.
 
-Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (parent, translation, orientation, and a single geometry), so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and you save them from the 3D scene itself with **Save** or `⌘/Ctrl+S`.
+Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (parent, translation, orientation, and a single geometry), so it is less suited to bulk changes. Changes flow back to the machine configuration, and you save them from the 3D scene itself with **Save** or `⌘/Ctrl+S`.
 
 ## Prerequisites
 
@@ -90,16 +90,9 @@ To delete a frame, remove it from the component's configuration on the CONFIGURE
 
 ## Edit frames with AI
 
-To describe a frame change in words instead of entering values, use the AI Scene Builder. See [Build mode](/visualization/3d-scene/build-mode/#edit-frames-with-ai).
+To describe a frame change in words instead of entering values, use the **LLM Scene Builder**. See [Build mode](/visualization/3d-scene/build-mode/#edit-frames-with-ai).
 
 ## When to edit JSON instead
 
-Visual editing covers most cases, but a few are faster in JSON:
-
-- **Bulk changes** (renaming many frames, regenerating a layout): JSON
-  edits are easier in a text editor.
-- **Frames that reference components on a different machine part**:
-  the visual editor's parent dropdown only shows local frames.
-- **Complex orientations** (rotations expressed in `axis_angles` or
-  `quaternion` rather than `ov_degrees`): the visual editor shows
-  only the orientation vector form.
+Visual editing covers most cases, but bulk changes, such as renaming many frames or
+regenerating a layout, are easier in a text editor.

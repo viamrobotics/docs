@@ -5,7 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Watch your machine's live state in the 3D scene and read any frame's pose."
-capabilities: ["scene-3d", "motion-planning"]
+capabilities: ["scene-3d", "frame-system"]
 diataxis: explanation
 ---
 
