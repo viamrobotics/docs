@@ -5,7 +5,16 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Record sensor data on your robot, sync it to the cloud, and query, export, or use it for ML training."
-capabilities: ["data-capture", "data-storage", "data-pipelines"]
+capabilities:
+  [
+    "data-capture",
+    "data-storage",
+    "data-pipelines",
+    "datasets",
+    "sequences",
+    "triggers-alerts",
+    "dashboards",
+  ]
 diataxis: overview
 ---
 
@@ -22,7 +31,7 @@ Data moves through four stages, from your robot to actionable insights:
 3. **Store.** In the cloud, tabular data (sensor readings, motor positions, encoder ticks) is stored in MongoDB. Binary data (images, point clouds, audio) is stored in blob storage. Both are indexed and queryable.
 4. **Use.** From the cloud, you can query data with SQL or MQL, export it to your own database, build datasets for ML training, create monitoring dashboards, or trigger alerts when data meets a condition.
 
-Capture and sync run independently: you can capture without syncing, or sync files from other sources without using Viam's capture.
+Capture and sync run independently: you can capture without syncing, or [sync files from other sources](/data/capture-sync/upload-other-data/) without using Viam's capture.
 
 To get started recording data, see [Capture and sync data](/data/capture-sync/capture-and-sync-data/).
 To try the whole flow end to end with a simulated sensor, follow the [Capture and query tutorial](/data/data-management-tutorial/).
@@ -33,7 +42,7 @@ All captured tabular data is queryable through SQL and MQL, either in the Viam a
 
 Binary data (images, point clouds) is browsable and filterable in the Viam app's Data tab, with viewers for images, video, and 3D point clouds.
 
-See [Query data](/data/query-data/) and [Query reference](/data/reference/).
+See [Query data](/data/query-data/) and [Query reference](/data/reference/#query-reference).
 
 ## Transform and pipeline
 
@@ -73,15 +82,13 @@ Captured images can be tagged, annotated with bounding boxes, and organized into
 
 See [Tag data](/data/tag-data/), [Sequences](/data/sequences/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
 
-## Monitor and debug
+## Visualize and alert
 
 Triggers send webhooks, email alerts, or push notifications when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
 
 Build monitoring views with [data dashboards](/monitor/dashboards/overview/) and [Teleop workspaces](/monitor/teleop-workspaces/) in the Viam app, or connect Grafana and other tools to your data through MongoDB.
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
-
-To trace requests across your SDK code, `viam-server`, and modules, see [Trace requests with OpenTelemetry](/monitor/tracing/).
 
 ## Manage data volume
 
