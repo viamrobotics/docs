@@ -59,7 +59,7 @@ When something goes wrong, Viam provides a set of debugging tools you can use wi
 - **Remote shell**: access a terminal on the machine through the CLI (`viam machines part shell`) without setting up SSH tunnels.
 - **Debug endpoints**: enable pprof profiling and resource graph visualization for performance issues.
 - **Configuration history**: view and revert to previous configurations if a config change caused the problem.
-- **Diagnostics**: download FTDC (full-time diagnostic capture) data and OpenTelemetry traces for detailed analysis.
+- **Diagnostics**: download FTDC (full-time diagnostic capture) data and [OpenTelemetry traces](/monitor/tracing/) for detailed analysis.
 
 See [Troubleshoot problems](/monitor/troubleshoot/).
 

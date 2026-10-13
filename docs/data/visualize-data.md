@@ -1,10 +1,10 @@
 ---
 linkTitle: "Visualize data"
 title: "Visualize data"
-weight: 50
+weight: 54
 layout: "docs"
 type: "docs"
-description: "Build dashboards with Teleop, Grafana, or programmatic charts to visualize captured data."
+description: "Visualize captured data with Grafana, other third-party tools, or programmatic charts, and choose between them and the built-in dashboards."
 capabilities: ["dashboards"]
 diataxis: how-to
 date: "2025-01-30"
@@ -13,30 +13,26 @@ aliases:
   - /data-ai/data/visualize/
   - /use-cases/sensor-data-visualize/
   - /how-tos/sensor-data-visualize/
-  - /how-tos/configure-teleop-workspace/
   - /tutorials/services/visualize-data-grafana/
-  - /data/debug-and-trace/
 ---
 
 Build dashboards and monitoring views for your captured data. Visualization helps you spot trends, detect anomalies, and monitor machine health.
 
+Viam has two built-in options in the Viam app, plus external tools that connect to your data directly:
+
+| Approach                                                  | Best for                                                                  | Where                                              |
+| --------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------- |
+| Data dashboards                                           | Fleet-wide charts with windowing and aggregation, built into the Viam app | [Data dashboards](/monitor/dashboards/overview/)   |
+| Teleop workspaces                                         | Live camera feeds, sensor readings, and controls for one machine          | [Teleop workspaces](/monitor/teleop-workspaces/)   |
+| Grafana                                                   | Rich dashboards, alerting, team-shared views                              | [This page](#connect-grafana-to-your-data)         |
+| Other third-party tools (Tableau, Looker Studio)          | BI reporting, executive dashboards                                        | [This page](#connect-other-third-party-tools)      |
+| Custom with Viam SDKs (Python/Go + matplotlib or similar) | Custom reports, embedded charts, notebooks                                | [This page](#custom-visualizations-with-viam-sdks) |
+
+Start with the built-in options. This page covers the other three, for when you need to work with your data outside the Viam app.
+
 Viam stores captured data in a MongoDB Atlas Data Federation instance. This
-means that you can use any tool that can connect to MongoDB to access your data. This page covers four approaches to visualization, from simplest to most
-flexible.
-
-| Approach                                                  | Best for                                         | Setup time    |
-| --------------------------------------------------------- | ------------------------------------------------ | ------------- |
-| Viam Teleop dashboard                                     | Quick monitoring, camera feeds, live sensor data | 2 minutes     |
-| Grafana                                                   | Rich dashboards, alerting, team-shared views     | 10 minutes    |
-| Other third-party tools (Tableau, Looker Studio)          | BI reporting, executive dashboards               | 10-15 minutes |
-| Custom with Viam SDKs (Python/Go + matplotlib or similar) | Custom reports, embedded charts, notebooks       | 5 minutes     |
-
-Viam Teleop dashboards live inside the Viam app. They are scoped to a single machine
-and location, and they update in real time. You do not need to configure any
-database credentials or install any software. This makes them the right choice
-when you want a quick operational view of one machine.
-
-External tools like Grafana connect to the underlying MongoDB data store. They
+means that you can use any tool that can connect to MongoDB to access your data.
+External tools like Grafana connect to that data store. They
 can query data across machines and organizations, apply complex transformations,
 set up alerts, and share dashboards with team members who do not have Viam app
 access.
@@ -44,57 +40,6 @@ access.
 Custom visualization with Viam SDKs gives you complete control. You write code that
 queries data through the Viam SDK and renders it however you want -- matplotlib
 charts, Plotly dashboards, HTML reports, or any other format.
-
-<a id="dashboard"></a>
-
-## Build a Viam Teleop dashboard {#teleop}
-
-The Viam Teleop dashboard is the fastest way to visualize data from a single machine.
-
-### Create a workspace
-
-1. Go to [app.viam.com](https://app.viam.com).
-2. Click **FLEET** in the top navigation, then click the **TELEOP** tab. You
-   can also navigate directly to [app.viam.com/teleop](https://app.viam.com/teleop).
-3. Click **+ Create workspace**.
-4. In the top left of the page, replace the placeholder `untitled-workspace`
-   text with a descriptive name for your workspace (for example, "Sensor Monitor" or
-   "Factory Floor Cameras").
-5. Use the **Select location** dropdown to choose the location that contains
-   your machine.
-6. Use the **Select machine** dropdown to choose the machine you want to
-   visualize data from.
-
-### Add widgets
-
-1. Click **Add widget** and select a widget type. Available widget types include:
-
-   - **Time-series chart** -- plots sensor values over time.
-   - **Camera feed** -- shows a live camera stream.
-   - **Value display** -- shows the current reading from a sensor.
-   - **Button** -- triggers an action on the machine.
-
-   Additional widget types may be available depending on your machine's components.
-
-2. To configure a widget, click the **pencil icon** in the top right corner of
-   the widget. This opens the widget settings where you select which component
-   and data source the widget displays.
-
-   {{<imgproc src="/services/data/visualize-widget-configure.png" alt="Click the pencil icon to configure your widget." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
-
-3. Repeat for each widget you want on the dashboard. You can mix camera feeds,
-   time-series charts, and value displays on the same workspace.
-
-   {{<imgproc src="/services/data/visualize-workspace.png" resize="1200x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Workspace containing multiple widgets displaying sensor data visualizations.">}}
-
-### Arrange the layout
-
-- Click and drag the **grid icon** in the top left corner of any widget to reposition it.
-- Resize widgets by dragging their edges.
-- The layout saves automatically.
-
-You now have a live dashboard showing real-time data from your machine. The
-dashboard updates as new data arrives -- no refresh needed.
 
 ## Configure database access for third-party tools
 
@@ -516,31 +461,16 @@ go run main.go
 
 ## Try It
 
-1. **Build a Viam Teleop dashboard.** Create a workspace, add a time-series widget
-   for a sensor and a camera feed widget, and verify that data appears in real
-   time.
-
-2. **Connect Grafana.** Run the CLI commands to configure database access, set
+1. **Connect Grafana.** Run the CLI commands to configure database access, set
    up the Grafana MongoDB data source, and run the example MQL query. Create a
    time-series panel and verify the chart updates when you change the time range
    selector.
 
-3. **Run the Python or Go script.** Copy one of the programmatic examples, fill
+2. **Run the Python or Go script.** Copy one of the programmatic examples, fill
    in your credentials, and run it. You should see a `temperature_chart.png`
    file in your working directory.
 
 ## Troubleshooting
-
-{{< expand "Viam Teleop dashboard shows no data" >}}
-
-- **Check that the machine is online.** The Viam Teleop dashboard shows live data
-  from the machine. If the machine is offline, widgets will be empty.
-- **Verify the component is configured.** Make sure the component you selected
-  in the widget configuration exists on the machine and is producing data.
-- **Check the widget configuration.** Click the pencil icon on the widget and
-  verify that the correct component and data source are selected.
-
-{{< /expand >}}
 
 {{< expand "CLI commands fail with authentication error" >}}
 
@@ -613,5 +543,5 @@ go run main.go
   queries you can use to extract insights from your data.
 - [Data pipelines](/data/pipelines/create-a-pipeline/) -- set up
   aggregated views and derived metrics to power your dashboards more efficiently.
-- [Filter at the Edge](/data/filter-at-the-edge/) -- reduce noise in your
+- [Filtered camera](/data/capture-sync/filtered-camera/) -- reduce noise in your
   visualizations by filtering data before it leaves the machine.

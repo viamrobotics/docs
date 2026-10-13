@@ -51,7 +51,7 @@ For OpenTelemetry request tracing in a Python module, install the `tracing` extr
 pip install 'viam-sdk[tracing]'
 ```
 
-See [OpenTelemetry distributed tracing](/data/overview/#opentelemetry-distributed-tracing) for how to enable it.
+See [Trace requests with OpenTelemetry](/monitor/tracing/) for how to enable it.
 
 ## Configure credentials
 

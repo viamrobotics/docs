@@ -1,7 +1,7 @@
 ---
 linkTitle: "Hot data store"
 title: "Hot data store"
-weight: 32
+weight: 24
 layout: "docs"
 type: "docs"
 description: "Store a rolling window of recent data for fast queries while continuing to write all data to blob storage."

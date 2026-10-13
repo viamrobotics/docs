@@ -127,7 +127,7 @@
 
 [[redirects]]
   from = "/data/capture-sync/"
-  to = "/data/capture-sync/capture-and-sync-data/"
+  to = "/data/capture-sync/overview/"
   status = 301
   force = true
 

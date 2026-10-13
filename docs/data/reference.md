@@ -381,6 +381,13 @@ Check your machine's startup logs for the `$HOME` value:
 
 You can change the capture directory with the `capture_dir` attribute in the [data management service attributes](#data-management-service-attributes).
 
+Each capture is written as a `.capture` file of length-delimited binary protobuf messages.
+The first message is metadata describing the capture, and the remaining messages hold the captured data.
+Images and tabular readings use the same container format.
+When a file reaches `maximum_capture_file_size_bytes`, the service starts a new one.
+
+For ways to keep local storage under control on constrained machines, see [Manage local storage](/data/capture-sync/capture-and-sync-data/#manage-local-storage).
+
 ### Automatic deletion
 
 After data syncs successfully, it is automatically deleted from local storage.

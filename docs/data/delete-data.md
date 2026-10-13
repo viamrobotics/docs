@@ -1,7 +1,7 @@
 ---
 linkTitle: "Delete data"
 title: "Delete captured data"
-weight: 27
+weight: 32
 layout: "docs"
 type: "docs"
 description: "Delete captured tabular and binary data through the Viam app, the CLI, or the SDK."

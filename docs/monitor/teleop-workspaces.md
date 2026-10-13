@@ -10,6 +10,7 @@ diataxis: how-to
 aliases:
   - /manage/troubleshoot/teleoperate/custom-interface/
   - /monitor/custom-interface/
+  - /how-tos/configure-teleop-workspace/
 ---
 
 Teleop workspaces let you build custom operator interfaces for specific tasks. Instead of seeing every resource on the CONTROL tab, you choose which widgets to display and arrange them into a focused view.
@@ -38,7 +39,11 @@ See [configure a machine](/hardware/configure-hardware/) for more information.
 1. Click **Add widget** and select a widget type.
 1. Click the pencil icon in the top right of the widget to configure it.
 
+   {{<imgproc src="/services/data/visualize-widget-configure.png" alt="Click the pencil icon to configure your widget." style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
+
 To rearrange widgets, click and drag the grid icon in the top left of a widget.
+
+{{<imgproc src="/services/data/visualize-workspace.png" resize="1200x" style="width: 700px" class="fill imgzoom shadow" declaredimensions=true alt="Workspace containing multiple widgets displaying sensor data visualizations.">}}
 
 ### Available widget types
 

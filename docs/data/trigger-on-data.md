@@ -1,7 +1,7 @@
 ---
 linkTitle: "Trigger on events"
 title: "Trigger on data events"
-weight: 55
+weight: 56
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email, webhook, or push notifications when data from the machine is synced."
