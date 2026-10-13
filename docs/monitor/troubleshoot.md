@@ -255,7 +255,7 @@ viam parse-ftdc --path ./diagnostics/ftdc-data
 
 ### Traces
 
-If tracing is enabled in your machine configuration, you can download and analyze OpenTelemetry traces:
+If [tracing is enabled](/monitor/tracing/) in your machine configuration, you can download and analyze OpenTelemetry traces:
 
 ```sh {class="command-line" data-prompt="$"}
 viam traces get-remote --part <part-name-or-id> ./traces/

@@ -10,6 +10,7 @@ diataxis: how-to
 aliases:
   - /manage/troubleshoot/teleoperate/custom-interface/
   - /monitor/custom-interface/
+  - /how-tos/configure-teleop-workspace/
 ---
 
 Teleop workspaces let you build custom operator interfaces for specific tasks. Instead of seeing every resource on the CONTROL tab, you choose which widgets to display and arrange them into a focused view.

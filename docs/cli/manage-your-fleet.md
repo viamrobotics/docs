@@ -231,6 +231,7 @@ viam parse-ftdc --path=./ftdc-data
 
 Viam machines collect [OpenTelemetry](https://opentelemetry.io/) traces that record the timing and context of operations.
 Use the `viam traces` commands to retrieve and inspect these traces for debugging performance issues.
+To turn tracing on, see [Trace requests with OpenTelemetry](/monitor/tracing/).
 
 ### Print traces to the console
 
