@@ -26,6 +26,13 @@ An arm component controls a multi-jointed robotic arm. The API provides:
   (Viam handles the inverse kinematics).
 - **Motion planning integration**: the motion service can plan
   collision-free paths for the arm.
+- **Manual mode**: on arms that support it, release the arm so you can
+  move it into position by hand, for example to teach poses.
+
+Not every arm model supports every feature. Manual mode and direct
+end-effector commands depend on the model; call
+[`GetProperties`](/reference/apis/components/arm/#getproperties) to check
+which ones your arm supports.
 
 Arm models almost always come from **modules in the registry** because each arm manufacturer has its own communication protocol.
 See the Registry modules list below for Viam-maintained arm modules.
@@ -122,6 +129,13 @@ Click **Save**, then expand the **Test** section.
 - Use the joint position controls to move individual joints.
 - Verify each joint moves in the expected direction.
 - Start with slow speeds until you're confident in the configuration.
+- If the arm supports manual mode, a **ManualMode** row appears at the top
+  of the card. Press **Enter** to move the arm by hand and **Exit** to
+  return it to software control.
+
+{{< alert title="Support the arm before you enter manual mode" color="caution" >}}
+Depending on the model, an arm in manual mode either holds its own weight or releases its joints entirely. An arm that releases its joints can drop as soon as manual mode turns on. Until you know how your arm behaves, hold it before you press **Enter**.
+{{< /alert >}}
 
 ## Try it with a fake arm
 

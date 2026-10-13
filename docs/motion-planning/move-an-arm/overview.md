@@ -37,6 +37,13 @@ Viam exposes multiple ways to command an arm. Three questions sort them:
 For the four constraint types the planner enforces, see
 [Configure motion constraints](/motion-planning/move-an-arm/constraints/).
 
+Not every arm accepts the arm-level Cartesian move. An arm's
+[`GetProperties`](/reference/apis/components/arm/#getproperties) response
+reports `support_cartesian_commands`; when it is false, the arm does not
+implement `MoveToPosition`, so move it to a pose through the motion service
+instead. The arm's Control card does the same: its end-effector control
+locks to **Motion service** mode for these arms.
+
 ## Pick and place
 
 Pick-and-place is the point where motion planning, vision, and gripper
