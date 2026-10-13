@@ -34,8 +34,8 @@ Open the **Settings** panel (gear icon) in the 3D scene tab to control point-clo
 
 ## Load and compare external point clouds
 
-To inspect a saved capture, drag a `.pcd` or `.ply` file onto the viewport. The scene loads
-it as a point cloud you can view alongside your live data, which is useful for comparing a
+To inspect a saved capture, drag a `.pcd` file onto the viewport. The scene loads it as a
+point cloud you can view alongside your live data, which is useful for comparing a
 saved SLAM map or scan against the current frame system.
 
 For a full alignment walkthrough, see
@@ -48,11 +48,13 @@ copy, or ground-truth points and predicted points, link them with **HoverLink**.
 point in one then highlights the matching point in the other, and the hover tooltip shows
 both points' positions.
 
-1. Select a point cloud or arrows entity, such as an imported `.pcd` or `.ply` file.
-2. In the Details panel, click **Add Relationship** and choose **HoverLink**.
-3. Pick the other entity, and set the **Index mapping**. The default, `index`, matches point
-   N in one cloud to point N in the other. Other expressions over `index` map between
-   datasets whose points aren't in the same order.
+1. In **Build** mode, select a point cloud or arrows entity, such as an imported `.pcd` file.
+2. In the Details panel, under **Actions**, click **Add Relationship** and choose **HoverLink**.
+3. Pick the other entity, and leave **Index mapping** set to `index` to match point N in one
+   to point N in the other. The mapping must use `index`; without it, **Add** does nothing.
 4. Click **Add**.
 
-Existing links appear under **Relationships** in the Details panel, where you can remove them.
+Links work in every mode, and appear under **Relationships** in the Details panel, where you
+can remove them. For imported `.pcd` files, `index` matches points correctly only between
+files whose points are in the same order, because the scene reorders each file's points when
+it loads them.

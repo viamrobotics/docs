@@ -44,7 +44,7 @@ The Details panel shows the selected entity's pose and geometry on its **Details
 | **dimensions** (mm)                             | `x`, `y`, `z` for a box; `r` for a sphere; `r` and `l` for a capsule           | `frame.geometry` `x`, `y`, `z`, `r`, `l`                                                 |
 | **Appearance** tab: color, opacity, axes helper | How the entity draws in the scene                                              | None. These change the rendering only, not the configuration                             |
 
-The panel header can center the camera on the entity, open a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and copy the entity's pose and geometry as JSON.
+The panel header can open a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov) and copy the entity's pose and geometry as JSON. To center the camera on the selected entity, use the scene's focus control or its keyboard shortcut.
 
 ## Settings
 
@@ -54,10 +54,12 @@ The panel header can center the camera on the entity, open a [frame POV widget](
 
 Drag a file onto the viewport to add it to the scene:
 
-| File type | Loads as                                                                                                                                                             |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.pcd`    | A point cloud                                                                                                                                                        |
-| `.ply`    | A point cloud                                                                                                                                                        |
-| `.json`   | A scene snapshot. The file name must start with `visualization_snapshot`. See [Viam Visualization](/visualization/viam-visualization/#save-and-load-scene-snapshots) |
+| File type                | Loads as                                                                                                                                                                                                                                                                       |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.pcd`                   | A point cloud                                                                                                                                                                                                                                                                  |
+| `.ply`                   | A triangle mesh. A `.ply` file that holds only points draws as triangles, not points, so convert point clouds to `.pcd` first.                                                                                                                                                 |
+| `.json`, `.pb`, `.pb.gz` | A scene snapshot. The file name must start with `visualization_snapshot`, or the scene rejects it as an unsupported file type. A snapshot can also set the camera's starting view. See [Viam Visualization](/visualization/viam-visualization/#save-and-load-scene-snapshots). |
+
+Imported files are placed relative to the world frame.
 
 To remove an imported file, select it and use **Remove from scene** in the Details panel header.
