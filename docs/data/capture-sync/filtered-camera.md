@@ -7,7 +7,7 @@ type: "docs"
 description: "Use an ML model on the machine to decide which camera frames to capture, so only frames that match a label or detection are stored and synced."
 capabilities: ["data-capture"]
 diataxis: how-to
-date: "2025-01-30"
+date: "2026-10-13"
 aliases:
   - /data/filter-at-the-edge/
   - /build/data/filter-at-the-edge/
@@ -23,6 +23,7 @@ Frames that don't match are never written to disk, so they cost no storage, band
 The [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) registry module does this by running an ML vision model on each frame and gating capture on the result.
 It wraps an existing camera and a vision service so data capture sees a pre-filtered stream.
 
+If the module doesn't fit your needs, you can [build a custom filter module](#advanced-build-a-custom-filter-module) instead.
 For other ways to reduce how much your machine captures and syncs, see [Capture and sync overview](/data/capture-sync/overview/).
 
 ## How it works

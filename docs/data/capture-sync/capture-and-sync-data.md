@@ -103,6 +103,18 @@ If you need periodic snapshots rather than continuous monitoring, lower the freq
 
 The change takes effect immediately, without a restart.
 
+As a rough guide, a camera whose images average about 30&nbsp;KB produces:
+
+| Frequency    | Captures           | Data per day |
+| ------------ | ------------------ | ------------ |
+| `1` Hz       | 1 per second       | ~2.5&nbsp;GB |
+| `0.1` Hz     | 1 every 10 seconds | ~250&nbsp;MB |
+| `0.0167` Hz  | 1 per minute       | ~42&nbsp;MB  |
+| `0.00028` Hz | 1 per hour         | ~0.7&nbsp;MB |
+
+Larger images scale these numbers up proportionally.
+Start with the lowest frequency that meets your needs; you can increase it later once you understand your data volume and bandwidth budget.
+
 A lower frequency doesn't help when you need to capture specific events, such as only the frames with a person in them.
 For that, use a [filtered camera](/data/capture-sync/filtered-camera/) or [capture on demand](/data/capture-sync/capture-on-demand/).
 
@@ -122,6 +134,12 @@ On machines with little storage, such as single-board computers:
 
   ```sh {class="command-line" data-prompt="$"}
   du -sh "$HOME/.viam/capture"
+  ```
+
+  To watch it over time, refreshing every minute:
+
+  ```sh {class="command-line" data-prompt="$"}
+  watch -n 60 du -sh "$HOME/.viam/capture"
   ```
 
   Use `/root/.viam/capture` when `viam-server` runs as root through `viam-agent`. See [Capture directories](/data/reference/#capture-directories) for every platform.
