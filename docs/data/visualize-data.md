@@ -20,13 +20,13 @@ Build dashboards and monitoring views for your captured data. Visualization help
 
 Viam has two built-in options in the Viam app, plus external tools that connect to your data directly:
 
-| Approach | Best for | Where |
-| --- | --- | --- |
-| Data dashboards | Fleet-wide charts with windowing and aggregation, built into the Viam app | [Data dashboards](/monitor/dashboards/overview/) |
-| Teleop workspaces | Live camera feeds, sensor readings, and controls for one machine | [Teleop workspaces](/monitor/teleop-workspaces/) |
-| Grafana | Rich dashboards, alerting, team-shared views | [This page](#connect-grafana-to-your-data) |
-| Other third-party tools (Tableau, Looker Studio) | BI reporting, executive dashboards | [This page](#connect-other-third-party-tools) |
-| Custom with Viam SDKs (Python/Go + matplotlib or similar) | Custom reports, embedded charts, notebooks | [This page](#custom-visualizations-with-viam-sdks) |
+| Approach                                                  | Best for                                                                  | Where                                              |
+| --------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------- |
+| Data dashboards                                           | Fleet-wide charts with windowing and aggregation, built into the Viam app | [Data dashboards](/monitor/dashboards/overview/)   |
+| Teleop workspaces                                         | Live camera feeds, sensor readings, and controls for one machine          | [Teleop workspaces](/monitor/teleop-workspaces/)   |
+| Grafana                                                   | Rich dashboards, alerting, team-shared views                              | [This page](#connect-grafana-to-your-data)         |
+| Other third-party tools (Tableau, Looker Studio)          | BI reporting, executive dashboards                                        | [This page](#connect-other-third-party-tools)      |
+| Custom with Viam SDKs (Python/Go + matplotlib or similar) | Custom reports, embedded charts, notebooks                                | [This page](#custom-visualizations-with-viam-sdks) |
 
 Start with the built-in options. This page covers the other three, for when you need to work with your data outside the Viam app.
 
