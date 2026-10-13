@@ -32,8 +32,8 @@ This has the following sub-options:
 <!-- prettier-ignore -->
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
-| line_tolerance_mm | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
-| orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
+| line_tolerance_mm | float | 0 | Max linear deviation from straight-line between start and goal, in mm. Only checked when greater than 0, so 0 turns the check off. |
+| orientation_tolerance_degs | float | 0 | Max angular distance, in degrees, between the current orientation and the closer of the start or goal orientation. Only checked when greater than 0, so 0 turns the check off. |
 
 **Example usage**:
 
@@ -81,14 +81,16 @@ You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.co
 
 ## Orientation constraint
 
-The orientation constraint (`{"motion_profile": "orientation"}`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the [Slerp](https://en.wikipedia.org/wiki/Slerp) between start and goal by more than a set amount.
-This is similar to the "orient_tolerance" option in the linear profile, but without any path restrictions.
-If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
+The orientation constraint (`{"motion_profile": "orientation"}`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the direct rotation between start and goal by more than a set amount.
+The direct rotation is the shortest arc between the two orientations, also known as the [Slerp](https://en.wikipedia.org/wiki/Slerp) path.
+This is similar to the `orientation_tolerance_degs` option in the linear profile, but without any path restrictions, and with a tolerance that follows the whole arc instead of only the start and goal.
+If set to zero, any deviation from the direct rotation is rejected, so a movement with identical starting and ending orientations will hold that orientation throughout the movement.
+This differs from the linear profile, where 0 turns the orientation check off.
 
 <!-- prettier-ignore -->
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
-| orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
+| orientation_tolerance_degs | float | 0 | Max angular distance, in degrees, between the current orientation and the direct rotation from the start orientation to the goal orientation. 0 rejects any deviation. |
 | ignore_theta | bool | false | When true, deviation is measured between orientation vectors alone, disregarding rotation about the component's own pointing axis. Use this for payloads symmetric about that axis (for example, an open container that spills when tipped but not when spun). |
 
 **Example usage**:

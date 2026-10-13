@@ -48,6 +48,10 @@ that distance of the line segment between start and goal. When
 orientation within that angular distance of whichever is closer: the start
 orientation or the goal orientation.
 
+A tolerance of 0 means opposite things in the two constraints. In a
+LinearConstraint, 0 turns that check off. In an OrientationConstraint, 0 is the
+strictest setting and rejects any deviation.
+
 ### OrientationConstraint
 
 Forces the end effector to maintain a consistent orientation throughout the
