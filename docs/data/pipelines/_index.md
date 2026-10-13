@@ -1,7 +1,7 @@
 ---
 linkTitle: "Data pipelines"
 title: "Data pipelines"
-weight: 30
+weight: 40
 layout: "docs"
 type: "docs"
 no_list: true

@@ -1,7 +1,7 @@
 ---
 linkTitle: "Visualize data"
 title: "Visualize data"
-weight: 50
+weight: 54
 layout: "docs"
 type: "docs"
 description: "Visualize captured data with Grafana, other third-party tools, or programmatic charts, and choose between them and the built-in dashboards."
