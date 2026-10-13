@@ -67,12 +67,12 @@ A constraint limits the path, not just the target, so it can turn a plan the pla
 
 The error appears in the move controls. Most errors name the geometries involved, so read the names first:
 
-- `asked for a pose too far`: the target is out of reach. The reported distance is to the arm's end frame, so it includes the offset of anything attached to the arm, such as a gripper.
+- `asked for a pose too far`: the target is out of reach. The error compares the arm's reach with how far the arm's end frame would have to be from the arm's base, so the distance includes the offset of anything attached to the arm, such as a gripper.
 - `all IK solutions failed constraints`, followed by a list of collisions: the arm can reach the target, but every way of reaching it collides with something. Each entry names the two colliding geometries and the share of candidates that collision ruled out.
 - `fatal early collision`: a pose the plan must pass through collides with a **World state** obstacle.
 - `zero IK solutions produced`: no arm configuration reaches the target at all. Common causes are a frame that nothing moves, a target too close to the arm's base, or an orientation the arm cannot reach.
 
-Arms with fewer than six joints can reach far fewer orientations than six-joint arms. On these arms, most targets fail with `zero IK solutions produced` unless you choose an orientation the arm can reach. Pointing straight down, with an orientation vector of `0, 0, -1`, is reachable across most of the workspace.
+Arms with fewer than six joints can't reach every combination of position and orientation, so many targets fail with `zero IK solutions produced` even when they're within reach. Try an orientation the arm can reach. The [SO-ARM101 palletizing tutorial](/tutorials/so-arm101-palletizing/) shows poses that work on one such arm.
 
 ## Save plans for replay
 
