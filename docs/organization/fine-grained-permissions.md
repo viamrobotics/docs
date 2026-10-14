@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 draft: true
-description: "Limit which API methods a user or API key can call on specific resources of a machine."
+description: "Define which API methods a user or API key can call on specific resources of a machine."
 capabilities: ["org-management"]
 diataxis: how-to
 date: "2026-10-14"
@@ -22,12 +22,13 @@ A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `
 
 ## Who a policy applies to
 
-A policy only ever limits members.
-Owners and operators always keep full access to the machines their roles cover, and a grant that names an owner or an operator has no effect.
-The **Member** role gives no machine access of its own, so a member can call only what a grant allows.
+Owners and operators have machine-wide permission: they can call every method on every resource of the machine, and an access policy never limits them.
+A member has no machine-wide permission.
+A member can call only the methods that a grant allows, on the resources the grant names.
 
-To restrict a user or API key, give it the **Member** role, then name it in a grant.
-A grant that names someone who is neither a member nor an owner or operator is ignored.
+A member can't call anything on a machine until a grant allows it.
+To let a user or API key make specific calls, give it the **Member** role, then name it in a grant.
+A grant that names anyone who isn't a member is ignored.
 See [Role-based access control](/organization/rbac/) for how roles are assigned.
 
 ## How a call is evaluated
@@ -38,13 +39,12 @@ Find the row that describes the caller and the call:
 <!-- prettier-ignore -->
 | Situation | Result |
 | --------- | ------ |
-| The rules list is empty or absent. | Allowed. Every caller is unrestricted. |
-| The caller is unauthenticated, and the list has any entry. | Denied. |
+| The caller is unauthenticated. | Denied. |
 | The caller is listed in more than one entry. | Denied for every call. `viam-server` logs an error until you fix the configuration. |
 | The caller has its own entry that grants the method on the resource. | Allowed. |
 | The caller has its own entry that doesn't grant the method on the resource. | Denied. |
 | The caller has no entry of its own. | Denied. |
-| The method addresses no named resource, such as a `RobotService` method. | Only grants on `_machine` match. |
+| The method acts on the machine as a whole instead of one resource, such as `GetMachineStatus`. | Allowed only if a grant lists `_machine` as its resource. `_machine` is a placeholder for the machine itself, not a real resource. |
 | An entry has an unknown subject `type`. | The entry is ignored, and `viam-server` logs a warning. |
 
 A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
@@ -86,17 +86,18 @@ A wildcard must be a whole segment.
 `cam*` and `/viam.component.camera.v1.CameraService/Get*` are rejected when you save.
 A grant needs at least one subject and one resource, and a field the section doesn't define is rejected, so a typo fails at save instead of silently doing nothing.
 
-Don't set `auth.user_permissions` yourself.
-Viam generates it from `access_policy`, and the app rejects a configuration that includes it.
-
 Besides the methods a member's grants allow, every member can call a small baseline set of methods that `viam-server` needs to accept a connection.
 
-<!-- TODO(verify, DOCS-4936): which methods are in the baseline set, that the app never compiles a default entry from an access policy (see the local configuration section), how grants from fragments combine, whether resource names are checked at save, and the owner and operator exemption as shipped. The compiler (app#13423) wasn't merged when this was drafted. Confirm on a flag-enabled org before removing draft: true. -->
+<!-- TODO(verify, DOCS-4936): what user experience the engineers expect for `_machine` once this is live (how a reader discovers it, and whether the app UI hides it), which methods are in the baseline set, that the app never compiles a default entry from an access policy (see the local configuration section), how grants from fragments combine, whether resource names are checked at save, and the owner and operator exemption as shipped. The compiler (app#13423) wasn't merged when this was drafted. Confirm on a flag-enabled org before removing draft: true. -->
 
 ## Define permissions in a local configuration file
 
 If you run `viam-server` from a local configuration file instead of managing the machine in the Viam app, you write the rules `viam-server` enforces directly, in the `auth` section of the file.
 Requires `viam-server` v1.8.0 or later.
+
+This format is for local configuration files.
+If you manage the machine in the Viam app, define an [access policy](#define-an-access-policy) instead.
+The app rejects a configuration that sets `auth.user_permissions` directly, because it generates that section from the access policy.
 
 Add a `user_permissions` list.
 Each entry has a `user` and a list of `permissions`:
@@ -133,18 +134,41 @@ Each entry has a `user` and a list of `permissions`:
 The `user` types are `api-key-id`, `app-user-id`, and `default`.
 Leave out the `id` of a `default` entry.
 Resources and methods work as in an access policy, except that `user_permissions` takes exact names only: it has no wildcards.
-Roles don't apply to a local configuration file, so these rules limit every caller you list.
 
-[How a call is evaluated](#how-a-call-is-evaluated) applies here, with one addition.
+Roles are part of the Viam app, so they don't decide who can connect to a machine run from a local file.
+The `auth.handlers` section does.
+An `api-key` handler maps each API key ID to its key, and `keys` lists the IDs that may connect.
+An `api-key-id` entry in `user_permissions` matches one of those IDs:
+
+```json
+{
+  "auth": {
+    "handlers": [
+      {
+        "type": "api-key",
+        "config": {
+          "<API-KEY-ID>": "<API-KEY>",
+          "keys": ["<API-KEY-ID>"]
+        }
+      }
+    ]
+  }
+}
+```
+
+[How a call is evaluated](#how-a-call-is-evaluated) applies here, with two additions.
 A `default` entry covers any authenticated caller that has no entry of its own:
 
 <!-- prettier-ignore -->
 | Situation | Result |
 | --------- | ------ |
+| The `user_permissions` list is empty or absent. | Allowed. Anyone who can connect to the machine is unrestricted. |
 | The caller has no entry, and the `default` entry grants the method on the resource. | Allowed. |
 | The caller has no entry, and there is no `default` entry or it doesn't grant the call. | Denied. |
 
 A caller's own entry replaces the `default` entry, it doesn't add to it.
 The Viam app's access policy has no `default` entry.
 
-<!-- TODO(verify, DOCS-4936): that roles don't apply to a local configuration file, how a caller authenticates against a local config so its API key ID matches an entry, which connection-plumbing methods are exempt from checks, and the no-wildcard claim against a shipped release. -->
+<!-- TODO(DOCS-4936): docs/build-apps/use-viam-from-an-agent.md (lines 31 and 155 to 158 when drafted) tells agents to read `user_permissions` in a machine's JSON config. That is misleading for cloud-managed machines, where the app rejects the field and generates it from `access_policy`. Fix in a follow-up once Member ships; it belongs to a different PR. -->
+
+<!-- TODO(verify, DOCS-4936): the handler sample comes from a code comment in RDK config.go and the ID-to-entity match from authorization.go, neither tested live. Also confirm what a machine with no handlers does with unauthenticated connections (the empty-list row assumes it accepts them), whether `app-user-id` entries mean anything without the Viam app, which connection-plumbing methods are exempt from checks, and the no-wildcard claim against a shipped release. -->
