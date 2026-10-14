@@ -20,6 +20,30 @@ You define a policy in your machine's configuration.
 Viam compiles it into rules that `viam-server` enforces on every request from a client.
 A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning.
 
+## How a call is evaluated
+
+`viam-server` checks every request from a client against the compiled rules.
+Find the row that describes the caller and the call:
+
+<!-- prettier-ignore -->
+| Situation | Result |
+| --------- | ------ |
+| The rules list is empty or absent. | Allowed. Every caller is unrestricted. |
+| The caller is unauthenticated, and the list has any entry. | Denied. |
+| The caller is listed in more than one entry. | Denied for every call. `viam-server` logs an error until you fix the configuration. |
+| The caller has its own entry that grants the method on the resource. | Allowed. |
+| The caller has its own entry that doesn't grant the method on the resource. | Denied. A caller's own entry replaces the `default` entry, it doesn't add to it. |
+| The caller has no entry, and a `default` entry grants the method on the resource. | Allowed. |
+| The caller has no entry, and there is no `default` entry or it doesn't grant the call. | Denied. |
+| The method addresses no named resource, such as a `RobotService` method. | Only grants on `_machine` match. |
+| An entry has an unknown subject `type`. | The entry is ignored, and `viam-server` logs a warning. |
+
+A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
+If a change to the rules removes a caller's access, `viam-server` also closes that caller's open video streams.
+
+Only local configuration files can contain a `default` entry.
+An access policy in the Viam app names users and API keys only.
+
 ## Define an access policy
 
 Add an `access_policy` section at the top level of the machine's JSON configuration, next to `components` and `services`.
@@ -59,7 +83,7 @@ A grant needs at least one subject and one resource, and a field the section doe
 Don't set `auth.user_permissions` yourself.
 Viam generates it from `access_policy`, and the app rejects a configuration that includes it.
 
-<!-- TODO(verify, DOCS-4936): behavior when a caller has no matching grant, owner and operator exemption, how grants from fragments combine, and whether resource names are checked at save. Confirm against APP-17820 and a flag-enabled org before removing draft: true. -->
+<!-- TODO(verify, DOCS-4936): that the app never compiles a default entry from an access policy (the table's last note), behavior when a caller has no matching grant, owner and operator exemption, how grants from fragments combine, and whether resource names are checked at save. Confirm against APP-17820 and a flag-enabled org before removing draft: true. -->
 
 ## Define permissions in a local configuration file
 
