@@ -19,15 +19,24 @@ You can assign an owner or an operator role for an {{< glossary_tooltip term_id=
 - **Owner**: Can see and edit every tab on the machine page and perform equivalent operations from the APIs.
 - **Operator**: Can see and use only the **CONTROL** tab and perform equivalent operations from the APIs.
   Cannot see or edit the **CONFIGURE**, **LOGS**, or **CONNECT** tabs.
+- **Member**: Has no access to a machine by default.
+  A member can call only the API methods that an access policy grants, on the resources it names.
+  See [Fine-grained permissions](/organization/fine-grained-permissions/).
 
-Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the two roles with the three levels to create fine-grained access patterns:
+Owners and operators always keep full access to the machines their roles cover.
+An access policy only ever limits members.
 
-| Goal                                           | Assign this                                                     |
-| ---------------------------------------------- | --------------------------------------------------------------- |
-| Software team manages all machines at a site   | Location Owner                                                  |
-| Field operator monitors and controls machines  | Machine Operator (per machine) or Location Operator             |
-| Org admin manages billing, members, and config | Organization Owner                                              |
-| Monitoring dashboard reads data from a site    | Location Operator (using an [API key](/organization/api-keys/)) |
+<!-- TODO(verify, DOCS-4936): at which levels (organization, location, machine) Member can be assigned, whether the permission tables below need Member columns, and the role picker wording. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
+
+Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the roles with the three levels to create access patterns:
+
+| Goal                                           | Assign this                                                                                 |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Software team manages all machines at a site   | Location Owner                                                                              |
+| Field operator monitors and controls machines  | Machine Operator (per machine) or Location Operator                                         |
+| Org admin manages billing, members, and config | Organization Owner                                                                          |
+| Monitoring dashboard reads data from a site    | Location Operator (using an [API key](/organization/api-keys/))                             |
+| Integration reads one camera and nothing else  | Member (using an API key), plus an [access policy](/organization/fine-grained-permissions/) |
 
 The following sections describe the full permissions for each role and level.
 
