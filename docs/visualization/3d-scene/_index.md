@@ -43,22 +43,29 @@ settings, see [3D scene controls and settings](/visualization/3d-scene/controls-
 
 ## Start from what you want to do
 
-| I want to…                                                              | Start here                                                                                           |
-| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| See whether the scene matches my real machine                           | [Measuring between frames](/visualization/3d-scene/measuring-between-frames/)                        |
-| Find where my end effector is right now                                 | [Monitor mode: read a frame's pose](/visualization/3d-scene/monitor-mode/#read-a-frames-pose)        |
-| Enter frame offsets or add collision geometry without editing JSON      | [Editing frames visually](/visualization/3d-scene/editing-frames-visually/)                          |
-| Add a table or wall the planner should avoid                            | [Build mode: add frames and obstacles](/visualization/3d-scene/build-mode/#add-frames-and-obstacles) |
-| Move the arm to a pose without writing code, and preview the move first | [Move mode](/visualization/3d-scene/move-mode/)                                                      |
-| Drive a component or watch its readings without leaving the scene       | [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/)                                        |
-| See what the motion planner saw when a plan failed or surprised me      | [Replay mode](/visualization/3d-scene/replay-mode/)                                                  |
-| Understand why the planner ignores something I can see                  | [Visuals and collisions](/visualization/visuals-and-collisions/)                                     |
-| Check that a depth camera's point cloud lines up with the world         | [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/)              |
-| Tune a 3D segmenter against the live view                               | [Vision services in the 3D scene](/visualization/perception/vision-services/)                        |
-| See what a camera or end effector sees from its mount                   | [Frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov)                                     |
-| Draw my module's own visuals in the scene                               | [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)                       |
-| Preview spatial data from a Go script without deploying                 | [Viam Visualization](/visualization/viam-visualization/)                                             |
-| Fix something that looks wrong                                          | [Troubleshoot the 3D scene](/visualization/troubleshoot-the-3d-scene/)                               |
+{{< course id="viam-101" eyebrow="Want to try the 3D scene without hardware?" >}}
+
+- **Set up a machine**
+  - Add frames, obstacles, and collision geometry without editing JSON: [Build mode](/visualization/3d-scene/build-mode/)
+  - Enter measured offsets for a camera or other component: [Editing frames visually](/visualization/3d-scene/editing-frames-visually/)
+  - Check that the scene matches your real machine: [Measuring between frames](/visualization/3d-scene/measuring-between-frames/)
+- **Watch and operate a machine**
+  - Find where an end effector is right now: [Monitor mode](/visualization/3d-scene/monitor-mode/#read-a-frames-pose)
+  - Drive a component or watch its readings without leaving the scene: [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/)
+- **Move an arm and debug motion**
+  - Move an arm to a pose without writing code, and preview the move first: [Move mode](/visualization/3d-scene/move-mode/)
+  - Replay a saved plan and see the obstacles it was planned against: [Replay mode](/visualization/3d-scene/replay-mode/)
+  - Find out why a plan failed or took a surprising route: [Inspect IK](/visualization/3d-scene/replay-mode/#debug-a-plan-with-inspect-ik)
+  - Understand why the planner ignores something you can see: [Visuals and collisions](/visualization/visuals-and-collisions/)
+- **Check cameras and perception**
+  - Check that a depth camera's point cloud lines up with the world: [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/)
+  - Tune a 3D segmenter against the live view: [Vision services in the 3D scene](/visualization/perception/vision-services/)
+  - See what a camera or end effector sees from its mount: [Frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov)
+- **Draw your own visuals**
+  - Draw your module's visuals in the scene: [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)
+  - Preview spatial data from a Go script without deploying: [Viam Visualization](/visualization/viam-visualization/)
+
+Something look wrong? See [Troubleshoot the 3D scene](/visualization/troubleshoot-the-3d-scene/).
 
 ## What the scene simulates, and what it doesn't
 

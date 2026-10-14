@@ -4,7 +4,9 @@
   {{- errorf "course shortcode: no course with id %q in data/courses.yaml (%s)" $id .Position -}}
 {{- end -}}
 {{- $eyebrow := .Get "eyebrow" | default "Free course" -}}
+{{- /* Skip the colon when the eyebrow already ends in punctuation, such as a question. */ -}}
+{{- $sep := cond (findRE `[?!.:]$` $eyebrow) "" ":" -}}
 {{- $meta := slice -}}
 {{- with $course.duration }}{{ $meta = $meta | append . }}{{ end -}}
 {{- with $course.hardware }}{{ $meta = $meta | append . }}{{ end -}}
-> **{{ $eyebrow }}{{ if eq $course.status "coming-soon" }} (coming soon){{ end }}:** [{{ $course.title }}]({{ $course.url | default site.Data.courses.learn_url }}): {{ $course.description }}{{ with $meta }} ({{ delimit . ", " | lower }}){{ end }}
+> **{{ $eyebrow }}{{ if eq $course.status "coming-soon" }} (coming soon){{ end }}{{ $sep }}** [{{ $course.title }}]({{ $course.url | default site.Data.courses.learn_url }}): {{ $course.description }}{{ with $meta }} ({{ delimit . ", " | lower }}){{ end }}
