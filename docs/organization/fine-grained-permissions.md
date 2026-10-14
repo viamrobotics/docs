@@ -60,3 +60,56 @@ Don't set `auth.user_permissions` yourself.
 Viam generates it from `access_policy`, and the app rejects a configuration that includes it.
 
 <!-- TODO(verify, DOCS-4936): behavior when a caller has no matching grant, owner and operator exemption, how grants from fragments combine, and whether resource names are checked at save. Confirm against APP-17820 and a flag-enabled org before removing draft: true. -->
+
+## Define permissions in a local configuration file
+
+If you run `viam-server` from a local configuration file instead of managing the machine in the Viam app, you write the rules `viam-server` enforces directly, in the `auth` section of the file.
+Requires `viam-server` v1.8.0 or later.
+
+Add a `user_permissions` list.
+Each entry has a `user` and a list of `permissions`:
+
+```json
+{
+  "auth": {
+    "user_permissions": [
+      {
+        "user": { "type": "api-key-id", "id": "<API-KEY-ID>" },
+        "permissions": [
+          {
+            "resources": ["cam1"],
+            "allowed_methods": [
+              "/viam.component.camera.v1.CameraService/GetImages"
+            ]
+          }
+        ]
+      },
+      {
+        "user": { "type": "default" },
+        "permissions": [
+          {
+            "resources": ["_machine"],
+            "allowed_methods": ["/viam.robot.v1.RobotService/GetMachineStatus"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+The `user` types are `api-key-id`, `app-user-id`, and `default`.
+Use `default` for any authenticated caller that has no entry of its own, and leave out its `id`.
+Resources and methods work as in an access policy, except that `user_permissions` takes exact names only: it has no wildcards.
+
+`viam-server` applies the list as follows:
+
+- If `user_permissions` is empty or absent, every caller is unrestricted.
+- Once it has any entry, a caller can call only the methods its own entry grants.
+  A caller with no entry gets the `default` entry's permissions, or none if there is no `default` entry.
+- Unauthenticated connections are fully restricted.
+- If a user appears in more than one entry, `viam-server` logs an error and fully restricts that user until you fix the configuration.
+  An entry with an unknown `type` is ignored with a warning.
+- Calls that address no named resource, such as `RobotService` methods, match only grants on `_machine`.
+
+<!-- TODO(verify, DOCS-4936): how a caller authenticates against a local config so its API key ID matches an entry, which connection-plumbing methods are exempt from checks, and the no-wildcard claim against a shipped release. -->
