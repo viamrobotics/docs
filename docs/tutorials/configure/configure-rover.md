@@ -220,6 +220,7 @@ Add the following JSON objects to the `components` array:
     },
     "board": "local",
     "dir_flip": false,
+    "encoder": "renc",
     "ticks_per_rotation": 2
   },
   "depends_on": [ "local" ]
@@ -236,6 +237,7 @@ Add the following JSON objects to the `components` array:
     },
     "board": "local",
     "dir_flip": false,
+    "encoder": "lenc",
     "ticks_per_rotation": 2
   },
   "depends_on": [ "local" ]
@@ -259,7 +261,7 @@ Search for `gpio`, then select the `motor/gpio` block.
 Enter `right` as the name or use the suggested name for your motor and click **Add to machine**.
 
 In the motor card's attributes editor, enter the following attributes.
-They set `local` as the board the motor driver is wired to and describe how the motor is wired to the board in the `In1/In2` mode this motor driver is compatible with.
+They set `local` as the board the motor driver is wired to and describe how the motor is wired to the board in the A/B/PWM mode this motor driver uses.
 If you followed the setup instructions for putting together your Yahboom rover correctly, the pins are as follows.
 Leave out the `dir` pin, because Yahboom's motor driver uses an a/b/pwm configuration.
 
@@ -284,7 +286,7 @@ Search for `gpio`, then select the `motor/gpio` block.
 Enter `left` as the name or use the suggested name for your motor and click **Add to machine**.
 
 In the motor card's attributes editor, enter the following attributes.
-They set `local` as the board the motor driver is wired to and describe how the motor is wired to the board in the `In1/In2` mode this motor driver is compatible with.
+They set `local` as the board the motor driver is wired to and describe how the motor is wired to the board in the A/B/PWM mode this motor driver uses.
 If you followed the setup instructions for putting together your Yahboom rover correctly, the pins are as follows.
 Leave out the `dir` pin, because Yahboom's motor driver uses an a/b/pwm configuration.
 
