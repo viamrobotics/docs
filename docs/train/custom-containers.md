@@ -20,7 +20,8 @@ When you start a [custom training job](/train/custom-training-scripts/), you can
 Viam-managed containers come with Python and TensorFlow.
 Any other dependency your training script lists in `setup.py` gets installed with pip at the start of every job, on billed GPU time.
 For large dependency stacks, such as the libraries for fine-tuning a vision-language-action (VLA) model, that install can take a long time.
-A custom container has those dependencies built in, so each job starts training right away.
+A custom container has those dependencies built in.
+As long as the container includes every dependency your training script needs, jobs don't spend time installing dependencies with pip and start training right away.
 
 The container holds only the environment.
 Your training script stays in the registry and works without changes: the same `setup.py` and `model/training.py` structure runs in a custom container just as it does in a Viam-managed one.
@@ -139,6 +140,7 @@ See [Test locally with Docker](/train/custom-training-scripts/#test-locally-with
 ```sh {class="command-line" data-prompt="$"}
 viam training-script test-local \
   --training-script-directory=my-training/ \
+  --dataset-file=dataset.jsonl \
   --dataset-root=<destination> \
   --container-id=<container-id> \
   --model-output-directory=<output-dir>
