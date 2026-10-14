@@ -27,7 +27,7 @@ Everything you did before happened by clicking test cards on the **Control** tab
 
 In the next phase, you package this same logic as a module. For now, a script you run from your own terminal, that you can stop, edit, and rerun in seconds, is the faster path to a working pick-and-place loop.
 
-Every control you clicked in the UI maps directly onto an SDK method: the arm card's joint sliders become `Arm` methods, **Grab** and **Open** on the gripper card become `gripper.grab()` and `gripper.open()`, and setting a switch to position 2 becomes `switch.set_position(2)`. Once you can call those methods from code, you can compose them into logic no UI card lets you express by clicking.
+Every control you clicked in the UI maps directly onto an SDK method: the arm card's joint controls become `Arm` methods, **Grab** and **Open** on the gripper card become `gripper.grab()` and `gripper.open()`, and setting a switch to position 2 becomes `switch.set_position(2)`. Once you can call those methods from code, you can compose them into logic no UI card lets you express by clicking.
 
 ## Get the companion project
 
