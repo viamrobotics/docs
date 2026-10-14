@@ -62,7 +62,6 @@ docker buildx build --platform linux/amd64 \
 Make sure the repository is public on Docker Hub.
 
 You can use any tool that produces a standard Docker image.
-For example, [Cog](https://cog.run/) can generate a GPU-ready image from a short configuration file.
 
 ## Register the container
 
