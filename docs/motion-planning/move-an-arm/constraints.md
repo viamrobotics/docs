@@ -37,10 +37,10 @@ single motion request.
 Forces the end effector to stay close to a straight line between the start and
 goal poses. Use this for straight-line tool paths.
 
-| Parameter                    | Type             | Description                                                                                 |
-| ---------------------------- | ---------------- | ------------------------------------------------------------------------------------------- |
-| `line_tolerance_mm`          | float (optional) | Maximum deviation from the straight line, in millimeters. Only checked when greater than 0. |
-| `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation during motion, in degrees. Only checked when greater than 0.  |
+| Parameter                    | Type                        | Description                                                                                 |
+| ---------------------------- | --------------------------- | ------------------------------------------------------------------------------------------- |
+| `line_tolerance_mm`          | float (optional, default 0) | Maximum deviation from the straight line, in millimeters. Only checked when greater than 0. |
+| `orientation_tolerance_degs` | float (optional, default 0) | Maximum orientation deviation during motion, in degrees. Only checked when greater than 0.  |
 
 When `line_tolerance_mm` is set, the planner keeps the end effector within
 that distance of the line segment between start and goal. When

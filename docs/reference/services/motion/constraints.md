@@ -25,8 +25,8 @@ The following constraints are available:
 
 ## Linear constraint
 
-The linear constraint (`{"motion_profile": "linear"}`) forces the path taken by `component_name` to follow an exact linear path from the start to the goal.
-If the start and goal orientations are different, the orientation along the path will follow the quaternion [Slerp (Spherical Linear Interpolation)](https://en.wikipedia.org/wiki/Slerp) of the orientation from start to goal.
+The linear constraint (`LinearConstraint`) forces the path taken by `component_name` to follow an exact linear path from the start to the goal.
+If `orientation_tolerance_degs` is set, the orientation along the path stays within that angle of the start or goal orientation, whichever is closer.
 This has the following sub-options:
 
 <!-- prettier-ignore -->
@@ -81,11 +81,11 @@ You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.co
 
 ## Orientation constraint
 
-The orientation constraint (`{"motion_profile": "orientation"}`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the direct rotation between start and goal by more than a set amount.
+The orientation constraint (`OrientationConstraint`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the direct rotation between start and goal by more than a set amount.
 The direct rotation is the shortest arc between the two orientations, also known as the [Slerp](https://en.wikipedia.org/wiki/Slerp) path.
-This is similar to the `orientation_tolerance_degs` option in the linear profile, but without any path restrictions, and with a tolerance that follows the whole arc instead of only the start and goal.
+This is similar to the `orientation_tolerance_degs` option in the linear constraint, but without any path restrictions, and with a tolerance that follows the whole arc instead of only the start and goal.
 If set to zero, any deviation from the direct rotation is rejected, so a movement with identical starting and ending orientations will hold that orientation throughout the movement.
-This differs from the linear profile, where 0 turns the orientation check off.
+This differs from the linear constraint, where 0 turns the orientation check off.
 
 <!-- prettier-ignore -->
 | Parameter Name | Type | Default | Description |
