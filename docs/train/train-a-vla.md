@@ -72,15 +72,23 @@ The `capture-control` module starts capture and opens a sequence when you send i
 
 You can send these commands from the sensor's **TEST** section, or from your teleoperation code with `DoCommand`, so one button press starts and ends each demonstration.
 
-Record at least 50 demonstrations, and vary the objects' starting positions between them.
-Review the sequences on the **DATA** tab and delete any that failed.
+Start with about 50 demonstrations, the number [LeRobot recommends for fine-tuning SmolVLA](https://huggingface.co/docs/lerobot/smolvla#collect-a-dataset).
+Vary the objects' starting positions between demonstrations, and record several demonstrations of each variation.
+If the policy struggles after training, record more.
+
+The policy learns to imitate everything in your demonstrations, including mistakes.
+Review the sequences on the **DATA** tab, and delete any where the task wasn't completed, or where the arm fumbled, paused for a long time, or collided with something.
 To train one policy on several related tasks, give each demonstration the `cmd:` tag for its own task.
 
 ## 3. Collect the demonstrations into a dataset
 
 Add the sequences to a [sequence dataset](/train/create-a-dataset/).
 
-Before you spend GPU time, export the dataset and convert it on your own computer to check that every sequence converts:
+LeRobot trains on its own dataset format, not on Viam's Parquet export.
+The [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter turns each sequence into a LeRobot episode: it matches each camera frame with the nearest joint positions, uses the next frame's joint positions as the action, and takes the episode's instruction from the sequence's `cmd:` tag.
+Your training script runs the converter in step 5.
+
+Before you spend GPU time, export the dataset and run the converter on your own computer to check that every sequence converts:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=my-export --dataset-id=<dataset-id>
@@ -216,8 +224,11 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --args=arm=<arm-name>,cameras="'<camera-1> <camera-2>'",fps=10
 ```
 
-In the web UI, select your container in the **Container version** dropdown instead.
-See [Submit a training job](/train/custom-training-scripts/#submit-a-training-job) and [Monitor and debug](/train/custom-training-scripts/#monitor-and-debug).
+You can also submit a training job through the web UI: on the [**DATASETS**](https://app.viam.com/data/datasets) page, select your dataset, click **Train model**, select **Train on a custom training script**, select your container in the **Container version** dropdown, and add the `arm`, `cameras`, and `fps` arguments under **Arguments**.
+See [Submit a training job](/train/custom-training-scripts/#submit-a-training-job).
+
+Fine-tuning takes hours: LeRobot reports that 20,000 steps take about four hours on one A100 GPU.
+To follow the job's progress and read its logs while it runs, see [Monitor and debug](/train/custom-training-scripts/#monitor-and-debug).
 
 When the job finishes, the checkpoint is published to your organization's registry as the `my-vla` model.
 
@@ -270,7 +281,7 @@ It provides two generic services:
 Keep data capture running while the policy runs, and record each run as a sequence.
 Add successful runs, and runs you corrected by hand, to the dataset, then train a new model version.
 
-## Next steps
+## Learn more
 
 - [Custom training containers](/train/custom-containers/): image requirements, registration, and managing containers.
 - [Custom training scripts](/train/custom-training-scripts/): script structure, arguments, and job options.
