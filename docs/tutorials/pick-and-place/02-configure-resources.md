@@ -188,9 +188,9 @@ The next section moves the physical arm using joint control. Before you run a mo
 
 The arm card shows the arm's current joint positions, and provides two different control methods to test the arm, Joint Control and Cartesian control. Joint Control lets you manually set a joint's desired position and click execute, while the cartesian control lets you move the arm to a specific pose in space. Before using either, it is always a good idea to press **Current position** to set the desired values to match the arm's current state. Try moving the last two joints, joint 4 and joint 5 (the xArm6's six joints are numbered 0 through 5 in this UI): **MoveToJointPositions** opens in **Jogging** mode, so tap the **+** or **−** button next to each joint and watch the end of the arm move. Each tap moves the joint by the **Jog step** (5 degrees by default) as soon as you release the button. To set exact angles with sliders and **Execute** instead, switch to **Joint Positions** mode. Then, under **MoveToPosition**, press **Current position** and confirm the **Pose Values** populate with the arm's current x, y, and z.
 
-<!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
+<!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions in Jogging mode with the per-joint jog buttons, and the MoveToPosition "Current position" button -->
 
-{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm Control card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
+{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm Control card with MoveToJointPositions in Jogging mode, showing minus and plus 5 degree buttons for each joint, and MoveToPosition with its Current position and Execute buttons.">}}
 
 {{< checkpoint >}}
 Tapping a joint's jog button moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values. If nothing moves or you see an error message, confirm `arm-1` shows as online in the Configure tab and that the Logs tab has no connection errors for it.
