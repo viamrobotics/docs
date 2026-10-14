@@ -1,0 +1,278 @@
+---
+linkTitle: "Train a VLA"
+title: "Train a vision-language-action (VLA) model"
+weight: 33
+layout: "docs"
+type: "docs"
+description: "Record robot demonstrations as sequences, fine-tune a vision-language-action (VLA) policy such as SmolVLA in a custom training container, and run it on your machine."
+capabilities: ["sequences", "datasets", "ml-training", "hw-arm"]
+diataxis: how-to
+languages: ["python"]
+viamresources: ["arm", "camera", "data_manager", "generic"]
+platformarea: ["ml", "data"]
+tags: ["ml", "model training", "sequences", "vla", "imitation learning"]
+date: "2026-10-13"
+---
+
+A vision-language-action (VLA) model is a robot policy.
+It takes camera images, the robot's joint positions, and a natural-language instruction such as "open the box", and it outputs the next joint positions for the arm.
+You train one by imitation learning: you record demonstrations of the task, then fine-tune a pretrained VLA on them.
+
+This page fine-tunes [SmolVLA](https://huggingface.co/lerobot/smolvla_base), using Hugging Face's [LeRobot](https://huggingface.co/docs/lerobot) library, on demonstrations you record with Viam.
+Viam handles every step around the model: capturing demonstrations, organizing them into a dataset, training on a cloud GPU in a container with LeRobot preinstalled, and running the trained policy on your machine.
+The steps work with any arm that has a Viam module.
+
+## How the pieces fit
+
+| Step                    | What you use                                                                                                                                                    | What it produces                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Record demonstrations   | [Data capture](/data/capture-sync/capture-and-sync-data/) and [sequences](/data/sequences/)                                                                     | One sequence per demonstration, tagged with its instruction      |
+| Build a dataset         | [Sequence dataset](/train/create-a-dataset/)                                                                                                                    | Your demonstrations, as three Parquet files                      |
+| Prepare the environment | [Custom training container](/train/custom-containers/)                                                                                                          | A registered container with LeRobot installed                    |
+| Fine-tune               | [Custom training script](/train/custom-training-scripts/) and the [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter | A SmolVLA checkpoint, published to your organization's registry  |
+| Run the policy          | The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module                                                                                | A control loop that drives the arm from the policy's predictions |
+
+## Prerequisites
+
+- A machine with an [arm](/reference/components/arm/) and one or two [cameras](/reference/components/camera/), configured and working.
+  A fixed camera that sees the workspace plus a wrist camera is a common setup.
+- A way to teleoperate the arm while you record, such as a leader arm, a VR or gamepad controller, or moving the arm by hand.
+- To run the trained policy, a computer with an NVIDIA GPU attached to the machine, such as an NVIDIA Jetson Orin.
+- [Docker](https://docs.docker.com/get-docker/) and a [Docker Hub](https://hub.docker.com/) account, to build the training container.
+- The [Viam CLI](/cli/), logged in.
+
+## 1. Plan what to capture
+
+Each demonstration needs images and joint positions, captured at the same steady rate:
+
+- **Images** from each camera's `GetImages` method. Sequences include only JPEG and PNG images.
+- **Joint positions** from the arm's `JointPositions` method.
+  If your gripper is one of the arm's joints, as on many low-cost arms, the gripper is included.
+  For a separate gripper component, see the gripper options in the [`viam-labs:vla` README](https://github.com/viam-labs/vla-inference-service#gripper-variants).
+- **One rate for everything**, which is also the rate the policy runs at.
+  10 to 30 Hz is typical.
+
+You don't need to capture actions separately.
+The converter uses each frame's next joint positions as its action.
+
+## 2. Record each demonstration as a sequence
+
+Each demonstration becomes one [sequence](/data/sequences/), tagged with the instruction the policy should learn.
+The `capture-control` module starts capture and opens a sequence when you send it a command.
+
+1. [Add the `capture-control` sensor](/data/capture-sync/capture-on-demand/#add-the-sensor) to your machine, list the cameras' `GetImages` and the arm's `JointPositions`, and [point the data manager at the sensor](/data/capture-sync/capture-on-demand/#point-the-data-manager-at-the-sensor).
+2. Before each demonstration, start capture with your chosen rate and a `cmd:` tag holding the instruction:
+
+   ```json
+   { "start_capture": true, "frequency_hz": 10, "tags": ["cmd:open the box"] }
+   ```
+
+3. Teleoperate the arm through the task.
+4. Send `{"stop_capture": true}` to stop capture and close the sequence.
+
+You can send these commands from the sensor's **TEST** section, or from your teleoperation code with `DoCommand`, so one button press starts and ends each demonstration.
+
+Record at least 50 demonstrations, and vary the objects' starting positions between them.
+Review the sequences on the **DATA** tab and delete any that failed.
+To train one policy on several related tasks, give each demonstration the `cmd:` tag for its own task.
+
+## 3. Collect the demonstrations into a dataset
+
+Add the sequences to a [sequence dataset](/train/create-a-dataset/).
+
+Before you spend GPU time, export the dataset and convert it on your own computer to check that every sequence converts:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset export --destination=my-export --dataset-id=<dataset-id>
+pip install git+https://github.com/viam-labs/viam-sequence-to-lerobot
+viam-seq-to-lerobot my-export --arm=<arm-name> --camera=<camera-1> --camera=<camera-2> --fps=10
+```
+
+The converter logs any sequence it skips, and why, for example a missing camera or too few frames.
+The first `--camera` sets the frame clock, and `--fps` must match your capture rate.
+Run `viam-seq-to-lerobot --help` for all options.
+
+## 4. Build and register a training container
+
+LeRobot needs Python 3.12 and a large set of dependencies, so train in a [custom training container](/train/custom-containers/) that has them preinstalled, rather than a Viam-managed container.
+Hugging Face publishes a GPU image with LeRobot, [`huggingface/lerobot-gpu`](https://hub.docker.com/r/huggingface/lerobot-gpu).
+Build on it to add `pip`, which Viam uses to install your training script, and the converter:
+
+```dockerfile {class="line-numbers linkable-line-numbers"}
+FROM huggingface/lerobot-gpu:latest
+
+RUN uv pip install --python /lerobot/.venv/bin/python pip \
+    "viam-sequence-to-lerobot @ git+https://github.com/viam-labs/viam-sequence-to-lerobot"
+```
+
+Build and push the image to a public Docker Hub repository, then register it:
+
+```sh {class="command-line" data-prompt="$"}
+docker buildx build --platform linux/amd64 \
+  -t docker.io/<your-username>/lerobot-viam:1 --push .
+viam train containers register \
+  --uri=docker.io/<your-username>/lerobot-viam:1 \
+  --description="LeRobot for VLA training" \
+  --org-id=<org-id>
+```
+
+Save the container ID that registration prints.
+To build reproducible images, pin the base image by digest instead of `latest`.
+See [Custom training containers](/train/custom-containers/) for the image requirements.
+
+## 5. Write the training script
+
+The training script converts the dataset into LeRobot's format, fine-tunes SmolVLA on it, and saves the checkpoint where Viam publishes it.
+Because the container already has every dependency, `setup.py` can leave `install_requires` empty.
+See [File structure](/train/custom-training-scripts/#file-structure).
+
+```python {class="line-numbers linkable-line-numbers"}
+# model/training.py
+import argparse
+import shutil
+import subprocess
+from pathlib import Path
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--binary_data_file", required=True)
+    parser.add_argument("--tabular_data_file", required=True)
+    parser.add_argument("--sequences_file", required=True)
+    parser.add_argument("--model_output_directory", required=True)
+    parser.add_argument("--arm", required=True)
+    parser.add_argument("--cameras", required=True,
+                        help="Space-separated camera names")
+    parser.add_argument("--fps", default="10")
+    parser.add_argument("--steps", default="20000")
+    parser.add_argument("--batch_size", default="32")
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    output_dir = Path(args.model_output_directory)
+    # Viam doesn't publish files under tmp/.
+    work_dir = output_dir / "tmp"
+
+    # Lay the Parquet files out the way the converter reads an export.
+    export_dir = work_dir / "export"
+    export_dir.mkdir(parents=True)
+    (export_dir / "binary_data.parquet").symlink_to(args.binary_data_file)
+    (export_dir / "tabular_data.parquet").symlink_to(args.tabular_data_file)
+    (export_dir / "sequences.parquet").symlink_to(args.sequences_file)
+
+    # Convert each sequence into a LeRobot episode.
+    dataset_dir = work_dir / "dataset"
+    camera_flags = [f"--camera={name}" for name in args.cameras.split()]
+    subprocess.run(
+        ["viam-seq-to-lerobot", str(export_dir), f"--arm={args.arm}",
+         *camera_flags, f"--fps={args.fps}", "--repo-id=local/demos",
+         f"--output-root={dataset_dir}"],
+        check=True,
+    )
+
+    # Fine-tune SmolVLA on the converted dataset.
+    train_dir = work_dir / "train"
+    subprocess.run(
+        ["lerobot-train", "--policy.path=lerobot/smolvla_base",
+         "--policy.input_features=null", "--policy.push_to_hub=false",
+         "--policy.use_amp=true", "--dataset.repo_id=local/demos",
+         f"--dataset.root={dataset_dir}", f"--output_dir={train_dir}",
+         f"--steps={args.steps}", f"--batch_size={args.batch_size}"],
+        check=True,
+    )
+
+    # Publish the final checkpoint.
+    shutil.copytree(train_dir / "checkpoints" / "last" / "pretrained_model",
+                    output_dir, dirs_exist_ok=True)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+`--policy.input_features=null` makes the checkpoint declare your own cameras instead of the three that `smolvla_base` declares.
+The [converter's README](https://github.com/viam-labs/viam-sequence-to-lerobot#camera-keys) explains why this matters.
+
+Package the script and upload it:
+
+```sh {class="command-line" data-prompt="$"}
+tar -czvf vla-training.tar.gz model/ setup.py
+viam training-script upload --path=vla-training.tar.gz \
+  --org-id=<org-id> --script-name=vla-training
+```
+
+## 6. Train on a Viam cloud GPU
+
+Submit a training job on your sequence dataset, in your custom container:
+
+```sh {class="command-line" data-prompt="$"}
+viam train submit custom from-registry --dataset-id=<dataset-id> \
+  --org-id=<org-id> --model-name=my-vla \
+  --model-version=1 --version=1 \
+  --script-name=<namespace>:vla-training \
+  --container-id=<container-id> \
+  --args=arm=<arm-name>,cameras="'<camera-1> <camera-2>'",fps=10
+```
+
+In the web UI, select your container in the **Container version** dropdown instead.
+See [Submit a training job](/train/custom-training-scripts/#submit-a-training-job) and [Monitor and debug](/train/custom-training-scripts/#monitor-and-debug).
+
+When the job finishes, the checkpoint is published to your organization's registry as the `my-vla` model.
+
+## 7. Run the policy on your machine
+
+The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module runs LeRobot policies on a Viam machine.
+It provides two generic services:
+
+- `viam-labs:vla:policy` loads the checkpoint and runs inference.
+- `viam-labs:vla:controller` runs the control loop: it reads the cameras and the arm, asks the policy for actions, and moves the arm within safety limits you set.
+
+1. Add the trained model to your machine's configuration as a package, and point the policy service at it:
+
+   ```json
+   {
+     "packages": [
+       {
+         "name": "my-vla",
+         "package": "<org-id>/my-vla",
+         "version": "latest",
+         "type": "ml_model"
+       }
+     ],
+     "services": [
+       {
+         "name": "vla-policy",
+         "api": "rdk:service:generic",
+         "model": "viam-labs:vla:policy",
+         "attributes": {
+           "model_path": "${packages.ml_model.my-vla}"
+         }
+       }
+     ]
+   }
+   ```
+
+2. Add a `viam-labs:vla:controller` service that names the policy service, the arm, and a camera for each of the policy's image inputs.
+   Send the policy service `{"command": "specs"}` to see which image inputs and state size it expects.
+   See the [module README](https://github.com/viam-labs/vla-inference-service#controller) for the controller's attributes, including joint mapping, units, and safety limits.
+3. Start the policy by sending the controller an instruction:
+
+   ```json
+   { "command": "start", "task": "open the box" }
+   ```
+
+   Send `{"command": "stop"}` to stop it.
+
+## 8. Improve the policy
+
+Keep data capture running while the policy runs, and record each run as a sequence.
+Add successful runs, and runs you corrected by hand, to the dataset, then train a new model version.
+
+## Next steps
+
+- [Custom training containers](/train/custom-containers/): image requirements, registration, and managing containers.
+- [Custom training scripts](/train/custom-training-scripts/): script structure, arguments, and job options.
+- [Sequence dataset format](/train/sequence-dataset-format/): every column in the Parquet files.
+- [Sequences tutorial](/data/sequences-tutorial/): record, review, and export sequences without hardware.
