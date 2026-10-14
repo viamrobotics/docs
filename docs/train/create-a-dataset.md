@@ -88,7 +88,7 @@ async def main():
     viam_client = await connect()
     data_client = viam_client.data_client
 
-    # Binary dataset (the default type). Holds images only, no sequences.
+    # Binary dataset (the default type). Holds binary files such as images, no sequences.
     dataset_id = await data_client.create_dataset(
         name="my-inspection-dataset",
         organization_id=ORG_ID,
@@ -144,7 +144,7 @@ func main() {
 
     dataClient := viamClient.DataClient()
 
-    // Binary dataset (the default type). Holds images only, no sequences.
+    // Binary dataset (the default type). Holds binary files such as images, no sequences.
     datasetID, err := dataClient.CreateDataset(
         ctx, "my-inspection-dataset", orgID)
     if err != nil {
@@ -175,7 +175,7 @@ the top navigation bar and then clicking **Settings**.
 ## Add data
 
 How you add data depends on the dataset type.
-A binary dataset holds images only, and a sequence dataset holds sequences only.
+A binary dataset holds binary files, usually images, and a sequence dataset holds sequences only.
 
 ### Add images
 
@@ -428,19 +428,20 @@ viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 This writes the images and a `dataset.jsonl` manifest containing their
 annotations to the destination directory.
 
-To download only the image files from the web UI:
+To download the dataset's files from the web UI:
 
 1. Go to the **DATA** tab and click the **DATASETS** subtab.
 2. Click your dataset to open it.
 3. Click the **...** (dataset actions) menu next to the dataset name and click
-   **Download**. The option appears only when the dataset contains images.
-4. Click **Download images**. Your browser saves a `<dataset-name>.tar.gz`
-   archive of the dataset's image files.
+   **Download**. The option appears only when the dataset contains files.
+4. Click **Download files**. Your browser saves a `<dataset-name>.tar.gz`
+   archive of the dataset's files, including non-image files such as video
+   or audio.
 
-The browser download includes image files only, not labels, tags, or
-bounding boxes. The browser builds the whole archive in memory, so a very
-large dataset can exhaust the browser's memory. Images that fail to download
-are left out of the archive without a warning. For a large dataset, or when
+The browser download includes the files only, not labels, tags, or
+classifications. The browser builds the whole archive in memory, so it
+refuses a dataset larger than 500 MB. Files that fail to download are left
+out of the archive, and a warning says how many. For a large dataset, or when
 you need a complete copy, use the CLI export instead.
 
 ### Export a sequence dataset
