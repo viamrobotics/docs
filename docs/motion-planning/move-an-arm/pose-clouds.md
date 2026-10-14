@@ -105,7 +105,7 @@ and keep `Z` tight so it stays on the surface. These tolerances follow the tilt 
 surface directly. When the goal points another way, for example horizontally for a side
 grasp, work out which goal axis each world direction maps to before you set the tolerances.
 
-{{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="A tilted rectangular surface with the target frame at its center: the x and y axes lie in the surface and the z axis points along the surface normal. A dashed blue outline on the surface marks the pose-cloud region, which follows the tilt. A purple arrow offset from the z axis, with a dotted arc around it, shows the OX and OY leeway on the pointing direction and the Theta rotation about it." style="max-width:820px" class="aligncenter">}}
+{{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="A tilted rectangular surface with the goal frame at its center: the x and y axes lie in the surface and the z axis points along the surface normal. A dashed blue outline on the surface marks the pose-cloud region, which follows the tilt. A purple arrow offset from the z axis, with a dotted arc around it, shows the OX and OY leeway on the pointing direction and the Theta rotation about it." style="max-width:820px" class="aligncenter">}}
 
 ## Use a pose cloud with the motion service
 
@@ -143,10 +143,11 @@ destination := referenceframe.NewPoseInFrameWithGoalCloud(
         X:  0,    // goal X is up: hold the cup on the surface
         Y:  75,   // mm of slack across the table (goal Y)
         Z:  75,   // mm of slack across the table (goal Z, the pointing direction)
-        OX: 0.05, // the pointing direction's vertical part: tilt under about 3 degrees, so the cup stays upright
+        OX: 0.05, // the pointing direction's vertical part: keep the tool level, so the cup stays upright
         OY: 1,    // the pointing direction's horizontal part: any amount...
         OZ: 2,    // ...and up to a half turn from the goal's, so the approach may come from any side
-        // Theta stays 0, so the tool does not roll and tip the cup.
+        // Theta stays 0, so the tool does not roll and tip the cup. Once the approach
+        // swings away from the goal, a tilt also reads as twist, so Theta 0 rejects it too.
     },
 )
 
