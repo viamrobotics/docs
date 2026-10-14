@@ -228,6 +228,7 @@ You can also submit a training job through the web UI: on the [**DATASETS**](htt
 See [Submit a training job](/train/custom-training-scripts/#submit-a-training-job).
 
 Fine-tuning takes hours: LeRobot reports that 20,000 steps take about four hours on one A100 GPU.
+Custom training jobs run on premium GPUs and are billed for that time. See [pricing](https://www.viam.com/product/pricing) for rates.
 To follow the job's progress and read its logs while it runs, see [Monitor and debug](/train/custom-training-scripts/#monitor-and-debug).
 
 When the job finishes, the checkpoint is published to your organization's registry as the `my-vla` model.
