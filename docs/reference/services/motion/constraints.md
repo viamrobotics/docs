@@ -25,7 +25,8 @@ The following constraints are available:
 
 ## Linear constraint
 
-The linear constraint (`LinearConstraint`) forces the path taken by `component_name` to follow an exact linear path from the start to the goal.
+The linear constraint (`LinearConstraint`) forces the path taken by `component_name` to stay within `line_tolerance_mm` of the straight line from the start to the goal.
+If `line_tolerance_mm` is 0, the default, the planner doesn't check the path against the line.
 If `orientation_tolerance_degs` is set, the orientation along the path stays within that angle of the start or goal orientation, whichever is closer.
 This has the following sub-options:
 
