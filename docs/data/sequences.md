@@ -5,7 +5,7 @@ description: "Mark a time window of a machine's captured images and readings as 
 capabilities: ["data-capture", "sequences"]
 diataxis: how-to
 type: "docs"
-weight: 26
+weight: 15
 tags: ["data management", "sequences", "capture"]
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data"]

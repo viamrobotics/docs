@@ -27,7 +27,7 @@ Pipelines are not necessary when:
 - You need real-time results with sub-minute latency. Pipelines run on a cron schedule with at least a 2-minute execution delay.
 
 {{< alert title="Pipelines don't reduce data transfer" color="note" >}}
-Pipelines run in the cloud against data that has already been synced. They reduce query time, not bandwidth or storage volume. To reduce what gets sent from the machine, see [Filter at the edge](/data/filter-at-the-edge/).
+Pipelines run in the cloud against data that has already been synced. They reduce query time, not bandwidth or storage volume. To reduce what gets sent from the machine, see the [Capture and sync overview](/data/capture-sync/overview/).
 {{< /alert >}}
 
 ## How pipelines work

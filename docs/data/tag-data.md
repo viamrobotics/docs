@@ -1,7 +1,7 @@
 ---
 linkTitle: "Tag data"
 title: "Tag captured data"
-weight: 25
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Apply tags to captured binary data so you can filter it, build datasets, or scope a delete operation."

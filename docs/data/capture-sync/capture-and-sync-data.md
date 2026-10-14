@@ -15,7 +15,7 @@ aliases:
   - /data-ai/capture-data/capture-sync/
 ---
 
-Configure your machine to automatically record sensor readings, camera images, and other component data, then sync it to the cloud. For an overview of how data capture and sync work, see the [Manage data overview](/data/overview/).
+Configure your machine to automatically record sensor readings, camera images, and other component data, then sync it to the cloud. For the other ways to control what your machine captures and when it syncs, see the [Capture and sync overview](/data/capture-sync/overview/).
 
 ## 1. Open your machine in the Viam app
 
@@ -61,6 +61,8 @@ component's data capture is independent -- you can have a camera capturing
 images every 2 seconds and a sensor capturing readings every 10 seconds at the
 same time.
 
+To capture from components on another part of a multi-part machine, see [Multi-part capture](/data/capture-sync/remote-parts-capture/).
+
 ## 4. Sync data from another directory (optional)
 
 You can also sync files from directories outside of the default capture path.
@@ -89,6 +91,58 @@ Wait 30 seconds to a minute for data to accumulate and sync, then:
    - **Time range** -- pick a recent window
 
 If you see data flowing in, capture and sync are working correctly.
+
+## Reduce capture frequency {#reduce-capture-frequency}
+
+The amount of data a component produces scales directly with its capture frequency: dropping a camera from `1` Hz to `0.1` Hz cuts its data volume by ten.
+If you need periodic snapshots rather than continuous monitoring, lower the frequency:
+
+1. On your machine's **CONFIGURE** tab, find the component you capture from.
+2. In its **Data capture** section, change the **frequency** of the capture method.
+3. Click **Save**.
+
+The change takes effect immediately, without a restart.
+
+As a rough guide, a camera whose images average about 30&nbsp;KB produces:
+
+| Frequency    | Captures           | Data per day |
+| ------------ | ------------------ | ------------ |
+| `1` Hz       | 1 per second       | ~2.5&nbsp;GB |
+| `0.1` Hz     | 1 every 10 seconds | ~250&nbsp;MB |
+| `0.0167` Hz  | 1 per minute       | ~42&nbsp;MB  |
+| `0.00028` Hz | 1 per hour         | ~0.7&nbsp;MB |
+
+Larger images scale these numbers up proportionally.
+Start with the lowest frequency that meets your needs; you can increase it later once you understand your data volume and bandwidth budget.
+
+A lower frequency doesn't help when you need to capture specific events, such as only the frames with a person in them.
+For that, use a [filtered camera](/data/capture-sync/filtered-camera/) or [capture on demand](/data/capture-sync/capture-on-demand/).
+
+## Manage local storage {#manage-local-storage}
+
+Captured data is written to the machine's capture directory, then deleted after it syncs.
+If sync is disabled, held back by [conditional sync](/data/capture-sync/conditional-sync/), or the machine is offline, files accumulate on disk.
+When the disk is nearly full, the data management service [deletes captured files automatically](/data/reference/#automatic-deletion) to keep the machine running, so unsynced data can be lost.
+
+On machines with little storage, such as single-board computers:
+
+- **Use the lowest capture frequency that meets your needs.** Every reduction in frequency directly reduces storage pressure.
+- **Keep sync enabled.** Without sync, the capture directory grows until automatic deletion starts.
+- **Capture only what you need.** A [filtered camera](/data/capture-sync/filtered-camera/) or [capture on demand](/data/capture-sync/capture-on-demand/) reduces what gets written to disk, not just what gets synced.
+- **Choose the sync interval deliberately.** A short interval, such as every 30 seconds, keeps the local backlog small. A longer interval reduces network requests but needs more local storage.
+- **Monitor disk usage.** Check the size of the capture directory, and set up an alert or health check if it grows past a threshold:
+
+  ```sh {class="command-line" data-prompt="$"}
+  du -sh "$HOME/.viam/capture"
+  ```
+
+  To watch it over time, refreshing every minute:
+
+  ```sh {class="command-line" data-prompt="$"}
+  watch -n 60 du -sh "$HOME/.viam/capture"
+  ```
+
+  Use `/root/.viam/capture` when `viam-server` runs as root through `viam-agent`. See [Capture directories](/data/reference/#capture-directories) for every platform.
 
 ## Supported resources {#supported-resources}
 
@@ -151,9 +205,13 @@ Every component also supports `GetWorldPose` (requires a configured [frame syste
   (`/root/.viam/capture` when `viam-server` runs as root through `viam-agent`).
   If sync is disabled or the machine is offline for an extended period, this
   directory can grow large.
-- Re-enable sync or manually clear the capture directory if needed.
 - Check that the **Syncing** toggle is on in the data management service
   configuration.
+- Check the network connection. If the machine can't reach the Viam cloud, data
+  accumulates locally.
+- Check the sync interval. A long sync interval combined with a high capture
+  frequency lets the local backlog grow between sync cycles.
+- See [Manage local storage](#manage-local-storage).
 
 {{< /expand >}}
 

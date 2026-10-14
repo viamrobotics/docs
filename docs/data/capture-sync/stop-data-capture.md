@@ -94,8 +94,8 @@ persist, check that the machine has network connectivity and that the
 
 ## What's next
 
-- [Filter at the edge](/data/filter-at-the-edge/) -- reduce data
-  volume by filtering before syncing to the cloud.
+- [Capture and sync overview](/data/capture-sync/overview/) -- reduce data
+  volume by capturing less, or control when data syncs.
 - [Create a data pipeline](/data/pipelines/create-a-pipeline/) -- create
   scheduled pipelines to aggregate and summarize captured data.
 - [Supported resources](/data/reference/#supported-resources) -- which components

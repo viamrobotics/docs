@@ -104,3 +104,10 @@ Your main machine runs an arm for pick-and-place operations. A Raspberry Pi at a
 5. Click **Save**.
 
 The main machine captures images from the Pi's camera and syncs them to the cloud alongside any data captured from its own local components. The Pi itself does not need a data management service for this flow.
+
+## What's next
+
+- [Add a sub-part](/hardware/multi-machine/add-a-sub-part/): add another part to the same machine.
+- [Add a remote part](/hardware/multi-machine/add-a-remote-part/): connect another machine's part to yours.
+- [Query data](/data/query-data/): query across all parts of a multi-part machine by `robot_id`.
+- [Capture and sync overview](/data/capture-sync/overview/): other ways to control what your machine captures and when it syncs.

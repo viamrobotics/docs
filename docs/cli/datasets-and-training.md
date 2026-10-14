@@ -30,10 +30,10 @@ To list datasets and find dataset IDs:
 viam dataset list --org-id=<org-id>
 ```
 
-To list training containers and find valid container versions:
+To list training containers and find container IDs, including your organization's custom containers:
 
 ```sh {class="command-line" data-prompt="$"}
-viam train containers list
+viam train containers list --org-id=<org-id>
 ```
 
 ## Manage datasets
@@ -190,7 +190,7 @@ viam train submit custom from-registry \
   --org-id=<org-id> \
   --script-name=<training-script-name> \
   --version=<script-version> \
-  --container-version=<container-version>
+  --container-id=<container-id>
 ```
 
 Submit a custom script by uploading it directly:
@@ -203,7 +203,7 @@ viam train submit custom with-upload \
   --script-name=my-training-script \
   --path=./my-training-script/ \
   --framework=tflite \
-  --container-version=<container-version>
+  --container-id=<container-id>
 ```
 
 ### Monitor training jobs
@@ -257,12 +257,12 @@ viam training-script update \
   --visibility=public
 ```
 
-Test a training script locally before uploading (use `viam train containers list` to find valid container versions).
+Test a training script locally before uploading (use `viam train containers list --org-id=<org-id>` to find container IDs).
 Local testing runs in a Docker container that mirrors the cloud training environment.
 The container validates that your script directory contains `setup.py` and `model/training.py`.
 
 {{< alert title="Note" color="note" >}}
-Local testing uses Google Vertex AI containers, which are linux/x86_64 only.
+Training containers are linux/x86_64 only.
 On ARM Macs, Docker runs them through Rosetta emulation, which may be slower.
 {{< /alert >}}
 
@@ -270,7 +270,30 @@ On ARM Macs, Docker runs them through Rosetta emulation, which may be slower.
 viam training-script test-local \
   --dataset-root=./my-dataset/ \
   --training-script-directory=./my-training-script/ \
-  --container-version=<container-version>
+  --container-id=<container-id>
+```
+
+## Manage training containers
+
+For requirements and how custom containers work, see [Custom training containers](/train/custom-containers/).
+To list containers, see [Find your IDs](#find-your-ids).
+
+Register an image:
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers register \
+  --uri=docker.io/<your-username>/<image>:<tag> \
+  --description="My training environment" \
+  --org-id=<org-id>
+```
+
+The CLI prints the new container's ID.
+Pass that ID as `--container-id` when you submit a training job or test a script locally.
+
+Delete a custom container:
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers delete --id=<container-id>
 ```
 
 ## Run inference

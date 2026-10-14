@@ -1,7 +1,7 @@
 ---
 linkTitle: "Sync to your database"
 title: "Sync data to your database"
-weight: 42
+weight: 52
 layout: "docs"
 type: "docs"
 description: "Use Viam as an ingestion layer and sync captured data to your own MongoDB database."

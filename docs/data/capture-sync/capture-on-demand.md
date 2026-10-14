@@ -21,8 +21,9 @@ Use capture on demand to:
 - Capture from several components together, only while something is happening.
 - Turn on capture for a component that has no data capture configured.
 
-To keep only camera frames where an ML model detects something, use a [filtered camera](/data/filter-at-the-edge/#use-a-filtered-camera-with-ml) instead.
+To keep only camera frames where an ML model detects something, use a [filtered camera](/data/capture-sync/filtered-camera/) instead.
 To control when captured data uploads, rather than what is captured, see [Conditional sync](/data/capture-sync/conditional-sync/).
+To compare all the ways to control capture and sync, see the [Capture and sync overview](/data/capture-sync/overview/).
 
 ## Before you start
 
@@ -166,3 +167,4 @@ For more, see [Build and deploy modules](/build-modules/overview/).
 - [Sequences](/data/sequences/): what a sequence is, and how to view, edit, and train on the sequences you record.
 - [Sequences tutorial](/data/sequences-tutorial/): record sequences with the `capture-control` module, then build and export a sequence dataset.
 - [Conditional sync](/data/capture-sync/conditional-sync/): control when captured data uploads.
+- [Capture and sync overview](/data/capture-sync/overview/): every way to control what your machine captures and when it syncs.
