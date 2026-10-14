@@ -274,7 +274,8 @@ viam training-script test-local \
   --dataset-root=./my-dataset/ \
   --training-script-directory=./my-training-script/ \
   --dataset-file=dataset.jsonl \
-  --container-id=<container-id>
+  --container-id=<container-id> \
+  --model-output-directory=./output/
 ```
 
 ## Manage training containers
