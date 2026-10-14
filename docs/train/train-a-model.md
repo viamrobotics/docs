@@ -36,7 +36,7 @@ Managed training uses only the images in a binary dataset. If the dataset also
 holds other files, such as video or audio, training skips them. The web UI
 notes this in a **Built-in training uses only images** banner after you select
 the **TFLite** or **TF** framework.
-The image requirements below count images only. To train on other file types,
+The [platform requirements](/train/create-a-dataset/#platform-requirements) count images only. To train on other file types,
 use a [custom training script](/train/custom-training-scripts/).
 
 ## 1. Start a training job from the web UI

@@ -24,13 +24,13 @@ They differ in how you add data and in what you can do with the dataset afterwar
 
 |                  | Binary dataset                            | Sequence dataset                                                                                         |
 | ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Holds            | Individual images                         | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
+| Holds            | Individual files, usually images          | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
 | Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
 | Create with      | Viam app, CLI, Python, TypeScript, Go     | Viam app, Python                                                                                         |
 | Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when you create or update the sequence                                                |
 | Managed training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
 | Merge datasets   | Yes                                       | No                                                                                                       |
-| Export           | Images plus a `dataset.jsonl` file        | Three Parquet files plus images                                                                          |
+| Export           | Files plus a `dataset.jsonl` file         | Three Parquet files plus images                                                                          |
 
 ## Create a dataset
 
@@ -425,7 +425,7 @@ To export the images together with their annotations, use the
 viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 ```
 
-This writes the images and a `dataset.jsonl` manifest containing their
+This writes the files and a `dataset.jsonl` manifest containing their
 annotations to the destination directory.
 
 To download the dataset's files from the web UI:
@@ -438,8 +438,8 @@ To download the dataset's files from the web UI:
    archive of the dataset's files, including non-image files such as video
    or audio.
 
-The browser download includes the files only, not labels, tags, or
-classifications. The browser builds the whole archive in memory, so it
+The browser download includes the files only, not tags, bounding boxes, or
+other annotations. The browser builds the whole archive in memory, so it
 refuses a dataset larger than 500 MB. Files that fail to download are left
 out of the archive, and a warning says how many. For a large dataset, or when
 you need a complete copy, use the CLI export instead.
