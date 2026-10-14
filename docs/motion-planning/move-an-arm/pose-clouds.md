@@ -58,9 +58,9 @@ box and rotation tolerance.
 
 | Field            | Units    | Relaxes                                                           | Default                   |
 | ---------------- | -------- | ----------------------------------------------------------------- | ------------------------- |
-| `X`, `Y`, `Z`    | mm       | Position along each axis                                          | `0`: position held exact  |
+| `X`, `Y`, `Z`    | mm       | Position along each axis of the goal pose's frame                 | `0`: position held exact  |
 | `OX`, `OY`, `OZ` | unitless | The orientation vector components (the direction the tool points) | `0`: direction held exact |
-| `Theta`          | degrees  | Rotation about the orientation axis                               | `0`: rotation held exact  |
+| `Theta`          | degrees  | Twist about the orientation axis                                  | `0`: rotation held exact  |
 
 A tolerance of zero on a field holds that component to the exact target value; a
 larger tolerance gives the planner more room on that component. You relax only what
@@ -70,8 +70,10 @@ can take a large `Theta` while keeping its pointing direction fixed.
 
 The position tolerances (`X`, `Y`, `Z`) are millimeters and `Theta` is degrees. The
 orientation-vector tolerances (`OX`, `OY`, `OZ`) are unitless deviations of the pointing
-direction on a unit sphere, not angles: on its own, a value of `1` accepts any value for
-that component, and `0` holds it exact. Because the pointing direction is a unit vector
+direction on a unit sphere, not angles, and `0` holds a component exact. On its own, a value
+of `1` on `OX` or `OY` accepts any value for that component. `OZ` is checked as `1 - OZ`, the
+distance from the goal's pointing direction, so `1` accepts any direction within 90 degrees
+of the goal's and `2` accepts any direction. Because the pointing direction is a unit vector
 (its components satisfy `OX² + OY² + OZ² = 1`), these leeways are coupled: more room on one
 component leaves less on the others, and a wide orientation leeway interacts with `Theta`,
 so a tolerance that is safe at a small rotation can let the tool tip too far at a larger one
@@ -83,17 +85,27 @@ before the leeways apply. A wide pose cloud is then measured against that defaul
 direction, not the one you intended, so set the goal's orientation explicitly and verify the
 resulting plan.
 
-## Tolerances are measured in the target's frame
+## Tolerances are measured in the goal pose's frame
 
-The tolerances are evaluated in the reference frame of the target, not in world
-coordinates. This matters when the target is tilted relative to the world.
+The tolerances are evaluated in the frame of the goal pose itself, not in world
+coordinates and not in the goal's parent frame. The frame's origin is the goal position,
+its Z axis is the goal's pointing direction, and its X and Y axes follow from the goal's
+orientation, including `Theta`. `X`, `Y`, and `Z` are offsets along those axes, and `OX`,
+`OY`, and `OZ` describe the candidate's pointing direction in that frame, so `OZ` bounds
+how far the pointing direction turns away from the goal's (`1 - cos` of the angle, in any
+direction) and `OX` and `OY` bound its sideways components.
 
-Consider a gripper approaching an inclined surface. Express the tolerance in the surface's
-own frame: large on the two in-plane axes so the tool can ride along the surface, and tight
-on the axis normal to the surface so it stays on the surface. Because a pose cloud uses the
-target's frame, these tolerances follow the tilt of the surface directly.
+`Theta` bounds the twist about the goal's Z axis. Tilting the pointing direction, in any
+direction, uses none of it.
 
-{{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="A tilted rectangular surface with the target frame at its center: the x and y axes lie in the surface and the z axis points along the surface normal. A dashed blue outline on the surface marks the pose-cloud region, which follows the tilt. A purple arrow offset from the z axis, with a dotted arc around it, shows the OX and OY leeway on the pointing direction and the Theta rotation about it." style="max-width:820px" class="aligncenter">}}
+Consider a gripper approaching an inclined surface with its tool pointing into the surface,
+along the surface normal. The goal frame's Z axis is then normal to the surface, and its X
+and Y axes lie in the surface: make `X` and `Y` large so the tool can ride along the surface,
+and keep `Z` tight so it stays on the surface. These tolerances follow the tilt of the
+surface directly. When the goal points another way, for example horizontally for a side
+grasp, work out which goal axis each world direction maps to before you set the tolerances.
+
+{{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="A tilted rectangular surface with the goal frame at its center: the x and y axes lie in the surface and the z axis points along the surface normal. A dashed blue outline on the surface marks the pose-cloud region, which follows the tilt. A purple arrow offset from the z axis, with a dotted arc around it, shows the OX and OY leeway on the pointing direction and the Theta rotation about it." style="max-width:820px" class="aligncenter">}}
 
 ## Use a pose cloud with the motion service
 
@@ -114,8 +126,11 @@ import (
 
 // Place the cup somewhere on the table, held from the side. The exact spot and
 // the cup's rotation about vertical do not matter, but it must stay upright.
+// The tolerances are measured in the goal pose's frame. For this goal, that
+// frame's Z axis is the pointing direction (the table's +X), its X axis is the
+// table's +Z (up), and its Y axis is the table's -Y.
 destination := referenceframe.NewPoseInFrameWithGoalCloud(
-    "table", // the target frame: tolerances follow the table surface
+    "table", // the goal pose is expressed in the table frame
     spatialmath.NewPose(
         r3.Vector{X: 0, Y: 0, Z: 0}, // center of the region, on the table surface
         // Grasp from the side: the tool points horizontally across the table (OZ: 0).
@@ -123,15 +138,16 @@ destination := referenceframe.NewPoseInFrameWithGoalCloud(
         // is measured from the grasp you intend, not a normalized default.
         &spatialmath.OrientationVectorDegrees{OX: 1, OZ: 0, Theta: 180},
     ),
-    // Tolerances are applied in the table frame, each as [-value, +value].
+    // Each tolerance is [-value, +value] in the goal pose's frame.
     &referenceframe.PoseCloud{
-        X:  75,  // mm of slack across the table surface in x
-        Y:  75,  // mm of slack across the table surface in y
-        Z:  0,   // hold the cup on the surface
-        OX: 1,   // let the approach swing to any side of the cup...
-        OY: 1,   // ...so the cup may rest at any rotation about vertical
-        OZ: 0.1, // keep the approach nearly horizontal, so the cup stays upright
-        // Theta stays 0, so the tool does not roll and tip the cup.
+        X:  0,    // goal X is up: hold the cup on the surface
+        Y:  75,   // mm of slack across the table (goal Y)
+        Z:  75,   // mm of slack across the table (goal Z, the pointing direction)
+        OX: 0.05, // the pointing direction's vertical part: keep the tool level, so the cup stays upright
+        OY: 1,    // the pointing direction's horizontal part: any amount...
+        OZ: 2,    // ...and up to a half turn from the goal's, so the approach may come from any side
+        // Theta stays 0, so the tool does not roll and tip the cup. Once the approach
+        // swings away from the goal, a tilt also reads as twist, so Theta 0 rejects it too.
     },
 )
 

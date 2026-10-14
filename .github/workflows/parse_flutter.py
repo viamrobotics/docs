@@ -16,7 +16,8 @@ flutter_resource_overrides = {
     "data_sync": "DataClient",
     "discovery": "DiscoveryClient",
     "audio_in": "AudioInClient",
-    "audio_out": "AudioOutClient"
+    "audio_out": "AudioOutClient",
+    "data_manager": "DataManagerClient"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -53,7 +54,7 @@ class FlutterParser:
         # Skip resources not supported in Flutter
         unsupported_resources = [
             "base_remote_control", "encoder", "input_controller",
-            "data_manager", "mlmodel",
+            "mlmodel",
             "navigation", "slam", "switch", "app", "billing", "mltraining"
         ]
 

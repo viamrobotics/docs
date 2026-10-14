@@ -17,16 +17,14 @@ time.
 
 ## Read the scene's own signals first
 
-Three signals tell you what the scene is receiving before you change anything:
+Two signals tell you what the scene is receiving before you change anything:
 
 - **Online state.** An offline machine renders the saved frame configuration only, with
   every component at its configured pose. Live poses, point clouds, and custom visuals
   need the machine online and connected.
-- **Mode.** Build mode pauses live updates and shows a **Live updates paused** banner. A
-  scene that has stopped following the machine is often a scene left in build mode; switch
-  back to **Monitor** to resume.
-- **Polling rates** under **Settings** > **Connection** control how often the scene
-  fetches each data stream. A stream set to off explains a layer that never updates.
+- **Refresh rates** control how often the scene fetches each data stream. Set them in
+  **Settings**: poses under **Frames**, point clouds under **Pointclouds**, and vision
+  results under **Vision**. A stream set to off explains a layer that never updates.
 
 ## A frame or geometry is in the wrong place
 
@@ -90,5 +88,5 @@ same geometry as a custom visual; see
   reach checks for planning failures.
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/): the
   service methods and poll loop behind custom visuals.
-- [The 3D scene interface](/visualization/3d-scene/the-3d-scene-interface/): every
-  panel, setting, and toolbar button.
+- [3D scene controls and settings](/visualization/3d-scene/controls-and-settings/):
+  navigation, Details panel fields, and settings.

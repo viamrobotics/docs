@@ -1,7 +1,7 @@
 ---
 linkTitle: "Measuring between frames"
 title: "Measuring between frames"
-weight: 20
+weight: 60
 layout: "docs"
 type: "docs"
 description: "Verify and adjust the spatial relationship between components using the 3D scene and measurement tool."

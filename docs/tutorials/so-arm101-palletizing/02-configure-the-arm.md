@@ -64,10 +64,10 @@ By default, the SO-101 module uses a conservative model to describe the arm's ge
 }
 ```
 
-Open the **CONTROL** tab and find the arm's test card. Test cards call the same API your Python code calls later in this workshop; jogging a joint here is a real API call that moves the hardware. Under MoveToJointPositions, move the Joint 0 slider a _small_ amount and press **Execute**, then watch the physical arm turn.
+Open the **CONTROL** tab and find the arm's test card. Test cards call the same API your Python code calls later in this workshop; jogging a joint here is a real API call that moves the hardware. Under **MoveToJointPositions**, which opens in **Jogging** mode, tap the **+5°** button next to Joint 0 once, then watch the physical arm turn. The move starts as soon as you release the button.
 
 {{< checkpoint >}}
-Moving a joint slider and pressing **Execute** on the arm's test card moves the physical arm. If nothing moves, confirm the arm shows online in the CONFIGURE tab and check the LOGS tab for a serial connection error.
+Tapping a joint's jog button on the arm's test card moves the physical arm. If nothing moves, confirm the arm shows online in the CONFIGURE tab and check the LOGS tab for a serial connection error.
 {{< /checkpoint >}}
 
 ## Add the gripper component
