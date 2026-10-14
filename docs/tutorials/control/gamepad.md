@@ -96,7 +96,7 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `gamepad`, then select the official `input_controller/gamepad` block from `viam-server`.
 Enter a name (or use the suggested name) for your input controller and click **Add to machine**.
 
-Once added, you can set the `auto_reconnect` attribute to `true`. You'll find it by clicking `Show 2 optional` in the Attributes section. Don't forget to Save!
+Once added, you can add `"auto_reconnect": true` in the input controller card's attributes editor. Don't forget to Save!
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
