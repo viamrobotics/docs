@@ -22,7 +22,9 @@ This page fine-tunes [SmolVLA](https://huggingface.co/lerobot/smolvla_base), usi
 Viam handles every step around the model: capturing demonstrations, organizing them into a dataset, training on a cloud GPU, and running the trained policy on your machine.
 The steps work with any arm that has a Viam module.
 
-For an example of a VLA running on a Viam machine, watch [Opening cardboard boxes with a VLA and visual servoing](https://www.youtube.com/watch?v=zSAkvyvphqg).
+For an example, this video shows a robot that opens cardboard boxes with visual servoing and a VLA fine-tuned on demonstrations recorded with Viam:
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/zSAkvyvphqg">}}
 
 ## How the pieces fit
 
@@ -79,7 +81,7 @@ Vary the objects' starting positions between demonstrations, and record several 
 If the policy struggles after training, record more.
 
 The policy learns to imitate everything in your demonstrations, including mistakes.
-Review the sequences on the **DATA** tab, and delete any where the task wasn't completed, or where the arm fumbled, paused for a long time, or collided with something.
+Review the sequences on the **DATA** tab, and delete any sequence in which the task wasn't completed, or in which the arm fumbled, paused for a long time, or collided with something.
 To train one policy on several related tasks, give each demonstration the `cmd:` tag for its own task.
 
 ## 3. Collect the demonstrations into a dataset
@@ -89,6 +91,12 @@ Add the sequences to a [sequence dataset](/train/create-a-dataset/).
 LeRobot trains on its own dataset format, not on Viam's Parquet export.
 The [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter turns each sequence into a LeRobot episode: it matches each camera frame with the nearest joint positions, uses the next frame's joint positions as the action, and takes the episode's instruction from the sequence's `cmd:` tag.
 Your training script runs the converter in step 4.
+
+{{< alert title="Caution" color="caution" >}}
+`viam-sequence-to-lerobot` is an experimental tool from Viam Labs.
+Its options and output may change between versions.
+Check the [converter's README](https://github.com/viam-labs/viam-sequence-to-lerobot) for the current options.
+{{< /alert >}}
 
 Before you spend GPU time, export the dataset and run the converter on your own computer to check that every sequence converts:
 
