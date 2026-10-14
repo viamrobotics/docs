@@ -61,7 +61,7 @@ You can edit the code, run it, and see output in the console below the editor.
 You do not need to supply an API key or address:
 
 - **TypeScript** programs run in your browser, against your live machine using the page's existing connection.
-- **Python** and **Go** programs run in a cloud sandbox. Click **Connect** in the editor to start the sandbox; the editor and **Run** are unavailable until it connects. The sandbox provides code checking and runs your program with a temporary API key for this machine, which Viam revokes when the run ends.
+- **Python** and **Go** programs run in a cloud sandbox. The sandbox starts automatically when you open the code sandbox with Python or Go selected (Python is the default) or switch to either language. You can edit while it starts, and **Run** is available once it connects. The sandbox provides code checking and runs your program with a temporary API key for this machine, which Viam revokes when the run ends.
 
 A cloud sandbox disconnects after 5 minutes of inactivity, and after 3 hours in any case.
 Your code stays in the editor; click **Reconnect** to start a new sandbox.
