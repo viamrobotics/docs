@@ -28,13 +28,13 @@ For an example, this video shows a robot that opens cardboard boxes with visual 
 
 ## How the pieces fit
 
-| Step                         | What you use                                                                                                                                                    | What it produces                                                 |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Record demonstrations        | [Data capture](/data/capture-sync/capture-and-sync-data/) and [sequences](/data/sequences/)                                                                     | One sequence per demonstration, tagged with its instruction      |
-| Build a dataset              | [Sequence dataset](/train/create-a-dataset/)                                                                                                                    | Your demonstrations, as three Parquet files                      |
-| Fine-tune                    | [Custom training script](/train/custom-training-scripts/) and the [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter | A SmolVLA checkpoint, published to your organization's registry  |
-| Speed up training (optional) | [Custom training container](/train/custom-containers/)                                                                                                          | A registered container with LeRobot preinstalled                 |
-| Run the policy               | The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module                                                                                | A control loop that drives the arm from the policy's predictions |
+| Step                               | What you use                                                                                                                                                    | What it produces                                                 |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Record demonstrations              | [Data capture](/data/capture-sync/capture-and-sync-data/) and [sequences](/data/sequences/)                                                                     | One sequence per demonstration, tagged with its instruction      |
+| Build a dataset                    | [Sequence dataset](/train/create-a-dataset/)                                                                                                                    | Your demonstrations, as three Parquet files                      |
+| Fine-tune                          | [Custom training script](/train/custom-training-scripts/) and the [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter | A SmolVLA checkpoint, published to your organization's registry  |
+| Preinstall dependencies (optional) | [Custom training container](/train/custom-containers/)                                                                                                          | A registered container with LeRobot preinstalled                 |
+| Run the policy                     | The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module                                                                                | A control loop that drives the arm from the policy's predictions |
 
 ## Prerequisites
 
@@ -209,7 +209,7 @@ viam training-script upload --path=vla-training.tar.gz \
   --org-id=<org-id> --script-name=vla-training
 ```
 
-## 5. (Optional) Build a custom training container
+## 5. (Optional) Preinstall dependencies in a custom container
 
 Viam-managed containers come with Python 3.10 and TensorFlow, so every job starts by installing PyTorch, LeRobot, and their dependencies with pip.
 That install takes a long time, and you pay for it as GPU time.
