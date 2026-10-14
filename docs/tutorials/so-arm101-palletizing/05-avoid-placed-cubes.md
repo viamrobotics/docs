@@ -183,7 +183,7 @@ uv run palletizer.py pack
 Hand-feed a cube to the staging spot for each of the eight prompts, the same rhythm as Phase 4.
 
 {{< alert title="Obstacles in the 3D scene" color="tip" >}}
-Obstacles are not visually represented in real time in the 3D scene. Transforms are shown, so you can watch the cube held by the gripper while it is in motion. For debugging, you can see obstacle positions for a past move using the Motion Plan Replayer.
+Obstacles are not visually represented in real time in the 3D scene. Transforms are shown, so you can watch the cube held by the gripper while it is in motion. For debugging, you can see obstacle positions for a past move in [Replay mode](/visualization/3d-scene/replay-mode/).
 {{< /alert >}}
 
 {{<video webm_src="/tutorials/so-arm101-palletizing/pack-two-layer.webm" mp4_src="/tutorials/so-arm101-palletizing/pack-two-layer.mp4" poster="/tutorials/so-arm101-palletizing/pack-two-layer-poster.jpg" alt="The SO-ARM101 picks hand-fed dice from the staging square one at a time and stacks them on the pallet mat, building two layers of four into a finished two-by-two-by-two stack.">}}
