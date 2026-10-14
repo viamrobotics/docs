@@ -90,9 +90,17 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `as5048`, then select the `ams/as5048` block.
 Enter `renc` as the name and click **Add to machine**.
 
-Click the **board** dropdown list and select the name of your board, `local`.
+In the encoder card's attributes editor, enter the following attributes:
 
-In the **i2c bus** field type `1`, and in the **i2c address** field type `65`.
+```json
+{
+  "connection_type": "i2c",
+  "i2c_attributes": {
+    "i2c_bus": "1",
+    "i2c_addr": 65
+  }
+}
+```
 
 #### Left encoder
 
@@ -100,9 +108,17 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `as5048`, then select the `ams/as5048` block.
 Enter `lenc` as the name for your encoder and click **Add to machine**.
 
-Click the **board** dropdown list and select the name of your board, `local`.
+In the encoder card's attributes editor, enter the following attributes:
 
-In the **i2c bus** field type `1`, and in the **i2c address** field type `64`.
+```json
+{
+  "connection_type": "i2c",
+  "i2c_attributes": {
+    "i2c_bus": "1",
+    "i2c_addr": 64
+  }
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -164,7 +180,7 @@ Search for `gpio`, then select the `motor/gpio` block.
 Enter `right` as the name or use the suggested name for your motor and click **Add to machine**.
 
 In the motor card's attributes editor, enter the following attributes.
-They set `local`, the Raspberry Pi the motor is wired to, as the board, use the `renc` encoder with `2` ticks per rotation, and describe how the motor is wired to the Pi in `In1/In2` mode.
+They set `local`, the Raspberry Pi the motor is wired to, as the board, use the `renc` encoder with `ticks_per_rotation` set to `1` (the AS5048 is an absolute encoder that reports whole rotations), and describe how the motor is wired to the Pi in `In1/In2` mode.
 Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
 
 ```json
@@ -176,7 +192,7 @@ Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor 
     "pwm": ""
   },
   "encoder": "renc",
-  "ticks_per_rotation": 2
+  "ticks_per_rotation": 1
 }
 ```
 
@@ -197,7 +213,7 @@ In the motor card's attributes editor, enter the following attributes, which use
     "pwm": ""
   },
   "encoder": "lenc",
-  "ticks_per_rotation": 2
+  "ticks_per_rotation": 1
 }
 ```
 
@@ -221,7 +237,7 @@ Add the following JSON objects to the `components` array:
     "board": "local",
     "dir_flip": false,
     "encoder": "renc",
-    "ticks_per_rotation": 2
+    "ticks_per_rotation": 1
   },
   "depends_on": [ "local" ]
 },
@@ -238,7 +254,7 @@ Add the following JSON objects to the `components` array:
     "board": "local",
     "dir_flip": false,
     "encoder": "lenc",
-    "ticks_per_rotation": 2
+    "ticks_per_rotation": 1
   },
   "depends_on": [ "local" ]
 }
