@@ -4,7 +4,7 @@ title: "Train a vision-language-action (VLA) model"
 weight: 33
 layout: "docs"
 type: "docs"
-description: "Record robot demonstrations as sequences, fine-tune a vision-language-action (VLA) policy such as SmolVLA in a custom training container, and run it on your machine."
+description: "Record robot demonstrations as sequences, fine-tune a vision-language-action (VLA) policy such as SmolVLA on a Viam cloud GPU, and run it on your machine."
 capabilities: ["sequences", "datasets", "ml-training", "hw-arm"]
 diataxis: how-to
 languages: ["python"]
@@ -19,18 +19,20 @@ It takes camera images, the robot's joint positions, and a natural-language inst
 You train one by imitation learning: you record demonstrations of the task, then fine-tune a pretrained VLA on them.
 
 This page fine-tunes [SmolVLA](https://huggingface.co/lerobot/smolvla_base), using Hugging Face's [LeRobot](https://huggingface.co/docs/lerobot) library, on demonstrations you record with Viam.
-Viam handles every step around the model: capturing demonstrations, organizing them into a dataset, training on a cloud GPU in a container with LeRobot preinstalled, and running the trained policy on your machine.
+Viam handles every step around the model: capturing demonstrations, organizing them into a dataset, training on a cloud GPU, and running the trained policy on your machine.
 The steps work with any arm that has a Viam module.
+
+For an example of a VLA running on a Viam machine, watch [Opening cardboard boxes with a VLA and visual servoing](https://www.youtube.com/watch?v=zSAkvyvphqg).
 
 ## How the pieces fit
 
-| Step                    | What you use                                                                                                                                                    | What it produces                                                 |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Record demonstrations   | [Data capture](/data/capture-sync/capture-and-sync-data/) and [sequences](/data/sequences/)                                                                     | One sequence per demonstration, tagged with its instruction      |
-| Build a dataset         | [Sequence dataset](/train/create-a-dataset/)                                                                                                                    | Your demonstrations, as three Parquet files                      |
-| Prepare the environment | [Custom training container](/train/custom-containers/)                                                                                                          | A registered container with LeRobot installed                    |
-| Fine-tune               | [Custom training script](/train/custom-training-scripts/) and the [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter | A SmolVLA checkpoint, published to your organization's registry  |
-| Run the policy          | The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module                                                                                | A control loop that drives the arm from the policy's predictions |
+| Step                         | What you use                                                                                                                                                    | What it produces                                                 |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Record demonstrations        | [Data capture](/data/capture-sync/capture-and-sync-data/) and [sequences](/data/sequences/)                                                                     | One sequence per demonstration, tagged with its instruction      |
+| Build a dataset              | [Sequence dataset](/train/create-a-dataset/)                                                                                                                    | Your demonstrations, as three Parquet files                      |
+| Fine-tune                    | [Custom training script](/train/custom-training-scripts/) and the [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter | A SmolVLA checkpoint, published to your organization's registry  |
+| Speed up training (optional) | [Custom training container](/train/custom-containers/)                                                                                                          | A registered container with LeRobot preinstalled                 |
+| Run the policy               | The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module                                                                                | A control loop that drives the arm from the policy's predictions |
 
 ## Prerequisites
 
@@ -38,7 +40,7 @@ The steps work with any arm that has a Viam module.
   A fixed camera that sees the workspace plus a wrist camera is a common setup.
 - A way to teleoperate the arm while you record, such as a leader arm, a VR or gamepad controller, or moving the arm by hand.
 - To run the trained policy, a computer with an NVIDIA GPU attached to the machine, such as an NVIDIA Jetson Orin.
-- [Docker](https://docs.docker.com/get-docker/) and a [Docker Hub](https://hub.docker.com/) account, to build the training container.
+- Optionally, [Docker](https://docs.docker.com/get-docker/) and a [Docker Hub](https://hub.docker.com/) account, to build a custom training container.
 - The [Viam CLI](/cli/), logged in.
 
 ## 1. Plan what to capture
@@ -86,7 +88,7 @@ Add the sequences to a [sequence dataset](/train/create-a-dataset/).
 
 LeRobot trains on its own dataset format, not on Viam's Parquet export.
 The [`viam-sequence-to-lerobot`](https://github.com/viam-labs/viam-sequence-to-lerobot) converter turns each sequence into a LeRobot episode: it matches each camera frame with the nearest joint positions, uses the next frame's joint positions as the action, and takes the episode's instruction from the sequence's `cmd:` tag.
-Your training script runs the converter in step 5.
+Your training script runs the converter in step 4.
 
 Before you spend GPU time, export the dataset and run the converter on your own computer to check that every sequence converts:
 
@@ -100,39 +102,27 @@ The converter logs any sequence it skips, and why, for example a missing camera 
 The first `--camera` sets the frame clock, and `--fps` must match your capture rate.
 Run `viam-seq-to-lerobot --help` for all options.
 
-## 4. Build and register a training container
-
-LeRobot needs Python 3.12 and a large set of dependencies, so train in a [custom training container](/train/custom-containers/) that has them preinstalled, rather than a Viam-managed container.
-Hugging Face publishes a GPU image with LeRobot, [`huggingface/lerobot-gpu`](https://hub.docker.com/r/huggingface/lerobot-gpu).
-Build on it to add `pip`, which Viam uses to install your training script, and the converter:
-
-```dockerfile {class="line-numbers linkable-line-numbers"}
-FROM huggingface/lerobot-gpu:latest
-
-RUN uv pip install --python /lerobot/.venv/bin/python pip \
-    "viam-sequence-to-lerobot @ git+https://github.com/viam-labs/viam-sequence-to-lerobot"
-```
-
-Build and push the image to a public Docker Hub repository, then register it:
-
-```sh {class="command-line" data-prompt="$"}
-docker buildx build --platform linux/amd64 \
-  -t docker.io/<your-username>/lerobot-viam:1 --push .
-viam train containers register \
-  --uri=docker.io/<your-username>/lerobot-viam:1 \
-  --description="LeRobot for VLA training" \
-  --org-id=<org-id>
-```
-
-Save the container ID that registration prints.
-To build reproducible images, pin the base image by digest instead of `latest`.
-See [Custom training containers](/train/custom-containers/) for the image requirements.
-
-## 5. Write the training script
+## 4. Write the training script
 
 The training script converts the dataset into LeRobot's format, fine-tunes SmolVLA on it, and saves the checkpoint where Viam publishes it.
-Because the container already has every dependency, `setup.py` can leave `install_requires` empty.
-See [File structure](/train/custom-training-scripts/#file-structure).
+It runs in a Viam-managed container, which installs its dependencies from `setup.py` at the start of each job:
+
+```python {class="line-numbers linkable-line-numbers"}
+# setup.py
+from setuptools import find_packages, setup
+
+setup(
+    name="vla-training",
+    version="0.1",
+    packages=find_packages(),
+    install_requires=[
+        "lerobot[smolvla]",
+        "viam-sequence-to-lerobot @ git+https://github.com/viam-labs/viam-sequence-to-lerobot",
+    ],
+)
+```
+
+See [File structure](/train/custom-training-scripts/#file-structure) for where `setup.py` and `model/training.py` go.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # model/training.py
@@ -211,9 +201,50 @@ viam training-script upload --path=vla-training.tar.gz \
   --org-id=<org-id> --script-name=vla-training
 ```
 
+## 5. (Optional) Build a custom training container
+
+Viam-managed containers come with Python 3.10 and TensorFlow, so every job starts by installing PyTorch, LeRobot, and their dependencies with pip.
+That install takes a long time, and you pay for it as GPU time.
+The latest LeRobot releases also need Python 3.12, so a Viam-managed container installs the most recent LeRobot release that supports Python 3.10.
+
+To skip the install and use the latest LeRobot, run your jobs in a [custom training container](/train/custom-containers/) with the dependencies already installed.
+Hugging Face publishes a GPU image with LeRobot, [`huggingface/lerobot-gpu`](https://hub.docker.com/r/huggingface/lerobot-gpu).
+Build on it to add `pip`, which Viam uses to install your training script, and the converter:
+
+```dockerfile {class="line-numbers linkable-line-numbers"}
+FROM huggingface/lerobot-gpu:latest
+
+RUN uv pip install --python /lerobot/.venv/bin/python pip \
+    "viam-sequence-to-lerobot @ git+https://github.com/viam-labs/viam-sequence-to-lerobot"
+```
+
+Build and push the image to a public Docker Hub repository, then register it:
+
+```sh {class="command-line" data-prompt="$"}
+docker buildx build --platform linux/amd64 \
+  -t docker.io/<your-username>/lerobot-viam:1 --push .
+viam train containers register \
+  --uri=docker.io/<your-username>/lerobot-viam:1 \
+  --description="LeRobot for VLA training" \
+  --org-id=<org-id>
+```
+
+Save the container ID that registration prints.
+To build reproducible images, pin the base image by digest instead of `latest`.
+Your `setup.py` doesn't need to change: its dependencies are already installed in the container.
+See [Custom training containers](/train/custom-containers/) for the image requirements.
+
 ## 6. Train on a Viam cloud GPU
 
-Submit a training job on your sequence dataset, in your custom container:
+Find the ID of the container to train in.
+To use a Viam-managed container, pick the newest one from the list.
+If you built a custom container in step 5, use the ID that registration printed.
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers list --org-id=<org-id>
+```
+
+Submit a training job on your sequence dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 viam train submit custom from-registry --dataset-id=<dataset-id> \
@@ -224,7 +255,7 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --args=arm=<arm-name>,cameras="'<camera-1> <camera-2>'",fps=10
 ```
 
-You can also submit a training job through the web UI: on the [**DATASETS**](https://app.viam.com/data/datasets) page, select your dataset, click **Train model**, select **Train on a custom training script**, select your container in the **Container version** dropdown, and add the `arm`, `cameras`, and `fps` arguments under **Arguments**.
+You can also submit a training job through the web UI: on the [**DATASETS**](https://app.viam.com/data/datasets) page, select your dataset, click **Train model**, select **Train on a custom training script**, select the container in the **Container version** dropdown, and add the `arm`, `cameras`, and `fps` arguments under **Arguments**.
 See [Submit a training job](/train/custom-training-scripts/#submit-a-training-job).
 
 Fine-tuning takes hours: LeRobot reports that 20,000 steps take about four hours on one A100 GPU.
@@ -236,6 +267,13 @@ When the job finishes, the checkpoint is published to your organization's regist
 ## 7. Run the policy on your machine
 
 The [`viam-labs:vla`](https://github.com/viam-labs/vla-inference-service) module runs LeRobot policies on a Viam machine.
+
+{{< alert title="Caution" color="caution" >}}
+`viam-labs:vla` is an experimental module from Viam Labs.
+Its configuration and behavior may change between releases.
+Check the [module README](https://github.com/viam-labs/vla-inference-service) for the current configuration before you upgrade.
+{{< /alert >}}
+
 It provides two generic services:
 
 - `viam-labs:vla:policy` loads the checkpoint and runs inference.
