@@ -13,6 +13,6 @@ If none of these steps work, reach out to us on the [Community Discord](https://
 When working with a [camera](/reference/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration panel.
-On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **JSON** button to enter these attributes manually.
+On the **CONFIGURE** page, find your camera, then enter your camera's specific configuration in the camera card's attributes editor.
 Provide at least the width and height values to start.
 {{% /expand%}}

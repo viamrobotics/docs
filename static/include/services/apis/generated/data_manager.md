@@ -52,6 +52,26 @@ await dataManager.sync();
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#sync).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+await myDataManager.sync();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataManagerClient/sync.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### UploadBinaryDataToDatasets
@@ -105,6 +125,36 @@ await dataManager.uploadBinaryDataToDatasets(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#uploadbinarydatatodatasets).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `binaryData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `datasetIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `mimeType` [MimeType](https://flutter.viam.dev/viam_protos.app.data_sync/MimeType-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+// import 'package:viam_sdk/protos/app/data_sync.dart' as data_sync;
+await myDataManager.uploadBinaryDataToDatasets(
+  [1, 2, 3],
+  ['tag1', 'tag2'],
+  ['datasetId1', 'datasetId2'],
+  data_sync.MimeType.MIME_TYPE_IMAGE_JPEG,
+);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataManagerClient/uploadBinaryDataToDatasets.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -218,6 +268,27 @@ const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'val
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#docommand).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataManagerClient/doCommand.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetStatus
@@ -267,6 +338,19 @@ await dataManager.doCommand(new Struct({ cmd: 'test', data1: 500 }));
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#getstatus).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataManagerClient/getStatus.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetResourceName
@@ -312,6 +396,19 @@ data_manager.name
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#name).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataManagerClient/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}
