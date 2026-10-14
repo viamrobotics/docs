@@ -49,21 +49,8 @@ Keep your training code in your training script, which stays private to your org
 
 ## Build and push an image
 
-Start from an [NVIDIA CUDA base image](https://hub.docker.com/r/nvidia/cuda) so your dependencies can use the GPU that training jobs run on.
-Choose a tag with the CUDA version that your training libraries need.
-Then install Python, pip, and the packages your training script needs.
-
-For example, this `Dockerfile` installs PyTorch and Hugging Face Transformers:
-
-```dockerfile {class="line-numbers linkable-line-numbers"}
-FROM nvidia/cuda:<tag>
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 python3-pip && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install --no-cache-dir torch transformers
-```
+Build an image that meets the [requirements](#requirements) and includes the packages your training script needs.
+You can start from any base image.
 
 Build the image for `linux/amd64` and push it to Docker Hub:
 
