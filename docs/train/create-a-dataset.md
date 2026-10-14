@@ -352,7 +352,7 @@ Before you train a model, check that your dataset meets the requirements.
 1. Go to the **DATA** tab and click the **DATASETS** subtab.
 2. Click your dataset to open it.
 3. Review the dataset summary, which shows:
-   - Total number of images
+   - Total number of files, including any non-image files
    - Number of labeled images
    - Labels used and their counts
 4. Check each requirement:
