@@ -32,6 +32,8 @@ They differ in how you add data and in what you can do with the dataset afterwar
 | Merge datasets   | Yes                                       | No                                                                                                       |
 | Export           | Images plus a `dataset.jsonl` file        | Three Parquet files plus images                                                                          |
 
+For an end-to-end example that trains a vision-language-action (VLA) model on a sequence dataset of robot demonstrations, see [Train a VLA](/train/train-a-vla/).
+
 ## Create a dataset
 
 {{< tabs >}}

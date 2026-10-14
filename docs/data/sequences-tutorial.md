@@ -468,3 +468,4 @@ You built the whole path from capture to training data:
 - [Sequences](/data/sequences/): recording, viewing, and creating sequences from code.
 - [Sequence dataset format](/train/sequence-dataset-format/): the columns in each Parquet file.
 - [Custom training scripts](/train/custom-training-scripts/): train a model on the exported data.
+- [Train a VLA](/train/train-a-vla/): record demonstrations of a task on a real arm and fine-tune a VLA policy on them.
