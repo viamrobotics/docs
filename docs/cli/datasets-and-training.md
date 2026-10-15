@@ -36,6 +36,9 @@ To list training containers and find container IDs, including your organization'
 viam train containers list --org-id=<org-id>
 ```
 
+The `--org-id` flag is optional.
+Without it, the command lists only Viam-managed containers.
+
 ## Manage datasets
 
 ### Create a dataset
@@ -270,7 +273,9 @@ On ARM Macs, Docker runs them through Rosetta emulation, which may be slower.
 viam training-script test-local \
   --dataset-root=./my-dataset/ \
   --training-script-directory=./my-training-script/ \
-  --container-id=<container-id>
+  --dataset-file=dataset.jsonl \
+  --container-id=<container-id> \
+  --model-output-directory=./output/
 ```
 
 ## Manage training containers
