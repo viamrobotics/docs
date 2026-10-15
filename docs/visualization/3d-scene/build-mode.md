@@ -15,7 +15,7 @@ Build mode turns the 3D scene into a configuration editor. You can give componen
 
 - **The Details panel becomes editable** for configurable frames: the parent frame, local position and orientation, and geometry. For what each field maps to in configuration, see [Details panel fields](/visualization/3d-scene/controls-and-settings/#details-panel-fields).
 - **Transform tools appear**, so you can move, rotate, and scale a frame's geometry in the viewport instead of typing values, with optional snapping and a choice of local or world axes.
-- **Appearance changes are saved.** Color, opacity, visibility, and the axes helper you set on the Details panel's **Appearance** tab are saved to the component's `visualizer` configuration, and frames inside it, such as an obstacle's shapes, follow them unless they set their own. In Monitor mode, the same changes last only for the session.
+- **Appearance changes are saved.** Color, opacity, visibility, and the axes helper you set on the Details panel's **Appearance** tab are saved to the component's `visualizer` configuration, and frames inside it, such as an obstacle's shapes, follow them unless they set their own.
 - **An editing banner appears** with **Undo** and **Redo** for stepping through your edits, and shows whether you have unsaved changes.
 
 ## Add frames and obstacles

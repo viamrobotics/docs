@@ -41,22 +41,18 @@ You can then reposition it using the Details panel.
 
 To add an obstacle that motion planning avoids without leaving the tab:
 
-1. In the **World** panel header, click **Add object** (**+**), select **Obstacle**, and choose a type:
-   - **Simple**: a single shape.
-   - **Bounds**: walls enclosing a box-shaped space.
-   - **Complex**: a group of shapes.
-2. In the **New simple obstacle**, **New bounds obstacle**, or **New complex obstacle** dialog, keep the suggested name (`obstacle-1` for simple and complex obstacles, `bounds-1` for bounds) or enter your own, and click **Create**.
+In the **World** panel header, click **Add object** (**+**), select **Obstacle**, choose a type, and name it:
+
+- **Simple**: a single shape.
+- **Bounds**: walls enclosing a box-shaped space. You set the interior size and wall thickness, and can turn individual walls, such as the floor or ceiling, on or off.
+- **Complex**: a group of shapes.
 
 The scene switches to build mode, adds a `generic` component with the built-in `obstacle` model (`rdk:builtin:obstacle`), and selects it.
-The obstacle's shapes are stored in the component's `geometries` attribute, positioned relative to the component's frame:
+The obstacle's shapes are stored in the component's `geometries` attribute, positioned relative to the component's frame.
 
-- A simple obstacle starts as one 100 mm box at the world origin.
-- A bounds obstacle starts as a 1000 mm cube of space with 10 mm walls on every face, raised so its floor sits on the ground plane. Set the interior size and wall thickness, and turn individual walls, such as the floor or ceiling, on or off.
-- A complex obstacle starts as one 100 mm box. Click **Add shape** to add more, and select a shape to edit or remove it.
-
-Edit the shapes in the Details panel, or resize a simple obstacle's shape with the transform tools, then [save your changes](#save-your-changes).
+Edit the shapes in the Details panel, then [save your changes](#save-your-changes).
 The `obstacle` model requires `viam-server` v1.12.0 or later.
-For obstacle patterns beyond a single box, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
+To configure obstacles in JSON instead, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
 
 ## Edit a frame's position and orientation
 

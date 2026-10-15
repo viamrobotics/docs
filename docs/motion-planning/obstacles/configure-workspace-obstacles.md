@@ -220,7 +220,7 @@ To configure it in JSON, add a component like this one to your machine's configu
 
 ## Configure a single primitive
 
-For a single primitive shape when you do not want to add the `erh:vmodutils` module, you can also use a `generic`/`fake` component.
+On `viam-server` versions before v1.12.0, which don't have the built-in obstacle model, use a `generic`/`fake` component for a single primitive shape when you do not want to add the `erh:vmodutils` module.
 To add it from the **CONFIGURE** tab:
 
 1. Click the **+** icon and select **Blocks**.
