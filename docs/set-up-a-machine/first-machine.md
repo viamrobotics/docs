@@ -37,6 +37,12 @@ aliases:
 Connect your first machine to the Viam platform so you can configure, control, and monitor it from anywhere.
 You'll create a machine in the Viam app, install Viam on your compute device, and confirm it's online.
 
+A **machine** is what you configure and control in the Viam app: a computer running `viam-server`, plus the hardware attached to it.
+A machine has one or more **parts**, and each part is one computer running `viam-server`.
+Your compute device, such as a Raspberry Pi or a laptop, is a part of your machine.
+For more, see [Machines and parts](/what-is-viam/#machines-and-parts).
+<!-- TODO(draft): wording is provisional. Reconcile with the glossary and What is Viam? entries, and switch to the glossary_definition shortcode if it lands. -->
+
 ## 1. Create a machine in the Viam app
 
 1. Go to [app.viam.com](https://app.viam.com) and log in (or create an account).

@@ -44,6 +44,7 @@ Deleting a machine also ends its simulation.
 
 ## Manage simulations from the AI assistant or MCP
 
+A simulation runs in place of a machine part, which is normally a computer running `viam-server`.
 The Config AI assistant and the [Viam MCP server](/reference/mcp/) can check on, start, and stop a machine's simulation:
 
 | Tool                | What it does                                                 |

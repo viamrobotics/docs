@@ -49,7 +49,7 @@ viam locations list
 
 ## 3. Get the part ID
 
-Every machine has at least one part. To install `viam-agent` on the device, you need the part ID:
+Every machine has at least one part, and each part is one computer running `viam-server`. The part ID identifies the device you're about to set up. To install `viam-agent` on the device, you need the part ID:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part list --machine=<machine-id>
