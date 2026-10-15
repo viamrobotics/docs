@@ -9,6 +9,7 @@
 | `read_machine_config` | Read-only |
 | `read_machine_metadata` | Read-only |
 | `read_part_status` | Read-only |
+| `read_simulation` | Read-only |
 | `search_configuration_blocks` | Read-only |
 | `read_viam_docs` | Read-only (external) |
 | `read_machine_logs` | Read (billable) |
@@ -18,8 +19,10 @@
 | `add_machine_config_item` | Write |
 | `create_fragment` | Write |
 | `create_machine` | Write |
+| `start_simulation` | Write |
 | `delete_fragment_config_item` | Write (destructive) |
 | `delete_machine_config_item` | Write (destructive) |
+| `stop_simulation` | Write (destructive) |
 | `update_fragment_config_item` | Write (destructive) |
 | `update_machine_config_item` | Write (destructive) |
 | `call_machine_api` | Live machine (destructive) |

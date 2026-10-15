@@ -53,6 +53,10 @@ In the **Set up your machine** banner, click **Install**.
 The setup wizard opens and asks **Does your project have a separate board/computer?**
 Follow the guidance in the setup wizard to set up your machine on Viam.
 
+If you don't have your hardware yet, the setup wizard can also run your machine in a simulated environment in the cloud, so you can start configuring and testing right away.
+See [Simulate a machine](/set-up-a-machine/simulate-a-machine/).
+<!-- TODO(draft): confirm where the simulation option appears in the wizard (before or after the board/computer question) and whether it's gated by a feature flag at launch. -->
+
 ## 3. Add hardware in the CONFIGURE tab
 
 Your machine is connected, but it has no components configured yet.
