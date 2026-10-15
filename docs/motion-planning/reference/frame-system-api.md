@@ -22,7 +22,8 @@ Call these methods directly on the robot or machine client
 (`machine.transform_pose`, `machine.transform_pcd`, and so on).
 The Python, Go, TypeScript, and C++ clients expose all four. Python
 exposes `GetPose` on the machine client from v0.83.0 (see
-[GetPose](#getpose) below).
+[GetPose](#getpose) below), and C++ exposes `transform_pcd` from v0.42.0.
+The Flutter SDK doesn't expose these methods on its robot client.
 
 ## Service names
 
@@ -31,7 +32,7 @@ These names appear in error messages and module configuration: inside RDK, the f
 Go and C++ module authors can go one step further and call the frame system as a resource dependency, in place of a robot client connection:
 
 - **Go:** declare a dependency on the frame system by the `$framesystem` name (`framesystem.PublicServiceName` in the RDK) and call the returned `framesystem.Service` directly.
-- **C++ (SDK v0.42.0 and later):** every modular resource receives the frame system in its dependencies under `FrameSystem::public_name()` (`$framesystem`), without listing it in `validate`. Cast it to `FrameSystem` and call `get_frame_system_config`, `get_pose`, `transform_pose`, or `transform_pcd`.
+- **C++ (SDK v0.42.0 and later):** every modular resource receives the frame system in its dependencies under `FrameSystem::public_name()` (`$framesystem`), without listing it in `validate`. It is present only when the module runs under a `viam-server` parent, so check that the dependency exists, then `std::dynamic_pointer_cast` it to `FrameSystem` and call `get_frame_system_config`, `get_pose`, `transform_pose`, or `transform_pcd`.
 
 ## FrameSystemConfig
 
