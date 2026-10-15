@@ -3144,7 +3144,7 @@ Manage training scripts for [custom ML training](/train/custom-training-scripts/
 ```sh {class="command-line" data-prompt="$"}
 viam training-script upload --framework=<framework> --org-id=<org-id> --path=<path-to-script> --script-name=<script-name> --type=<type>
 viam training-script update --org-id=<org-id> --script-name=<script-name> --visibility=<visibility>
-viam training-script test-local --training-script-directory=<script-directory> --dataset-root=<dataset-root> --container-id=<container-id> [...named args]
+viam training-script test-local --training-script-directory=<script-directory> --dataset-root=<dataset-root> --container-id=<container-id> [--dataset-file=<dataset-file>] [--model-output-directory=<output-dir>] [--custom-args=<key=value>]
 ```
 
 ### `training-script upload`
@@ -3193,7 +3193,7 @@ Run an ML training script locally with Docker, in the same container a cloud tra
 See [Test locally with Docker](/train/custom-training-scripts/#test-locally-with-docker).
 
 ```sh {class="command-line" data-prompt="$"}
-viam training-script test-local --training-script-directory=my-training/ --dataset-root=./my-dataset/ --container-id=abc123 --model-output-directory=./output/
+viam training-script test-local --training-script-directory=my-training/ --dataset-root=./my-dataset/ --dataset-file=dataset.jsonl --container-id=abc123 --model-output-directory=./output/
 ```
 
 <!-- prettier-ignore -->

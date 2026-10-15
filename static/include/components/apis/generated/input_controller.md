@@ -259,6 +259,27 @@ if geometries:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_geometries).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const controller = new VIAM.InputControllerClient(machine, 'my_controller');
+const geometries = await controller.getGeometries();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/InputControllerClient.html#getgeometries).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### RegisterControlCallback

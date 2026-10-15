@@ -20,7 +20,8 @@ When you start a [custom training job](/train/custom-training-scripts/), you can
 Viam-managed containers come with Python and TensorFlow.
 Any other dependency your training script lists in `setup.py` gets installed with pip at the start of every job, on billed GPU time.
 For large dependency stacks, such as the libraries for fine-tuning a vision-language-action (VLA) model, that install can take a long time.
-A custom container has those dependencies built in, so each job starts training right away.
+A custom container has those dependencies built in.
+As long as the container includes every dependency your training script needs, jobs don't spend time installing dependencies with pip and start training right away.
 
 The container holds only the environment.
 Your training script stays in the registry and works without changes: the same `setup.py` and `model/training.py` structure runs in a custom container just as it does in a Viam-managed one.
@@ -48,20 +49,8 @@ Keep your training code in your training script, which stays private to your org
 
 ## Build and push an image
 
-Start from an NVIDIA CUDA base image so your dependencies can use the GPU that training jobs run on.
-Then install Python, pip, and the packages your training script needs.
-
-For example, this `Dockerfile` installs PyTorch and Hugging Face Transformers:
-
-```dockerfile {class="line-numbers linkable-line-numbers"}
-FROM nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 python3-pip && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install --no-cache-dir torch transformers
-```
+Build an image that meets the [requirements](#requirements) and includes the packages your training script needs.
+You can start from any base image.
 
 Build the image for `linux/amd64` and push it to Docker Hub:
 
@@ -73,7 +62,6 @@ docker buildx build --platform linux/amd64 \
 Make sure the repository is public on Docker Hub.
 
 You can use any tool that produces a standard Docker image.
-For example, [Cog](https://cog.run/) can generate a GPU-ready image from a short configuration file.
 
 ## Register the container
 
@@ -139,6 +127,7 @@ See [Test locally with Docker](/train/custom-training-scripts/#test-locally-with
 ```sh {class="command-line" data-prompt="$"}
 viam training-script test-local \
   --training-script-directory=my-training/ \
+  --dataset-file=dataset.jsonl \
   --dataset-root=<destination> \
   --container-id=<container-id> \
   --model-output-directory=<output-dir>
