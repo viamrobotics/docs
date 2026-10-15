@@ -237,7 +237,6 @@ power_sensor,Close,,close,Close,,
 
 ## Sensor
 sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
-# NOT implemented sensor,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
 sensor,GetGeometries,,get_geometries,,getGeometries,getGeometries
 sensor,Reconfigure,No,,Reconfigure,,
