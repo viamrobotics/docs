@@ -65,7 +65,7 @@ Models live at the organization level in Viam. Uploading a model is a one-time a
 4. Fill in the upload form:
    - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX).
    - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID).
-   - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config.
+   - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config. Registry item names are unique within an organization, so the upload fails if another registry item in your organization, such as a module or training script, already uses the name.
    - **Task type**: pick **Object detection**, **Single label classification**, **Multi label classification**, or **Other**.
    - **Description**: one sentence describing the model.
 5. Click **Upload model**.
