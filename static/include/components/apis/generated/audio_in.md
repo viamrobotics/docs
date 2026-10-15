@@ -198,6 +198,46 @@ if geometries:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_in/client/index.html#viam.components.audio_in.client.AudioInClient.get_geometries).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const audioIn = new VIAM.AudioInClient(machine, 'my_audio_in');
+const geometries = await audioIn.getGeometries();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioInClient.html#getgeometries).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final geometries = await myAudioIn.getGeometries();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioInClient/getGeometries.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
