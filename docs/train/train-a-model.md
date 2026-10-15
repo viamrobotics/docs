@@ -78,14 +78,14 @@ viam train submit managed \
 
 **Required flags:**
 
-| Flag                | Description                       | Accepted values                                                                 |
-| ------------------- | --------------------------------- | ------------------------------------------------------------------------------- |
-| `--dataset-id`      | Dataset to train on               | Your dataset ID                                                                 |
-| `--model-org-id`    | Organization to save the model in | Your organization ID                                                            |
-| `--model-name`      | Name for the trained model        | Any string                                                                      |
-| `--model-type`      | Task type                         | `single_label_classification`, `multi_label_classification`, `object_detection` |
-| `--model-framework` | Model framework                   | `tflite`, `tensorflow`                                                          |
-| `--model-labels`    | Labels to train on                | Comma-separated list of labels from your dataset                                |
+| Flag                | Description                       | Accepted values                                                                                                                                                                                      |
+| ------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--dataset-id`      | Dataset to train on               | Your dataset ID                                                                                                                                                                                      |
+| `--model-org-id`    | Organization to save the model in | Your organization ID                                                                                                                                                                                 |
+| `--model-name`      | Name for the trained model        | A name not already used by another registry item in the organization, such as a module or training script. Reusing an existing model's name adds a new version of that model with the same framework |
+| `--model-type`      | Task type                         | `single_label_classification`, `multi_label_classification`, `object_detection`                                                                                                                      |
+| `--model-framework` | Model framework                   | `tflite`, `tensorflow`                                                                                                                                                                               |
+| `--model-labels`    | Labels to train on                | Comma-separated list of labels from your dataset                                                                                                                                                     |
 
 `--model-version` is optional and defaults to the current timestamp.
 
