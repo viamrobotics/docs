@@ -881,6 +881,25 @@ const geometries = await base.getGeometries();
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getgeometries).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final geometries = await myBase.getGeometries();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Base/getGeometries.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
