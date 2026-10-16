@@ -38,7 +38,7 @@ Tools fall into seven groups, reflected in the **Category** column below:
 
 The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragment_config_item`, and `delete_fragment_config_item`) change fragments. If a fragment is public or unlisted, users outside your organization can see and use its configuration, including your changes.
 
-The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) work with a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. `start_simulation` and `stop_simulation` don't change configuration. Starting a simulation is billed by the minute until it stops or times out, so `stop_simulation` ends the charges.
+The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) work with a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. `start_simulation` and `stop_simulation` don't change configuration. Starting a simulation is billed by the minute to the user who authorized the request, until it stops or times out, so `stop_simulation` ends the charges.
 
 <!-- TODO(draft): hold with the rest of the simulation docs until the feature and the MCP server release ship. -->
 

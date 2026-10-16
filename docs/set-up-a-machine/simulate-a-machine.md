@@ -17,7 +17,7 @@ A simulated machine appears in the Viam app like any other machine: you configur
 
 ## Before you start
 
-- **Simulation is billed by the minute.** Your organization is charged for as long as the simulation is running. <!-- TODO(draft): state the rate, or link to the pricing page. -->
+- **Simulation is billed by the minute.** The user who starts the simulation, including through the AI assistant or MCP, is charged for as long as it's running. <!-- TODO(draft): state the rate, or link to the pricing page. -->
 - **Idle simulations time out.** If the simulated machine isn't actuating, the simulation times out after at most 60 minutes.
 - **You can stop or restart a simulation at any time.**
 - **Some modules need real hardware.** Modules that are drivers for physical hardware, such as specific cameras, motors, or sensors, don't work in a simulated environment. <!-- TODO(draft): confirm that built-in fake models (for example, the fake arm) work in the sandbox and link them here. -->
