@@ -348,6 +348,7 @@ vision,GetDetections,,get_detections,Detections,detections,getDetections
 vision,GetClassificationsFromCamera,,get_classifications_from_camera,ClassificationsFromCamera,classificationsFromCamera,getClassificationsFromCamera
 vision,GetClassifications,,get_classifications,Classifications,classifications,getClassifications
 vision,GetObjectPointClouds,,get_object_point_clouds,GetObjectPointClouds,objectPointClouds,getObjectPointClouds
+vision,GetDetections3D,,get_detections_3d,GetDetections3D,detections3D,getDetections3D
 vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,,captureAllFromCamera
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 vision,Reconfigure,,,Reconfigure,,
