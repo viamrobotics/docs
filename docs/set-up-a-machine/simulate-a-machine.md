@@ -10,7 +10,7 @@ diataxis: how-to
 date: "2026-10-15"
 ---
 
-<!-- TODO(draft): hold until the simulation feature is generally available. The wizard UI is behind a feature flag (viamrobotics/app#13706) and the backend is moving from Modal to GKE (viamrobotics/app#13958). Confirm the user-facing name ("simulated environment" in the wizard, Isaac Sim in the MCP tool descriptions) before publishing. -->
+<!-- TODO(draft): hold until the simulation feature is generally available. Confirm the user-facing name ("simulated environment" in the wizard, Isaac Sim in the MCP tool descriptions) before publishing. -->
 
 Run `viam-server` in a simulated environment in the cloud, so you can build and test your machine without its hardware.
 A simulated machine appears in the Viam app like any other machine: you configure it from the **CONFIGURE** tab, and you can control it, view its logs, and connect to it with an SDK.
