@@ -86,6 +86,7 @@ The Viam mobile app provides similar access from your phone:
 - Adjust component settings
 - Switch between components
 - Restart machines
+- Move an arm by moving your phone: on a machine with an arm, tap **...** and then **Arm controller**. The arm controller needs camera access and a phone that supports AR tracking (ARKit on iOS, ARCore on Android). If tracking is lost, the app stops the arm.
 - View a machine's configuration as read-only JSON, and copy it
 - Apply organization control layouts, which set which resource cards a machine shows and in what order (users with permission can also create and edit them)
 - [View machine logs](/monitor/troubleshoot/#check-logs)
