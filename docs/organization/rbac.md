@@ -25,7 +25,7 @@ You can assign an owner or an operator role for an {{< glossary_tooltip term_id=
 
 An access policy never limits owners or operators; it only limits members.
 
-<!-- TODO(verify, DOCS-4936): at which levels (organization, location, machine) Member can be assigned, whether the permission tables below need Member columns, and the role picker wording. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
+<!-- TODO(verify, DOCS-4936): at which levels (organization, location, machine) Member can be assigned, and the role picker wording. Decided 2026-10-15: no Member columns in the permission tables below; a member's permissions are whatever its grants say, so the tables link to Fine-grained permissions instead. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
 
 Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the roles with the three levels to create access patterns:
 

@@ -169,6 +169,4 @@ A `default` entry covers any authenticated caller that has no entry of its own:
 A caller's own entry replaces the `default` entry, it doesn't add to it.
 The Viam app's access policy has no `default` entry.
 
-<!-- TODO(DOCS-4936): docs/build-apps/use-viam-from-an-agent.md (lines 31 and 155 to 158 when drafted) tells agents to read `user_permissions` in a machine's JSON config. That is misleading for cloud-managed machines, where the app rejects the field and generates it from `access_policy`. Fix in a follow-up once Member ships; it belongs to a different PR. -->
-
 <!-- TODO(verify, DOCS-4936): the handler sample comes from a code comment in RDK config.go and the ID-to-entity match from authorization.go, neither tested live. Also confirm what a machine with no handlers does with unauthenticated connections (the empty-list row assumes it accepts them), whether `app-user-id` entries mean anything without the Viam app, which connection-plumbing methods are exempt from checks, and the no-wildcard claim against a shipped release. -->
