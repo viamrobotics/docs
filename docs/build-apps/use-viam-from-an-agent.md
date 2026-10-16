@@ -155,8 +155,10 @@ Use `StopAll` when a move must end, and give an agent a machine-scoped key rathe
 A machine can restrict what an API key or user is allowed to call, per resource and per method.
 This is configured by the machine owner, not something you can set up yourself.
 `viam-server` enforces the restrictions from a `user_permissions` list in the `auth` section of the config it runs.
-On a standalone `viam-server` with a local config file, you will see `user_permissions` there.
-On a machine managed in the Viam app, you do not write that list: the app rejects a saved config that contains `auth.user_permissions`.
+On a machine managed in the Viam app, you do not write that list: the app rejects a saved config that contains `auth.user_permissions`, and a machine that has an access policy defines it in a top-level `access_policy` section instead, which the app turns into `user_permissions` for the machine.
+When you read the config of a cloud-managed machine, you may see `access_policy` rather than `user_permissions`.
+A policy limits only users and keys with the Member role; owners and operators are not limited by it.
+On a standalone `viam-server` with a local config file, `user_permissions` is the format you will see.
 
 Users without a matching entry are fully restricted unless a `default` entry exists, so a permission error on a key that is otherwise valid may mean it is not listed.
 A denied call returns `PermissionDenied`, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
