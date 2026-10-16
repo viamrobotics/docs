@@ -93,7 +93,7 @@ var Model = resource.NewModel("my-org", "temp-monitor", "temp-monitor")
 
 func init() {
     resource.RegisterService(generic.API, Model, resource.Registration[
-        resource.Resource, *Config,
+        resource.Resource, Config,
     ]{
         Constructor: newTempMonitor,
     })
@@ -146,7 +146,7 @@ type Config struct {
 type TempMonitor struct {
     resource.Named
     logger   logging.Logger
-    cfg      *Config
+    cfg      Config
     sensor   sensor.Sensor
     mu       sync.Mutex
     exceeded bool
@@ -187,13 +187,16 @@ optional dependencies.
 {{% tab name="Go" %}}
 
 ```go
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if cfg.SensorName == "" {
         return nil, nil, fmt.Errorf("sensor_name is required")
     }
     return []string{cfg.SensorName}, nil, nil
 }
 ```
+
+`Validate` gets a copy of the config, so set default values in the
+constructor, not in `Validate`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -263,7 +266,7 @@ func newTempMonitor(
     conf resource.Config,
     logger logging.Logger,
 ) (resource.Resource, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
+    cfg, err := resource.NativeConfig[Config](conf)
     if err != nil {
         return nil, err
     }

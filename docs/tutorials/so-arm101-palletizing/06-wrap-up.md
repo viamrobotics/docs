@@ -5,6 +5,8 @@ type: "docs"
 slug: "wrap-up"
 weight: 70
 description: "Review what you built in the SO-ARM101 palletizing workshop, the parts of the Viam platform you exercised, and where to take your solution next."
+capabilities: ["motion-planning", "frame-system", "hw-arm", "docs"]
+diataxis: tutorial
 workshop: "so-arm101-palletizing"
 toc_hide: true
 prev: "/tutorials/so-arm101-palletizing/avoid-placed-cubes/"

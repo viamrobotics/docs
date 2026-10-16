@@ -872,15 +872,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using IsMoving with an arm component.
-myArm, err := arm.FromProvider(machine, "my_arm")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
-// Stop all motion of the arm. It is assumed that the arm stops immediately.
-myArm.Stop(context.Background(), nil)
-
-// Log if the arm is currently moving.
-is_moving, err := myArm.IsMoving(context.Background())
-logger.Info(is_moving)
+// Log if the motor is currently moving.
+isMoving, err := myMotor.IsMoving(context.Background())
+logger.Info(isMoving)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
@@ -974,11 +970,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-// This example shows using Stop with an arm component.
-myArm, err := arm.FromProvider(machine, "my_arm")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
-// Stop all motion of the arm. It is assumed that the arm stops immediately.
-err = myArm.Stop(context.Background(), nil)
+// Stop all motion of the motor.
+err = myMotor.Stop(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
@@ -1058,6 +1053,46 @@ if geometries:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.get_geometries).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const motor = new VIAM.MotorClient(machine, 'my_motor');
+const geometries = await motor.getGeometries();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotorClient.html#getgeometries).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final geometries = await myMotor.getGeometries();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Motor/getGeometries.html).
 
 {{% /tab %}}
 {{< /tabs >}}

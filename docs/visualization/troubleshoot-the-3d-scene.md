@@ -17,16 +17,14 @@ time.
 
 ## Read the scene's own signals first
 
-Three signals tell you what the scene is receiving before you change anything:
+Two signals tell you what the scene is receiving before you change anything:
 
 - **Online state.** An offline machine renders the saved frame configuration only, with
   every component at its configured pose. Live poses, point clouds, and custom visuals
   need the machine online and connected.
-- **Mode.** Build mode pauses live updates and shows a **Live updates paused** banner. A
-  scene that has stopped following the machine is often a scene left in build mode; switch
-  back to **Monitor** to resume.
-- **Polling rates** under **Settings** > **Connection** control how often the scene
-  fetches each data stream. A stream set to off explains a layer that never updates.
+- **Refresh rates** control how often the scene fetches each data stream. Set them in
+  **Settings**: poses under **Frames**, point clouds under **Pointclouds**, and vision
+  results under **Vision**. A stream set to off explains a layer that never updates.
 
 ## A frame or geometry is in the wrong place
 
@@ -45,11 +43,13 @@ Work down the camera pipeline:
 1. The camera's toggle is on under **Settings** > **Pointclouds** > **Enabled cameras**.
 2. The camera supports point clouds. A camera that reports `supports_pcd=false` is
    auto-disabled in that list; check its module documentation.
-3. The camera's frame is configured. A point cloud renders at its camera's frame, so a
-   camera with no frame has nowhere to draw.
 
-A point cloud that renders in the wrong place, rather than missing, is a frame problem:
-see [Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/).
+A point cloud that renders in the wrong place, rather than missing, is a frame problem.
+A point cloud renders at its camera's frame. If the camera has no frame, the cloud renders
+relative to the world origin instead, and in monitor mode the **World** panel lists it in a
+**Missing parent** folder. Configure the camera's frame to place it. For a camera that has a
+frame, see
+[Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/).
 
 ## A custom visual is missing or stale
 
@@ -88,5 +88,5 @@ same geometry as a custom visual; see
   reach checks for planning failures.
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/): the
   service methods and poll loop behind custom visuals.
-- [The 3D scene interface](/visualization/3d-scene/the-3d-scene-interface/): every
-  panel, setting, and toolbar button.
+- [3D scene controls and settings](/visualization/3d-scene/controls-and-settings/):
+  navigation, Details panel fields, and settings.

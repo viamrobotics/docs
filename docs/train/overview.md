@@ -4,7 +4,7 @@ title: "Train ML models"
 weight: 1
 layout: "docs"
 type: "docs"
-description: "Create datasets from captured images and train ML models for classification or object detection."
+description: "Create datasets from captured images and sequences, and train ML models for classification or object detection."
 capabilities: ["ml-training", "datasets"]
 diataxis: explanation
 ---
@@ -76,6 +76,13 @@ larger models that require more compute. Use **PyTorch** or **ONNX** when you
 are importing an existing model or need framework-specific features not
 available in TensorFlow.
 
+Datasets come in two types. A binary dataset, which holds images, is the
+default, and managed training works only on these. A [sequence dataset](/train/create-a-dataset/)
+holds time windows of images and readings, for tasks such as sequence
+classification. You train on a sequence dataset with a
+[custom training script](/train/custom-training-scripts/), because managed
+training doesn't accept them.
+
 Custom training scripts currently run in TensorFlow-based containers. You can
 install additional Python dependencies through `setup.py`. See
 [custom training scripts](/train/custom-training-scripts/) for details.
@@ -114,4 +121,5 @@ after training without affecting previously trained models.
 {{% card link="/train/train-a-model/" %}}
 {{% card link="/train/deploy-a-model/" %}}
 {{% card link="/train/custom-training-scripts/" %}}
+{{% card link="/train/custom-containers/" %}}
 {{< /cards >}}

@@ -18,7 +18,6 @@ aliases:
   - /services/data/capture-sync/
   - /how-tos/sensor-data/
   - /services/data/
-  - fleet/data-management/
   - /manage/data-management/
   - /services/data-management/
   - /manage/data/

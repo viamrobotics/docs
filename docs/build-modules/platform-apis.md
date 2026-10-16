@@ -88,7 +88,7 @@ The following steps show you how to use the following APIs from a module:
      name resource.Name
 
      logger logging.Logger
-     cfg    *Config
+     cfg    Config
 
      cancelCtx  context.Context
      cancelFunc func()
@@ -252,7 +252,7 @@ To use the [machine management (`robot_client`) API](/reference/apis/robot/), yo
      name resource.Name
 
      logger logging.Logger
-     cfg    *Config
+     cfg    Config
 
      cancelCtx  context.Context
      cancelFunc func()

@@ -102,6 +102,7 @@ Follow the guide to [Train a Model with a Custom Python Training Script](/train/
 - `registry_item_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the version of the training script from the registry.
 - `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
 - `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model version.
+- `container_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the ID of the custom training container to run the job in. If unspecified, the training script’s default container is used.
 
 **Returns:**
 
@@ -424,6 +425,119 @@ await mlTrainingClient.deleteCompletedTrainingJob('<training-job-id>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#deletecompletedtrainingjob).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListContainers
+
+List the training containers available to an organization: Viam's public containers and the organization's own custom containers.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to list available training containers for.
+
+**Returns:**
+
+- ([List[viam.proto.app.mltraining.Container]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.Container)): :   the list of available training containers.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+containers = await ml_training_client.list_containers(
+    org_id="<organization-id>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.list_containers).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetContainer
+
+Get a training container by its ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the requested training container.
+
+**Returns:**
+
+- ([viam.proto.app.mltraining.Container](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.Container)): :   the training container.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+container = await ml_training_client.get_container(
+    id="<container-id>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.get_container).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RegisterCustomTrainingContainer
+
+Register a publicly readable linux/amd64 Docker Hub image as a custom training container for an organization.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to register the custom training container to.
+- `image_uri` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the Docker Hub reference of the training container image.
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a description of the training container, used as its display name.
+
+**Returns:**
+
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   the ID of the registered training container.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+container_id = await ml_training_client.register_custom_training_container(
+    org_id="<organization-id>",
+    image_uri="docker.io/library/my-training-image:latest",
+    description="<my-training-container>"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.register_custom_training_container).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteCustomTrainingContainer
+
+Delete a custom training container that an organization registered.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the custom training container to delete.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await ml_training_client.delete_custom_training_container(
+    id="<container-id>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.delete_custom_training_container).
 
 {{% /tab %}}
 {{< /tabs >}}

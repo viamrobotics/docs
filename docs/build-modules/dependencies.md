@@ -77,7 +77,7 @@ type Config struct {
     RightMotor string `json:"right_motor"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     // Required dependency
     if cfg.LeftMotor == "" {
         return nil, nil,
@@ -148,7 +148,7 @@ import (
 func newMyBase(ctx context.Context, deps resource.Dependencies,
     conf resource.Config, logger logging.Logger,
 ) (base.Base, error) {
-    baseConfig, err := resource.NativeConfig[*Config](conf)
+    baseConfig, err := resource.NativeConfig[Config](conf)
     if err != nil {
         return nil, err
     }

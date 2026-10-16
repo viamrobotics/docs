@@ -15,9 +15,9 @@ aliases:
 
 When a motion plan fails with a collision error, or the arm ends up somewhere unexpected,
 the first question is the same: is the frame system wrong, or is the plan wrong? You can
-answer it two ways. If your machine has the **3D SCENE** tab, inspect the world the planner
-sees by eye. From any shell, the Viam CLI reports the same frame poses and tests
-reachability. This page covers both.
+answer it two ways. Use the **3D SCENE** tab to inspect the world the planner sees by eye,
+or use the Viam CLI to report the same frame poses and test reachability. This page covers
+both.
 
 To render the plan's trajectory itself, the path the arm takes from start to goal, see
 [Visualize a motion plan](/motion-planning/visualize-a-motion-plan/).
@@ -94,8 +94,8 @@ allow the frame pair with
 
 ## With the CLI
 
-When the 3D scene tab is not available, or you want to script the checks, the Viam CLI
-reports the same information from the shell. Three commands cover most cases: `print-config`
+If you want to check the scene programmatically or use an agent, the Viam CLI reports the
+same information from the shell. Three commands cover most cases: `print-config`
 dumps the configured frame tree, `print-status` prints every frame's current world-frame
 pose, and `set-pose` drives a component to a pose to test reachability. For the full flag
 reference, see [Motion CLI commands](/motion-planning/reference/cli-commands/).

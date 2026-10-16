@@ -5,7 +5,16 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Record sensor data on your robot, sync it to the cloud, and query, export, or use it for ML training."
-capabilities: ["data-capture", "data-storage", "data-pipelines"]
+capabilities:
+  [
+    "data-capture",
+    "data-storage",
+    "data-pipelines",
+    "datasets",
+    "sequences",
+    "triggers-alerts",
+    "dashboards",
+  ]
 diataxis: overview
 ---
 
@@ -17,14 +26,15 @@ Data moves through four stages, from your robot to actionable insights:
 
 <img src="/data/data-flow-overview.svg" alt="Data flow: capture on the machine writes .capture files to local disk, sync uploads to cloud, cloud stores tabular data in MongoDB and binary data in blob storage, and from there you can query, export, train ML models, build dashboards, and trigger alerts." style="width:100%;max-width:720px;height:auto;display:block" >
 
-1. **Capture on the machine.** You configure which components to record from and at what frequency. Captured data is written to local disk. Nothing is captured until you configure it.
+1. **Capture on the machine.** You configure which components to record from and at what frequency. Captured data is written to local disk. Data capture is off until you configure it, either on a component or through a [capture control sensor](/data/capture-sync/capture-on-demand/).
 2. **Sync to the cloud.** A separate process uploads captured data to Viam's cloud at a configurable interval, then deletes local files. If the machine goes offline, data buffers locally and syncs when connectivity returns.
 3. **Store.** In the cloud, tabular data (sensor readings, motor positions, encoder ticks) is stored in MongoDB. Binary data (images, point clouds, audio) is stored in blob storage. Both are indexed and queryable.
 4. **Use.** From the cloud, you can query data with SQL or MQL, export it to your own database, build datasets for ML training, create monitoring dashboards, or trigger alerts when data meets a condition.
 
-Capture and sync run independently: you can capture without syncing, or sync files from other sources without using Viam's capture.
+Capture and sync run independently: you can capture without syncing, or [sync files from other sources](/data/capture-sync/upload-other-data/) without using Viam's capture.
 
 To get started recording data, see [Capture and sync data](/data/capture-sync/capture-and-sync-data/).
+To try the whole flow end to end with a simulated sensor, follow the [Capture and query tutorial](/data/data-management-tutorial/).
 
 ## Query and explore
 
@@ -32,7 +42,7 @@ All captured tabular data is queryable through SQL and MQL, either in the Viam a
 
 Binary data (images, point clouds) is browsable and filterable in the Viam app's Data tab, with viewers for images, video, and 3D point clouds.
 
-See [Query data](/data/query-data/) and [Query reference](/data/reference/).
+See [Query data](/data/query-data/) and [Query reference](/data/reference/#query-reference).
 
 ## Transform and pipeline
 
@@ -62,7 +72,7 @@ See [Delete data](/data/delete-data/) and [Platform-managed capture settings](/d
 
 ## Annotate and train
 
-Captured images can be tagged, annotated with bounding boxes, and organized into datasets for ML training. Viam provides a complete path from captured data to a deployed model:
+Captured images can be tagged, annotated with bounding boxes, and organized into datasets for ML training. To keep the images and readings from one event together, record them as a [sequence](/data/sequences/) and collect sequences into a sequence dataset. Viam provides a complete path from captured data to a deployed model:
 
 1. Capture images from your robot's cameras.
 2. Label them with tags and bounding boxes in the Viam app.
@@ -70,153 +80,13 @@ Captured images can be tagged, annotated with bounding boxes, and organized into
 4. Submit a training job (Vertex AI AutoML or your own training container).
 5. Deploy the trained model back to your robot.
 
-See [Tag data](/data/tag-data/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
+See [Tag data](/data/tag-data/), [Sequences](/data/sequences/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
 
-## Monitor and debug
+## Visualize and alert
 
 Triggers send webhooks, email alerts, or push notifications when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
 
-Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana connected to your data through MongoDB.
-
-### OpenTelemetry distributed tracing
-
-Viam includes OpenTelemetry (OTel) tracing that propagates trace context across your SDK code, `viam-server`, and modules. Traces cover gRPC request lifecycle, data capture operations, and module calls. When tracing is enabled on `viam-server`, module tracing is activated automatically.
-
-To enable tracing, add a `tracing` block at the top level of your machine's JSON config (alongside `"components"` and `"services"`). You must set `enabled` to `true` **and** enable at least one export destination (`disk`, `console`, or `otlpendpoint`). Setting only `"enabled": true` without an export destination has no effect.
-
-**Save traces to disk** for later retrieval with the CLI:
-
-```json
-{
-  "tracing": {
-    "enabled": true,
-    "disk": true
-  }
-}
-```
-
-This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions and troubleshooting tips.
-
-**Export directly to an OTLP-compatible backend** (Jaeger, Grafana Tempo, Datadog, or any OTLP collector):
-
-```json
-{
-  "tracing": {
-    "enabled": true,
-    "otlpendpoint": "<collector-host>:4317"
-  }
-}
-```
-
-For local development, see the [Jaeger getting started guide](https://www.jaegertracing.io/docs/latest/getting-started/) to set up a local instance that accepts OTLP traces.
-
-**Print traces to the console** for quick debugging without any external tools:
-
-```json
-{
-  "tracing": {
-    "enabled": true,
-    "console": true
-  }
-}
-```
-
-You can combine multiple destinations (for example, `"disk": true` and `"otlpendpoint": "<collector-host>:4317"` together).
-
-#### Trace your module's methods
-
-When tracing is enabled, each incoming component or service method call in your module opens its own span, nested under the RPC that triggered it.
-Reading a camera, for example, produces a `GetImage` span under the caller's request span, so you can see how long that method takes as part of the whole request.
-
-The Go, Python, and C++ SDKs all create these per-method spans.
-`viam-server` sets the `VIAM_MODULE_TRACING` environment variable on each module process when tracing is enabled in the machine config.
-The SDK inside the module records spans only when that variable is set.
-You enable tracing once in the `tracing` config block above, and individual modules pick it up.
-
-Go modules record per-method spans automatically.
-Python and C++ modules each need one more step, described below.
-
-#### Enable tracing in a Python module
-
-Python module tracing is an opt-in extra.
-Install `viam-sdk` with the `tracing` extra so the module has the OpenTelemetry packages it needs:
-
-```sh {class="command-line" data-prompt="$"}
-pip install 'viam-sdk[tracing]'
-```
-
-Add this extra to your module's dependencies (for example, in `requirements.txt`) so it is present wherever the module runs.
-
-The extra is the only change your module needs.
-With the extra installed and tracing enabled in the machine config, each component and service method your module implements emits a span, and the module sends those spans to `viam-server`.
-Without the extra installed, tracing stays off and your module runs unchanged.
-
-To trace a section of your own code inside a method, open a child span with the OpenTelemetry API the extra installs.
-The span nests under the automatic span for that method call:
-
-```python
-from opentelemetry import trace
-
-tracer = trace.get_tracer(__name__)
-
-
-class MySensor(Sensor):
-    async def get_readings(self, **kwargs):
-        with tracer.start_as_current_span("readings implementation") as span:
-            span.set_attribute("multiplier", self.multiplier)  # attach structured context
-            span.add_event("computing signal")
-            return {"signal": self.multiplier}
-```
-
-Mark a failure on the span with `span.record_exception(error)` and `span.set_status(...)`.
-When tracing is off, `start_as_current_span` returns a non-recording span, so the same code runs unchanged.
-
-#### Enable tracing in a C++ module
-
-C++ tracing has two requirements: you build the SDK with OpenTelemetry support, and, as with Go and Python, tracing is enabled on `viam-server` in the machine config.
-Compiling with OpenTelemetry support alone records nothing until the module runs under a `viam-server` that has tracing enabled; a build without OpenTelemetry support compiles the tracing calls as no-ops.
-
-How you enable the build support depends on how you build the SDK:
-
-- **With Conan:** the `opentelemetry_tracing` option is on by default.
-  It pulls in `opentelemetry-cpp` with the OTLP gRPC exporter and compiles tracing into the SDK.
-  To build without tracing, set the option off (`-o opentelemetry_tracing=False`).
-- **With CMake directly:** the `VIAMCPPSDK_OPENTELEMETRY_TRACING` option is off by default.
-  Turn it on with `-DVIAMCPPSDK_OPENTELEMETRY_TRACING=ON`, and provide `opentelemetry-cpp` (built with the OTLP gRPC exporter) as a dependency.
-
-Because tracing must be compiled in, prebuilt SDK packages and the [cloud build](/cli/build-and-deploy-modules/#cloud-builds) image do not include it.
-Build the SDK from source with the option above to record spans from a C++ module.
-
-To trace a section of your own code inside a method, create a child span with `TracingSpan` from `<viam/sdk/tracing/span.hpp>`.
-The span begins when you construct it and ends when it leaves scope, so scope it to the region you want to measure:
-
-```cpp
-#include <viam/sdk/tracing/span.hpp>
-
-ProtoStruct MySensor::get_readings(const ProtoStruct&) {
-    TracingSpan span("readings implementation");
-    span.set_attribute("multiplier", multiplier_);  // attach structured context
-    span.add_event("computing signal");
-    // your logic here
-    span.set_status_ok();
-    return {{"signal", multiplier_}};
-}
-```
-
-`TracingSpan` also provides `set_status_error()`, `record_exception()` and `record_unknown_exception()` to mark a failure, and `end()` to end the span before it leaves scope.
-You cannot copy or move a `TracingSpan`.
-
-This span nests under the automatic `GetReadings` span for the call, and the SDK exports it over OTLP gRPC to the destination you set in the `tracing` config block above.
-If the SDK is built without OpenTelemetry support, every `TracingSpan` call is a no-op and the code runs unchanged.
-
-#### Use traces to find latency and failures
-
-Because each method span nests under the request that called it, a trace shows where time goes across service boundaries.
-If a `Move` request is slow, expand its trace to see whether the delay is in the arm's `GetJointPositions` span, a vision service's `GetDetections` span, or the network between them.
-A method that returns an error marks its span with an error status, so a failed span points to the method and machine that returned the failure.
-
-Retrieve and inspect traces with the `viam traces` CLI commands.
-See [Traces](/monitor/troubleshoot/#traces) and [Work with traces](/cli/manage-your-fleet/#work-with-traces).
+Build monitoring views with [data dashboards](/monitor/dashboards/overview/) and [Teleop workspaces](/monitor/teleop-workspaces/) in the Viam app, or connect Grafana and other tools to your data through MongoDB.
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
@@ -224,12 +94,11 @@ See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/
 
 Robots can generate more data than your network can transfer or your budget can store. Viam provides several tools to control data volume:
 
-- **Capture frequency**: set per-component, from sub-second to infrequent intervals.
-- **Conditional sync**: a sensor on the machine decides whether to sync or hold data.
-- **Edge filtering**: write a custom sensor module that evaluates data before capture and only records what matters.
-- **Retention policies**: configure how long data is retained in the cloud.
+- **Capture less**: lower the capture frequency, use a filtered camera or custom filter module to keep only data that matters, or capture on demand only during specific moments.
+- **Sync selectively**: with conditional sync, a sensor on the machine decides whether to sync or hold data.
+- **Retention policies**: configure how long data is retained in the cloud. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings).
 
-See [Filter at the edge](/data/filter-at-the-edge/) and [Conditional sync](/data/capture-sync/conditional-sync/).
+See the [Capture and sync overview](/data/capture-sync/overview/) to choose among them.
 
 ## Security and data integrity
 

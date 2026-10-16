@@ -90,9 +90,17 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `as5048`, then select the `ams/as5048` block.
 Enter `renc` as the name and click **Add to machine**.
 
-Click the **board** dropdown list and select the name of your board, `local`.
+In the encoder card's attributes editor, enter the following attributes:
 
-In the **i2c bus** field type `1`, and in the **i2c address** field type `65`.
+```json
+{
+  "connection_type": "i2c",
+  "i2c_attributes": {
+    "i2c_bus": "1",
+    "i2c_addr": 65
+  }
+}
+```
 
 #### Left encoder
 
@@ -100,9 +108,17 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `as5048`, then select the `ams/as5048` block.
 Enter `lenc` as the name for your encoder and click **Add to machine**.
 
-Click the **board** dropdown list and select the name of your board, `local`.
+In the encoder card's attributes editor, enter the following attributes:
 
-In the **i2c bus** field type `1`, and in the **i2c address** field type `64`.
+```json
+{
+  "connection_type": "i2c",
+  "i2c_attributes": {
+    "i2c_bus": "1",
+    "i2c_addr": 64
+  }
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -163,18 +179,22 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `gpio`, then select the `motor/gpio` block.
 Enter `right` as the name or use the suggested name for your motor and click **Add to machine**.
 
-Then from the **Board** dropdown, select `local`, the Raspberry Pi the motor is wired to.
+In the motor card's attributes editor, enter the following attributes.
+They set `local`, the Raspberry Pi the motor is wired to, as the board, use the `renc` encoder with `ticks_per_rotation` set to `1` (the AS5048 is an absolute encoder that reports whole rotations), and describe how the motor is wired to the Pi in `In1/In2` mode.
+Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
 
-Select `Encoded` in the **Encoder** section and select `renc` as the **encoder** and set **ticks per rotation** to `2`.
-
-Next, describe how the motor is wired to the Pi:
-
-1. Switch the Component Pin Assignment Type to `In1/In2`.
-2. Set **A/In1** to `16`.
-3. Set **B/In2** to `15`.
-4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
-
-![The motor config panel.](/tutorials/scuttlebot/pi-wheel.png)
+```json
+{
+  "board": "local",
+  "pins": {
+    "a": "16",
+    "b": "15",
+    "pwm": ""
+  },
+  "encoder": "renc",
+  "ticks_per_rotation": 1
+}
+```
 
 #### Left motor
 
@@ -182,16 +202,20 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `gpio`, then select the `motor/gpio` block.
 Enter `left` as the name or use the suggested name for your motor and click **Add to machine**.
 
-Then select `local` from the **Board** dropdown to choose the Raspberry Pi the motor is wired to.
+In the motor card's attributes editor, enter the following attributes, which use the `lenc` encoder:
 
-Select `Encoded` in the **Encoder** section and select `lenc` as the **encoder** and set **ticks per rotation** to `2`.
-
-Next, describe how the motor is wired to the Pi:
-
-1. Switch the Component Pin Assignment Type to `In1/In2`.
-2. Set **A/In1** to `12`.
-3. Set **B/In2** to `11`.
-4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
+```json
+{
+  "board": "local",
+  "pins": {
+    "a": "12",
+    "b": "11",
+    "pwm": ""
+  },
+  "encoder": "lenc",
+  "ticks_per_rotation": 1
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -212,7 +236,8 @@ Add the following JSON objects to the `components` array:
     },
     "board": "local",
     "dir_flip": false,
-    "ticks_per_rotation": 2
+    "encoder": "renc",
+    "ticks_per_rotation": 1
   },
   "depends_on": [ "local" ]
 },
@@ -228,7 +253,8 @@ Add the following JSON objects to the `components` array:
     },
     "board": "local",
     "dir_flip": false,
-    "ticks_per_rotation": 2
+    "encoder": "lenc",
+    "ticks_per_rotation": 1
   },
   "depends_on": [ "local" ]
 }
@@ -250,21 +276,23 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `gpio`, then select the `motor/gpio` block.
 Enter `right` as the name or use the suggested name for your motor and click **Add to machine**.
 
-![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
+In the motor card's attributes editor, enter the following attributes.
+They set `local` as the board the motor driver is wired to and describe how the motor is wired to the board in the A/B/PWM mode this motor driver uses.
+If you followed the setup instructions for putting together your Yahboom rover correctly, the pins are as follows.
+Leave out the `dir` pin, because Yahboom's motor driver uses an a/b/pwm configuration.
 
-Click the **Board** dropdown and select `local` as the board the motor driver is wired to.
-Next, configure the **Component Pin Assignment** section to represent how the motor is wired to the board.
-In the **Component Pin Assignment** section of the right motor card, toggle the **Type** to **In1/In2** to use the compatible mode for this motor driver.
+```json
+{
+  "board": "local",
+  "pins": {
+    "a": "35",
+    "b": "37",
+    "pwm": "33"
+  },
+  "max_rpm": 300
+}
+```
 
-If you followed the setup instructions for putting together your Yahboom rover correctly, you can set the **pins** as follows:
-
-- `a` to `35`
-- `b` to `37`
-- `pwm` (pulse-width modulation) to `33`.
-
-Leave `dir` pin blank, because Yahboom's motor driver uses an a/b/pwm configuration.
-
-Click **Show more** and set `max_rpm` to `300`.
 You can ignore the other optional attributes.
 
 #### Left motor
@@ -273,19 +301,23 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `gpio`, then select the `motor/gpio` block.
 Enter `left` as the name or use the suggested name for your motor and click **Add to machine**.
 
-Click the **Board** dropdown and select `local` as the board the motor driver is wired to.
-Next, configure the **Component Pin Assignment** section to represent how the motor is wired to the board.
-In the **Component Pin Assignment** section of the right motor card, toggle the **Type** to **In1/In2** to use the compatible mode for this motor driver.
+In the motor card's attributes editor, enter the following attributes.
+They set `local` as the board the motor driver is wired to and describe how the motor is wired to the board in the A/B/PWM mode this motor driver uses.
+If you followed the setup instructions for putting together your Yahboom rover correctly, the pins are as follows.
+Leave out the `dir` pin, because Yahboom's motor driver uses an a/b/pwm configuration.
 
-If you followed the setup instructions for putting together your Yahboom rover correctly, you can set the **pins** as follows:
+```json
+{
+  "board": "local",
+  "pins": {
+    "a": "38",
+    "b": "40",
+    "pwm": "36"
+  },
+  "max_rpm": 300
+}
+```
 
-- `a` to `38`
-- `b` to `40`
-- `pwm` (pulse-width modulation) to `36`.
-
-Leave `dir` pin blank, because Yahboom's motor driver uses an a/b/pwm configuration.
-
-Click **Show more** and set `max_rpm` to `300`.
 You can ignore the other optional attributes.
 
 {{% /tab %}}
@@ -327,7 +359,7 @@ If you hear a "whining" sound from the motor, the power level is not high enough
 If this happens, increase the power level by 10% increments until it starts to turn.
 {{< /alert >}}
 
-If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute to the motor's configuration, by clicking **Show more** and setting the attribute to "true."
+If your wheel turns in reverse when it should turn forward, add `"dir_flip": true` to the motor's attributes.
 
 There, you should see a panel for the right motor: you can use this panel to set the motor's power level.
 
@@ -342,10 +374,8 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Search for `webcam`, then select the `camera/webcam` block.
 Enter a name or use the suggested name for your camera and click **Add to machine**.
 
-{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera." resize="1200x" style="width=600x" >}}
-
-Leave the **video_path** blank and the camera will use the default video path for your machine.
-If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the camera's configuration panel.
+Leave the camera's attributes empty and the camera will use the default video path for your machine.
+If this doesn't work when you test your camera later, [find your camera's video path](/reference/components/camera/webcam/#using-video_path) and set it as `video_path` in the camera card's attributes editor.
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -403,28 +433,40 @@ Enter a name or use the suggested name for your base and click **Add to machine*
 {{< tabs >}}
 {{% tab name="SCUTTLE" %}}
 
-1. Select the motors attached to the base in the fields as your **right** and **left** motors.
-2. Enter `250` for `wheel_circumference_mm`.
-3. Enter `400` for `width_mm` (measured between the midpoints of the wheels).
+In the base card's attributes editor, enter the motors attached to the base as your `right` and `left` motors, the wheel circumference, and the width between the midpoints of the wheels:
+
+```json
+{
+  "right": ["right"],
+  "left": ["left"],
+  "wheel_circumference_mm": 250,
+  "width_mm": 400
+}
+```
 
 {{% /tab %}}
 {{% tab name="Yahboom" %}}
 
-1. Select the motors attached to the base in the fields as your **right** and **left** motors.
-2. Enter `220` for `wheel_circumference_mm`.
-3. Enter `150` for `width_mm` (measured between the midpoints of the wheels).
+In the base card's attributes editor, enter the motors attached to the base as your `right` and `left` motors, the wheel circumference, and the width between the midpoints of the wheels:
+
+```json
+{
+  "right": ["right"],
+  "left": ["left"],
+  "wheel_circumference_mm": 220,
+  "width_mm": 150
+}
+```
 
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-1. Select the motors attached to the base in the fields as your **right** and **left** motors.
-2. Measure the wheel circumference in mm and enter it in the field for `wheel_circumference_mm`.
-3. Measure the width in mm between the midpoints of the wheels and enter it in the field for `width_mm` (measured between the midpoints of the wheels).
+In the base card's attributes editor, set `right` and `left` to lists of the motors attached to the base.
+Measure the wheel circumference in mm and set it as `wheel_circumference_mm`.
+Measure the width in mm between the midpoints of the wheels and set it as `width_mm`.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base, with Attributes & Depends On dropdowns and the option to add a frame." resize="1200x" style="width: 900px" >}}
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

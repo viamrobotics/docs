@@ -45,7 +45,7 @@ See [Set up alerts](/monitor/alert/).
 
 You can remotely control and test any configured machine without writing code.
 
-The **default control interface** is the CONTROL tab on your machine's page in the Viam app. It provides a control card for every configured component and service: move bases, actuate arms and grippers, read sensors, view camera feeds, and test vision services. A built-in code sandbox lets you write and run TypeScript against the live machine directly from the browser. The Viam mobile app provides similar access from your phone.
+The **default control interface** is the CONTROL tab on your machine's page in the Viam app. It provides a control card for every configured component and service: move bases, actuate arms and grippers, read sensors, view camera feeds, and test vision services. A built-in code sandbox lets you write and run TypeScript, Python, and Go programs against the live machine from the browser. The Viam mobile app provides similar access from your phone.
 
 **Teleop workspaces** let you build custom operator interfaces with only the widgets you need for a specific task. You choose the widgets (camera feeds, sensor readouts, actuation controls, GPS maps) and arrange them into a focused view. This is useful when the full CONTROL tab shows more than the operator needs.
 
@@ -59,7 +59,7 @@ When something goes wrong, Viam provides a set of debugging tools you can use wi
 - **Remote shell**: access a terminal on the machine through the CLI (`viam machines part shell`) without setting up SSH tunnels.
 - **Debug endpoints**: enable pprof profiling and resource graph visualization for performance issues.
 - **Configuration history**: view and revert to previous configurations if a config change caused the problem.
-- **Diagnostics**: download FTDC (full-time diagnostic capture) data and OpenTelemetry traces for detailed analysis.
+- **Diagnostics**: download FTDC (full-time diagnostic capture) data and [OpenTelemetry traces](/monitor/tracing/) for detailed analysis.
 
 See [Troubleshoot problems](/monitor/troubleshoot/).
 

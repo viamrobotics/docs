@@ -92,18 +92,13 @@ With the `home-pose` switch added, save and verify it. Home is your observation 
 
 You have three ways to jog the arm on its Control card, and you can mix them:
 
-- **Joint control (`MoveToJointPositions`)** sets each joint angle directly. Move one joint slider a small amount, press **Execute**, and that joint rotates. It is the most predictable way to make coarse changes and to lift the arm clear before repositioning. You can also use quick move mode (indicated by the lightning bolt icon) to move a joint five degrees at a time.
+- **Joint control (`MoveToJointPositions`)** sets each joint angle directly. It opens in **Jogging** mode: tap the **+** or **−** button next to a joint to move it by the **Jog step** (1, 5, 10, or 15 degrees; 5 by default), or hold the button to keep adding steps. The move starts as soon as you release the button, with no **Execute** step. To type or slide exact angles instead, switch to **Joint Positions** mode, set the joint sliders, and press **Execute**. Joint control is the most predictable way to make coarse changes and to lift the arm clear before repositioning.
 - **End-effector control (`MoveToPosition`)** moves the tip of the arm to a Cartesian target instead of setting joints. Press **Current position** to load the arm's current pose into the fields, then change a coordinate and press **Execute**. The values are millimeters in the world frame at the arm base: raising or lowering **z** moves the gripper straight up or down, while **x** and **y** slide it horizontally across the workspace. Change one value by a small amount and watch the arm, or the 3D scene, to learn which way each axis points for your setup. Use this to nudge the gripper in a specific direction without solving for joint angles.
-- **Manual mode** lets you physically manipulate the arm to a desired position. To enter manual mode, go to the arm's **Control** card, then find the **Do command** section. `DoCommand` is a generic method that Viam components and services expose for functionality outside the standard API, letting you send arbitrary commands from the **Control** tab or your code without needing a dedicated method for every action.
-  In the **Input** panel, enter:
+- **Manual mode (`SetManualMode`)** lets you move the arm to a desired position by hand. Arms that support it show a **ManualMode** row at the top of the Control card. Hold the arm, then press **Enter**. After a countdown set in the **Enable after** field (5 seconds by default), the status changes to **Enabled** and you can guide the arm into position. Manual mode turns off on its own after the number of seconds in the **Enabled for** field (90 by default, 0 for no limit), or press **Exit** when the arm is in place.
 
-  ```json
-  {
-    "enter_manual_mode": true
-  }
-  ```
-
-  Press **Execute**. The **Output** should read, `"status": "entered manual mode"` and you should be able to easily move the arm by hand.
+{{< alert title="Support the arm before you enter manual mode" color="caution" >}}
+Depending on the model, an arm in manual mode either holds its own weight or releases its joints entirely. An arm that releases its joints can drop as soon as manual mode turns on. Until you know how your arm behaves, hold it before you press **Enter**.
+{{< /alert >}}
 
 Run these four steps to save and verify the pose:
 

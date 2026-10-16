@@ -1,7 +1,7 @@
 ---
 linkTitle: "Editing frames visually"
 title: "Editing frames visually"
-weight: 30
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Add, edit, and attach geometry to frames directly in the 3D scene."
@@ -14,7 +14,7 @@ aliases:
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.
 
-Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (parent, translation, orientation, and a single geometry), so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and you save them from the 3D scene itself with **Save** or `⌘/Ctrl+S`.
+Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (parent, translation, orientation, and a single geometry), so it is less suited to bulk changes. Changes flow back to the machine configuration, and you save them from the 3D scene itself with **Save** or `⌘/Ctrl+S`.
 
 ## Prerequisites
 
@@ -23,9 +23,9 @@ Visual editing is most useful while you are still figuring out where things go. 
 
 ## Switch to build mode
 
-The tab opens in **Monitor** mode, which watches live data and keeps every field read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
+In **Monitor** mode, every field is read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
 
-Build mode pauses live updates so the poses you edit hold still, and a **Live updates paused** banner appears with **Undo** and **Redo** buttons for stepping back through your frame edits. Switch back to **Monitor** to resume live data.
+In Build mode, an editing banner appears with **Undo** and **Redo** buttons for stepping back through your frame edits. The scene keeps following the machine's live state while you edit.
 
 ## Add a frame to a component
 
@@ -39,14 +39,20 @@ You can then reposition it using the Details panel.
 
 ## Add an obstacle
 
-To add a box that motion planning avoids without leaving the tab:
+To add an obstacle that motion planning avoids without leaving the tab:
 
-1. In the **World** panel header, click **Add object** (**+**) and select **Obstacle**.
-2. In the **New obstacle** dialog, keep the suggested name (`obstacle-1`, `obstacle-2`, and so on) or enter your own, and click **Create**.
+In the **World** panel header, click **Add object** (**+**), select **Obstacle**, choose a type, and name it:
 
-The scene switches to build mode and adds a `generic` component with the `fake` model, a frame at the world origin, and a 100 mm box geometry, and selects it.
-Resize and position it using the Details panel, then [save your changes](#save-your-changes).
-For obstacle patterns beyond a single box, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
+- **Simple**: a single shape.
+- **Bounds**: walls enclosing a box-shaped space. You set the interior size and wall thickness, and can turn individual walls, such as the floor or ceiling, on or off.
+- **Complex**: a group of shapes.
+
+The scene switches to build mode, adds a `generic` component with the built-in `obstacle` model (`rdk:builtin:obstacle`), and selects it.
+The obstacle's shapes are stored in the component's `geometries` attribute, positioned relative to the component's frame.
+
+Edit the shapes in the Details panel, then [save your changes](#save-your-changes).
+The `obstacle` model requires `viam-server` v1.12.0 or later.
+To configure obstacles in JSON instead, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
 
 ## Edit a frame's position and orientation
 
@@ -90,29 +96,9 @@ To delete a frame, remove it from the component's configuration on the CONFIGURE
 
 ## Edit frames with AI
 
-The **3D SCENE** tab includes an AI scene builder that lets you edit frames using natural language instead of entering values manually.
-Type a prompt describing the change you want, and the AI interprets your request and applies the frame updates to the scene.
-
-You can use natural language to:
-
-- Move components ("move the camera 50 mm to the left")
-- Rotate components ("rotate the gripper 90 degrees around the z-axis")
-- Re-parent frames ("attach the sensor to the arm instead of the base")
-- Add, resize, or change collision geometry ("add a 100 mm box to the sensor", "make the arm's capsule wider")
-
-The AI edits only the frames of existing components.
-It cannot add new components to or remove components from the machine configuration.
-
-After the AI applies changes, save or discard buttons appear in the **3D SCENE** tab.
+To describe a frame change in words instead of entering values, use the **LLM Scene Builder**. See [Build mode](/visualization/3d-scene/build-mode/#edit-frames-with-ai).
 
 ## When to edit JSON instead
 
-Visual editing covers most cases, but a few are faster in JSON:
-
-- **Bulk changes** (renaming many frames, regenerating a layout): JSON
-  edits are easier in a text editor.
-- **Frames that reference components on a different machine part**:
-  the visual editor's parent dropdown only shows local frames.
-- **Complex orientations** (rotations expressed in `axis_angles` or
-  `quaternion` rather than `ov_degrees`): the visual editor shows
-  only the orientation vector form.
+Visual editing covers most cases, but bulk changes, such as renaming many frames or
+regenerating a layout, are easier in a text editor.

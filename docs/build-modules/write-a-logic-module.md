@@ -144,7 +144,7 @@ type Config struct {
     PollInterval float64  `json:"poll_interval_secs"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if len(cfg.SensorNames) == 0 {
         return nil, nil, fmt.Errorf("sensor_names is required")
     }
@@ -223,7 +223,7 @@ The generator also emits `do_command` and `get_status` method stubs that raise `
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The generator emits a compound struct type (`alertMonitorTempAlert`) with `resource.AlwaysRebuild` embedded and two constructor functions; a private `newAlertMonitorTempAlert` that unpacks the raw config and delegates to a public `NewTempAlert` that takes a typed `*Config`. Keep that layout. `resource.NativeConfig` converts the raw config into your typed struct. `sensor.FromProvider` looks up a sensor dependency by name from the dependencies map.
+The generator emits a compound struct type (`alertMonitorTempAlert`) with `resource.AlwaysRebuild` embedded and two constructor functions; a private `newAlertMonitorTempAlert` that unpacks the raw config and delegates to a public `NewTempAlert` that takes a typed `Config`. Keep that layout. `resource.NativeConfig` converts the raw config into your typed struct. `sensor.FromProvider` looks up a sensor dependency by name from the dependencies map.
 
 The generator also emits `Name()`, `Close()`, `DoCommand()`, and `Status()` methods on the struct. Leave `Name()` and `Status()` as generated. You'll replace `DoCommand()` in Step 5 and `Close()` in Step 6.
 
@@ -234,7 +234,7 @@ type alertMonitorTempAlert struct {
     name resource.Name
 
     logger  logging.Logger
-    cfg     *Config
+    cfg     Config
     sensors map[string]sensor.Sensor
 
     mu     sync.Mutex
@@ -252,14 +252,14 @@ type Alert struct {
 }
 
 func newAlertMonitorTempAlert(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (resource.Resource, error) {
-    conf, err := resource.NativeConfig[*Config](rawConf)
+    conf, err := resource.NativeConfig[Config](rawConf)
     if err != nil {
         return nil, err
     }
     return NewTempAlert(ctx, deps, rawConf.ResourceName(), conf, logger)
 }
 
-func NewTempAlert(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (resource.Resource, error) {
+func NewTempAlert(ctx context.Context, deps resource.Dependencies, name resource.Name, conf Config, logger logging.Logger) (resource.Resource, error) {
     // 2. Resolve: find each sensor in the dependencies map
     sensors := make(map[string]sensor.Sensor)
     for _, sensorName := range conf.SensorNames {
@@ -692,7 +692,7 @@ var (
 
 func init() {
     resource.RegisterService(generic.API, TempAlert,
-        resource.Registration[resource.Resource, *Config]{
+        resource.Registration[resource.Resource, Config]{
             Constructor: newAlertMonitorTempAlert,
         },
     )
@@ -704,7 +704,7 @@ type Config struct {
     PollIntervalSecs float64  `json:"poll_interval_secs"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if len(cfg.SensorNames) == 0 {
         return nil, nil, fmt.Errorf("sensor_names is required")
     }
@@ -727,7 +727,7 @@ type alertMonitorTempAlert struct {
     name resource.Name
 
     logger  logging.Logger
-    cfg     *Config
+    cfg     Config
     sensors map[string]sensor.Sensor
 
     mu     sync.Mutex
@@ -738,14 +738,14 @@ type alertMonitorTempAlert struct {
 }
 
 func newAlertMonitorTempAlert(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (resource.Resource, error) {
-    conf, err := resource.NativeConfig[*Config](rawConf)
+    conf, err := resource.NativeConfig[Config](rawConf)
     if err != nil {
         return nil, err
     }
     return NewTempAlert(ctx, deps, rawConf.ResourceName(), conf, logger)
 }
 
-func NewTempAlert(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (resource.Resource, error) {
+func NewTempAlert(ctx context.Context, deps resource.Dependencies, name resource.Name, conf Config, logger logging.Logger) (resource.Resource, error) {
     sensors := make(map[string]sensor.Sensor)
     for _, sensorName := range conf.SensorNames {
         s, err := sensor.FromProvider(deps, sensorName)

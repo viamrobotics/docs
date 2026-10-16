@@ -28,9 +28,9 @@ point-cloud entities. Each object renders at the pose the service reports, place
 scene by the camera's frame.
 
 To control which services render, open the **Settings** panel (gear icon) and select
-**Vision**: each vision service has its own toggle. The polling rate lives under
-**Connection**, with the scene's other data-stream rates; slow it down when a busy scene
-lags, or turn it off while you work on something else.
+**Vision**: each vision service has its own toggle, and the tab also sets how often the
+scene fetches vision results. Slow the refresh rate down when a busy scene lags, or turn it
+off while you work on something else.
 
 ## Read an object's placement
 
@@ -64,7 +64,7 @@ objects, and a loose one merges neighbors into one blob.
 Work through these checks in order:
 
 1. The vision service's toggle is on under **Settings** > **Vision**.
-2. The vision polling rate under **Settings** > **Connection** is not off.
+2. The refresh rate under **Settings** > **Vision** is not off.
 3. The service returns objects at all: call `GetObjectPointClouds` from the
    [vision service API](/reference/apis/services/vision/) and check the count.
 4. The camera behind the service supports point clouds: cameras that report

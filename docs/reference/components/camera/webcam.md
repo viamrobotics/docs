@@ -102,8 +102,7 @@ To add and use the service:
 1. Save your configuration, and wait a moment for the service to start.
 1. Click **Test** to see the available `video_path`s.
 1. Click the **Copy attributes** button for the camera you want to use.
-1. Click the **{}** icon in the upper right corner of the camera component configuration.
-1. Paste the copied attributes.
+1. Paste the copied attributes into the camera card's attributes editor.
 1. Click **Save**.
 1. You can now delete the discovery service and the module that provides it from your machine.
 
@@ -148,18 +147,14 @@ To confirm settings, you can go to **System Settings** > **Privacy & Security** 
 Viam supports the following pixel formats:
 
 - I420
-- I444
 - MJPEG / MJPG
 - NV12
 - NV21
-- RGBA
 - UYVY / Y422
 - YUY2 / YUYV / V422
 - Z16
 
-If your machine is connected to Viam, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
-
-On Linux, you can also manually determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
+On Linux, you can determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
 Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:
 
 ```sh {class="command-line" data-prompt="$"}

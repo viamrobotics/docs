@@ -340,7 +340,13 @@ addInkeepWidget({
   isShortcutKeyEnabled: true,
 });
 
-// Initialize the Ask AI dropdown after the page is loaded
-document.addEventListener("DOMContentLoaded", function () {
+// Initialize the Ask AI dropdown after the page is loaded. This script is
+// injected dynamically after embed.js loads, so DOMContentLoaded may have
+// already fired by the time it runs.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", function () {
+    initializeAskAIDropdown(searchBarWidget);
+  });
+} else {
   initializeAskAIDropdown(searchBarWidget);
-});
+}

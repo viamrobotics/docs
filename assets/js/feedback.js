@@ -409,7 +409,13 @@ class FeedbackSystem {
   }
 }
 
-// Initialize feedback system when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
+// Initialize feedback system when DOM is loaded. In production this script is
+// bundled into main.js, which loads async, so DOMContentLoaded may have
+// already fired by the time it runs.
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
+    new FeedbackSystem();
+  });
+} else {
   new FeedbackSystem();
-});
+}

@@ -26,6 +26,19 @@ Managed training uses a fixed internal train/validation split and does not
 currently expose loss curves or a separate test-dataset option. To evaluate
 a trained model, see [Test your model](#4-test-your-model) below.
 
+{{< alert title="Managed training doesn't support sequence datasets" color="note" >}}
+Managed training accepts only binary datasets. To train on a
+[sequence dataset](/train/create-a-dataset/), use a
+[custom training script](/train/custom-training-scripts/).
+{{< /alert >}}
+
+Managed training uses only the images in a binary dataset. If the dataset also
+holds other files, such as video or audio, training skips them. The web UI
+notes this in a **Built-in training uses only images** banner after you select
+the **TFLite** or **TF** framework.
+The [platform requirements](/train/create-a-dataset/#platform-requirements) count images only. To train on other file types,
+use a [custom training script](/train/custom-training-scripts/).
+
 ## 1. Start a training job from the web UI
 
 1. Go to [app.viam.com](https://app.viam.com).
@@ -65,14 +78,14 @@ viam train submit managed \
 
 **Required flags:**
 
-| Flag                | Description                       | Accepted values                                                                 |
-| ------------------- | --------------------------------- | ------------------------------------------------------------------------------- |
-| `--dataset-id`      | Dataset to train on               | Your dataset ID                                                                 |
-| `--model-org-id`    | Organization to save the model in | Your organization ID                                                            |
-| `--model-name`      | Name for the trained model        | Any string                                                                      |
-| `--model-type`      | Task type                         | `single_label_classification`, `multi_label_classification`, `object_detection` |
-| `--model-framework` | Model framework                   | `tflite`, `tensorflow`                                                          |
-| `--model-labels`    | Labels to train on                | Comma-separated list of labels from your dataset                                |
+| Flag                | Description                       | Accepted values                                                                                                                                                                                      |
+| ------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--dataset-id`      | Dataset to train on               | Your dataset ID                                                                                                                                                                                      |
+| `--model-org-id`    | Organization to save the model in | Your organization ID                                                                                                                                                                                 |
+| `--model-name`      | Name for the trained model        | A name not already used by another registry item in the organization, such as a module or training script. Reusing an existing model's name adds a new version of that model with the same framework |
+| `--model-type`      | Task type                         | `single_label_classification`, `multi_label_classification`, `object_detection`                                                                                                                      |
+| `--model-framework` | Model framework                   | `tflite`, `tensorflow`                                                                                                                                                                               |
+| `--model-labels`    | Labels to train on                | Comma-separated list of labels from your dataset                                                                                                                                                     |
 
 `--model-version` is optional and defaults to the current timestamp.
 

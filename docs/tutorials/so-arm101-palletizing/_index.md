@@ -5,6 +5,9 @@ type: "docs"
 weight: 60
 date: "2026-10-02"
 description: "Build a desktop palletizing robot with an affordable SO-ARM101 arm. Teach its poses by hand, then program a collision-free pick-and-stack in Python."
+capabilities:
+  ["motion-planning", "frame-system", "hw-arm", "hw-actuation", "docs"]
+diataxis: overview
 authors: []
 level: "Intermediate"
 languages: ["python"]

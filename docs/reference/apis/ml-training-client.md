@@ -22,6 +22,8 @@ The ML training client API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
+To train on a [sequence dataset](/train/create-a-dataset/), use `SubmitCustomTrainingJob`. `SubmitTrainingJob` rejects sequence datasets.
+
 ## Establish a connection
 
 To use the ML training client API, you need to instantiate a `ViamClient` and then instantiate an `MLTrainingClient`.

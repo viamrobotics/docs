@@ -211,7 +211,7 @@ type Config struct {
     ObstacleSensor string `json:"obstacle_sensor"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if cfg.ObstacleSensor == "" {
         return nil, nil,
             resource.NewConfigValidationFieldRequiredError(path, "obstacle_sensor")
@@ -222,7 +222,7 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 }
 
 func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstatestore.Service, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
+    cfg, err := resource.NativeConfig[Config](conf)
     if err != nil {
         return nil, err
     }
