@@ -169,3 +169,5 @@ A caller's own entry replaces the `default` entry, it doesn't add to it.
 The Viam app's access policy has no `default` entry.
 
 <!-- TODO(verify, DOCS-4936): the handler sample comes from a code comment in RDK config.go and the ID-to-entity match from authorization.go, neither tested live. Also confirm what a machine with no handlers does with unauthenticated connections (the empty-list row assumes it accepts them), whether `app-user-id` entries mean anything without the Viam app, which connection-plumbing methods are exempt from checks, and the no-wildcard claim against a shipped release. -->
+
+<!-- TODO(DOCS-4936): content from the closed docs PR 5389 not carried over yet. (1) Where to find the IDs a grant needs: an API key ID from the API keys page, a user ID from the `user_id` field of `ListOrganizationMembers` (`GetUserIDByEmail` is Viam-staff only). (2) A caution that app pages such as the CONTROL tab connect as your user, so a member opening them needs grants for the methods those pages call; the `unauthorized request` logs list them. (3) The claim that calls from modules running on the machine aren't checked, which was never verified. -->
