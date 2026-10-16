@@ -63,14 +63,17 @@ Models live at the organization level in Viam. Uploading a model is a one-time a
 2. Click **Upload**.
 3. Choose **New model** (or **New version** if you are replacing an existing model). Under **Visibility**, choose **Private** for internal use or **Public** to publish to the [registry](https://app.viam.com/registry). Click **Next steps**.
 4. Fill in the upload form:
-   - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX).
-   - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID).
+   - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX). Select **Registry** instead if a module from the registry runs the model, rather than one of the ML model services in step 4.
+   - **Module resources to deploy** (**Registry** framework only): click **Select Modular Resource** to pick one or more component or service models from the registry, or type a model triple such as `viam-labs:arm-policy:policy` and click **Add**. Deploying the model adds each of these resources to the machine.
+   - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID). For the **Registry** framework, click **Upload files** and pick every file the module needs.
    - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config. Registry item names are unique within an organization, so the upload fails if another registry item in your organization, such as a module or training script, already uses the name.
    - **Task type**: pick **Object detection**, **Single label classification**, **Multi label classification**, or **Other**.
    - **Description**: one sentence describing the model.
 5. Click **Upload model**.
 
 The model is now available in your organization. You can change visibility between **Private** and **Public** later through the model's settings.
+
+If you chose the **Registry** framework, deploy the model from its page on the **MODELS** tab instead of following steps 4 and 5: click **Deploy** and pick a machine. Viam adds the model's package, the module behind each resource you listed, and one resource per model triple, with `model_path` set to `${packages.ml_model.<model-name>}`. It does not add a vision service or connect the resources to each other, so configure any other attributes the module needs yourself.
 
 ## 4. Configure the ML model service
 
