@@ -38,13 +38,18 @@ def model_framework_to_str(model_framework: int) -> str:
         1: "TFLite",
         2: "Tensorflow",
         3: "Pytorch",
-        4: "ONNX"
+        4: "ONNX",
+        # MODEL_FRAMEWORK_REGISTRY: files consumed by a specific registry module
+        # (named in deployment_modular_resources), not a file format.
+        5: "Module-specific",
     }
 
     try:
         return model_framework_map[model_framework]
     except KeyError:
-        raise ValueError(f"NEW UNKNOWN MODEL FRAMEWORK {model_framework} must add to model framework map")
+        # Don't fail the publish run when the API adds a new enum value
+        print(f"WARNING: unknown model framework {model_framework}, add it to model_framework_map")
+        return ""
 
 
 async def main():
