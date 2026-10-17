@@ -358,7 +358,9 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
 1. Check networking:
 
    1. Check if your machine is showing as online on Viam and [check its logs](/monitor/troubleshoot/#check-logs).
-      When `viam-server` starts it runs a set of network checks which you can view in the logs.
+      `viam-server` runs a set of network checks when it starts and every 5 minutes after, which you can view in the logs.
+      The **LOGS** tab hides network check lines below error level by default; turn on **Show internal logs** in the log view options to see them.
+      With `viam-server` v1.12.0 or later, the machine's **status** dropdown also shows the latest result for each part. See [Inspect a specific machine](/monitor/monitor/#inspect-a-specific-machine).
 
    ```sh {class="command-line" data-prompt="$"}
    2025-07-16T16:50:57.727Z    INFO    rdk.network-checks    networkcheck/network-check.go:28    Starting network checks
