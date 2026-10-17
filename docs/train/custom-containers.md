@@ -213,6 +213,7 @@ await ml_training_client.delete_custom_training_container(id="<container-id>")
 
 {{< cards >}}
 {{% card link="/train/custom-training-scripts/" %}}
+{{% card link="/train/train-a-vla/" %}}
 {{% card link="/cli/datasets-and-training/" %}}
 {{% card link="/reference/apis/ml-training-client/" %}}
 {{< /cards >}}
