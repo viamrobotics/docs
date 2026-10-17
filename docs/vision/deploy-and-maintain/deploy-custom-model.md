@@ -65,15 +65,21 @@ Models live at the organization level in Viam. Uploading a model is a one-time a
 2. Click **Upload**.
 3. Choose **New model** (or **New version** if you are replacing an existing model). Under **Visibility**, choose **Private** for internal use or **Public** to publish to the [registry](https://app.viam.com/registry). Click **Next steps**.
 4. Fill in the upload form:
-   - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX). Select **Registry** instead if a module from the registry runs the model, rather than one of the ML model services in [step 4](#4-configure-the-ml-model-service).
+   - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX). Select **Registry** instead if a module from the registry runs the model itself, rather than a Viam ML model service such as `tflite_cpu` (see [Deploy a Registry framework model](#deploy-a-registry-framework-model)).
    - **Module resources to deploy** (**Registry** framework only): click **Select Modular Resource** to pick one or more component or service models from the registry, or type a model triple such as `viam-labs:arm-policy:policy` and click **Add**. Deploying the model adds each of these resources to the machine.
-   - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID). For the **Registry** framework, click **Upload files** and pick every file the module needs.
+   - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID). For the **Registry** framework, click **Upload files** and pick the files the module loads at runtime, such as model weights and configuration files. Which files those are depends on the module, so check the module's documentation in the registry. Viam stores them together as one package, and the module reads them from the directory that `model_path` points to.
    - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config. For the **Registry** framework, it is also the package name in `model_path`. Registry item names are unique within an organization, so the upload fails if another registry item in your organization, such as a module or training script, already uses the name.
-   - **Task type**: pick **Object detection**, **Single label classification**, **Multi label classification**, or **Other**.
+   - **Task type**: pick what the model predicts:
+     - **Single label classification**: one label for each image.
+     - **Multi label classification**: any number of labels for each image.
+     - **Object detection**: labels for objects in an image, and where each object is.
+     - **Other**: none of these, for example a model that controls an arm.
    - **Description**: one sentence describing the model.
 5. Click **Upload model**.
 
 The model is now available in your organization. You can change visibility between **Private** and **Public** later through the model's settings.
+
+### Deploy a Registry framework model
 
 If you chose the **Registry** framework, deploy the model from its page on the **MODELS** tab instead of following [steps 4 through 6](#4-configure-the-ml-model-service): click **Deploy** and pick a machine. Viam adds the model's package, the module behind each resource you listed, and one resource per model triple, with `model_path` set to `${packages.ml_model.<package-name>}`. The package name is the model name, unless the machine already has a resource with that name, in which case Viam adds a numeric suffix such as `-2`. It does not add a vision service or connect the resources to each other, so configure any other attributes the module needs yourself.
 
