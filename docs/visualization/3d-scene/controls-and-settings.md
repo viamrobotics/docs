@@ -33,16 +33,16 @@ Keyboard navigation pauses while you type in a field or hold `⌘` (or `Ctrl`).
 
 The Details panel shows the selected entity's pose and geometry on its **Details** tab, and how it draws on its **Appearance** tab. Fields that correspond to frame configuration are editable in [Build mode](/visualization/3d-scene/build-mode/) for configurable frames, and read-only otherwise. In [Move mode](/visualization/3d-scene/move-mode/), the panel becomes the move controls instead.
 
-| Field                                           | Meaning                                                                        | Frame configuration                                                                      |
-| ----------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| **world position** (mm)                         | The entity's position in the world frame                                       | None. Computed from the local pose and the parent chain                                  |
-| **world orientation**                           | The entity's orientation in the world frame, as an orientation vector          | None. Computed                                                                           |
-| **parent frame**                                | The frame this entity is attached to                                           | `frame.parent`                                                                           |
-| **local position** (mm)                         | Position relative to the parent frame                                          | `frame.translation`                                                                      |
-| **local orientation**                           | Orientation relative to the parent frame, entered as **OV (deg)** or **Euler** | `frame.orientation`, stored as an orientation vector in degrees whichever form you enter |
-| **geometry**                                    | The collision geometry: `None`, `Box`, `Sphere`, or `Capsule`                  | `frame.geometry.type`                                                                    |
-| **dimensions** (mm)                             | `x`, `y`, `z` for a box; `r` for a sphere; `r` and `l` for a capsule           | `frame.geometry` `x`, `y`, `z`, `r`, `l`                                                 |
-| **Appearance** tab: color, opacity, axes helper | How the entity draws in the scene                                              | None. These change the rendering only, not the configuration                             |
+| Field                                                       | Meaning                                                                        | Frame configuration                                                                      |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| **world position** (mm)                                     | The entity's position in the world frame                                       | None. Computed from the local pose and the parent chain                                  |
+| **world orientation**                                       | The entity's orientation in the world frame, as an orientation vector          | None. Computed                                                                           |
+| **parent frame**                                            | The frame this entity is attached to                                           | `frame.parent`                                                                           |
+| **local position** (mm)                                     | Position relative to the parent frame                                          | `frame.translation`                                                                      |
+| **local orientation**                                       | Orientation relative to the parent frame, entered as **OV (deg)** or **Euler** | `frame.orientation`, stored as an orientation vector in degrees whichever form you enter |
+| **geometry**                                                | The collision geometry: `None`, `Box`, `Sphere`, or `Capsule`                  | `frame.geometry.type`                                                                    |
+| **dimensions** (mm)                                         | `x`, `y`, `z` for a box; `r` for a sphere; `r` and `l` for a capsule           | `frame.geometry` `x`, `y`, `z`, `r`, `l`                                                 |
+| **Appearance** tab: color, opacity, visibility, axes helper | How the entity draws in the scene                                              | In Build mode, the component's `visualizer` field. Not saved in other modes              |
 
 The panel header can open a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov) and copy the entity's pose and geometry as JSON. To center the camera on the selected entity, use the scene's focus control or its keyboard shortcut.
 

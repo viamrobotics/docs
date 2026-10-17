@@ -12,13 +12,14 @@ diataxis: how-to
 Static obstacles are the fixed shapes in your workspace: the table the arm is bolted to, a back wall, a ceiling, a bin the arm reaches into.
 Configure them once through the Viam app and the motion planner includes them on every plan.
 
-Three config patterns cover most cases:
+These config patterns cover most cases:
 
-| Pattern                                                                   | Use when                                                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [`erh:vmodutils:obstacle`](#default-obstacle-pattern)                     | Most workspace obstacles: tables, walls, fixtures, bespoke shapes. One component, any geometry.        |
-| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)     | A single box, sphere, capsule, or cylinder when you do not want to add a registry module.              |
-| [`erh:vmodutils:obstacle-open-box`](#containers-and-work-cell-boundaries) | Containers, bins, or rectangular work-cell envelopes. Generates five geometries from outer dimensions. |
+| Pattern                                                                      | Use when                                                                                               |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [`erh:vmodutils:obstacle`](#default-obstacle-pattern)                        | Most workspace obstacles: tables, walls, fixtures, bespoke shapes. One component, any geometry.        |
+| [`rdk:builtin:obstacle` generic component](#use-the-built-in-obstacle-model) | The same list of geometries with no registry module to add. Requires `viam-server` v1.12.0 or later.   |
+| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)        | A single box, sphere, capsule, or cylinder when you do not want to add a registry module.              |
+| [`erh:vmodutils:obstacle-open-box`](#containers-and-work-cell-boundaries)    | Containers, bins, or rectangular work-cell envelopes. Generates five geometries from outer dimensions. |
 
 For obstacles your code builds at runtime (objects detected by vision, temporary keep-out zones), see [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/) instead.
 
@@ -184,11 +185,43 @@ Use one component per logical obstacle (table, ceiling, each wall) when the obst
 Use several geometries under one component when the shapes form a rigid unit: an L-bracket, an enclosure, a tool stand with a base and a post.
 The component's frame positions the whole group.
 
+## Use the built-in obstacle model
+
+`viam-server` v1.12.0 and later include an obstacle model, `rdk:builtin:obstacle`, under the generic component API.
+Like `erh:vmodutils:obstacle`, it takes a `geometries` list, but it needs no registry module.
+The **3D SCENE** tab creates this model when you add an obstacle: see [Add an obstacle](/visualization/3d-scene/editing-frames-visually/#add-an-obstacle).
+
+To configure it in JSON, add a component like this one to your machine's configuration:
+
+```json
+{
+  "name": "table",
+  "api": "rdk:component:generic",
+  "model": "rdk:builtin:obstacle",
+  "attributes": {
+    "geometries": [
+      { "type": "box", "x": 1800, "y": 1100, "z": 40, "label": "top" }
+    ]
+  },
+  "frame": {
+    "parent": "world",
+    "translation": { "x": 500, "y": 0, "z": -20 },
+    "orientation": {
+      "type": "ov_degrees",
+      "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+    }
+  }
+}
+```
+
+- **`geometries`** (required) lists one or more geometries in the same form as a frame's `geometry`. Each entry's optional `translation` and `orientation` position it relative to the component's frame.
+- **`label`** names each geometry in the frame system as `<component>:<label>` (here, `table:top`). Labels must be unique within the component, can't contain `:`, and can't be `world`. An unlabeled geometry is named `geometry_<n>` by its position in the list, starting at 0.
+- **The component needs a frame.** Without one, the obstacle is not part of the frame system and motion planning does not avoid it. A `geometry` in the component's frame is ignored in favor of `geometries`.
+
 ## Configure a single primitive
 
-For a single primitive shape when you do not want to add the `erh:vmodutils` module, use a `generic`/`fake` component.
-The **3D SCENE** tab can create one for you: see [Add an obstacle](/visualization/3d-scene/editing-frames-visually/#add-an-obstacle).
-To add it from the **CONFIGURE** tab instead:
+On `viam-server` versions before v1.12.0, which don't have the built-in obstacle model, use a `generic`/`fake` component for a single primitive shape when you do not want to add the `erh:vmodutils` module.
+To add it from the **CONFIGURE** tab:
 
 1. Click the **+** icon and select **Blocks**.
 2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.

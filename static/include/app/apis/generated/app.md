@@ -2758,6 +2758,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the requested robot part.
+- `start` (Date) (optional): Optional start time. Only history entries created after this time will be
+  returned.
+- `end` (Date) (optional): Optional end time. Only history entries created before this time will be returned.
+- `pageLimit` (number) (optional): Optional maximum number of history entries to return, newest first.
 
 **Returns:**
 

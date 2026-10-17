@@ -52,7 +52,7 @@ This page exists in the build-modules section as a reminder: look first, build s
 
 Two paths:
 
-1. **Search the registry directly** at [app.viam.com/registry](https://app.viam.com/registry). Filter by type (Module, ML Model, or Training Script), by API (such as `rdk:service:vision` or `rdk:service:discovery`), or by keyword.
+1. **Search the registry directly** at [app.viam.com/registry](https://app.viam.com/registry). Search by keyword or by API (such as `rdk:service:vision` or `rdk:service:discovery`). Use the **Type** filter to narrow results to modules, applications, ML models, fragments, or training scripts, and the **Owner** filter to show only items supported by Viam, by the community, or by your organization.
 2. **Search from your machine's CONFIGURE tab.** Click **+** then **Blocks**. The model search shows registry modules alongside built-in models.
 
 When you find a candidate, open its registry page and check:

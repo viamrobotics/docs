@@ -114,6 +114,12 @@ to the motion service at call time. It contains:
 
 You construct a WorldState in your code and pass it to the `Move` call.
 
+An obstacle is placed in world coordinates once, when planning starts, even if
+you express it in a moving frame such as the gripper's. It stays where it was
+for the whole plan. To model something that moves with a component, such as an
+object in a gripper, add it as a transform parented to that component instead.
+See [Attach and detach geometries at runtime](/motion-planning/obstacles/attach-detach-geometries/).
+
 Transforms merge into the frame system by addition only. The motion
 service builds a fresh frame system for each call, appends the configured
 parts, then appends each transform from `WorldState.transforms`. A

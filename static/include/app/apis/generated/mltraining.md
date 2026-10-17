@@ -485,7 +485,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### RegisterCustomTrainingContainer
 
-Register a publicly readable linux/amd64 Docker Hub image as a custom training container for an organization.
+Register a publicly readable linux/amd64 Docker Hub image as a custom training container for an organization. The `description` must not be empty: Viam rejects a registration without one.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

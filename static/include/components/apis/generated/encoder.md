@@ -279,6 +279,27 @@ if geometries:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_geometries).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
+const geometries = await encoder.getGeometries();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getgeometries).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
