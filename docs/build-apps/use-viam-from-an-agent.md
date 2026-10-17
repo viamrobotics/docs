@@ -28,7 +28,7 @@ If you already have a key and a terminal, the shortest path is [Drive a machine 
   The motion service plans against it.
 - A **key** authenticates you.
   Keys are scoped to a machine, a location, or an organization.
-  By default every key has full write access to its scope. Machines can optionally enforce per-resource, per-method restrictions through `user_permissions` in the machine's JSON config (see below).
+  By default every key has full write access to its scope. A machine can optionally restrict what a key is allowed to call (see below).
 
 ## Ways in
 
@@ -152,10 +152,18 @@ With a wrist-mounted camera, read from 300 mm or more above an object. Closer th
 One thing the heartbeat does not cover today: motion-service moves continue after the client that started them disappears.
 Use `StopAll` when a move must end, and give an agent a machine-scoped key rather than a location or organization key when it only needs one machine.
 
-Machines can restrict what an API key or user is allowed to do through a `user_permissions` list in the `auth` section of the machine's JSON config.
+A machine can restrict what an API key or user is allowed to call, per resource and per method.
 This is configured by the machine owner, not something you can set up yourself.
+`viam-server` enforces the restrictions from a `user_permissions` list in the `auth` section of the config it runs.
+On a machine managed in the Viam app, you do not write that list: the app rejects a saved config that contains `auth.user_permissions`, and a machine that has an access policy defines it in a top-level `access_policy` section instead, which the app turns into `user_permissions` for the machine.
+When you read the config of a cloud-managed machine, you may see `access_policy` rather than `user_permissions`.
+A policy limits only users and keys with the Member role; owners and operators are not limited by it.
+On a standalone `viam-server` with a local config file, `user_permissions` is the format you will see.
+
 Users without a matching entry are fully restricted unless a `default` entry exists, so a permission error on a key that is otherwise valid may mean it is not listed.
-If you hit this, read the machine's config to see the current `user_permissions` entries and report what you find (the resources, methods, and the raw `api-key-id` or `app-user-id` values you see) to your human operator, who can adjust it through the Viam app's JSON config editor or the app API.
+A denied call returns `PermissionDenied`, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
+If you hit this, read the machine's config to see the current entries and report what you find (the resources, methods, and the raw `api-key-id` or `app-user-id` values you see) to your human operator, who can adjust it.
+Do not try to write `auth.user_permissions` on a cloud-managed machine.
 You have no way to resolve those identifiers to a person, add a new entry, or change the config yourself.
 
 ## Remembering across sessions
