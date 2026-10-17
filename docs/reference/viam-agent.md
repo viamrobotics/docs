@@ -55,6 +55,8 @@ Control which versions of `viam-agent` and `viam-server` run on the machine.
 In the machine settings card in the Viam app, open **Settings** and expand **Software Updates**:
 
 - **Agent version**: choose a release channel, a specific semver release such as `1.4.0`, or a URL to a custom binary.
+  To use a binary already on the machine, give its path as a `file://` URL, such as `file:///home/myuser/viam-agent` or `file://C:\Users\myuser\viam-agent.exe`.
+  The Viam app won't save a bare path such as `/home/myuser/viam-agent`.
 - **viam-server version**: same options as agent.
 
 The available release channels are:
