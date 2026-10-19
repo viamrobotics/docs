@@ -51,6 +51,9 @@
 | [`NewRobot`](/reference/apis/fleet/#newrobot) | Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`UpdateRobot`](/reference/apis/fleet/#updaterobot) | Update an existing machine's name and/or location. |
 | [`DeleteRobot`](/reference/apis/fleet/#deleterobot) | Delete a specified machine. |
+| [`AddFavoriteMachine`](/reference/apis/fleet/#addfavoritemachine) | Add a machine to the current user's favorites. |
+| [`RemoveFavoriteMachine`](/reference/apis/fleet/#removefavoritemachine) | Remove a machine from the current user's favorites. |
+| [`ListFavoriteMachines`](/reference/apis/fleet/#listfavoritemachines) | List the current user's favorite machines across all organizations. |
 | [`GetRobotMetadata`](/reference/apis/fleet/#getrobotmetadata) | Gets the user-defined metadata for a machine. |
 | [`GetRobotPartMetadata`](/reference/apis/fleet/#getrobotpartmetadata) | Gets the user-defined metadata for a machine part. |
 | [`UpdateRobotMetadata`](/reference/apis/fleet/#updaterobotmetadata) | Updates the user-defined metadata for a machine. |

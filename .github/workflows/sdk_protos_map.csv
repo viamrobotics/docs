@@ -420,6 +420,9 @@ app,ListMachineSummaries,,,ListMachineSummaries,,
 app,NewRobot,,new_robot,NewRobot,,newRobot
 app,UpdateRobot,,update_robot,UpdateRobot,,updateRobot
 app,DeleteRobot,,delete_robot,DeleteRobot,,deleteRobot
+app,AddFavoriteMachine,,add_favorite_machine,,addFavoriteMachine,
+app,RemoveFavoriteMachine,,remove_favorite_machine,,removeFavoriteMachine,
+app,ListFavoriteMachines,,list_favorite_machines,,listFavoriteMachines,
 app,GetRobotMetadata,,get_robot_metadata,GetRobotMetadata,,getRobotMetadata
 app,GetRobotPartMetadata,,get_robot_part_metadata,GetRobotPartMetadata,,getRobotPartMetadata
 app,UpdateRobotMetadata,,update_robot_metadata,UpdateRobotMetadata,,updateRobotMetadata
