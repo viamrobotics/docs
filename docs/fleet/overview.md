@@ -51,7 +51,6 @@ Modules and ML models are stored as versioned packages in the Viam registry. Whe
 | Control when and how software updates reach machines | [Manage versions](/fleet/manage-versions/)                        |
 | Schedule automated tasks on machines                 | [Schedule jobs](/fleet/schedule-jobs/)                            |
 | Tag machines with custom key-value data              | [Add custom metadata](/fleet/metadata/)                           |
-| Pin the machines you use most for quick access       | [Favorite machines](/fleet/favorite-machines/)                    |
 | Configure network, tunneling, and system settings    | [System settings](/fleet/system-settings/)                        |
 | Change a deployed machine's WiFi network             | [Change network](/fleet/change-network/)                          |
 

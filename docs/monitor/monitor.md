@@ -24,6 +24,17 @@ The machines table shows every machine in your organization with its current sta
 
 You can also see the amount of binary and tabular data your fleet has synced in the last 48 hours from this dashboard.
 
+### Favorite machines
+
+Favorite the machines you check most often so you can find them quickly.
+Click the star next to a machine in the machines table, or open a machine's **...** menu and select **Add to favorites**.
+Favorited machines appear at the top of the table.
+
+To see your favorites from every organization in one place, open the **Machine Favorites** tab in your user settings.
+Favorites belong to your user account, so other members of your organization can't see them.
+
+To manage favorites programmatically, see [`AddFavoriteMachine`](/reference/apis/fleet/#addfavoritemachine), [`RemoveFavoriteMachine`](/reference/apis/fleet/#removefavoritemachine), and [`ListFavoriteMachines`](/reference/apis/fleet/#listfavoritemachines) in the fleet management API.
+
 ## Inspect a specific machine
 
 Click a machine name to open its page.
