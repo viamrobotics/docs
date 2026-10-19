@@ -32,6 +32,7 @@ Favorite machines appear at the top of the table, and you can see your favorites
 
 Favorites belong to your user account, so other members of your organization can't see them.
 
+To manage favorites from an AI agent, use the `list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine` tools in the [Viam MCP server](/reference/mcp/).
 To manage favorites programmatically, see [`AddFavoriteMachine`](/reference/apis/fleet/#addfavoritemachine), [`RemoveFavoriteMachine`](/reference/apis/fleet/#removefavoritemachine), and [`ListFavoriteMachines`](/reference/apis/fleet/#listfavoritemachines) in the fleet management API.
 
 ## Inspect a specific machine
