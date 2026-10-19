@@ -802,7 +802,9 @@ def check_for_unused_methods(methods, type):
                     ## deliberately NOT ignored here -- the whole OAuth-apps family needs a
                     ## domain-owner decision on document-vs-ignore before we suppress the
                     ## warning; see the #5188/#5276 discussion.)
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus", "upload_device_push_token", "get_device_push_tokens", "delete_device_push_token", "set_firebase_config", "get_firebase_config", "delete_firebase_config"] or \
+                    ## Favorite machines belong to a signed-in user, and the Python app client can only
+                    ## authenticate with an API key, so these methods can't work for typical callers.
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus", "upload_device_push_token", "get_device_push_tokens", "delete_device_push_token", "set_firebase_config", "get_firebase_config", "delete_firebase_config", "add_favorite_machine", "remove_favorite_machine", "list_favorite_machines"] or \
                         lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter", "CurrentInputs", "GoToInputs"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource", "RobotClient.withClient"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:

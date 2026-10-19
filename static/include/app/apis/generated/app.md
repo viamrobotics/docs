@@ -3721,68 +3721,6 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
-### AddFavoriteMachine
-
-Add a machine to the current user's favorites.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `machine_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to favorite.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- None.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_favorite_machine).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### RemoveFavoriteMachine
-
-Remove a machine from the current user's favorites.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `machine_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine to unfavorite.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- None.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_favorite_machine).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### ListFavoriteMachines
-
-List the current user's favorite machines across all organizations.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([list[viam.proto.app.FavoriteMachine]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.FavoriteMachine)): :   The list of favorited machines.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_favorite_machines).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetRobotMetadata
 
 Gets the user-defined metadata for a machine.
