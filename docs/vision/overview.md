@@ -20,8 +20,8 @@ Available methods:
 
 - [`GetDetections`](/reference/apis/services/vision/#getdetections) and [`GetDetectionsFromCamera`](/reference/apis/services/vision/#getdetectionsfromcamera) return 2D bounding boxes with labels and confidence.
 - [`GetClassifications`](/reference/apis/services/vision/#getclassifications) and [`GetClassificationsFromCamera`](/reference/apis/services/vision/#getclassificationsfromcamera) return top-N label-confidence pairs for the whole image.
-- [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) returns 3D point cloud objects, each with a label.
-- [`GetDetections3D`](/reference/apis/services/vision/#getdetections3d) returns each detected object as a tree of named transforms carrying its shapes, plus class hypotheses. You can pass the transforms into a frame system or a motion `WorldState`.
+- [`GetDetections3D`](/reference/apis/services/vision/#getdetections3d) returns each detected object as a tree of named transforms carrying its shapes, plus class hypotheses. This is the recommended method for 3D results. You can pass the transforms into a frame system or a motion `WorldState`.
+- [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) returns one point cloud and geometry per object, each with a label. This is the older format.
 - [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera) returns an image, its detections, classifications, and point clouds in a single round trip. Use this when you need more than one kind of result.
 - [`GetProperties`](/reference/apis/services/vision/#getproperties) reports which result types the service supports at runtime.
 
