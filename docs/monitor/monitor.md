@@ -26,14 +26,11 @@ You can also see the amount of binary and tabular data your fleet has synced in 
 
 ### Favorite machines
 
-Favorite the machines you check most often so you can find them quickly.
-Click the star next to a machine in the machines table, or open a machine's **...** menu and select **Add to favorites**.
-Favorited machines appear at the top of the table.
+Set the machines you check most often as favorites so you can find them quickly.
+Use the star next to a machine in the table to favorite it.
+Favorite machines appear at the top of the table, and you can see your favorites from every organization on the **Machine Favorites** tab in your user settings.
 
-To see your favorites from every organization in one place, open the **Machine Favorites** tab in your user settings.
 Favorites belong to your user account, so other members of your organization can't see them.
-
-To manage favorites programmatically, see [`AddFavoriteMachine`](/reference/apis/fleet/#addfavoritemachine), [`RemoveFavoriteMachine`](/reference/apis/fleet/#removefavoritemachine), and [`ListFavoriteMachines`](/reference/apis/fleet/#listfavoritemachines) in the fleet management API.
 
 ## Inspect a specific machine
 
