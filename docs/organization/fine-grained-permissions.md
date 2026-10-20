@@ -87,7 +87,7 @@ A grant needs at least one subject and one resource, and a field the section doe
 
 Besides the methods a member's grants allow, every member can call a small baseline set of methods that `viam-server` needs to accept a connection.
 
-<!-- TODO(verify, DOCS-4936): what user experience the engineers expect for `_machine` once this is live (how a reader discovers it, and whether the app UI hides it), which methods are in the baseline set, that the app never compiles a default entry from an access policy (see the local configuration section), how grants from fragments combine, whether resource names are checked at save, and the owner and operator exemption as shipped. The compiler (app#13423) wasn't merged when this was drafted. Confirm on a flag-enabled org before merging this PR. -->
+<!-- TODO(verify, DOCS-4936): what user experience the engineers expect for `_machine` once this is live (how a reader discovers it, and whether the app UI hides it), which methods are in the baseline set, that the app never compiles a default entry from an access policy (see the local configuration section), how grants from fragments combine, whether resource names are checked at save, and the owner and operator exemption as shipped. Also what an author sees when an access policy fails to parse (per the activation PR, app#13426, it is logged and dropped, so only owners and operators are listed and members lose access), and when a part resolves no owners or operators (the config fetch fails and the machine keeps its last config). The compiler (app#13423) wasn't merged when this was drafted. Confirm on a flag-enabled org before merging this PR. -->
 
 ## Define permissions in a local configuration file
 
