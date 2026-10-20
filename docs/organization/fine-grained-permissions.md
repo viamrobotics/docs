@@ -87,6 +87,24 @@ A grant needs at least one subject and one resource, and a field the section doe
 
 Besides the methods a member's grants allow, every member can call a small baseline set of methods that `viam-server` needs to accept a connection.
 
+### Find a method name
+
+A method name is the proto package, the service, and the method, written `/<package>.<Service>/<Method>`.
+Find them in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam): open the component or service folder, then the resource's `.proto` file.
+
+For example, `camera.proto` declares `package viam.component.camera.v1`, `service CameraService`, and `rpc GetImages`, which gives `/viam.component.camera.v1.CameraService/GetImages`.
+
+Unlike the `--method` argument of `viam machines part run`, a policy puts a slash, not a dot, before the method name.
+
+If a call is denied, the `PermissionDenied` error names the method and resource to grant.
+
+#### Exceptions
+
+Two sets of methods don't follow the component and service pattern:
+
+- Machine-level methods use `viam.robot.v1.RobotService`, such as `/viam.robot.v1.RobotService/GetMachineStatus`. Their resource in a grant is `_machine`.
+- Video streaming uses `proto.stream.v1.StreamService`.
+
 ### Machines with more than one part
 
 Each part of a machine has its own configuration, and each part can have its own access policy.
