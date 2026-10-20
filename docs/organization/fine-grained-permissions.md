@@ -94,10 +94,6 @@ Find them in the [Viam API package](https://github.com/viamrobotics/api/tree/mai
 
 For example, `camera.proto` declares `package viam.component.camera.v1`, `service CameraService`, and `rpc GetImages`, which gives `/viam.component.camera.v1.CameraService/GetImages`.
 
-Unlike the `--method` argument of `viam machines part run`, a policy puts a slash, not a dot, before the method name.
-
-If a call is denied, the `PermissionDenied` error names the method and resource to grant.
-
 #### Exceptions
 
 Two sets of methods don't follow the component and service pattern:
