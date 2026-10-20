@@ -45,7 +45,7 @@ These three task types answer different questions.
 
 **Classification** asks _what_ the image contains. A classifier returns a small number of labels with confidence scores for the whole image or a region of it. Use classification when you just need to categorize the scene. "Is this picture of a cat or a dog?" and "is the conveyor belt clear or blocked?" are classification questions.
 
-**3D segmentation** asks _where in 3D space_ objects are. A 3D segmenter returns a point cloud per object with coordinates in the camera frame. Use it when a robot needs physical positions. Planning an arm motion to an object or feeding obstacle positions into a navigation stack both need 3D segmentation.
+**3D segmentation** asks _where in 3D space_ objects are. A 3D segmenter returns each object with coordinates in the camera frame, as a tree of named transforms with `GetDetections3D` or as a point cloud with `GetObjectPointClouds`. Use it when a robot needs physical positions. Planning an arm motion to an object or feeding obstacle positions into a navigation stack both need 3D segmentation.
 
 ## Verify that it works
 
