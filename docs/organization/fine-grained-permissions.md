@@ -89,11 +89,14 @@ Besides the methods a member's grants allow, every member can call a small basel
 
 ### Machines with more than one part
 
-A machine with more than one part serves its sub-parts' resources through its main part.
-`viam-server` checks a call that comes in through the main part against the main part's own rules, so put grants for a sub-part's resources in the main part's access policy.
-In a grant, name a sub-part's resource by its plain name, such as `cam2`, or as `<sub-part>:<name>`.
+Each part of a machine has its own configuration, and each part can have its own access policy.
+A part's policy decides what that part's own `viam-server` allows.
 
-<!-- TODO(verify, DOCS-4936): multi-part naming is from the activation PR description (app#13426): the main part's compiled list covers each sub-part resource by bare name and as `<sub-part>:<name>`. Confirm that a member's grant on either form works, what happens when two parts have a resource with the same plain name, whether a call made directly to a sub-part is checked by that sub-part's own rules, and which form the policy editor shows. -->
+Callers usually reach a sub-part's resources through the machine's main part, and the main part checks those calls against its own policy, not the sub-part's.
+To let a member call a sub-part's resource through the main part, put the grant in the main part's access policy.
+In that grant, name the resource by its plain name, such as `cam2`, or as `<sub-part>:<name>`.
+
+<!-- TODO(verify, DOCS-4936): multi-part behavior is from the activation PR code (app#13426, `renderUserPermissions` in domains/robotservice/access_policy_render.go): each part's list is compiled from that part's own policy, and a main part also lists its sub-parts' resources by bare name and as `<sub-part>:<name>`, reading only the sub-parts' resource names, not their policies. Confirm that a member's grant on either form works, what happens when two parts have a resource with the same plain name, that a call made directly to a sub-part is checked against that sub-part's own policy, and which form the policy editor shows. Also whether a call the main part forwards to a sub-part is checked again against the sub-part's own policy (as a call from the main part's identity), so that both policies would have to allow it, or whether the main part's policy alone decides. Ask the engineers before the page describes how the two policies interact. -->
 
 <!-- TODO(verify, DOCS-4936): what user experience the engineers expect for `_machine` once this is live (how a reader discovers it, and whether the app UI hides it), which methods are in the baseline set, that the app never compiles a default entry from an access policy (see the local configuration section), how grants from fragments combine, whether resource names are checked at save, and the owner and operator exemption as shipped. Also what an author sees when an access policy fails to parse (per the activation PR, app#13426, it is logged and dropped, so only owners and operators are listed and members lose access), and when a part resolves no owners or operators (the config fetch fails and the machine keeps its last config). The compiler (app#13423) wasn't merged when this was drafted. Confirm on a flag-enabled org before merging this PR. -->
 
