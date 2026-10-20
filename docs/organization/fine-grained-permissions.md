@@ -43,11 +43,12 @@ Find the row that describes the caller and the call:
 | The caller has its own entry that grants the method on the resource. | Allowed. |
 | The caller has its own entry that doesn't grant the method on the resource. | Denied. |
 | The caller has no entry of its own. | Denied. |
-| The method acts on the machine as a whole instead of one resource, such as `GetMachineStatus`. | Allowed only if a grant lists `_machine` as its resource. `_machine` is a placeholder for the machine itself, not a real resource. |
+| The method acts on the machine as a whole instead of one resource, such as `StopAll`. | Allowed only if a grant lists `_machine` as its resource. `_machine` is a placeholder for the machine itself, not a real resource. |
 | An entry has an unknown subject `type`. | The entry is ignored, and `viam-server` logs a warning. |
 
 A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
 If a change to the rules removes a caller's access, `viam-server` also closes that caller's open video streams.
+`viam-server` always allows the calls that handle authentication, WebRTC signaling, and gRPC reflection, whatever the rules say.
 
 ## Define an access policy
 
@@ -85,7 +86,8 @@ A wildcard must be a whole segment.
 `cam*` and `/viam.component.camera.v1.CameraService/Get*` are rejected when you save.
 A grant needs at least one subject and one resource, and a field the section doesn't define is rejected, so a typo fails at save instead of silently doing nothing.
 
-Besides the methods a member's grants allow, every member can call a small baseline set of methods that `viam-server` needs to accept a connection.
+A member named in a grant can also call the methods an SDK needs to connect to the machine and read its status, so you don't grant them.
+A member named in no grant can't call anything, including those.
 
 ### Find a method name
 
@@ -134,6 +136,17 @@ Each entry has a `user` and a list of `permissions`:
             "allowed_methods": [
               "/viam.component.camera.v1.CameraService/GetImages"
             ]
+          },
+          {
+            "resources": ["_machine"],
+            "allowed_methods": [
+              "/viam.robot.v1.RobotService/ResourceNames",
+              "/viam.robot.v1.RobotService/ResourceRPCSubtypes",
+              "/viam.robot.v1.RobotService/StartSession",
+              "/viam.robot.v1.RobotService/SendSessionHeartbeat",
+              "/viam.robot.v1.RobotService/GetMachineStatus",
+              "/proto.stream.v1.StreamService/ListStreams"
+            ]
           }
         ]
       },
@@ -142,7 +155,14 @@ Each entry has a `user` and a list of `permissions`:
         "permissions": [
           {
             "resources": ["_machine"],
-            "allowed_methods": ["/viam.robot.v1.RobotService/GetMachineStatus"]
+            "allowed_methods": [
+              "/viam.robot.v1.RobotService/ResourceNames",
+              "/viam.robot.v1.RobotService/ResourceRPCSubtypes",
+              "/viam.robot.v1.RobotService/StartSession",
+              "/viam.robot.v1.RobotService/SendSessionHeartbeat",
+              "/viam.robot.v1.RobotService/GetMachineStatus",
+              "/proto.stream.v1.StreamService/ListStreams"
+            ]
           }
         ]
       }
@@ -154,6 +174,10 @@ Each entry has a `user` and a list of `permissions`:
 The `user` types are `api-key-id`, `app-user-id`, and `default`.
 Leave out the `id` of a `default` entry.
 Resources and methods work as in an access policy, except that `user_permissions` takes exact names only: it has no wildcards.
+
+The `_machine` permissions in the example list the six methods a client needs to connect to the machine and read its status.
+The SDKs call the first four automatically when they connect.
+The Viam app adds these methods for members, but a local file doesn't, so include them in every entry whose caller needs to connect.
 
 Roles are part of the Viam app, so they don't decide who can connect to a machine run from a local file.
 The `auth.handlers` section does.
@@ -189,6 +213,6 @@ A `default` entry covers any authenticated caller that has no entry of its own:
 A caller's own entry replaces the `default` entry, it doesn't add to it.
 The Viam app's access policy has no `default` entry.
 
-<!-- TODO(verify, DOCS-4936): the handler sample comes from a code comment in RDK config.go and the ID match from authorization.go, neither tested live. Test plan: "Local config file" in the description of PR 5429. -->
+<!-- TODO(verify, DOCS-4936): the handler sample comes from a code comment in RDK config.go and the ID match from authorization.go, neither tested live, and neither is the claim that an entry without the six connection methods stops an SDK from connecting. Test plan: "Local config file" in the description of PR 5429. -->
 
 <!-- TODO(DOCS-4936): content from the closed docs PR 5389 not carried over yet. (1) Where to find the IDs a grant needs: an API key ID from the API keys page, a user ID from the `user_id` field of `ListOrganizationMembers` (`GetUserIDByEmail` is Viam-staff only). (2) A caution that app pages such as the CONTROL tab connect as your user, so a member opening them needs grants for the methods those pages call; the `unauthorized request` logs list them. (3) The claim that calls from modules running on the machine aren't checked, which was never verified. -->
