@@ -36,6 +36,9 @@ Click the **status** dropdown to see details about each {{< glossary_tooltip ter
 - `viam-server` version
 - IP addresses
 - Last online time (if offline) or remote address (if online)
+- Network health (`viam-server` v1.12.0 or later): an overall verdict (**Network good**, **Network degraded**, or **Network down**) followed by the **Internet**, **DNS**, **Peer-to-peer**, and **Local network** checks.
+  Hover over a check to see its readings.
+  The row shows how long ago the checks ran, and users with write access to the machine get a **Logs** link that opens the network check log lines.
 
 ## Check resource health
 

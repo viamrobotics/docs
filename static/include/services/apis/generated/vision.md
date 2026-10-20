@@ -624,6 +624,118 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetDetections3D
+
+Get the objects the vision service perceives through a camera, each as a tree of named transforms that carries the object's shapes and class hypotheses.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `camera_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the camera to use for detection.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([list[viam.proto.service.vision.Detection3D]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection3D)): :   A list of 3D detections, each described as a tree of
+    transforms along with the class hypotheses for the detected object.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_detector = VisionClient.from_robot(robot=machine, "my_detector")
+
+# Get 3D detections for the next image from the specified camera
+detections_3d = await my_detector.get_detections_3d("my_camera")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_3d).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cameraName` [(string)](https://pkg.go.dev/builtin#string)
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]*detection3d.Detection)](https://pkg.go.dev/go.viam.com/rdk/vision/detection3d#Detection)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySegmenterService, err := vision.FromProvider(machine, "my_segmenter")
+if err != nil {
+  logger.Error(err)
+  return
+}
+// Get the detected objects, each as a tree of transforms rooted in a known frame
+detections, err := mySegmenterService.GetDetections3D(context.Background(), "my_camera", nil)
+if err != nil {
+  logger.Fatalf("Could not get 3D detections: %v", err)
+}
+var transforms []*referenceframe.LinkInFrame
+for _, d := range detections {
+  transforms = append(transforms, d.Transforms...)
+}
+// The transforms can be passed directly into a WorldState for motion planning
+worldState, err := referenceframe.NewWorldState(nil, transforms)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `cameraName` (string) (required): The name of the camera.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection3D](https://ts.viam.dev/classes/visionApi.Detection3D.html)[]>): * The list of Detection3Ds.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const detections = await vision.getDetections3D('my_camera');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getdetections3d).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection3D](https://flutter.viam.dev/viam_protos.service.vision/Detection3D-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+var detections3D = await myVisionService.detections3D('myCamera');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/detections3D.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### CaptureAllFromCamera
 
 Get the next image, detections, classifications, and objects all together, given a camera name.
@@ -641,6 +753,7 @@ Objects are in the camera's frame, with geometry centers in millimeters and poin
 - `return_classifications` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest classifications.
 - `return_detections` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest detections.
 - `return_object_point_clouds` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest 3D segmentations.
+- `return_detections_3d` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest 3D detections.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -716,7 +829,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; extra: [Struct](https://ts.viam.dev/classes/Struct.html) | undefined; image: [Image](https://ts.viam.dev/classes/cameraApi.Image.html) | undefined; objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }, >): * The requested image, classifications, detections, and 3d point cloud objects.
+- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; detections3d: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection3D](https://ts.viam.dev/classes/visionApi.Detection3D.html)[]; extra: [Struct](https://ts.viam.dev/classes/Struct.html) | undefined; image: [Image](https://ts.viam.dev/classes/cameraApi.Image.html) | undefined; objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }, >): * The requested image, classifications, detections, and 3d point cloud objects.
 
 **Example:**
 
@@ -727,6 +840,7 @@ const captureAll = await vision.captureAllFromCamera('my_camera', {
   returnClassifications: true,
   returnDetections: true,
   returnObjectPointClouds: true,
+  returnDetections3d: true,
 });
 ```
 
@@ -1080,7 +1194,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise< { classificationsSupported: boolean; defaultCamera: string | undefined; detectionsSupported: boolean; objectPointCloudsSupported: boolean; }, >): * The properties of the vision service.
+- (Promise< { classificationsSupported: boolean; defaultCamera: string | undefined; detections3dSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean; }, >): * The properties of the vision service.
 
 **Example:**
 

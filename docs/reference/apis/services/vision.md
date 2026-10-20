@@ -86,6 +86,7 @@ This enables the vision service to provide meaningful 3D coordinates and spatial
 **Supported API methods:**
 
 - [GetObjectPointClouds()](/reference/apis/services/vision/#getobjectpointclouds)
+- [GetDetections3D()](/reference/apis/services/vision/#getdetections3d): returns each object as a tree of named transforms carrying its shapes, plus class hypotheses, which you can pass into a frame system or a motion `WorldState`
 
 The [vision service](/vision/) supports the following methods:
 

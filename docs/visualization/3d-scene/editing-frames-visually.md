@@ -39,14 +39,20 @@ You can then reposition it using the Details panel.
 
 ## Add an obstacle
 
-To add a box that motion planning avoids without leaving the tab:
+To add an obstacle that motion planning avoids without leaving the tab:
 
-1. In the **World** panel header, click **Add object** (**+**) and select **Obstacle**.
-2. In the **New obstacle** dialog, keep the suggested name (`obstacle-1`, `obstacle-2`, and so on) or enter your own, and click **Create**.
+In the **World** panel header, click **Add object** (**+**), select **Obstacle**, choose a type, and name it:
 
-The scene switches to build mode and adds a `generic` component with the `fake` model, a frame at the world origin, and a 100 mm box geometry, and selects it.
-Resize and position it using the Details panel, then [save your changes](#save-your-changes).
-For obstacle patterns beyond a single box, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
+- **Simple**: a single shape.
+- **Bounds**: walls enclosing a box-shaped space. You set the interior size and wall thickness, and can turn individual walls, such as the floor or ceiling, on or off.
+- **Complex**: a group of shapes.
+
+The scene switches to build mode, adds a `generic` component with the built-in `obstacle` model (`rdk:builtin:obstacle`), and selects it.
+The obstacle's shapes are stored in the component's `geometries` attribute, positioned relative to the component's frame.
+
+Edit the shapes in the Details panel, then [save your changes](#save-your-changes).
+The `obstacle` model requires `viam-server` v1.12.0 or later.
+To configure obstacles in JSON instead, see [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
 
 ## Edit a frame's position and orientation
 

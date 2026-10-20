@@ -13,7 +13,7 @@
 | [Camera](/hardware/common-components/add-a-camera/)                   | `GetImages`, `ReadImage` (deprecated), `NextPointCloud`, `GetWorldPose`, `DoCommand` |
 | [Encoder](/hardware/common-components/add-an-encoder/)                 | `TicksCount`, `GetWorldPose`, `DoCommand` |
 | [Gantry](/hardware/common-components/add-a-gantry/)                   | `Lengths`, `Position`, `GetWorldPose`, `DoCommand` |
-| [Gripper](/hardware/common-components/add-a-gripper/)                 | `GetWorldPose`, `DoCommand` |
+| [Gripper](/hardware/common-components/add-a-gripper/)                 | `IsHoldingSomething`, `GetWorldPose`, `DoCommand` |
 | [Input Controller](/hardware/common-components/add-an-input-controller/) | `GetWorldPose`, `DoCommand` |
 | [Motor](/hardware/common-components/add-a-motor/)                     | `Position`, `IsPowered`, `GetWorldPose`, `DoCommand` |
 | [Movement sensor](/hardware/common-components/add-a-movement-sensor/) | `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position`, `GetWorldPose`, `DoCommand` |

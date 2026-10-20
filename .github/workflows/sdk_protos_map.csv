@@ -27,7 +27,7 @@ arm,Close,,close,Close,,
 ## AudioIn
 audio_in,GetAudio,,get_audio,GetAudio,getAudio,getAudio
 audio_in,GetProperties,,get_properties,Properties,getProperties,getProperties
-audio_in,GetGeometries,,get_geometries,,,
+audio_in,GetGeometries,,get_geometries,,getGeometries,getGeometries
 audio_in,Reconfigure,,,Reconfigure,,
 audio_in,DoCommand,,do_command,DoCommand,doCommand,doCommand
 audio_in,GetStatus,,get_status,Status,getStatus,getStatus
@@ -38,7 +38,7 @@ audio_in,Close,,close,Close,,
 audio_out,Play,,play,Play,play,play
 audio_out,PlayStream,,play_stream,PlayStream,playStream,playStream
 audio_out,GetProperties,,get_properties,Properties,getProperties,getProperties
-audio_out,GetGeometries,,get_geometries,,,
+audio_out,GetGeometries,,get_geometries,,getGeometries,getGeometries
 audio_out,Reconfigure,,,Reconfigure,,
 audio_out,DoCommand,,do_command,DoCommand,doCommand,doCommand
 audio_out,GetStatus,,get_status,Status,getStatus,getStatus
@@ -54,7 +54,7 @@ base,GetProperties,No,get_properties,Properties,properties,getProperties
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 base,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
 base,Stop,Yes,stop,Stop,stop,stop
-base,GetGeometries,No,get_geometries,Geometries,,getGeometries
+base,GetGeometries,No,get_geometries,Geometries,getGeometries,getGeometries
 base,Reconfigure,No,,Reconfigure,,
 base,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
 base,GetStatus,No,get_status,Status,getStatus,getStatus
@@ -80,7 +80,7 @@ board,AnalogByName,No,analog_by_name,AnalogByName,,
 board,DigitalInterruptByName,No,digital_interrupt_by_name,DigitalInterruptByName,,
 board,GPIOPinByName,No,gpio_pin_by_name,GPIOPinByName,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
-board,GetGeometries,No,get_geometries,,,
+board,GetGeometries,No,get_geometries,,getGeometries,getGeometries
 board,Reconfigure,No,,Reconfigure,,
 board,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
 board,GetStatus,No,get_status,Status,getStatus,getStatus
@@ -103,7 +103,7 @@ camera,GetProperties,,get_properties,Properties,properties,getProperties
 ## TED: Camera in Go SDK doesn't appear to implement (inherit) these:
 camera,DoCommand,,do_command,DoCommand,doCommand,doCommand
 camera,GetStatus,,get_status,Status,getStatus,getStatus
-camera,GetGeometries,,get_geometries,Geometries,,getGeometries
+camera,GetGeometries,,get_geometries,Geometries,getGeometries,getGeometries
 ## HACK:  proto for close, manually mapping:
 camera,GetResourceName,,get_resource_name,Name,getResourceName,name
 camera,Close,,close,Close,,
@@ -112,7 +112,7 @@ camera,Close,,close,Close,,
 encoder,GetPosition,Yes,get_position,Position,,getPosition
 encoder,ResetPosition,Yes,reset_position,ResetPosition,,resetPosition
 encoder,GetProperties,Yes,get_properties,Properties,,getProperties
-encoder,GetGeometries,No,get_geometries,,,
+encoder,GetGeometries,No,get_geometries,,,getGeometries
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 encoder,Reconfigure,No,,Reconfigure,,
 encoder,DoCommand,Yes,do_command,DoCommand,,doCommand
@@ -139,7 +139,7 @@ gantry,Close,,close,Close,,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_component,GetGeometries,No,get_geometries,,,getGeometries
+generic_component,GetGeometries,No,get_geometries,,getGeometries,getGeometries
 generic_component,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
 generic_component,GetStatus,No,get_status,Status,getStatus,getStatus
 ## HACK: No proto for close, manually mapping:
@@ -154,7 +154,7 @@ gripper,Grab,,grab,Grab,grab,grab
 gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,isHoldingSomething
 gripper,Stop,,stop,Stop,stop,stop
-gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
+gripper,GetGeometries,,get_geometries,Geometries,getGeometries,getGeometries
 gripper,GetCurrentInputs,,get_current_inputs,CurrentInputs,getCurrentInputs,getCurrentInputs
 gripper,GoToInputs,,go_to_inputs,GoToInputs,goToInputs,goToInputs
 gripper,Reconfigure,,,Reconfigure,,
@@ -170,7 +170,7 @@ input_controller,GetEvents,,get_events,Events,,getEvents
 input_controller,StreamEvents,,,,,
 input_controller,TriggerEvent,,trigger_event,TriggerEvent,,triggerEvent
 ## TED: Go SDK doesn't appear to implement this:
-input_controller,GetGeometries,,get_geometries,,,
+input_controller,GetGeometries,,get_geometries,,,getGeometries
 ## HACK: Input (python, go) provides additional helper function, adding 1 pseudo-entries:
 input_controller,RegisterControlCallback,,register_control_callback,RegisterControlCallback,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
@@ -193,7 +193,7 @@ motor,IsPowered,No,is_powered,IsPowered,powerState,isPowered
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 motor,IsMoving,Yes,is_moving,IsMoving,isMoving,isMoving
 motor,Stop,Yes,stop,Stop,stop,stop
-motor,GetGeometries,No,get_geometries,,,
+motor,GetGeometries,No,get_geometries,,getGeometries,getGeometries
 motor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 motor,DoCommand,,do_command,DoCommand,doCommand,doCommand
@@ -211,7 +211,7 @@ movement_sensor,GetProperties,Yes,get_properties,Properties,properties,getProper
 movement_sensor,GetAccuracy,No,get_accuracy,Accuracy,accuracy,getAccuracy
 movement_sensor,GetLinearAcceleration,Yes,get_linear_acceleration,LinearAcceleration,linearAcceleration,getLinearAcceleration
 ## NOTED: Go SDK doesn't appear to implement this:
-movement_sensor,GetGeometries,No,get_geometries,,,
+movement_sensor,GetGeometries,No,get_geometries,,getGeometries,getGeometries
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 movement_sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
 movement_sensor,Reconfigure,No,,Reconfigure,,
@@ -237,9 +237,8 @@ power_sensor,Close,,close,Close,,
 
 ## Sensor
 sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
-# NOT implemented sensor,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for close (and/or inherited in Go SDK), manually mapping:
-sensor,GetGeometries,,get_geometries,,,
+sensor,GetGeometries,,get_geometries,,getGeometries,getGeometries
 sensor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 sensor,DoCommand,,do_command,DoCommand,doCommand,doCommand
@@ -254,7 +253,7 @@ servo,GetPosition,Yes,get_position,Position,position,getPosition
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 servo,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
 servo,Stop,Yes,stop,Stop,stop,stop
-servo,GetGeometries,No,get_geometries,,,
+servo,GetGeometries,No,get_geometries,,getGeometries,getGeometries
 servo,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 servo,DoCommand,,do_command,DoCommand,doCommand,doCommand
@@ -349,6 +348,7 @@ vision,GetDetections,,get_detections,Detections,detections,getDetections
 vision,GetClassificationsFromCamera,,get_classifications_from_camera,ClassificationsFromCamera,classificationsFromCamera,getClassificationsFromCamera
 vision,GetClassifications,,get_classifications,Classifications,classifications,getClassifications
 vision,GetObjectPointClouds,,get_object_point_clouds,GetObjectPointClouds,objectPointClouds,getObjectPointClouds
+vision,GetDetections3D,,get_detections_3d,GetDetections3D,detections3D,getDetections3D
 vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,,captureAllFromCamera
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 vision,Reconfigure,,,Reconfigure,,
