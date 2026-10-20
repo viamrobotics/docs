@@ -29,13 +29,13 @@ An access policy never limits owners or operators; it only limits members.
 
 Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the roles with the three levels to create access patterns:
 
-| Goal                                           | Assign this                                                                                 |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Software team manages all machines at a site   | Location Owner                                                                              |
-| Field operator monitors and controls machines  | Machine Operator (per machine) or Location Operator                                         |
-| Org admin manages billing, members, and config | Organization Owner                                                                          |
-| Monitoring dashboard reads data from a site    | Location Operator (using an [API key](/organization/api-keys/))                             |
-| Integration reads one camera and nothing else  | Member (using an API key), plus an [access policy](/organization/fine-grained-permissions/) |
+| Goal                                          | Assign this                                                                                 |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Software team manages all machines at a site  | Location Owner                                                                              |
+| Field operator monitors and controls machines | Machine Operator (per machine) or Location Operator                                         |
+| Org admin manages billing, users, and config  | Organization Owner                                                                          |
+| Monitoring dashboard reads data from a site   | Location Operator (using an [API key](/organization/api-keys/))                             |
+| Integration reads one camera and nothing else | Member (using an API key), plus an [access policy](/organization/fine-grained-permissions/) |
 
 The following sections describe the full permissions for each role and level.
 
@@ -93,7 +93,7 @@ Permissions for managing org settings and user roles are as follows:
 | Leave the org | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** |
 | See their own role | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** |
 | See other peoples' roles | **Yes** | **Yes** | **Yes\*** | **Yes\*** | **Yes\*** | **Yes\*** |
-| See all org members (including email and date joined) | **Yes** | **Yes** | No | No | No | No |
+| See all users in the organization (including email and date joined) | **Yes** | **Yes** | No | No | No | No |
 | Invite, resend invite, and revoke invite | **Yes** | No | **Yes\*** | No | **Yes\*** | No |
 | Change someone else's role | **Yes** | No | **Yes\*** | No | **Yes\*** | No |
 | Create a new organization | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** | **Yes** |
