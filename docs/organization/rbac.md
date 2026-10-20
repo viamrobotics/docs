@@ -13,7 +13,7 @@ date: "2022-01-01"
 no_list: true
 ---
 
-Role-Based Access Control (RBAC) is a way to enforce security by assigning organization members or [API keys](/organization/api-keys/) roles that confer permissions.
+Role-Based Access Control (RBAC) is a way to enforce security by assigning users in your organization or [API keys](/organization/api-keys/) roles that confer permissions.
 You can assign an owner or an operator role for an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 - **Owner**: Can see and edit every tab on the machine page and perform equivalent operations from the APIs.
@@ -25,7 +25,7 @@ You can assign an owner or an operator role for an {{< glossary_tooltip term_id=
 
 An access policy never limits owners or operators; it only limits members.
 
-<!-- TODO(verify, DOCS-4936): which levels offer Member and the role picker wording; test plan "App" in the description of PR 5429. Checked 2026-10-20: CLI 1.13.0 has no way to create invites or pick a role for an API key; `viam machines api-key create` makes an Owner key on the machine, so the app UI is the only path to a Member once it ships. Decided 2026-10-15: no Member columns in the permission tables below; a member's permissions are whatever its grants say, so the tables link to Fine-grained permissions instead. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
+<!-- TODO(verify, DOCS-4936): which levels offer Member and the role picker wording. The sentence above the role list ("You can assign an owner or an operator role...") names only two roles and needs updating once the levels are known; test plan "App" in the description of PR 5429. Checked 2026-10-20: CLI 1.13.0 has no way to create invites or pick a role for an API key; `viam machines api-key create` makes an Owner key on the machine, so the app UI is the only path to a Member once it ships. Decided 2026-10-15: no Member columns in the permission tables below; a member's permissions are whatever its grants say, so the tables link to Fine-grained permissions instead. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
 
 Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the roles with the three levels to create access patterns:
 

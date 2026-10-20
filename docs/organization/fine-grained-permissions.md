@@ -17,15 +17,13 @@ For example, you can let one API key read images from a camera and nothing else.
 
 You define a policy in your machine's configuration.
 Viam compiles it into rules that `viam-server` enforces on every request from a client.
-A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning.
 
 ## Who a policy applies to
 
 Owners and operators have machine-wide permission: they can call every method on every resource of the machine, and an access policy never limits them.
 A member has no machine-wide permission.
-A member can call only the methods that a grant allows, on the resources the grant names.
+A member can call only the methods that a grant allows, on the resources the grant names, plus the methods needed to connect, described below.
 
-A member can't call anything on a machine until a grant allows it.
 To let a user or API key make specific calls, give it the **Member** role, then name it in a grant.
 A grant that names anyone who isn't a member is ignored.
 See [Role-based access control](/organization/rbac/) for how roles are assigned.
@@ -39,12 +37,10 @@ Find the row that describes the caller and the call:
 | Situation | Result |
 | --------- | ------ |
 | The caller is unauthenticated. | Denied. |
-| The caller is listed in more than one entry. | Denied for every call. `viam-server` logs an error until you fix the configuration. |
 | The caller has its own entry that grants the method on the resource. | Allowed. |
 | The caller has its own entry that doesn't grant the method on the resource. | Denied. |
 | The caller has no entry of its own. | Denied. |
 | The method acts on the machine as a whole instead of one resource, such as `StopAll`. | Allowed only if a grant lists `_machine` as its resource. `_machine` is a placeholder for the machine itself, not a real resource. |
-| An entry has an unknown subject `type`. | The entry is ignored, and `viam-server` logs a warning. |
 
 A denied call fails with a `PermissionDenied` error, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
 If a change to the rules removes a caller's access, `viam-server` also closes that caller's open video streams.
@@ -117,7 +113,6 @@ In that grant, name the resource by its plain name, such as `cam2`, or as `<sub-
 If you run `viam-server` from a local configuration file instead of managing the machine in the Viam app, you write the rules `viam-server` enforces directly, in the `auth` section of the file.
 Requires `viam-server` v1.8.0 or later.
 
-This format is for local configuration files.
 If you manage the machine in the Viam app, define an [access policy](#define-an-access-policy) instead.
 The app rejects a configuration that sets `auth.user_permissions` directly, because it generates that section from the access policy.
 
@@ -174,10 +169,11 @@ Each entry has a `user` and a list of `permissions`:
 The `user` types are `api-key-id`, `app-user-id`, and `default`.
 Leave out the `id` of a `default` entry.
 Resources and methods work as in an access policy, except that `user_permissions` takes exact names only: it has no wildcards.
+See [Find a method name](#find-a-method-name) for how to look up exact names.
 
 The `_machine` permissions in the example list the six methods a client needs to connect to the machine and read its status.
-The SDKs call the first four automatically when they connect.
-The Viam app adds these methods for members, but a local file doesn't, so include them in every entry whose caller needs to connect.
+The SDKs call `ResourceNames`, `ResourceRPCSubtypes`, `StartSession`, and `SendSessionHeartbeat` automatically when they connect.
+The Viam app adds all six for members, but a local file doesn't, so include them in every entry whose caller needs to connect.
 
 Roles are part of the Viam app, so they don't decide who can connect to a machine run from a local file.
 The `auth.handlers` section does.
@@ -200,13 +196,15 @@ An `api-key-id` entry in `user_permissions` matches one of those IDs:
 }
 ```
 
-[How a call is evaluated](#how-a-call-is-evaluated) applies here, with two additions.
+[How a call is evaluated](#how-a-call-is-evaluated) applies here, with these additions.
 A `default` entry covers any authenticated caller that has no entry of its own:
 
 <!-- prettier-ignore -->
 | Situation | Result |
 | --------- | ------ |
 | The `user_permissions` list is empty or absent. | Allowed. Anyone who can connect to the machine is unrestricted. |
+| The caller is listed in more than one entry. | Denied for every call. `viam-server` logs an error until you fix the configuration. |
+| An entry has an unknown `user` type. | The entry is ignored, and `viam-server` logs a warning. |
 | The caller has no entry, and the `default` entry grants the method on the resource. | Allowed. |
 | The caller has no entry, and there is no `default` entry or it doesn't grant the call. | Denied. |
 
