@@ -494,7 +494,7 @@ Register a publicly readable linux/amd64 Docker Hub image as a custom training c
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to register the custom training container to.
 - `image_uri` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the Docker Hub reference of the training container image.
-- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a description of the training container, used as its display name.
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): a description of the training container, used as its display name. Must not be empty.
 
 **Returns:**
 
