@@ -94,12 +94,8 @@ Find them in the [Viam API package](https://github.com/viamrobotics/api/tree/mai
 
 For example, `camera.proto` declares `package viam.component.camera.v1`, `service CameraService`, and `rpc GetImages`, which gives `/viam.component.camera.v1.CameraService/GetImages`.
 
-#### Exceptions
-
-Two sets of methods don't follow the component and service pattern:
-
-- Machine-level methods use `viam.robot.v1.RobotService`, such as `/viam.robot.v1.RobotService/GetMachineStatus`. Their resource in a grant is `_machine`.
-- Video streaming uses `proto.stream.v1.StreamService`.
+Copy the `package` line exactly as written, because it doesn't always match the folder path.
+For example, `stream.proto` is in the `viam` folder but declares `package proto.stream.v1`.
 
 ### Machines with more than one part
 
