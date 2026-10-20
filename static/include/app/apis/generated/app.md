@@ -2710,6 +2710,9 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 **Parameters:**
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to retrieve history from.
+- `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time. Only history entries created after this time will be returned.
+- `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time. Only history entries created before this time will be returned.
+- `page_limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): Optional maximum number of history entries to return, newest first.
 
 **Returns:**
 
