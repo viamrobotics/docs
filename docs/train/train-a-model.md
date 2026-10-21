@@ -287,7 +287,7 @@ To use your own training script instead of a built-in training type:
 2. Upload with the CLI:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam training-script upload --path=<path-to-script> --org-id=<org-id> --script-name=<name>
+   viam training-script upload --path=<path-to-script> --org-id=<org-id> --script-name=<name> --framework=<framework>
    ```
 
 3. Submit a training job that references your script (from the web UI or CLI).

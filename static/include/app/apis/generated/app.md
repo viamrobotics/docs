@@ -2703,6 +2703,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 ### GetRobotPartHistory
 
 Get a list containing the history of a machine {{< glossary_tooltip term_id="part" text="part" >}}.
+If you don't set a page limit, it returns the 100 newest entries.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2710,6 +2711,9 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 **Parameters:**
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to retrieve history from.
+- `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time. Only history entries created after this time will be returned.
+- `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time. Only history entries created before this time will be returned.
+- `page_limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): Optional maximum number of history entries to return, newest first.
 
 **Returns:**
 
@@ -2736,6 +2740,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(...*GetRobotPartHistoryOptions)](https://pkg.go.dev/go.viam.com/rdk/app#GetRobotPartHistoryOptions)
 
 **Returns:**
 
@@ -2748,6 +2753,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 history, err := cloud.GetRobotPartHistory(
 	context.Background(),
 	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+
+limit := 50
+history, err := cloud.GetRobotPartHistory(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	&GetRobotPartHistoryOptions{Start: &startTime, End: &endTime, PageLimit: &limit})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartHistory).
