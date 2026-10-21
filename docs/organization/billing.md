@@ -18,7 +18,7 @@ The billing page shows your organization's current usage, payment method, and in
 You must be an organization owner to access it.
 
 To open the billing page, click the organization name in the top navigation bar and select **Payment & Billing**.
-The page has two tabs: **Overview**, which holds the usage, payment, and invoice sections described below, and [**Data usage**](#check-data-usage).
+The page has two tabs: **Overview**, which holds every section on this page except data usage, and [**Data usage**](#check-data-usage).
 
 ## Understand your usage
 
