@@ -19,6 +19,8 @@ build:
 
 {{< alert title="Discontinued" color="caution" >}}
 Support for the navigation service has been discontinued.
+`viam-server` v1.13.0, the Go SDK in RDK v1.13.0, the Python SDK v0.85.0, and the Flutter SDK v0.23.0 replace the API on this page with a navigation API built around saved locations, routes, and zones.
+In those versions, `GetMode`, `SetMode`, `GetWaypoints`, `AddWaypoint`, `RemoveWaypoint`, `GetObstacles`, and `GetPaths` no longer exist, and `GetLocation` returns a saved location instead of the machine's current position.
 This page is retained for reference only.
 {{< /alert >}}
 

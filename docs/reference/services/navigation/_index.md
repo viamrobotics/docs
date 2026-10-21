@@ -20,6 +20,7 @@ build:
 
 {{< alert title="Discontinued" color="caution" >}}
 Support for the navigation service has been discontinued.
+`viam-server` v1.13.0 and later no longer include the `rdk:builtin:builtin` navigation model that this page configures.
 This page is retained for reference only.
 {{< /alert >}}
 
