@@ -2950,7 +2950,7 @@ Use a training script to train an ML model on data.
 ```sh {class="command-line" data-prompt="$"}
 viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
 viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
-viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --framework=<framework> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --framework=<framework> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
 viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
