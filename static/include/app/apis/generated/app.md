@@ -2703,6 +2703,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 ### GetRobotPartHistory
 
 Get a list containing the history of a machine {{< glossary_tooltip term_id="part" text="part" >}}.
+If you don't set a page limit, it returns the 100 newest entries.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2739,6 +2740,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(...*GetRobotPartHistoryOptions)](https://pkg.go.dev/go.viam.com/rdk/app#GetRobotPartHistoryOptions)
 
 **Returns:**
 
@@ -2751,6 +2753,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 history, err := cloud.GetRobotPartHistory(
 	context.Background(),
 	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+
+limit := 50
+history, err := cloud.GetRobotPartHistory(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	&GetRobotPartHistoryOptions{Start: &startTime, End: &endTime, PageLimit: &limit})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartHistory).
