@@ -9,6 +9,7 @@
 | `read_machine_config` | Read-only |
 | `read_machine_metadata` | Read-only |
 | `read_part_status` | Read-only |
+| `retrieve_skill` | Read-only |
 | `search_configuration_blocks` | Read-only |
 | `read_viam_docs` | Read-only (external) |
 | `read_machine_logs` | Read (billable) |
