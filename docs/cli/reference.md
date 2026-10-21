@@ -1880,7 +1880,7 @@ The command needs no credentials, so you can run it in your module's CI before a
 
 The command checks that:
 
-- the file parses as JSON and `module_id` is a valid module ID
+- the file parses as JSON and `module_id` has the form `public-namespace:module-name` (or `org-id:module-name`)
 - each model's `short_description` is at most 100 bytes
 - each application's `customizations.machinePicker` `heading` is at most 60 bytes and `subheading` is at most 256 bytes
 
@@ -2192,7 +2192,7 @@ The following criteria are checked for every `upload`:
 - The entry point file specified in the [`meta.json` file](/build-modules/module-reference/) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
-- Each model's `short_description` in <file>meta.json</file> must be at most 100 bytes, and each application's `customizations.machinePicker` `heading` and `subheading` must be at most 60 and 256 bytes. `module update` checks the same limits. To check them without uploading, run [`module lint-manifest`](#module-lint-manifest).
+- If a <file>meta.json</file> is present, each model's `short_description` must be at most 100 bytes, and each application's `customizations.machinePicker` `heading` and `subheading` must be at most 60 and 256 bytes. `module update` checks the same limits. To check them without uploading, run [`module lint-manifest`](#module-lint-manifest).
 
 See [Create a module](/build-modules/write-a-driver-module/) and [Update and manage modules you created](/build-modules/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
