@@ -22,7 +22,7 @@ The machines table shows every machine in your organization with its current sta
 - **Offline** (red): the machine is not connected. The table shows when it was last online.
 - **Awaiting setup**: the machine has been created but has not yet connected to Viam.
 
-You can also see the amount of binary and tabular data your fleet has synced in the last 48 hours from this dashboard.
+To see how much binary and tabular data your fleet has synced in the last 48 hours, organization owners can open the **Data usage** tab of the billing page. See [Check data usage](/organization/billing/#check-data-usage).
 
 ## Inspect a specific machine
 
