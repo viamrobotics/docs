@@ -2681,7 +2681,8 @@ viam packages upload --path=./the_package.tar.gz --org-id=123 --name=MyMLModel -
 | `--name` | The name of the package. | **Required** |
 | `--version` | The version of the package or `latest`. | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
-| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | Required if `--type=ml_model` |
+| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | Required if `--type=ml_model` |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--model-framework=registry`, and not allowed with any other framework. | Optional |
 | `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | Required if `--type=ml_model` |
 
 ### `packages export`
@@ -2949,7 +2950,7 @@ Use a training script to train an ML model on data.
 ```sh {class="command-line" data-prompt="$"}
 viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
 viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
-viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --framework=<framework> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
 viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
@@ -3006,7 +3007,7 @@ Upload a draft training script and submit a custom training job on data in the V
 
 ```sh {class="command-line" data-prompt="$"}
 # submit custom training job with an uploaded training script on data in Viam Cloud
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --container-id=<INSERT CONTAINER ID> --args=num_epochs=3,labels="'green_square blue_star'"
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --framework=tflite --container-id=<INSERT CONTAINER ID> --args=num_epochs=3,labels="'green_square blue_star'"
 ```
 
 <!-- prettier-ignore -->
@@ -3019,7 +3020,8 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--path` | The path to the ML training script to upload. | **Required** |
 | `--script-name` | The registry name of the ML training script to use for training. This sets the name on upload. | **Required** |
 | `--container-id` | The ID of the training container to run the job in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
-| `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`. | Optional |
+| `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`. | **Required** |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 | `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | Optional |
 | `--version` | The version of the ML training script to upload. Default: current timestamp. | Optional |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
@@ -3163,7 +3165,8 @@ viam training-script upload --framework=tflite --org-id=123 --path=. --script-na
 | `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | **Required** |
 | `--script-name` | Name of the ML training script to upload. | **Required** |
 | `--version` | Version of the ML training script to upload. | Optional |
-| `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | Optional |
+| `--framework` | Framework of the ML training script to upload, can be `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | **Required** |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 | `--url` | URL of GitHub repository associated with the training script. | Optional |
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | Optional |
@@ -3186,6 +3189,8 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 | `--visibility` | Visibility of the registry item. Options: `public`, `private`. | **Required** |
 | `--description` | Description of the ML training script. | Optional |
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
+| `--framework` | Framework of the ML training script: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. Setting `--framework` or `--module-resource` replaces the script's framework and module resources. If you set only `--module-resource`, the script keeps its current framework, so that framework must already be `registry`. | Optional |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 
 ### `training-script test-local`
 
