@@ -1699,6 +1699,7 @@ viam module add-app [--app-name=<name>] [--app-type=<type>] [--dry-run]
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module update-models [--binary=<binary>] [...named args]
+viam module lint-manifest [--module=<path to meta.json>]
 viam module build start --version=<version> [...named args]
 viam module build local --module=<path to meta.json> [arguments...]
 viam module build list [command options] [arguments...]
@@ -1871,6 +1872,30 @@ viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
 | -------- | ----------- | --------- |
 | `--binary` | The module executable to run (binary or script). Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | Optional |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
+
+### `module lint-manifest`
+
+Check your module's <file>meta.json</file> for format errors and for the length limits the Viam registry enforces, without connecting to Viam.
+The command needs no credentials, so you can run it in your module's CI before a release publishes the module.
+
+The command checks that:
+
+- the file parses as JSON and `module_id` has the form `public-namespace:module-name` (or `org-id:module-name`)
+- each model's `short_description` is at most 100 bytes
+- each application's `customizations.machinePicker` `heading` is at most 60 bytes and `subheading` is at most 256 bytes
+
+It prints a warning for a model whose `api` value is malformed, and prints `no problems found in <path>` when the checks pass.
+Passing does not guarantee that an upload will succeed.
+
+```sh {class="command-line" data-prompt="$"}
+# check the meta.json file in the current directory
+viam module lint-manifest
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. Default: `./meta.json`. | Optional |
 
 ### `module upload`
 
@@ -2167,6 +2192,7 @@ The following criteria are checked for every `upload`:
 - The entry point file specified in the [`meta.json` file](/build-modules/module-reference/) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
+- If a <file>meta.json</file> is present, each model's `short_description` must be at most 100 bytes, and each application's `customizations.machinePicker` `heading` and `subheading` must be at most 60 and 256 bytes. `module update` checks the same limits. To check them without uploading, run [`module lint-manifest`](#module-lint-manifest).
 
 See [Create a module](/build-modules/write-a-driver-module/) and [Update and manage modules you created](/build-modules/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
