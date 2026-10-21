@@ -102,6 +102,10 @@
         padding-top: .5rem;
         padding-left: 0.5rem;
         padding-right: 0rem !important;
+
+        @include media-breakpoint-up(md) {
+            padding-bottom: 4rem;
+        }
     }
 
     li i { // Layout of icons
