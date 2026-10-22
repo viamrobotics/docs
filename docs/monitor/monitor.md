@@ -31,6 +31,7 @@ Use the star next to a machine in the table to favorite it.
 Favorite machines appear at the top of the table, and you can see your favorites from every organization on the **Machine Favorites** tab in your user settings.
 
 Favorites belong to your user account, so other members of your organization can't see them.
+A machine that is deleted, or that you can no longer access, drops out of your favorites.
 
 To manage favorites from an AI agent, use the `list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine` tools in the [Viam MCP server](/reference/mcp/).
 
