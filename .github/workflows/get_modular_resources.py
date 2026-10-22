@@ -30,7 +30,9 @@ def model_type_to_str(model_type: int) -> str:
     try:
         return model_type_map[model_type]
     except KeyError:
-        raise ValueError(f"NEW UNKNOWN MODEL TYPE {model_type} must add to model type map")
+        # Don't fail the publish run when the API adds a new enum value
+        print(f"WARNING: unknown model type {model_type}, add it to model_type_map")
+        return ""
 
 def model_framework_to_str(model_framework: int) -> str:
     model_framework_map = {
@@ -176,7 +178,7 @@ async def main():
         res = typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
         print("ML models deleted")
         print(res)
-        res = typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        res = typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
         print("Training scripts deleted")
         print(res)
     except Exception as e:
