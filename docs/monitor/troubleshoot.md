@@ -128,6 +128,15 @@ You can filter logs by:
 - **Time range**: set start and end times, or use live mode to stream logs in real time
 - **Source**: filter by a specific component or service name
 
+To share the logs you're looking at, click the link icon (**Copy link to share these logs**) next to the **Download logs** button.
+The link keeps your level, keyword, and source filters, and anyone who can view the machine's logs can open it.
+If the time range is a preset, such as the default last 12 hours, choose which link to copy:
+
+- **Copy link (last 12 hours)**, named for the preset you chose: opens the most recent logs for that window, as of when someone opens the link.
+- **Copy link to exact time range**: opens the same logs you see now, ending at the moment you copied the link.
+
+If you set your own start and end times, the button copies a link to that range right away.
+
 The default log level is `Info`.
 If you are not seeing helpful logs, enable debug logging.
 
