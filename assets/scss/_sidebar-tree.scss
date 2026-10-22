@@ -12,6 +12,7 @@
         @supports (position: sticky) {
             max-height: calc(100vh - 4rem);
             overflow-y: auto;
+            padding-bottom: 4rem;
         }
     }
 
@@ -102,10 +103,6 @@
         padding-top: .5rem;
         padding-left: 0.5rem;
         padding-right: 0rem !important;
-
-        @include media-breakpoint-up(md) {
-            padding-bottom: 4rem;
-        }
     }
 
     li i { // Layout of icons
