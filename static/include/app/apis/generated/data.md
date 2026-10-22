@@ -287,6 +287,13 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### TabularDataByFilter
 
+{{% alert title="Deprecated" color="caution" %}}
+
+Use [`TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) or [`TabularDataBySQL`](/reference/apis/data-client/#tabulardatabysql) to query tabular data, or [`ExportTabularData`](/reference/apis/data-client/#exporttabulardata) to stream all data from one data source.
+`TabularDataByFilter` will be removed in a future release.
+
+{{% /alert %}}
+
 Retrieve optionally filtered tabular data from [Viam](https://app.viam.com).
 You can also find your tabular data under the **Sensors** subtab of the [**Data** tab](https://app.viam.com/data).
 {{< tabs >}}
@@ -1600,6 +1607,13 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### TagsByFilter
 
+{{% alert title="Deprecated" color="caution" %}}
+
+`TagsByFilter` will be removed in a future release, and has no replacement method.
+To list the tags on binary data, call [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) and read the tags from each result's capture metadata.
+
+{{% /alert %}}
+
 Get a list of tags using a filter.
 
 {{< tabs >}}
@@ -1940,6 +1954,13 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{< /tabs >}}
 
 ### BoundingBoxLabelsByFilter
+
+{{% alert title="Deprecated" color="caution" %}}
+
+`BoundingBoxLabelsByFilter` will be removed in a future release, and has no replacement method.
+To list bounding box labels, call [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) and read the labels from each result's annotations.
+
+{{% /alert %}}
 
 Get a list of bounding box labels using a Filter.
 
@@ -2873,6 +2894,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ### AddTagsToBinaryDataByFilter
 
+{{% alert title="Deprecated" color="caution" %}}
+
+Use [`AddTagsToBinaryDataByIDs`](/reference/apis/data-client/#addtagstobinarydatabyids) instead.
+Calls to `AddTagsToBinaryDataByFilter` return an unimplemented error.
+To tag the data that matches a filter, get its binary data IDs from [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) first.
+
+{{% /alert %}}
+
 Add tags to binary data by filter.
 
 {{< tabs >}}
@@ -3006,6 +3035,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< /tabs >}}
 
 ### RemoveTagsFromBinaryDataByFilter
+
+{{% alert title="Deprecated" color="caution" %}}
+
+Use [`RemoveTagsFromBinaryDataByIDs`](/reference/apis/data-client/#removetagsfrombinarydatabyids) instead.
+Calls to `RemoveTagsFromBinaryDataByFilter` return an unimplemented error.
+To remove tags from the data that matches a filter, get its binary data IDs from [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) first.
+
+{{% /alert %}}
 
 Remove tags from binary data by filter.
 
