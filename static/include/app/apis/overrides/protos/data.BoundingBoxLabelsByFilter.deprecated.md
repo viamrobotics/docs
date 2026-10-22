@@ -1,2 +1,2 @@
-`BoundingBoxLabelsByFilter` will be removed in a future release, and has no replacement method.
-To list bounding box labels, call [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) and read the labels from each result's annotations.
+Use [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) instead, and collect the unique labels from each result's bounding box annotations.
+`BoundingBoxLabelsByFilter` will be removed in a future release.

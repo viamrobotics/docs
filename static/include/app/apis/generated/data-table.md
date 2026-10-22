@@ -13,10 +13,10 @@
 | [`DeleteBinaryDataByIDs`](/reference/apis/data-client/#deletebinarydatabyids) | Filter and delete binary data by ids. |
 | [`AddTagsToBinaryDataByIDs`](/reference/apis/data-client/#addtagstobinarydatabyids) | Add tags to binary data by ids. |
 | [`RemoveTagsFromBinaryDataByIDs`](/reference/apis/data-client/#removetagsfrombinarydatabyids) | Remove tags from binary by ids. |
-| [`TagsByFilter`](/reference/apis/data-client/#tagsbyfilter) | **Deprecated.** `TagsByFilter` will be removed in a future release, and has no replacement method. |
+| [`TagsByFilter`](/reference/apis/data-client/#tagsbyfilter) | **Deprecated.** Use `BinaryDataByFilter` instead, and collect the unique tags from each result's capture metadata. |
 | [`AddBoundingBoxToImageByID`](/reference/apis/data-client/#addboundingboxtoimagebyid) | Add a bounding box to an image specified by its BinaryID. |
 | [`RemoveBoundingBoxFromImageByID`](/reference/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its BinaryID. |
-| [`BoundingBoxLabelsByFilter`](/reference/apis/data-client/#boundingboxlabelsbyfilter) | **Deprecated.** `BoundingBoxLabelsByFilter` will be removed in a future release, and has no replacement method. |
+| [`BoundingBoxLabelsByFilter`](/reference/apis/data-client/#boundingboxlabelsbyfilter) | **Deprecated.** Use `BinaryDataByFilter` instead, and collect the unique labels from each result's bounding box annotations. |
 | [`GetDatabaseConnection`](/reference/apis/data-client/#getdatabaseconnection) | Get a connection to access a MongoDB Atlas Data federation instance. |
 | [`ConfigureDatabaseUser`](/reference/apis/data-client/#configuredatabaseuser) | Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. |
 | [`AddBinaryDataToDatasetByIDs`](/reference/apis/data-client/#addbinarydatatodatasetbyids) | Add the `BinaryData` to the provided dataset. |
