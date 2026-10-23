@@ -31,7 +31,7 @@ def model_type_to_str(model_type: int) -> str:
         return model_type_map[model_type]
     except KeyError:
         # Don't fail the publish run when the API adds a new enum value
-        print(f"WARNING: unknown model type {model_type}, add it to model_type_map")
+        print(f"::warning::unknown model type {model_type}, add it to model_type_map")
         return ""
 
 def model_framework_to_str(model_framework: int) -> str:
@@ -50,7 +50,7 @@ def model_framework_to_str(model_framework: int) -> str:
         return model_framework_map[model_framework]
     except KeyError:
         # Don't fail the publish run when the API adds a new enum value
-        print(f"WARNING: unknown model framework {model_framework}, add it to model_framework_map")
+        print(f"::warning::unknown model framework {model_framework}, add it to model_framework_map")
         return ""
 
 
@@ -116,7 +116,10 @@ async def main():
             print("INSERTED")
             print(insert_resp)
 
-    # Create a request to list registry items and get the response from the app
+    # Create a request to list registry items and get the response from the app.
+    # The API returns every matching item in one response (page_token is ignored
+    # server-side), and the stale-document deletes below treat anything missing
+    # from this list as deleted. If the API ever adds paging, loop over pages here.
     request = ListRegistryItemsRequest(organization_id=cloud._organization_id)
     response : ListRegistryItemsResponse = await cloud._app_client.ListRegistryItems(request)
 
