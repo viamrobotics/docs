@@ -290,7 +290,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% alert title="Deprecated" color="caution" %}}
 
 Use [`TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) or [`TabularDataBySQL`](/reference/apis/data-client/#tabulardatabysql) to query tabular data, or [`ExportTabularData`](/reference/apis/data-client/#exporttabulardata) to stream all data from one data source.
-`TabularDataByFilter` will be removed in a future release.
 
 {{% /alert %}}
 
@@ -1609,8 +1608,10 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 {{% alert title="Deprecated" color="caution" %}}
 
-Use [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) instead, and collect the unique tags from each result's capture metadata.
-`TagsByFilter` will be removed in a future release.
+Collect tags from binary data with [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter), and from tabular data with [`TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql).
+`TagsByFilter` returns the unique tags from both.
+For binary data, read each result's `metadata.capture_metadata.tags`.
+For tabular data, query the `tags` field of the [`readings` table](/data/schema/).
 
 {{% /alert %}}
 
@@ -1957,8 +1958,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 {{% alert title="Deprecated" color="caution" %}}
 
-Use [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) instead, and collect the unique labels from each result's bounding box annotations.
-`BoundingBoxLabelsByFilter` will be removed in a future release.
+Use [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) instead, and collect the unique `label` values from each result's `metadata.annotations.bboxes`.
 
 {{% /alert %}}
 

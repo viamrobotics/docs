@@ -955,8 +955,8 @@ def write_markdown(type, names, methods):
 
                         ## Protos that viamrobotics/api marks `option deprecated = true` get a hand-written note naming
                         ## the replacement (the proto itself doesn't say what to use instead), rendered as an alert above
-                        ## the description and in place of the description in the summary table.
-                        ## check_deprecated_protos.py --strict fails when a deprecated proto in this map has no note:
+                        ## the description and in place of the description in the summary table. See CLAUDE.md
+                        ## ("Generated SDK reference docs") for how to find newly deprecated protos:
                         ## .../overrides/protos/{resource}.{proto}.deprecated.md
                         proto_deprecated_file = os.path.join(path_to_protos_override, resource + '.' + proto + '.deprecated.md')
                         if os.path.isfile(proto_deprecated_file):
