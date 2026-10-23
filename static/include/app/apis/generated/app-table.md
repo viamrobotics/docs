@@ -39,6 +39,7 @@
 | [`TailRobotPartLogs`](/reference/apis/fleet/#tailrobotpartlogs) | Get an asynchronous iterator that receives live machine part logs. |
 | [`GetRobotPartHistory`](/reference/apis/fleet/#getrobotparthistory) | Get a list containing the history of a machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`UpdateRobotPart`](/reference/apis/fleet/#updaterobotpart) | Change the name of and assign an optional new configuration to a machine {{< glossary_tooltip term_id="part" text="part" >}}. |
+| [`SetConfigProperty`](/reference/apis/fleet/#setconfigproperty) | Set individual properties in a machine {{< glossary_tooltip term_id="part" text="part" >}}'s configuration by path, without replacing the whole configuration as `UpdateRobotPart` does. |
 | [`NewRobotPart`](/reference/apis/fleet/#newrobotpart) | Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`DeleteRobotPart`](/reference/apis/fleet/#deleterobotpart) | Delete the specified machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`MarkPartAsMain`](/reference/apis/fleet/#markpartasmain) | Mark a machine part as the _main_ part of a machine. |
