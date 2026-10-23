@@ -131,6 +131,8 @@ You can filter logs by:
 The default log level is `Info`.
 If you are not seeing helpful logs, enable debug logging.
 
+If a resource you configured is missing or unavailable, search the logs for `name collision`. Two resources sharing a name can stop both from building. See [Resource names](/hardware/configure-hardware/#resource-names).
+
 #### Enable debug logging
 
 **For all resources on the machine**, add `"debug": true` to the JSON configuration:

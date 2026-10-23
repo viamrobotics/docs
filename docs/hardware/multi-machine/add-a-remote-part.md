@@ -62,8 +62,11 @@ The remote part is now part of your machine's configuration.
 
 ## 3. Optional: set a prefix
 
-If you connect multiple remotes and some export components with the same names, add a `prefix` to the remote config.
+Resource names must be unique across the whole machine, including resources from remotes.
+If a remote exports a resource with the same name as a local resource or another remote's resource, `viam-server` hides the remote resource (a local resource wins its name).
+Add a `prefix` to the remote config to prevent this.
 The prefix is prepended to every resource name coming from that remote.
+See [Resource names](/hardware/configure-hardware/#resource-names).
 
 Prefixes are concatenated directly, with no separator.
 To keep names readable, end your prefix with `-` or `_`:

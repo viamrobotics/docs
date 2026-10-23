@@ -111,7 +111,13 @@ If it shows as offline, verify that `viam-server` is running on your machine.
    motor", "xArm6"). The search covers all available models and fragments.
 4. Give your component a **name** and click **Add to machine**. The name is how
    you reference it in code and configuration, so keep it short,
-   descriptive, and unique on this machine.
+   descriptive, and unique on this machine. See [Resource names](#resource-names).
+
+#### Resource names
+
+Every component and service on a machine needs a name that is unique across the whole machine, even when two resources use different APIs. For example, you can't name both a camera and a sensor `billing`. This includes resources from [remote parts](/hardware/multi-machine/add-a-remote-part/) and fragments. The name `builtin` is reserved for the default services.
+
+If names collide, `viam-server` logs an error and doesn't build the conflicting local resources. Anything that depends on them is also unavailable until you rename one. If a local resource collides with a remote one, the local resource wins and the remote resource is hidden. To avoid collisions with remote resources, [set a prefix](/hardware/multi-machine/add-a-remote-part/#3-optional-set-a-prefix) on the remote.
 
 ### 3. Configure attributes
 
