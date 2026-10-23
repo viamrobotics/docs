@@ -2888,6 +2888,33 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
+### SetConfigProperty
+
+Set individual properties in a machine {{< glossary_tooltip term_id="part" text="part" >}}'s configuration by path, without replacing the whole configuration as [`UpdateRobotPart`](#updaterobotpart) does.
+Paths are dot-separated, such as `network.bind_address`.
+In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, `processes`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
+Changes apply in order, and each change succeeds or fails on its own; the result for each change reports whether it succeeded and, if not, the error.
+You can send at most 100 changes per request.
+If the part imports a fragment, you can only set properties that the part's own configuration already sets; setting a property that may come from the fragment returns an error.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to update.
+- `property_changes` ([collections.abc.Mapping[str, viam.utils.ValueTypes]](https://python.viam.dev/autoapi/viam/components/component_base/index.html#viam.components.component_base.ValueTypes)) (required): A mapping of JSON paths within the config to the new value at that path.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([list[viam.proto.app.ConfigPropertyChangeResult]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ConfigPropertyChangeResult)): :   The result of each requested property change.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.set_config_property).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobotPart
 
 Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
