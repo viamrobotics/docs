@@ -112,13 +112,14 @@ save it from another browser tab, **Save** is replaced by **Config out of
 date** with **Review** and **Discard**. Fragment configurations work the same
 way. Click **Discard** to drop your edits and load the latest saved
 configuration, or click **Review** to open the **Configuration out of date**
-dialog. The dialog shows who made the other change and how it differs from
-your edits, and offers these choices:
+dialog. The dialog shows how the saved configuration differs from your edits
+(and who changed it, when known), and offers these choices:
 
 - **Merge changes**: combine your edits with the latest saved configuration.
   The dialog offers this, on its **Merge** tab, only when the two can be
   merged safely.
-- **Save anyway**: keep your edits and overwrite the other change.
+- **Save anyway**: keep your edits and overwrite the other change. When the
+  dialog shows tabs, this is on the **Overwrite** tab.
 - **Discard changes and reload**: drop your edits and load the latest saved
   configuration.
 
