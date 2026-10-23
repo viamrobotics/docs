@@ -18,6 +18,7 @@ updated: "2026-10-12"
 Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
 Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), or a training pipeline you want to share with your organization.
 Managed training doesn't accept sequence datasets, so training on one always requires a custom training script.
+For a complete example that fine-tunes a vision-language-action (VLA) model on a sequence dataset, see [Train a VLA](/train/train-a-vla/).
 
 Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
 If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).

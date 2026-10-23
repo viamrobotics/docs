@@ -18,6 +18,7 @@ It also carries tags that describe the whole window, such as `pick-success` or `
 
 Sequences exist to feed [sequence datasets](/train/create-a-dataset/), which you train on with a [custom training script](/train/custom-training-scripts/).
 To follow the whole path from capture to exported training files, see the [sequences tutorial](/data/sequences-tutorial/).
+To train a robot policy, such as a vision-language-action (VLA) model, on demonstrations you record as sequences, see [Train a VLA](/train/train-a-vla/).
 
 ## How a sequence works
 
@@ -56,7 +57,7 @@ Use a sequence when a training example is a stretch of time, not a single image.
 The meaning is in how the images and readings change over the window.
 For example:
 
-- **Learning from demonstrations.** Each sequence is one demonstration of a task, with the camera images and arm joint positions from start to finish.
+- **Learning from demonstrations.** Each sequence is one demonstration of a task, with the camera images and arm joint positions from start to finish. You can fine-tune a VLA policy on these demonstrations. See [Train a VLA](/train/train-a-vla/).
 - **Sequence classification.** Each sequence is one event, tagged with its outcome, such as a successful or failed grasp.
 
 ## Creating sequences
@@ -215,3 +216,4 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 - [Create a sequence dataset](/train/create-a-dataset/): collect sequences for training.
 - [Capture on demand](/data/capture-sync/capture-on-demand/): start and stop capture, and record sequences, with the `capture-control` module.
 - [Sequence dataset format](/train/sequence-dataset-format/): the Parquet files a training script receives.
+- [Train a VLA](/train/train-a-vla/): record demonstrations as sequences, fine-tune a VLA policy on them, and run it on your machine.
