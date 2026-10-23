@@ -26,7 +26,7 @@ fields:
 
 | Field        | What it does                                                                                                                                                                     |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`       | A unique name for this component on this machine. Your code references the component by this name.                                                                               |
+| `name`       | A name for this component, unique across the machine ([details](/hardware/configure-hardware/#resource-names)). Your code references the component by this name.                 |
 | `api`        | The component type, in the form `rdk:component:<type>` (for example, `rdk:component:arm`).                                                                                       |
 | `model`      | The specific implementation, in the form `namespace:family:name` (for example, `viam:ufactory:xArm6`). Built-in models use `rdk:builtin:name` (for example, `rdk:builtin:gpio`). |
 | `attributes` | Model-specific settings that control how to connect to the hardware and how it should behave.                                                                                    |
