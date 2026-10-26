@@ -194,6 +194,12 @@
   force = true
 
 [[redirects]]
+  from = "/tutorials/projects/guardian/"
+  to = "https://web.archive.org/web/20260113103015/https://www.viam.com/post/guardian"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/tutorials/projects/"
   to = "/try/overview/"
   status = 301
