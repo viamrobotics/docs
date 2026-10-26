@@ -115,9 +115,9 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 
 #### Resource names
 
-Every component and service on a machine needs a name that is unique across the whole machine, even when two resources use different APIs. For example, you can't name both a camera and a sensor `billing`. This includes resources from [remote parts](/hardware/multi-machine/add-a-remote-part/) and fragments. The name `builtin` is reserved for the default services.
+Starting with `viam-server` v1.6.0, every component and service on a machine needs a name that is unique across the whole machine, even when two resources use different APIs. For example, you can't name both a camera and a sensor `billing`. This includes resources from [remote parts](/hardware/multi-machine/add-a-remote-part/) and fragments. The name `builtin` is reserved for the default services.
 
-If names collide, `viam-server` logs an error and doesn't build the conflicting local resources. Anything that depends on them is also unavailable until you rename one. If a local resource collides with a remote one, the local resource wins and the remote resource is hidden. To avoid collisions with remote resources, [set a prefix](/hardware/multi-machine/add-a-remote-part/#3-optional-set-a-prefix) on the remote.
+If names collide, `viam-server` logs an error and doesn't build the conflicting local resources. Anything that depends on them is also unavailable until you rename one. If a remote resource has the same name as a local resource, the local resource wins and the remote one is hidden from the machine's resource list. If two remotes export the same name, both are hidden. To avoid collisions with remote resources, [set a prefix](/hardware/multi-machine/add-a-remote-part/#3-optional-set-a-prefix) on the remote.
 
 ### 3. Configure attributes
 

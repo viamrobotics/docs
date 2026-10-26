@@ -85,7 +85,7 @@ If you configured a prefix on the remote, it is prepended to every remote resour
 gripper = Gripper.from_robot(machine, "end-effectorgripper")
 ```
 
-Resource names must be unique across the whole machine. When a remote exports a resource with the same name as a local one, or as another remote's, `viam-server` hides the remote resource unless a prefix disambiguates them. See [Resource names](/hardware/configure-hardware/#resource-names).
+Resource names must be unique across the whole machine. When a remote resource has the same name as a local one, the local resource wins and the remote one is hidden. When two remotes export the same name, both are hidden. A prefix prevents this. See [Resource names](/hardware/configure-hardware/#resource-names).
 
 ## What happens on disconnect
 

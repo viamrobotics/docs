@@ -63,7 +63,7 @@ The remote part is now part of your machine's configuration.
 ## 3. Optional: set a prefix
 
 Resource names must be unique across the whole machine, including resources from remotes.
-If a remote exports a resource with the same name as a local resource or another remote's resource, `viam-server` hides the remote resource (a local resource wins its name).
+If a remote resource has the same name as a local resource, the local one wins and the remote one is hidden. If two remotes export the same name, both are hidden.
 Add a `prefix` to the remote config to prevent this.
 The prefix is prepended to every resource name coming from that remote.
 See [Resource names](/hardware/configure-hardware/#resource-names).
