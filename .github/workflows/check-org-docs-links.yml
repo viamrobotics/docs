@@ -1,14 +1,14 @@
 name: Org docs-link check
 
-# Nightly: scan Viam's source repos for docs.viam.com links and verify each is
+# Weekly: scan Viam's source repos for docs.viam.com links and verify each is
 # working (not 404) and canonical (not a stale alias/redirect; anchors resolve).
 # Findings open/update a single deduplicated issue for the CI-failure triage
 # routine (or a maintainer) to act on. See check_org_docs_links.py.
 
 on:
   schedule:
-    # 07:00 UTC daily (staggered off the other scheduled jobs).
-    - cron: "0 7 * * *"
+    # 07:00 UTC Monday (staggered off the other scheduled jobs).
+    - cron: "0 7 * * 1"
   workflow_dispatch:
 
 permissions:
