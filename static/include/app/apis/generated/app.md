@@ -2896,7 +2896,7 @@ In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, `processe
 Changes apply in order, and each change succeeds or fails on its own; the result for each change reports whether it succeeded and, if not, the error.
 You can send at most 100 changes per request.
 If the part's own configuration sets a property, the change is made there.
-If a fragment the part imports provides the property instead, the change is saved as a `$set` [fragment override](/fleet/reuse-configuration/#override-specific-settings) on the last import that provides it, since later fragments win when fragments merge.
+If a fragment the part imports provides the property instead, the change is saved as a `$set` [fragment override](/fleet/reuse-configuration/#override-specific-settings) for the last fragment that provides it, since later fragments win when fragments merge.
 A property that neither sets is added to the part's configuration.
 Fragment overrides can't change `billing` or `access_policy`, so setting a property in either section that comes from a fragment returns an error.
 Replacing a whole resource that comes from a fragment the part imports more than once returns an error; set the resource's fields instead.
