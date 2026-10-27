@@ -13,7 +13,6 @@ You can work with Viam through a web app, a mobile app, a command-line tool, cod
 They all talk to the same platform, so a machine you set up in one is available in the others.
 
 Most people start in the Viam web app and use the other tools as their needs grow.
-You can also ask an AI assistant to use multiple tools for you.
 
 ## The Viam web app
 
@@ -42,10 +41,12 @@ Here is what you'll find:
 ## The Viam mobile app
 
 The Viam mobile app, available in the App Store and Google Play, is a companion to the web app. It lets you see which machines are online, watch camera feeds, adjust components, and check logs.
-It can also move an arm by moving your phone, upload photos to the cloud, and connect a new device to WiFi over Bluetooth.
+It can also move an arm by moving your phone and upload photos to the cloud.
 
-- Use it to check on or operate a machine when you're away from a computer, or to get a new device online.
+- Use it to check on or operate a machine when you're away from a computer.
 - It's best for operating machines, not for setting them up. Switch to the web app to change a machine's configuration.
+
+To learn more, see [the Viam mobile app](/monitor/default-interface/#viam-mobile-app).
 
 ## The Viam CLI
 
@@ -78,7 +79,7 @@ Once you connect it, the assistant can look up your machines, read and edit thei
 To connect an assistant, see the [MCP server](/reference/mcp/).
 
 {{% alert title="Ask an AI assistant to do it for you" color="tip" %}}
-An assistant that can run the CLI, write code against the SDKs, and use the MCP server can do most of what this page describes on your behalf.
+An assistant that can run the CLI, write code against the SDKs, and use the MCP server can perform most Viam tasks on your behalf.
 Describe what you want, such as "add a camera to my machine" or "write a script that moves the arm to the home position", and it does the work.
 You'll still use the web app for some administration tasks and to access visual tools such as the 3D scene.
 See [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/).
