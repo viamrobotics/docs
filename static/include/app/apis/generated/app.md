@@ -1336,7 +1336,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1406,7 +1406,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1509,7 +1509,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1644,7 +1644,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
 
 **Example:**
 
@@ -4475,6 +4475,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
   not passed, the visibility will be unchanged. If visibility is not set and makePublic is set,
   makePublic takes effect. If makePublic and visibility are set, they must not be conflicting.
   If neither is set, the fragment visibility will remain unchanged.
+- `fragmentConfigJson` (JsonObject) (optional): Optional fragment config as a JSON object. Takes precedence over
+  config if both are passed.
 
 **Returns:**
 

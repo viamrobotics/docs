@@ -85,13 +85,15 @@ The Viam mobile app provides similar access from your phone:
 - View live camera feeds
 - Adjust component settings
 - Switch between components
-- Restart machines
+- Restart, rename, and delete machines
 - Move an arm by moving your phone (arm controller)
 - View a machine's configuration as read-only JSON, and copy it
 - Apply organization control layouts, which set which resource cards a machine shows and in what order (users with permission can also create and edit them)
 - [View machine logs](/monitor/troubleshoot/#check-logs)
 - [Upload images from your phone to the cloud](/data/capture-sync/upload-other-data/)
-- Browse JPEG and PNG images synced from your organization's machines in the **Data** tab, filtered by location and machine
+- Browse JPEG and PNG images synced from your organization's machines in the **Data** tab, filtered by location, machine, dataset, and tags
+- Add and remove an image's tags, and add the image to or remove it from datasets
+- Create, rename, merge, and delete datasets in the **Data** tab's **DATASETS** view
 
 To use the arm controller, open a machine with an arm, tap **...**, and then tap **Arm controller**. It requires Viam mobile app 1.30.0 or later, camera access, and a phone that supports AR tracking (ARKit on iOS, ARCore on Android). If AR tracking is lost for more than half a second, or the app leaves the foreground, the app releases control and stops the arm.
 
