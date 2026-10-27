@@ -1,0 +1,182 @@
+{{- /* The docs homepage, built from data/homepage.yaml. Used by docs/_index.md.
+     The Markdown mirror (/index.md) renders homepage.md from the same data. */ -}}
+{{- $d := site.Data.homepage -}}
+{{- $ext := `<i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i><span class="sr-only"> (opens in a new tab)</span>` | safeHTML -}}
+{{- $arrow := `<span aria-hidden="true">&rarr;</span>` | safeHTML -}}
+<div class="vh">
+
+  {{- /* Hero */}}
+  {{- with $d.hero }}
+  <section class="vh-hero" aria-labelledby="vh-hero-title">
+    <p class="vh-eyebrow">{{ .eyebrow }}</p>
+    <h1 id="vh-hero-title" class="vh-hero__title">{{ .title }}</h1>
+    <p class="vh-hero__desc">{{ .description }}</p>
+  </section>
+  {{- end }}
+
+  {{- /* Announcement banner: optional, for a new feature or content. */}}
+  {{- with $d.announcement }}
+  {{- $a := . }}
+  {{- if .enabled }}
+  {{- $l := partial "homepage-link.html" . }}
+  <aside class="vh-banner" aria-label="Announcement">
+    <a class="vh-banner__link" href="{{ $l.href }}"{{ if $l.external }} target="_blank" rel="noopener"{{ end }}>
+      {{- with $a.label }}<span class="vh-banner__label">{{ . }}</span>{{ end }}
+      <span class="vh-banner__text">{{ $a.text }}</span>
+      <span class="vh-banner__cta">{{ $a.link_text | default "Learn more" }} {{ if $l.external }}{{ $ext }}{{ else }}{{ $arrow }}{{ end }}</span>
+    </a>
+  </aside>
+  {{- end }}
+  {{- end }}
+
+  {{- /* Ways to learn: a full-width Docs tile holding its own links (so the
+       tile itself isn't a link), then workshops and courses below it. */}}
+  {{- with $d.ways_to_learn }}
+  <section class="vh-section vh-ways" aria-labelledby="vh-ways">
+    <h2 id="vh-ways" class="vh-section__title">{{ .title }}</h2>
+    {{- with .docs }}
+    <div class="vh-docs">
+      <div class="vh-docs__intro">
+        <h3 class="vh-card__title">{{ .title }}</h3>
+        <p class="vh-card__desc">{{ .description }}</p>
+      </div>
+      <ul class="vh-docs__links">
+        {{- range .links }}
+        {{- $l := partial "homepage-link.html" . }}
+        <li>
+          <a class="vh-docs__link" href="{{ $l.href }}">
+            {{- with .label }}<span class="vh-docs__label">{{ . }}</span>{{ end }}
+            <span class="vh-docs__title">{{ $l.title }} {{ $arrow }}</span>
+            <span class="vh-docs__desc">{{ $l.description }}</span>
+          </a>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+    <ul class="vh-grid vh-grid--2">
+      {{- range .items }}
+      {{- $l := partial "homepage-link.html" . }}
+      <li>
+        <a class="vh-card" href="{{ $l.href }}"{{ if $l.external }} target="_blank" rel="noopener"{{ end }}>
+          <span class="vh-card__title">{{ .title }}</span>
+          <span class="vh-card__desc">{{ .description }}</span>
+          <span class="vh-card__more">{{ .link_text }} {{ if $l.external }}{{ $ext }}{{ else }}{{ $arrow }}{{ end }}</span>
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- /* Featured workshops: tiles plus an "all" tile. */}}
+  {{- with $d.workshops }}
+  {{- $all := partial "homepage-link.html" .all }}
+  <section class="vh-section" aria-labelledby="vh-workshops">
+    <h2 id="vh-workshops" class="vh-section__title">{{ .title }}</h2>
+    <ul class="vh-grid vh-grid--tiles">
+      {{- range .items }}
+      {{- $item := . }}
+      {{- $l := partial "homepage-link.html" . }}
+      {{- $p := $l.page }}
+      <li>
+        <a class="vh-card vh-card--media" href="{{ $l.href }}">
+          {{- with .image }}
+          {{- with resources.Get . }}
+          {{- $sm := .Resize "480x" }}
+          {{- $lg := .Resize "720x" }}
+          <img class="vh-card__img" src="{{ $sm.RelPermalink }}" srcset="{{ $sm.RelPermalink }} 480w, {{ $lg.RelPermalink }} 720w" sizes="(min-width: 960px) 360px, 100vw" width="{{ $sm.Width }}" height="{{ $sm.Height }}" alt="{{ $item.alt }}"{{ with $item.focus }} style="object-position: {{ . | safeCSS }}"{{ end }} loading="lazy">
+          {{- else }}
+          {{- errorf "data/homepage.yaml: no image at assets/%s" . }}
+          {{- end }}
+          {{- end }}
+          <span class="vh-card__body">
+            <span class="vh-card__title">{{ $l.title }}</span>
+            <span class="vh-card__desc vh-clamp">{{ $l.description }}</span>
+            <span class="vh-card__meta">
+              {{- with $p.Params.level }}<span class="vh-badge">{{ . }}</span>{{ end -}}
+              {{- with $p.Params.time_estimate }}<span class="vh-badge">{{ . }}</span>{{ end -}}
+            </span>
+          </span>
+        </a>
+      </li>
+      {{- end }}
+      <li>
+        <a class="vh-card vh-card--all" href="{{ $all.href }}">
+          <span class="vh-card__title">{{ $all.title }} {{ $arrow }}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- /* Featured courses: mirrors featured workshops. */}}
+  {{- with $d.courses }}
+  {{- $learn := site.Data.courses.learn_url }}
+  <section class="vh-section" aria-labelledby="vh-courses">
+    <h2 id="vh-courses" class="vh-section__title">{{ .title }}</h2>
+    <ul class="vh-grid vh-grid--tiles">
+      {{- range .highlight }}
+      {{- $id := . }}
+      {{- $c := index (where site.Data.courses.courses "id" $id) 0 }}
+      {{- if not $c }}{{ errorf "data/homepage.yaml: no course with id %q in data/courses.yaml" $id }}{{ end }}
+      <li>
+        <a class="vh-card" href="{{ $c.url | default $learn }}" target="_blank" rel="noopener">
+          <span class="vh-eyebrow">Free course</span>
+          <span class="vh-card__title">{{ $c.title }}<span class="sr-only"> (opens in a new tab)</span></span>
+          <span class="vh-card__desc vh-clamp">{{ $c.description }}</span>
+          <span class="vh-card__meta">
+            {{- with $c.duration }}<span class="vh-badge">{{ . }}</span>{{ end -}}
+            {{- with $c.hardware }}<span class="vh-badge">{{ . }}</span>{{ end -}}
+          </span>
+        </a>
+      </li>
+      {{- end }}
+      <li>
+        <a class="vh-card vh-card--all" href="{{ $learn }}" target="_blank" rel="noopener">
+          <span class="vh-card__title">{{ .all_title }} {{ $ext }}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- /* Popular guides and reference: plain link lists, side by side when wide. */}}
+  <div class="vh-columns">
+    {{- with $d.featured }}
+    <section class="vh-section" aria-labelledby="vh-featured">
+      <h2 id="vh-featured" class="vh-section__title">{{ .title }}</h2>
+      <ul class="vh-links">
+        {{- range .items }}
+        {{- $l := partial "homepage-link.html" . }}
+        <li><a href="{{ $l.href }}">{{ $l.title }}</a></li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- end }}
+    {{- with $d.reference }}
+    {{- $all := partial "homepage-link.html" .all }}
+    <section class="vh-section" aria-labelledby="vh-reference">
+      <h2 id="vh-reference" class="vh-section__title">{{ .title }}</h2>
+      <ul class="vh-links">
+        {{- range .items }}
+        {{- $l := partial "homepage-link.html" . }}
+        <li><a href="{{ $l.href }}">{{ $l.title }}</a></li>
+        {{- end }}
+        <li><a class="vh-links__all" href="{{ $all.href }}">{{ $all.title }} {{ $arrow }}</a></li>
+      </ul>
+    </section>
+    {{- end }}
+  </div>
+
+  {{- /* Community */}}
+  {{- with $d.community }}
+  <nav class="vh-community" aria-label="Viam elsewhere">
+    <ul>
+      {{- range . }}
+      <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ with .icon }}<i class="{{ . }}" aria-hidden="true"></i> {{ end }}{{ .name }}<span class="sr-only"> (opens in a new tab)</span></a></li>
+      {{- end }}
+    </ul>
+  </nav>
+  {{- end }}
+</div>

@@ -25,6 +25,16 @@ aliases:
   - /understand/what-is-viam/
   - /what-is-viam/problems-viam-solves/
   - /what-is-viam/what-is-viam/
+  # Moved from docs/_index.md when / became a real homepage, so these old
+  # entry points keep landing here.
+  - /getting-started/
+  - /getting-started/high-level-overview
+  - /product-overviews/
+  - /viam/
+  - /viam/app.viam.com/
+  - /get-started/
+  - /platform/
+  - /operate/
 date: "2026-09-23"
 ---
 

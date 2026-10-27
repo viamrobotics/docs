@@ -1,0 +1,19 @@
+{{- /*
+  Resolves one link entry from data/homepage.yaml into
+  (dict "href" "permalink" "title" "description" "external" "page").
+  An entry with `path` is looked up with site.GetPage, and the build fails if
+  the page doesn't exist. An entry with `url` is an external link.
+  `title` and `description` in the entry override the page's own.
+*/ -}}
+{{- $item := . -}}
+{{- $out := dict -}}
+{{- with $item.url -}}
+  {{- $out = dict "href" . "permalink" . "title" ($item.title | default "") "description" ($item.description | default "") "external" true "page" nil -}}
+{{- else -}}
+  {{- $p := site.GetPage $item.path -}}
+  {{- if not $p -}}
+    {{- errorf "data/homepage.yaml: no page at path %q" $item.path -}}
+  {{- end -}}
+  {{- $out = dict "href" $p.RelPermalink "permalink" $p.Permalink "title" ($item.title | default $p.LinkTitle) "description" ($item.description | default $p.Description) "external" false "page" $p -}}
+{{- end -}}
+{{- return $out -}}
