@@ -92,16 +92,16 @@ Before you let one drive a machine, read the safety guidance in [Use Viam from a
 
 ## What each interface can do
 
-A check mark means the interface can do this. A blank cell means it can't.
+A link means the interface can do this, and goes to a page about it. A blank cell means it can't.
 
-| To do this                         | Web app | Mobile app | CLI | SDKs | MCP server |
-| ---------------------------------- | ------- | ---------- | --- | ---- | ---------- |
-| See the 3D scene                   | ✓       |            |     |      |            |
-| Monitor and operate a machine      | ✓       | ✓          | ✓   | ✓    | ✓          |
-| Write control code                 | ✓       |            | ✓   | ✓    | ✓          |
-| Change a machine's configuration   | ✓       |            | ✓   | ✓    | ✓          |
-| Manage your organization and fleet | ✓       |            | ✓   | ✓    | ✓          |
-| Build a web or mobile app          |         |            |     | ✓    |            |
-| Write a module                     | ✓       |            | ✓   | ✓    |            |
-| Add a module to a machine          | ✓       |            | ✓   | ✓    | ✓          |
-| Query captured data                | ✓       | ✓          | ✓   | ✓    |            |
+| To do this                         | Web app                                         | Mobile                                             | CLI                                                        | SDKs                                         | MCP                          |
+| ---------------------------------- | ----------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------- | ---------------------------- |
+| See the 3D scene                   | [Yes](/visualization/3d-scene/)                 |                                                    |                                                            |                                              |                              |
+| Monitor and operate a machine      | [Yes](/monitor/monitor/)                        | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/monitor/monitor/#use-the-command-line)              | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Write control code                 | [Yes](/monitor/default-interface/#code-sandbox) |                                                    | [Yes](/cli/drive-a-machine/)                               | [Yes](/build-apps/tasks/control-components/) | [Yes](/reference/mcp/#tools) |
+| Change a machine's configuration   | [Yes](/hardware/configure-hardware/)            |                                                    | [Yes](/cli/configure-machines/)                            | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Manage your organization and fleet | [Yes](/organization/overview/)                  |                                                    | [Yes](/cli/administer-your-organization/)                  | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Build a web or mobile app          |                                                 |                                                    |                                                            | [Yes](/build-apps/overview/)                 |                              |
+| Write a module                     | [Yes](/build-modules/write-an-inline-module/)   |                                                    | [Yes](/cli/build-and-deploy-modules/)                      | [Yes](/build-modules/overview/)              |                              |
+| Add a module to a machine          | [Yes](/build-modules/use-registry-modules/)     |                                                    | [Yes](/cli/configure-machines/#add-a-component-or-service) | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Query captured data                | [Yes](/data/query-data/)                        | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/cli/manage-data/#query-data)                        | [Yes](/data/query-data-from-code/)           |                              |
