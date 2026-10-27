@@ -91,13 +91,16 @@ Before you let one drive a machine, read the safety guidance in [Use Viam from a
 
 ## What each interface can do
 
-| To do this                         | Web app                                                                      | Mobile app                    | CLI                                                                    | SDKs                                                           | MCP server                                 |
-| ---------------------------------- | ---------------------------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------ |
-| See the 3D scene                   | Yes                                                                          | No                            | No                                                                     | No                                                             | No                                         |
-| Write control code                 | Partly. Try short programs in the **CONTROL** tab's code sandbox.            | No                            | Partly. Call one API method at a time.                                 | Yes                                                            | Partly. Call API methods through a client. |
-| Change a machine's configuration   | Yes                                                                          | No. View only.                | Yes                                                                    | Yes                                                            | Yes                                        |
-| Manage your organization and fleet | Yes                                                                          | Partly. See machine status.   | Yes                                                                    | Yes. Through the fleet API.                                    | Partly. Look up machines and create them.  |
-| Build a web or mobile app          | No                                                                           | No                            | No                                                                     | Yes                                                            | No                                         |
-| Write a module                     | Partly. Write inline modules in the browser, limited to the generic service. | No                            | Partly. Scaffold, build, and publish.                                  | Yes                                                            | No. Read inline module code.               |
-| Add a module to a machine          | Yes. Add it from the registry.                                               | No                            | Partly. Add a resource by model, or reload a module you're developing. | Yes. Update the machine's configuration through the fleet API. | Yes. Through the configuration tools.      |
-| Query captured data                | Yes                                                                          | Partly. Browse synced images. | Yes                                                                    | Yes                                                            | No                                         |
+A check mark means the interface can do this. A blank cell means it can't.
+
+| To do this                         | Web app | Mobile app | CLI | SDKs | MCP server |
+| ---------------------------------- | ------- | ---------- | --- | ---- | ---------- |
+| See the 3D scene                   | ✓       |            |     |      |            |
+| Monitor and operate a machine      | ✓       | ✓          | ✓   | ✓    | ✓          |
+| Write control code                 | ✓       |            | ✓   | ✓    | ✓          |
+| Change a machine's configuration   | ✓       |            | ✓   | ✓    | ✓          |
+| Manage your organization and fleet | ✓       |            | ✓   | ✓    | ✓          |
+| Build a web or mobile app          |         |            |     | ✓    |            |
+| Write a module                     | ✓       |            | ✓   | ✓    |            |
+| Add a module to a machine          | ✓       |            | ✓   | ✓    | ✓          |
+| Query captured data                | ✓       | ✓          | ✓   | ✓    |            |
