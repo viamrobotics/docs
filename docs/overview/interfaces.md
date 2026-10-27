@@ -1,7 +1,7 @@
 ---
-linkTitle: "Ways to use Viam"
-title: "Ways to use Viam"
-weight: 20
+linkTitle: "Interfaces"
+title: "Interfaces"
+weight: 2
 layout: "docs"
 type: "docs"
 description: "The ways to work with Viam, from the Viam web app to the CLI, SDKs, and MCP server, and which one to use for what."
@@ -35,10 +35,8 @@ Here is what you'll find:
 
 {{< cards >}}
 {{% card link="/set-up-a-machine/first-machine/" noimage="true" %}}
-{{% card link="/hardware/configure-hardware/" customTitle="Configure hardware components" noimage="true" %}}
 {{% card link="/monitor/" noimage="true" %}}
 {{% card link="/visualization/3d-scene/" noimage="true" %}}
-{{% card link="/hardware/ai-assistant/" customTitle="In-app Assistant" noimage="true" %}}
 {{< /cards >}}
 
 ## The Viam mobile app

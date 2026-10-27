@@ -1,5 +1,5 @@
 ---
-linkTitle: "What is Viam?"
+linkTitle: "Overview"
 title: "What is Viam?"
 weight: 10
 layout: "docs"
@@ -11,6 +11,7 @@ description: "Understand the core concepts behind Viam: machines, parts, resourc
 capabilities: ["docs", "viam-server", "viam-agent"]
 diataxis: explanation
 aliases:
+  - /what-is-viam/
   - /architecture/
   - /architecture/machine-to-machine-comms/
   - /reference/architecture/

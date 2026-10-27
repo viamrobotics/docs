@@ -6,7 +6,7 @@ capabilities: ["section-index"]
 weight: 1
 type: "docs"
 layout: "empty"
-canonical: "/what-is-viam/"
+canonical: "/overview/"
 sitemap:
   priority: 1.0
 outputs:

@@ -375,12 +375,12 @@
 
 [[redirects]]
   from = "/operate/hello-world/problems-viam-solves/"
-  to = "/what-is-viam/"
+  to = "/overview/"
   status = 301
 
 [[redirects]]
   from = "/operate/hello-world/what-is-viam/"
-  to = "/what-is-viam/"
+  to = "/overview/"
   status = 301
 
 # operate/mobility/
@@ -584,7 +584,7 @@
 # Old IA paths from previous site versions
 [[redirects]]
   from = "/architecture/*"
-  to = "/what-is-viam/"
+  to = "/overview/"
   status = 301
 
 [[redirects]]
