@@ -9,8 +9,9 @@ capabilities: ["docs"]
 diataxis: overview
 ---
 
-You can work with Viam through a web app, a mobile app, a command-line tool, code libraries, and an AI-facing server.
-They all talk to the same platform, so a machine you set up in one is available in the others.
+Viam provides a variety of interfaces for configuring, controlling, and monitoring your machines, so you can work in the way that suits your background and your goals.
+The web and mobile apps are visual; the CLI, SDKs, and MCP server are for working in code, from a terminal, or through an assistant.
+All of them talk to the same Viam platform, so they complement each other: a machine you set up in one is available in the others.
 
 Most people start in the Viam web app and use the other tools as their needs grow.
 
