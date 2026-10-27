@@ -10,6 +10,7 @@ description: "Browse tutorials that walk through building complete robots and sm
 summary: "Browse tutorials that walk through building complete robots and smart machines with Viam."
 aliases:
   - /dev/tools/tutorials/
+  - /tutorials/projects/guardian/
 toc_hide: true
 # do not remove hide children - it causes a layout issue
 no_list: true
