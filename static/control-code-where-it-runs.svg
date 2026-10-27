@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 693 226" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .layer-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+      .box-label { font-size: 13px; font-weight: 600; }
+      .arrow-label { font-size: 10px; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- ==================== OFF THE MACHINE (clients) ==================== -->
+  <rect x="2" y="2" width="218" height="222" rx="6" fill="#f7f6f3" stroke="#252525" stroke-width="1.5"/>
+  <text x="17" y="24" class="layer-label" fill="#252525">Off the machine</text>
+  <text x="17" y="40" style="font-size:10px; fill:#808080">clients · run only while you run them</text>
+
+  <rect x="12" y="54" width="198" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="111" y="76" text-anchor="middle" class="box-label" fill="#252525">Code sandbox</text>
+  <text x="111" y="94" text-anchor="middle" style="font-size:10px; fill:#808080">TypeScript · Python · Go</text>
+  <text x="111" y="110" text-anchor="middle" style="font-size:10px; fill:#808080">in the Viam web app</text>
+
+  <rect x="12" y="138" width="198" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="111" y="160" text-anchor="middle" class="box-label" fill="#252525">Code on your laptop</text>
+  <text x="111" y="178" text-anchor="middle" style="font-size:10px; fill:#808080">Python · Go · C++</text>
+  <text x="111" y="194" text-anchor="middle" style="font-size:10px; fill:#808080">TypeScript · Flutter</text>
+
+
+  <!-- ==================== ARROW: client to machine ==================== -->
+  <line x1="220" y1="140" x2="296" y2="140" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="293,136 302,140 293,144" fill="#252525"/>
+  <text x="261" y="130" text-anchor="middle" class="arrow-label" fill="#252525">API calls</text>
+  <text x="261" y="157" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC</text>
+  <text x="261" y="170" text-anchor="middle" style="font-size:10px; fill:#252525">or gRPC</text>
+
+  <!-- ==================== YOUR MACHINE ==================== -->
+  <rect x="305" y="2" width="386" height="222" rx="10" fill="none" stroke="#252525" stroke-width="1.5"/>
+  <text x="322" y="24" style="font-size:13px; font-weight:700; fill:#252525; letter-spacing:0.03em">YOUR MACHINE</text>
+
+  <rect x="313" y="36" width="370" height="180" rx="5" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
+  <rect x="321" y="44" width="96" height="20" rx="10" fill="#252525"/>
+  <text x="369" y="58" text-anchor="middle" style="font-size:10px; font-weight:600; fill:#fff">viam-server</text>
+  <text x="427" y="58" style="font-size:10px; fill:#808080">starts modules with the machine · restarts them</text>
+
+  <text x="329" y="90" class="layer-label" fill="#252525">Modules</text>
+  <text x="329" y="104" style="font-size:10px; fill:#808080">keep running when nobody is connected</text>
+
+  <rect x="321" y="114" width="113" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="377" y="136" text-anchor="middle" class="box-label" fill="#252525">Inline</text>
+  <text x="377" y="154" text-anchor="middle" style="font-size:10px; fill:#808080">browser editor</text>
+  <text x="377" y="170" text-anchor="middle" style="font-size:10px; fill:#808080">Python · Go</text>
+
+  <rect x="442" y="114" width="113" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="498" y="136" text-anchor="middle" class="box-label" fill="#252525">Externally</text>
+  <text x="498" y="151" text-anchor="middle" class="box-label" fill="#252525">managed</text>
+  <text x="498" y="170" text-anchor="middle" style="font-size:10px; fill:#808080">your repository</text>
+
+  <rect x="563" y="114" width="112" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="619" y="136" text-anchor="middle" class="box-label" fill="#252525">Built-in and</text>
+  <text x="619" y="151" text-anchor="middle" class="box-label" fill="#252525">registry</text>
+  <text x="619" y="170" text-anchor="middle" style="font-size:10px; fill:#808080">already written</text>
+
+</svg>
