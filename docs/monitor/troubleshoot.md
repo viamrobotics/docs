@@ -140,6 +140,8 @@ If you set your own start and end times, the button copies a link to that range 
 The default log level is `Info`.
 If you are not seeing helpful logs, enable debug logging.
 
+If a resource you configured is missing or unavailable, search the logs for `Resource name`. Two resources sharing a name can stop both from building. See [Resource names](/hardware/configure-hardware/#resource-names).
+
 #### Enable debug logging
 
 **For all resources on the machine**, add `"debug": true` to the JSON configuration:
