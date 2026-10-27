@@ -1,6 +1,6 @@
 ---
-linkTitle: "Interfaces"
-title: "Interfaces"
+linkTitle: "How to use Viam"
+title: "How to use Viam"
 weight: 2
 layout: "docs"
 type: "docs"
@@ -15,7 +15,7 @@ All of them talk to the same Viam platform, so they complement each other: a mac
 
 Most people start in the Viam web app and use the other tools as their needs grow.
 
-## The Viam web app
+## Web app
 
 The Viam web app, at [app.viam.com](https://app.viam.com), is the home base for everything you do with Viam.
 It runs in any browser, and it's where you'll spend your first hours with the platform.
@@ -39,7 +39,7 @@ Here is what you'll find:
 {{% card link="/visualization/3d-scene/" noimage="true" %}}
 {{< /cards >}}
 
-## The Viam mobile app
+## Mobile app
 
 The Viam mobile app, available in the App Store and Google Play, is a companion to the web app. It lets you see which machines are online, watch camera feeds, adjust components, and check logs.
 It can also move an arm by moving your phone and upload photos to the cloud.
@@ -49,17 +49,17 @@ It can also move an arm by moving your phone and upload photos to the cloud.
 
 To learn more, see [the Viam mobile app](/monitor/default-interface/#viam-mobile-app).
 
-## The Viam CLI
+## CLI
 
 The `viam` command-line tool covers most of what the web app does, in a form you can script.
 It adds things the web app doesn't do, such as publishing modules and calling a machine's API methods one at a time.
 
 - Use it to automate repeated work, run operations from a script or CI, or work from a terminal.
-- It's best once you know what you want to do and want to do it quickly or many times.
+- It's also a good fit for an AI assistant that can run commands, since each operation is a single command with structured output.
 
 To get started, see the [CLI overview](/cli/overview/).
 
-## The Viam SDKs
+## SDKs
 
 The SDKs are libraries for writing your own code that controls machines and talks to the Viam cloud.
 They're available for [Python](/reference/sdks/python/), [Go](/reference/sdks/go/), and [C++](/reference/sdks/cpp/) (backend), [TypeScript](/reference/sdks/typescript/) (browser), and [Flutter](/reference/sdks/flutter/) (mobile).
@@ -69,7 +69,7 @@ They're available for [Python](/reference/sdks/python/), [Go](/reference/sdks/go
 
 To write a module, in Python, Go, or C++, see [Build and deploy modules](/build-modules/overview/). To build an app for your own users, see [Build apps](/build-apps/overview/).
 
-## The Viam MCP server
+## MCP server
 
 The Viam MCP server lets an AI assistant that supports the Model Context Protocol work with your fleet.
 Once you connect it, the assistant can look up your machines, read and edit their configuration, and call their API methods, within the permissions your account already has.

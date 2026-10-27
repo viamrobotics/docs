@@ -64,6 +64,10 @@ The script connects over the internet or your local network.
 
 Use it when you want your own editor, debugger, and version control while you develop.
 
+{{% alert title="Use modules for production" color="caution" %}}
+Coding from your laptop is useful for prototyping and rapid development, but for production applications we strongly recommend running code directly on your robots using modules, as described below.
+{{% /alert %}}
+
 The script runs only while your laptop runs it.
 To keep the logic running on the machine, move it into an [inline module](#inline-modules) or an [externally managed module](#externally-managed-modules).
 The same SDKs build web and mobile apps for your users; see [Build apps](/build-apps/overview/).
@@ -123,7 +127,7 @@ See [Module dependencies](/build-modules/dependencies/) and [Build and deploy mo
 
 ## What's next {#whats-next}
 
-- [Interfaces](/overview/interfaces/): the other ways to work with Viam, alongside writing code.
+- [How to use Viam](/overview/interfaces/): the other ways to work with Viam, alongside writing code.
 - [Code sandbox](/monitor/default-interface/#code-sandbox): try your first SDK call against a live machine.
 - [Write an inline module](/build-modules/write-an-inline-module/): run control logic on your machine without setting up a repository.
 - [Build and deploy modules](/build-modules/overview/): how modules work, and the difference between inline and externally managed modules.
