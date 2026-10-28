@@ -40,7 +40,7 @@ The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragm
 
 The favorite machine tools (`list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine`) read and change your own [machine favorites](/monitor/monitor/#favorite-machines), which no one else in your organization sees. `remove_favorite_machine` is marked destructive because it deletes a favorite, but it never changes the machine itself.
 
-The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) work with a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. `start_simulation` and `stop_simulation` don't change configuration. Starting a simulation is billed by the minute to the user who authorized the request, until it stops or times out, so `stop_simulation` ends the charges.
+The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) manage a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. Starting a simulation is billed by the minute to the user who authorized the request, so `stop_simulation` ends the charges.
 
 <!-- TODO(draft): hold with the rest of the simulation docs until the feature and the MCP server release ship. -->
 
