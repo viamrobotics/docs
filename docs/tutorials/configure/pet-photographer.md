@@ -996,7 +996,6 @@ Try these other tutorials for more on working with the data management and visio
 
 {{< cards >}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
-{{% card link="/tutorials/projects/guardian/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
 {{% card link="/vision/deploy-and-maintain/deploy-from-registry/"  %}}
 {{< /cards >}}

@@ -1336,7 +1336,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1406,7 +1406,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1509,7 +1509,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1644,7 +1644,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
 
 **Example:**
 
@@ -2703,6 +2703,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 ### GetRobotPartHistory
 
 Get a list containing the history of a machine {{< glossary_tooltip term_id="part" text="part" >}}.
+If you don't set a page limit, it returns the 100 newest entries.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2710,6 +2711,9 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 **Parameters:**
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to retrieve history from.
+- `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time. Only history entries created after this time will be returned.
+- `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time. Only history entries created before this time will be returned.
+- `page_limit` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): Optional maximum number of history entries to return, newest first.
 
 **Returns:**
 
@@ -2736,6 +2740,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(...*GetRobotPartHistoryOptions)](https://pkg.go.dev/go.viam.com/rdk/app#GetRobotPartHistoryOptions)
 
 **Returns:**
 
@@ -2748,6 +2753,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 history, err := cloud.GetRobotPartHistory(
 	context.Background(),
 	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+
+limit := 50
+history, err := cloud.GetRobotPartHistory(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	&GetRobotPartHistoryOptions{Start: &startTime, End: &endTime, PageLimit: &limit})
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartHistory).
@@ -2873,6 +2884,37 @@ const robotPart = await appClient.updateRobotPart('<YOUR-ROBOT-PART-ID>', 'newNa
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updaterobotpart).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### SetConfigProperty
+
+Set individual properties in a machine {{< glossary_tooltip term_id="part" text="part" >}}'s configuration by path, without replacing the whole configuration as [`UpdateRobotPart`](#updaterobotpart) does.
+Paths are dot-separated, such as `network.bind_address`.
+In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, `processes`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
+Changes apply in order, and each change succeeds or fails on its own; the result for each change reports whether it succeeded and, if not, the error.
+You can send at most 100 changes per request.
+If the part's own configuration sets a property, the change is made there.
+If a fragment the part imports provides the property instead, the change is saved as a `$set` [fragment override](/fleet/reuse-configuration/#override-specific-settings) for the last fragment that provides it, since later fragments win when fragments merge.
+A property that neither sets is added to the part's configuration.
+Fragment overrides can't change `billing` or `access_policy`, so setting a property in either section that comes from a fragment returns an error.
+Replacing a whole resource that comes from a fragment the part imports more than once returns an error; set the resource's fields instead.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to update.
+- `property_changes` ([collections.abc.Mapping[str, viam.utils.ValueTypes]](https://python.viam.dev/autoapi/viam/components/component_base/index.html#viam.components.component_base.ValueTypes)) (required): A mapping of JSON paths within the config to the new value at that path.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([list[viam.proto.app.ConfigPropertyChangeResult]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ConfigPropertyChangeResult)): :   The result of each requested property change.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.set_config_property).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4433,6 +4475,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
   not passed, the visibility will be unchanged. If visibility is not set and makePublic is set,
   makePublic takes effect. If makePublic and visibility are set, they must not be conflicting.
   If neither is set, the fragment visibility will remain unchanged.
+- `fragmentConfigJson` (JsonObject) (optional): Optional fragment config as a JSON object. Takes precedence over
+  config if both are passed.
 
 **Returns:**
 

@@ -317,10 +317,13 @@ Resolve relative paths against the export directory so the same script works in 
 ```sh {class="command-line" data-prompt="$"}
 tar -czvf my-training.tar.gz my-training/
 viam training-script upload --path=my-training.tar.gz \
-  --org-id=<org-id> --script-name=my-training-script
+  --org-id=<org-id> --script-name=my-training-script \
+  --framework=<framework>
 ```
 
-You can also specify `--framework`, `--type`, `--visibility`, and `--description` when uploading.
+`--framework` is required: set it to the framework of the model your script produces (`tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`, or `unspecified`).
+With `registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
+You can also specify `--type`, `--visibility`, and `--description` when uploading.
 Scripts default to private (visible only within your organization). Set `--visibility=public` to share with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script).
 See the [CLI reference](/cli/overview/) for the full list of flags.
 

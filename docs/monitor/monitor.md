@@ -22,7 +22,21 @@ The machines table shows every machine in your organization with its current sta
 - **Offline** (red): the machine is not connected. The table shows when it was last online.
 - **Awaiting setup**: the machine has been created but has not yet connected to Viam.
 
-You can also see the amount of binary and tabular data your fleet has synced in the last 48 hours from this dashboard.
+To see how much binary and tabular data your fleet has synced in the last 48 hours, organization owners can open the **Data usage** tab of the billing page. See [Check data usage](/organization/billing/#check-data-usage).
+
+### Favorite machines
+
+Set the machines you check most often as favorites so you can find them quickly.
+Use the star next to a machine in the table to favorite it.
+By default, favorite machines appear at the top of the table.
+To turn this on or off, click the star in the table header.
+You can see your favorites from every organization on the **Machine Favorites** tab in your user settings.
+
+Favorites belong to your user account, so other members of your organization can't see them.
+A machine that is deleted, or that you can no longer access, is hidden from your favorites.
+If you regain access, it reappears.
+
+To manage favorites from an AI agent, use the `list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine` tools in the [Viam MCP server](/reference/mcp/).
 
 ## Inspect a specific machine
 
@@ -36,6 +50,9 @@ Click the **status** dropdown to see details about each {{< glossary_tooltip ter
 - `viam-server` version
 - IP addresses
 - Last online time (if offline) or remote address (if online)
+- Network health (`viam-server` v1.12.0 or later): an overall verdict (**Network good**, **Network degraded**, or **Network down**) followed by the **Internet**, **DNS**, **Peer-to-peer**, and **Local network** checks.
+  Hover over a check to see its readings.
+  The row shows how long ago the checks ran, and users with write access to the machine get a **Logs** link that opens the network check log lines.
 
 ## Check resource health
 

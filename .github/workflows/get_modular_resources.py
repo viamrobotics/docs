@@ -30,7 +30,9 @@ def model_type_to_str(model_type: int) -> str:
     try:
         return model_type_map[model_type]
     except KeyError:
-        raise ValueError(f"NEW UNKNOWN MODEL TYPE {model_type} must add to model type map")
+        # Don't fail the publish run when the API adds a new enum value
+        print(f"::warning::unknown model type {model_type}, add it to model_type_map")
+        return ""
 
 def model_framework_to_str(model_framework: int) -> str:
     model_framework_map = {
@@ -38,13 +40,18 @@ def model_framework_to_str(model_framework: int) -> str:
         1: "TFLite",
         2: "Tensorflow",
         3: "Pytorch",
-        4: "ONNX"
+        4: "ONNX",
+        # MODEL_FRAMEWORK_REGISTRY: files consumed by a specific registry module
+        # (named in deployment_modular_resources), not a file format.
+        5: "Module-specific",
     }
 
     try:
         return model_framework_map[model_framework]
     except KeyError:
-        raise ValueError(f"NEW UNKNOWN MODEL FRAMEWORK {model_framework} must add to model framework map")
+        # Don't fail the publish run when the API adds a new enum value
+        print(f"::warning::unknown model framework {model_framework}, add it to model_framework_map")
+        return ""
 
 
 async def main():
@@ -109,7 +116,10 @@ async def main():
             print("INSERTED")
             print(insert_resp)
 
-    # Create a request to list registry items and get the response from the app
+    # Create a request to list registry items and get the response from the app.
+    # The API returns every matching item in one response (page_token is ignored
+    # server-side), and the stale-document deletes below treat anything missing
+    # from this list as deleted. If the API ever adds paging, loop over pages here.
     request = ListRegistryItemsRequest(organization_id=cloud._organization_id)
     response : ListRegistryItemsResponse = await cloud._app_client.ListRegistryItems(request)
 
@@ -171,7 +181,7 @@ async def main():
         res = typesense_client.collections['mlmodels'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
         print("ML models deleted")
         print(res)
-        res = typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + time_now})
+        res = typesense_client.collections['trainingscripts'].documents.delete({'filter_by': 'last_updated: <' + str(time_now)})
         print("Training scripts deleted")
         print(res)
     except Exception as e:
