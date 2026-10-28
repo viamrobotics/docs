@@ -51,14 +51,18 @@ Every machine includes a default motion service named `builtin`, which has no co
 
 All attributes are optional:
 
-| Attribute                         | Type   | Default | Description                                                                                                                                                                                                                                                                    |
-| --------------------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `log_file_path`                   | string | (none)  | Path to write planning debug logs.                                                                                                                                                                                                                                             |
-| `plan_file_path`                  | string | (none)  | Directory to write plan files to. Required by `log_planner_errors` and `log_slow_plan_threshold_ms`; on its own, it writes nothing.                                                                                                                                            |
-| `plan_directory_include_trace_id` | bool   | false   | Include trace ID in plan output directory names.                                                                                                                                                                                                                               |
-| `log_planner_errors`              | bool   | false   | Write a plan file for every request that fails to plan. A failed plan's file holds the request only, with no trajectory.                                                                                                                                                       |
-| `log_slow_plan_threshold_ms`      | int    | (none)  | Write a plan file for every plan that takes longer than this many milliseconds. Set it to `-1` to write a file for every plan. The **Save motion plans** toggle in the Viam app does this.                                                                                     |
-| `input_range_override`            | object | (none)  | Narrow a joint's allowed range below its kinematic limits. The value is a map from frame name to a map from joint index (string) to `{"min": <value>, "max": <value>}`. For example, `{"my-arm": {"3": {"min": 0, "max": 2}}}` restricts joint 3 of `my-arm` to the range 0-2. |
+| Attribute                         | Type             | Default                           | Description                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------------------- | ---------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `log_file_path`                   | string           | (none)                            | Path to write planning debug logs.                                                                                                                                                                                                                                                                                                                                                   |
+| `plan_file_path`                  | string           | (none)                            | Directory to write plan files to. Required by `log_planner_errors` and `log_slow_plan_threshold_ms`; on its own, it writes nothing.                                                                                                                                                                                                                                                  |
+| `plan_directory_include_trace_id` | bool             | false                             | Include trace ID in plan output directory names.                                                                                                                                                                                                                                                                                                                                     |
+| `log_planner_errors`              | bool             | false                             | Write a plan file for every request that fails to plan. A failed plan's file holds the request only, with no trajectory.                                                                                                                                                                                                                                                             |
+| `log_slow_plan_threshold_ms`      | int              | (none)                            | Write a plan file for every plan that takes longer than this many milliseconds. Set it to `-1` to write a file for every plan. The **Save motion plans** toggle in the Viam app does this.                                                                                                                                                                                           |
+| `input_range_override`            | object           | (none)                            | Narrow a joint's allowed range below its kinematic limits. The value is a map from frame name to a map from joint index (string) to `{"min": <value>, "max": <value>}`. For example, `{"my-arm": {"3": {"min": 0, "max": 2}}}` restricts joint 3 of `my-arm` to the range 0-2.                                                                                                       |
+| `cable_constraint`                | bool             | (unset)                           | Keep each rotational joint of an arm within `max_cable_twist_degs` of its reference position, so cables routed along the arm don't wind up. `true` constrains every arm, or only the arms in `cable_constraint_frames`. `false` turns the constraint off. When unset, the service constrains every arm that carries a camera; see [Cable twist constraint](#cable-twist-constraint). |
+| `cable_constraint_frames`         | array of strings | (none)                            | Names of the arms to constrain. Empty constrains every arm.                                                                                                                                                                                                                                                                                                                          |
+| `max_cable_twist_degs`            | float            | 180                               | How far, in degrees, each rotational joint of a constrained arm may turn from its reference position. Negative values are rejected; `0` selects the default.                                                                                                                                                                                                                         |
+| `cable_twist_reference_degs`      | object           | (midpoint of each joint's limits) | Map from arm name to the joint positions, in degrees, at which that arm's cables are untwisted. Give one value per joint. For example, `{"my-arm": [0, 0, 0, 0, 0, 0]}`.                                                                                                                                                                                                             |
 
 Example configuration:
 
@@ -76,6 +80,34 @@ Example configuration:
 ```
 
 To replay saved plans in the **3D SCENE** tab, sync the plan directory to the cloud; see [Replay a saved plan in the 3D scene](/motion-planning/visualize-a-motion-plan/#replay-a-saved-plan-in-the-3d-scene).
+
+### Cable twist constraint
+
+Cables for a camera or tool mounted on an arm usually run along the arm, so turning a joint too far winds them up.
+The cable twist constraint keeps every rotational joint of a constrained arm within `max_cable_twist_degs` (180 by default) of its reference position.
+The reference is the midpoint of the joint's limits unless `cable_twist_reference_degs` sets one.
+A joint that starts a move outside that range can stay there or turn back toward the reference, but the planner never turns it further away.
+
+If you don't set `cable_constraint`, the service turns the constraint on for every arm that has a camera mounted on it, or on anything attached to it, in the frame system.
+An arm with an `input_range_override` is left out.
+On a constrained arm, the planner uses only joint positions within the allowed range.
+It can reach the same poses as before, but it can choose a different joint solution, and planning fails if no path keeps every joint in range.
+
+To turn the constraint off for every arm, set `"cable_constraint": false`.
+To change it for one request, pass any of these four attributes in the `extra` map of a `Move` call; each one you pass overrides the service configuration.
+
+```json
+{
+  "name": "builtin",
+  "api": "rdk:service:motion",
+  "model": "rdk:builtin:builtin",
+  "attributes": {
+    "cable_constraint": true,
+    "cable_constraint_frames": ["my-arm"],
+    "max_cable_twist_degs": 150
+  }
+}
+```
 
 ## Planning defaults
 
