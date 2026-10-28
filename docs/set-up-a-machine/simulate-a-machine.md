@@ -34,8 +34,8 @@ If a simulation is already running for the machine, the wizard offers **View run
 
 ## Check, stop, or restart a simulation
 
-After you've started a simulation, the machine's page shows its status and controls to stop it.
-If a simulation has run before and is no longer running, the same controls let you restart it.
+While a simulation is running, the machine's page shows its status and a **Stop sim** control.
+After a simulation stops, the page offers **Restart sim** instead.
 Stop a simulation when you're done with it to stop the per-minute charges.
 
 Deleting a machine also ends its simulation.
