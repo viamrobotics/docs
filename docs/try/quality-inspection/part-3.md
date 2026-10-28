@@ -38,7 +38,7 @@ Check your Go version:
 go version
 ```
 
-You need Go 1.25.1 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
+You need Go `1.26.10` or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
 
 ### Install the Viam CLI
 
