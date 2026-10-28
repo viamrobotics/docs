@@ -42,8 +42,6 @@ The favorite machine tools (`list_favorite_machines`, `add_favorite_machine`, an
 
 The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) manage a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. Starting a simulation is billed by the minute to the user who authorized the request, so `stop_simulation` ends the charges.
 
-<!-- TODO(draft): hold with the rest of the simulation docs until the feature and the MCP server release ship. -->
-
 ## Tools
 
 {{< readfile "/static/include/app/mcpserver/generated/mcp-tools-table.md" >}}

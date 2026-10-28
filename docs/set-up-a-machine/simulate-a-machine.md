@@ -10,14 +10,12 @@ diataxis: how-to
 date: "2026-10-15"
 ---
 
-<!-- TODO(draft): hold until the simulation feature is generally available. Confirm the user-facing name ("simulated environment" in the wizard, Isaac Sim in the MCP tool descriptions) before publishing. -->
-
 Run `viam-server` in a simulated environment in the cloud, so you can build and test your machine without its hardware.
 A simulated machine appears in the Viam app like any other machine: you configure it from the **CONFIGURE** tab, and you can control it, view its logs, and connect to it with an SDK.
 
 ## Before you start
 
-- **Simulation is billed by the minute.** The user who starts the simulation, including through the AI assistant or MCP, is charged for as long as it's running. <!-- TODO(draft): state the rate, or link to the pricing page. -->
+- **Simulation is billed by the minute.** The user who starts the simulation, including through the AI assistant or MCP, is charged for as long as it's running. The page where you start a simulation shows the current rate.
 - **Idle simulations time out.** If the simulated machine isn't actuating, the simulation times out after at most 60 minutes.
 - **You can stop or restart a simulation at any time.**
 - **Some modules need real hardware.** Modules that are drivers for physical hardware, such as specific cameras, motors, or sensors, don't work in a simulated environment. <!-- TODO(draft): confirm that built-in fake models (for example, the fake arm) work in the sandbox and link them here. -->
@@ -28,9 +26,9 @@ A simulated machine appears in the Viam app like any other machine: you configur
 2. In the setup wizard, choose to simulate your machine instead of installing Viam on a device.
 3. Read the notes about billing and limits, then click **Start simulation**.
 
-The wizard shows the simulation's progress as it starts.
+The wizard shows the simulation's progress as it starts, which can take several minutes.
 When it's ready, the machine comes online and you can configure it like any other machine.
-See [Configure hardware](/hardware/configure-hardware/) for how to add components. <!-- TODO(draft): confirm startup time to set expectations, and what the wizard shows if the simulation fails to start. -->
+See [Configure hardware](/hardware/configure-hardware/) for how to add components. <!-- TODO(draft): confirm what the wizard shows if the simulation fails to start. -->
 
 If a simulation is already running for the machine, the wizard offers **View running simulation** instead of starting a second one.
 
@@ -38,7 +36,7 @@ If a simulation is already running for the machine, the wizard offers **View run
 
 After you've started a simulation, the machine's page shows its status and controls to stop it.
 If a simulation has run before and is no longer running, the same controls let you restart it.
-Stop a simulation when you're done with it to stop the per-minute charges. <!-- TODO(draft): confirm where on the machine page these controls appear before describing them more specifically. -->
+Stop a simulation when you're done with it to stop the per-minute charges.
 
 Deleting a machine also ends its simulation.
 
