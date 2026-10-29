@@ -42,7 +42,7 @@ It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
 
 ### Built-in models
 
-- [`fake`](/reference/components/arm/fake/) — A model used for testing, with no physical hardware.
+- [`fake`](/reference/components/arm/fake/): a model used for testing, with no physical hardware.
 
 ### Registry modules
 
@@ -126,7 +126,9 @@ See [Frame System](/motion-planning/frame-system/) for the full frame configurat
 
 Click **Save**, then expand the **Test** section.
 
-- Use the joint position controls to move individual joints.
+- Under **MoveToJointPositions**, which opens in **Jogging** mode, tap the
+  **+** or **−** button next to a joint to move it by the **Jog step**. To set
+  exact angles instead, switch to **Joint Positions** mode and press **Execute**.
 - Verify each joint moves in the expected direction.
 - Start with slow speeds until you're confident in the configuration.
 - If the arm supports manual mode, a **ManualMode** row appears at the top
