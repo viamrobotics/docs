@@ -40,6 +40,8 @@ The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragm
 
 The favorite machine tools (`list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine`) read and change your own [machine favorites](/monitor/monitor/#favorite-machines), which no one else in your organization sees. `remove_favorite_machine` is marked destructive because it deletes a favorite, but it never changes the machine itself.
 
+`set_machine_config` and `set_machine_config_properties` are experimental and may change or be removed. `set_machine_config` replaces a machine part's entire saved configuration, and refuses the change if the configuration has changed since `read_machine_config` returned it. `set_machine_config_properties` sets individual properties by dotted path, such as `components.my-camera.attributes.fps`.
+
 ## Tools
 
 {{< readfile "/static/include/app/mcpserver/generated/mcp-tools-table.md" >}}
