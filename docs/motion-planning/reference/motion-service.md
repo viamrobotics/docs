@@ -89,7 +89,7 @@ The cable twist constraint keeps every rotational joint of a constrained arm wit
 The reference is the midpoint of the joint's limits unless `cable_twist_reference_degs` sets one.
 A joint that starts a move outside that range can stay there or turn back toward the reference, but the planner never turns it further away.
 
-The constraint is off unless you set `"cable_constraint": true`.
+The constraint is off unless you set `"cable_constraint": true` in the service configuration or in a `Move` request's `extra`.
 `viam-server` v1.14.0 through v1.14.2 instead turned it on by default, for `Move` requests, on every arm that had a camera mounted on it or on anything attached to it, unless the arm had an `input_range_override`.
 If your plans changed after you upgraded to one of those versions, upgrade to v1.14.3 or later, or set `"cable_constraint": false`.
 
