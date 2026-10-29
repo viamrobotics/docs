@@ -77,7 +77,7 @@ Viam supports two kinematics file formats at the API level:
 | **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | When writing a Viam kinematics file directly.                |
 | **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer ships a URDF and you want to reuse it. |
 
-`GetKinematics` returns one of these two formats. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
+On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and, when you ask for them, collision and visual meshes. The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
@@ -196,6 +196,14 @@ Each field:
   parent, in any of the
   [orientation formats](/motion-planning/reference/orientation-vectors/)
 - **`links[].geometry`**: optional collision shape (uses `type`, `x`/`y`/`z` for box, `r` for sphere/capsule/cylinder, `l` for capsule length or cylinder height)
+- **`links[].geometries`**: optional additional collision shapes for the
+  link, in the same format as `geometry`, for a link that one shape fits
+  poorly (`viam-server` v1.14.0 and later). A link's only unlabeled shape is
+  labeled with the link's `id`. When a link has several, each unlabeled one is
+  labeled `<id>_collision_<i>`, counting from 0 with `geometry` first. Viam
+  rejects the file if two shapes share a label, or if a label is `world` or
+  another link's or joint's `id`. A component's `frame` configuration accepts
+  `geometry` only, not `geometries`.
 - **`joints[].id`**: unique name for the joint
 - **`joints[].type`**: `"revolute"` (rotates) or `"prismatic"` (slides)
 - **`joints[].parent`**: the link this joint attaches to
