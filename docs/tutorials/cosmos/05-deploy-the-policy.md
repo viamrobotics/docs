@@ -21,6 +21,8 @@ You’re now ready to run a policy on your robot. If you’d rather test our pre
 
 (TODO EMBED pick-blue-3002.mp4)
 
+### Deploy
+
 To run your post-trained policy:
 
 1. First find your model in Data -> Models in the web UI. Hit the Deploy button, then follow the prompts to add this model to your robot. Initially, deploy to the same robot where you generated the training data (or an identical layout). (TODO MODEL PAGE SCREENSHOT)

@@ -26,9 +26,11 @@ For this step you’ll also need our CLI:
 1. Install it from the [Viam CLI installation instructions](https://docs.viam.com/cli/overview/#install).
 1. Then run `viam login` in your terminal and follow the login flow in your browser.
 
+### Submit the job
+
 To submit a robot policy training job, in any folder on your terminal, fill in the two ‘xxxx’ fields in the snippet below and run it in your shell. Your agent can also do this.
 
-```sh
+```sh {class="wrap"}
 # Submit your training job.
 # This takes 30 minutes to several hours and costs money; see 'Setting iterations' below.
 
