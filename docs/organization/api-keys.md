@@ -281,6 +281,7 @@ For `RobotClient`, your script reads the variables itself, as above.
 #### Use a viam.json file instead
 
 Each machine part has a `viam.json` file that holds the part's cloud credentials: the part ID and a part secret under the `cloud` key.
+To get the file on another computer, copy the machine's **Machine cloud credentials** from the machine's status menu in the Viam app and save them as `viam.json`.
 A script can authenticate with those instead of an API key:
 
 ```python
