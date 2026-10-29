@@ -4,7 +4,7 @@ linkTitle: "NVIDIA Cosmos 3 workshop"
 type: "docs"
 weight: 40
 date: "2026-10-29"
-description: "Use Viam's agentic flows and Isaac Sim integration to customize a workcell, automate training data, train a Cosmos 3 Edge policy, and deploy it to the simulated workcell."
+description: "Use Viam's agentic flows and Isaac Sim to customize a workcell, generate training data, train a Cosmos 3 Edge policy, and deploy it in simulation."
 capabilities: ["ml-training", "ml-models", "datasets", "docs"]
 diataxis: overview
 authors: []
