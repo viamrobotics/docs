@@ -37,6 +37,11 @@ aliases:
 Connect your first machine to the Viam platform so you can configure, control, and monitor it from anywhere.
 You'll create a machine in the Viam app, install Viam on your compute device, and confirm it's online.
 
+A **machine** is the combination of your compute resources and hardware that you want to control using Viam.
+Every machine has at least one **part**: the computer that runs Viam's software and is connected to one or more physical devices.
+A part can be almost any computer, including your own Mac or PC.
+For more, see [Machines and parts](/what-is-viam/#machines-and-parts).
+
 ## 1. Create a machine in the Viam app
 
 1. Go to [app.viam.com](https://app.viam.com) and log in (or create an account).
@@ -52,6 +57,9 @@ In the **Set up your machine** banner, click **Install**.
 
 The setup wizard opens and asks **Does your project have a separate board/computer?**
 Follow the guidance in the setup wizard to set up your machine on Viam.
+
+If you don't have your hardware yet, the setup wizard can also run your machine in a simulated environment in the cloud, so you can start configuring and testing right away.
+See [Simulate a machine](/set-up-a-machine/simulate-a-machine/).
 
 ## 3. Add hardware in the CONFIGURE tab
 
