@@ -23,6 +23,8 @@
 | `delete_fragment_config_item` | Write (destructive) |
 | `delete_machine_config_item` | Write (destructive) |
 | `remove_favorite_machine` | Write (destructive) |
+| `set_machine_config` | Write (destructive) |
+| `set_machine_config_properties` | Write (destructive) |
 | `update_fragment_config_item` | Write (destructive) |
 | `update_machine_config_item` | Write (destructive) |
 | `call_machine_api` | Live machine (destructive) |
