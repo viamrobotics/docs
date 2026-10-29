@@ -14,6 +14,7 @@ phase_total: 5
 prev: "/tutorials/cosmos/"
 next: "/tutorials/cosmos/design-your-robot-and-tasks/"
 languages: ["python"]
+draft: false
 ---
 
 All you need for this tutorial is a laptop with a web browser, a terminal that can run python, and a coding harness like Codex or Claude Code.

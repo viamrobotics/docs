@@ -14,6 +14,7 @@ phase_total: 5
 prev: "/tutorials/cosmos/create-training-episodes/"
 next: "/tutorials/cosmos/deploy-the-policy/"
 languages: ["python"]
+draft: false
 ---
 
 In this phase you’ll use the [demonstration episodes you recorded in Phase 3](/tutorials/cosmos/create-training-episodes/) to post-train a robot policy. At the end of this step you'll have a motion policy based on NVIDIA's Cosmos 3 Edge world model, but specialized for your task and your simulated workcell. If you’d rather skip the training steps and try an action policy created by Viam, use the [existing trained policy fast path](/tutorials/cosmos/deploy-the-policy/#fast-path-existing-trained-policy).

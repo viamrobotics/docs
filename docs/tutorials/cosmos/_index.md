@@ -17,6 +17,7 @@ workshop: "cosmos"
 workshop_overview: true
 companion_repo: "https://github.com/viam-labs/cosmos-tutorial"
 no_list: true
+draft: false
 ---
 
 In this workshop you’ll use our agentic flows and simulator to design a robot workcell, design a task for it, and then create a motion policy for it based on NVIDIA Cosmos 3 Edge, a 4B parameter world action model sized for edge deployment. You won’t need access to any physical robotics hardware, and the entire process is supported by agent skills and our native model training flow.

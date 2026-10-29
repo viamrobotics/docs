@@ -14,6 +14,7 @@ phase_total: 5
 prev: "/tutorials/cosmos/train-your-policy/"
 next: "/tutorials/cosmos/next-steps/"
 languages: ["python"]
+draft: false
 ---
 
 You’re now ready to run a policy on your robot. If you’d rather test our prebuilt model, use the [existing trained policy fast path](#fast-path-existing-trained-policy).

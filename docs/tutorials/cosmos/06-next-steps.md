@@ -11,6 +11,7 @@ workshop: "cosmos"
 toc_hide: true
 prev: "/tutorials/cosmos/deploy-the-policy/"
 languages: ["python"]
+draft: false
 ---
 
 Epilogue: some of you aren’t just simulating, you have live robot arms in your warehouses and laboratories.
