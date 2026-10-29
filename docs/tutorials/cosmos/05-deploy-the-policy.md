@@ -17,11 +17,11 @@ languages: ["python"]
 draft: true
 ---
 
-You’re now ready to run a policy on your robot. If you’d rather test our prebuilt model, scroll to the ‘existing trained policy’ fast path below.
+You’re now ready to run a policy on your robot. If you’d rather test our prebuilt model, use the [existing trained policy fast path](#fast-path-existing-trained-policy).
 
 (TODO EMBED pick-blue-3002.mp4)
 
-### Deploy
+## Deploy
 
 To run your post-trained policy:
 
@@ -37,7 +37,7 @@ To run your post-trained policy:
    uv run arm-policy-workflow <machine_address> --policy generic-1 --prompt "Pick up the block" --action-prefix-duration-sec 1.0 --world sim-world
    ```
 
-   Or ask your agent to do this. If this fails to connect, make sure you ran the ‘grab credentials’ step above.
+   Or ask your agent to do this. If this fails to connect, make sure you have the [machine credentials you saved in Phase 2](/tutorials/cosmos/design-your-robot-and-tasks/#save-machine-credentials).
 
 1. Open the Control page in a new browser tab, scroll down to the scene camera, switch it from ‘Refresh every second’ to ‘Live’ mode if you want, and watch as your policy is executed.
 1. If you don’t see motion, switch back to the browser tab where your Configure page is running and look for errors. Paste errors into your agent if something goes wrong, and ask it to look at your robot’s logs as well.
@@ -45,8 +45,8 @@ To run your post-trained policy:
 
 ## Fast path: existing trained policy
 
-First, follow the instructions above to create a fresh robot with a running sim container and the ‘cosmos-tutorial’ fragment.
+First, [create a fresh simulated robot in Phase 2](/tutorials/cosmos/design-your-robot-and-tasks/#design-your-robot) and install the `cosmos-tutorial` fragment.
 
-Then visit the [existing public trained model](https://app.viam.com/ml-model/viam/cosmos-xarm-pick) and click ‘Add to machine’. After that, follow the normal ‘Run the policy’ instructions above to get this model onto your fresh robot.
+Then visit the [existing public trained model](https://app.viam.com/ml-model/viam/cosmos-xarm-pick) and click ‘Add to machine’. After that, follow the [deployment instructions](#deploy) to add this model to your fresh robot and run it.
 
 {{< workshop-nav >}}

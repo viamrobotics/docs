@@ -46,7 +46,7 @@ You’ll use the Viam agentic skills and simulation environments throughout; you
 
 If you’re new to these concepts, you’ll come away from this workshop understanding how to collect training data for a robot policy, how to deploy it, and how to apply the visual reasoning capabilities of frontier LLMs like Astra and Fable.
 
-Our agent tools will guide you at each step, and if you get stuck, some phases provide a ‘Fast path’ option for using a premade setup.
+Our agent tools will guide you at each step, and if you get stuck, you can use the [fast path with a premade policy](/tutorials/cosmos/deploy-the-policy/#fast-path-existing-trained-policy).
 
 ## Who is this for
 

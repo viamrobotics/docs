@@ -21,7 +21,7 @@ draft: true
 
 Now that you have a working robot and task, your next step is to collect randomized episodes to train on. If you’d rather skip ahead and see a working model post-trained by Viam, use the [existing trained policy fast path](/tutorials/cosmos/deploy-the-policy/#fast-path-existing-trained-policy).
 
-Next to oracle_episode.py you should find batch_episodes.py; this will let you run tens of random copies. You may be able to use this with no changes. If you added new settings to oracle_episode.py in the previous section, the agent will need to update batch_episodes to pass them through.
+Next to <file>oracle_episode.py</file> you should find <file>batch_episodes.py</file>; this will let you run tens of random copies. You may be able to use this with no changes. If you added new settings while you [designed the task in Phase 2](/tutorials/cosmos/design-your-robot-and-tasks/#design-and-run-your-task), the agent will need to update <file>batch_episodes.py</file> to pass them through.
 
 Start by creating a short sample dataset:
 

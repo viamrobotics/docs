@@ -17,9 +17,9 @@ languages: ["python"]
 draft: true
 ---
 
-In this section you’ll use our agent skills to design a simple automation cell and a few tasks. In later steps you’ll generate demonstration episodes from these tasks, train a policy on the episodes, and run the policy.
+In this phase you’ll use our agent skills to design a simple automation cell and a few tasks. In later phases you’ll [generate demonstration episodes](/tutorials/cosmos/create-training-episodes/), [train a policy](/tutorials/cosmos/train-your-policy/), and [run the policy](/tutorials/cosmos/deploy-the-policy/).
 
-If you get stuck in this step and want to skip ahead, or want to experiment with a completed solution, follow the steps below through step 4 (installing the fragment), then skip to [Phase 3: Create training episodes](/tutorials/cosmos/create-training-episodes/).
+If you get stuck in this phase and want to skip ahead, or want to experiment with a completed solution, complete [Design your robot](#design-your-robot) through step 4 (installing the fragment), then continue with [Phase 3: Create training episodes](/tutorials/cosmos/create-training-episodes/).
 
 ## Design your robot
 
@@ -36,17 +36,17 @@ Start by booting a simulator and installing the starter arm for this tutorial:
 1. Then switch the camera to ‘Live’ mode, pop it out using the browser’s picture-in-picture controls
 1. Last, click the ‘pick-arm’ resource on the left panel. If you hit the ‘jog’ toggles on the arm controls, you should see the arm move in response. You can also ask the agent to do some sample motions for you.
 
-While you’re in the web UI, grab credentials for your robot:
+## Save machine credentials
 
 1. In the web UI, go to the page for the new machine you created, click the ‘Online’ dropdown, and click ‘Machine cloud credentials’ to copy what you need. (TODO IMAGE OF MACHINE CLOUD CREDENTIALS UI)
 1. Paste that into /etc/viam.json on your laptop; the scripts will look for it there.
 
 Now comes the fun part: designing the robot and task you want to train.
 
-1. If you installed the viam plugin correctly above, your agent should automatically use the agent skills to guide you around hard edges; just to be safe, ask it if it has access to workcell-design and the other viam skills, and repeat the plugin install above if not.
+1. If you installed the Viam plugin during [Phase 1’s harness setup](/tutorials/cosmos/setting-up-your-environment/#harness-setup), your agent should automatically use the agent skills to guide you around hard edges. Just to be safe, ask it if it has access to `workcell-design` and the other Viam skills, and repeat the plugin installation if not.
 1. Decide on a robot layout. A good prompt here is ‘Can you guide me through a basic workcell design?’. We recommend a single arm, ideally the UFACTORY Lite 6 we use in our demos, to start; if you plan to train a bimanual, non-6-DOF, or non-arm robot, that’s great! But bear in mind your agent will have to edit some training scripts. Ping us on discord if you try a different design and run into trouble.
 1. As you design the robot, the agent will add and subtract components from the initial ‘cosmos-tutorial’ fragment. Try prompting it to add shelving or racks, clutter on the table, or colors and textures.
-1. Decide on a task. Consider variations on picking up something, putting something somewhere, turning something, selecting a specific object from a group. See ‘Design and run your task’ below for more details about this.
+1. Decide on a task. Consider variations on picking up something, putting something somewhere, turning something, or selecting a specific object from a group. See [Design and run your task](#design-and-run-your-task) for more details.
 
 The agent knows what to do here, can configure your machine, and can query logs and look at cameras if you run into trouble. You should manage it at whatever level you’re comfortable with.
 
