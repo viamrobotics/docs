@@ -318,6 +318,9 @@ kill -3 <PID>
 
 The process dumps a stack trace to the `viam-server` logs showing all goroutines and where execution is blocked.
 
+On Linux and macOS, `viam-server` v1.14.0 and later do this for you when a module doesn't stop: if the module is still running after `viam-server` sends it SIGTERM, `viam-server` sends SIGQUIT before it force-kills the module.
+To find out why a module hangs on shutdown, look for that stack trace in the logs just before the module stops.
+
 ## Get support
 
 If you cannot resolve the issue, reach out on the [Community Discord](https://discord.gg/viam).
