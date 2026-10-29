@@ -408,6 +408,7 @@ app,GetRobotPartByNameAndLocation,,,GetRobotPartByNameAndLocation,,getRobotPartB
 app,TailRobotPartLogs,,tail_robot_part_logs,TailRobotPartLogs,,tailRobotPartLogs
 app,GetRobotPartHistory,,get_robot_part_history,GetRobotPartHistory,,getRobotPartHistory
 app,UpdateRobotPart,,update_robot_part,UpdateRobotPart,,updateRobotPart
+app,SetConfigProperty,,set_config_property,,,
 app,NewRobotPart,,new_robot_part,NewRobotPart,,newRobotPart
 app,DeleteRobotPart,,delete_robot_part,DeleteRobotPart,,deleteRobotPart
 app,MarkPartAsMain,,mark_part_as_main,MarkPartAsMain,,markPartAsMain

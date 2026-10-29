@@ -39,7 +39,8 @@ tab, so what a resource offers depends on its API:
 
 - Resources whose API is broken into individual controls list one toggle per control, named
   for the API method it drives. An arm, for example, lists **MoveToJointPositions**,
-  **MoveToPosition**, **Quick move**, **GetJointPositions**, **IsMoving**, and **DoCommand**.
+  **MoveToPosition**, **Jogging**, **GetJointPositions**, **IsMoving**, **SetManualMode**, and
+  **DoCommand**.
 - Resources without individual controls list a single **Overview** toggle that opens the
   resource's full control card.
 - The motion service lists a **Move** control: the frame-aware move panel that commands the

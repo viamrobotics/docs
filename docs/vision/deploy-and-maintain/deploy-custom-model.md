@@ -66,14 +66,15 @@ Models live at the organization level in Viam. Uploading a model is a one-time a
 3. Choose **New model** (or **New version** if you are replacing an existing model). Under **Visibility**, choose **Private** for internal use or **Public** to publish to the [registry](https://app.viam.com/registry). Click **Next steps**.
 4. Fill in the upload form:
    - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX). Select **Registry** only if a module's instructions tell you to (see [Deploy a Registry framework model](#deploy-a-registry-framework-model)).
-   - **Module resources to deploy** (**Registry** framework only): click **Select Modular Resource** to pick one or more component or service models from the registry, or type a model triple such as `viam-labs:arm-policy:policy` and click **Add**. Deploying the model adds each of these resources to the machine.
+   - **Module resources to deploy** (**Registry** framework only): with **Search the registry** selected, click **Select Modular Resource** to pick one or more component or service models from the registry. To enter a model by name instead, select **Type the model name**, type the model triple in the format `namespace:module-name:model-name`, and click **Add**. Deploying the model adds each of these resources to the machine.
    - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID). For the **Registry** framework, click **Upload files** and pick the files the module loads at runtime, such as model weights and configuration files. Which files those are depends on the module, so check the module's documentation in the registry. Viam stores them together as one package, and the module reads them from the directory that `model_path` points to.
    - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config. For the **Registry** framework, it is also the package name in `model_path`. Registry item names are unique within an organization, so the upload fails if another registry item in your organization, such as a module or training script, already uses the name.
    - **Task type**: pick what the model predicts:
      - **Single label classification**: one label for each image.
      - **Multi label classification**: any number of labels for each image.
      - **Object detection**: labels for objects in an image, and where each object is.
-     - **Other**: none of these, for example a model that controls an arm.
+     - **Robot policy**: actions for a robot to take, computed from inputs such as camera images and joint states. For example, a model that controls an arm.
+     - **Other**: none of these.
    - **Description**: one sentence describing the model.
 5. Click **Upload model**.
 

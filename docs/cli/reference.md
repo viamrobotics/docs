@@ -1699,6 +1699,7 @@ viam module add-app [--app-name=<name>] [--app-type=<type>] [--dry-run]
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module update-models [--binary=<binary>] [...named args]
+viam module lint-manifest [--module=<path to meta.json>]
 viam module build start --version=<version> [...named args]
 viam module build local --module=<path to meta.json> [arguments...]
 viam module build list [command options] [arguments...]
@@ -1872,6 +1873,30 @@ viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
 | `--binary` | The module executable to run (binary or script). Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | Optional |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 
+### `module lint-manifest`
+
+Check your module's <file>meta.json</file> for format errors and for the length limits the Viam registry enforces, without connecting to Viam.
+The command needs no credentials, so you can run it in your module's CI before a release publishes the module.
+
+The command checks that:
+
+- the file parses as JSON and `module_id` has the form `public-namespace:module-name` (or `org-id:module-name`)
+- each model's `short_description` is at most 100 bytes
+- each application's `customizations.machinePicker` `heading` is at most 60 bytes and `subheading` is at most 256 bytes
+
+It prints a warning for a model whose `api` value is malformed, and prints `no problems found in <path>` when the checks pass.
+Passing does not guarantee that an upload will succeed.
+
+```sh {class="command-line" data-prompt="$"}
+# check the meta.json file in the current directory
+viam module lint-manifest
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. Default: `./meta.json`. | Optional |
+
 ### `module upload`
 
 Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information.
@@ -1929,10 +1954,9 @@ viam module reload-local --local
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | Optional |
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json`. | Optional |
-| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
+| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. Its module ID determines which module is configured and restarted. Default: `meta.json`. | Optional |
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | Optional |
@@ -1941,7 +1965,6 @@ viam module reload-local --local
 | `--no-build` | Skip build step. Default: `false`. | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | Optional |
 | `--home` | Remote machine home directory under which `<home>/.viam` is used as the module destination. By default the CLI queries the machine for its `VIAM_HOME`; pass `--home` only if the machine cannot be reached or reports a wrong value. | Optional |
-| `--name` | The name of the module. For example: `hello-world`. | Optional |
 
 ### `module restart`
 
@@ -2167,6 +2190,7 @@ The following criteria are checked for every `upload`:
 - The entry point file specified in the [`meta.json` file](/build-modules/module-reference/) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
+- If a <file>meta.json</file> is present, each model's `short_description` must be at most 100 bytes, and each application's `customizations.machinePicker` `heading` and `subheading` must be at most 60 and 256 bytes. `module update` checks the same limits. To check them without uploading, run [`module lint-manifest`](#module-lint-manifest).
 
 See [Create a module](/build-modules/write-a-driver-module/) and [Update and manage modules you created](/build-modules/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
@@ -2681,7 +2705,8 @@ viam packages upload --path=./the_package.tar.gz --org-id=123 --name=MyMLModel -
 | `--name` | The name of the package. | **Required** |
 | `--version` | The version of the package or `latest`. | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
-| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | Required if `--type=ml_model` |
+| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | Required if `--type=ml_model` |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--model-framework=registry`, and not allowed with any other framework. | Optional |
 | `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | Required if `--type=ml_model` |
 
 ### `packages export`
@@ -2949,7 +2974,7 @@ Use a training script to train an ML model on data.
 ```sh {class="command-line" data-prompt="$"}
 viam train submit managed --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --model-type=<model-type> --model-labels=<model-labels> [...named args]
 viam train submit custom from-registry --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --script-name=<script-name> --version=<version> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
-viam train submit custom with-upload --dataset-id=<dataset-id> --org-id=<org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
+viam train submit custom with-upload --dataset-id=<dataset-id> --model-org-id=<model-org-id> --model-name=<model-name> --path=<path> --script-name=<script-name> --framework=<framework> --container-id=<container-id> --args=<arg-key>=<arg-value> [...named args]
 viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 viam train cancel --job-id=<job-id>
@@ -3006,7 +3031,7 @@ Upload a draft training script and submit a custom training job on data in the V
 
 ```sh {class="command-line" data-prompt="$"}
 # submit custom training job with an uploaded training script on data in Viam Cloud
-viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --container-id=<INSERT CONTAINER ID> --args=num_epochs=3,labels="'green_square blue_star'"
+viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-org-id=<INSERT ORG ID> --model-name=MyRegistryModel --model-type=single_label_classification --model-version=2 --version=1 --path=<path-to-tar.gz> --script-name=mycompany:MyCustomTrainingScript --framework=tflite --container-id=<INSERT CONTAINER ID> --args=num_epochs=3,labels="'green_square blue_star'"
 ```
 
 <!-- prettier-ignore -->
@@ -3019,7 +3044,8 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--path` | The path to the ML training script to upload. | **Required** |
 | `--script-name` | The registry name of the ML training script to use for training. This sets the name on upload. | **Required** |
 | `--container-id` | The ID of the training container to run the job in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
-| `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`. | Optional |
+| `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`. | **Required** |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 | `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | Optional |
 | `--version` | The version of the ML training script to upload. Default: current timestamp. | Optional |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
@@ -3163,7 +3189,8 @@ viam training-script upload --framework=tflite --org-id=123 --path=. --script-na
 | `--org-id` | The organization ID to host the scripts in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | **Required** |
 | `--script-name` | Name of the ML training script to upload. | **Required** |
 | `--version` | Version of the ML training script to upload. | Optional |
-| `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | Optional |
+| `--framework` | Framework of the ML training script to upload, can be `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | **Required** |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 | `--url` | URL of GitHub repository associated with the training script. | Optional |
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | Optional |
@@ -3186,6 +3213,8 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 | `--visibility` | Visibility of the registry item. Options: `public`, `private`. | **Required** |
 | `--description` | Description of the ML training script. | Optional |
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
+| `--framework` | Framework of the ML training script: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. Setting `--framework` or `--module-resource` replaces the script's framework and module resources. If you set only `--module-resource`, the script keeps its current framework, so that framework must already be `registry`. | Optional |
+| `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 
 ### `training-script test-local`
 

@@ -38,6 +38,8 @@ Tools fall into seven groups, reflected in the **Category** column below:
 
 The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragment_config_item`, and `delete_fragment_config_item`) change fragments. If a fragment is public or unlisted, users outside your organization can see and use its configuration, including your changes.
 
+The favorite machine tools (`list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine`) read and change your own [machine favorites](/monitor/monitor/#favorite-machines), which no one else in your organization sees. `remove_favorite_machine` is marked destructive because it deletes a favorite, but it never changes the machine itself.
+
 ## Tools
 
 {{< readfile "/static/include/app/mcpserver/generated/mcp-tools-table.md" >}}

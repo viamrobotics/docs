@@ -473,6 +473,29 @@ def link_description(format_type, full_description, link_text, link_url):
 
     return linked_description
 
+## Fetch just the first sentence from an override file (first text string terminated by '.\n'), ignoring hugo
+## shortcodes like alerts ('{{% alert %}}...{{% /alert %}}'), which precede some override files' (proto descriptions')
+## first sentence. The closing tag must match the same shortcode name as the opener (via backreference), so a
+## self-closing shortcode earlier in the file (e.g. {{< glossary_tooltip ... >}}, no closing tag of its own) can't
+## get matched up with an unrelated block shortcode's closer later in the file. Used for the API summary tables:
+def override_first_sentence(override_file):
+    with open(override_file, 'r') as f:
+        file_contents = f.read().strip()
+        file_contents = regex.sub(r'\{\{\%\s*(\w+)[^%]*\%\}\}.*?\{\{\%\s*\/\1\s*\%\}\}', '', file_contents, flags=regex.DOTALL)
+        ## Same, for angle-bracket shortcodes ({{< alert >}}...{{< /alert >}}), which
+        ## otherwise leak an unclosed shortcode opener into the table description:
+        file_contents = regex.sub(r'\{\{<\s*(\w+)[^>]*>\}\}.*?\{\{<\s*\/\1\s*>\}\}', '', file_contents, flags=regex.DOTALL)
+        search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
+
+        ## If the description contains any MD links, strip them out:
+        search_result = regex.sub(r'\[([A-Za-z0-9\.\(\)\-\_\`\s]*)\]\([A-Za-z0-9\.\:\/\-\_\#]*\)', r'\1', search_result)
+
+        ## If the description is missing a trailing period, or we stripped it off during the above matching, append
+        ## (restore) the period character:
+        if not search_result.endswith('.'):
+            return search_result + '.'
+        return search_result
+
 ## Fetch SDK documentation for each language in sdks array, by language, by type, by resource, by method.
 def parse(type, names):
 
@@ -802,7 +825,9 @@ def check_for_unused_methods(methods, type):
                     ## deliberately NOT ignored here -- the whole OAuth-apps family needs a
                     ## domain-owner decision on document-vs-ignore before we suppress the
                     ## warning; see the #5188/#5276 discussion.)
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus", "upload_device_push_token", "get_device_push_tokens", "delete_device_push_token", "set_firebase_config", "get_firebase_config", "delete_firebase_config"] or \
+                    ## Favorite machines belong to a signed-in user, and the Python app client can only
+                    ## authenticate with an API key, so these methods can't work for typical callers.
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus", "upload_device_push_token", "get_device_push_tokens", "delete_device_push_token", "set_firebase_config", "get_firebase_config", "delete_firebase_config", "add_favorite_machine", "remove_favorite_machine", "list_favorite_machines"] or \
                         lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter", "CurrentInputs", "GoToInputs"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource", "RobotClient.withClient"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
@@ -930,6 +955,18 @@ def write_markdown(type, names, methods):
 
                         proto_override_filename = resource + '.' + proto + '.md'
 
+                        ## Protos that viamrobotics/api marks `option deprecated = true` get a hand-written note naming
+                        ## the replacement (the proto itself doesn't say what to use instead), rendered as an alert above
+                        ## the description and in place of the description in the summary table. See CLAUDE.md
+                        ## ("Generated SDK reference docs") for how to find newly deprecated protos:
+                        ## .../overrides/protos/{resource}.{proto}.deprecated.md
+                        proto_deprecated_file = os.path.join(path_to_protos_override, resource + '.' + proto + '.deprecated.md')
+                        if os.path.isfile(proto_deprecated_file):
+                            output_file.write('{{% alert title="Deprecated" color="caution" %}}\n\n')
+                            for line in open(proto_deprecated_file, 'r', encoding='utf-8'):
+                                output_file.write(line)
+                            output_file.write('\n{{% /alert %}}\n\n')
+
                         ## .../overrides/protos/{resource}.{proto}
                         proto_override_file = os.path.join(path_to_protos_override, proto_override_filename)
                         if os.path.isfile(proto_override_file):
@@ -987,31 +1024,8 @@ def write_markdown(type, names, methods):
                         elif type == 'robot':
                             proto_anchor_link = '/reference/apis/' + resource + '/#' + proto_link
 
-                        ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
-                        ## shortcodes like alerts ('{{% alert %}}...{{% /alert %}}'), which precede some override files' (proto descriptions')
-                        ## first sentence. The closing tag must match the same shortcode name as the opener (via backreference), so a
-                        ## self-closing shortcode earlier in the file (e.g. {{< glossary_tooltip ... >}}, no closing tag of its own) can't
-                        ## get matched up with an unrelated block shortcode's closer later in the file:
-
-
                         if os.path.isfile(proto_override_file):
-                            with open(proto_override_file, 'r') as f:
-                                file_contents = f.read().strip()
-                                file_contents = regex.sub(r'\{\{\%\s*(\w+)[^%]*\%\}\}.*?\{\{\%\s*\/\1\s*\%\}\}', '', file_contents, flags=regex.DOTALL)
-                                ## Same, for angle-bracket shortcodes ({{< alert >}}...{{< /alert >}}), which
-                                ## otherwise leak an unclosed shortcode opener into the table description:
-                                file_contents = regex.sub(r'\{\{<\s*(\w+)[^>]*>\}\}.*?\{\{<\s*\/\1\s*>\}\}', '', file_contents, flags=regex.DOTALL)
-                                search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
-
-                                ## If the proto description contains any MD links, strip them out:
-                                search_result = regex.sub(r'\[([A-Za-z0-9\.\(\)\-\_\`\s]*)\]\([A-Za-z0-9\.\:\/\-\_\#]*\)', r'\1', search_result)
-
-                                ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
-                                ## (restore) the period character:
-                                if not search_result.endswith('.'):
-                                    proto_description_first_sentence = search_result + '.'
-                                else:
-                                    proto_description_first_sentence = search_result
+                            proto_description_first_sentence = override_first_sentence(proto_override_file)
                         else:
                             ## No proto description override file (for example a proto whose
                             ## docs section was removed); leave the description blank instead
@@ -1019,6 +1033,9 @@ def write_markdown(type, names, methods):
                             ## missing override (an authoring gap) is still surfaced.
                             print(f"WARNING: {type} {resource} {proto} has no proto description override file ({proto_override_file}); leaving description blank")
                             proto_description_first_sentence = ''
+
+                        if os.path.isfile(proto_deprecated_file):
+                            proto_description_first_sentence = '**Deprecated.** ' + override_first_sentence(proto_deprecated_file)
 
                         ## Write out this proto's entry to this resource's table_file:
                         if resource != 'movement_sensor':
