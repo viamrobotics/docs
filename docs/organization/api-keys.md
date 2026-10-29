@@ -247,6 +247,70 @@ opts = RobotClient.Options.with_api_key(
 robot = await RobotClient.at_address("<machine-address>", opts)
 ```
 
+### Script on your laptop
+
+A script that runs on your own computer and connects to a machine needs three things: the machine address, an API key, and the API key ID.
+Find the address, key, and key ID on the machine's **CONNECT** tab in the Viam app, or create a key as described in [Create an API key](#create-an-api-key).
+The key ID is a UUID, and the Python SDK raises a `ValueError` if the ID you pass is not a valid UUID.
+
+Keep the key and key ID out of your source code by reading them from environment variables.
+Set them in the shell that launches your script:
+
+```sh {class="command-line" data-prompt="$"}
+export VIAM_API_KEY_ID="<your-api-key-id>"
+export VIAM_API_KEY="<your-api-key>"
+```
+
+Then read them in your script and pass them to the SDK along with the machine address:
+
+```python
+import os
+
+from viam.robot.client import RobotClient
+
+opts = RobotClient.Options.with_api_key(
+    api_key=os.environ["VIAM_API_KEY"],
+    api_key_id=os.environ["VIAM_API_KEY_ID"],
+)
+robot = await RobotClient.at_address("<machine-address>", opts)
+```
+
+The Python SDK reads `VIAM_API_KEY` and `VIAM_API_KEY_ID` on its own only in `ViamClient.create_from_env_vars()`, which connects to the Viam app rather than to a single machine.
+For `RobotClient`, your script reads the variables itself, as above.
+
+#### Use a viam.json file instead
+
+Each machine part has a `viam.json` file that holds the part's cloud credentials: the part ID and a part secret under the `cloud` key.
+To get the file on another computer, copy the machine's **Machine cloud credentials** from the machine's status menu in the Viam app and save them as `viam.json`.
+A script can authenticate with those instead of an API key:
+
+```python
+import json
+from pathlib import Path
+
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+
+cloud = json.loads(Path("viam.json").read_text())["cloud"]
+opts = RobotClient.Options(
+    dial_options=DialOptions(
+        auth_entity=cloud["id"],
+        credentials=Credentials(type="robot-secret", payload=cloud["secret"]),
+    )
+)
+robot = await RobotClient.at_address("<machine-address>", opts)
+```
+
+On a computer where `viam-agent` is installed, this file is at <FILE>/etc/viam.json</FILE>.
+The part secret authenticates as the machine part itself.
+For a script on a laptop, prefer an API key scoped to the machine, because you can revoke it without touching the machine.
+
+{{< alert title="Treat keys like passwords" color="caution" >}}
+Anyone with your API key and key ID, or your `viam.json` file, can act on your machine.
+Do not put them in source code, commit them to version control, or share them in screenshots or chat.
+If a key may have been exposed, [rotate or delete it](#rotate-a-key).
+{{< /alert >}}
+
 ### CLI authentication
 
 Authenticate the CLI with an API key:
