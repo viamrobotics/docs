@@ -15,7 +15,7 @@
   <rect x="12" y="54" width="198" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
   <text x="111" y="76" text-anchor="middle" class="box-label" fill="#252525">Code sandbox</text>
   <text x="111" y="94" text-anchor="middle" style="font-size:10px; fill:#808080">TypeScript · Python · Go</text>
-  <text x="111" y="110" text-anchor="middle" style="font-size:10px; fill:#808080">in the Viam web app</text>
+  <text x="111" y="110" text-anchor="middle" style="font-size:10px; fill:#808080">through the web app</text>
 
   <rect x="12" y="138" width="198" height="72" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
   <text x="111" y="160" text-anchor="middle" class="box-label" fill="#252525">Code on your laptop</text>

@@ -31,7 +31,7 @@ See [Add software capabilities from the registry](/build-modules/use-registry-mo
 
 Control code runs in one of two places: off the machine, as a client, or on the machine, as a module.
 
-<img src="/control-code-where-it-runs.svg" alt="Where control code runs. Off the machine, clients run only while you run them: the code sandbox runs TypeScript, Python, or Go in the Viam web app, and code on your laptop uses the Python, Go, C++, TypeScript, or Flutter SDK. Clients make API calls to the machine over WebRTC or gRPC. On the machine, viam-server starts modules with the machine and restarts them. Modules, which keep running when nobody is connected, are inline modules, externally managed modules, or built-in models and modules from the registry." style="width:100%;max-width:720px;height:auto;display:block" >
+<img src="/control-code-where-it-runs.svg" alt="Where control code runs. Off the machine, clients run only while you run them: the code sandbox runs TypeScript, Python, or Go through the Viam web app, and code on your laptop uses the Python, Go, C++, TypeScript, or Flutter SDK. Clients make API calls to the machine over WebRTC or gRPC. On the machine, viam-server starts modules with the machine and restarts them. Modules, which keep running when nobody is connected, are inline modules, externally managed modules, or built-in models and modules from the registry." style="width:100%;max-width:720px;height:auto;display:block" >
 
 A client connects to the machine over the network and calls its API, the same way the CONTROL tab does.
 It runs only while you run it, and it stops when you close the browser tab or your laptop sleeps.
@@ -52,7 +52,7 @@ Use it to try an SDK method, check how a component responds, or prototype a shor
 The sandbox isn't for code you want to keep:
 
 - **Nothing is saved.** Leaving the page or switching parts discards your code. Download it as a file to keep it.
-- **Runs are short.** A Python or Go program stops after 5 minutes, and the editor disconnects after 5 minutes of inactivity.
+- **Runs are short.** A Python or Go program stops after 5 minutes. The Python and Go sandbox disconnects after 5 minutes of inactivity, and after 3 hours in any case.
 
 To get started, see [Code sandbox](/monitor/default-interface/#code-sandbox).
 
@@ -78,7 +78,8 @@ To get started, see [App scaffolding](/build-apps/setup/overview/) and [Connect 
 
 You write an inline module in Python or Go, in an editor in the Viam web app.
 When you click **Save & Deploy**, Viam stores your source, builds it in the cloud, and deploys it to your machine.
-Each save is a new version (`0.0.1`, `0.0.2`, and so on), so there's nothing to set up: no repository, no build tooling, no release process.
+Each save is a new version (`0.0.1`, `0.0.2`, and so on) and starts a cloud build that typically takes a few minutes, and you can keep editing while it runs.
+There's nothing else to set up: no repository, no build tooling, no release process.
 
 Use an inline module when your code needs to run on the machine without your laptop, and you don't need to share it outside your organization.
 Inline modules are private to your organization.
@@ -110,7 +111,7 @@ To get started, see [Write a logic module](/build-modules/write-a-logic-module/)
 
 | Option                    | Runs                | Keeps running without you | Saved by Viam                          | How you share it                            |
 | ------------------------- | ------------------- | ------------------------- | -------------------------------------- | ------------------------------------------- |
-| Code sandbox              | In the Viam web app | No                        | No; download the file                  | Manual                                      |
+| Code sandbox              | Through the web app | No                        | No; download the file                  | Copy or download the code                   |
 | Code on your laptop       | On your computer    | No                        | No; use your own repository            | Your own repository                         |
 | Inline module             | On the machine      | Yes                       | Yes                                    | Add it to machines in your organization     |
 | Externally managed module | On the machine      | Yes                       | Builds only; source in your repository | Through the registry, privately or publicly |
