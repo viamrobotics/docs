@@ -589,22 +589,22 @@ are set to the target platform. See [Environment variables](#environment-variabl
 
 `reload` flags: `--part-id` (target machine part), `--path` (root of git
 repo to build), `--annotation` (text note describing the purpose of this
-reload build), `--module` (path to `meta.json`), `--model-name` (add a
-resource to config with this model triple), `--resource-name` (name the
-resource instance), `--id` (module ID), `--cloud-config` (path to
-`viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
-containing `meta.json`), `--local` (run entrypoint directly on localhost).
+reload build), `--module` (path to `meta.json`, whose module ID identifies
+the module to reload), `--model-name` (add a resource to config with this
+model triple), `--resource-name` (name the resource instance),
+`--cloud-config` (path to `viam.json`, alternative to `--part-id`),
+`--workdir` (subdirectory containing `meta.json`).
 
 `reload-local` flags: `--part-id` (target machine part), `--file` (path to a
 pre-built tarball; implies `--no-build`, does not require `build.path` in
 `meta.json`), `--no-build` (skip build), `--local` (run entrypoint directly
 on localhost instead of bundling), `--module` (path to `meta.json`),
-`--model-name` (add a resource to config with this model triple), `--name`
-(name the added resource), `--resource-name` (name the resource instance),
-`--id` (module ID, alternative to `--name`), `--cloud-config` (path to
+`--model-name` (add a resource to config with this model triple),
+`--resource-name` (name the resource instance), `--cloud-config` (path to
 `viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
 containing `meta.json`), `--home` (override the remote machine's home
-directory), `--no-progress` (hide transfer progress).
+directory), `--no-progress` (hide transfer progress). The module ID in
+`meta.json` determines which module is configured and restarted.
 
 ## Environment variables
 
