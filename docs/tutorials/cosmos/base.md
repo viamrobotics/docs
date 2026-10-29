@@ -1,7 +1,8 @@
 # Training NVIDIA Cosmos 3 from Start to Finish in Viam Sim
+
 SUBTITLE: Use Viam’s agentic flows and Isaac Sim integration to customize a workcell, automate training data, train a Cosmos 3 Edge policy, and deploy it back to the simulated workcell
 
-# Introduction
+## Introduction
 
 In this tutorial you’ll use our agentic flows and simulator to design a robot workcell, design a task for it, and then create a motion policy for it based on NVIDIA Cosmos 3 Edge, a 4B parameter world action model sized for edge deployment. You won’t need access to any physical robotics hardware, and the entire process is supported by agent skills and our native model training flow.
 
@@ -18,9 +19,10 @@ Viam is an agentic platform for developing and operating robots. It provides dev
 ### What you’ll accomplish
 
 By the end of this tutorial, you will have:
+
 - Designed a workcell in Isaac Sim
 - Designed a simulated task for it to perform
--Run through randomized task episodes to collect a training set with videos and robot poses
+- Run through randomized task episodes to collect a training set with videos and robot poses
 - Trained a motion policy
 - Deployed the policy back to the simulator and run it to execute your trained motion
 
@@ -63,7 +65,7 @@ Get the scripts by:
 1. Open a terminal on your laptop
 1. Clone the cosmos-tutorial repo with `git clone https://github.com/viam-labs/cosmos-tutorial`
 1. `cd cosmos-tutorial`
-1. Install the `uv` tool for python package management from the instructions here: https://docs.astral.sh/uv/getting-started/installation/
+1. Install the `uv` tool for python package management from the [installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
 ## Design your robot and tasks
 
@@ -144,8 +146,8 @@ The training script lives in the training/ folder of the cosmos-tutorial repo. Y
 
 For this step you’ll also need our CLI:
 
-1. Install it from the instructions here https://docs.viam.com/cli/overview/#install
-1. Then run `viam login` in your terminal and follow the login flow in your browser
+1. Install it from the [Viam CLI installation instructions](https://docs.viam.com/cli/overview/#install).
+1. Then run `viam login` in your terminal and follow the login flow in your browser.
 
 To submit a robot policy training job, in any folder on your terminal, fill in the two ‘xxxx’ fields in the snippet below and run it in your shell. Your agent can also do this.
 
@@ -177,10 +179,10 @@ The training script’s defaults are set for a 6-DOF arm with around 100 episode
 
 You set this with max_iter (the ITERS variable in the submit command above). Training takes time and costs money, so it pays to build up to a full run. We recommend working up in steps, each checking something before you spend more on the next:
 
-* 10 iterations (about 15–20 minutes) to check that your dataset and the script work end to end.
-* Optional: 50 iterations (about 35 minutes) to try deploying your own policy. It won’t complete your task, but you can see the arm move under its control.
-* Optional: 500 iterations (about 4 hours) to see how training is going: the arm should move with purpose toward the task, though it will likely still fail often.
-* 1,500 iterations for about 100 episodes (about 12 hours) for a usable policy. Scale it with your data: double the episodes, double the iterations. Don’t stop early: in our internal use, the model keeps improving through the end of these runs.
+- 10 iterations (about 15–20 minutes) to check that your dataset and the script work end to end.
+- Optional: 50 iterations (about 35 minutes) to try deploying your own policy. It won’t complete your task, but you can see the arm move under its control.
+- Optional: 500 iterations (about 4 hours) to see how training is going: the arm should move with purpose toward the task, though it will likely still fail often.
+- 1,500 iterations for about 100 episodes (about 12 hours) for a usable policy. Scale it with your data: double the episodes, double the iterations. Don’t stop early: in our internal use, the model keeps improving through the end of these runs.
 
 When your training job finishes, or if it fails, you’ll get an email notification.
 
@@ -198,11 +200,14 @@ To run your post-trained policy:
 1. Wait for the model to download. You can watch progress in the Logs tab.
 1. Back on the Configure page, in the generic-1 component again, scroll down to the DoCommand panel.
 1. Start the policy server by pasting in `{“command”: “policy_server”, “action”: “start”}` and hitting Execute. Keep this browser tab running so that the command isn’t interrupted. You’ll get an output in 30 or so seconds when it finishes starting up. This is managing NVIDIA’s upstream cosmos-framework runner under the surface.
-1. In the cosmos-tutorial/episodes folder, run:
+1. In the <file>cosmos-tutorial/episodes</file> folder, run:
 
-  `uv run arm-policy-workflow <machine_address> --policy generic-1   --prompt "Pick up the block"    --action-prefix-duration-sec 1.0  --world sim-world`
+   ```sh
+   uv run arm-policy-workflow <machine_address> --policy generic-1 --prompt "Pick up the block" --action-prefix-duration-sec 1.0 --world sim-world
+   ```
 
-  (Or ask your agent to do this. If this fails to connect, make sure you ran the ‘grab credentials’ step above).
+   Or ask your agent to do this. If this fails to connect, make sure you ran the ‘grab credentials’ step above.
+
 1. Open the Control page in a new browser tab, scroll down to the scene camera, switch it from ‘Refresh every second’ to ‘Live’ mode if you want, and watch as your policy is executed.
 1. If you don’t see motion, switch back to the browser tab where your Configure page is running and look for errors. Paste errors into your agent if something goes wrong, and ask it to look at your robot’s logs as well.
 1. You have now successfully run a world action model! Thank you for following along with us to the end.
@@ -211,7 +216,7 @@ To run your post-trained policy:
 
 First, follow the instructions above to create a fresh robot with a running sim container and the ‘cosmos-tutorial’ fragment.
 
-Then visit the existing public trained model at https://app.viam.com/ml-model/viam/cosmos-xarm-pick and click ‘Add to machine’. After that, follow the normal ‘Run the policy’ instructions above to get this model onto your fresh robot.
+Then visit the [existing public trained model](https://app.viam.com/ml-model/viam/cosmos-xarm-pick) and click ‘Add to machine’. After that, follow the normal ‘Run the policy’ instructions above to get this model onto your fresh robot.
 
 ## Next steps – deploy to a live robot
 
