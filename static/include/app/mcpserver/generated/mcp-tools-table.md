@@ -10,6 +10,7 @@
 | `read_machine_config` | Read-only |
 | `read_machine_metadata` | Read-only |
 | `read_part_status` | Read-only |
+| `retrieve_skill` | Read-only |
 | `search_configuration_blocks` | Read-only |
 | `read_viam_docs` | Read-only (external) |
 | `read_machine_logs` | Read (billable) |
@@ -23,6 +24,8 @@
 | `delete_fragment_config_item` | Write (destructive) |
 | `delete_machine_config_item` | Write (destructive) |
 | `remove_favorite_machine` | Write (destructive) |
+| `set_machine_config` | Write (destructive) |
+| `set_machine_config_properties` | Write (destructive) |
 | `update_fragment_config_item` | Write (destructive) |
 | `update_machine_config_item` | Write (destructive) |
 | `call_machine_api` | Live machine (destructive) |
