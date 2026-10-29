@@ -1954,10 +1954,9 @@ viam module reload-local --local
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | Optional |
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json`. | Optional |
-| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
+| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. Its module ID determines which module is configured and restarted. Default: `meta.json`. | Optional |
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | Optional |
@@ -1966,7 +1965,6 @@ viam module reload-local --local
 | `--no-build` | Skip build step. Default: `false`. | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | Optional |
 | `--home` | Remote machine home directory under which `<home>/.viam` is used as the module destination. By default the CLI queries the machine for its `VIAM_HOME`; pass `--home` only if the machine cannot be reached or reports a wrong value. | Optional |
-| `--name` | The name of the module. For example: `hello-world`. | Optional |
 
 ### `module restart`
 
