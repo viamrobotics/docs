@@ -14,7 +14,6 @@ phase_total: 5
 prev: "/tutorials/cosmos/design-your-robot-and-tasks/"
 next: "/tutorials/cosmos/train-your-policy/"
 languages: ["python"]
-draft: true
 ---
 
 (TODO: IMAGE OF EPISODE GRID)

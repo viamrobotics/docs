@@ -14,7 +14,6 @@ phase_total: 5
 prev: "/tutorials/cosmos/setting-up-your-environment/"
 next: "/tutorials/cosmos/create-training-episodes/"
 languages: ["python"]
-draft: true
 ---
 
 In this phase you’ll use our agent skills to design a simple automation cell and a few tasks. In later phases you’ll [generate demonstration episodes](/tutorials/cosmos/create-training-episodes/), [train a policy](/tutorials/cosmos/train-your-policy/), and [run the policy](/tutorials/cosmos/deploy-the-policy/).
