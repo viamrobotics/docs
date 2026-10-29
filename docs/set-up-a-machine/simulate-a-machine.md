@@ -15,10 +15,10 @@ A simulated machine appears in the Viam app like any other machine: you configur
 
 ## Before you start
 
-- **Simulation is billed by the minute.** The user who starts the simulation, including through the AI assistant or MCP, is charged for as long as it's running. The page where you start a simulation shows the current rate.
+- **Simulation is billed by the minute.** The machine's organization is charged for as long as the simulation is running, whoever starts it, including through the AI assistant or MCP. The page where you start a simulation shows the current rate.
 - **Idle simulations time out.** If the simulated machine isn't actuating, the simulation times out after at most 60 minutes.
 - **You can stop or restart a simulation at any time.**
-- **Some modules need real hardware.** Modules that are drivers for physical hardware, such as specific cameras, motors, or sensors, don't work in a simulated environment. <!-- TODO(draft): confirm that built-in fake models (for example, the fake arm) work in the sandbox and link them here. -->
+- **Some modules need real hardware.** Modules that are drivers for physical hardware, such as specific cameras, motors, or sensors, don't work in a simulated environment.
 
 ## Start a simulation
 
@@ -28,7 +28,8 @@ A simulated machine appears in the Viam app like any other machine: you configur
 
 The wizard shows the simulation's progress as it starts, which can take several minutes.
 When it's ready, the machine comes online and you can configure it like any other machine.
-See [Configure hardware](/hardware/configure-hardware/) for how to add components. <!-- TODO(draft): confirm what the wizard shows if the simulation fails to start. -->
+See [Configure hardware](/hardware/configure-hardware/) for how to add components.
+If a simulation fails to start, the wizard shows the error and lets you try again.
 
 If a simulation is already running for the machine, the wizard offers **View running simulation** instead of starting a second one.
 
@@ -45,14 +46,16 @@ Deleting a machine also ends its simulation.
 A simulation runs in place of a machine part, which is normally a computer running `viam-server`.
 The Config AI assistant and the [Viam MCP server](/reference/mcp/) can check on, start, and stop a machine's simulation:
 
-| Tool               | What it does                                                 |
-| ------------------ | ------------------------------------------------------------ |
-| `read_simulation`  | Reports whether a simulation is running for a machine part.  |
-| `start_simulation` | Starts a simulation. Does nothing if one is already running. |
-| `stop_simulation`  | Stops a simulation. Does nothing if none is running.         |
+| Tool               | What it does                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| `read_simulation`  | Reports whether a simulation is running for a machine part.                           |
+| `start_simulation` | Starts a simulation. Does nothing if one is already running.                          |
+| `stop_simulation`  | Stops a simulation. Returns an error if none is running, or if one is still starting. |
 
-Each tool takes an optional part name and uses the machine's main part if you omit it.
+The start and stop tools take an optional part name and use the machine's main part if you omit it.
+`read_simulation` reports on every part if you omit the part name.
 Starting a simulation this way is billed the same as starting one from the setup wizard.
+The Config AI assistant asks you to approve before it starts a simulation. The MCP server doesn't ask.
 
 ## What's next
 
