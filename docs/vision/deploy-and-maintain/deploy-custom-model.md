@@ -73,7 +73,8 @@ Models live at the organization level in Viam. Uploading a model is a one-time a
      - **Single label classification**: one label for each image.
      - **Multi label classification**: any number of labels for each image.
      - **Object detection**: labels for objects in an image, and where each object is.
-     - **Other**: none of these, for example a model that controls an arm.
+     - **Robot policy**: actions for a robot to take, computed from inputs such as camera images and joint states. For example, a model that controls an arm.
+     - **Other**: none of these.
    - **Description**: one sentence describing the model.
 5. Click **Upload model**.
 
