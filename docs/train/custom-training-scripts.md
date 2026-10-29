@@ -423,7 +423,8 @@ viam train logs --job-id=<job-id>
 {{< /tabs >}}
 
 Training logs expire after 7 days.
-You will receive an email when your training job completes.
+When a training job succeeds or fails, Viam emails the user who submitted it.
+Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
 
 If a job fails, check the logs first: the error message usually indicates the problem.
 Note that training scripts may emit log lines at the error level and still succeed; check the final job status rather than individual log lines.
