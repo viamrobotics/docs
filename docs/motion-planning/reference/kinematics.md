@@ -77,7 +77,7 @@ Viam supports two kinematics file formats at the API level:
 | **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | When writing a Viam kinematics file directly.                |
 | **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer ships a URDF and you want to reuse it. |
 
-On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and, when you ask for them, collision and visual meshes. The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
+On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry (mesh file contents are included only when you request them). The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
@@ -109,6 +109,8 @@ from viam.components.arm import Arm
 
 arm = Arm.from_robot(machine, "my-arm")
 kinematics = await arm.get_kinematics()
+# kinematics[0] and kinematics[1] are the deprecated format and file fields,
+# which viam-server still fills in
 print(f"Kinematics format: {kinematics[0]}")
 # kinematics[1] contains the raw kinematics data
 ```
@@ -198,12 +200,13 @@ Each field:
 - **`links[].geometry`**: optional collision shape (uses `type`, `x`/`y`/`z` for box, `r` for sphere/capsule/cylinder, `l` for capsule length or cylinder height)
 - **`links[].geometries`**: optional additional collision shapes for the
   link, in the same format as `geometry`, for a link that one shape fits
-  poorly (`viam-server` v1.14.0 and later). A link's only unlabeled shape is
-  labeled with the link's `id`. When a link has several, each unlabeled one is
-  labeled `<id>_collision_<i>`, counting from 0 with `geometry` first. Viam
-  rejects the file if two shapes share a label, or if a label is `world` or
-  another link's or joint's `id`. A component's `frame` configuration accepts
-  `geometry` only, not `geometries`.
+  poorly (`viam-server` v1.14.0 and later). If a link has only one shape and it
+  has no `label`, it is labeled with the link's `id`. If a link has more than
+  one shape, each unlabeled shape is labeled `<id>_collision_<i>`, where `<i>`
+  is the shape's position among all of the link's shapes, counting from 0 with
+  `geometry` first. Viam rejects the file if two shapes share a label, or if a
+  label is `world` or another link's or joint's `id`. A component's `frame`
+  configuration accepts `geometry` only, not `geometries`.
 - **`joints[].id`**: unique name for the joint
 - **`joints[].type`**: `"revolute"` (rotates) or `"prismatic"` (slides)
 - **`joints[].parent`**: the link this joint attaches to
