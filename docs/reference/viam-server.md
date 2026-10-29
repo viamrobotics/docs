@@ -70,6 +70,10 @@ After start-up, `viam-server` manages:
 Once the machine has a configuration, it caches it locally (in a file at <FILE>~/.viam/cached_cloud_config\_\<PART-ID\>.json</FILE>) and can use the config for up to 60 days.
 Since the configuration is cached locally, your machine does not need to stay connected to Viam after it has obtained its configuration file.
 
+`viam-server` v1.14.0 and later also cache the access token they receive when they authenticate to Viam, in the <FILE>~/.viam/grpc/</FILE> directory, which only the user running `viam-server` can read.
+If authenticating fails later, for example while Viam's authentication service is down, `viam-server` connects to Viam with the cached token instead, so the machine stays connected to the cloud.
+Protect this directory as you would the machine's credentials file.
+
 If it is online, the machine automatically checks for new configurations every 15 seconds.
 When you or your collaborators change the configuration of a machine, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources.
 
