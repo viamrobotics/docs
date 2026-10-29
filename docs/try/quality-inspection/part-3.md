@@ -38,7 +38,7 @@ Check your Go version:
 go version
 ```
 
-You need Go `1.26.10` or later. With Go 1.21 or later, the `go` command downloads the newer toolchain automatically the first time it needs it; see [Go setup prerequisites](/build-apps/setup/go/#prerequisites). If Go isn't installed, download it from [go.dev/dl](https://go.dev/dl/).
+You need Go `1.26.10` or later. With Go 1.21 or later, the `go` command downloads the newer toolchain automatically the first time it needs it; see [Go setup prerequisites](/build-apps/setup/go/#prerequisites). If Go isn't installed, or is older than 1.21, download it from [go.dev/dl](https://go.dev/dl/).
 
 ### Install the Viam CLI
 
