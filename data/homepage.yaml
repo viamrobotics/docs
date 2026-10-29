@@ -1,0 +1,119 @@
+# Content for the docs homepage (/), rendered by the `homepage` shortcode
+# (layouts/shortcodes/homepage.html for the page, homepage.md for its
+# Markdown mirror at /index.md).
+#
+# Internal links are page paths, not URLs: the shortcode looks each one up
+# with site.GetPage and fails the build if the page doesn't exist, so a moved
+# or deleted page can't leave a broken link here. A `title` or `description`
+# here overrides the page's own; leave them out to use the page's frontmatter.
+#
+# Courses come from data/courses.yaml. List the ids to highlight under
+# `courses.highlight`.
+#
+# Workshop images are cropped to the tile's shape; `focus` sets which point
+# of the photo stays in frame.
+#
+# Popular guides and reference show titles only on the page. The Markdown
+# mirror adds each page's own description for agents.
+
+hero:
+  eyebrow: "Viam documentation"
+  title: "Build, deploy, and manage robots with Viam"
+  description: "Learn how Viam works, set up your first machine, or jump straight to the reference you need."
+
+# Optional lime banner directly below the hero for a new feature, doc,
+# workshop, or course. Set `enabled: false` (or delete this block) to hide it.
+# Link with `path` (a docs page) or `url` (anything else, such as a course).
+announcement:
+  enabled: true
+  label: "New"
+  text: "Learn how to train a VLA with Viam"
+  # PLACEHOLDER: no VLA page exists yet. Point this at the real page or
+  # course before merging.
+  path: "/train/train-a-model"
+  link_text: "Get started"
+
+# "Ways to learn": a full-width Docs tile with its own links, then one tile
+# each for workshops and courses below it.
+ways_to_learn:
+  title: "Ways to learn"
+  docs:
+    title: "Docs"
+    description: "Concepts, how-to guides, and reference for every part of the platform."
+    links:
+      - path: "/what-is-viam"
+        label: "Understand"
+        description: "How machines, modules, data, and fleets fit together."
+      - path: "/set-up-a-machine"
+        label: "Build"
+        title: "Set up a machine"
+        description: "Install viam-server and connect your first machine."
+      - path: "/reference"
+        label: "Look up"
+        title: "Reference"
+        description: "APIs, SDKs, the CLI, and the MCP server."
+  items:
+    - title: "Workshops"
+      description: "Guided, multi-hour projects that take you from unboxing to a working robot."
+      path: "/tutorials"
+      link_text: "Browse workshops"
+    - title: "Courses"
+      description: "Free, structured courses with videos and checkpoints, many with no hardware required."
+      url: "https://learn.viam.com"
+      link_text: "Browse courses"
+
+workshops:
+  title: "Featured workshops"
+  all:
+    path: "/tutorials"
+    title: "All workshops"
+  items:
+    - path: "/tutorials/so-arm101-palletizing"
+      title: "Miniature palletizing with the SO-ARM101"
+      image: "tutorials/so-arm101-palletizing/hero-cell-overview.jpg"
+      alt: "An SO-ARM101 arm carrying a die toward a partly built stack of dice on a printed pallet mat."
+    - path: "/tutorials/pick-and-place"
+      title: "Vision-guided pick-and-place with the xArm6"
+      image: "tutorials/pick-and-place/hero-hardware-overview.jpeg"
+      alt: "A uFactory xArm6 arm with a two-finger gripper and a wrist-mounted camera, reaching over colored blocks on a desk."
+
+featured:
+  title: "Popular guides"
+  items:
+    - path: "/set-up-a-machine"
+    - path: "/hardware/configure-hardware"
+      title: "Configure hardware"
+    - path: "/motion-planning/move-an-arm"
+    - path: "/train/train-a-model"
+    - path: "/reference/mcp"
+      title: "Set up the MCP server"
+
+reference:
+  title: "Reference"
+  all:
+    path: "/reference"
+    title: "All reference"
+  items:
+    - path: "/reference/mcp"
+      title: "MCP server"
+    - path: "/reference/apis"
+      title: "APIs"
+    - path: "/reference/sdks"
+      title: "SDKs"
+    - path: "/cli"
+      title: "CLI"
+
+courses:
+  title: "Featured courses"
+  highlight: ["viam-101", "so-101"]
+  all_title: "All courses"
+
+community:
+  - name: "viam.com"
+    url: "https://www.viam.com"
+  - name: "Discord"
+    url: "https://discord.gg/viam"
+    icon: "fab fa-discord"
+  - name: "GitHub"
+    url: "https://github.com/viamrobotics"
+    icon: "fab fa-github"
