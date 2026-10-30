@@ -1,5 +1,5 @@
 ---
-linkTitle: "What is Viam?"
+linkTitle: "Overview"
 title: "What is Viam?"
 weight: 10
 layout: "docs"
@@ -11,6 +11,7 @@ description: "Understand the core concepts behind Viam: machines, parts, resourc
 capabilities: ["docs", "viam-server", "viam-agent"]
 diataxis: explanation
 aliases:
+  - /what-is-viam/
   - /architecture/
   - /architecture/machine-to-machine-comms/
   - /reference/architecture/
@@ -103,3 +104,5 @@ If nothing in the registry fits, you can [write and publish your own module](/bu
 
 - [Try Viam](/try/overview/) to work through a complete project without buying any hardware.
 - [Set up your first machine](/set-up-a-machine/first-machine/) when you have a device ready to connect.
+- [How to use Viam](/overview/interfaces/) to compare the web app, mobile app, CLI, SDKs, and MCP server, and pick the one that fits your task.
+- [Ways to write control code](/overview/control-code/) to choose between the code sandbox, a script on your laptop, an inline module, and an externally managed module.
