@@ -62,12 +62,12 @@ To get started, see the [CLI overview](/cli/overview/).
 ## SDKs
 
 The SDKs are libraries for writing your own code that controls machines and talks to the Viam cloud.
-They're available for [Python](/reference/sdks/python/), [Go](/reference/sdks/go/), and [C++](/reference/sdks/cpp/) (backend), [TypeScript](/reference/sdks/typescript/) (browser), and [Flutter](/reference/sdks/flutter/) (mobile).
+They're available for [Python](/reference/sdks/python/), [Go](/reference/sdks/go/), and [C++](/reference/sdks/cpp/) (backend), [TypeScript](/reference/sdks/typescript/) (browser and Node.js), and [Flutter](/reference/sdks/flutter/) (mobile).
 
 - Use them to write modules that add hardware drivers or logic to a machine, to write control code that runs outside the machine, or to build a web or mobile app for your users.
 - They're best when you need behavior that the other interfaces can't express, such as a loop, a decision, or a custom interface.
 
-To write a module, in Python, Go, or C++, see [Build and deploy modules](/build-modules/overview/). To build an app for your own users, see [Build apps](/build-apps/overview/).
+To write a module in Python, Go, or C++, see [Build and deploy modules](/build-modules/overview/). To build an app for your own users, see [Build apps](/build-apps/overview/).
 
 ## MCP server
 
@@ -93,16 +93,17 @@ Before you let one drive a machine, read the safety guidance in [Use Viam from a
 
 ## What each interface can do
 
-A link means the interface can do this, and goes to a page about it. A blank cell means it can't.
+A link means the interface can do at least part of this, and goes to a page about it. A blank cell means it can't.
 
-| To do this                         | Web app                                         | Mobile                                             | CLI                                                        | SDKs                                         | MCP                          |
-| ---------------------------------- | ----------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------- | ---------------------------- |
-| See the 3D scene                   | [Yes](/visualization/3d-scene/)                 |                                                    |                                                            |                                              |                              |
-| Monitor and operate a machine      | [Yes](/monitor/monitor/)                        | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/monitor/monitor/#use-the-command-line)              | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
-| Write control code                 | [Yes](/monitor/default-interface/#code-sandbox) |                                                    | [Yes](/cli/drive-a-machine/)                               | [Yes](/build-apps/tasks/control-components/) | [Yes](/reference/mcp/#tools) |
-| Change a machine's configuration   | [Yes](/hardware/configure-hardware/)            |                                                    | [Yes](/cli/configure-machines/)                            | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
-| Manage your organization and fleet | [Yes](/organization/overview/)                  |                                                    | [Yes](/cli/administer-your-organization/)                  | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
-| Build a web or mobile app          |                                                 |                                                    |                                                            | [Yes](/build-apps/overview/)                 |                              |
-| Write a module                     | [Yes](/build-modules/write-an-inline-module/)   |                                                    | [Yes](/cli/build-and-deploy-modules/)                      | [Yes](/build-modules/overview/)              |                              |
-| Add a module to a machine          | [Yes](/build-modules/use-registry-modules/)     |                                                    | [Yes](/cli/configure-machines/#add-a-component-or-service) | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
-| Query captured data                | [Yes](/data/query-data/)                        | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/cli/manage-data/#query-data)                        | [Yes](/data/query-data-from-code/)           |                              |
+| To do this                                            | Web app                                         | Mobile                                             | CLI                                           | SDKs                                         | MCP                          |
+| ----------------------------------------------------- | ----------------------------------------------- | -------------------------------------------------- | --------------------------------------------- | -------------------------------------------- | ---------------------------- |
+| See the 3D scene                                      | [Yes](/visualization/3d-scene/)                 |                                                    |                                               |                                              |                              |
+| Monitor and operate a machine                         | [Yes](/monitor/monitor/)                        | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/monitor/monitor/#use-the-command-line) | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Write control code                                    | [Yes](/monitor/default-interface/#code-sandbox) |                                                    |                                               | [Yes](/build-apps/tasks/control-components/) |                              |
+| Change a machine's configuration                      | [Yes](/hardware/configure-hardware/)            |                                                    | [Yes](/cli/configure-machines/)               | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Manage machines in your fleet                         | [Yes](/organization/overview/)                  | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/cli/administer-your-organization/)     | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Manage your organization's members, keys, and billing | [Yes](/organization/overview/)                  |                                                    | [Yes](/cli/administer-your-organization/)     | [Yes](/reference/apis/fleet/)                |                              |
+| Build a web or mobile app                             |                                                 |                                                    |                                               | [Yes](/build-apps/overview/)                 |                              |
+| Write a module                                        | [Yes](/build-modules/write-an-inline-module/)   |                                                    | [Yes](/cli/build-and-deploy-modules/)         | [Yes](/build-modules/overview/)              |                              |
+| Add a module to a machine                             | [Yes](/build-modules/use-registry-modules/)     |                                                    |                                               | [Yes](/reference/apis/fleet/)                | [Yes](/reference/mcp/#tools) |
+| Browse or query captured data                         | [Yes](/data/query-data/)                        | [Yes](/monitor/default-interface/#viam-mobile-app) | [Yes](/cli/manage-data/#query-data)           | [Yes](/data/query-data-from-code/)           |                              |
