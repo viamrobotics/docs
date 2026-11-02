@@ -40,7 +40,7 @@ Machines [capture data](/data/capture-sync/overview/) from their cameras and sen
 
 **2. Build a dataset.**
 A [dataset](/train/create-a-dataset/) collects data from any of your organization's machines into one named collection.
-What goes in it depends on the model: images you [label](/train/annotate-images/) for a vision model, or recorded demonstrations for a robot policy.
+What goes in it depends on the model: images you [label](/train/annotate-images/) for a vision model, or recorded demonstrations you tag with the task for a robot policy.
 
 **3. Train.**
 A training job reads the dataset in the cloud and publishes the result as a new model version in your organization's registry.
@@ -67,13 +67,13 @@ For vision models, [auto-predictions](/train/automate-annotation/) let an existi
 The task type says what the model does.
 It decides what data is required, and what Viam features are available.
 
-| Task type                       | The model                                             | Example                                                                  | The dataset holds                                                              | Built-in training |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ----------------- |
-| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Images with exactly one tag each                                               | Yes               |
-| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Images with one or more tags each                                              | Yes               |
-| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Images with labeled bounding boxes                                             | Yes               |
-| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, usually camera images and joint positions | No                |
-| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script requires                                         | No                |
+| Task type                       | The model                                             | Example                                                                  | The dataset holds                                                                                    | Built-in training |
+| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ----------------- |
+| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Images with exactly one tag each                                                                     | Yes               |
+| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Images with one or more tags each                                                                    | Yes               |
+| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Images with labeled bounding boxes                                                                   | Yes               |
+| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, usually camera images and joint positions, tagged with the task | No                |
+| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script requires                                                               | No                |
 
 {{<imgproc src="/train/task-types.png" resize="x400" declaredimensions=true alt="Three task type cards from the Viam training wizard: single label classification, multi label classification, and object detection." class="shadow imgzoom" >}}
 
