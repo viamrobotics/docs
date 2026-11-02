@@ -196,6 +196,8 @@ viam train submit custom from-registry \
   --container-id=<container-id>
 ```
 
+`--version` is the version of the training script, not of the model. To set the model version, pass `--model-version`; it defaults to the current timestamp. To pass arguments to the training script, use `--args` with a comma-separated list of `key=value` pairs, for example `--args=num_epochs=3,model_type=multi_label`.
+
 Submit a custom script by uploading it directly:
 
 ```sh {class="command-line" data-prompt="$"}

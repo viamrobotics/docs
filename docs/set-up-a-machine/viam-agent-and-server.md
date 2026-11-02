@@ -88,4 +88,4 @@ This keeps the architecture simple. There is no N-by-N mesh of module sockets, a
 ## Related
 
 - [What is a module?](/build-modules/overview/): the module side of this picture, including module anatomy and how to write one.
-- [What is Viam?](/what-is-viam/): where `viam-agent` and `viam-server` sit in the broader platform architecture.
+- [What is Viam?](/overview/): where `viam-agent` and `viam-server` sit in the broader platform architecture.

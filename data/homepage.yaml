@@ -39,7 +39,7 @@ ways_to_learn:
     title: "Docs"
     description: "Concepts, how-to guides, and reference for every part of the platform."
     links:
-      - path: "/what-is-viam"
+      - path: "/overview"
         label: "Understand"
         description: "How machines, modules, data, and fleets fit together."
       - path: "/set-up-a-machine"
