@@ -46,4 +46,6 @@ The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulatio
 
 ## Tools
 
+To learn what a particular tool can do, ask an AI assistant that's connected to the Viam MCP server. See [Connect](#connect).
+
 {{< readfile "/static/include/app/mcpserver/generated/mcp-tools-table.md" >}}
