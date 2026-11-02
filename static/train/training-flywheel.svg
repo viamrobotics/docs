@@ -36,6 +36,6 @@
   <text x="217.1" y="344.6" text-anchor="middle" class="box-label" fill="#252525">Deploy</text>
   <text x="217.1" y="360.6" text-anchor="middle" class="sub">to a machine</text>
   <rect x="79.6" y="128.9" width="148" height="46" rx="4" fill="#fff" stroke="#252525" stroke-width="1.2"/>
-  <text x="153.6" y="148.9" text-anchor="middle" class="box-label" fill="#252525">Use</text>
+  <text x="153.6" y="148.9" text-anchor="middle" class="box-label" fill="#252525">Run</text>
   <text x="153.6" y="164.9" text-anchor="middle" class="sub">on the machine</text>
 </svg>

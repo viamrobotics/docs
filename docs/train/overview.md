@@ -22,7 +22,6 @@ Viam supports two ways to train, and an organization can use both:
   It's the fastest path to an image classifier or object detector.
 - **Custom training scripts** run your own Python code, so you choose the model, the training method and the framework.
   Use one to fine-tune a large pretrained model such as a robot policy, train on data that isn't images, or control how training works.
-  If the script needs dependencies that take a long time to install, you can run it in a [custom training container](/train/custom-containers/) that has them built in.
 
 Either way, Viam runs the job on its own cloud GPUs, so you don't provision hardware, and the result deploys to your machines the same way.
 
@@ -34,24 +33,24 @@ This page explains each of them, so you can tell which path your model takes bef
 Training is a loop.
 A deployed model captures more data as the machine uses it, and that data trains the next version.
 
-<img src="/train/training-flywheel.svg" alt="The training loop: capture data on your machines, build a dataset, train with built-in training or a custom script, deploy the model to a machine, and use it on the machine, which captures more data and starts the loop again. Each round trains a new model version." style="width:100%;max-width:560px;height:auto;display:block;margin:0 auto" >
+<img src="/train/training-flywheel.svg" alt="The training loop: capture data on your machines, build a dataset, train with built-in training or a custom script, deploy the model to a machine, and run it on the machine, which captures more data and starts the loop again. Each round trains a new model version." style="width:100%;max-width:560px;height:auto;display:block;margin:0 auto" >
 
-**Capture data.**
-Machines [capture data](/data/capture-sync/capture-and-sync-data/) from their cameras and sensors and sync it to the cloud.
+**1. Capture data.**
+Machines [capture data](/data/capture-sync/overview/) from their cameras and sensors and sync it to the cloud.
 
-**Build a dataset.**
+**2. Build a dataset.**
 A [dataset](/train/create-a-dataset/) collects data from any of your organization's machines into one named collection.
-What goes in it depends on the model: labeled images for a vision model, or recorded demonstrations for a robot policy.
+What goes in it depends on the model: images you [label](/train/annotate-images/) for a vision model, or recorded demonstrations for a robot policy.
 
-**Train.**
+**3. Train.**
 A training job reads the dataset in the cloud and publishes the result as a new model version in your organization's registry.
 [Built-in training](/train/train-a-model/) needs no code; a [custom training script](/train/custom-training-scripts/) runs your own code.
 
-**Deploy.**
+**4. Deploy.**
 [Deploying](/train/deploy-a-model/) adds the model and the resource that runs it to a machine's configuration.
 The machine downloads the model from the registry.
 
-**Use.**
+**5. Run.**
 What you do with a deployed model depends on what it is.
 A vision model answers through a [vision service](/vision/), which your code or other services query for classifications and detections.
 Other models are used through the module that runs them.
@@ -66,25 +65,17 @@ For vision models, [auto-predictions](/train/automate-annotation/) let an existi
 ### Task type {#task-type}
 
 The task type says what the model does.
-It decides what the dataset needs to hold, and which training methods and Viam app features accept the model.
+It decides what data is required, and what Viam features are available.
 
-| Task type                       | The model                                             | Example                                                                  | The dataset holds                                                    | Built-in training |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------- | ----------------- |
-| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Images with exactly one tag each                                     | Yes               |
-| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Images with one or more tags each                                    | Yes               |
-| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Images with labeled bounding boxes                                   | Yes               |
-| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, in the format your script reads | No                |
-| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script reads                                  | No                |
+| Task type                       | The model                                             | Example                                                                  | The dataset holds                                                              | Built-in training |
+| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ----------------- |
+| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Images with exactly one tag each                                               | Yes               |
+| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Images with one or more tags each                                              | Yes               |
+| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Images with labeled bounding boxes                                             | Yes               |
+| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, usually camera images and joint positions | No                |
+| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script requires                                         | No                |
 
 {{<imgproc src="/train/task-types.png" resize="x400" declaredimensions=true alt="Three task type cards from the Viam training wizard: single label classification, multi label classification, and object detection." class="shadow imgzoom" >}}
-
-The task type also decides which Viam app features work with the model.
-Two features work only with classification and detection models in the TensorFlow, TFLite or ONNX framework:
-
-- [Auto-predictions](/train/automate-annotation/), which use a model to draft labels for new images in a dataset.
-- [Batch inference](/vision/deploy-and-maintain/batch-inference/), which runs a model on stored images in the cloud instead of on a machine.
-
-You can train, version and deploy a **Robot policy** or **Other** model like any other model; you can't use it with these two features.
 
 **Other** is stored as an unspecified task type.
 Choose it for any model that isn't one of the named types, such as a model that reads sensor data.
@@ -120,30 +111,21 @@ TFLite, TensorFlow, PyTorch and ONNX aren't specific to Viam: they're widely use
 To run a model, a machine needs software that can read its format.
 The framework decides which software that is, and that's what **Deploy** adds to the machine's configuration:
 
-| Framework      | Produced by                          | Runs on the machine in                                                                                                                                                 |
-| -------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **TFLite**     | Built-in training or a custom script | The [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu) ML model service                                                                                       |
-| **TensorFlow** | Built-in training or a custom script | The [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu) or [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) ML model service |
-| **PyTorch**    | A custom script                      | The [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu) or `triton` ML model service                                                                             |
-| **ONNX**       | A custom script                      | The [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu) or `triton` ML model service                                                                               |
-| **Registry**   | A custom script                      | The module the model names                                                                                                                                             |
+| Framework      | Runs on the machine in                                                                                                                                                 | Hardware                                             |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| **TFLite**     | The [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu) ML model service                                                                                       | linux/amd64, linux/arm64, darwin/arm64, darwin/amd64 |
+| **TensorFlow** | The [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu) or [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) ML model service | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
+| **PyTorch**    | The [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu) or `triton` ML model service                                                                             | Nvidia GPU, linux/arm64, darwin/arm64                |
+| **ONNX**       | The [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu) or `triton` ML model service                                                                               | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
+| **Registry**   | The module the model names                                                                                                                                             | Whatever the module supports                         |
 
-The first four load the model into an [ML model service](/vision/how-it-works/), which runs it but doesn't interpret its output.
+The first four load the model into an ML model service, which runs it but doesn't interpret its output.
 For a classification or detection model, a vision service sits on top of the ML model service and turns that output into labels and boxes.
-Which of these services fit your hardware is in [Supported frameworks and hardware](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
 
 A **Registry** model doesn't use an ML model service unless its module provides one.
 Instead, the model names the module resource that runs it, such as a module that drives an arm with a robot policy, and **Deploy** adds that resource with the model.
 Like the framework, the module comes from the training script.
 This is how a model whose runtime isn't a standard ML model service gets onto a machine without manual configuration.
-
-### How the choices fit together {#how-the-choices-fit-together}
-
-| To get a model that                | Task type                     | Train with                                             | Framework                                            |
-| ---------------------------------- | ----------------------------- | ------------------------------------------------------ | ---------------------------------------------------- |
-| Classifies or detects in images    | One of the three vision types | Built-in training, or a custom script for more control | TFLite for edge devices, or any of the first four    |
-| Drives a robot from demonstrations | **Robot policy**              | A custom script                                        | **Registry**, naming the policy module               |
-| Does anything else                 | **Other**                     | A custom script                                        | Whatever your script produces and your runtime loads |
 
 ## Automatic deployment {#automatic-deployment}
 
