@@ -24,6 +24,20 @@ The machines table shows every machine in your organization with its current sta
 
 To see how much binary and tabular data your fleet has synced in the last 48 hours, organization owners can open the **Data usage** tab of the billing page. See [Check data usage](/organization/billing/#check-data-usage).
 
+### Favorite machines
+
+Set the machines you check most often as favorites so you can find them quickly.
+Use the star next to a machine in the table to favorite it.
+By default, favorite machines appear at the top of the table.
+To turn this on or off, click the star in the table header.
+You can see your favorites from every organization on the **Machine Favorites** tab in your user settings.
+
+Favorites belong to your user account, so other members of your organization can't see them.
+A machine that is deleted, or that you can no longer access, is hidden from your favorites.
+If you regain access, it reappears.
+
+To manage favorites from an AI agent, use the `list_favorite_machines`, `add_favorite_machine`, and `remove_favorite_machine` tools in the [Viam MCP server](/reference/mcp/).
+
 ## Inspect a specific machine
 
 Click a machine name to open its page.

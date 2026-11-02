@@ -216,7 +216,7 @@ Open the **3D scene** tab. It uses the resources and frames you configured to bu
 
 {{<imgproc src="/tutorials/pick-and-place/3d-scene-tab.png" resize="1200x" declaredimensions=true alt="The 3D scene tab showing the arm at the world origin with coordinate frames for cam-1 and gripper-1 near the wrist.">}}
 
-Jog joint 1 with the arm card's sliders and watch the 3D scene as the arm turns. The `cam-1` frame moves with the arm, because the camera is mounted on the wrist rather than fixed in the workspace.
+Jog joint 1 with the **+** or **−** buttons on the arm card and watch the 3D scene as the arm turns. The `cam-1` frame moves with the arm, because the camera is mounted on the wrist rather than fixed in the workspace.
 
 {{< alert title="Why this matters later" color="note" >}}
 Because the camera is wrist-mounted, every detection it makes is relative to wherever the arm happens to be pointed at that moment. In Phase 5 you will detect from one fixed observation pose, the home pose you save in Phase 3, so that "camera space" always means the same thing. Notice that pose here; you will meet it again as the "detect from home" rule.

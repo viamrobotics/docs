@@ -448,8 +448,8 @@ versions using the version dropdown in the editor toolbar.
 #### Add the module to a machine
 
 1. In the code editor, click **Add to machine**.
-2. Select a location, machine, and part.
-3. Click **Add**.
+2. In the **Deploy module to machine** dialog, select a location, machine, and part.
+3. Click **Deploy**.
 
 The Viam app navigates you to the machine's **CONFIGURE** tab with your module
 added.
