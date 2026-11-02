@@ -59,7 +59,8 @@ To get started, see [Code sandbox](/monitor/default-interface/#code-sandbox).
 ## Code on your laptop {#code-on-your-laptop}
 
 A script on your laptop uses one of the Viam SDKs: Python, Go, TypeScript, C++, or Flutter.
-The machine's CONNECT tab has a starter sample for each SDK, with the machine's address and an API key filled in.
+The machine's CONNECT tab has a starter sample for each SDK, with the machine's address filled in.
+Turn on **Include API key** to add an API key to the sample.
 The script connects over the internet or your local network.
 
 Use it when you want your own editor, debugger, and version control while you develop.

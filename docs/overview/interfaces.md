@@ -28,7 +28,7 @@ Here is what you'll find:
 - **Your fleet.** Organizations contain locations, and locations contain machines. The fleet view shows each machine's status, and from it you open any machine's page.
 - **A page for each machine.** It has a tab for each kind of work: **CONFIGURE** to describe the hardware and software the machine runs, **CONTROL** to test components and drive the machine, **LOGS** to see what it has reported, and **CONNECT** for code samples and connection details.
 - **The 3D scene.** The **3D SCENE** tab shows your machine and the spatial data around it, including frames, geometry, point clouds, and motion plans. It's the quickest way to catch a misplaced frame or obstacle.
-- **Data and dashboards.** Browse captured data, group it into datasets, train ML models on it, and chart live sensor readings across machines.
+- **Data and dashboards.** Browse captured data, group it into datasets, train ML models on it, and chart captured sensor data across machines.
 - **The registry.** Browse modules and ML models published by Viam and the community, and add them to your machines.
 - **Organization settings.** Manage who has access, API keys, and billing.
 - **An in-app assistant.** On any tab of a machine's page, ask in plain language for what you need. The assistant reads your machine's configuration, status, and logs, can stage configuration changes, and can propose diagnostic commands. Nothing takes effect until you review and approve it.

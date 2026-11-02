@@ -40,7 +40,7 @@ You'll create a machine in the Viam app, install Viam on your compute device, an
 A **machine** is the combination of your compute resources and hardware that you want to control using Viam.
 Every machine has at least one **part**: the computer that runs Viam's software and is connected to one or more physical devices.
 A part can be almost any computer, including your own Mac or PC.
-For more, see [Machines and parts](/what-is-viam/#machines-and-parts).
+For more, see [Machines and parts](/overview/#machines-and-parts).
 
 ## 1. Create a machine in the Viam app
 
