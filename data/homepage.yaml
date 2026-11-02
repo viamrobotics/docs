@@ -41,6 +41,7 @@ ways_to_learn:
     links:
       - path: "/overview"
         label: "Understand"
+        title: "What is Viam?"
         description: "How machines, modules, data, and fleets fit together."
       - path: "/set-up-a-machine"
         label: "Build"
