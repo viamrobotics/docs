@@ -8,25 +8,36 @@ description: "How datasets, training methods and frameworks fit together to prod
 capabilities: ["ml-training", "datasets", "ml-models"]
 diataxis: explanation
 date: "2026-04-17"
-updated: "2026-10-28"
+updated: "2026-11-02"
 ---
 
 Your machines capture data in the field.
-Training turns that data into a model that runs on the machine, whether the model labels what a camera sees, controls an arm, or does something else.
-Viam runs the training infrastructure, so you don't provision GPUs or install frameworks.
+Training uses that data to produce a model that runs on the machine, whether the model labels what a camera sees, controls an arm, or does something else.
+Usually you start from a model that already exists and fine-tune it on your data.
+
+Viam supports two ways to train, and an organization can use both:
+
+- **Built-in training** takes no code.
+  You pick a dataset, the labels to learn and a framework, and Viam fine-tunes a pretrained image model on your labels.
+  It's the fastest path to an image classifier or object detector.
+- **Custom training scripts** run your own Python code, so you choose the model, the training method and the framework.
+  Use one to fine-tune a large pretrained model such as a robot policy, train on data that isn't images, or control how training works.
+  If the script needs dependencies that take a long time to install, you can run it in a [custom training container](/train/custom-containers/) that has them built in.
+
+Either way, Viam runs the job on its own cloud GPUs, so you don't provision hardware, and the result deploys to your machines the same way.
 
 Every model goes through the same stages, and three choices decide which pages in this section apply to you: the model's task type, how you train it, and its framework.
 This page explains each of them, so you can tell which path your model takes before you start.
 
 ## How training works {#how-training-works}
 
-```text
-  capture        build a         train            deploy           use
-  data     -->   dataset   -->   (built-in   -->  to a       -->   on the
-                                  or custom)      machine          machine
-                     ^                                               |
-                     +---------------- retrain ----------------------+
-```
+Training is a loop.
+A deployed model captures more data as the machine uses it, and that data trains the next version.
+
+<img src="/train/training-flywheel.svg" alt="The training loop: capture data on your machines, build a dataset, train with built-in training or a custom script, deploy the model to a machine, and use it on the machine, which captures more data and starts the loop again. Each round trains a new model version." style="width:100%;max-width:560px;height:auto;display:block;margin:0 auto" >
+
+**Capture data.**
+Machines [capture data](/data/capture-sync/capture-and-sync-data/) from their cameras and sensors and sync it to the cloud.
 
 **Build a dataset.**
 A [dataset](/train/create-a-dataset/) collects data from any of your organization's machines into one named collection.
@@ -44,9 +55,10 @@ The machine downloads the model from the registry.
 What you do with a deployed model depends on what it is.
 A vision model answers through a [vision service](/vision/), which your code or other services query for classifications and detections.
 Other models are used through the module that runs them.
+While the model runs, the machine keeps capturing data, including the cases where the model gets it wrong.
 
 **Retrain.**
-You add data where the model struggles, train a new version, and machines configured to use the model pick it up.
+You add data from the cases where the model struggles to the dataset, train a new version, and machines configured to use the model pick it up.
 For vision models, [auto-predictions](/train/automate-annotation/) let an existing model draft labels for new images, so each round takes less hand-labeling.
 
 ## What you can train {#what-you-can-train}
@@ -83,9 +95,11 @@ There are two ways to train, and the task type usually decides between them.
 
 **Built-in training** is a fixed pipeline for the three vision types.
 You pick a dataset of images, the labels to learn, and a framework (TFLite or TensorFlow), and Viam does the rest.
+It starts from an image model pretrained on a large set of general images, keeps its layers fixed, and trains new layers on top of it to predict your labels.
 It takes no code, but it only reads images: it can't train on a sequence dataset, and it rejects the **Robot policy** and **Other** task types.
 
 A **custom training script** runs your own Python code against the dataset, so it can train any task type, in any framework, on either kind of dataset.
+It can fine-tune any pretrained model your code loads.
 The script runs in a container: a Viam-managed one, which comes with TensorFlow, or a [custom training container](/train/custom-containers/) your organization registers with whatever dependencies the model needs.
 A custom job's task type and framework come from the training script, which declares them when it's uploaded to the registry, so every model a script trains has the same ones.
 Custom jobs run on more powerful GPUs and are billed at a higher rate than built-in training.
