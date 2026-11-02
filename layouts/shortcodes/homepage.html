@@ -118,8 +118,10 @@
     <ul class="vh-grid vh-grid--tiles">
       {{- range .highlight }}
       {{- $id := . }}
-      {{- $c := index (where site.Data.courses.courses "id" $id) 0 }}
-      {{- if not $c }}{{ errorf "data/homepage.yaml: no course with id %q in data/courses.yaml" $id }}{{ end }}
+      {{- $match := where site.Data.courses.courses "id" $id }}
+      {{- if not $match }}{{ errorf "data/homepage.yaml: no course with id %q in data/courses.yaml" $id }}{{ end }}
+      {{- range first 1 $match }}
+      {{- $c := . }}
       <li>
         <a class="vh-card" href="{{ $c.url | default $learn }}" target="_blank" rel="noopener">
           <span class="vh-eyebrow">Free course</span>
@@ -131,6 +133,7 @@
           </span>
         </a>
       </li>
+      {{- end }}
       {{- end }}
       <li>
         <a class="vh-card vh-card--all" href="{{ $learn }}" target="_blank" rel="noopener">
@@ -171,9 +174,10 @@
 
   {{- /* Community */}}
   {{- with $d.community }}
+  {{- $community := partial "homepage-community.html" . }}
   <nav class="vh-community" aria-label="Viam elsewhere">
     <ul>
-      {{- range . }}
+      {{- range $community }}
       <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ with .icon }}<i class="{{ . }}" aria-hidden="true"></i> {{ end }}{{ .name }}<span class="sr-only"> (opens in a new tab)</span></a></li>
       {{- end }}
     </ul>

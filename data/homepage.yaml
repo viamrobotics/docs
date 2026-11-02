@@ -27,11 +27,9 @@ hero:
 announcement:
   enabled: true
   label: "New"
-  text: "Learn how to train a VLA with Viam"
-  # PLACEHOLDER: no VLA page exists yet. Point this at the real page or
-  # course before merging.
-  path: "/train/train-a-model"
-  link_text: "Get started"
+  text: "Take the free SO-101 course: teleoperate an arm and capture motions with no code"
+  url: "https://www.viam.com/education/so101"
+  link_text: "Start the course"
 
 # "Ways to learn": a full-width Docs tile with its own links, then one tile
 # each for workshops and courses below it.
@@ -49,7 +47,7 @@ ways_to_learn:
         title: "Set up a machine"
         description: "Install viam-server and connect your first machine."
       - path: "/reference"
-        label: "Look up"
+        label: "Operate"
         title: "Reference"
         description: "APIs, SDKs, the CLI, and the MCP server."
   items:
@@ -108,12 +106,11 @@ courses:
   highlight: ["viam-101", "so-101"]
   all_title: "All courses"
 
+# Each entry is a `name` and `url`, or `link`: the name of an entry in
+# config.toml's params.links, whose URL and icon are used so the two can't
+# drift apart.
 community:
   - name: "viam.com"
     url: "https://www.viam.com"
-  - name: "Discord"
-    url: "https://discord.gg/viam"
-    icon: "fab fa-discord"
-  - name: "GitHub"
-    url: "https://github.com/viamrobotics"
-    icon: "fab fa-github"
+  - link: "Discord"
+  - link: "GitHub"

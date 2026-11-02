@@ -36,6 +36,20 @@
 {{ $all := partial "homepage-link.html" .all -}}
 - [{{ $all.title }}]({{ $all.permalink }})
 {{- end }}
+{{- with $d.courses }}
+{{- $learn := site.Data.courses.learn_url }}
+
+## {{ .title }}
+{{ range .highlight }}
+{{- $id := . }}
+{{- $match := where site.Data.courses.courses "id" $id }}
+{{- if not $match }}{{ errorf "data/homepage.yaml: no course with id %q in data/courses.yaml" $id }}{{ end }}
+{{- range first 1 $match }}
+- [{{ .title }}]({{ .url | default $learn }}): {{ .description }}
+{{- end }}
+{{- end }}
+- [{{ .all_title }}]({{ $learn }})
+{{- end }}
 {{- with $d.featured }}
 
 ## {{ .title }}
@@ -54,22 +68,12 @@
 {{ $all := partial "homepage-link.html" .all -}}
 - [{{ $all.title }}]({{ $all.permalink }})
 {{- end }}
-{{- with $d.courses }}
-{{- $learn := site.Data.courses.learn_url }}
-
-## {{ .title }}
-{{ range .highlight }}
-{{- $id := . }}
-{{- $c := index (where site.Data.courses.courses "id" $id) 0 }}
-- [{{ $c.title }}]({{ $c.url | default $learn }}): {{ $c.description }}
-{{- end }}
-- [{{ .all_title }}]({{ $learn }})
-{{- end }}
 {{- with $d.community }}
+{{- $community := partial "homepage-community.html" . }}
 
 ## Community
 
-{{ range . -}}
+{{ range $community -}}
 - [{{ .name }}]({{ .url }})
 {{ end -}}
 {{- end }}

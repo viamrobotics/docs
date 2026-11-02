@@ -1,0 +1,26 @@
+{{- /*
+  Resolves data/homepage.yaml's `community` list into a slice of
+  (dict "name" "url" "icon"). An entry with `link` takes its URL and icon from
+  the config.toml params.links entry of that name, and the build fails if
+  there isn't one. Any other entry is used as written.
+*/ -}}
+{{- $params := slice -}}
+{{- range $group, $links := site.Params.links -}}
+  {{- $params = $params | append $links -}}
+{{- end -}}
+{{- $out := slice -}}
+{{- range . -}}
+  {{- if .link -}}
+    {{- $name := .link -}}
+    {{- $match := where $params "name" $name -}}
+    {{- if not $match -}}
+      {{- errorf "data/homepage.yaml: no entry named %q in config.toml params.links" $name -}}
+    {{- end -}}
+    {{- range first 1 $match -}}
+      {{- $out = $out | append (dict "name" .name "url" .url "icon" (.icon | default "")) -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $out = $out | append (dict "name" .name "url" .url "icon" (.icon | default "")) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}
