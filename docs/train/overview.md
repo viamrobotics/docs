@@ -75,28 +75,19 @@ It decides what data is required, and what Viam features are available.
 | **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, usually camera images and joint positions, tagged with the task | No                |
 | **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script requires                                                               | No                |
 
-{{<imgproc src="/train/task-types.png" resize="x400" declaredimensions=true alt="Three task type cards from the Viam training wizard: single label classification, multi label classification, and object detection." class="shadow imgzoom" >}}
-
-**Other** is stored as an unspecified task type.
-Choose it for any model that isn't one of the named types, such as a model that reads sensor data.
-
 ### Training method {#training-method}
 
-There are two ways to train, and the task type usually decides between them.
+Beyond whether you write code, the two ways to train differ in what they can do.
 
-**Built-in training** is a fixed pipeline for the three vision types.
-You pick a dataset of images, the labels to learn, and a framework (TFLite or TensorFlow), and Viam does the rest.
-It starts from an image model pretrained on a large set of general images, keeps its layers fixed, and trains new layers on top of it to predict your labels.
-It takes no code, but it only reads images: it can't train on a sequence dataset, and it rejects the **Robot policy** and **Other** task types.
+**Built-in training** starts from an image model pretrained on a large set of general images, keeps its layers fixed, and trains new layers on top of it to predict your labels.
+It produces TFLite or TensorFlow models.
+It only reads images: it can't train on a sequence dataset, and it rejects the **Robot policy** and **Other** task types.
 
-A **custom training script** runs your own Python code against the dataset, so it can train any task type, in any framework, on either kind of dataset.
-It can fine-tune any pretrained model your code loads.
+A **custom training script** can train any task type, in any framework, on either kind of dataset, and can fine-tune any pretrained model your code loads.
 The script runs in a container: a Viam-managed one, which comes with TensorFlow, or a [custom training container](/train/custom-containers/) your organization registers with whatever dependencies the model needs.
 A custom job's task type and framework come from the training script, which declares them when it's uploaded to the registry, so every model a script trains has the same ones.
 Custom jobs run on more powerful GPUs and are billed at a higher rate than built-in training.
-
-Use built-in training when it covers your task type and you don't need to control the training itself.
-For everything else, use a custom training script: write your own, or find one in the [registry](https://app.viam.com/registry?type=Training+Script).
+You can write your own script or find one in the [registry](https://app.viam.com/registry?type=Training+Script).
 
 ### Framework and what runs the model {#framework}
 
@@ -126,18 +117,6 @@ A **Registry** model doesn't use an ML model service unless its module provides 
 Instead, the model names the module resource that runs it, such as a module that drives an arm with a robot policy, and **Deploy** adds that resource with the model.
 Like the framework, the module comes from the training script.
 This is how a model whose runtime isn't a standard ML model service gets onto a machine without manual configuration.
-
-## Automatic deployment {#automatic-deployment}
-
-When training completes, the model is stored in your organization's registry.
-If a machine is already configured to use that model, Viam automatically deploys the new version.
-The machine pulls the latest version the next time it checks for updates.
-No manual download or restart is needed.
-
-## Dataset versioning {#dataset-versioning}
-
-Each time you train a model from a dataset, Viam snapshots the dataset's contents at that point.
-You can keep adding data and labels to a dataset after training without affecting previously trained models.
 
 ## What's next {#whats-next}
 
