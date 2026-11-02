@@ -251,7 +251,6 @@ robot = await RobotClient.at_address("<machine-address>", opts)
 
 A script that runs on your own computer and connects to a machine needs three things: the machine address, an API key, and the API key ID.
 Find the address, key, and key ID on the machine's **CONNECT** tab in the Viam app, or create a key as described in [Create an API key](#create-an-api-key).
-The key ID is a UUID, and the Python SDK raises a `ValueError` if the ID you pass is not a valid UUID.
 
 Keep the key and key ID out of your source code by reading them from environment variables.
 Set them in the shell that launches your script:
@@ -280,30 +279,28 @@ For `RobotClient`, your script reads the variables itself, as above.
 
 #### Use a viam.json file instead
 
-Each machine part has a `viam.json` file that holds the part's cloud credentials: the part ID and a part secret under the `cloud` key.
+Each machine part has a `viam.json` file that holds the part's cloud credentials under the `cloud` key: the part ID, a part `secret`, and an `api_key` block with a key ID and key.
 To get the file on another computer, copy the machine's **Machine cloud credentials** from the machine's status menu in the Viam app and save them as `viam.json`.
-A script can authenticate with those instead of an API key:
+A script can read the `api_key` block and authenticate with it the same way as in the previous section:
 
 ```python
 import json
 from pathlib import Path
 
 from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
 
 cloud = json.loads(Path("viam.json").read_text())["cloud"]
-opts = RobotClient.Options(
-    dial_options=DialOptions(
-        auth_entity=cloud["id"],
-        credentials=Credentials(type="robot-secret", payload=cloud["secret"]),
-    )
+opts = RobotClient.Options.with_api_key(
+    api_key=cloud["api_key"]["key"],
+    api_key_id=cloud["api_key"]["id"],
 )
 robot = await RobotClient.at_address("<machine-address>", opts)
 ```
 
 On a computer where `viam-agent` is installed, this file is at <FILE>/etc/viam.json</FILE>.
-The part secret authenticates as the machine part itself.
-For a script on a laptop, prefer an API key scoped to the machine, because you can revoke it without touching the machine.
+Some `viam.json` files have only the part ID and `secret`, with no `api_key` block.
+The Python SDK can also authenticate with that secret as credentials of type `robot-secret`, when your script connects through the machine's cloud address.
+For a script on a laptop, prefer a separate API key scoped to the machine, because you can revoke it without touching the machine.
 
 {{< alert title="Treat keys like passwords" color="caution" >}}
 Anyone with your API key and key ID, or your `viam.json` file, can act on your machine.
