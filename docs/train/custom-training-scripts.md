@@ -16,7 +16,7 @@ updated: "2026-10-12"
 ---
 
 Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
-Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), or a training pipeline you want to share with your organization.
+Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), a task type built-in training doesn't support, such as a robot policy, or a training pipeline you want to share with your organization.
 Managed training doesn't accept sequence datasets, so training on one always requires a custom training script.
 
 Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
@@ -197,12 +197,14 @@ async def connect() -> ViamClient:
     return await ViamClient.create_from_dial_options(dial_options)
 ```
 
-### Match your output to an ML model service
+### Match your output to what runs the model {#match-your-output-to-an-ml-model-service}
 
 After training, Viam packages your output directory and publishes it as a
 model version in your organization's registry. To run the model on a
-machine, the [ML model service](/train/deploy-a-model/) you deploy with it
+machine, the resource you [deploy](/train/deploy-a-model/) with it
 must be able to load the files your script wrote.
+For most frameworks, that's an ML model service.
+For the `registry` framework, it's the module resource you name when you upload the script.
 
 For TFLite models loaded with `tflite_cpu`, save a `model.tflite` file and
 a `labels.txt` listing each label on its own line. This is what the
@@ -216,8 +218,12 @@ example, [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu),
 format and tensor shape expectations. Write your output in that format so
 the deployed model loads correctly.
 
-After uploading, follow [Deploy a model to a machine](/train/deploy-a-model/)
-to add the matching ML model service and vision service to your machine.
+For a `registry` model, the module's README says which files it expects.
+The trained model has the framework, task type and module resources you set when you upload the script, so **Deploy** adds that module resource with the model.
+
+After training, follow [Deploy a model to a machine](/train/deploy-a-model/)
+to add the model to your machine.
+A classification or detection model also needs a vision service, which the deploy steps cover.
 
 ### Complete example
 
@@ -323,7 +329,10 @@ viam training-script upload --path=my-training.tar.gz \
 
 `--framework` is required: set it to the framework of the model your script produces (`tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`, or `unspecified`).
 With `registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
-You can also specify `--type`, `--visibility`, and `--description` when uploading.
+`--type` sets the task type of the models the script trains: `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`, or `unspecified`, which the Viam app shows as **Other**.
+Use `unspecified` for any model that isn't one of the named types.
+`robot_policy` needs the latest CLI version.
+You can also specify `--visibility` and `--description` when uploading.
 Scripts default to private (visible only within your organization). Set `--visibility=public` to share with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script).
 See the [CLI reference](/cli/overview/) for the full list of flags.
 
@@ -336,10 +345,12 @@ After uploading, your script appears in the [registry](https://app.viam.com/regi
 Once a training script is in the registry, whether you uploaded it or are using someone else's, submit a training job to run it against a dataset.
 
 Every custom training job runs inside a container on GPU-backed
-cloud infrastructure. Viam-managed containers are based on Python 3.10 with TensorFlow
+cloud infrastructure: a Viam-managed container or a
+[custom training container](/train/custom-containers/) your organization registered.
+Viam-managed containers are based on Python 3.10 with TensorFlow
 pre-installed. The currently supported versions are `tf:2.16`, `tf:2.17`, and `tf:2.21`.
 To use a different framework (PyTorch, scikit-learn, or anything installable
-with pip), add it to the `install_requires` list in `setup.py`; Viam
+with pip) in a Viam-managed container, add it to the `install_requires` list in `setup.py`; Viam
 installs the packages in the container before running your script.
 
 If your dependencies take a long time to install, build them into a
@@ -428,3 +439,9 @@ Jobs submitted with an API key send no email, so check the job status with `viam
 
 If a job fails, check the logs first: the error message usually indicates the problem.
 Note that training scripts may emit log lines at the error level and still succeed; check the final job status rather than individual log lines.
+
+## What's next
+
+- [Deploy a model to a machine](/train/deploy-a-model/): add the trained model and the resource that runs it to your machine.
+- [Custom training containers](/train/custom-containers/): build your script's dependencies into a container so jobs start training right away.
+- [Train ML models](/train/overview/#how-the-choices-fit-together): check which task type and framework your script should declare.

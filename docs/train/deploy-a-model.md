@@ -4,14 +4,17 @@ title: "Deploy a model to a machine"
 weight: 25
 layout: "docs"
 type: "docs"
-description: "Add an ML model service and vision service to run a trained model on your machine."
+description: "Add a trained model and the resource that runs it to your machine's configuration, from the model's page or the CONFIGURE tab."
 capabilities: ["ml-models", "vision-service"]
 diataxis: how-to
 ---
 
-Configure your machine to load a trained model from the registry and apply it
-to live camera frames. You need an ML model service to load the model and a
-vision service to run it against camera input.
+Configure your machine to load a trained model from the registry.
+What runs the model depends on its framework: a TFLite, TensorFlow, PyTorch or ONNX model runs in an ML model service, and a **Registry** model runs in the module resource it names.
+For how frameworks map to what runs them, see [Framework and what runs the model](/train/overview/#framework).
+
+A classification or detection model also needs a vision service, which applies the model to camera images.
+The steps for the vision service on this page apply only to those models.
 
 {{< alert title="Tip" color="tip" >}}
 For the full guide to configuring vision services and cloud inference, see [Configure computer vision](/vision/configure/).
@@ -24,15 +27,21 @@ The fastest way to deploy a model is from the model's page in the Viam app:
 1. Navigate to **Models** and click the model you want to deploy.
 1. Click **Deploy** in the model header to open the deploy dialog, which walks you through a few steps.
 1. Select a model version, location, machine, and machine part, then click **Continue**.
-1. Name the ML model service, then click **Continue**.
-1. Name the vision service. By default, it uses an existing camera on your machine.
-1. Click **Deploy** to add the services to the machine's configuration.
+1. Name the resource that runs the model, then click **Continue**.
+   For most frameworks, this is the ML model service.
+   For a **Registry** model, the dialog has one name for each module resource the model names, and the next click deploys them.
+1. For a model that runs in an ML model service, the dialog offers a vision service next.
+   **Include Vision service** is on by default for classification and detection models, and uses an existing camera on your machine.
+   Turn it off for any other model.
+1. Click **Deploy** to add the resources to the machine's configuration.
 
-After deploying, verify the model on the machine's **CONTROL** tab.
+After deploying, check the resource on the machine's **CONTROL** tab.
+
+<!-- When "Run a robot policy" (DOCS-5063 N3) exists, link it here for Registry robot policy models. -->
 
 ## Deploy from the machine's configure tab
 
-To deploy a model by configuring services manually:
+To deploy a model that runs in an ML model service by configuring services manually:
 
 ### 1. Add the ML model service
 
@@ -43,9 +52,11 @@ trained model's framework:
 | ---------- | ---------------- |
 | TFLite     | `tflite_cpu`     |
 | TensorFlow | `tensorflow-cpu` |
+| PyTorch    | `torch-cpu`      |
+| ONNX       | `onnx-cpu`       |
 
 For hardware-specific alternatives (for example, `triton` for Nvidia GPU),
-see [Supported frameworks and hardware](/train/overview/#supported-frameworks-and-hardware).
+see [Supported frameworks and hardware](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
 
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Blocks**.
@@ -64,6 +75,8 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
 
 ### 2. Add the vision service
 
+Skip this step if your model isn't a classification or detection model.
+
 1. Click **+** and select **Blocks**.
 2. Search for `mlmodel` and find the **mlmodel** block (type: **VISION**,
    built-in).
@@ -78,12 +91,16 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
 
 ### 3. Verify
 
+For a classification or detection model:
+
 1. In the vision service's configuration card, click **Test**.
 2. Select a camera to run the model against.
 3. You should see live classifications or detections overlaid on the camera
    feed.
 
 ## Use the model in code
+
+A classification or detection model answers through the vision service:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
