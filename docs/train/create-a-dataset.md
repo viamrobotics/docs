@@ -335,65 +335,13 @@ Label the data, check it against the recommendations below, and, for built-in tr
 
 **Binary dataset:** label every image with tags (for classification) or bounding
 boxes (for object detection).
-See [Annotate images](/train/annotate-images/) for step-by-step instructions
+See [Annotate data](/train/annotate-data/) for step-by-step instructions
 on manual labeling, or [Automate annotation](/train/automate-annotation/) to
 use an existing ML model to speed up the process.
 
-**Sequence dataset:** a sequence is labeled by its sequence tags, such as the task a demonstration shows.
-You usually set them when you record, through `start_sequence` or `CreateSequence`.
-If you didn't tag sequences while recording, add a tag from code.
-The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
-The Viam app and the CLI can't edit a sequence.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-sequence = await data_client.get_sequence("YOUR-SEQUENCE-ID")
-await data_client.update_sequence(
-    id="YOUR-SEQUENCE-ID",
-    sequence_tags=list(sequence.sequence_tags) + ["pick-up-cup"],
-)
-```
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-```typescript
-const sequence = await dataClient.getSequence("YOUR-SEQUENCE-ID");
-await dataClient.updateSequence(
-  "YOUR-SEQUENCE-ID",
-  undefined,
-  [...sequence.sequenceTags, "pick-up-cup"],
-  undefined,
-  undefined,
-  { paths: ["sequence_tags"] },
-);
-```
-
-The field mask is required. It names the fields to change.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-sequence, err := dataClient.GetSequence(ctx, "YOUR-SEQUENCE-ID")
-if err != nil {
-    logger.Fatal(err)
-}
-err = dataClient.UpdateSequence(ctx, "YOUR-SEQUENCE-ID", &app.UpdateSequenceOptions{
-    SequenceTags: append(sequence.SequenceTags, "pick-up-cup"),
-    FieldMask:    []string{"sequence_tags"},
-})
-if err != nil {
-    logger.Fatal(err)
-}
-```
-
-The field mask is required. It names the fields to change.
-
-{{% /tab %}}
-{{< /tabs >}}
+**Sequence dataset:** tag each sequence with its task.
+You usually set tags while recording.
+If you didn't, see [Tag sequences](/train/annotate-data/#tag-sequences) to add them from code.
 
 ### Recommendations for quality
 
@@ -683,7 +631,7 @@ Use the CLI.
 
 **Binary datasets:**
 
-- [Annotate images](/train/annotate-images/) -- label your images with tags
+- [Annotate data](/train/annotate-data/) -- label your images with tags
   or bounding boxes for training.
 - [Automate annotation](/train/automate-annotation/) -- use an existing ML
   model to auto-label images instead of doing it by hand.

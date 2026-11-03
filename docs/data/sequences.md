@@ -191,6 +191,7 @@ Use the Python, TypeScript, or Go SDK.
 
 - **Edit:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change, and the field mask is required.
   The Python SDK's `update_sequence` builds the field mask for you from the arguments you pass, and raises an error if you pass none of them. Pass `sequence_tags=[]` to clear a sequence's tags.
+  To add a task tag to a sequence you've already recorded, see [Tag sequences](/train/annotate-data/#tag-sequences).
 - **Delete:** `DeleteSequence` deletes a sequence by its ID. The images and readings in its window aren't deleted.
 
 See the [data client API](/reference/apis/data-client/) for each method's parameters.

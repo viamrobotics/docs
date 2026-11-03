@@ -55,7 +55,7 @@ Both strategies are configured on the data management service. The images sync t
 
 ## 3. Label the new images
 
-Open the [**DATA** tab](https://app.viam.com/data/all) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate images](/train/annotate-images/) for the UI walkthrough.
+Open the [**DATA** tab](https://app.viam.com/data/all) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate data](/train/annotate-data/) for the UI walkthrough.
 
 If you have a lot of images, use [automatic annotation](/train/automate-annotation/) to generate initial labels from an existing model, then review and correct them. Correction is usually faster than labeling from scratch.
 
@@ -137,7 +137,7 @@ When drift shows up again, the cycle repeats. The first retraining cycle is the 
 ## Next steps
 
 - [Data capture and sync](/data/capture-sync/capture-and-sync-data/): set up production image capture
-- [Annotate images](/train/annotate-images/): label captured data
+- [Annotate data](/train/annotate-data/): label captured data
 - [Train a model](/train/train-a-model/): produce a new model version
 - [Deploy a model](/vision/deploy-and-maintain/deploy-from-registry/): wire the new version into the ML model service
 - [Act on detections](/vision/object-detection/act-on-detections/) and [alert on detections](/vision/object-detection/alert-on-detections/): use the new version in production logic

@@ -40,7 +40,7 @@ Machines [capture data](/data/capture-sync/overview/) from their cameras and sen
 
 **2. Build a dataset.**
 A [dataset](/train/create-a-dataset/) collects data from any of your organization's machines into one named collection.
-What goes in it depends on the model: images you [label](/train/annotate-images/) for a vision model, or recorded demonstrations you tag with the task for a robot policy.
+What goes in it depends on the model: images you [label](/train/annotate-data/) for a vision model, or recorded demonstrations you [tag with the task](/train/annotate-data/#tag-sequences) for a robot policy.
 
 **3. Train.**
 A training job reads the dataset in the cloud and publishes the result as a new model version in your organization's registry.

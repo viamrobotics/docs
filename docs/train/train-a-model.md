@@ -22,7 +22,7 @@ Viam runs the job on cloud GPUs and saves the trained model in your organization
 ## Prerequisites {#prerequisites}
 
 - A dataset of labeled images: tags for classification, or bounding boxes for object detection.
-  To make one, see [Create a dataset](/train/create-a-dataset/) and [Annotate images](/train/annotate-images/).
+  To make one, see [Create a dataset](/train/create-a-dataset/) and [Annotate data](/train/annotate-data/).
   The dataset must meet the [built-in training requirements](/train/create-a-dataset/#built-in-training-requirements) for training.
 
 Built-in training uses only the images in a dataset and skips any other files, such as video or audio.

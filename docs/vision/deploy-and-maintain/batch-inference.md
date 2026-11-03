@@ -155,6 +155,6 @@ Cloud inference consumes Viam cloud compute. Check your organization's billing p
 
 ## Next steps
 
-- [Annotate images](/train/annotate-images/): use batch inference results to pre-label a dataset, then correct labels in the UI
+- [Annotate data](/train/annotate-data/): use batch inference results to pre-label a dataset, then correct labels in the UI
 - [Deploy an ML model](/vision/deploy-and-maintain/deploy-from-registry/): get a model onto a machine for live inference
 - [viam CLI reference](/cli/): every `viam` subcommand

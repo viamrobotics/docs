@@ -1,21 +1,22 @@
 ---
-linkTitle: "Annotate images"
-title: "Annotate images"
+linkTitle: "Annotate data"
+title: "Annotate data"
 weight: 15
 layout: "docs"
 type: "docs"
-description: "Label images with tags or bounding boxes for training an ML model."
-capabilities: ["datasets"]
+description: "Label images with tags or bounding boxes, and tag sequences with their task, for training an ML model."
+capabilities: ["datasets", "sequences"]
 diataxis: how-to
 date: "2025-01-30"
 aliases:
+  - /train/annotate-images/
   - /data-ai/train/capture-annotate-images/
 ---
 
-Label your images with tags for classification or bounding boxes for object
-detection. You need captured images to annotate. Organizing them into a
-[dataset](/train/create-a-dataset/) makes bulk annotation and training
-workflows easier.
+Label your data so a model can learn from it.
+For a vision model, label images with tags for classification or bounding boxes for object detection.
+For a robot policy, tag each recorded sequence with the task it demonstrates.
+Organizing your data into a [dataset](/train/create-a-dataset/) makes bulk annotation and training workflows easier.
 
 ## Tag images for classification
 
@@ -150,6 +151,69 @@ fmt.Printf("Added bounding box: %s\n", bboxID)
 Coordinates are normalized 0.0-1.0, where (0.0, 0.0) is the top-left corner
 and (1.0, 1.0) is the bottom-right corner.
 
+## Tag sequences
+
+A sequence's tags label the whole sequence, such as the task a robot policy demonstration shows.
+You usually set them when you record, through the `capture-control` module's `start_sequence` command or `CreateSequence`.
+See [Sequences](/data/sequences/).
+
+If you didn't tag sequences while recording, add a tag from code.
+The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
+The Viam app and the CLI can't edit a sequence.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+sequence = await data_client.get_sequence("YOUR-SEQUENCE-ID")
+await data_client.update_sequence(
+    id="YOUR-SEQUENCE-ID",
+    sequence_tags=list(sequence.sequence_tags) + ["pick-up-cup"],
+)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```typescript
+const sequence = await dataClient.getSequence("YOUR-SEQUENCE-ID");
+await dataClient.updateSequence(
+  "YOUR-SEQUENCE-ID",
+  undefined,
+  [...sequence.sequenceTags, "pick-up-cup"],
+  undefined,
+  undefined,
+  { paths: ["sequence_tags"] },
+);
+```
+
+The field mask is required. It names the fields to change.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+sequence, err := dataClient.GetSequence(ctx, "YOUR-SEQUENCE-ID")
+if err != nil {
+    logger.Fatal(err)
+}
+err = dataClient.UpdateSequence(ctx, "YOUR-SEQUENCE-ID", &app.UpdateSequenceOptions{
+    SequenceTags: append(sequence.SequenceTags, "pick-up-cup"),
+    FieldMask:    []string{"sequence_tags"},
+})
+if err != nil {
+    logger.Fatal(err)
+}
+```
+
+The field mask is required. It names the fields to change.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Use the same tag for every demonstration of the same task.
+To check a sequence dataset's tags, see [Verify dataset quality](/train/create-a-dataset/#verify-dataset-quality).
+
 ## Troubleshooting
 
 {{< expand "Bounding boxes not saving" >}}
@@ -178,3 +242,5 @@ and (1.0, 1.0) is the bottom-right corner.
   using an existing ML model to generate predictions automatically.
 - [Train a model](/train/train-a-model/) -- use your labeled dataset to
   train a classification or object detection model.
+- [Custom training scripts](/train/custom-training-scripts/) -- train on a
+  sequence dataset, such as a robot policy.
