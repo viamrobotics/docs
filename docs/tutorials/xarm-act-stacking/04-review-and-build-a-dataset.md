@@ -22,7 +22,7 @@ You recorded about 50 episodes. Now you decide which ones the policy learns from
 
 ## Why review
 
-A few bad episodes cost more than they add. A dropped block, a long pause, or a camera dropout all become training data. ACT (Action Chunking with Transformers) learns hesitation as readily as skill, so a policy trained on a pause will pause. Thirty clean episodes beat fifty mixed ones.
+A few bad episodes cost more than they add. A dropped block, a long pause, or a camera dropout all become training data. ACT (Action Chunking with Transformers) learns hesitation as readily as skill, so a policy trained on a pause will pause. A smaller clean set beats a larger mixed one.
 
 ## Review in the webapp
 
@@ -35,7 +35,7 @@ Each episode plays its camera frames in real time. Press **K** to tag the episod
 
 Nothing is deleted. An episode with neither tag counts as not reviewed.
 
-A sequence can appear before all its frames have synced. **K** and **D** unlock once the frames have caught up. If no new frames arrive for 15 seconds, the app marks the episode partial. Discard partial episodes.
+A sequence can appear before all its frames have synced. **K** and **D** unlock once the frames have caught up, or after 15 seconds with no new frames, when the app marks the episode partial. Discard partial episodes.
 
 | Key       | Action                                                  |
 | --------- | ------------------------------------------------------- |
@@ -85,6 +85,7 @@ The dataset's sidebar shows how many sequences it holds.
 ```python
 import asyncio
 import os
+import sys
 
 from viam.app.viam_client import ViamClient
 from viam.proto.app.dataset import DatasetType
@@ -113,6 +114,11 @@ async def main():
         if not page_token:
             break
 
+    if not sequence_ids:
+        print("No sequences are tagged review:keep. Review some episodes first.")
+        client.close()
+        sys.exit(1)
+
     dataset_id = await data.create_dataset(
         name="xarm-stacking-v1",
         organization_id=os.environ["VIAM_ORG_ID"],
@@ -128,7 +134,22 @@ async def main():
 asyncio.run(main())
 ```
 
-Set `VIAM_API_KEY`, `VIAM_API_KEY_ID`, `VIAM_ORG_ID`, and `VIAM_PART_ID` to your machine's values, then run it:
+Listing sequences and creating datasets need an organization API key. A key for a machine part isn't enough. Create one, using your organization ID:
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations api-key create --org-id=<org-id> --name=xarm-stacking
+```
+
+To find your organization ID and your machine's part ID, see [step 1 of the sequences tutorial](/data/sequences-tutorial/). Then export the IDs and the key. The script reads them:
+
+```sh {class="command-line" data-prompt="$"}
+export VIAM_ORG_ID=<org-id>
+export VIAM_PART_ID=<part-id>
+export VIAM_API_KEY_ID=<api-key-id>
+export VIAM_API_KEY=<api-key>
+```
+
+The script needs the Python SDK. Install it with `pip install "viam-sdk>=0.83.1"`, then run it:
 
 ```sh {class="command-line" data-prompt="$"}
 python create_dataset.py
@@ -159,7 +180,7 @@ viam dataset export \
 `--only-parquet` skips the images, so the export is small. It writes `<dataset-id>.zip` to the destination. `sequences.parquet` has one row per sequence. To count the rows, install `pandas` and `pyarrow` (`pip install pandas pyarrow`), then run:
 
 ```sh {class="command-line" data-prompt="$"}
-python -c "import zipfile, pandas as pd; z = zipfile.ZipFile('xarm-stacking-v1/<dataset-id>.zip'); print(len(pd.read_parquet(z.open('sequences.parquet'))))"
+python -c "import io, zipfile, pandas as pd; z = zipfile.ZipFile('xarm-stacking-v1/<dataset-id>.zip'); print(len(pd.read_parquet(io.BytesIO(z.read('sequences.parquet')))))"
 ```
 
 The number should equal your keep count. This check is optional, and you can skip it. For every column in the export, see [Sequence dataset format](/train/sequence-dataset-format/).
