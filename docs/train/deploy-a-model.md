@@ -100,6 +100,10 @@ For a classification or detection model:
 
 ## Use the model in code
 
+How you call a deployed model depends on what runs it.
+
+### Classification and detection models
+
 A classification or detection model answers through the vision service:
 
 {{< tabs >}}
@@ -162,6 +166,36 @@ for _, d := range detections {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Robot policies and other Registry models
+
+A **Registry** model, such as a robot policy, runs in the module resource it names.
+It doesn't answer through a vision service, and it uses an ML model service only if its module provides one.
+Call the module resource's API, which depends on the module.
+Check the module's documentation in the registry for which API it implements and how to run the policy.
+
+<!-- When "Run a robot policy" (DOCS-5063 N3) exists, link it here. -->
+
+### Other models in an ML model service
+
+A model with the **Other** task type that runs in an ML model service has no vision service.
+Call the ML model service directly: `metadata` returns the model's input and output tensors, and `infer` runs the model on input tensors you pass.
+
+```python
+from viam.services.mlmodel import MLModelClient
+
+# Get the ML model service (assumes you have a robot connection)
+mlmodel = MLModelClient.from_robot(robot, "my-model")
+
+metadata = await mlmodel.metadata()
+for tensor in metadata.input_info:
+    print(f"  input {tensor.name}: {tensor.data_type} {list(tensor.shape)}")
+
+# my_input is a NumPy array that matches the input tensor's shape and type
+outputs = await mlmodel.infer({metadata.input_info[0].name: my_input})
+```
+
+See the [ML model service API](/reference/apis/services/ml/) for each method.
 
 ## Troubleshooting
 
