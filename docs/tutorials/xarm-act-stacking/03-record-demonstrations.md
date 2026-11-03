@@ -22,7 +22,7 @@ In this phase you teach by showing. You teleoperate the xArm6 through about 50 s
 
 ## Add the capture control sensor
 
-A capture control sensor tells the data management service what to capture and when. Add a sensor named `demo-capture` to your machine config. It's a sensor from the `viam:capture-control` module, model `viam:capture-control:capture-control-sensor`. It lists the four things the policy learns from. First, add the module to your machine config:
+A capture control sensor tells the data management service what to capture and when. Add a sensor named `demo-capture` to your machine config. It's a sensor from the `viam:capture-control` module, model `viam:capture-control:capture-control-sensor`. First, add the module to your machine config:
 
 <!-- TODO(dep): pinned viam:capture-control module version -->
 
@@ -35,7 +35,7 @@ A capture control sensor tells the data management service what to capture and w
 }
 ```
 
-Then add the sensor:
+Then add the sensor. It lists the four things the policy learns from:
 
 ```json
 {
@@ -53,7 +53,7 @@ Then add the sensor:
 }
 ```
 
-A capture control entry can't carry an input, so the gripper's `DoCommand` needs its own capture config. The `xarm-gripper` component comes from the Phase 2 fragment, so you can't edit it in place. Override its `service_configs` in your machine's `fragment_mods`, next to the sensor entry above:
+A capture control entry can't carry an input, so the gripper's `DoCommand` needs its own capture config. The `xarm-gripper` component comes from the Phase 2 fragment, so you can't edit it in place. Override its `service_configs` in your machine's `fragment_mods`, at the top level of your machine config:
 
 ```json
 {

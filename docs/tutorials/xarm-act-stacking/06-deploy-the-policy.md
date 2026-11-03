@@ -41,7 +41,7 @@ Only one thing can drive the xArm at a time, so turn teleop off before you start
 
 ## Add the policy
 
-Add the `viam-labs:vla` module and the `act-policy` service. The service points at your trained model through a registry package.
+Add the `viam-labs:vla` module and the `act-policy` service. The service points at your trained model through a registry package. The full policy and controller configuration is in the companion repo's `config/policy.json`.
 
 1. Add the module and pin its version:
 
@@ -142,7 +142,7 @@ Each key is `observation.images.` plus the camera's component name, with hyphens
 
 ## Add the controller
 
-Add the controller service. The `cameras` keys must match `image_feature_keys` from `specs`. The full policy and controller configuration is in the companion repo's `config/policy.json`.
+Add the controller service. The `cameras` keys must match `image_feature_keys` from `specs`.
 
 <!-- TODO(dep): gripper open and closed values are the unverified ones from Phase 5; confirm them on hardware once, there -->
 
