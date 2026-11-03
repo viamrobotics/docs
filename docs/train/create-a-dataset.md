@@ -420,7 +420,7 @@ viam dataset export \
 The destination then contains:
 
 - `<dataset-id>.zip`: three Parquet files, `binary_data.parquet`, `tabular_data.parquet`, and `sequences.parquet`.
-  See [Sequence dataset format](/train/sequence-dataset-format/).
+  See [Sequence dataset format](/train/dataset-formats/#sequence-datasets).
 - `binary_data/`: the image files, named `<binary-data-id><extension>`.
   Binary data IDs contain slashes, so the files sit in nested folders.
 
@@ -526,7 +526,7 @@ Use the CLI.
 
 **Sequence datasets:**
 
-- [Sequence dataset format](/train/sequence-dataset-format/) -- the columns in
+- [Sequence dataset format](/train/dataset-formats/#sequence-datasets) -- the columns in
   a sequence export, and how to train a custom script on it.
 - [Custom training scripts](/train/custom-training-scripts/) -- write and
   submit your own training script.

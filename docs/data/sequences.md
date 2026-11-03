@@ -48,7 +48,7 @@ Sequences sit between captured data and training:
 2. **Mark sequences.** A capture control sensor on the machine opens and closes sequences while the machine runs. You can also create a sequence afterward, from code, over data you already have.
 3. **Sync.** The data manager uploads captured data, and uploads each sequence after it closes.
 4. **Collect.** You add sequences to a sequence dataset. See [Create a dataset](/train/create-a-dataset/).
-5. **Export and train.** You export the dataset as Parquet files, or run a custom training script on it. See [Sequence dataset format](/train/sequence-dataset-format/).
+5. **Export and train.** You export the dataset as Parquet files, or run a custom training script on it. See [Sequence dataset format](/train/dataset-formats/#sequence-datasets).
 
 ## When to use a sequence
 
@@ -215,4 +215,4 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 - [Sequences tutorial](/data/sequences-tutorial/): record three sequences, collect them into a dataset, and export it.
 - [Create a sequence dataset](/train/create-a-dataset/): collect sequences for training.
 - [Capture on demand](/data/capture-sync/capture-on-demand/): start and stop capture, and record sequences, with the `capture-control` module.
-- [Sequence dataset format](/train/sequence-dataset-format/): the Parquet files a training script receives.
+- [Sequence dataset format](/train/dataset-formats/#sequence-datasets): the Parquet files a training script receives.
