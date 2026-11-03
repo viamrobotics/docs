@@ -140,7 +140,15 @@ Listing sequences and creating datasets need an organization API key. A key for 
 viam organizations api-key create --org-id=<org-id> --name=xarm-stacking
 ```
 
-To find your organization ID and your machine's part ID, see [step 1 of the sequences tutorial](/data/sequences-tutorial/). Then export the IDs and the key. The script reads them:
+To find your organization ID, your machine's ID, and the ID of its main part, run:
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations list
+viam machines list --organization=<org-id> --all
+viam machines part list --machine=<machine-id>
+```
+
+Then export the IDs and the key. The script reads them:
 
 ```sh {class="command-line" data-prompt="$"}
 export VIAM_ORG_ID=<org-id>
