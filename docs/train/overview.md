@@ -23,14 +23,21 @@ This page covers the types of models you can train, the stages every model goes 
 ## Types of models {#types-of-models}
 
 <span id="what-you-can-train"></span><span id="task-type"></span>Every model has a task type, which says what the model does and decides what data it trains on.
+Most models start from a base model, a model already trained on a large general dataset, which training fine-tunes on your data.
 
-| Task type                       | The model                                             | Example                                                                  | The dataset holds                                                                                    |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Images with exactly one tag each                                                                     |
-| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Images with one or more tags each                                                                    |
-| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Images with labeled bounding boxes                                                                   |
-| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, usually camera images and joint positions, tagged with the task |
-| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script requires                                                               |
+| Task type                       | The model                                             | Example                                                                  | Common base models                                                                                                                                                                                                                                                                            |
+| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | EfficientNet-B0, which built-in training uses                                                                                                                                                                                                                                                 |
+| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | EfficientNet-B0, which built-in training uses                                                                                                                                                                                                                                                 |
+| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | RetinaNet with an EfficientNetV2-B0 backbone, which built-in training uses; YOLOv8, with the [`yolo-onnx-training`](https://app.viam.com/ml-training/devrel/yolo-onnx-training) script                                                                                                        |
+| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Vision-language-action models (VLAs) such as SmolVLA, with the [`smolvla-so101`](https://app.viam.com/ml-training/viam/smolvla-so101) script; world action models such as NVIDIA Cosmos 3 Edge, with the [`cosmos-edge-7d`](https://app.viam.com/ml-training/viam-labs/cosmos-edge-7d) script |
+| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | A regression model on sensor data, with the [`tabular-data-tensorflow`](https://app.viam.com/ml-training/viam/tabular-data-tensorflow) script                                                                                                                                                 |
+
+The scripts named in the table are in the [registry](https://app.viam.com/registry?type=Training+Script), and each one's registry page says what dataset it expects.
+
+No training script in the registry trains a large language model (LLM) or a vision-language model (VLM).
+A custom training script runs whatever Python code you give it, so you can write one for a base model that isn't listed.
+To use a model without training it, find a [pretrained model](https://app.viam.com/registry?type=ML+Model) in the registry and deploy it.
 
 ## How training works {#how-training-works}
 
@@ -70,7 +77,7 @@ Use built-in training when all of these are true:
 
 - You're training an image classifier or object detector.
 - Your dataset is labeled images, not a [sequence dataset](/train/create-a-dataset/).
-- A TFLite or TensorFlow model can run on your machine's hardware.
+- Your machine can run a TFLite or TensorFlow model. TFLite runs on Linux and macOS on both ARM and x86; to check your hardware, see [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 - You don't need to choose the model architecture or control preprocessing, augmentation or hyperparameters.
 
 For anything else, such as a robot policy, a model trained on sensor readings, or a PyTorch or ONNX model, use a custom training script.
