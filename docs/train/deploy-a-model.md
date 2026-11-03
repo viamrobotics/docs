@@ -27,6 +27,7 @@ The fastest way to deploy a model is from the model's page in the Viam app:
 1. Navigate to **Models** and click the model you want to deploy.
 1. Click **Deploy** in the model header to open the deploy dialog, which walks you through a few steps.
 1. Select a model version, location, machine, and machine part, then click **Continue**.
+   The version defaults to **Latest**; see [Choose a model version](#choose-a-model-version).
 1. Name the resource that runs the model, then click **Continue**.
    For most frameworks, this is the ML model service.
    For a **Registry** model, the dialog has one name for each module resource the model names, and the next click deploys them.
@@ -73,6 +74,7 @@ see [Supported frameworks and hardware](/vision/deploy-and-maintain/deploy-from-
    **Registry** to find your trained model.
 8. Select the model, choose a version (or leave it on **Latest**), and click
    **Choose**. The model path and label path are set automatically.
+   To decide which version to use, see [Choose a model version](#choose-a-model-version).
 9. Click **Save** in the top right.
 
 ### 2. Add the vision service
@@ -142,6 +144,49 @@ To configure it by hand instead:
 ```
 
 If the module resource is a component, it goes under `components` instead of `services`.
+
+## Choose a model version {#choose-a-model-version}
+
+Each time you train or upload a model, the registry gets a new version of it.
+When you deploy the model, you choose which version the machine runs:
+
+- **Latest** moves the machine to each new version as soon as it's published, with no change to its configuration.
+  This is the default.
+  Use it during development, so every training run reaches your test machine.
+- **A specific version** keeps the machine on that version until you change it.
+  Use it in production, so a new version reaches your machines only when you decide.
+
+The choice is stored as the `version` of the model's entry in the machine's `packages`, either `latest` or a version name:
+
+```json
+{
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "2026-04-10T12-00-00",
+      "type": "ml_model"
+    }
+  ]
+}
+```
+
+### Update or roll back a deployed model {#update-a-deployed-model}
+
+A machine on **Latest** updates by itself.
+To move a machine pinned to a specific version, change the version:
+
+1. On the machine's **CONFIGURE** tab, open the ML model service's configuration card.
+1. Select the new version from the **Version** dropdown.
+   For a **Registry** model, switch to **JSON** mode and change `version` on the model's entry in `packages` instead.
+1. Click **Save**.
+
+The machine downloads the new version and reloads the resource that runs it.
+The vision service and your code don't need to change.
+To roll back, select the previous version the same way.
+
+Test a new version on one machine before you move the rest.
+To update many machines at once, or in stages, see [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 
 ## Use the model in code
 

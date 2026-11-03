@@ -57,7 +57,8 @@ Other models are used through the module that runs them.
 While the model runs, the machine keeps capturing data, including the cases where the model gets it wrong.
 
 **Retrain.**
-You add data from the cases where the model struggles to the dataset, train a new version, and machines configured to use the model pick it up.
+You add data from the cases where the model struggles to the dataset and train a new version.
+Machines that track the model's latest version pick it up automatically; machines pinned to a version move when you [update them](/train/deploy-a-model/#update-a-deployed-model).
 For vision models, [auto-predictions](/train/automate-annotation/) let an existing model draft labels for new images, so each round takes less hand-labeling.
 
 ## What you can train {#what-you-can-train}

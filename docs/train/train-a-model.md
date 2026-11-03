@@ -246,7 +246,7 @@ How many predictions you accept tells you how the model does on new images.
 
 To improve the model, add images where it struggles, label them, and train a new version.
 [Auto-predictions](/train/automate-annotation/) can draft labels for the new images.
-A machine already configured to use the model picks up each new version automatically.
+A machine that deploys the model on **Latest** picks up each new version automatically; a machine pinned to a version keeps it until you [update it](/train/deploy-a-model/#update-a-deployed-model).
 
 ## Troubleshooting {#troubleshooting}
 
