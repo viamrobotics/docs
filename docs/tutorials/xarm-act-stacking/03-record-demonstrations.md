@@ -40,22 +40,42 @@ A capture control sensor tells the data management service what to capture and w
 }
 ```
 
-<!-- TODO(dep): confirm how a capture control `resources` entry passes the gripper's DoCommand input, {"docommand_input": {"get": true}}; capture-on-demand.md documents only resource_name and method -->
+A capture control entry can't carry an input, so the gripper's `DoCommand` needs its own capture config. Add this to the `xarm-gripper` component, and keep the sensor entry above:
 
-The gripper entry captures `DoCommand` with the input `{"get": true}`, which returns the gripper's state.
+```json
+"service_configs": [
+  {
+    "type": "data_manager",
+    "attributes": {
+      "capture_methods": [
+        {
+          "method": "DoCommand",
+          "capture_frequency_hz": 10,
+          "additional_params": { "docommand_input": { "get": true } }
+        }
+      ]
+    }
+  }
+]
+```
 
-Every listed resource runs at the same 10 Hz rate, because training rejects sequences with mixed rates. While the sensor lists a component, the sensor's frequency overrides that component's own capture frequency. The rate comes from `frequency_hz` on `start_capture`. When `start_capture` doesn't give one, it comes from the sensor's `default_capture_frequency_hz`.
+The input `{"get": true}` returns the gripper's state. For the capture config fields, see the [data capture reference](/data/reference/#capture-and-sync-configuration).
 
-<!-- TODO(dep): confirm the webapp sends frequency_hz 10 (or set default_capture_frequency_hz: 10 and confirm the webapp doesn't override it) -->
+<!-- TODO(dep): confirm the sensor override keeps the gripper's additional_params docommand_input -->
+
+Every listed resource runs at the same 10 Hz rate, because training rejects sequences with mixed rates. While the sensor lists a component, the sensor's frequency overrides that component's own capture frequency. It leaves the rest of your component configuration unchanged, including `additional_params`. The webapp sends the rate from its **FPS** session setting, which defaults to 10. Leave **FPS** at 10. Don't set `default_capture_frequency_hz` on the sensor. A nonzero default captures continuously, even between episodes.
 
 For every attribute and command, see [Start and stop capture on demand](/data/capture-sync/capture-on-demand/).
 
 ## Connect it to the data manager
 
-Point the data management service at the sensor, and add the sensor to the data manager's `depends_on`:
+Your machine has no data management service yet, so add one. Point it at the sensor with `capture_control_sensor`, and add the sensor to its `depends_on`:
 
 ```json
 {
+  "name": "data-manager",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "capture_control_sensor": { "name": "demo-capture", "key": "overrides" }
   },
@@ -105,7 +125,7 @@ The policy copies what you show it, so consistency matters more than speed. For 
 
 ## Record about 50 episodes
 
-Record in sessions of about 10 episodes, with a break between sessions. Use these keys:
+The webapp's default session size is already 10 episodes. Record in sessions of that size, with a break between sessions. Use these keys:
 
 | Key       | Action                                                                |
 | --------- | --------------------------------------------------------------------- |
