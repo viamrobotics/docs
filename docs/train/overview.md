@@ -18,11 +18,11 @@ Usually you start from a model that already exists and fine-tune it on your data
 Viam supports two ways to train: built-in training, which takes no code, and custom training scripts, which run your own Python code.
 Either way, Viam runs the job on its own cloud GPUs, so you don't provision hardware, and the result deploys to your machines the same way.
 
-This page covers what kinds of models you can train, the stages every model goes through, and how to choose between built-in and custom training.
+This page covers the types of models you can train, the stages every model goes through, and how to choose between built-in and custom training.
 
-## What you can train {#what-you-can-train}
+## Types of models {#types-of-models}
 
-<span id="task-type"></span>Every model has a task type, which says what the model does and decides what data it trains on.
+<span id="what-you-can-train"></span><span id="task-type"></span>Every model has a task type, which says what the model does and decides what data it trains on.
 
 | Task type                       | The model                                             | Example                                                                  | The dataset holds                                                                                    |
 | ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
@@ -31,9 +31,6 @@ This page covers what kinds of models you can train, the stages every model goes
 | **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Images with labeled bounding boxes                                                                   |
 | **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Recorded demonstrations of the task, usually camera images and joint positions, tagged with the task |
 | **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Whatever your training script requires                                                               |
-
-Built-in training covers the three image task types.
-Robot policies and **Other** models need a custom training script.
 
 ## How training works {#how-training-works}
 
@@ -69,14 +66,14 @@ For vision models, [auto-predictions](/train/automate-annotation/) let an existi
 
 ## Built-in or custom training {#training-method}
 
-Start with built-in training if you're training an image classifier or object detector.
-Use a custom training script if any of these is true:
+Use built-in training when all of these are true:
 
-- The model isn't an image classifier or object detector, such as a robot policy or a model that predicts motor failure from vibration readings.
-- The data isn't images, or it's a [sequence dataset](/train/create-a-dataset/) of time-series data.
-- You need a PyTorch or ONNX model, or one that a module in the registry runs.
-- You want to choose the model architecture, or fine-tune a specific pretrained model.
-- You want control over preprocessing, augmentation or hyperparameters.
+- You're training an image classifier or object detector.
+- Your dataset is labeled images, not a [sequence dataset](/train/create-a-dataset/).
+- A TFLite or TensorFlow model can run on your machine's hardware.
+- You don't need to choose the model architecture or control preprocessing, augmentation or hyperparameters.
+
+For anything else, such as a robot policy, a model trained on sensor readings, or a PyTorch or ONNX model, use a custom training script.
 
 A custom training script doesn't mean writing code from scratch.
 You can [find a training script](/train/custom-training-scripts/#find-an-existing-training-script) in the registry that already trains the model you need, and run it on your dataset.
