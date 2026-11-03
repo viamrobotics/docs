@@ -22,15 +22,15 @@ You can't change it later.
 Both types are created the same way.
 They differ in how you add data and in what you can do with the dataset afterward.
 
-|                  | Binary dataset                            | Sequence dataset                                                                                         |
-| ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Holds            | Individual files, usually images          | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
-| Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
-| Create with      | Viam app, CLI, Python, TypeScript, Go     | Viam app, Python                                                                                         |
-| Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when you create or update the sequence                                                |
-| Managed training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
-| Merge datasets   | Yes                                       | No                                                                                                       |
-| Export           | Files plus a `dataset.jsonl` file         | Three Parquet files plus images                                                                          |
+|                   | Binary dataset                            | Sequence dataset                                                                                         |
+| ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Holds             | Individual files, usually images          | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
+| Use it to         | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
+| Create with       | Viam app, CLI, Python, TypeScript, Go     | Viam app, Python                                                                                         |
+| Labeling          | You tag images or draw bounding boxes     | Sequence tags, such as the task a demonstration shows                                                    |
+| Built-in training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
+| Merge datasets    | Yes                                       | No                                                                                                       |
+| Export            | Files plus a `dataset.jsonl` file         | Three Parquet files plus images                                                                          |
 
 ## Create a dataset
 
@@ -177,12 +177,15 @@ the top navigation bar and then clicking **Settings**.
 How you add data depends on the dataset type.
 A binary dataset holds binary files, usually images, and a sequence dataset holds sequences only.
 
-### Add images
-
-Images must sync from the machine to the cloud before you can add them to a dataset.
+- **Images** must sync from the machine to the cloud before you can add them to a dataset.
+- **Sequences** must be recorded first. See [Sequences](/data/sequences/), or follow the [sequences tutorial](/data/sequences-tutorial/) to go from recording to export in one pass.
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
+
+The Viam app can add data to both dataset types.
+
+**Binary dataset:**
 
 1. Click the **DATA** tab in the top navigation.
 2. Use the filters to find the images you want. Filter by machine, component,
@@ -193,10 +196,25 @@ Images must sync from the machine to the cloud before you can add them to a data
 5. Select your dataset from the dropdown.
 6. Click **Add**.
 
-The selected images are now part of your dataset.
+**Sequence dataset**, from a sequence's detail page:
+
+1. Open the sequence from **DATA** > **SEQUENCES**.
+2. Click **Add to dataset**.
+3. Select the dataset, or enter a new name to create one, and confirm.
+
+**Sequence dataset**, from the dataset page:
+
+1. Open the dataset from the **DATASETS** tab.
+2. Click **Add Data**. If the dataset already holds sequences, the button is **Add sequences**.
+3. In the **All sequences** dialog, select the sequences you want and click **Add**.
+
+The dataset's sidebar shows how many sequences it holds.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
+
+The CLI can add images to a binary dataset.
+It has no sequence commands, so use the Viam app or an SDK for sequence datasets.
 
 Add images to a dataset using filter criteria:
 
@@ -211,8 +229,14 @@ This adds all images matching the filter to the dataset. You can filter by
 location, machine, component, tags, or time range.
 To add images by ID instead, see [Datasets and training](/cli/datasets-and-training/).
 
+To remove images, use `viam dataset data remove`.
+
 {{% /tab %}}
 {{% tab name="Python" %}}
+
+The Python SDK can add data to both dataset types.
+
+**Binary dataset:**
 
 ```python
 async def main():
@@ -230,9 +254,49 @@ async def main():
 
 You can get binary data IDs by querying for images first using the data client's
 `binary_data_by_filter` method, which returns objects that include the binary ID.
+To remove images, call `remove_binary_data_from_dataset_by_ids`.
+
+**Sequence dataset:**
+
+```python
+await data_client.add_sequences_to_dataset(
+    dataset_id="YOUR-DATASET-ID",
+    sequence_ids=["YOUR-SEQUENCE-ID"],
+)
+```
+
+To remove sequences, call `remove_sequences_from_dataset`.
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+The TypeScript SDK can add data to both dataset types.
+
+**Binary dataset:**
+
+```typescript
+await dataClient.addBinaryDataToDatasetByIds(
+  ["binary-data-id-1", "binary-data-id-2"],
+  "YOUR-DATASET-ID",
+);
+```
+
+To remove images, call `removeBinaryDataFromDatasetByIds`.
+
+**Sequence dataset:**
+
+```typescript
+await dataClient.addSequencesToDataset(["YOUR-SEQUENCE-ID"], "YOUR-DATASET-ID");
+```
+
+To remove sequences, call `removeSequencesFromDataset`.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+The Go SDK can add data to both dataset types.
+
+**Binary dataset:**
 
 ```go
 err = dataClient.AddBinaryDataToDatasetByIDs(
@@ -246,40 +310,49 @@ if err != nil {
 fmt.Println("Images added to dataset.")
 ```
 
+To remove images, call `RemoveBinaryDataFromDatasetByIDs`.
+
+**Sequence dataset:**
+
+```go
+err = dataClient.AddSequencesToDataset(ctx, "YOUR-DATASET-ID", []string{"YOUR-SEQUENCE-ID"})
+```
+
+To remove sequences, call `RemoveSequencesFromDataset`.
+
 {{% /tab %}}
 {{< /tabs >}}
 
-To remove images, use `viam dataset data remove` or call `remove_binary_data_from_dataset_by_ids` (Python) or `RemoveBinaryDataFromDatasetByIDs` (Go).
-Removing images removes them from the dataset without deleting the underlying data.
+Removing data from a dataset doesn't delete the underlying images or sequences.
+See the [data client API](/reference/apis/data-client/) for each method's parameters.
 
-### Add sequences
+## Prepare a dataset for training
 
-Before you start, record one or more sequences.
-See [Sequences](/data/sequences/).
-To go from recording to export in one pass, follow the [sequences tutorial](/data/sequences-tutorial/).
+Whichever way you train, the model can only learn what your dataset shows it.
+Label the data, check it against the recommendations below, and, for built-in training, make sure it meets the [built-in training requirements](#built-in-training-requirements).
+
+### Label your data
+
+**Binary dataset:** label every image with tags (for classification) or bounding
+boxes (for object detection).
+See [Annotate images](/train/annotate-images/) for step-by-step instructions
+on manual labeling, or [Automate annotation](/train/automate-annotation/) to
+use an existing ML model to speed up the process.
+
+**Sequence dataset:** a sequence is labeled by its sequence tags, such as the task a demonstration shows.
+You usually set them when you record, through `start_sequence` or `CreateSequence`.
+If you didn't tag sequences while recording, add a tag from code.
+The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
+The Viam app and the CLI can't edit a sequence.
 
 {{< tabs >}}
-{{% tab name="Viam app" %}}
-
-To add a sequence from its detail page:
-
-1. Open the sequence from **DATA** > **SEQUENCES**.
-2. Click **Add to dataset**.
-3. Select the dataset, or enter a new name to create one, and confirm.
-
-To add from the dataset page:
-
-1. Open the dataset from the **DATASETS** tab.
-2. Click **Add Data**. If the dataset already holds sequences, the button is **Add sequences**.
-3. In the **All sequences** dialog, select the sequences you want and click **Add**.
-
-{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python
-await data_client.add_sequences_to_dataset(
-    dataset_id="<DATASET-ID>",
-    sequence_ids=["<SEQUENCE-ID>"],
+sequence = await data_client.get_sequence("YOUR-SEQUENCE-ID")
+await data_client.update_sequence(
+    id="YOUR-SEQUENCE-ID",
+    sequence_tags=list(sequence.sequence_tags) + ["pick-up-cup"],
 )
 ```
 
@@ -287,43 +360,195 @@ await data_client.add_sequences_to_dataset(
 {{% tab name="TypeScript" %}}
 
 ```typescript
-await dataClient.addSequencesToDataset(["<SEQUENCE-ID>"], "<DATASET-ID>");
+const sequence = await dataClient.getSequence("YOUR-SEQUENCE-ID");
+await dataClient.updateSequence(
+  "YOUR-SEQUENCE-ID",
+  undefined,
+  [...sequence.sequenceTags, "pick-up-cup"],
+  undefined,
+  undefined,
+  { paths: ["sequence_tags"] },
+);
 ```
+
+The field mask is required. It names the fields to change.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
-err := dataClient.AddSequencesToDataset(ctx, "<DATASET-ID>", []string{"<SEQUENCE-ID>"})
+sequence, err := dataClient.GetSequence(ctx, "YOUR-SEQUENCE-ID")
+if err != nil {
+    logger.Fatal(err)
+}
+err = dataClient.UpdateSequence(ctx, "YOUR-SEQUENCE-ID", &app.UpdateSequenceOptions{
+    SequenceTags: append(sequence.SequenceTags, "pick-up-cup"),
+    FieldMask:    []string{"sequence_tags"},
+})
+if err != nil {
+    logger.Fatal(err)
+}
+```
+
+The field mask is required. It names the fields to change.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Recommendations for quality
+
+These apply to every dataset, whether you use built-in training or a custom training script.
+Meeting the [built-in training requirements](#built-in-training-requirements) gets a job accepted; it doesn't guarantee a good model.
+
+- **Collect data in the deployment environment.** Use the real lighting,
+  backgrounds, camera angles, and distances your machine uses. Stock datasets,
+  staged setups, and stylized marketing images do not generalize.
+- **Cover the variation the model will see.** Vary conditions such as time of day, object position, and operator.
+  Adding copies of the same image or demonstration inflates the count without adding information.
+- **Keep labels roughly balanced.** No label should have more than 3x the
+  examples of any other.
+- **Label everything consistently.** Use one spelling for each label, and remove or label any data that has no label.
+
+For a binary dataset, aim for hundreds of examples per label.
+For a sequence dataset, make each sequence one complete demonstration of one task, recorded from the same set of resources, and tag every sequence with its task.
+
+### Verify dataset quality
+
+Check the dataset's labels and counts before you train.
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+1. Go to the **DATA** tab and click the **DATASETS** subtab.
+2. Click your dataset to open it.
+3. For a binary dataset, review the dataset summary, which shows:
+   - Total number of files, including any non-image files
+   - Number of labeled images
+   - Labels used and their counts
+
+For a sequence dataset, the sidebar shows how many sequences the dataset holds.
+To count sequences by tag, use the Python tab.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+For a binary dataset, export only the `dataset.jsonl` manifest, which holds every image's labels, and count them with [`jq`](https://jqlang.org/):
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset export --dataset-id=<dataset-id> --destination=./my-dataset --only-jsonl
+```
+
+```sh {class="command-line" data-prompt="$"}
+# Images per tag
+jq -r '.classification_annotations[]?.annotation_label' my-dataset/dataset.jsonl | sort | uniq -c
+# Bounding boxes per label
+jq -r '.bounding_box_annotations[]?.annotation_label' my-dataset/dataset.jsonl | sort | uniq -c
+# Total images, and images with no tags or bounding boxes
+jq -s '{total: length, unlabeled: map(select((.classification_annotations | length) == 0 and (.bounding_box_annotations | length) == 0)) | length}' my-dataset/dataset.jsonl
+```
+
+`--only-jsonl` applies only to binary datasets.
+For a sequence dataset, use the Python tab.
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+**Binary dataset:** count labels and unlabeled images.
+Tags come from both capture tags and classification annotations, the same sources training uses.
+
+```python
+from collections import Counter
+
+from viam.proto.app.data import Filter
+
+
+async def main():
+    viam_client = await connect()
+    data_client = viam_client.data_client
+
+    tags, boxes = Counter(), Counter()
+    total = unlabeled = 0
+    last = None
+    while True:
+        data, _, last = await data_client.binary_data_by_filter(
+            Filter(dataset_id="YOUR-DATASET-ID"),
+            include_binary_data=False,
+            last=last,
+        )
+        if not data:
+            break
+        for datum in data:
+            total += 1
+            image_tags = set(datum.metadata.capture_metadata.tags)
+            image_tags.update(
+                c.label for c in datum.metadata.annotations.classifications)
+            bboxes = datum.metadata.annotations.bboxes
+            tags.update(image_tags)
+            boxes.update(b.label for b in bboxes)
+            if not image_tags and not bboxes:
+                unlabeled += 1
+
+    print(f"Images: {total}, unlabeled: {unlabeled}")
+    print(f"Images per tag: {dict(tags)}")
+    print(f"Bounding boxes per label: {dict(boxes)}")
+
+    viam_client.close()
+```
+
+**Sequence dataset:** count sequences per tag and find untagged ones.
+
+```python
+from collections import Counter
+
+
+async def main():
+    viam_client = await connect()
+    data_client = viam_client.data_client
+
+    tags = Counter()
+    untagged = []
+    page_token = None
+    while True:
+        sequences, page_token, _ = await data_client.sequences_by_dataset_id(
+            dataset_id="YOUR-DATASET-ID",
+            page_token=page_token,
+        )
+        for sequence in sequences:
+            tags.update(sequence.sequence_tags)
+            if not sequence.sequence_tags:
+                untagged.append(sequence.id)
+        if not page_token:
+            break
+
+    print(f"Sequences per tag: {dict(tags)}")
+    print(f"Untagged sequences: {untagged}")
+
+    viam_client.close()
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-The dataset's sidebar shows how many sequences it holds.
+{{< alert title="Tip" color="tip" >}}
+To have an AI coding assistant review a binary dataset, export the manifest with `--only-jsonl` and ask the assistant to check `dataset.jsonl` against the recommendations and requirements on this page.
+It can report label counts, unlabeled images, and imbalance, and list the binary data IDs to fix.
+{{< /alert >}}
 
-To remove sequences, call `remove_sequences_from_dataset` (Python), `removeSequencesFromDataset` (TypeScript), or `RemoveSequencesFromDataset` (Go).
-See the [data client API](/reference/apis/data-client/).
+**Common issues to fix before training:**
 
-A sequence dataset needs no annotation or quality check before export.
-Sequence tags are set when you create or update the sequence.
-Skip to [Export a dataset](#export-a-dataset).
+- **Too few examples of one label:** Capture more data for the underrepresented
+  label under varied conditions, or remove the label and merge it with a related one.
+- **Unlabeled data:** Either label it or remove it from the dataset.
+  Unlabeled images do not help training and can confuse the summary statistics.
+- **Non-representative data:** If your model will run on a factory floor but
+  your training images were taken on a clean desk, the model will not generalize.
+  Capture data under production conditions -- with the actual lighting,
+  background, camera angle, and distance your machine uses.
 
-## Prepare a binary dataset for training
+### Built-in training requirements
 
-Before you train on a binary dataset, label its images and check that it meets the platform requirements.
-
-### Annotate your images
-
-Label every image in your dataset with tags (for classification) or bounding
-boxes (for object detection).
-See [Annotate images](/train/annotate-images/) for step-by-step instructions
-on manual labeling, or [Automate annotation](/train/automate-annotation/) to
-use an existing ML model to speed up the process.
-
-### Platform requirements
-
-Viam rejects a training job if the dataset does not meet these minimums:
+[Built-in training](/train/train-a-model/) accepts only binary datasets, and rejects a job if the dataset does not meet these minimums.
+A custom training script skips these checks, so your script decides what it needs.
 
 | Requirement        | Minimum                                                             |
 | ------------------ | ------------------------------------------------------------------- |
@@ -331,95 +556,17 @@ Viam rejects a training job if the dataset does not meet these minimums:
 | Examples per label | 10 images (classification) or 10 bounding boxes (object detection)  |
 | Total images       | 15 (object detection only; classification has no total-image floor) |
 
-### Recommendations for quality
-
-Platform minimums get a training job accepted; they do not guarantee a good
-model. For production use:
-
-- Aim for hundreds of examples per label under varied conditions.
-- Keep label counts roughly balanced -- no label should have more than 3x the
-  images of any other.
-- Capture images from the deployment environment, meaning the real lighting,
-  backgrounds, camera angles, and distances your machine uses. Stock datasets
-  and stylized marketing images do not generalize.
-
-### Verify dataset quality
-
-Before you train a model, check that your dataset meets the requirements.
-
-**In the web UI:**
-
-1. Go to the **DATA** tab and click the **DATASETS** subtab.
-2. Click your dataset to open it.
-3. Review the dataset summary, which shows:
-   - Total number of files, including any non-image files
-   - Number of labeled images
-   - Labels used and their counts
-4. Check each requirement:
-
-| Check                 | What to look for                                                                                     |
-| --------------------- | ---------------------------------------------------------------------------------------------------- |
-| Enough images         | Object detection: at least 15 total. Classification: at least 10 per label (the binding constraint). |
-| Labeling coverage     | At least 80% of images have tags or bounding boxes                                                   |
-| Examples per label    | At least 10 images per label                                                                         |
-| Label balance         | No label should have more than 3x the images of any other label                                      |
-| Production conditions | Images should represent real operating conditions, not staged or ideal setups                        |
-
-**Common issues to fix before training:**
-
-- **Too few images in one class:** Capture more images of the underrepresented
-  class, or remove the class and merge it with a related one.
-- **Unlabeled images:** Either label them or remove them from the dataset.
-  Unlabeled images do not help training and can confuse the summary statistics.
-- **Non-representative images:** If your model will run on a factory floor but
-  your training images were taken on a clean desk, the model will not generalize.
-  Capture images under production conditions -- with the actual lighting,
-  background, camera angle, and distance your machine uses.
-
-To list your organization's datasets from code:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-async def main():
-    viam_client = await connect()
-    data_client = viam_client.data_client
-
-    datasets = await data_client.list_datasets_by_organization_id(
-        organization_id=ORG_ID,
-    )
-    for ds in datasets:
-        print(f"Dataset: {ds.name}, ID: {ds.id}")
-
-    viam_client.close()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-datasets, err := dataClient.ListDatasetsByOrganizationID(ctx, orgID)
-if err != nil {
-    logger.Fatal(err)
-}
-for _, ds := range datasets {
-    fmt.Printf("Dataset: %s, ID: %s\n", ds.Name, ds.ID)
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## Export a dataset
 
 Export a dataset to inspect it locally or to train outside Viam.
-For both types, `viam dataset export` writes the full dataset to a local directory.
+What you get depends on the dataset type and the interface.
 
-### Export a binary dataset
+{{< tabs >}}
+{{% tab name="CLI" %}}
 
-To export the images together with their annotations, use the
-[Viam CLI](/cli/):
+`viam dataset export` writes the full dataset to a local directory, for both dataset types.
+
+**Binary dataset:**
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
@@ -428,25 +575,7 @@ viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 This writes the files and a `dataset.jsonl` manifest containing their
 annotations to the destination directory.
 
-To download the dataset's files from the web UI:
-
-1. Go to the **DATA** tab and click the **DATASETS** subtab.
-2. Click your dataset to open it.
-3. Click the **...** (dataset actions) menu next to the dataset name and click
-   **Download**. The option appears only when the dataset contains files.
-4. Click **Download files**. Your browser saves a `<dataset-name>.tar.gz`
-   archive of the dataset's files, including non-image files such as video
-   or audio.
-
-The browser download includes the files only, not tags, bounding boxes, or
-other annotations. The browser builds the whole archive in memory, so it
-refuses a dataset larger than 500 MB. Files that fail to download are left
-out of the archive, and a warning says how many. For a large dataset, or when
-you need a complete copy, use the CLI export instead.
-
-### Export a sequence dataset
-
-The `viam dataset export` command detects a sequence dataset, starts an export job on the server, waits for it, and downloads the result:
+<span id="export-a-sequence-dataset"></span>**Sequence dataset:** the command detects a sequence dataset, starts an export job on the server, waits for it, and downloads the result:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export \
@@ -464,16 +593,49 @@ The destination then contains:
 To skip the image files and download only the zip, add `--only-parquet`.
 To change how often the CLI checks the job, or how long it waits, use `--poll-interval` (default `5s`) and `--max-wait` (default `30m`).
 
-From code, call `start_sequence_dataset_export` to get a job ID, poll `get_sequence_dataset_export` until its status is `COMPLETED`, then download the zip from `download_url`.
+{{% /tab %}}
+{{% tab name="Viam app" %}}
+
+The Viam app can download a binary dataset's files, without annotations.
+It can't export a sequence dataset.
+
+1. Go to the **DATA** tab and click the **DATASETS** subtab.
+2. Click your dataset to open it.
+3. Click the **...** (dataset actions) menu next to the dataset name and click
+   **Download**. The option appears only when the dataset contains files.
+4. Click **Download files**. Your browser saves a `<dataset-name>.tar.gz`
+   archive of the dataset's files, including non-image files such as video
+   or audio.
+
+The browser download includes the files only, not tags, bounding boxes, or
+other annotations. The browser builds the whole archive in memory, so it
+refuses a dataset larger than 500 MB. Files that fail to download are left
+out of the archive, and a warning says how many. For a large dataset, or when
+you need a complete copy, use the CLI export instead.
+
+{{% /tab %}}
+{{% tab name="Python and TypeScript" %}}
+
+The SDKs can export a sequence dataset.
+To export a binary dataset with its annotations, use the CLI.
+
+Call `start_sequence_dataset_export` (Python) or `startSequenceDatasetExport` (TypeScript) to get a job ID, poll `get_sequence_dataset_export` or `getSequenceDatasetExport` until its status is `COMPLETED`, then download the zip from `download_url`.
 The URL expires after one hour, so download it right away.
-The Python and TypeScript SDKs have these methods.
-The Go SDK doesn't.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+The Go SDK has no dataset export.
+Use the CLI.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Sequence dataset limitations
 
 - A sequence dataset holds sequences only.
   You can't add images to it, and you can't [merge](/cli/datasets-and-training/#merge-datasets) sequence datasets.
-- Managed [training](/train/train-a-model/) doesn't accept sequence datasets.
+- [Built-in training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
 - Sequence exports query your organization's tabular data, and those queries count toward your organization's usage.
   See [Billing](/organization/billing/).

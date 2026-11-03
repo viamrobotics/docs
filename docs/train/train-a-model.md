@@ -23,7 +23,7 @@ Viam runs the job on cloud GPUs and saves the trained model in your organization
 
 - A dataset of labeled images: tags for classification, or bounding boxes for object detection.
   To make one, see [Create a dataset](/train/create-a-dataset/) and [Annotate images](/train/annotate-images/).
-  The dataset must meet the [platform requirements](/train/create-a-dataset/#platform-requirements) for training.
+  The dataset must meet the [built-in training requirements](/train/create-a-dataset/#built-in-training-requirements) for training.
 
 Built-in training uses only the images in a dataset and skips any other files, such as video or audio.
 It can't train on a [sequence dataset](/train/create-a-dataset/).
@@ -232,7 +232,7 @@ A machine already configured to use the model picks up each new version automati
 {{< expand "The training job fails" >}}
 
 - **Check the training logs.** The error message usually says what went wrong.
-- **The dataset is too small.** Check it against the [platform requirements](/train/create-a-dataset/#platform-requirements).
+- **The dataset is too small.** Check it against the [built-in training requirements](/train/create-a-dataset/#built-in-training-requirements).
 - **Fewer than two labels are selected.** A model can't learn to tell labels apart if there's only one.
 - **Bounding boxes are out of range.** For object detection, box coordinates must be between 0.0 and 1.0, with `x_min` less than `x_max`.
 
