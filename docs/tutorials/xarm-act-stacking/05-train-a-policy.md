@@ -37,15 +37,14 @@ For how custom training works in general, see [Custom training scripts](/train/c
 
 1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select `xarm-stacking-v1`.
 2. Click **Train model**.
-3. Select **Train on a custom training script** and follow the prompts.
+3. Select **Train on a custom training script** and follow the prompts. Name the model `xarm-stacking` when asked.
 4. Choose the training script and, in the **Container version** dropdown, the training container.
 
    <!-- TODO(dep): script registry name, container name, and argument names from the companion training/ README -->
 
    Use `<namespace>:act-xarm` as the script and `<container-id>` as the container.
 
-5. Set the model name to `xarm-stacking`.
-6. In the **Arguments** section, add these keys and values. Viam passes each one to the script as a command-line argument.
+5. In the **Arguments** section, add these keys and values. Viam passes each one to the script as a command-line argument.
 
    | Argument           | Value                 | What it sets                                              |
    | ------------------ | --------------------- | --------------------------------------------------------- |
@@ -55,7 +54,12 @@ For how custom training works in general, see [Custom training scripts](/train/c
    | `gripper_open`     | `<open>`              | The gripper reading when fully open                       |
    | `gripper_closed`   | `<closed>`            | The gripper reading when fully closed                     |
    | `cameras`          | `scene-cam wrist-cam` | The camera components. The first one sets the frame clock |
+   | `steps`            | `<steps>`             | Optional. The number of training steps                    |
    | `image_size`       | `<size>`              | The image size the policy trains on                       |
+
+   <!-- TODO(dep): default steps from the companion training/ README -->
+
+   <!-- TODO(dep): confirm whether the Arguments field needs quotes for a value with spaces, such as cameras, and confirm the final ACT argument names -->
 
    <!-- TODO(dep): confirm gripper_open and gripper_closed. The xArm gripper reads about 840 when open and 2 when closed, which is unverified -->
 
@@ -84,10 +88,11 @@ A few things to know:
 
 - `--version` is the version of the training script, not of the model.
 - Every `--model-version` must be new. To retrain, increase it.
-- Viam splits `--args` on commas, so a value with spaces needs quotes inside the argument, as in `cameras="'scene-cam wrist-cam'"`.
+- `cameras` holds a space-separated list, so put single quotes around its value inside the double quotes, as in `cameras="'scene-cam wrist-cam'"`.
+- Viam splits `--args` on commas, so don't use commas inside a value.
 - The first camera in `cameras` sets the frame clock. Keep `scene-cam` first.
 
-<!-- TODO(dep): script registry name, container name, and argument names from the companion training/ README. Also confirm whether cameras takes a space-separated list in quotes, as here, or items joined with +, for example cameras=scene-cam+wrist-cam -->
+<!-- TODO(dep): script registry name, container name, and argument names from the companion training/ README -->
 
 ## Watch it run
 
@@ -112,7 +117,13 @@ The job takes about 60 to 90 minutes. You don't need to watch it. Viam emails yo
 
 ## Read the loss curve
 
-When the job finishes, open the model version in the **MODELS** tab and download its files. `loss_curve.json` holds the training loss at every logged step.
+When the job finishes, export the model version's files:
+
+```sh {class="command-line" data-prompt="$"}
+viam packages export --type=ml_model --org-id=<org-id> --name=xarm-stacking --version=<model-version> --destination=.
+```
+
+Open `loss_curve.json` from the exported files. It holds the training loss at every logged step.
 
 - A curve that falls and then flattens is healthy. The policy learned what it could from the data.
 - A curve that's flat from the start means a data problem. Check that the dataset holds enough sequences, and check that the gripper value varies across an episode.
@@ -127,6 +138,6 @@ The script checks its inputs and stops with a clear message. The common failures
 
 - **No `DoCommand` rows for the gripper.** The dataset has no gripper readings. Go back to Phase 3 and add the gripper's capture config, then record again.
 - **Inconsistent capture rate.** More than 10 percent of sequences are off the median rate. Check that every episode was captured at 10 Hz, discard the outliers in [Phase 4](/tutorials/xarm-act-stacking/review-and-build-a-dataset/), and submit again with a new `--model-version`.
-- **No usable GPU.** The job stopped because PyTorch can't use a GPU. Submit it again. If it repeats, check that you chose the GPU training container.
+- **No usable GPU.** The job stopped because PyTorch can't use a GPU. Check that you chose the GPU training container. If it repeats after you resubmit, check the container choice and the logs.
 
 {{< workshop-nav >}}
