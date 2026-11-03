@@ -2,7 +2,7 @@
 linkTitle: "Custom training containers"
 title: "Custom training containers"
 tags: ["data management", "ml", "model training"]
-weight: 31
+weight: 40
 layout: "docs"
 type: "docs"
 languages: ["python"]

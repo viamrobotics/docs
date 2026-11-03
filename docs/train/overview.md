@@ -121,6 +121,6 @@ This is how a model whose runtime isn't a standard ML model service gets onto a 
 ## What's next {#whats-next}
 
 - [Create a dataset](/train/create-a-dataset/): collect the images or demonstrations your model trains on.
-- [Train a vision model](/train/train-a-model/): train an image classifier or object detector with built-in training.
-- [Custom training scripts](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
+- [Built-in training](/train/train-a-model/): train an image classifier or object detector without writing code.
+- [Custom training](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
 - [Deploy a model to a machine](/train/deploy-a-model/): add a trained model and what runs it to your machine.

@@ -240,7 +240,7 @@ To check a sequence dataset's tags, see [Verify dataset quality](/train/create-a
 
 - [Automate annotation](/train/automate-annotation/) -- speed up labeling by
   using an existing ML model to generate predictions automatically.
-- [Train a model](/train/train-a-model/) -- use your labeled dataset to
+- [Built-in training](/train/train-a-model/) -- use your labeled dataset to
   train a classification or object detection model.
 - [Custom training scripts](/train/custom-training-scripts/) -- train on a
   sequence dataset, such as a robot policy.

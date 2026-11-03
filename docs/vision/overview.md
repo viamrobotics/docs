@@ -63,7 +63,7 @@ Accuracy almost always drops when a model moves from the lab to production. The 
 
 1. Capture failing images from deployed machines with [data capture](/data/capture-sync/capture-and-sync-data/).
 2. Label the new images in the [**DATA** tab](https://app.viam.com/data/all) and update a dataset.
-3. Retrain the model with [managed training](/train/train-a-model/) or a custom script.
+3. Retrain the model with [built-in training](/train/train-a-model/) or a custom script.
 4. Deploy the new model version through the ML model service and push it to your fleet.
 
 This capture, label, train, deploy, monitor cycle is often called CVOps (computer-vision operations). Viam's data, training, fleet, and vision sections are the tools. The vision section is where your code meets the model.

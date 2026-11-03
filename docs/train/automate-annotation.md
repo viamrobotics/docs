@@ -1,7 +1,7 @@
 ---
 linkTitle: "Automate annotation"
 title: "Automate annotation"
-weight: 17
+weight: 35
 layout: "docs"
 type: "docs"
 description: "Use ML models to auto-label images and programmatically build annotated datasets."

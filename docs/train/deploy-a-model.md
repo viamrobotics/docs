@@ -1,7 +1,7 @@
 ---
 linkTitle: "Deploy a model"
 title: "Deploy a model to a machine"
-weight: 25
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Add a trained model and the resource that runs it to your machine's configuration, from the model's page or the CONFIGURE tab."

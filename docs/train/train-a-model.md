@@ -1,6 +1,6 @@
 ---
-linkTitle: "Train a vision model"
-title: "Train a vision model"
+linkTitle: "Built-in training"
+title: "Train a vision model with built-in training"
 weight: 20
 layout: "docs"
 type: "docs"

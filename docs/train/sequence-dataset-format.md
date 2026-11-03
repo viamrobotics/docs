@@ -1,7 +1,7 @@
 ---
 linkTitle: "Sequence dataset format"
 title: "Sequence dataset format"
-weight: 32
+weight: 45
 layout: "docs"
 type: "docs"
 description: "The Parquet files a sequence dataset exports to, and the arguments a training script receives."

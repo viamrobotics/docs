@@ -1,8 +1,8 @@
 ---
-linkTitle: "Custom training scripts"
-title: "Custom training scripts"
+linkTitle: "Custom training"
+title: "Train a model with a custom training script"
 tags: ["data management", "ml", "model training"]
-weight: 30
+weight: 25
 layout: "docs"
 type: "docs"
 languages: ["python"]
@@ -15,9 +15,9 @@ date: "2024-12-04"
 updated: "2026-10-12"
 ---
 
-Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
+Viam's [built-in training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
 Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), a task type built-in training doesn't support, such as a robot policy, or a training pipeline you want to share with your organization.
-Managed training doesn't accept sequence datasets, so training on one always requires a custom training script.
+Built-in training doesn't accept sequence datasets, so training on one always requires a custom training script.
 
 Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
 If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).
@@ -358,7 +358,7 @@ If your dependencies take a long time to install, build them into a
 starts training right away.
 
 Custom training jobs run on premium GPUs and are billed at a higher rate than
-[managed training](/train/train-a-model/) jobs; see [pricing](https://www.viam.com/product/pricing)
+[built-in training](/train/train-a-model/) jobs; see [pricing](https://www.viam.com/product/pricing)
 for plan details.
 
 To list available containers with their IDs, framework versions, and
