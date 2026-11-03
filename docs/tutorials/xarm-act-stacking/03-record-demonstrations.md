@@ -43,27 +43,32 @@ A capture control sensor tells the data management service what to capture and w
 A capture control entry can't carry an input, so the gripper's `DoCommand` needs its own capture config. Add this to the `xarm-gripper` component, and keep the sensor entry above:
 
 ```json
-"service_configs": [
-  {
-    "type": "data_manager",
-    "attributes": {
-      "capture_methods": [
-        {
-          "method": "DoCommand",
-          "capture_frequency_hz": 10,
-          "additional_params": { "docommand_input": { "get": true } }
-        }
-      ]
+{
+  "name": "xarm-gripper",
+  "api": "rdk:component:gripper",
+  ...,
+  "service_configs": [
+    {
+      "type": "data_manager",
+      "attributes": {
+        "capture_methods": [
+          {
+            "method": "DoCommand",
+            "capture_frequency_hz": 10,
+            "additional_params": { "docommand_input": { "get": true } }
+          }
+        ]
+      }
     }
-  }
-]
+  ]
+}
 ```
 
 The input `{"get": true}` returns the gripper's state. For the capture config fields, see the [data capture reference](/data/reference/#capture-and-sync-configuration).
 
 <!-- TODO(dep): confirm the sensor override keeps the gripper's additional_params docommand_input -->
 
-Every listed resource runs at the same 10 Hz rate, because training rejects sequences with mixed rates. While the sensor lists a component, the sensor's frequency overrides that component's own capture frequency. It leaves the rest of your component configuration unchanged, including `additional_params`. The webapp sends the rate from its **FPS** session setting, which defaults to 10. Leave **FPS** at 10. Don't set `default_capture_frequency_hz` on the sensor. A nonzero default captures continuously, even between episodes.
+Every listed resource runs at the same 10 Hz rate, because training rejects sequences with mixed rates. While the sensor lists a component, the sensor's frequency overrides that component's own capture frequency. It leaves the rest of your component configuration unchanged. The webapp sends the rate from its **FPS** (frames per second) session setting, which defaults to 10. Leave **FPS** at 10. Don't set `default_capture_frequency_hz` on the sensor. A nonzero default captures continuously, even between episodes.
 
 For every attribute and command, see [Start and stop capture on demand](/data/capture-sync/capture-on-demand/).
 
