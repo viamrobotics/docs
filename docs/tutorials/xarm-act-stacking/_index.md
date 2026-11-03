@@ -58,7 +58,7 @@ Milestone one is a trained model version (Phase 5). Milestone two is the arm sta
 - **A USB webcam**, fixed on a stand facing the mat.
 - **Two blocks** in contrasting colors, sized for the xArm gripper.
 - **A printable mat** from the companion repo, which marks where the blocks start.
-- **An x86 Linux computer** that runs `viam-server` and inference.
+- **An x86 Linux computer** that runs `viam-server` and inference. An NVIDIA GPU is recommended for inference.
 
 ## Phases
 
@@ -91,7 +91,7 @@ The Phase 5 training job runs for 60 to 90 minutes, so submit it before lunch an
 All supporting files for this workshop live in the [viam-devrel/xarm-act-stacking](https://github.com/viam-devrel/xarm-act-stacking) repository:
 
 - `training/`: the ACT (Action Chunking with Transformers) training script, already published to the registry, so you don't write it.
-- `config/`: machine fragments.
+- `config/`: the machine fragment and the policy and controller configuration.
 - `printables/`: the mat.
 
 ## Prerequisites
@@ -99,11 +99,12 @@ All supporting files for this workshop live in the [viam-devrel/xarm-act-stackin
 This is a self-serve workshop, so confirm each of the following before you start:
 
 - **A Viam account with an online machine.** Log in at [app.viam.com](https://app.viam.com), [create a machine](/set-up-a-machine/first-machine/), and confirm the green **Live** indicator before you begin.
-  <!-- TODO(dep): confirm the minimum (spec says rdk v0.119.0) when the teleop module ships -->
-- **`viam-server` at or above the version the teleop pipeline needs.**
+- **`viam-server` v0.119.0 or later.**
+  <!-- TODO(dep): recheck the minimum when the teleop module is extracted -->
 - **An xArm6 that's networked and reachable from the machine.**
 - **An SO-ARM101 leader that's built and calibrated.** Follow the setup steps in the [SO-ARM101 module](https://app.viam.com/module/devrel/so101-arm) documentation: configure the motors, build the arm, and calibrate it.
 - **The Viam CLI, installed and logged in.** See the [Viam CLI documentation](/cli/).
+- **Python 3 with pip**, to run the dataset script in Phase 4.
 - **Optional: the [pick-and-place workshop](/tutorials/pick-and-place/)**, a gentler introduction to the xArm6.
 
 ### Where to start

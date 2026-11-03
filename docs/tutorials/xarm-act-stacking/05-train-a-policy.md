@@ -51,8 +51,8 @@ For how custom training works in general, see [Custom training scripts](/train/c
    | `arm`              | `xarm`                | The arm component                                         |
    | `gripper`          | `xarm-gripper`        | The gripper component                                     |
    | `gripper_read_key` | `pos`                 | The key to read from the gripper's `DoCommand` response   |
-   | `gripper_open`     | `<open>`              | The gripper reading when fully open                       |
-   | `gripper_closed`   | `<closed>`            | The gripper reading when fully closed                     |
+   | `gripper_open`     | `840`                 | The gripper reading when fully open                       |
+   | `gripper_closed`   | `2`                   | The gripper reading when fully closed                     |
    | `cameras`          | `scene-cam wrist-cam` | The camera components. The first one sets the frame clock |
    | `steps`            | `<steps>`             | Optional. The number of training steps                    |
    | `image_size`       | `<size>`              | The image size the policy trains on                       |
@@ -61,7 +61,7 @@ For how custom training works in general, see [Custom training scripts](/train/c
 
    <!-- TODO(dep): confirm whether the Arguments field needs quotes for a value with spaces, such as cameras, and confirm the final ACT argument names -->
 
-   <!-- TODO(dep): confirm gripper_open and gripper_closed. The xArm gripper reads about 840 when open and 2 when closed, which is unverified -->
+   <!-- TODO(dep): xArm gripper open/closed native values (about 840 open, 2 closed) are unverified; confirm on hardware -->
 
    Set `gripper_open` and `gripper_closed` to what your gripper reports. Read them from a gripper `DoCommand` response while the gripper is open and closed.
 
@@ -81,7 +81,7 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --model-version=1 --version=<script-version> \
   --script-name=<namespace>:act-xarm \
   --container-id=<container-id> \
-  --args=arm=xarm,gripper=xarm-gripper,gripper_read_key=pos,gripper_open=<open>,gripper_closed=<closed>,cameras="'scene-cam wrist-cam'",image_size=<size>
+  --args=arm=xarm,gripper=xarm-gripper,gripper_read_key=pos,gripper_open=840,gripper_closed=2,cameras="'scene-cam wrist-cam'",image_size=<size>
 ```
 
 A few things to know:
@@ -91,8 +91,6 @@ A few things to know:
 - `cameras` holds a space-separated list, so put single quotes around its value inside the double quotes, as in `cameras="'scene-cam wrist-cam'"`.
 - Viam splits `--args` on commas, so don't use commas inside a value.
 - The first camera in `cameras` sets the frame clock. Keep `scene-cam` first.
-
-<!-- TODO(dep): script registry name, container name, and argument names from the companion training/ README -->
 
 ## Watch it run
 

@@ -58,6 +58,8 @@ Add the `viam-labs:vla` module and the `act-policy` service. The service points 
 
    Pin the version rather than using `latest`. The policy loads a LeRobot checkpoint, and the module's LeRobot version has to match the one that trained your model.
 
+   <!-- TODO(dep): confirm an ACT checkpoint loads and runs through viam-labs:vla:policy's LeRobot backend (untested; vla tests cover SmolVLA and Evo-1) -->
+
 2. Add the model as a package, pinned to the version your training job produced. In your machine's JSON config, add a `packages` entry:
 
    ```json
@@ -136,13 +138,13 @@ Illustrative output; your values come from your checkpoint.
 
 Each key is `observation.images.` plus the camera's component name, with hyphens replaced by underscores. Match the names you see in `specs`.
 
-<!-- TODO(dep): confirm the ACT training script doesn't pass --rename_map -->
+<!-- TODO(dep): confirm the ACT training script keeps this behavior (the smolvla script passes --policy.input_features=null and no --rename_map) -->
 
 ## Add the controller
 
-Add the controller service. The `cameras` keys must match `image_feature_keys` from `specs`:
+Add the controller service. The `cameras` keys must match `image_feature_keys` from `specs`. The full policy and controller configuration is in the companion repo's `config/policy.json`.
 
-<!-- TODO(dep): xArm gripper open/closed native values, verified on hardware -->
+<!-- TODO(dep): gripper open and closed values are the unverified ones from Phase 5; confirm them on hardware once, there -->
 
 ```json
 {
@@ -238,6 +240,7 @@ Now run it.
    `start` returns immediately. It doesn't wait for the arm to move, so watch the arm and poll `status` to see what happened.
 
 4. Watch the arm. Keep a hand near the emergency stop.
+5. When the stack is complete or the arm goes idle, send `{"command": "stop"}` to `act-controller`. The loop keeps running until it gets `stop`. Then home the arm: on the `follower-home` switch, set the position to 2 ("go to").
 
 ## Read `status`
 

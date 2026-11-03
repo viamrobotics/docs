@@ -35,7 +35,7 @@ Lay out the printed mat on your table. Mount the scene webcam at its marked posi
 
 <!-- ASSET cell-layout (PHOTO): the printed mat on the table with the xArm6, the scene webcam at its marked position, the wrist RealSense, and the SO-ARM101 leader beside the xArm -->
 
-Place the leader arm where you can reach it comfortably and where it can't hit the follower's workspace. Where you put it matters in step 8, when you describe its position to the teleop service.
+Place the leader arm where you can reach it comfortably and where it can't hit the follower's workspace. Where you put it matters in **Edit the teleop mapping**, when you describe its position to the teleop service.
 
 ## Add the fragment
 
@@ -48,7 +48,7 @@ A fragment is a reusable block of machine config. The companion repo's `config/c
 
 <!-- TODO(dep): switch to a public fragment ID if devrel publishes one -->
 
-The fragment adds every resource in steps 3 to 9. You add nothing by hand. You only override the values that differ per cell:
+The fragment adds every resource in the sections below. You add nothing by hand. You only override the values that differ per cell:
 
 - The xArm `host` IP address.
 - The leader's serial `port`.
@@ -209,7 +209,7 @@ The `teleop` service reads the leader's tool pose, maps it into the follower's f
 
 ## Edit the teleop mapping
 
-Two more attributes, `gripper_invert` and `leader_tool_offset_mm`, are already set in the previous step. Three attributes place the leader relative to the xArm. They depend on where you put the leader in step 1.
+Two more attributes, `gripper_invert` and `leader_tool_offset_mm`, are already set in the previous step. Three attributes place the leader relative to the xArm. They depend on where you put the leader in **Set up the cell**.
 
 - `scale` multiplies the leader's translation about its base, so a desktop arm can span the follower's larger workspace. The default is `1`.
 - `origin_translation_mm` is the position of the leader's base in the follower's world frame, in millimeters, as `{x, y, z}`.

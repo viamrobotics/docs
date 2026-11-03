@@ -22,7 +22,20 @@ In this phase you teach by showing. You teleoperate the xArm6 through about 50 s
 
 ## Add the capture control sensor
 
-A capture control sensor tells the data management service what to capture and when. Add a sensor named `demo-capture` to your machine config. It's a sensor from the `viam:capture-control` module, model `viam:capture-control:capture-control-sensor`. It lists the four things the policy learns from:
+A capture control sensor tells the data management service what to capture and when. Add a sensor named `demo-capture` to your machine config. It's a sensor from the `viam:capture-control` module, model `viam:capture-control:capture-control-sensor`. It lists the four things the policy learns from. First, add the module to your machine config:
+
+<!-- TODO(dep): pinned viam:capture-control module version -->
+
+```json
+{
+  "type": "registry",
+  "name": "viam_capture-control",
+  "module_id": "viam:capture-control",
+  "version": "<pinned-version>"
+}
+```
+
+Then add the sensor:
 
 ```json
 {
@@ -40,29 +53,41 @@ A capture control sensor tells the data management service what to capture and w
 }
 ```
 
-A capture control entry can't carry an input, so the gripper's `DoCommand` needs its own capture config. Add this to the `xarm-gripper` component, and keep the sensor entry above:
+A capture control entry can't carry an input, so the gripper's `DoCommand` needs its own capture config. The `xarm-gripper` component comes from the Phase 2 fragment, so you can't edit it in place. Override its `service_configs` in your machine's `fragment_mods`, next to the sensor entry above:
 
 ```json
 {
-  "name": "xarm-gripper",
-  "api": "rdk:component:gripper",
-  ...,
-  "service_configs": [
+  "fragment_mods": [
     {
-      "type": "data_manager",
-      "attributes": {
-        "capture_methods": [
-          {
-            "method": "DoCommand",
-            "capture_frequency_hz": 10,
-            "additional_params": { "docommand_input": { "get": true } }
+      "fragment_id": "<your-fragment-id>",
+      "mods": [
+        {
+          "$set": {
+            "components.xarm-gripper.service_configs": [
+              {
+                "type": "data_manager",
+                "attributes": {
+                  "capture_methods": [
+                    {
+                      "method": "DoCommand",
+                      "capture_frequency_hz": 10,
+                      "additional_params": {
+                        "docommand_input": { "get": true }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     }
   ]
 }
 ```
+
+If you already have a `fragment_mods` entry for this fragment from Phase 2, add this `$set` to its `mods` list. For how overrides work, see [Reuse configuration with fragments](/fleet/reuse-configuration/).
 
 The input `{"get": true}` returns the gripper's state. For the capture config fields, see the [data capture reference](/data/reference/#capture-and-sync-configuration).
 

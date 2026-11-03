@@ -22,7 +22,7 @@ This phase is optional. The previous phase already gave you a working policy: th
 
 ## Measure
 
-You can't improve what you haven't counted. Run 10 trials, two in each zone of the mat. Reset the blocks before every trial, and start each one the way you did in [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/). Copy this table and fill it in as you go:
+You can't improve what you haven't counted. Run 10 trials, two in each zone of the mat. Run every trial the same way. Before each one, send `{"command": "stop"}` to `act-controller`, home the arm with the `follower-home` switch (position 2), and reset the blocks into the trial's zone. Then send `start`, as in [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/#run-it). Copy this table and fill it in as you go:
 
 <!-- TODO(dep): zone count on the printables/ mat -->
 
@@ -62,7 +62,7 @@ Sort your failures by zone and by type.
 
 Record 15 to 20 more episodes aimed at your failure cases. For example, if zone D failed twice, record several episodes that start in zone D. Use the same task, `stack the red block on the blue block`, and leave **FPS** at 10, so the new episodes match the old ones. Training rejects sequences with mixed rates.
 
-Follow [Phase 3](/tutorials/xarm-act-stacking/record-demonstrations/) to record, and review the new episodes the way you did in [Phase 4](/tutorials/xarm-act-stacking/review-and-build-a-dataset/#review-in-the-webapp): tag each one `review:keep` or discard it.
+Before you record with teleop, send `{"command": "stop"}` to `act-controller`, so only one thing drives the xArm. Then press **T** to start teleop. Follow [Phase 3](/tutorials/xarm-act-stacking/record-demonstrations/) to record, and review the new episodes the way you did in [Phase 4](/tutorials/xarm-act-stacking/review-and-build-a-dataset/#review-in-the-webapp): tag each one `review:keep` or discard it.
 
 ## Version the dataset
 
@@ -78,7 +78,7 @@ Submit the same training job as [Phase 5](/tutorials/xarm-act-stacking/train-a-p
 
 When the job finishes, point the policy at the new model.
 
-1. In your machine's JSON config, change the `version` of the `xarm-stacking` package to `2`, as in [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/#add-the-policy).
+1. In your machine's JSON config, change the `version` of the `xarm-stacking` package to the version your retrain produced, as in [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/#add-the-policy).
 2. Save, and wait until `act-policy` reports `"state": "ready"` from `status`.
 3. Run the same 10 trials, in the same zones, with the same block starts.
 4. Fill in a second copy of the table and compute the success rate.
