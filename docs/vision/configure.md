@@ -59,7 +59,7 @@ Both paths resolve to whatever you give them: a package reference like `${packag
 1. Click your new ML model service card on the **CONFIGURE** tab.
 2. Click **Select model**. A dialog titled "Select a model" opens.
 3. Use the **My models** and **Registry** tabs to switch between models in your organization and public models in the [Viam Registry](https://app.viam.com/registry). Use the search field and the **Task type**, **Framework**, and **Visibility** filters to narrow the list.
-4. Click a model card to open its details view. Pick a **Version** from the dropdown: **Latest** (auto-updates when a newer version is published) or a specific timestamp version (recommended for production).
+4. Click a model card to open its details view. Pick a **Version** from the dropdown: **Latest** (auto-updates when a newer version is published) or a specific timestamp version (recommended for production). See [Choose a model version](/train/deploy-a-model/#choose-a-model-version).
 5. Click **Choose**. The dialog closes and the service panel now shows the selected model as a pill with its version and author.
 
 Behind the scenes the builder adds a `packages` entry for the model and sets `model_path` and `label_path` on the service attributes to point into the package.

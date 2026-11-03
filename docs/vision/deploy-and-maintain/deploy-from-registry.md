@@ -64,10 +64,7 @@ In the ML model service panel:
 1. Click **Select model**. A dialog opens showing models from your organization and the public [registry](https://app.viam.com/registry).
 2. Filter or search for the model you picked in step 1.
 3. Click the model to select it.
-4. In the **Version** dropdown, choose either a specific version or **Latest**:
-
-- **A specific version** pins the machine to that version until you explicitly change it. Recommended for production.
-- **Latest** automatically upgrades when a newer version of the model is published. Useful during development but risky in production.
+4. In the **Version** dropdown, choose **Latest** or a specific version. Pin a specific version in production; see [Choose a model version](/train/deploy-a-model/#choose-a-model-version).
 
 Save the configuration. `viam-server` downloads the model package to the machine and reports the service as ready.
 
@@ -98,15 +95,7 @@ See [Tune detection quality](/vision/object-detection/tune/) for detailed fixes.
 
 ## Update to a newer model version later
 
-When a newer version of the model is published to the [registry](https://app.viam.com/registry):
-
-1. Open the ML model service panel on your machine.
-2. Change the **Version** dropdown to the new version.
-3. Save. `viam-server` downloads the new version and restarts the service in place.
-
-Your vision service, your application code, and your downstream triggers and modules do not need to change.
-
-For rolling this out across many machines at once, see [Retrain when your model drifts](/vision/deploy-and-maintain/retrain/) and the [fleet deployment docs](/fleet/).
+To move a machine to a newer version of the model, or roll back, see [Update or roll back a deployed model](/train/deploy-a-model/#update-a-deployed-model). Your vision service, your application code, and your downstream triggers and modules do not need to change. To update many machines at once, see [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 
 ## Next steps
 

@@ -70,7 +70,7 @@ With the updated dataset, start a new training job. See [Train a model](/train/t
 
 - **Same architecture, same hyperparameters** if you are just correcting drift or adding examples. Retraining with a known-good setup is predictable and easy to compare.
 - **New architecture** if the task has changed (for example, you are adding a new class that the previous model could not detect). Expect to tune more.
-- **Same or new model name.** If you train under the same model name, the new version replaces the last version when deployed. If you train under a new name, both versions exist and you can promote one to production while keeping the old one as a fallback.
+- **Same or new model name.** If you train under the same model name, the result is a new version of that model, and machines that track its latest version pick it up. If you train under a new name, the result is a separate model, and you switch machines to it by changing their configuration.
 
 Viam runs training jobs on cloud infrastructure. You do not need to provision a GPU machine locally. Logs stay available for seven days after the job completes.
 
@@ -99,12 +99,7 @@ Models trained with [custom training scripts](/train/custom-training-scripts/) d
 
 ### Test on one machine first
 
-Pick a non-critical machine (or a local test machine). In its ML model service panel:
-
-1. In the **Version** dropdown, select the new model version.
-2. Save the configuration.
-
-The `viam-server` on that machine downloads the new model and restarts the ML model service. No application restart is needed.
+Pick a non-critical machine (or a local test machine) and [update it to the new version](/train/deploy-a-model/#update-a-deployed-model). No application restart is needed.
 
 Let the new version run for a few minutes against real camera input. Watch the vision service's Control tab overlay. Confirm:
 
@@ -114,18 +109,7 @@ Let the new version run for a few minutes against real camera input. Watch the v
 
 ### Roll out to the fleet
 
-Once the new version passes single-machine validation, promote it. If the machines in your fleet share a [fragment](/hardware/fragments/), update the fragment's ML model service to reference the new version. Every machine using the fragment reconfigures in place.
-
-For [staged rollout](/fleet/), update machines in groups. One approach: use machine tags to select a canary group, roll out to canaries, wait, then roll out to the rest.
-
-### Pin the model version, or track "latest"
-
-In the ML model service configuration, you can either:
-
-- **Pin a specific version** (for example, `2026-04-10T12:00:00`). The machine will keep running this version until you explicitly change it.
-- **Track "latest"**. The machine runs whichever version is newest in the [registry](https://app.viam.com/registry), updating automatically when new versions land.
-
-Pinning is safer for production fleets. "Latest" is useful during active development when you are iterating quickly and want every training run to flow through immediately.
+Once the new version passes single-machine validation, promote it to the rest of the fleet. See [Deploy ML models across your fleet](/fleet/deploy-ml-models/) for updating a shared fragment and staging the rollout. Whether machines pick up the new version automatically depends on whether they [track the latest version or pin one](/train/deploy-a-model/#choose-a-model-version).
 
 ## 6. Monitor and repeat
 

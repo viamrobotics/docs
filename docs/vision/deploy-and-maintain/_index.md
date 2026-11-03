@@ -18,6 +18,6 @@ The model is the artifact at the center of every vision pipeline. Deploy one fro
 {{% card link="/vision/deploy-and-maintain/deploy-from-registry/" %}}
 {{% card link="/vision/deploy-and-maintain/deploy-custom-model/" %}}
 {{% card link="/vision/deploy-and-maintain/retrain/" %}}
-{{% card link="/vision/deploy-and-maintain/roll-out-to-fleet/" %}}
+{{% card link="/fleet/deploy-ml-models/" %}}
 {{% card link="/vision/deploy-and-maintain/batch-inference/" %}}
 {{< /cards >}}
