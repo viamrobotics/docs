@@ -134,18 +134,18 @@ async def main():
 asyncio.run(main())
 ```
 
-Listing sequences and creating datasets need an organization API key. A key for a machine part isn't enough. Create one, using your organization ID:
-
-```sh {class="command-line" data-prompt="$"}
-viam organizations api-key create --org-id=<org-id> --name=xarm-stacking
-```
-
 To find your organization ID, your machine's ID, and the ID of its main part, run:
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
 viam machines list --organization=<org-id> --all
 viam machines part list --machine=<machine-id>
+```
+
+The script needs an organization API key. A key for a machine part isn't enough. Create one:
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations api-key create --org-id=<org-id> --name=xarm-stacking
 ```
 
 Then export the IDs and the key. The script reads them:
