@@ -89,7 +89,7 @@ Add the `viam-labs:vla` module and the `act-policy` service. The service points 
    }
    ```
 
-   viam-server replaces `${packages.ml_model.xarm-stacking}` with the real path to the downloaded model before the module sees the config. `device` defaults to `auto`, which tries `cuda`, then `mps`, then `cpu`. Leave it on `auto` unless you need to force one. Set it to `cuda`, `mps`, or `cpu` to pick a device yourself.
+   viam-server replaces `${packages.ml_model.xarm-stacking}` with the real path to the downloaded model before the module sees the config. `device` defaults to `auto`, which tries `cuda`, then `mps`, then `cpu`. Set it to `cuda`, `mps`, or `cpu` only to force one.
 
 4. Save. The model downloads and loads in the background. In the `act-policy` DoCommand test panel, send this until `state` is `ready`:
 
@@ -119,14 +119,14 @@ The response is long. These fields matter for the controller:
   "action_dim": 7,
   "state_dim": 7,
   "image_feature_keys": [
-    "observation.images.<key-1>",
-    "observation.images.<key-2>"
+    "observation.images.scene_cam",
+    "observation.images.wrist_cam"
   ],
   "n_action_steps": 100
 }
 ```
 
-The values above are what you should expect. Your keys and numbers come from your checkpoint.
+Illustrative output; your values come from your checkpoint.
 
 - `image_feature_keys` lists the cameras the policy expects. You have two: the scene camera and the wrist camera. The controller refuses to start unless you map every key.
 - `state_dim` is the length of the state the policy reads. For this workshop it's 7: six joints plus the gripper.
@@ -134,11 +134,13 @@ The values above are what you should expect. Your keys and numbers come from you
 
 <!-- TODO(dep): confirm specs output for the xarm-stacking checkpoint: image_feature_keys names, state_dim 7, action_dim 7 -->
 
-The keys depend on how your training job named its cameras, and the policy doesn't say which physical camera each key held. In the `xarm-stacking` training, the first camera was `scene-cam` and the second was `wrist-cam`, so map the keys in that order. If the key names don't make the order obvious, a swapped mapping produces confident but wrong motion: the arm moves smoothly in the wrong direction. If you see that, swap the two entries in `cameras`.
+Each key is `observation.images.` plus the camera's component name, with hyphens replaced by underscores. Match the names you see in `specs`.
+
+<!-- TODO(dep): confirm the ACT training script doesn't pass --rename_map -->
 
 ## Add the controller
 
-Add the controller service. Replace each `<...-key>` with a key from `image_feature_keys`:
+Add the controller service. The `cameras` keys must match `image_feature_keys` from `specs`:
 
 <!-- TODO(dep): xArm gripper open/closed native values, verified on hardware -->
 
@@ -151,8 +153,8 @@ Add the controller service. Replace each `<...-key>` with a key from `image_feat
     "policy_service": "act-policy",
     "arm": "xarm",
     "cameras": {
-      "<scene-key>": "scene-cam",
-      "<wrist-key>": "wrist-cam"
+      "observation.images.scene_cam": "scene-cam",
+      "observation.images.wrist_cam": "wrist-cam"
     },
     "state_joint_indices": [0, 1, 2, 3, 4, 5],
     "gripper": {
@@ -182,14 +184,14 @@ What each field does:
 - `policy_service` and `arm` name the policy and the xArm.
 - `cameras` maps each image feature key from `specs` to a camera. Every key must be covered.
 - `state_joint_indices` maps the arm's joints, base to wrist, onto the state positions the checkpoint expects. These are indices, not names. The six xArm joints are `0` to `5`.
-- `gripper` adds the seventh channel. `read_key`, `open_value`, and `closed_value` must match what you used in training. The controller turns the reading into a value from `0.0` (open) to `1.0` (closed), the same scale training used. Use the open and closed values from Phase 5. The values above are the ones from Phase 5's table, so if you changed them there, change them here.
+- `gripper` adds the seventh channel. `read_key`, `open_value`, and `closed_value` must match what you used in training. The controller turns the reading into a value from `0.0` (open) to `1.0` (closed), the same scale training used. Use the `gripper_open` and `gripper_closed` values you passed in Phase 5.
 - `task` is the instruction. It must match the `task:` tag you recorded, exactly. You can override it per run with `{"command": "start", "task": "..."}`.
 - `fps` is the loop rate. Keep it at `10.0` to match training.
 - `mode` and `actions_per_chunk` are covered in the next section.
 - `state_units` and `action_units` are the units the checkpoint was trained in. Viam arms always report and accept degrees. This checkpoint trained on the xArm's joint values in degrees, so `"degrees"` is right. Both default to `"degrees"`, so they're shown here to make the choice visible. Set them to `"radians"` only if your training data was in radians.
-- `safety.max_vel_degs_per_sec` caps joint speed. The controller derives a per-tick limit from it: `60.0 / 10.0 = 6` degrees per tick. `max_start_delta_degs` makes `start` refuse if the policy's first action is more than 15 degrees from where the arm is now. `stop_on_error` halts the loop if a camera read or the policy call fails.
+- `safety.max_vel_degs_per_sec` and `max_start_delta_degs` use conservative starting values from the README's example: 60 and 15. `max_vel_degs_per_sec` caps joint speed. The controller derives a per-tick limit from it: `60.0 / 10.0 = 6` degrees per tick. `max_start_delta_degs` makes `start` refuse if the policy's first action is more than 15 degrees from where the arm is now. `stop_on_error` halts the loop if a camera read or the policy call fails.
 
-<!-- TODO(dep): confirm xArm joint units in training data are degrees, and per-joint safety.joint_limits_degs for the xArm6 -->
+<!-- TODO(dep): per-joint safety.joint_limits_degs values for the xArm6 -->
 
 `safety.joint_limits_degs` is optional. Without it, the controller logs a warning at start and relies on the xArm driver for joint limits.
 
@@ -250,7 +252,7 @@ While the loop runs, send `{"command": "status"}` to `act-controller`. These fie
 | `starved_ticks` | Ticks where the arm held still with an empty queue. A steadily rising value means the next chunk isn't arriving in time.       |
 | `last_error`    | The last failed tick's error. It stays set even if the loop kept going.                                                        |
 
-Check `clamp_counts` first. It should stay near zero. A count that keeps climbing almost always means wrong units or wrong joint order, not a safety margin doing its job.
+Check `clamp_counts` first. It should stay near zero. A count that keeps climbing almost always means wrong units or wrong joint order, not a safety margin doing its job. One exception: if your demonstrations moved faster than `max_vel_degs_per_sec`, `clamp_counts.delta` climbs even with correct units. Raise `max_vel_degs_per_sec` to match your demonstrations.
 
 {{< checkpoint >}}
 From a fresh block layout, send `{"command": "start"}` to `act-controller`. The xArm stacks the red block on the blue one with no human input.
@@ -258,14 +260,14 @@ From a fresh block layout, send `{"command": "start"}` to `act-controller`. The 
 
 ## Troubleshooting
 
-<!-- TODO(dep): remove or reword when the ufactory gripper gets non-blocking writes -->
+<!-- TODO(dep): remove or reword when the ufactory gripper gets non-blocking writes. The milestone depends on that fix -->
 
-| Symptom                                            | Likely cause                                                                                                            | Fix                                                                                                                                       |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| The arm moves the wrong way or by the wrong amount | Wrong units. A mismatch usually shows up as a climbing `clamp_counts.delta`.                                            | Set `state_units` and `action_units` to match the training data, then check `state_joint_indices`.                                        |
-| The gripper never closes                           | `open_value` and `closed_value` are reversed, or don't match training.                                                  | Set them to the values from Phase 5. Check `gripper` in `clamp_counts`.                                                                   |
-| Jerky motion                                       | `measured_fps` is below `fps`, so inference or image handling is too slow.                                              | Check `measured_fps` and `avg_latency_s`. Confirm `mode` is `async`, `device` isn't `cpu`, and `actions_per_chunk` isn't below its floor. |
-| The arm freezes for seconds at a grasp             | The xArm gripper's `set` blocks until the jaw settles, up to about 10 seconds. A 10 Hz loop can't opt out of that wait. | Expect a pause at each grasp for now.                                                                                                     |
-| It works only from one start zone                  | The demonstrations didn't vary enough.                                                                                  | Record more varied starts in [Phase 7](/tutorials/xarm-act-stacking/evaluate-and-iterate/).                                               |
+| Symptom                                            | Likely cause                                                                                                                                                                                                | Fix                                                                                                                                                    |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| The arm moves the wrong way or by the wrong amount | Wrong units. A mismatch usually shows up as a climbing `clamp_counts.delta`.                                                                                                                                | Set `state_units` and `action_units` to match the training data, then check `state_joint_indices`.                                                     |
+| The gripper never closes                           | `open_value` and `closed_value` are reversed, or don't match training. Reversed values invert the gripper but stay within 0 to 1, so `clamp_counts.gripper` won't show it.                                  | Set them to the `gripper_open` and `gripper_closed` values from Phase 5. A reading more than 0.25 outside 0 to 1 is refused and shows in `last_error`. |
+| Jerky motion                                       | `measured_fps` is below `fps`, so inference or image handling is too slow.                                                                                                                                  | Check `measured_fps` and `avg_latency_s`. Confirm `mode` is `async`, `device` isn't `cpu`, and `actions_per_chunk` isn't below its floor.              |
+| The arm freezes for seconds at a gripper change    | The xArm gripper's `set` blocks until the jaw settles, up to about 10 seconds. The README calls this config impractical in a 10 Hz loop, so the loop can stall at every gripper change, not only the grasp. | No fix from the config. Expect pauses for now.                                                                                                         |
+| It works only from one start zone                  | The demonstrations didn't vary enough.                                                                                                                                                                      | Record more varied starts in [Phase 7](/tutorials/xarm-act-stacking/evaluate-and-iterate/).                                                            |
 
 {{< workshop-nav >}}
