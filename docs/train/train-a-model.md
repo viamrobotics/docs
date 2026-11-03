@@ -17,7 +17,20 @@ aliases:
 Train an image classification or object detection model from a dataset of labeled images, with no training code.
 Viam runs the job on cloud GPUs and saves the trained model in your organization's registry.
 
-<span id="upload-your-training-script"></span><span id="click-for-more-information-on-parsing-command-line-inputs"></span>To train a robot policy or any other model, or to run your own training code, use a [custom training script](/train/custom-training-scripts/) instead.
+{{< alert title="Built-in training is for vision models only" color="note" >}}
+Built-in training supports exactly one kind of model: single label classification, multi label classification, or object detection, trained on a binary dataset of images, and saved as a TFLite or TensorFlow model.
+
+<span id="upload-your-training-script"></span><span id="click-for-more-information-on-parsing-command-line-inputs"></span>For anything else, use a [custom training script](/train/custom-training-scripts/), which runs your own training code and gives you full control. For example, use a custom script to:
+
+- train a robot policy from recorded demonstrations, such as picking up a cup and placing it in a bin
+- train on sensor readings or other data that isn't images, such as detecting anomalies in a motor's vibration
+- train on time-series data from a [sequence dataset](/train/create-a-dataset/)
+- fine-tune a pretrained model or use a model architecture of your choice
+- produce a PyTorch or ONNX model, or one that a module in the registry runs
+- control preprocessing, augmentation, or hyperparameters
+
+You can also [find an existing training script](/train/custom-training-scripts/#find-an-existing-training-script) in the registry instead of writing one.
+{{< /alert >}}
 
 ## Prerequisites {#prerequisites}
 

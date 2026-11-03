@@ -41,7 +41,9 @@ After deploying, check the resource on the machine's **CONTROL** tab.
 
 ## Deploy from the machine's configure tab
 
-To deploy a model that runs in an ML model service by configuring services manually:
+These steps work for any model that runs in an ML model service: a TFLite, TensorFlow, PyTorch or ONNX model of any task type.
+Step 2, the vision service, applies only to classification and detection models.
+For a **Registry** model, such as a robot policy, see [Deploy a Registry model manually](#deploy-a-registry-model-manually).
 
 ### 1. Add the ML model service
 
@@ -97,6 +99,49 @@ For a classification or detection model:
 2. Select a camera to run the model against.
 3. You should see live classifications or detections overlaid on the camera
    feed.
+
+For any other model, call the ML model service's `metadata` from code to check that it loaded the model.
+See [Use the model in code](#other-models-in-an-ml-model-service).
+
+### Deploy a Registry model manually
+
+A **Registry** model runs in a module resource instead of an ML model service, so the steps above don't apply.
+[Deploying from the model details page](#deploy-from-the-model-details-page) is simpler, because the deploy dialog adds the module, the resource and the model together.
+To configure it by hand instead:
+
+1. On the machine's **CONFIGURE** tab, click **+** and add the module resource the model names.
+   The training script set this resource when it was uploaded to the registry.
+   It can be a component or a service of any API.
+2. Switch to **JSON** mode and add the model to `packages`.
+3. In the resource's attributes, set `model_path` to the package directory, `${packages.ml_model.<package-name>}`.
+   This is what the deploy dialog writes.
+   The module's documentation in the registry lists any other attributes the resource needs.
+4. Click **Save**.
+
+```json
+{
+  "packages": [
+    {
+      "name": "my-policy",
+      "package": "<org-id>/my-policy",
+      "version": "latest",
+      "type": "ml_model"
+    }
+  ],
+  "services": [
+    {
+      "name": "my-policy-runner",
+      "api": "<resource-api>",
+      "model": "<namespace>:<module-name>:<model-name>",
+      "attributes": {
+        "model_path": "${packages.ml_model.my-policy}"
+      }
+    }
+  ]
+}
+```
+
+If the module resource is a component, it goes under `components` instead of `services`.
 
 ## Use the model in code
 
