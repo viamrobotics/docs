@@ -10,15 +10,35 @@ diataxis: how-to
 ---
 
 Configure your machine to load a trained model from the registry.
-What runs the model depends on its framework: a TFLite, TensorFlow, PyTorch or ONNX model runs in an ML model service, and a **Registry** model runs in the module resource it names.
-For how frameworks map to what runs them, see [Framework and what runs the model](/train/overview/#framework).
-
-A classification or detection model also needs a vision service, which applies the model to camera images.
-The steps for the vision service on this page apply only to those models.
+What runs the model depends on its framework.
 
 {{< alert title="Tip" color="tip" >}}
 For the full guide to configuring vision services and cloud inference, see [Configure computer vision](/vision/configure/).
 {{< /alert >}}
+
+## What runs the model {#what-runs-the-model}
+
+A model's framework is the machine learning library it was built with, and it sets the format of the model's files.
+TFLite, TensorFlow, PyTorch and ONNX are widely used formats, so a model trained in one of them anywhere, not only on Viam, can run on a Viam machine.
+**Registry** is Viam's own, and it isn't a file format: it means a specific module reads the model's files and runs the model.
+
+To run a model, a machine needs software that can read its format:
+
+| Framework      | Runs on the machine in                                                                                                                                                 | Hardware                                             |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| **TFLite**     | The [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu) ML model service                                                                                       | linux/amd64, linux/arm64, darwin/arm64, darwin/amd64 |
+| **TensorFlow** | The [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu) or [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) ML model service | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
+| **PyTorch**    | The [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu) or `triton` ML model service                                                                             | Nvidia GPU, linux/arm64, darwin/arm64                |
+| **ONNX**       | The [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu) or `triton` ML model service                                                                               | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
+| **Registry**   | The module resource the model names                                                                                                                                    | Whatever the module supports                         |
+
+The first four load the model into an ML model service, which runs it but doesn't interpret its output.
+For a classification or detection model, a vision service sits on top of the ML model service and turns that output into labels and boxes.
+The steps for the vision service on this page apply only to those models.
+
+A **Registry** model doesn't use an ML model service unless its module provides one.
+Instead, the model names the module resource that runs it, such as a module that drives an arm with a robot policy, and deploying adds that resource with the model.
+The training script sets the module when it's uploaded to the registry.
 
 ## Deploy from the model details page
 
@@ -47,18 +67,8 @@ For a **Registry** model, such as a robot policy, see [Deploy a Registry model m
 
 ### 1. Add the ML model service
 
-The ML model service loads the model. Pick the module that matches your
-trained model's framework:
-
-| Framework  | ML model service |
-| ---------- | ---------------- |
-| TFLite     | `tflite_cpu`     |
-| TensorFlow | `tensorflow-cpu` |
-| PyTorch    | `torch-cpu`      |
-| ONNX       | `onnx-cpu`       |
-
-For hardware-specific alternatives (for example, `triton` for Nvidia GPU),
-see [Supported frameworks and hardware](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
+The ML model service loads the model.
+Pick the service that matches your trained model's framework and your machine's hardware, from the table in [What runs the model](#what-runs-the-model).
 
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Blocks**.

@@ -457,4 +457,5 @@ Note that training scripts may emit log lines at the error level and still succe
 
 - [Deploy a model to a machine](/train/deploy-a-model/): add the trained model and the resource that runs it to your machine.
 - [Custom training containers](/train/custom-containers/): build your script's dependencies into a container so jobs start training right away.
-- [Train ML models](/train/overview/#what-you-can-train): check which task type and framework your script should declare.
+- [Train ML models](/train/overview/#what-you-can-train): check which task type your script should declare.
+- [What runs the model](/train/deploy-a-model/#what-runs-the-model): check which framework your script should declare for your machines' hardware.
