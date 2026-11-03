@@ -24,7 +24,8 @@ Tags are labels that apply to an entire image. Use them when you are building
 a classification model -- for example, labeling images as "good-part" or
 "defective-part".
 
-**Web UI:**
+{{< tabs >}}
+{{% tab name="Viam app" %}}
 
 1. In the **DATA** tab, click an image to open it in the detail view.
 2. On the right side panel, find the **Tags** section.
@@ -32,10 +33,9 @@ a classification model -- for example, labeling images as "good-part" or
 4. Type a tag name (for example, `good-part`) and press Enter.
 5. The tag is saved immediately. Repeat for each image.
 
-To tag multiple images at once, use the SDK to add tags programmatically (see
-the code example below).
+To tag multiple images at once, use an SDK.
 
-{{< tabs >}}
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python
@@ -88,7 +88,8 @@ Bounding boxes mark the location of specific objects within an image. Use them
 when you are building an object detection model -- for example, detecting
 packages on a conveyor belt.
 
-**Web UI:**
+{{< tabs >}}
+{{% tab name="Viam app" %}}
 
 1. Open your dataset and click an image to open the detail view.
 2. In the side panel, click the **Actions** tab.
@@ -101,11 +102,7 @@ packages on a conveyor belt.
 7. Repeat for every object in the image that should be detected.
 8. Move to the next image and repeat.
 
-Draw tight bounding boxes that closely fit the object. Do not include excessive
-background. If an image contains multiple objects, draw a separate bounding box
-for each one.
-
-{{< tabs >}}
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python
@@ -148,7 +145,11 @@ fmt.Printf("Added bounding box: %s\n", bboxID)
 {{% /tab %}}
 {{< /tabs >}}
 
-Coordinates are normalized 0.0-1.0, where (0.0, 0.0) is the top-left corner
+Draw tight bounding boxes that closely fit the object. Do not include excessive
+background. If an image contains multiple objects, draw a separate bounding box
+for each one.
+
+From code, coordinates are normalized 0.0-1.0, where (0.0, 0.0) is the top-left corner
 and (1.0, 1.0) is the bottom-right corner.
 
 ## Tag sequences
@@ -158,8 +159,8 @@ You usually set them when you record, through the `capture-control` module's `st
 See [Sequences](/data/sequences/).
 
 If you didn't tag sequences while recording, add a tag from code.
-The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
 The Viam app and the CLI can't edit a sequence.
+The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

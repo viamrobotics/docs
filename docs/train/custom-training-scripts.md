@@ -19,8 +19,21 @@ Viam's [built-in training](/train/train-a-model/) handles TensorFlow and TFLite 
 Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), a task type built-in training doesn't support, such as a robot policy, or a training pipeline you want to share with your organization.
 Built-in training doesn't accept sequence datasets, so training on one always requires a custom training script.
 
-Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
-If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).
+## Find an existing training script
+
+Before writing your own, check whether a training script in the registry already does what you need.
+The registry also has [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy without training.
+
+1. Open the [registry, filtered to training scripts](https://app.viam.com/registry?type=Training+Script).
+   You can also filter by owner, to see scripts from Viam, the community, or your own organization.
+2. Search by keyword, such as the task (`classification`, `detection`, `policy`) or the framework (`pytorch`, `onnx`).
+3. Open a script and read its description to check:
+   - the task type and framework of the model it produces
+   - whether it trains on a binary or a sequence dataset, and what labels it expects
+   - which arguments it accepts, such as the number of epochs
+
+If a script fits, note its name in `<namespace>:<script-name>` form and skip ahead to [Submit a training job](#submit-a-training-job).
+To list training scripts from code, call [`list_registry_items`](/reference/apis/fleet/#listregistryitems) with the `PACKAGE_TYPE_ML_TRAINING` type.
 
 ## How custom training scripts work
 

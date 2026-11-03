@@ -329,7 +329,9 @@ See the [data client API](/reference/apis/data-client/) for each method's parame
 ## Prepare a dataset for training
 
 Whichever way you train, the model can only learn what your dataset shows it.
-Label the data, check it against the recommendations below, and, for built-in training, make sure it meets the [built-in training requirements](#built-in-training-requirements).
+Label the data and check it against the recommendations below.
+For built-in training, the dataset must also meet the minimums in its [prerequisites](/train/train-a-model/#prerequisites).
+A custom training script skips those checks, so your script decides what it needs.
 
 ### Label your data
 
@@ -346,7 +348,7 @@ If you didn't, see [Tag sequences](/train/annotate-data/#tag-sequences) to add t
 ### Recommendations for quality
 
 These apply to every dataset, whether you use built-in training or a custom training script.
-Meeting the [built-in training requirements](#built-in-training-requirements) gets a job accepted; it doesn't guarantee a good model.
+Meeting the built-in training minimums gets a job accepted; it doesn't guarantee a good model.
 
 - **Collect data in the deployment environment.** Use the real lighting,
   backgrounds, camera angles, and distances your machine uses. Stock datasets,
@@ -364,9 +366,6 @@ For a sequence dataset, make each sequence one complete demonstration of one tas
 
 Check the dataset's labels and counts before you train.
 
-{{< tabs >}}
-{{% tab name="Viam app" %}}
-
 1. Go to the **DATA** tab and click the **DATASETS** subtab.
 2. Click your dataset to open it.
 3. For a binary dataset, review the dataset summary, which shows:
@@ -375,112 +374,10 @@ Check the dataset's labels and counts before you train.
    - Labels used and their counts
 
 For a sequence dataset, the sidebar shows how many sequences the dataset holds.
-To count sequences by tag, use the Python tab.
 
-{{% /tab %}}
-{{% tab name="CLI" %}}
-
-For a binary dataset, export only the `dataset.jsonl` manifest, which holds every image's labels, and count them with [`jq`](https://jqlang.org/):
-
-```sh {class="command-line" data-prompt="$"}
-viam dataset export --dataset-id=<dataset-id> --destination=./my-dataset --only-jsonl
-```
-
-```sh {class="command-line" data-prompt="$"}
-# Images per tag
-jq -r '.classification_annotations[]?.annotation_label' my-dataset/dataset.jsonl | sort | uniq -c
-# Bounding boxes per label
-jq -r '.bounding_box_annotations[]?.annotation_label' my-dataset/dataset.jsonl | sort | uniq -c
-# Total images, and images with no tags or bounding boxes
-jq -s '{total: length, unlabeled: map(select((.classification_annotations | length) == 0 and (.bounding_box_annotations | length) == 0)) | length}' my-dataset/dataset.jsonl
-```
-
-`--only-jsonl` applies only to binary datasets.
-For a sequence dataset, use the Python tab.
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-**Binary dataset:** count labels and unlabeled images.
-Tags come from both capture tags and classification annotations, the same sources training uses.
-
-```python
-from collections import Counter
-
-from viam.proto.app.data import Filter
-
-
-async def main():
-    viam_client = await connect()
-    data_client = viam_client.data_client
-
-    tags, boxes = Counter(), Counter()
-    total = unlabeled = 0
-    last = None
-    while True:
-        data, _, last = await data_client.binary_data_by_filter(
-            Filter(dataset_id="YOUR-DATASET-ID"),
-            include_binary_data=False,
-            last=last,
-        )
-        if not data:
-            break
-        for datum in data:
-            total += 1
-            image_tags = set(datum.metadata.capture_metadata.tags)
-            image_tags.update(
-                c.label for c in datum.metadata.annotations.classifications)
-            bboxes = datum.metadata.annotations.bboxes
-            tags.update(image_tags)
-            boxes.update(b.label for b in bboxes)
-            if not image_tags and not bboxes:
-                unlabeled += 1
-
-    print(f"Images: {total}, unlabeled: {unlabeled}")
-    print(f"Images per tag: {dict(tags)}")
-    print(f"Bounding boxes per label: {dict(boxes)}")
-
-    viam_client.close()
-```
-
-**Sequence dataset:** count sequences per tag and find untagged ones.
-
-```python
-from collections import Counter
-
-
-async def main():
-    viam_client = await connect()
-    data_client = viam_client.data_client
-
-    tags = Counter()
-    untagged = []
-    page_token = None
-    while True:
-        sequences, page_token, _ = await data_client.sequences_by_dataset_id(
-            dataset_id="YOUR-DATASET-ID",
-            page_token=page_token,
-        )
-        for sequence in sequences:
-            tags.update(sequence.sequence_tags)
-            if not sequence.sequence_tags:
-                untagged.append(sequence.id)
-        if not page_token:
-            break
-
-    print(f"Sequences per tag: {dict(tags)}")
-    print(f"Untagged sequences: {untagged}")
-
-    viam_client.close()
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{< alert title="Tip" color="tip" >}}
-To have an AI coding assistant review a binary dataset, export the manifest with `--only-jsonl` and ask the assistant to check `dataset.jsonl` against the recommendations and requirements on this page.
-It can report label counts, unlabeled images, and imbalance, and list the binary data IDs to fix.
-{{< /alert >}}
+You can also pull a dataset's contents to check them in your own script.
+For a binary dataset, `viam dataset export --only-jsonl` downloads a `dataset.jsonl` file with every image's labels, or call `binary_data_by_filter` with the dataset ID in its filter.
+For a sequence dataset, call `sequences_by_dataset_id` to list its sequences and their tags.
 
 **Common issues to fix before training:**
 
@@ -492,17 +389,6 @@ It can report label counts, unlabeled images, and imbalance, and list the binary
   your training images were taken on a clean desk, the model will not generalize.
   Capture data under production conditions -- with the actual lighting,
   background, camera angle, and distance your machine uses.
-
-### Built-in training requirements
-
-[Built-in training](/train/train-a-model/) accepts only binary datasets, and rejects a job if the dataset does not meet these minimums.
-A custom training script skips these checks, so your script decides what it needs.
-
-| Requirement        | Minimum                                                             |
-| ------------------ | ------------------------------------------------------------------- |
-| Labeled images     | 80% of the dataset                                                  |
-| Examples per label | 10 images (classification) or 10 bounding boxes (object detection)  |
-| Total images       | 15 (object detection only; classification has no total-image floor) |
 
 ## Export a dataset
 

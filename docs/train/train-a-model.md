@@ -23,7 +23,15 @@ Viam runs the job on cloud GPUs and saves the trained model in your organization
 
 - A dataset of labeled images: tags for classification, or bounding boxes for object detection.
   To make one, see [Create a dataset](/train/create-a-dataset/) and [Annotate data](/train/annotate-data/).
-  The dataset must meet the [built-in training requirements](/train/create-a-dataset/#built-in-training-requirements) for training.
+  For tips on making it a good one, see [Prepare a dataset for training](/train/create-a-dataset/#prepare-a-dataset-for-training).
+
+Built-in training rejects a job if the dataset doesn't meet these minimums:
+
+| Requirement        | Minimum                                                             |
+| ------------------ | ------------------------------------------------------------------- |
+| Labeled images     | 80% of the dataset                                                  |
+| Examples per label | 10 images (classification) or 10 bounding boxes (object detection)  |
+| Total images       | 15 (object detection only; classification has no total-image floor) |
 
 Built-in training uses only the images in a dataset and skips any other files, such as video or audio.
 It can't train on a [sequence dataset](/train/create-a-dataset/).
@@ -201,7 +209,7 @@ Copy them before then if you need them longer.
 Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
 To see how the model does, run it on images it hasn't seen, in one of two ways.
 
-### Test against a test dataset {#test-against-a-test-dataset}
+### Evaluate against a test dataset {#evaluate-against-a-test-dataset}
 
 [Auto-predictions](/train/automate-annotation/) run the model on a dataset without a machine.
 You can do this only in the Viam app.
@@ -232,7 +240,7 @@ A machine already configured to use the model picks up each new version automati
 {{< expand "The training job fails" >}}
 
 - **Check the training logs.** The error message usually says what went wrong.
-- **The dataset is too small.** Check it against the [built-in training requirements](/train/create-a-dataset/#built-in-training-requirements).
+- **The dataset is too small.** Check it against the minimums in [Prerequisites](#prerequisites).
 - **Fewer than two labels are selected.** A model can't learn to tell labels apart if there's only one.
 - **Bounding boxes are out of range.** For object detection, box coordinates must be between 0.0 and 1.0, with `x_min` less than `x_max`.
 
