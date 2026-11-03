@@ -79,7 +79,7 @@ Each step below shows the resource as the fragment defines it. Change only the v
 
 ## Review the follower: xArm6 and gripper
 
-The xArm6 is the follower. The `viam:ufactory` module provides both the arm and the gripper. The gripper's `arm` attribute makes it a dependency of the arm, because the gripper shares the arm's connection.
+The xArm6 is the follower. The `viam:ufactory` module provides both the arm and the gripper. The gripper's `arm` attribute makes the arm a dependency of the gripper, because the gripper shares the arm's connection.
 
 Edit the `host` on `xarm` to your arm's IP address:
 
@@ -131,10 +131,12 @@ You have two cameras. Edit the webcam's `video_path` to match your machine.
 }
 ```
 
+To find the webcam's path or ID, see [Using `video_path`](/reference/components/camera/webcam/#using-video_path). An ID is more consistent than a path.
+
 Open the **CONTROL** tab and check each camera card.
 
 {{< checkpoint >}}
-Both `wrist-cam` and `scene-cam` show a live color image. The `wrist-cam` card shows no depth option. If a card is blank, check the **LOGS** tab for a camera error and confirm the `video_path`.
+Both `wrist-cam` and `scene-cam` show a live color image. The `wrist-cam` card shows color only. If a card is blank, check the **LOGS** tab for a camera error and confirm the `video_path`.
 {{< /checkpoint >}}
 
 ## Edit the leader: SO-ARM101 arm and gripper
@@ -195,15 +197,19 @@ The `teleop` service reads the leader's tool pose, maps it into the follower's f
   "leader_arm": "leader-arm",
   "leader_gripper": "leader-gripper",
   "follower_component": "xarm-gripper",
-  "follower_gripper": "xarm-gripper"
+  "follower_gripper": "xarm-gripper",
+  "gripper_invert": true,
+  "leader_tool_offset_mm": { "z": 96 }
 }
 ```
 
 `follower_component` is the frame the motion service positions, so it's the gripper. `follower_gripper` is the gripper that mirrors the leader's jaw. Both point to `xarm-gripper`.
 
+`gripper_invert: true` makes squeezing the leader's jaw close the follower. Without it, the follower sits closed and squeezing opens it. `leader_tool_offset_mm` moves the mirrored point out to the tip of the stock SO-ARM101 leader handle. Without it, leader rotations pivot the follower off its tip.
+
 ## Edit the teleop mapping
 
-Three attributes place the leader relative to the xArm. They depend on where you put the leader in step 1.
+Two more attributes, `gripper_invert` and `leader_tool_offset_mm`, are already set in the previous step. Three attributes place the leader relative to the xArm. They depend on where you put the leader in step 1.
 
 - `scale` multiplies the leader's translation about its base, so a desktop arm can span the follower's larger workspace. The default is `1`.
 - `origin_translation_mm` is the position of the leader's base in the follower's world frame, in millimeters, as `{x, y, z}`.
@@ -230,19 +236,24 @@ To tune these, set `align_on_start` to `true`:
 
 On `start`, the leader drives itself to match the follower's pose. If the mapping is wrong, you see the offset as a visible mismatch between the two arms. For every attribute and its default, see the Cartesian teleop module's documentation.
 
+<!-- TODO(dep): link the extracted teleop module's docs -->
+
 Tune in a short loop:
 
 1. Send `start`.
 2. Move the leader along one axis.
 3. Compare the directions of the leader and the xArm.
-4. If an axis is reversed or swapped, fix the sign or rotation in `origin_orientation`. If the arm covers too much or too little distance, adjust `scale`.
-5. Send `stop`, save, and repeat.
+4. If the arms are offset, adjust `origin_translation_mm`.
+5. If an axis is reversed or swapped, fix the sign or rotation in `origin_orientation`. If the arm covers too much or too little distance, adjust `scale`.
+6. Send `stop`, save, and repeat.
 
 ## Review the home poses
 
 The fragment adds two `erh:vmodutils:arm-position-saver` switches, `follower-home` and `leader-home`. Don't create them. Move each arm to a safe home pose, then save that pose to its switch.
 
-<!-- TODO(dep): exact save step for the arm-position-saver switch (for example a DoCommand), from the erh:vmodutils module docs -->
+To save a pose, open the **CONTROL** tab and jog the arm to its home pose. Then find the switch's card and set it to position 1 ("update config") to save the pose. Set it to position 2 ("go to") to confirm the arm returns there. Position 0 is the idle state. Save with position 1 before you use position 2. For more on the switch, see [Phase 3 of the pick-and-place tutorial](/tutorials/pick-and-place/static-positions/).
+
+<!-- TODO(dep): confirm saving to a fragment-defined switch works (becomes a fragment_mods override) -->
 
 In Phase 3, the **H** key in the capture-control webapp stops teleop and moves each arm to its saved pose between episodes.
 
@@ -254,8 +265,9 @@ Open the `teleop` service's DoCommand test panel and send `{"command": "start"}`
 
 Send `{"command": "status"}` to the `teleop` service. Each pair of arms reports these fields:
 
-- `last_error` is the most recent error. Start here.
-- `rejected` counts targets the motion service refused, usually because a target is unreachable or collides with an obstacle such as the table. If it climbs as you move, check the table obstacle and keep the leader inside the follower's workspace.
+- `last_error` is the most recent error. Start here. It also carries planner and collision failures, for example a target that collides with the table.
+  <!-- TODO(dep): define what rejected counts -->
+- `rejected` is reported alongside it. If it climbs as you move, check `last_error` and the table obstacle.
 - `align_position_error_mm` is how far the leader ended up from the follower's mapped pose after `align_on_start`. A large value means the mapping or the leader's reach is off.
 
 {{< workshop-nav >}}
