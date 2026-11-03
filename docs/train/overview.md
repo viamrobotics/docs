@@ -23,20 +23,14 @@ This page covers the types of models you can train, the stages every model goes 
 ## Types of models {#types-of-models}
 
 <span id="what-you-can-train"></span><span id="task-type"></span>Every model has a task type, which says what the model does and decides what data it trains on.
-Most models start from a base model, a model already trained on a large general dataset, which training fine-tunes on your data.
 
-| Task type                       | The model                                             | Example                                                                  | Common base models                                                                                     | Training           |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------ |
-| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | EfficientNet, which built-in training uses; MobileNet; ResNet                                          | Built-in or custom |
-| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | EfficientNet, which built-in training uses; MobileNet; ResNet                                          | Built-in or custom |
-| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | RetinaNet, which built-in training uses; YOLO                                                          | Built-in or custom |
-| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Vision-language-action models (VLAs) such as SmolVLA; world action models such as NVIDIA Cosmos 3 Edge | Custom only        |
-| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Often none: models such as a regression on sensor readings are usually trained from scratch            | Custom only        |
-
-[Training scripts](https://app.viam.com/registry?type=Training+Script) in the registry already train some of these base models, so you can run one on your dataset instead of writing your own.
-No training script in the registry trains a large language model (LLM) or a vision-language model (VLM).
-A custom training script runs whatever Python code you give it, so you can write one for a base model that isn't listed.
-To use a model without training it, find a [pretrained model](https://app.viam.com/registry?type=ML+Model) in the registry and deploy it.
+| Task type                       | The model                                             | Example                                                                  | Training           |
+| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------ |
+| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Built-in or custom |
+| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Built-in or custom |
+| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Built-in or custom |
+| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Custom only        |
+| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Custom only        |
 
 ## How training works {#how-training-works}
 
