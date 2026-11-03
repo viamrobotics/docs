@@ -77,7 +77,7 @@ Viam supports two kinematics file formats at the API level:
 | **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | When writing a Viam kinematics file directly.                |
 | **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer ships a URDF and you want to reuse it. |
 
-On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry (mesh file contents are included only when you request them). The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
+On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry. A request that sets neither `include_collision_meshes` nor `include_visual_meshes` gets the file contents of every mesh. The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
