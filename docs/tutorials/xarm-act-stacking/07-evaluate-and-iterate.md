@@ -24,6 +24,8 @@ This phase is optional. The previous phase already gave you a working policy: th
 
 You can't improve what you haven't counted. Run 10 trials, two in each zone of the mat. Reset the blocks before every trial, and start each one the way you did in [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/). Copy this table and fill it in as you go:
 
+<!-- TODO(dep): zone count on the printables/ mat -->
+
 ```markdown
 | Trial | Zone | Result       | Failure type |
 | ----- | ---- | ------------ | ------------ |
@@ -39,7 +41,7 @@ You can't improve what you haven't counted. Run 10 trials, two in each zone of t
 | 10    | E    | success/fail |              |
 ```
 
-Rename the zones to match your mat. Call a trial a success only if the red block rests on the blue block when the arm stops. For each failure, record one failure type:
+If your mat has a different number of zones, spread the 10 trials across them evenly. Call a trial a success only if the red block rests on the blue block when the arm stops. For each failure, record one failure type:
 
 - **Missed grasp:** the gripper closed without the block.
 - **Dropped:** the arm grasped the block, then lost it on the way.
@@ -66,11 +68,11 @@ Follow [Phase 3](/tutorials/xarm-act-stacking/record-demonstrations/) to record,
 
 Create a new dataset named `xarm-stacking-v2`. It holds all the kept episodes from v1 plus the new keepers. Don't overwrite or edit `xarm-stacking-v1`. Keeping v1 intact means you can still reproduce model version 1, and the comparison stays honest.
 
-Use the script from [Phase 4](/tutorials/xarm-act-stacking/review-and-build-a-dataset/#create-the-sequence-dataset). Change the dataset name from `xarm-stacking-v1` to `xarm-stacking-v2`. The script keeps every sequence tagged `review:keep`, which now includes your new episodes.
+Use the script from [Phase 4](/tutorials/xarm-act-stacking/review-and-build-a-dataset/#create-the-sequence-dataset). Change the dataset name from `xarm-stacking-v1` to `xarm-stacking-v2`, or create it in the Viam app the same way. The script keeps every sequence tagged `review:keep`, which now includes your new episodes.
 
 ## Retrain
 
-Submit the same training job as [Phase 5](/tutorials/xarm-act-stacking/train-a-policy/), with two changes: select `xarm-stacking-v2`, and use a new `--model-version`, for example `2`. Keep every other argument the same, so the dataset is the only variable. Every `--model-version` must be new.
+Submit the same training job as [Phase 5](/tutorials/xarm-act-stacking/train-a-policy/), with two changes: select `xarm-stacking-v2` (or pass its dataset ID with the CLI) and give the model a new version, for example `2` (`--model-version=2` with the CLI). Keep every other argument the same, so the dataset is the only variable. Every `--model-version` must be new.
 
 ## Compare
 
@@ -91,12 +93,12 @@ Ten trials is a small sample. A difference of one trial can be noise. Look at wh
 
 If more demonstrations don't help, or you want to tune something else, these are the settings to try.
 
-- **`actions_per_chunk`:** Change it when motion is hesitant or overshoots. It's a controller setting, so it needs no retraining. See [Why `actions_per_chunk` matters](/tutorials/xarm-act-stacking/deploy-the-policy/#why-actions_per_chunk-matters).
+- **`actions_per_chunk`:** Change it when the arm stalls between chunks (`starved_ticks` rising) or acts on stale information. It's a controller setting, so it needs no retraining. See [Why `actions_per_chunk` matters](/tutorials/xarm-act-stacking/deploy-the-policy/#why-actions_per_chunk-matters).
 - **Training `steps`:** Raise it when the loss curve is still falling at the end of the job, which means the model is underfit.
 
   <!-- TODO(dep): default steps from the companion training/ README -->
 
-- **`image_size`:** Lower it to shorten training time, at the cost of image detail. Raise it only if fine details such as the block edges matter.
+- **`image_size`:** Lowering it can shorten training time, at the cost of image detail. Raise it only if fine details such as the block edges matter.
 
   <!-- TODO(dep): default image_size from the companion training/ README -->
 
