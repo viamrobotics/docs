@@ -46,10 +46,10 @@ The policy only ever sees the follower's joints and cameras. The leader is just 
 
 ## What the policy sees and does
 
-|             | Contents                                                                                                              |
-| ----------- | --------------------------------------------------------------------------------------------------------------------- |
-| Observation | `wrist-cam` and `scene-cam` images, six xArm joint angles, and the gripper opening normalized to 0 = open, 1 = closed |
-| Action      | The next six joint angles plus the gripper value                                                                      |
+|             | Contents                                                                                                                   |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Observation | `wrist-cam` and `scene-cam` images, six xArm joint angles, and the gripper position normalized from 0 (open) to 1 (closed) |
+| Action      | The next six joint angles plus the gripper value                                                                           |
 
 Both run at 10 Hz.
 
