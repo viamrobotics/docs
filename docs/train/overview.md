@@ -4,7 +4,7 @@ title: "Train ML models"
 weight: 1
 layout: "docs"
 type: "docs"
-description: "What kinds of models you can train with Viam, how training works, and when to use built-in training or a custom training script."
+description: "When to use an existing model instead of training, what kinds of models you can train with Viam, how training works, and when to use built-in training or a custom training script."
 capabilities: ["ml-training", "datasets", "ml-models"]
 diataxis: explanation
 date: "2026-04-17"
