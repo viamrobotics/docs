@@ -72,13 +72,13 @@ require the arm to bend past its physical limits.
 
 Viam supports these kinematics file formats:
 
-| Format                           | Description                                                                                             | When to use                                                                                                                                                          |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                                                                               | When writing a Viam kinematics file directly.                                                                                                                        |
-| **URDF**                         | XML format used by ROS and many manufacturers                                                           | When the manufacturer ships a URDF and you want to reuse it.                                                                                                         |
-| **Kinematic model**              | The JSON encoding of the kinematic model that `GetKinematics` returns (`viam-server` v1.15.0 and later) | When you want the file to match what `GetKinematics` serves, or to reference collision and visual mesh files. See [Kinematic model format](#kinematic-model-format). |
+| Format                           | Description                                                                                             | When to use                                                                                                                                                                                                |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                                                                               | When writing a Viam kinematics file directly.                                                                                                                                                              |
+| **URDF**                         | XML format used by ROS and many manufacturers                                                           | When the manufacturer ships a URDF and you want to reuse it.                                                                                                                                               |
+| **Kinematic model**              | The JSON encoding of the kinematic model that `GetKinematics` returns (`viam-server` v1.15.0 and later) | When you want the file to match what `GetKinematics` serves, or to reference collision and visual mesh files from a kinematics file loaded by path. See [Kinematic model format](#kinematic-model-format). |
 
-On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry. A request that sets neither `include_collision_meshes` nor `include_visual_meshes` gets the file contents of every mesh. On `viam-server` v1.15.0 and later, a request that sets either flag gets mesh file contents only for the meshes it asks for (collision, visual, or both); every other mesh carries only its path and content type, and the response contains the kinematic model alone, without the deprecated fields. The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
+On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry. A request that sets neither `include_collision_meshes` nor `include_visual_meshes` gets the file contents of every mesh. On `viam-server` v1.15.0 and later, a request that sets either flag gets mesh file contents only for the meshes it asks for (collision, visual, or both); every other mesh carries only its path and content type, and the response contains the kinematic model alone, without the deprecated fields. The response's older fields are deprecated. They hold the kinematics file itself when it is an SVA or URDF file; a kinematic model file is served there converted to SVA, without its visual geometry. The SVA format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
@@ -226,7 +226,7 @@ Each field:
 #### Kinematic model format
 
 On `viam-server` v1.15.0 and later, a `.json` kinematics file can instead use the JSON encoding of the kinematic model that `GetKinematics` returns.
-Viam tells the two JSON formats apart by their fields: `kinematic_param_type`, `dhParams`, a link-level `translation`, a joint-level `min`, or a lowercase joint type marks a file as SVA or DH.
+Viam tells the two JSON formats apart by their fields. A file with a top-level `properties`, a link `pose`, `collision`, or `visual`, a joint `limits`, or a `JOINT_TYPE_` joint type is read as a kinematic model. Otherwise, SVA or DH markers such as `kinematic_param_type`, `dhParams`, a link-level `translation`, a joint-level `min`, or a lowercase joint type make it SVA or DH. A file with neither set of markers is read as a kinematic model.
 Here is the first link and joint of a UR5e in this format:
 
 ```json
@@ -265,7 +265,9 @@ Here is the first link and joint of a UR5e in this format:
 
 A mesh geometry can point to a mesh file instead of embedding its contents, for example `{"mesh": {"original_file_source_path_diagnostic": "../meshes/base.ply"}}`; the content type comes from the file extension.
 Mesh file paths are relative to the kinematics file and use forward slashes; absolute paths and URI schemes such as `package://` are not allowed, and `..` is.
-Collision meshes must be STL or PLY files; visual meshes can also be GLB files.
+Collision meshes must be STL or PLY files; visual meshes can be any format with a file extension, such as GLB.
+Mesh file references work only when the kinematics file is loaded from disk by its path, for example through a fake arm's `model-path` attribute.
+A kinematic model read from bytes, such as a file embedded in a module's binary, has no directory to resolve paths against, so it must carry its mesh contents; a file reference there fails with `mesh "<path>" cannot be read without the directory of the model file`.
 
 Viam parses this format strictly.
 An unknown field, a `NaN` or `Infinity` value, a parent that is not in the model, a cycle, a duplicate `id`, a missing mesh file, or a mimic joint that sets its own limits fails the load, and the error names the file.
