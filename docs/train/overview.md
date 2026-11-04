@@ -18,7 +18,23 @@ Usually you start from a model that already exists and fine-tune it on your data
 Viam supports two ways to train: built-in training, which takes no code, and custom training scripts, which run your own Python code.
 Either way, Viam runs the job on its own cloud GPUs, so you don't provision hardware, and the result deploys to your machines the same way.
 
-This page covers the types of models you can train, the stages every model goes through, and how to choose between built-in and custom training.
+This page covers when you need to train at all, the types of models you can train, the stages every model goes through, and how to choose between built-in and custom training.
+
+## Use a model that already exists {#use-an-existing-model}
+
+You don't always need to train.
+Before you build a dataset, check whether a model that does the job already exists:
+
+- **Use a model from the registry.**
+  The [registry](https://app.viam.com/registry) has ready-made ML models, and modules that bundle a model with what runs it.
+  Some detect whatever you name in a text prompt, with no training: [SAM 3](https://app.viam.com/module/viam/sam3-detector) finds every object that matches a phrase such as "stemless wine glass", and a [Qwen vision-language model](https://app.viam.com/module/viam-labs/qwen3-vl-vision) answers questions about an image.
+  See [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/).
+- **Upload a model you already have.**
+  If you trained a model outside Viam, or found one on Hugging Face or GitHub, upload it to your organization's registry and deploy it the same way as a model trained on Viam.
+  See [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
+
+To find out whether an existing classification or detection model is good enough, [evaluate it](/train/evaluate-a-model/) on images from your machines.
+Train your own model when no existing model knows your labels, isn't accurate enough on your data, or doesn't do your task.
 
 ## Types of models {#types-of-models}
 
@@ -103,6 +119,8 @@ A custom job's task type and framework come from the training script, which decl
 
 ## What's next {#whats-next}
 
+- [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): use a ready-made model instead of training one.
+- [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): upload a model you trained outside Viam.
 - [Create a dataset](/train/create-a-dataset/): collect the images or demonstrations your model trains on.
 - [Built-in training](/train/train-a-model/): train an image classifier or object detector without writing code.
 - [Custom training](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
