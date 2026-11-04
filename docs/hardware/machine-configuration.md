@@ -96,18 +96,13 @@ through the Viam app, the modules section is created automatically.
 
 ## Editing configuration
 
-You can edit your machine's configuration in these ways:
+You can edit your machine's configuration in two ways:
 
 - **Builder UI**: the visual editor in the Viam app. Best for adding
   components one at a time and using form fields for attributes.
 - **JSON mode**: click **JSON** in the left-hand menu on the CONFIGURE tab
   to see and edit the raw JSON. Best for copying configurations, making bulk
   changes, or understanding exactly what's configured.
-- **API**: change individual values by path with the
-  [`SetConfigProperty`](/reference/apis/fleet/#setconfigproperty) method. Best
-  for scripts and automation. For how it handles values that come from
-  fragments, see
-  [Change fragment values through the API](/fleet/reuse-configuration/#change-fragment-values-through-the-api).
 
 Both views edit the same underlying configuration. Changes in one are
 reflected in the other.
