@@ -24,20 +24,20 @@ This page covers the types of models you can train, the stages every model goes 
 
 <span id="what-you-can-train"></span><span id="task-type"></span>Every model has a task type, which says what the model does and decides what data it trains on.
 
-| Task type                       | The model                                             | Example                                                                  | Training           |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------ |
-| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | Built-in or custom |
-| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | Built-in or custom |
-| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | Built-in or custom |
-| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | Custom only        |
-| **Other**                       | Anything the other types don't describe               | Predict a motor failure from its vibration readings.                     | Custom only        |
+| Task type                       | The model                                             | Example                                                                  | Example base models     | Training           |
+| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------- | ------------------ |
+| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | ResNet, EfficientNet    | Built-in or custom |
+| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | ResNet, EfficientNet    | Built-in or custom |
+| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | YOLO                    | Built-in or custom |
+| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | ACT, SmolVLA, pi0.5     | Custom only        |
+| **Other**                       | Anything the other types don't describe               | Flag a part that looks unlike the good parts the model trained on.       | Anomalib, NVIDIA Cosmos | Custom only        |
 
 ## How training works {#how-training-works}
 
 Training is a loop.
 A deployed model captures more data as the machine uses it, and that data trains the next version.
 
-<img src="/train/training-flywheel.svg" alt="The training loop: capture data on your machines, build a dataset, train with built-in training or a custom script, deploy the model to a machine, and run it on the machine, which captures more data and starts the loop again. Each round trains a new model version." style="width:100%;max-width:560px;height:auto;display:block;margin:0 auto" >
+<img src="/train/training-flywheel.svg" alt="The training loop: capture data on your machines, build a dataset, train with built-in training or a custom script, evaluate the model on a test dataset, deploy the model to a machine, and run it on the machine, which captures more data and starts the loop again. Each round trains a new model version." style="width:100%;max-width:560px;height:auto;display:block;margin:0 auto" >
 
 **1. Capture data.**
 Machines [capture data](/data/capture-sync/overview/) from their cameras and sensors and sync it to the cloud.
@@ -49,13 +49,16 @@ What goes in it depends on the model: images you [label](/train/annotate-data/) 
 **3. Train.**
 A training job reads the dataset in the cloud and publishes the result as a new model version in your organization's registry.
 [Built-in training](/train/train-a-model/) needs no code; a [custom training script](/train/custom-training-scripts/) runs your own code.
-Before you deploy a classification or detection model, you can [evaluate it](/train/evaluate-a-model/) on labeled images it wasn't trained on to measure its precision and recall.
 
-**4. Deploy.**
+**4. Evaluate.**
+Before you deploy a classification or detection model, [evaluate it](/train/evaluate-a-model/) on labeled images it wasn't trained on.
+The evaluation reports the model's precision and recall for each label, so you can see which labels it gets wrong before it runs on a machine.
+
+**5. Deploy.**
 [Deploying](/train/deploy-a-model/) adds the model and the resource that runs it to a machine's configuration.
 The machine downloads the model from the registry.
 
-**5. Run.**
+**6. Run.**
 What you do with a deployed model depends on what it is.
 A vision model answers through a [vision service](/vision/), which your code or other services query for classifications and detections.
 Other models are used through the module that runs them.
