@@ -166,6 +166,22 @@ In JSON mode, overrides use the `fragment_mods` array with [MongoDB update opera
 
 Supported operators: `$set` (change or add a value), `$unset` (remove a value).
 
+### Change fragment values through the API
+
+The [`SetConfigProperty`](/reference/apis/fleet/#setconfigproperty) fleet API method changes individual values in a part's configuration by path. Where it saves a change depends on where the resource comes from:
+
+- If the part's own configuration defines the resource or section, the change is made there. A property that isn't set yet is added.
+- If the resource comes from a fragment the part imports, the change is saved through that fragment import, even if the fragment doesn't set that property yet:
+  - If the fragment sets the property with a [variable](#customize-fragments-with-variables) that no other property uses, the change sets that variable's value on the part's fragment import.
+  - Otherwise, including when other properties share the variable, the change is saved as a `$set` override in `fragment_mods`.
+
+Setting a property that already has an override replaces the override's value. When you import the same fragment more than once with prefixes, each import keeps its own variable values, so a change to one prefixed resource doesn't affect the others.
+
+Some changes to fragment resources return an error:
+
+- Fragment overrides can't change `billing` or `access_policy`, so setting a property in either section that comes from a fragment returns an error.
+- You can't replace a whole resource that comes from a fragment the part imports more than once. Set the resource's fields instead.
+
 ## Version and tag fragments for staged rollouts
 
 Every time you save a fragment, Viam creates a new revision. You can pin machines to a specific revision or use tags to control rollouts.
