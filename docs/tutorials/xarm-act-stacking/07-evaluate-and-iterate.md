@@ -94,13 +94,8 @@ Ten trials is a small sample. A difference of one trial can be noise. Look at wh
 If more demonstrations don't help, or you want to tune something else, these are the settings to try.
 
 - **`actions_per_chunk`:** Change it when the arm stalls between chunks (`starved_ticks` rising) or acts on stale information. It's a controller setting, so it needs no retraining. See [Why `actions_per_chunk` matters](/tutorials/xarm-act-stacking/deploy-the-policy/#why-actions_per_chunk-matters).
-- **Training `steps`:** Raise it when the loss curve is still falling at the end of the job, which means the model is underfit.
-
-  <!-- TODO(dep): default steps from the companion training/ README -->
-
-- **`image_size`:** Lowering it can shorten training time, at the cost of image detail. Raise it only if fine details such as the block edges matter.
-
-  <!-- TODO(dep): default image_size from the companion training/ README -->
+- **Training `steps`:** The default is 50,000. Raise it when the loss curve is still falling at the end of the job, which means the model is underfit. Each extra 10,000 steps adds about 14 minutes on an NVIDIA A100.
+- **`image_size`:** The default, `0`, trains on each camera's own size. Set it, for example to `320`, to downscale the images and shorten training, at the cost of detail such as the block edges.
 
 - **More demonstrations or more steps:** When failures cluster by situation, more demonstrations usually beat more steps. More steps on the same data can't teach the policy situations it never saw.
 

@@ -101,6 +101,7 @@ This is a self-serve workshop, so confirm each of the following before you start
 - **A Viam account with an online machine.** Log in at [app.viam.com](https://app.viam.com), [create a machine](/set-up-a-machine/first-machine/), and confirm the green **Live** indicator before you begin.
 - **`viam-server` v0.119.0 or later.**
   <!-- TODO(dep): recheck the minimum when the teleop module is extracted -->
+- **`git` and `curl` on the machine.** The policy module needs both to install its dependencies in Phase 6.
 - **An xArm6 that's networked and reachable from the machine.**
 - **An SO-ARM101 leader that's built and calibrated.** Follow the setup steps in the [SO-ARM101 module](https://app.viam.com/module/devrel/so101-arm) documentation: configure the motors, build the arm, and calibrate it.
 - **The Viam CLI, installed and logged in.** See the [Viam CLI documentation](/cli/).

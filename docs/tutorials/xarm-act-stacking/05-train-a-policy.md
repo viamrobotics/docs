@@ -38,36 +38,30 @@ For how custom training works in general, see [Custom training scripts](/train/c
 1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select `xarm-stacking-v1`.
 2. Click **Train model**.
 3. Select **Train on a custom training script** and follow the prompts. Name the model `xarm-stacking` when asked.
-4. Choose the training script and, in the **Container version** dropdown, the training container.
+4. Choose `act-xarm` as the training script. In the **Container version** dropdown, choose **LeRobot SmolVLA for SO-101 (0.1: NVIDIA driver env)**. The container is named for SmolVLA, but it has the LeRobot version that both the ACT script and the `viam-labs:vla` module use.
 
-   <!-- TODO(dep): script registry name, container name, and argument names from the companion training/ README -->
+   <!-- TODO(dep): the act-xarm script's public registry namespace, once it's published -->
 
-   Use `<namespace>:act-xarm` as the script and `<container-id>` as the container.
+5. Leave the **Arguments** section empty, unless your setup differs from this workshop's. The script's defaults match the component names and gripper values used here. To change a setting, add its key and value, and Viam passes it to the script as a command-line argument:
 
-5. In the **Arguments** section, add these keys and values. Viam passes each one to the script as a command-line argument.
-
-   | Argument           | Value                 | What it sets                                              |
-   | ------------------ | --------------------- | --------------------------------------------------------- |
-   | `arm`              | `xarm`                | The arm component                                         |
-   | `gripper`          | `xarm-gripper`        | The gripper component                                     |
-   | `gripper_read_key` | `pos`                 | The key to read from the gripper's `DoCommand` response   |
-   | `gripper_open`     | `840`                 | The gripper reading when fully open                       |
-   | `gripper_closed`   | `2`                   | The gripper reading when fully closed                     |
-   | `cameras`          | `scene-cam wrist-cam` | The camera components. The first one sets the frame clock |
-   | `steps`            | `<steps>`             | Optional. The number of training steps                    |
-   | `image_size`       | `<size>`              | The image size the policy trains on                       |
-
-   <!-- TODO(dep): default steps from the companion training/ README -->
-
-   <!-- TODO(dep): confirm whether the Arguments field needs quotes for a value with spaces, such as cameras, and confirm the final ACT argument names -->
+   | Argument           | Default               | What it sets                                                                                |
+   | ------------------ | --------------------- | ------------------------------------------------------------------------------------------- |
+   | `arm`              | `xarm`                | The arm component                                                                           |
+   | `gripper`          | `xarm-gripper`        | The gripper component                                                                       |
+   | `gripper_read_key` | `pos`                 | The key to read from the gripper's `DoCommand` response                                     |
+   | `gripper_open`     | `840`                 | The gripper reading when fully open                                                         |
+   | `gripper_closed`   | `2`                   | The gripper reading when fully closed                                                       |
+   | `cameras`          | `scene-cam+wrist-cam` | The camera components, separated by `+`. The first one sets the frame clock                 |
+   | `steps`            | `50000`               | The number of training steps                                                                |
+   | `image_size`       | `0`                   | Downscales images so the longest side is this many pixels. `0` keeps each camera's own size |
 
    <!-- TODO(dep): xArm gripper open/closed native values (about 840 open, 2 closed) are unverified; confirm on hardware -->
 
-   Set `gripper_open` and `gripper_closed` to what your gripper reports. Read them from a gripper `DoCommand` response while the gripper is open and closed.
+   If your gripper reports different values, set `gripper_open` and `gripper_closed` to what it reports. Read them from a gripper `DoCommand` response while the gripper is open and closed.
 
 ## Submit the job with the CLI
 
-You need the dataset ID from Phase 4, your organization ID, and the container ID. List the containers in your organization to find the ID:
+You need the dataset ID from Phase 4, your organization ID, and the container ID. List the containers to find the ID of **LeRobot SmolVLA for SO-101 (0.1: NVIDIA driver env)**:
 
 ```sh {class="command-line" data-prompt="$"}
 viam train containers list --org-id=<org-id>
@@ -80,16 +74,15 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --org-id=<org-id> --model-name=xarm-stacking \
   --model-version=1 --version=<script-version> \
   --script-name=<namespace>:act-xarm \
-  --container-id=<container-id> \
-  --args=arm=xarm,gripper=xarm-gripper,gripper_read_key=pos,gripper_open=840,gripper_closed=2,cameras="'scene-cam wrist-cam'",image_size=<size>
+  --container-id=<container-id>
 ```
 
 A few things to know:
 
 - `--version` is the version of the training script, not of the model.
 - Every `--model-version` must be new. To retrain, increase it.
-- `cameras` holds a space-separated list, so put single quotes around its value inside the double quotes, as in `cameras="'scene-cam wrist-cam'"`.
-- Viam splits `--args` on commas, so don't use commas inside a value.
+- The defaults match this workshop, so the command passes no `--args`. To change a setting, add `--args` with `key=value` pairs, as in `--args=steps=30000,gripper_open=850`.
+- Viam splits `--args` on commas, so separate the cameras in `cameras` with `+`, as in `cameras=scene-cam+wrist-cam`. Don't add quotes. They reach the script as part of the camera name.
 - The first camera in `cameras` sets the frame clock. Keep `scene-cam` first.
 
 ## Watch it run
@@ -111,7 +104,7 @@ For more on job status and logs, see [Monitor and debug](/train/custom-training-
 
 ## Go to lunch
 
-The job takes about 60 to 90 minutes. You don't need to watch it. Viam emails you when it succeeds or fails. While you wait, read [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/) to see how you deploy the model.
+The job takes about 60 to 90 minutes. With the default 50,000 steps, training takes about 70 minutes on an NVIDIA A100, after a few minutes of copying and converting the data. You don't need to watch it. Viam emails you when it succeeds or fails. While you wait, read [Phase 6](/tutorials/xarm-act-stacking/deploy-the-policy/) to see how you deploy the model.
 
 ## Read the loss curve
 
@@ -134,6 +127,7 @@ The job shows **Completed**, and your registry has a new `xarm-stacking` model v
 
 The script checks its inputs and stops with a clear message. The common failures:
 
+- **No images from the clock camera.** A name in `cameras` doesn't match any camera in the dataset. The message lists the components the dataset has. Fix the `cameras` argument and submit again with a new `--model-version`.
 - **No `DoCommand` rows for the gripper.** The dataset has no gripper readings. Go back to Phase 3 and add the gripper's capture config, then record again.
 - **Inconsistent capture rate.** More than 10 percent of sequences are off the median rate. Check that every episode was captured at 10 Hz, discard the outliers in [Phase 4](/tutorials/xarm-act-stacking/review-and-build-a-dataset/), and submit again with a new `--model-version`.
 - **No usable GPU.** The job stopped because PyTorch can't use a GPU. Check that you chose the GPU training container. If it repeats after you resubmit, check the container choice and the logs.

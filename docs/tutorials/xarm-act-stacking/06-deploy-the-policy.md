@@ -45,20 +45,18 @@ Add the `viam-labs:vla` module and the `act-policy` service. The service points 
 
 1. Add the module and pin its version:
 
-   <!-- TODO(dep): pinned viam-labs:vla version that matches the training container's LeRobot commit -->
-
    ```json
    {
      "type": "registry",
      "name": "viam-labs_vla",
      "module_id": "viam-labs:vla",
-     "version": "<pinned-version>"
+     "version": "0.2.1"
    }
    ```
 
-   Pin the version rather than using `latest`. The policy loads a LeRobot checkpoint, and the module's LeRobot version has to match the one that trained your model.
+   Pin the version rather than using `latest`. The policy loads a LeRobot checkpoint, and the module's LeRobot version has to match the one that trained your model. Version 0.2.1 matches the training container from Phase 5.
 
-   <!-- TODO(dep): confirm an ACT checkpoint loads and runs through viam-labs:vla:policy's LeRobot backend (untested; vla tests cover SmolVLA and Evo-1) -->
+   The module installs its Python dependencies the first time it starts, so this step takes several minutes. That setup needs `git` and `curl` on the machine. Without them, the setup fails, and `viam-server` keeps running your previous configuration until you install them.
 
 2. Add the model as a package, pinned to the version your training job produced. In your machine's JSON config, add a `packages` entry:
 
@@ -134,11 +132,9 @@ Illustrative output; your values come from your checkpoint.
 - `state_dim` is the length of the state the policy reads. For this workshop it's 7: six joints plus the gripper.
 - `action_dim` is the length of the action the policy emits. It's 7 as well.
 
-<!-- TODO(dep): confirm specs output for the xarm-stacking checkpoint: image_feature_keys names, state_dim 7, action_dim 7 -->
+<!-- TODO(dep): confirm state_dim 7 and action_dim 7 on an xarm-stacking checkpoint (verified as 6 and 6 on a 5-joint SO-101 checkpoint) -->
 
 Each key is `observation.images.` plus the camera's component name, with hyphens replaced by underscores. Match the names you see in `specs`.
-
-<!-- TODO(dep): confirm the ACT training script keeps this behavior (the smolvla script passes --policy.input_features=null and no --rename_map) -->
 
 ## Add the controller
 
@@ -204,8 +200,8 @@ ACT predicts 100 actions per chunk by default. At 10 Hz, that's about 10 seconds
 `actions_per_chunk` executes only the first few actions of each chunk, then asks again. The arm reacts to what the cameras see every second or so instead of every 10 seconds. Some points to know:
 
 - It only works under `mode: "async"`. In `async` mode, the next chunk is inferred while the current one runs. Under `sequential` mode, the arm stops and waits for every inference.
-- Its floor is `ceil(avg_latency_s × fps)`. If inference takes 1 second at 10 Hz, the floor is 10. Below the floor, the queue empties before the next chunk arrives and the arm holds still.
-- The checkpoint's `n_action_steps` doesn't shorten the executed chunk. The controller asks for a whole chunk regardless, so you need `actions_per_chunk` to shorten it.
+- Its floor is `ceil(avg_latency_s × fps)`. If inference takes 1 second at 10 Hz, the floor is 10. On an Intel NUC's CPU, one ACT inference took about 0.22 seconds, so the floor there is 3. Below the floor, the queue empties before the next chunk arrives and the arm holds still.
+- The training script saves `n_action_steps` equal to the chunk size, 100. The controller executes at most `n_action_steps` actions per chunk, so without `actions_per_chunk` it runs the whole chunk.
 - Leave `queue_threshold` unset. The controller derives it from `actions_per_chunk`.
 
 To tune it:
