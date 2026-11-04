@@ -2926,6 +2926,34 @@ Set `processes` as a whole section.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.set_config_property).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+- `propertyChanges` [([]*ConfigPropertyChange)](https://pkg.go.dev/go.viam.com/rdk/app#ConfigPropertyChange)
+
+**Returns:**
+
+- [([]*ConfigPropertyChangeResult)](https://pkg.go.dev/go.viam.com/rdk/app#ConfigPropertyChangeResult)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+results, err := cloud.SetConfigProperty(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	[]*ConfigPropertyChange{
+		{Path: "components.my-arm.attributes.speed", Value: 50},
+	},
+)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.SetConfigProperty).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### NewRobotPart
