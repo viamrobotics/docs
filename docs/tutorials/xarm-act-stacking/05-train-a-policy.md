@@ -38,26 +38,24 @@ For how custom training works in general, see [Custom training scripts](/train/c
 1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select `xarm-stacking-v1`.
 2. Click **Train model**.
 3. Select **Train on a custom training script** and follow the prompts. Name the model `xarm-stacking` when asked.
-4. Choose `act-xarm` as the training script. In the **Container version** dropdown, choose **LeRobot SmolVLA for SO-101 (0.1: NVIDIA driver env)**. The container is named for SmolVLA, but it has the LeRobot version that both the ACT script and the `viam-labs:vla` module use.
+4. Choose `devrel:act-policy` as the training script. It's a general ACT training script for any arm, gripper, and cameras, published with the **Robot policy** task type, so your model shows up as a robot policy. In the **Container version** dropdown, choose **LeRobot SmolVLA for SO-101 (0.1: NVIDIA driver env)**. The container is named for SmolVLA, but it has the LeRobot version that both the ACT script and the `viam-labs:vla` module use.
 
-   <!-- TODO(dep): the act-xarm script's public registry namespace, once it's published -->
+5. In the **Arguments** section, add these keys and values. Viam passes each one to the script as a command-line argument. The first three name your components, and the script needs them. The gripper values are the xArm gripper's own scale, which differs from the script's defaults.
 
-5. Leave the **Arguments** section empty, unless your setup differs from this workshop's. The script's defaults match the component names and gripper values used here. To change a setting, add its key and value, and Viam passes it to the script as a command-line argument:
-
-   | Argument           | Default               | What it sets                                                                                |
-   | ------------------ | --------------------- | ------------------------------------------------------------------------------------------- |
-   | `arm`              | `xarm`                | The arm component                                                                           |
-   | `gripper`          | `xarm-gripper`        | The gripper component                                                                       |
-   | `gripper_read_key` | `pos`                 | The key to read from the gripper's `DoCommand` response                                     |
-   | `gripper_open`     | `840`                 | The gripper reading when fully open                                                         |
-   | `gripper_closed`   | `2`                   | The gripper reading when fully closed                                                       |
-   | `cameras`          | `scene-cam+wrist-cam` | The camera components, separated by `+`. The first one sets the frame clock                 |
-   | `steps`            | `50000`               | The number of training steps                                                                |
-   | `image_size`       | `0`                   | Downscales images so the longest side is this many pixels. `0` keeps each camera's own size |
+   | Argument           | Value                 | What it sets                                                                |
+   | ------------------ | --------------------- | --------------------------------------------------------------------------- |
+   | `arm`              | `xarm`                | The arm component                                                           |
+   | `gripper`          | `xarm-gripper`        | The gripper component                                                       |
+   | `cameras`          | `scene-cam+wrist-cam` | The camera components, separated by `+`. The first one sets the frame clock |
+   | `gripper_read_key` | `pos`                 | The key to read from the gripper's `DoCommand` response                     |
+   | `gripper_open`     | `840`                 | The gripper reading when fully open                                         |
+   | `gripper_closed`   | `2`                   | The gripper reading when fully closed                                       |
 
    <!-- TODO(dep): xArm gripper open/closed native values (about 840 open, 2 closed) are unverified; confirm on hardware -->
 
    If your gripper reports different values, set `gripper_open` and `gripper_closed` to what it reports. Read them from a gripper `DoCommand` response while the gripper is open and closed.
+
+   Two more settings are optional. `steps` sets the number of training steps, 50,000 by default. `image_size` downscales the images so the longest side is that many pixels. Its default, `0`, keeps each camera's own size.
 
 ## Submit the job with the CLI
 
@@ -72,17 +70,17 @@ Then submit the job. This needs CLI version 1.12.0 or later.
 ```sh {class="command-line" data-prompt="$"}
 viam train submit custom from-registry --dataset-id=<dataset-id> \
   --org-id=<org-id> --model-name=xarm-stacking \
-  --model-version=1 --version=<script-version> \
-  --script-name=<namespace>:act-xarm \
-  --container-id=<container-id>
+  --model-version=1 --version=0.1.0 \
+  --script-name=devrel:act-policy \
+  --container-id=<container-id> \
+  --args=arm=xarm,gripper=xarm-gripper,cameras=scene-cam+wrist-cam,gripper_read_key=pos,gripper_open=840,gripper_closed=2
 ```
 
 A few things to know:
 
 - `--version` is the version of the training script, not of the model.
 - Every `--model-version` must be new. To retrain, increase it.
-- The defaults match this workshop, so the command passes no `--args`. To change a setting, add `--args` with `key=value` pairs, as in `--args=steps=30000,gripper_open=850`.
-- Viam splits `--args` on commas, so separate the cameras in `cameras` with `+`, as in `cameras=scene-cam+wrist-cam`. Don't add quotes. They reach the script as part of the camera name.
+- Viam splits `--args` on commas, so separate the cameras in `cameras` with `+`. Don't add quotes. They reach the script as part of the camera name.
 - The first camera in `cameras` sets the frame clock. Keep `scene-cam` first.
 
 ## Watch it run
