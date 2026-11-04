@@ -49,6 +49,7 @@ What goes in it depends on the model: images you [label](/train/annotate-data/) 
 **3. Train.**
 A training job reads the dataset in the cloud and publishes the result as a new model version in your organization's registry.
 [Built-in training](/train/train-a-model/) needs no code; a [custom training script](/train/custom-training-scripts/) runs your own code.
+Before you deploy a classification or detection model, you can [evaluate it](/train/evaluate-a-model/) on labeled images it wasn't trained on to measure its precision and recall.
 
 **4. Deploy.**
 [Deploying](/train/deploy-a-model/) adds the model and the resource that runs it to a machine's configuration.
@@ -63,6 +64,7 @@ While the model runs, the machine keeps capturing data, including the cases wher
 **Retrain.**
 You add data from the cases where the model struggles to the dataset, train a new version, and machines configured to use the model pick it up.
 For vision models, [auto-predictions](/train/automate-annotation/) let an existing model draft labels for new images, so each round takes less hand-labeling.
+Evaluating each version on the same test dataset shows whether the new one is better.
 
 ## Built-in or custom training {#training-method}
 
@@ -101,4 +103,5 @@ A custom job's task type and framework come from the training script, which decl
 - [Create a dataset](/train/create-a-dataset/): collect the images or demonstrations your model trains on.
 - [Built-in training](/train/train-a-model/): train an image classifier or object detector without writing code.
 - [Custom training](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
+- [Evaluate a model](/train/evaluate-a-model/): measure a classification or detection model's precision and recall before you deploy it.
 - [Deploy a model to a machine](/train/deploy-a-model/): add a trained model and what runs it to your machine.

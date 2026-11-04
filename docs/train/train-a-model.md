@@ -219,34 +219,9 @@ Copy them before then if you need them longer.
 
 ## 3. Test the model {#test-the-model}
 
-Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
-To see how the model does, run it on images it hasn't seen, in one of two ways.
-
-### Evaluate against a test dataset {#evaluate-against-a-test-dataset}
-
-[Auto-predictions](/train/automate-annotation/) run the model on a dataset without a machine.
-You can do this only in the Viam app.
-
-1. [Create a test dataset](/train/create-a-dataset/) of images that weren't in the training dataset.
-1. On the test dataset's page, click **Get auto-predictions**.
-1. Select your trained model and a confidence threshold.
-1. Click **Get predictions**, then **Review predictions** when they finish.
-1. **Accept (A)** or **Reject (R)** each prediction.
-
-How many predictions you accept tells you how the model does on new images.
-
-### Test on a machine {#test-on-a-machine}
-
-1. [Deploy the model](/train/deploy-a-model/) to a machine with a camera, with a vision service.
-1. On the machine's **CONTROL** tab, open the vision service to see live classifications or detections.
-1. Try it on:
-   - images that clearly belong to each label, which should get high confidence
-   - ambiguous images, which show where the model draws the line
-   - conditions that weren't in the training images, such as other lighting, which show what it hasn't learned
-
-To improve the model, add images where it struggles, label them, and train a new version.
-[Auto-predictions](/train/automate-annotation/) can draft labels for the new images.
-A machine already configured to use the model picks up each new version automatically.
+<span id="evaluate-against-a-test-dataset"></span><span id="test-on-a-machine"></span>Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
+To see how the model does on images it hasn't seen, [evaluate it on a labeled test dataset](/train/evaluate-a-model/).
+The evaluation reports the model's precision, recall, and F1 score for each label, so you can see which labels need more training images before you deploy.
 
 ## Troubleshooting {#troubleshooting}
 
@@ -278,6 +253,7 @@ A machine already configured to use the model picks up each new version automati
 
 ## What's next {#whats-next}
 
+- [Evaluate a model](/train/evaluate-a-model/): measure the model's precision and recall on a labeled test dataset.
 - [Deploy a model to a machine](/train/deploy-a-model/): add the model, an ML model service, and a vision service to your machine.
 - [Detect objects (2D)](/vision/object-detection/detect/): use an object detection model to find objects in camera images.
 - [Classify images](/vision/classify/): use a classification model to sort what your camera sees.

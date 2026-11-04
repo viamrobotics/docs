@@ -42,6 +42,9 @@ Signs that a model needs new training data:
 
 A simple approach: log detection results alongside camera frames for a day, then review a sample. Any class with precision or recall below your target threshold is a candidate for retraining.
 
+To measure precision and recall instead of estimating them, label a sample of those frames in a dataset and [evaluate the model](/train/evaluate-a-model/) on it.
+The per-class breakdown shows which classes fall below your target.
+
 ## 2. Capture failing images
 
 The image that made your model fail is the single most valuable training example you can add. Use the [data management service](/data/capture-sync/capture-and-sync-data/) to save camera frames to the Viam Cloud so they become available for labeling.
@@ -129,7 +132,8 @@ Pinning is safer for production fleets. "Latest" is useful during active develop
 Accuracy monitoring is not automatic on Viam today. There is no dashboard that reports "your model's precision has dropped 5% this week." Practical approaches:
 
 - **Log confidence scores** from your detector to a time-series store and watch for trends.
-- **Sample review**: capture a periodic snapshot of production detections and review them against ground truth.
+- **Sample review**: periodically label a sample of production images in a test dataset and [evaluate the model](/train/evaluate-a-model/) on it.
+  Compare precision and recall with the previous evaluation to see whether accuracy has dropped.
 - **Alert on low confidence**: configure a [trigger](/vision/object-detection/alert-on-detections/) that fires when detections below a threshold exceed a rate, so you know to pull more training data.
 
 When drift shows up again, the cycle repeats. The first retraining cycle is the slowest; subsequent cycles reuse the same dataset, labeling workflow, and deployment procedure.
