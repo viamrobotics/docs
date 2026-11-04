@@ -946,6 +946,7 @@ viam locations api-key delete --key-id=<key-id>
 | `--key-id` | The ID of the API key to delete. | **Required** |
 
 The command deletes the key with this ID and does not check that the key belongs to a location.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ## `login`
 
@@ -1173,6 +1174,7 @@ viam machines api-key delete --key-id=abcdef12-3456-7890-abcd-ef1234567890
 | `--key-id` | The ID of the API key to delete. | **Required** |
 
 The command deletes the key with this ID and does not check that the key belongs to a machine.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ### `machines part list`
 
