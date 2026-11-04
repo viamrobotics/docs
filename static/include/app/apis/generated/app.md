@@ -2953,6 +2953,29 @@ results, err := cloud.SetConfigProperty(
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.SetConfigProperty).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `robotPartId` (string) (required): The ID of the robot part to update.
+- `propertyChanges` (string) (required): The properties to set, each a path into the config (for example
+  "components.my-arm.frame") and the value to set it to. Changes are applied in order.
+
+**Returns:**
+
+- (Promise<[ConfigPropertyChangeResult](https://ts.viam.dev/classes/appApi.ConfigPropertyChangeResult.html)[]>): The result of each change, in the same order as the requested changes.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const results = await appClient.setConfigProperty('<YOUR-ROBOT-PART-ID>', [
+  { path: 'components.my-arm.attributes.speed', value: 50 },
+]);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#setconfigproperty).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### NewRobotPart
