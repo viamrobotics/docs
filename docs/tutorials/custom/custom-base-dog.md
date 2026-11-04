@@ -6,7 +6,7 @@ tags:
   ["sdk", "extending viam", "components", "base", "python", "modular resources"]
 description: "Integrate a custom base component with the Viam Python SDK."
 capabilities: ["module-development", "hw-mobility", "docs"]
-diataxis: tutorial
+diataxis: workshop
 videos:
   [
     "/tutorials/custom-base-dog/base-control-dog.webm",

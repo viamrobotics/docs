@@ -6,7 +6,7 @@ slug: "inline-module"
 weight: 60
 description: "Optional: package your working script as an inline module that runs on the robot."
 capabilities: ["inline-modules", "docs"]
-diataxis: tutorial
+diataxis: workshop
 workshop: "pick-and-place"
 toc_hide: true
 phase: 6
