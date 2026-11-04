@@ -896,11 +896,12 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 ## `locations`
 
 The `locations` command allows you to manage the [locations](/reference/) that you have access to.
-With it, you can list available locations, filter locations by organization, or create a new location API key.
+With it, you can list available locations, filter locations by organization, or create and delete location API keys.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [--organization=<organization>]
 viam locations api-key create [--location-id=<location-id>] [--name=<name>] [--org-id=<org-id>]
+viam locations api-key delete --key-id=<key-id>
 ```
 
 ### `locations list`
@@ -930,6 +931,22 @@ viam locations api-key create --location-id=<location-id>
 | `--location-id` | The location to create an API key for. Default: the default location set with `viam defaults set-location`. | Optional |
 | `--name` | The name of the API key. Default: your login info with the current time. | Optional |
 | `--org-id` | The organization ID to attach the key to. Default: attempts to attach the key to the org of the location if only one org is attached to the location. | Optional |
+
+### `locations api-key delete`
+
+Delete an API key by its ID.
+
+```sh {class="command-line" data-prompt="$"}
+viam locations api-key delete --key-id=<key-id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--key-id` | The ID of the API key to delete. | **Required** |
+
+The command deletes the key with this ID and does not check that the key belongs to a location.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ## `login`
 
@@ -1003,6 +1020,7 @@ viam machines list
 viam machines status --machine=<machine id>
 viam machines logs --machine=<machine id> [...named args]
 viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
+viam machines api-key delete --key-id=<key id>
 viam machines part list --machine=<machine id>
 viam machines part logs --part=<part id> [...named args]
 viam machines part status --part=<part id>
@@ -1140,6 +1158,23 @@ viam machines api-key create --machine-id=123 --name=MyKey
 | -------- | ----------- | --------- |
 | `--machine-id` | The ID of the machine to create an API key for. | **Required** |
 | `--name` | The optional name of the API key. If omitted, a name will be auto-generated. | Optional |
+
+### `machines api-key delete`
+
+Delete an API key by its ID.
+
+```sh {class="command-line" data-prompt="$"}
+# delete an API key
+viam machines api-key delete --key-id=abcdef12-3456-7890-abcd-ef1234567890
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--key-id` | The ID of the API key to delete. | **Required** |
+
+The command deletes the key with this ID and does not check that the key belongs to a machine.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ### `machines part list`
 
