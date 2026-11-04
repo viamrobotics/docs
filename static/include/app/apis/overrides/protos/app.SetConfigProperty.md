@@ -2,7 +2,6 @@ Set individual properties in a machine {{< glossary_tooltip term_id="part" text=
 
 Paths are dot-separated, such as `network.bind_address`.
 In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
-Set `processes` as a whole section.
 
 **Where a change is saved:**
 
