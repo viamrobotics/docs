@@ -2891,15 +2891,23 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 ### SetConfigProperty
 
 Set individual properties in a machine {{< glossary_tooltip term_id="part" text="part" >}}'s configuration by path, without replacing the whole configuration as [`UpdateRobotPart`](#updaterobotpart) does.
+
 Paths are dot-separated, such as `network.bind_address`.
-In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, `processes`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
-Changes apply in order, and each change succeeds or fails on its own; the result for each change reports whether it succeeded and, if not, the error.
-You can send at most 100 changes per request.
-If the part's own configuration sets a property, the change is made there.
-If a fragment the part imports provides the property instead, the change is saved as a `$set` [fragment override](/fleet/reuse-configuration/#override-specific-settings) for the last fragment that provides it, since later fragments win when fragments merge.
-A property that neither sets is added to the part's configuration.
-Fragment overrides can't change `billing` or `access_policy`, so setting a property in either section that comes from a fragment returns an error.
-Replacing a whole resource that comes from a fragment the part imports more than once returns an error; set the resource's fields instead.
+In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
+Set `processes` as a whole section.
+
+**Where a change is saved:**
+
+- If the property is in a resource or section that the part's own configuration defines, the change is made there. A property that isn't set yet is added.
+- If the resource comes from a fragment the part imports, the change is saved through that fragment, even if the fragment doesn't set that property yet:
+  - If the fragment sets the property with a [fragment variable](/fleet/reuse-configuration/#customize-fragments-with-variables) that no other property uses, the change sets the variable's value on the part's fragment import.
+  - Otherwise, including when other properties share the variable, the change is saved as a `$set` [fragment override](/fleet/reuse-configuration/#override-specific-settings) for the last fragment that provides the resource.
+
+**Limits and errors:**
+
+- Changes apply in order, and each change succeeds or fails on its own. The result for each change reports whether it succeeded and, if not, the error.
+- You can send at most 100 changes per request.
+- Replacing a whole resource that comes from a fragment the part imports more than once returns an error. Set the resource's fields instead.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2915,6 +2923,34 @@ Replacing a whole resource that comes from a fragment the part imports more than
 - ([list[viam.proto.app.ConfigPropertyChangeResult]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ConfigPropertyChangeResult)): :   The result of each requested property change.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.set_config_property).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+- `propertyChanges` [([]*ConfigPropertyChange)](https://pkg.go.dev/go.viam.com/rdk/app#ConfigPropertyChange)
+
+**Returns:**
+
+- [([]*ConfigPropertyChangeResult)](https://pkg.go.dev/go.viam.com/rdk/app#ConfigPropertyChangeResult)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+results, err := cloud.SetConfigProperty(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	[]*ConfigPropertyChange{
+		{Path: "components.my-arm.attributes.speed", Value: 50},
+	},
+)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.SetConfigProperty).
 
 {{% /tab %}}
 {{< /tabs >}}
