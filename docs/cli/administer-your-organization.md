@@ -89,6 +89,17 @@ Machine keys have the `robot_owner` role.
 viam machines api-key create --machine-id=<machine-id>
 ```
 
+### Delete an API key
+
+Delete a location or machine API key by its ID:
+
+```sh {class="command-line" data-prompt="$"}
+viam locations api-key delete --key-id=<key-id>
+viam machines api-key delete --key-id=<key-id>
+```
+
+Both commands delete the key with the given ID; neither checks that the key belongs to a location or a machine.
+
 ## Set up OAuth
 
 OAuth setup is CLI-only. There is no web UI for these operations. Before OAuth can be enabled, first ensure a logo and support email are set on your organization.
