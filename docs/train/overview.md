@@ -24,13 +24,13 @@ This page covers the types of models you can train, the stages every model goes 
 
 <span id="what-you-can-train"></span><span id="task-type"></span>Every model has a task type, which says what the model does and decides what data it trains on.
 
-| Task type                       | The model                                             | Example                                                                  | Example base models     | Training           |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------- | ------------------ |
-| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | ResNet, EfficientNet    | Built-in or custom |
-| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | ResNet, EfficientNet    | Built-in or custom |
-| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | YOLO                    | Built-in or custom |
-| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | ACT, SmolVLA, pi0.5     | Custom only        |
-| **Other**                       | Anything the other types don't describe               | Flag a part that looks unlike the good parts the model trained on.       | Anomalib, NVIDIA Cosmos | Custom only        |
+| Task type                       | The model                                             | Example                                                                  | Example base models                                                                                                                        | Training           |
+| ------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| **Single label classification** | Assigns one label to each image                       | Is this part on the line good or defective?                              | [EfficientNet](https://app.viam.com/ml-training/viam/classification-tflite)                                                                | Built-in or custom |
+| **Multi label classification**  | Assigns one or more labels to each image              | Which safety gear, such as a hard hat or a vest, is this worker wearing? | [EfficientNet](https://app.viam.com/ml-training/viam/classification-tflite)                                                                | Built-in or custom |
+| **Object detection**            | Finds objects in an image and draws boxes around them | Where is each package on the conveyor?                                   | [YOLOv8](https://app.viam.com/ml-training/devrel/yolo-onnx-training), [RetinaNet](https://app.viam.com/ml-training/viam/detection-tflite)  | Built-in or custom |
+| **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | [SmolVLA](https://app.viam.com/ml-training/viam/smolvla-so101), [NVIDIA Cosmos](https://app.viam.com/ml-training/viam-labs/cosmos-edge-7d) | Custom only        |
+| **Other**                       | Anything the other types don't describe               | Predict a value, such as a motor's temperature, from sensor readings.    | None: a [regression model](https://app.viam.com/ml-training/viam/tabular-data-tensorflow) trained from scratch                             | Custom only        |
 
 ## How training works {#how-training-works}
 
