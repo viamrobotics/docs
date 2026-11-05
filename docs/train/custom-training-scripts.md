@@ -328,7 +328,7 @@ The flags declare [what model the script produces](#match-your-output-to-an-ml-m
 - `--framework` (required): `tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`, or `unspecified`.
   With `registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
 - `--type`: `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`, or `unspecified`, which the Viam app shows as **Other**.
-  `robot_policy` needs the latest CLI version.
+  `robot_policy` needs CLI version 1.15.0 or later.
 
 Scripts are private to your organization by default.
 To share one with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script), add `--visibility=public` and a `--description`.

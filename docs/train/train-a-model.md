@@ -60,7 +60,7 @@ Built-in training produces either one:
 | Runs on the machine in | [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu), on the CPU of almost any machine | [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu), or [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) on an NVIDIA GPU |
 | Resources              | Made for devices with little memory and compute                                               | Needs more memory and compute, and takes longer to train                                                                                                            |
 
-For the platforms each service supports, see [Supported frameworks and hardware](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
+For the platforms each service supports, see [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 
 ## 1. Start a training job {#start-a-training-job}
 
@@ -77,7 +77,7 @@ For the platforms each service supports, see [Supported frameworks and hardware]
 1. Select the task type: **Single label classification**, **Multi label classification**, or **Object detection**.
    It must match how you labeled the dataset.
 1. Select the labels to train on.
-   You need at least two; leave out labels with too few examples or that you don't want the model to learn.
+   Multi label classification needs at least two. Leave out labels with too few examples or that you don't want the model to learn.
 1. Click **Train model**.
 
 {{% /tab %}}
@@ -229,7 +229,7 @@ The evaluation reports the model's precision, recall, and F1 score for each labe
 
 - **Check the training logs.** The error message usually says what went wrong.
 - **The dataset is too small.** Check it against the minimums in [Prerequisites](#prerequisites).
-- **Fewer than two labels are selected.** A model can't learn to tell labels apart if there's only one.
+- **Fewer than two labels are selected for multi label classification.** Multi label classification needs at least two labels.
 - **Bounding boxes are out of range.** For object detection, box coordinates must be between 0.0 and 1.0, with `x_min` less than `x_max`.
 
 {{< /expand >}}

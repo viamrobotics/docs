@@ -32,6 +32,9 @@ To run a model, a machine needs software that can read its format:
 | **ONNX**       | The [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu) or `triton` ML model service                                                                               | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
 | **Registry**   | The module resource the model names                                                                                                                                    | Whatever the module supports                         |
 
+Services that support GPUs, such as `triton`, can use either the CPU or the GPU, which you choose when you configure the service.
+Each module's README lists the model files and tensor shapes it expects.
+
 The first four load the model into an ML model service, which runs it but doesn't interpret its output.
 For a classification or detection model, a vision service sits on top of the ML model service and turns that output into labels and boxes.
 The steps for the vision service on this page apply only to those models.

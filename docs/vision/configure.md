@@ -35,11 +35,11 @@ Three resources (camera, vision service, ML model service) plus the model file i
 
 ## 1. Add an ML model service
 
-The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. The framework-support table in [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support) lists which implementations support which frameworks and hardware paths.
+The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. [What runs the model](/train/deploy-a-model/#what-runs-the-model) lists which services support which frameworks and hardware.
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Blocks**.
-3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
+3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result.
 4. Click **Add to machine**, name the service `my-ml-model`, and click **Add to machine** again to confirm.
 
 ## 2. Configure the ML model service

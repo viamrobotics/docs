@@ -46,16 +46,7 @@ When picking, match the model to:
 
 ### Supported frameworks and hardware {#model-framework-support}
 
-| Framework                                          | ML model service                                                                                                                                | Hardware support                                     | Notes                                                                                            |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [TensorFlow Lite](https://www.tensorflow.org/lite) | [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu)                                                                                     | linux/amd64, linux/arm64, darwin/arm64, darwin/amd64 | Quantized models; broadest hardware support. Model requirements documented in the module README. |
-| [ONNX](https://onnx.ai/)                           | [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu), [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack)             | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   | Universal format. Not hardware-specific unless you use Triton on a Jetson.                       |
-| [TensorFlow](https://www.tensorflow.org/)          | [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu), [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   | Full framework. Best for larger production models.                                               |
-| [PyTorch](https://pytorch.org/)                    | [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu), [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack)           | Nvidia GPU, linux/arm64, darwin/arm64                | Common for open-source research models.                                                          |
-
-{{< alert title="Note" color="note" >}}
-For ML model services that support GPUs (like [Triton on Jetson](https://github.com/viamrobotics/viam-mlmodelservice-triton/)), you can configure the service to use either the CPU or the dedicated GPU at runtime.
-{{< /alert >}}
+For which ML model service runs each framework, and on what hardware, see [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 
 ## 2. Add the ML model service
 
