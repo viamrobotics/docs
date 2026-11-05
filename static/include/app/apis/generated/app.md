@@ -2894,7 +2894,6 @@ Set individual properties in a machine {{< glossary_tooltip term_id="part" text=
 
 Paths are dot-separated, such as `network.bind_address`.
 In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
-Set `processes` as a whole section.
 
 **Where a change is saved:**
 
@@ -2951,6 +2950,29 @@ results, err := cloud.SetConfigProperty(
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.SetConfigProperty).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `robotPartId` (string) (required): The ID of the robot part to update.
+- `propertyChanges` (string) (required): The properties to set, each a path into the config (for example
+  "components.my-arm.frame") and the value to set it to. Changes are applied in order.
+
+**Returns:**
+
+- (Promise<[ConfigPropertyChangeResult](https://ts.viam.dev/classes/appApi.ConfigPropertyChangeResult.html)[]>): The result of each change, in the same order as the requested changes.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const results = await appClient.setConfigProperty('<YOUR-ROBOT-PART-ID>', [
+  { path: 'components.my-arm.attributes.speed', value: 50 },
+]);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#setconfigproperty).
 
 {{% /tab %}}
 {{< /tabs >}}
