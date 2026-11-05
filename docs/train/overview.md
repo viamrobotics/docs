@@ -33,7 +33,7 @@ Before you build a dataset, check whether a model that does the job already exis
   If you trained a model outside Viam, or found one on Hugging Face or GitHub, upload it to your organization's registry and deploy it the same way as a model trained on Viam.
   See [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
 
-To find out whether an existing classification or detection model is good enough, [evaluate it](/train/evaluate-a-model/) on images from your machines.
+To find out whether an existing classification or detection model is good enough, evaluate it on images from your machines, as in step 4 of the training loop below.
 Train your own model when no existing model knows your labels, isn't accurate enough on your data, or doesn't do your task.
 
 ## Types of models {#types-of-models}
@@ -91,7 +91,7 @@ Use built-in training when all of these are true:
 
 - You're training an image classifier or object detector.
 - Your dataset is labeled images, not a [sequence dataset](/train/create-a-dataset/).
-- Your machine can run a TFLite or TensorFlow model. TFLite runs on Linux and macOS on both ARM and x86; to check your hardware, see [What runs the model](/train/deploy-a-model/#what-runs-the-model).
+- Your machine can run a TFLite or TensorFlow model. TFLite runs on Linux and macOS on both ARM and x86.
 - You don't need to choose the model architecture or control preprocessing, augmentation or hyperparameters.
 
 For anything else, such as a robot policy, a model trained on sensor readings, or a PyTorch or ONNX model, use a custom training script.
@@ -119,10 +119,7 @@ A custom job's task type and framework come from the training script, which decl
 
 ## What's next {#whats-next}
 
-- [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): use a ready-made model instead of training one.
-- [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): upload a model you trained outside Viam.
 - [Create a dataset](/train/create-a-dataset/): collect the images or demonstrations your model trains on.
-- [Built-in training](/train/train-a-model/): train an image classifier or object detector without writing code.
-- [Custom training](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
-- [Evaluate a model](/train/evaluate-a-model/): measure a classification or detection model's precision and recall before you deploy it.
+- [Train a vision model with built-in training](/train/train-a-model/): train an image classifier or object detector without writing code.
+- [Train a model with a custom training script](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
 - [Deploy a model to a machine](/train/deploy-a-model/): add a trained model and what runs it to your machine.

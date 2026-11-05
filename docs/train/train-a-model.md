@@ -16,21 +16,7 @@ aliases:
 
 Train an image classification or object detection model from a dataset of labeled images, with no training code.
 Viam runs the job on cloud GPUs and saves the trained model in your organization's registry.
-
-{{< alert title="Built-in training is for vision models only" color="note" >}}
-Built-in training supports exactly one kind of model: single label classification, multi label classification, or object detection, trained on a binary dataset of images, and saved as a TFLite or TensorFlow model.
-
-<span id="upload-your-training-script"></span><span id="click-for-more-information-on-parsing-command-line-inputs"></span>For anything else, use a [custom training script](/train/custom-training-scripts/), which runs your own training code and gives you full control. For example, use a custom script to:
-
-- train a robot policy from recorded demonstrations, such as picking up a cup and placing it in a bin
-- train on sensor readings or other data that isn't images, such as detecting anomalies in a motor's vibration
-- train on time-series data from a [sequence dataset](/train/create-a-dataset/)
-- fine-tune a pretrained model or use a model architecture of your choice
-- produce a PyTorch or ONNX model, or one that a module in the registry runs
-- control preprocessing, augmentation, or hyperparameters
-
-You can also [find an existing training script](/train/custom-training-scripts/#find-an-existing-training-script) in the registry instead of writing one.
-{{< /alert >}}
+<span id="upload-your-training-script"></span><span id="click-for-more-information-on-parsing-command-line-inputs"></span>To train any other kind of model, such as a robot policy or a PyTorch model, use a [custom training script](/train/custom-training-scripts/); to choose between the two, see [Built-in or custom training](/train/overview/#training-method).
 
 ## Prerequisites {#prerequisites}
 
@@ -217,11 +203,13 @@ for _, j := range jobs {
 Training logs are kept for 7 days after the job finishes.
 Copy them before then if you need them longer.
 
-## 3. Test the model {#test-the-model}
+## 3. Verify the trained model {#verify-the-trained-model}
 
-<span id="evaluate-against-a-test-dataset"></span><span id="test-on-a-machine"></span>Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
-To see how the model does on images it hasn't seen, [evaluate it on a labeled test dataset](/train/evaluate-a-model/).
-The evaluation reports the model's precision, recall, and F1 score for each label, so you can see which labels need more training images before you deploy.
+<span id="test-the-model"></span><span id="evaluate-against-a-test-dataset"></span><span id="test-on-a-machine"></span>When the job's status is **Completed**, the model is in your organization's registry.
+In the Viam app, go to **DATA** > **MODELS** and click the model's name to open its details page, which lists its versions.
+
+Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
+To see how the model does on images it hasn't seen, [evaluate it on a labeled test dataset](/train/evaluate-a-model/) before you deploy it.
 
 ## Troubleshooting {#troubleshooting}
 

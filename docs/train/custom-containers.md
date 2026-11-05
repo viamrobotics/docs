@@ -143,7 +143,7 @@ Submit a custom training job as described in [Submit a training job](/train/cust
 
 Monitor the job the same way as any custom training job.
 The job's **Details** panel shows which container it ran in.
-See [Monitor and debug](/train/custom-training-scripts/#monitor-and-debug).
+See [Verify the training job succeeded](/train/custom-training-scripts/#verify-the-training-job-succeeded).
 
 ## Manage containers
 

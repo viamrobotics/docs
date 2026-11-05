@@ -323,6 +323,7 @@ To remove sequences, call `RemoveSequencesFromDataset`.
 {{% /tab %}}
 {{< /tabs >}}
 
+To confirm, open the dataset from **DATA** > **DATASETS**: the images or sequences you added appear in it.
 Removing data from a dataset doesn't delete the underlying images or sequences.
 See the [data client API](/reference/apis/data-client/) for each method's parameters.
 
@@ -417,12 +418,8 @@ viam dataset export \
   --destination=./my-sequence-dataset
 ```
 
-The destination then contains:
-
-- `<dataset-id>.zip`: three Parquet files, `binary_data.parquet`, `tabular_data.parquet`, and `sequences.parquet`.
-  See [Sequence dataset format](/train/dataset-formats/#sequence-datasets).
-- `binary_data/`: the image files, named `<binary-data-id><extension>`.
-  Binary data IDs contain slashes, so the files sit in nested folders.
+The destination then holds a zip of three Parquet files and the image files.
+For the layout and each file's columns, see [Training dataset formats](/train/dataset-formats/#sequence-datasets).
 
 To skip the image files and download only the zip, add `--only-parquet`.
 To change how often the CLI checks the job, or how long it waits, use `--poll-interval` (default `5s`) and `--max-wait` (default `30m`).
@@ -484,7 +481,7 @@ Use the CLI.
 - **Permission denied.** Verify that your API key has organization-level access.
   API keys scoped to a single machine or location cannot create datasets.
 - **Can't create a sequence dataset.** The CLI and the Go and TypeScript SDKs
-  can't set a dataset's type. Use the web UI or the Python SDK.
+  can't set a dataset's type. Use the Viam app or the Python SDK.
 
 {{< /expand >}}
 
@@ -506,8 +503,6 @@ Use the CLI.
 
 - **Collect more data for underrepresented labels.** The most effective fix is
   to capture more images of the minority class under varied conditions.
-- **Do not duplicate images.** Adding copies of the same image inflates the
-  count without adding information. The model needs diverse examples.
 - **Consider merging labels.** If two labels are very similar and one has few
   examples, merge them into a single label.
 
@@ -517,16 +512,11 @@ Use the CLI.
 
 **Binary datasets:**
 
-- [Annotate data](/train/annotate-data/) -- label your images with tags
-  or bounding boxes for training.
-- [Automate annotation](/train/automate-annotation/) -- use an existing ML
-  model to auto-label images instead of doing it by hand.
-- [Train a model](/train/train-a-model/) -- use your labeled dataset to
-  train a classification or object detection model.
+- [Annotate data](/train/annotate-data/): label your images with tags or bounding boxes for training.
+- [Automate annotation](/train/automate-annotation/): use an existing ML model to auto-label images instead of doing it by hand.
+- [Train a vision model with built-in training](/train/train-a-model/): use your labeled dataset to train a classification or object detection model.
 
 **Sequence datasets:**
 
-- [Sequence dataset format](/train/dataset-formats/#sequence-datasets) -- the columns in
-  a sequence export, and how to train a custom script on it.
-- [Custom training scripts](/train/custom-training-scripts/) -- write and
-  submit your own training script.
+- [Training dataset formats](/train/dataset-formats/#sequence-datasets): the files and columns in a sequence export.
+- [Train a model with a custom training script](/train/custom-training-scripts/): write and submit your own training script.

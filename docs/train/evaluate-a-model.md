@@ -25,6 +25,8 @@ Evaluation is available only in the Viam app, not from the CLI or the SDKs.
 It doesn't report mean average precision (mAP) for detection models.
 {{< /alert >}}
 
+<!-- Evaluation isn't in the CLI or the SDKs yet. Add CLI and SDK tabs to step 2 when it is. -->
+
 ## Prerequisites {#prerequisites}
 
 - A single label classification, multi label classification, or object detection model in your organization's registry, in the TensorFlow, TensorFlow Lite, or ONNX framework.
@@ -52,7 +54,6 @@ An image whose labels are all ones the model can't predict is skipped.
 
 An evaluation only reads the dataset.
 Unlike [auto-predictions](/train/automate-annotation/), it doesn't add labels or predictions to your images.
-Each image the model runs on is billed as one cloud inference.
 
 ## 1. Create a test dataset {#create-a-test-dataset}
 
@@ -71,6 +72,11 @@ You can draft the labels with [auto-predictions](/train/automate-annotation/) an
 Labels drafted by the same model agree with its own predictions, so its scores come out higher than they should.
 
 ## 2. Start an evaluation {#start-an-evaluation}
+
+{{< alert title="Caution" color="caution" >}}
+Each image the model runs on is billed as one cloud inference.
+See [pricing](https://www.viam.com/product/pricing).
+{{< /alert >}}
 
 1. In the Viam app, go to **DATA** > **DATASETS** and click your test dataset.
 1. Click **Run model**, then **Evaluate model performance**.

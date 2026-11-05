@@ -160,45 +160,31 @@ See [Sequences](/data/sequences/).
 
 If you didn't tag sequences while recording, add a tag from code.
 The Viam app and the CLI can't edit a sequence.
+
+<!-- Editing a sequence's tags isn't in the Viam app or the CLI yet. Add Viam app and CLI tabs here when it is. -->
+
 The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
-sequence = await data_client.get_sequence("YOUR-SEQUENCE-ID")
+sequence = await data_client.get_sequence("<sequence-id>")
 await data_client.update_sequence(
-    id="YOUR-SEQUENCE-ID",
+    id="<sequence-id>",
     sequence_tags=list(sequence.sequence_tags) + ["pick-up-cup"],
 )
 ```
 
 {{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-```typescript
-const sequence = await dataClient.getSequence("YOUR-SEQUENCE-ID");
-await dataClient.updateSequence(
-  "YOUR-SEQUENCE-ID",
-  undefined,
-  [...sequence.sequenceTags, "pick-up-cup"],
-  undefined,
-  undefined,
-  { paths: ["sequence_tags"] },
-);
-```
-
-The field mask is required. It names the fields to change.
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
-sequence, err := dataClient.GetSequence(ctx, "YOUR-SEQUENCE-ID")
+sequence, err := dataClient.GetSequence(ctx, "<sequence-id>")
 if err != nil {
     logger.Fatal(err)
 }
-err = dataClient.UpdateSequence(ctx, "YOUR-SEQUENCE-ID", &app.UpdateSequenceOptions{
+err = dataClient.UpdateSequence(ctx, "<sequence-id>", &app.UpdateSequenceOptions{
     SequenceTags: append(sequence.SequenceTags, "pick-up-cup"),
     FieldMask:    []string{"sequence_tags"},
 })
@@ -210,8 +196,26 @@ if err != nil {
 The field mask is required. It names the fields to change.
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```typescript
+const sequence = await dataClient.getSequence("<sequence-id>");
+await dataClient.updateSequence(
+  "<sequence-id>",
+  undefined,
+  [...sequence.sequenceTags, "pick-up-cup"],
+  undefined,
+  undefined,
+  { paths: ["sequence_tags"] },
+);
+```
+
+The field mask is required. It names the fields to change.
+
+{{% /tab %}}
 {{< /tabs >}}
 
+To confirm, get the sequence again: its `sequence_tags` include the new tag.
 Use the same tag for every demonstration of the same task.
 To check a sequence dataset's tags, see [Verify dataset quality](/train/create-a-dataset/#verify-dataset-quality).
 
@@ -230,7 +234,7 @@ To check a sequence dataset's tags, see [Verify dataset quality](/train/create-a
 
 {{< expand "Tags applied to wrong images" >}}
 
-- **Remove incorrect tags.** In the web UI, click the image, find the tag in
+- **Remove incorrect tags.** In the Viam app, click the image, find the tag in
   the Tags section, and click the **x** next to it to remove it.
 - **Programmatically remove tags.** Use `remove_tags_from_binary_data_by_ids`
   in the SDK to remove tags from specific images.
@@ -239,9 +243,6 @@ To check a sequence dataset's tags, see [Verify dataset quality](/train/create-a
 
 ## What's next
 
-- [Automate annotation](/train/automate-annotation/) -- speed up labeling by
-  using an existing ML model to generate predictions automatically.
-- [Built-in training](/train/train-a-model/) -- use your labeled dataset to
-  train a classification or object detection model.
-- [Custom training scripts](/train/custom-training-scripts/) -- train on a
-  sequence dataset, such as a robot policy.
+- [Automate annotation](/train/automate-annotation/): speed up labeling by using an existing ML model to generate predictions automatically.
+- [Train a vision model with built-in training](/train/train-a-model/): use your labeled dataset to train a classification or object detection model.
+- [Train a model with a custom training script](/train/custom-training-scripts/): train on a sequence dataset, such as a robot policy.

@@ -19,17 +19,15 @@ A custom training script is Python code that Viam runs in a cloud container to t
 Use one when [built-in training](/train/train-a-model/) can't train the model you need: for example, a robot policy, a model trained on a [sequence dataset](/train/create-a-dataset/#choose-a-dataset-type), a PyTorch or ONNX model, or an image model where you control the architecture, preprocessing, or hyperparameters.
 To compare the two, see [Built-in or custom training](/train/overview/#training-method).
 
-To train with a custom script:
+## Prerequisites {#prerequisites}
 
-1. [Find an existing training script](#find-an-existing-training-script). If one fits, skip to step 6.
-2. [Plan your script](#plan-your-script): the dataset it reads, the model it produces, and the container it runs in.
-3. [Write the script](#write-the-script).
-4. [Test it locally](#test-locally).
-5. [Package and upload it](#package-and-upload) to the registry.
-6. [Submit a training job](#submit-a-training-job).
-7. [Monitor and debug](#monitor-and-debug) the job.
+- A dataset to train on, either binary or sequence.
+  See [Create a dataset](/train/create-a-dataset/).
+- The [Viam CLI](/cli/overview/), logged in, for testing, uploading and submitting from the command line.
+  Uploading a script with the robot policy task type needs CLI version 1.15.0 or later.
+- [Docker](https://docs.docker.com/get-docker/), to test the script locally in its training container.
 
-## Find an existing training script
+## 1. Find an existing training script {#find-an-existing-training-script}
 
 Before writing your own, check whether a training script in the registry already does what you need.
 The registry also has [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy without training.
@@ -42,15 +40,15 @@ The registry also has [pre-trained models](https://app.viam.com/registry?type=ML
    - whether it trains on a binary or a sequence dataset, and what labels it expects
    - which arguments it accepts, such as the number of epochs
 
-If a script fits, note its name in `<namespace>:<script-name>` form and skip ahead to [Submit a training job](#submit-a-training-job).
+If a script fits, note its name in `<namespace>:<script-name>` form and skip ahead to [step 6](#submit-a-training-job).
 To list training scripts from code, call [`list_registry_items`](/reference/apis/fleet/#listregistryitems) with the `PACKAGE_TYPE_ML_TRAINING` type.
 
-## Plan your script
+## 2. Plan your script {#plan-your-script}
 
 Make three decisions before you write code.
 Each one shapes the script, and you need all three to test and upload it.
 
-### Which dataset type it reads
+### Which dataset type it reads {#which-dataset-type-it-reads}
 
 A script reads either a binary dataset or a sequence dataset, and Viam passes it different files for each:
 
@@ -68,9 +66,8 @@ A script declares a task type and a framework when you upload it:
 
 - The **task type** says what the model does: single label classification, multi label classification, object detection, robot policy, or **Other**.
   See [Types of models](/train/overview/#types-of-models).
-- The **framework** says what format the model's files are in, which decides what runs the model on your machine: an ML model service for TFLite, TensorFlow, PyTorch, or ONNX, or a module for **Registry**.
-  Before you write the script, check that something for your framework runs on your machines' hardware.
-  See [What runs the model](/train/deploy-a-model/#what-runs-the-model).
+- The **framework** decides what runs the model on your machine.
+  See [Built-in or custom training](/train/overview/#framework), and check that something for your framework runs on your machines' hardware before you write the script.
 
 {{% alert title="Note" color="note" %}}
 Viam's built-in [evaluation](/train/evaluate-a-model/) supports only single label classification, multi label classification, and object detection models in the TFLite, TensorFlow, or ONNX framework.
@@ -102,7 +99,7 @@ viam train containers list --org-id=<org-id>
 
 Note the ID of the container you choose.
 
-## Write the script
+## 3. Write the script {#write-the-script}
 
 A training script is a Python package.
 Viam installs it in the container and runs it as `python3 -m model.training`, so it needs this layout:
@@ -244,12 +241,12 @@ As you write the script:
 
 If your script needs to call Viam APIs during training, for example to query more data, see [Viam API credentials](/train/dataset-formats/#viam-api-credentials).
 
-## Test locally
+## 4. Test the script locally {#test-locally}
 
 Run your script against an exported dataset before you submit a cloud job.
 Testing locally is free, while a cloud job bills GPU time from the moment it starts.
 
-### Export a dataset
+### Export a dataset {#export-a-dataset}
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=<destination> --dataset-id=<dataset-id>
@@ -261,7 +258,7 @@ See [Export a dataset](/train/create-a-dataset/#export-a-dataset).
 
 To keep tests fast, export a small dataset, or pass a low epoch count.
 
-### Test locally with Docker
+### Test locally with Docker {#test-locally-with-docker}
 
 {{% alert title="Note" color="note" %}}
 `test-local` passes your script only `--dataset_file`, so it works only for a script that reads a binary dataset.
@@ -295,7 +292,7 @@ On ARM systems, such as Apple Silicon Macs, Docker runs them through Rosetta 2 e
 If the container fails to start, check that Docker Desktop has Rosetta emulation turned on.
 {{% /alert %}}
 
-### Run without Docker
+### Run without Docker {#run-without-docker}
 
 To check the script quickly, or to test a script for a sequence dataset, run it directly with Python, from inside `my-training/`.
 This doesn't use the training container, so install your dependencies locally first.
@@ -322,7 +319,7 @@ python3 -m model.training \
 {{% /tab %}}
 {{< /tabs >}}
 
-## Package and upload
+## 5. Package and upload the script {#package-and-upload}
 
 Package the script as a tarball and upload it to your organization's registry:
 
@@ -333,12 +330,9 @@ viam training-script upload --path=my-training.tar.gz \
   --framework=<framework> --type=<task-type>
 ```
 
-The flags declare [what model the script produces](#match-your-output-to-an-ml-model-service):
-
-- `--framework` (required): `tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`, or `unspecified`.
-  With `registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
-- `--type`: `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`, or `unspecified`, which the Viam app shows as **Other**.
-  `robot_policy` needs CLI version 1.15.0 or later.
+The `--framework` and `--type` flags declare [what model the script produces](#match-your-output-to-an-ml-model-service): for example, `--framework=tflite --type=single_label_classification`.
+With `--framework=registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
+`--type=unspecified` is the task type the Viam app shows as **Other**.
 
 Scripts are private to your organization by default.
 To share one with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script), add `--visibility=public` and a `--description`.
@@ -347,7 +341,7 @@ For every flag, see the [CLI reference](/cli/datasets-and-training/).
 
 After uploading, your script appears in the [registry](https://app.viam.com/registry?type=Training+Script).
 
-## Submit a training job
+## 6. Submit a training job {#submit-a-training-job}
 
 Once a training script is in the registry, whether you uploaded it or found it there, submit a job to run it on a dataset.
 The dataset must be the type the script reads.
@@ -358,14 +352,14 @@ See [pricing](https://www.viam.com/product/pricing).
 {{% /alert %}}
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select the dataset you want to train on.
 2. Click **Train model**.
 3. Select **Train on a custom training script** and follow the prompts.
 4. In the **Container version** dropdown, select the [container you chose](#choose-a-container).
    The dropdown lists Viam-managed containers, marked **(Viam)**, followed by your organization's custom containers, marked **(Custom:** _image_**)**.
-   The UI shows a warning if the selected Viam-managed container is approaching its end-of-life date.
+   The Viam app shows a warning if the selected Viam-managed container is approaching its end-of-life date.
 5. Optionally, in the **Arguments** section, add arguments to pass to your script, such as the number of epochs.
    Viam passes each key and value as a command-line argument, so `num_epochs` and `20` become `--num_epochs=20`.
 
@@ -401,14 +395,16 @@ Pass the container ID as `container_id`.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Monitor and debug
+## 7. Verify the training job succeeded {#verify-the-training-job-succeeded}
+
+<span id="monitor-and-debug"></span>A job ends with the status **Completed**, **Failed**, or **Canceled**.
 
 When a training job succeeds or fails, Viam emails the user who submitted it.
 Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
 Training logs expire after 7 days.
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 In the Viam app, go to the **DATA** page, click the [**MODELS** tab](https://app.viam.com/models), and expand **Active Training**.
 Click a job ID to view its logs.
@@ -432,8 +428,12 @@ viam train logs --job-id=<job-id>
 {{% /tab %}}
 {{< /tabs >}}
 
-If a job fails, read the logs first: the error message usually names the problem.
+When the job's status is **Completed**, the trained model is in your organization's registry: it's listed on the **MODELS** tab, and its details page lists its versions.
 A script can log lines at the error level and still succeed, so check the job's final status rather than individual log lines.
+
+## Troubleshooting {#troubleshooting}
+
+If a job fails, read its logs first: the error message usually names the problem.
 
 {{% expand "The job fails before training starts" %}}
 A package in `install_requires` failed to install, or the script failed on an argument.
@@ -450,7 +450,7 @@ The files your script wrote don't match what the ML model service or module expe
 See [What model it produces](#match-your-output-to-an-ml-model-service).
 {{% /expand %}}
 
-## What's next
+## What's next {#whats-next}
 
 - [Evaluate a model](/train/evaluate-a-model/): for a classification or object detection model, measure how well it does on labeled images it wasn't trained on before you deploy it.
 - [Deploy a model to a machine](/train/deploy-a-model/): add the trained model and the resource that runs it to your machine.

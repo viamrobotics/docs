@@ -181,3 +181,5 @@ async def connect() -> ViamClient:
     )
     return await ViamClient.create_from_dial_options(dial_options)
 ```
+
+See [Train a model with a custom training script](/train/custom-training-scripts/).
