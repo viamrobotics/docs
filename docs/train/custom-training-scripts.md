@@ -428,3 +428,14 @@ Jobs submitted with an API key send no email, so check the job status with `viam
 
 If a job fails, check the logs first: the error message usually indicates the problem.
 Note that training scripts may emit log lines at the error level and still succeed; check the final job status rather than individual log lines.
+
+### Jobs that fail waiting for a GPU
+
+A custom training job has to get a cloud GPU before your script starts.
+If Viam can't place the job on any GPU type when it submits it, the job fails with `no available GPUs at this moment`.
+If the job is accepted but doesn't start, Viam resubmits it on another GPU type and waits longer each time.
+After about two hours without a GPU, the job fails with `no available GPUs after waiting for capacity`.
+Neither error means your script is broken: submit the job again later.
+
+Because a job can run on more than one GPU type, the number of GPUs can differ between jobs.
+If your script splits work across GPUs, read the device count at run time instead of assuming a fixed number.
