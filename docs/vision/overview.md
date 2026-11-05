@@ -12,6 +12,8 @@ date: "2026-04-14"
 
 Computer vision on Viam turns camera frames into structured results your code can act on: bounding boxes, class labels, or 3D point cloud objects. Three built-in vision service models cover the common tasks, and the [registry](https://app.viam.com/registry) has more for specialized cases.
 
+{{< course id="viam-103" eyebrow="New to computer vision? Start with a free course" >}}
+
 ## What the vision service does
 
 The vision service exposes a single API. Your code calls the same methods whether the underlying detector is an ML model, a color heuristic, or a 3D segmenter. The implementation you pick decides what the service recognizes; the code you write does not change.

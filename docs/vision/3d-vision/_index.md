@@ -13,6 +13,8 @@ date: "2026-04-14"
 
 Move from 2D images to 3D positions: segment detected objects in point clouds and measure distance from a depth camera so a robot can reason about physical space.
 
+{{< course id="viam-103" eyebrow="Want to practice 3D vision in simulation?" >}}
+
 {{< cards >}}
 {{% card link="/vision/3d-vision/segment-3d/" %}}
 {{% card link="/vision/3d-vision/measure-depth/" %}}

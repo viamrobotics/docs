@@ -31,7 +31,7 @@ courses:
     status: "available"
   - id: "viam-103"
     title: "Viam 103: Introduction to Computer Vision"
-    description: "Write the perception for a simulated three-arm cell that assembles and inspects a mailbox: classify what arrives, rectify a fisheye lens, turn a detection into a point in space, grasp from a point cloud, and set a threshold from the cost of each error."
+    description: "Write the perception for a simulated assembly cell: classify parts, locate them in 3D, grasp from point clouds, and set thresholds."
     duration: "140 minutes"
     hardware: "No hardware required"
     url: "https://www.viam.com/education/viam-103"
