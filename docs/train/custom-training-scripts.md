@@ -12,7 +12,7 @@ description: "Find or write a training script, test it locally, upload it to the
 capabilities: ["ml-training"]
 diataxis: how-to
 date: "2024-12-04"
-updated: "2026-11-03"
+updated: "2026-11-05"
 ---
 
 A custom training script is Python code that Viam runs in a cloud container to train a model on one of your datasets.
@@ -64,7 +64,7 @@ For the file formats and the arguments that point to them, see [Training dataset
 
 ### What model it produces {#match-your-output-to-an-ml-model-service}
 
-A script declares a task type and a framework when you upload it, and every model it trains has the same ones:
+A script declares a task type and a framework when you upload it:
 
 - The **task type** says what the model does: single label classification, multi label classification, object detection, robot policy, or **Other**.
   See [Types of models](/train/overview/#types-of-models).
@@ -72,16 +72,24 @@ A script declares a task type and a framework when you upload it, and every mode
   Before you write the script, check that something for your framework runs on your machines' hardware.
   See [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 
+{{% alert title="Note" color="note" %}}
+Viam's built-in [evaluation](/train/evaluate-a-model/) supports only single label classification, multi label classification, and object detection models in the TFLite, TensorFlow, or ONNX framework.
+There's no built-in evaluation for models trained on a sequence dataset.
+{{% /alert %}}
+
 Your script must write the files that the service or module loads.
 For example, the `tflite_cpu` ML model service loads a `model.tflite` file and a `labels.txt` file listing each label on its own line, which is what the [classification-tflite example](https://github.com/viam-modules/classification-tflite) writes.
 For other frameworks, the module's README lists the files and tensor shapes it expects: for example, [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu), [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu), or [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu).
-For a **Registry** model, the README of the module that runs it lists the files.
+Use **Registry** when the model needs a module to run it, such as a robot policy.
+The README of the module that runs it lists the files.
+If no module exists for your model, [write one](/build-modules/overview/).
 
 ### Which container it runs in {#choose-a-container}
 
 Every custom training job runs in a container on GPU-backed cloud infrastructure, and you pick the container when you test and when you submit:
 
-- **A Viam-managed container:** Python 3.10 with TensorFlow pre-installed, in versions `tf:2.16`, `tf:2.17`, and `tf:2.21`.
+- **A Viam-managed container:** Python with a machine learning framework, such as TensorFlow, pre-installed.
+  Viam adds and retires versions over time, so list them with the command below.
   Viam installs any other packages your script lists in `setup.py`, such as PyTorch or scikit-learn, before it runs the script.
 - **A [custom training container](/train/custom-containers/)** your organization registered, with your dependencies built in.
   Use one when your dependencies take a long time to install, so each job starts training right away, or when you need a different Python version or system libraries.
@@ -231,10 +239,10 @@ As you write the script:
 - **Write only the model to the output directory.** Viam publishes everything in it except a `tmp/` subdirectory, which you can use for checkpoints and other intermediate files.
 - **Exit with an error when training fails.** The job fails if the script exits with a non-zero status or writes nothing to the output directory.
 - **Fall back to the CPU.** Cloud jobs run on a GPU, but local tests don't, so detect the GPU rather than assuming one.
+- **Write a `labels.txt` file if you want to evaluate the model.** [Evaluation](/train/evaluate-a-model/) reads the labels the model can predict from a `labels.txt` file in the output directory, one label per line, and fails without one.
+  The model also needs a task type and framework that evaluation supports; see [What model it produces](#match-your-output-to-an-ml-model-service).
 
 If your script needs to call Viam APIs during training, for example to query more data, see [Viam API credentials](/train/dataset-formats/#viam-api-credentials).
-
-For a complete working script, see the [classification-tflite example](https://github.com/viam-modules/classification-tflite), which trains a TFLite single label classification model with TensorFlow and Keras.
 
 ## Test locally
 
@@ -255,12 +263,14 @@ To keep tests fast, export a small dataset, or pass a low epoch count.
 
 ### Test locally with Docker
 
-`viam training-script test-local` runs your script inside the container you chose, the same one the cloud job uses.
-This catches problems that running the script directly misses: missing system dependencies, a different Python version, and package conflicts.
-It runs without a GPU, so the script runs on the CPU: it checks that the script runs, not how well it trains.
-
+{{% alert title="Note" color="note" %}}
 `test-local` passes your script only `--dataset_file`, so it works only for a script that reads a binary dataset.
 To test a script for a sequence dataset, [run it directly](#run-without-docker).
+{{% /alert %}}
+
+`viam training-script test-local` runs your script inside the container you chose, the same one the cloud job uses.
+This catches problems that running the script directly misses: missing system dependencies, a different Python version, and package conflicts.
+Because a local test runs on the CPU instead of a GPU, you are only checking that the script runs, not how well it trains.
 
 Run it from the directory you ran `viam dataset export` from:
 
@@ -337,19 +347,15 @@ For every flag, see the [CLI reference](/cli/datasets-and-training/).
 
 After uploading, your script appears in the [registry](https://app.viam.com/registry?type=Training+Script).
 
-{{% alert title="Tip" color="tip" %}}
-While you're iterating, `viam train submit custom with-upload` uploads the tarball and submits a training job in one command.
-It takes the `upload` flags, except that the task type flag is `--model-type`, plus the job's flags, such as `--dataset-id` and `--container-id`, and it always uploads the script as private.
-See [Train with a custom training script](/cli/datasets-and-training/#train-with-a-custom-training-script).
-{{% /alert %}}
-
 ## Submit a training job
 
 Once a training script is in the registry, whether you uploaded it or found it there, submit a job to run it on a dataset.
 The dataset must be the type the script reads.
 
+{{% alert title="Note" color="note" %}}
 Custom training jobs run on premium GPUs and are billed at a higher rate than built-in training jobs.
 See [pricing](https://www.viam.com/product/pricing).
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
@@ -380,6 +386,12 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
 `--version` is the version of the training script to run.
 You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
 
+{{% alert title="Tip" color="tip" %}}
+After you've tested the script locally, `viam train submit custom with-upload` uploads the tarball and submits a training job in one command.
+It takes the `upload` flags, except that the task type flag is `--model-type`, plus the job's flags, such as `--dataset-id` and `--container-id`, and it always uploads the script as private.
+See [Train with a custom training script](/cli/datasets-and-training/#train-with-a-custom-training-script).
+{{% /alert %}}
+
 {{% /tab %}}
 {{% tab name="API" %}}
 
@@ -390,6 +402,10 @@ Pass the container ID as `container_id`.
 {{< /tabs >}}
 
 ## Monitor and debug
+
+When a training job succeeds or fails, Viam emails the user who submitted it.
+Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
+Training logs expire after 7 days.
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
@@ -416,10 +432,6 @@ viam train logs --job-id=<job-id>
 {{% /tab %}}
 {{< /tabs >}}
 
-When a training job succeeds or fails, Viam emails the user who submitted it.
-Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
-Training logs expire after 7 days.
-
 If a job fails, read the logs first: the error message usually names the problem.
 A script can log lines at the error level and still succeed, so check the job's final status rather than individual log lines.
 
@@ -440,6 +452,7 @@ See [What model it produces](#match-your-output-to-an-ml-model-service).
 
 ## What's next
 
+- [Evaluate a model](/train/evaluate-a-model/): for a classification or object detection model, measure how well it does on labeled images it wasn't trained on before you deploy it.
 - [Deploy a model to a machine](/train/deploy-a-model/): add the trained model and the resource that runs it to your machine.
 - [Custom training containers](/train/custom-containers/): build your script's dependencies into a container so jobs start training right away.
 - [Training dataset formats](/train/dataset-formats/): every column and field your script can read.
