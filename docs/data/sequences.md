@@ -107,7 +107,7 @@ Tags are optional.
 
 1. Connect a data client.
    See [Set up a connection](/data/query-data-from-code/#set-up-a-connection) for the setup code.
-   `CreateSequence` only needs an API key with access to the machine part. `ListSequences` returns only the sequences the API key can read: a location API key lists that location's sequences, and a machine API key lists that machine's. `AddSequencesToDataset` and `RemoveSequencesFromDataset` need an organization API key. The other sequence methods work with any API key that can access the sequence's machine.
+   `CreateSequence` only needs an API key with access to the machine part. `ListSequences` returns only the sequences the API key can read: a location API key lists that location's sequences, and a machine API key lists that machine's. `AddSequencesToDataset`, `RemoveSequencesFromDataset`, and `SequencesByDatasetID` need an organization API key. The other sequence methods work with any API key that can access the sequence's machine.
 2. Find the part ID.
    At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
 3. Find when the data was captured.
