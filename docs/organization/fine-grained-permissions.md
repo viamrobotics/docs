@@ -97,6 +97,15 @@ Set `basic_connection` to `true` on a grant for every member, or the member can'
 A member named in no grant can't call anything.
 Resource names aren't checked when you save, so a mistyped name saves and grants nothing.
 
+### Cameras
+
+Streaming video from a camera uses methods on the stream service, not the camera service.
+When a grant allows methods on a camera, Viam also gives its subjects the stream methods that camera needs, so you don't grant them: `AddStream`, `RemoveStream`, `GetStreamOptions`, and `SetStreamOptions` on the camera, and `ListStreams` on `_machine`.
+That means a member who can read images from a camera can also add and remove that camera's streams and change their options.
+
+A vision service can read from every camera it's configured with.
+Granting a member methods on a vision service can expose camera images that no camera grant allows, for example through `CaptureAllFromCamera`, and a `*` method grant includes it.
+
 ### Find a method name
 
 A method name is the proto package, the service, and the method, written `/<package>.<Service>/<Method>`.
