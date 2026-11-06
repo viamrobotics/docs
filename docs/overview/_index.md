@@ -88,7 +88,7 @@ If nothing in the registry fits, you can [write and publish your own module](/bu
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | Get a camera, motor, arm, or sensor running                             | [Configure hardware](/hardware/)                                  |
 | Capture data on the machine and sync it to the cloud                    | [Manage data](/data/)                                             |
-| Train machine learning models on what you captured                      | [Train ML models](/train/)                                        |
+| Train machine learning models on what you captured                      | [Train and deploy ML models](/train/)                             |
 | Detect and classify objects in a camera feed                            | [Computer vision](/vision/)                                       |
 | Plan and execute motion for arms and mobile robots                      | [Motion planning](/motion-planning/)                              |
 | Write code that controls a machine over the network                     | [Viam SDKs](/reference/sdks/)                                     |

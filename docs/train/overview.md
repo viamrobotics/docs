@@ -1,6 +1,6 @@
 ---
 linkTitle: "Overview"
-title: "Train ML models"
+title: "Train and deploy ML models"
 weight: 1
 layout: "docs"
 type: "docs"
