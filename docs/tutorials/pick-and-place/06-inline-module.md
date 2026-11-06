@@ -32,7 +32,7 @@ For your own robot logic, reach for a module when one of these is true for your 
 
 If none of those apply, stop here. You have already built the thing this workshop set out to teach.
 
-This phase builds an **inline module**: the Viam app hosts the code and builds it for you in the cloud, with the source in an editor in your browser. A conventional module lives in its own Git repository that you build and upload yourself, and it is the better choice for code you share across many machines or maintain as a team. Inline is the faster path for a single machine's own logic, so it is what you use here; everything you learn about the module lifecycle applies to both.
+This phase builds an **inline module**: the Viam app hosts the code and deploys it to your machine for you, with the source in an editor in your browser. A conventional module lives in its own Git repository that you build and upload yourself, and it is the better choice for code you share across many machines or maintain as a team. Inline is the faster path for a single machine's own logic, so it is what you use here; everything you learn about the module lifecycle applies to both.
 
 ## What changes when you package it
 
@@ -55,10 +55,10 @@ On the **Configure** tab, click the **+** icon then **Code**. Choose a "Viam-hos
 Logic like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenient base class from the Viam SDK that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
 
 {{< alert title="Module identification on the registry" color="caution" >}}
-One value in that skeleton you should not change is the class's **`MODEL`**: a three-part `namespace:module-name:model-name` identifier, such as `your-org:your-module:pick-and-place`, that the Viam app generates when it creates the module. Together with the class name, it names your model uniquely on the registry, and the platform matches your code to its registry registration by exactly these values. Leave the `MODEL` and the class name as generated; changing either breaks that match, and the module fails to build.
+One value in that skeleton you should not change is the class's **`MODEL`**: a three-part `namespace:module-name:model-name` identifier, such as `your-org:your-module:pick-and-place`, that the Viam app generates when it creates the module. Together with the class name, it names your model uniquely on the registry, and the platform matches your code to its registry registration by exactly these values. Leave the `MODEL` and the class name as generated; changing either breaks that match, and the module won't run.
 {{< /alert >}}
 
-Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Once all the code is in place, you can save and build your code block, then run it on the robot.
+Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Once all the code is in place, you can save your code block, then run it on the robot.
 
 ## Dependency injection
 
@@ -193,18 +193,18 @@ async def do_command(self, command, *, timeout=None, **kwargs):
     return {}
 ```
 
-{{< alert title="Module build feedback loop" color="note" >}}
-Saving an inline Python module triggers a cloud build that takes about a minute. Give it that minute rather than assuming the save failed.
+{{< alert title="No build step for Python" color="note" >}}
+Saving an inline Python module doesn't start a cloud build. Viam uploads your source, and the machine restarts the module with the new code. Save from the **Configure** tab: that is the save that deploys the code to the machine.
 {{< /alert >}}
 
-With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **Logs** tab shows the build progress the same way it showed module downloads back in Phase 2.
+With the code in place, save the machine's configuration. The Viam app packages your code and deploys it to the machine, and the **Logs** tab shows the module restarting the same way it showed module downloads back in Phase 2.
 
-<!-- ASSET P1 logs-cloud-build (UI): Logs showing the ~1 min cloud build + module start -->
+<!-- ASSET P1 logs-cloud-build (UI): Logs showing the module restarting after a save (recapture: Python inline modules no longer cloud-build) -->
 
-{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module cloud build.">}}
+{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module starting on the machine.">}}
 
 {{< checkpoint >}}
-The module finishes its cloud build and starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
+The module starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the module fails to start, read the error in the **Logs** tab; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
 From the **Control** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
