@@ -97,8 +97,9 @@ There are two ways to develop and deploy modules:
 
 **Inline modules** let you write code directly in the Viam app's
 browser-based editor. Viam manages source code, builds, versioning, and
-deployment. When you click **Save & Deploy**, the module builds in the cloud
-and deploys to your machine automatically. Inline modules are the fastest way
+deployment. When you save, Viam deploys the module to your machine
+automatically: Go modules are built in the cloud first, and Python modules run
+from source with no build step. Inline modules are the fastest way
 to get started, especially for prototyping and simple control logic.
 
 **Externally managed modules** are modules you develop in your own IDE, manage
@@ -110,7 +111,7 @@ distribution, or custom build pipelines.
 | ------------------------ | --------------------------------- | -------------------------------------------- |
 | **Where you write code** | Browser editor in the Viam app    | Your own IDE, locally or in a repo           |
 | **Source control**       | Managed by Viam                   | Your own git repository                      |
-| **Build system**         | Automatic cloud builds on save    | Cloud build (GitHub Actions) or local builds |
+| **Build system**         | Cloud build on save (Go only)     | Cloud build (GitHub Actions) or local builds |
 | **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...) | You choose semantic versions                 |
 | **Visibility**           | Private to your organization      | Private or public                            |
 
