@@ -13,28 +13,11 @@ updated: "2026-11-02"
 
 Your machines capture data in the field.
 Training uses that data to produce a model that runs on the machine, whether the model labels what a camera sees, controls an arm, or does something else.
-Usually you start from a model that already exists and fine-tune it on your data.
 
-Viam supports two ways to train: built-in training, which takes no code, and custom training scripts, which run your own Python code.
-Either way, Viam runs the job on its own cloud GPUs, so you don't provision hardware, and the result deploys to your machines the same way.
-
-This page covers when you need to train at all, the types of models you can train, the stages every model goes through, and how to choose between built-in and custom training.
-
-## Use a model that already exists {#use-an-existing-model}
-
-You don't always need to train.
-Before you build a dataset, check whether a model that does the job already exists:
-
-- **Use a model from the registry.**
-  The [registry](https://app.viam.com/registry) has ready-made ML models, and modules that bundle a model with what runs it.
-  Some detect whatever you name in a text prompt, with no training: [SAM 3](https://app.viam.com/module/viam/sam3-detector) finds every object that matches a phrase such as "stemless wine glass", and a [Qwen vision-language model](https://app.viam.com/module/viam-labs/qwen3-vl-vision) answers questions about an image.
-  See [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/).
-- **Upload a model you already have.**
-  If you trained a model outside Viam, or found one on Hugging Face or GitHub, upload it to your organization's registry and deploy it the same way as a model trained on Viam.
-  See [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
-
-To find out whether an existing classification or detection model is good enough, evaluate it on images from your machines, as in step 4 of the training loop below.
-Train your own model when no existing model knows your labels, isn't accurate enough on your data, or doesn't do your task.
+Viam lets you deploy a model from the [registry](/vision/deploy-and-maintain/deploy-from-registry/) or [upload a model you already have](/vision/deploy-and-maintain/deploy-custom-model/), such as one from Hugging Face.
+Some registry models need no training at all: [SAM 3](https://app.viam.com/module/viam/sam3-detector) detects whatever you name in a text prompt.
+When no existing model knows your labels or is accurate enough on your data, fine-tune one with [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
+Viam runs training jobs on its own cloud GPUs, and the result deploys to your machines the same way as any other model.
 
 ## Types of models {#types-of-models}
 
@@ -87,19 +70,8 @@ Evaluating each version on the same test dataset shows whether the new one is be
 
 ## Built-in or custom training {#training-method}
 
-Use built-in training when all of these are true:
-
-- You're training an image classifier or object detector.
-- Your dataset is labeled images, not a [sequence dataset](/train/create-a-dataset/).
-- Your machine can run a TFLite or TensorFlow model. TFLite runs on Linux and macOS on both ARM and x86.
-- You don't need to choose the model architecture or control preprocessing, augmentation or hyperparameters.
-
-For anything else, such as a robot policy, a model trained on sensor readings, or a PyTorch or ONNX model, use a custom training script.
-
-A custom training script doesn't mean writing code from scratch.
-You can [find a training script](/train/custom-training-scripts/#find-an-existing-training-script) in the registry that already trains the model you need, and run it on your dataset.
-
-### How they differ {#how-they-differ}
+Built-in training is part of the Viam platform: pick a labeled image dataset and train a classifier or object detector without writing code.
+A custom training script lets you train any type of model and control the architecture, preprocessing and hyperparameters, but you write the script yourself or [find one in the registry](/train/custom-training-scripts/#find-an-existing-training-script).
 
 |                  | Built-in training                                                                                          | Custom training script                                                                                                                                                                |
 | ---------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

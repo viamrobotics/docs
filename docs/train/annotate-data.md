@@ -18,6 +18,12 @@ For a vision model, label images with tags for classification or bounding boxes 
 For a robot policy, tag each recorded sequence with the task it demonstrates.
 Organizing your data into a [dataset](/train/create-a-dataset/) makes bulk annotation and training workflows easier.
 
+{{% alert title="Tip" color="tip" %}}
+Once you've hand-labeled a small set of images and trained a first model on them, use [automated annotation](/train/automate-annotation/) to have that model predict labels for the rest.
+You review and correct the predictions instead of labeling every image by hand.
+Automated annotation is available for classification and object detection models.
+{{% /alert %}}
+
 ## Tag images for classification
 
 Tags are labels that apply to an entire image. Use them when you are building
