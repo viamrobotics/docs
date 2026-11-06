@@ -45,6 +45,17 @@ You must have the **Owner** role to be able to grant permissions.
 
 8. Click **Send invitation** (or **Send invitations** if you entered multiple email addresses).
 
+### Accept or decline an invitation
+
+Invitations you have received but not yet answered appear on your user settings page.
+
+1. On Viam, click your initials in the top navigation bar to open the user menu.
+2. Click **Settings**.
+3. On the **Pending Invites** tab, find the organization's invitation.
+   Each invitation shows the role you were invited with and the date it was sent.
+4. Click **Accept** to join the organization, or click **Decline** and confirm with **Decline invite**.
+   After you decline, an organization owner must resend the invitation before you can join.
+
 ### Share a location with an organization
 
 You must have the **Owner** role to be able to share locations.

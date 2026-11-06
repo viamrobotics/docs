@@ -317,10 +317,13 @@ Resolve relative paths against the export directory so the same script works in 
 ```sh {class="command-line" data-prompt="$"}
 tar -czvf my-training.tar.gz my-training/
 viam training-script upload --path=my-training.tar.gz \
-  --org-id=<org-id> --script-name=my-training-script
+  --org-id=<org-id> --script-name=my-training-script \
+  --framework=<framework>
 ```
 
-You can also specify `--framework`, `--type`, `--visibility`, and `--description` when uploading.
+`--framework` is required: set it to the framework of the model your script produces (`tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`, or `unspecified`).
+With `registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
+You can also specify `--type`, `--visibility`, and `--description` when uploading.
 Scripts default to private (visible only within your organization). Set `--visibility=public` to share with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script).
 See the [CLI reference](/cli/overview/) for the full list of flags.
 
@@ -420,7 +423,20 @@ viam train logs --job-id=<job-id>
 {{< /tabs >}}
 
 Training logs expire after 7 days.
-You will receive an email when your training job completes.
+When a training job succeeds or fails, Viam emails the user who submitted it.
+Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
 
 If a job fails, check the logs first: the error message usually indicates the problem.
 Note that training scripts may emit log lines at the error level and still succeed; check the final job status rather than individual log lines.
+
+### Jobs that fail waiting for a GPU
+
+A custom training job needs a cloud GPU before your script can start. Viam tries each GPU type it supports in turn:
+
+- If no GPU type has room when you submit the job, the job fails right away with `no available GPUs at this moment`.
+- Otherwise, the job waits in a queue for a GPU and shows as **Waiting for GPU** in the Viam app. If none frees up, Viam moves the job to another GPU type and waits longer each time. After about two hours with no GPU, the job fails with `no available GPUs after waiting for capacity`.
+
+Neither error means your script is broken. Submit the job again later.
+
+Because a job can run on more than one GPU type, the number of GPUs can differ between jobs.
+If your script splits work across GPUs, read the device count at run time instead of assuming a fixed number.

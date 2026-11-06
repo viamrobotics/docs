@@ -37,13 +37,13 @@ For Micro-RDK, see [Micro-RDK camera models](/reference/components/camera/micro-
 
 Viam-maintained camera modules:
 
-| Module                                                           | Cameras supported                                                                       |
-| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [`viam:viamrtsp`](https://app.viam.com/module/viam/viamrtsp)     | RTSP IP cameras (autodetect, H.264, H.265, MJPEG, MPEG-4) plus ONVIF and UPnP discovery |
-| [`viam:realsense`](https://app.viam.com/module/viam/realsense)   | Intel RealSense depth cameras                                                           |
-| [`viam:orbbec`](https://app.viam.com/module/viam/orbbec)         | Orbbec 3D cameras                                                                       |
-| [`viam:csi-cam-pi`](https://app.viam.com/module/viam/csi-cam-pi) | Raspberry Pi CSI cameras                                                                |
-| [`viam:rplidar`](https://app.viam.com/module/viam/rplidar)       | RPLidar 2D lidar (exposed as a point-cloud camera)                                      |
+| Module                                                         | Cameras supported                                                                       |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`viam:viamrtsp`](https://app.viam.com/module/viam/viamrtsp)   | RTSP IP cameras (autodetect, H.264, H.265, MJPEG, MPEG-4) plus ONVIF and UPnP discovery |
+| [`viam:realsense`](https://app.viam.com/module/viam/realsense) | Intel RealSense depth cameras                                                           |
+| [`viam:orbbec`](https://app.viam.com/module/viam/orbbec)       | Orbbec 3D cameras                                                                       |
+| [`viam:csi-cam`](https://app.viam.com/module/viam/csi-cam)     | CSI cameras on Raspberry Pi and NVIDIA Jetson                                           |
+| [`viam:rplidar`](https://app.viam.com/module/viam/rplidar)     | RPLidar 2D lidar (exposed as a point-cloud camera)                                      |
 
 For cameras not covered above, search for `camera` in the [Viam registry](https://app.viam.com/registry).
 

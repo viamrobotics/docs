@@ -26,7 +26,7 @@ fields:
 
 | Field        | What it does                                                                                                                                                                     |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`       | A unique name for this component on this machine. Your code references the component by this name.                                                                               |
+| `name`       | A name for this component, unique across the machine ([details](/hardware/configure-hardware/#resource-names)). Your code references the component by this name.                 |
 | `api`        | The component type, in the form `rdk:component:<type>` (for example, `rdk:component:arm`).                                                                                       |
 | `model`      | The specific implementation, in the form `namespace:family:name` (for example, `viam:ufactory:xArm6`). Built-in models use `rdk:builtin:name` (for example, `rdk:builtin:gpio`). |
 | `attributes` | Model-specific settings that control how to connect to the hardware and how it should behave.                                                                                    |
@@ -106,6 +106,22 @@ You can edit your machine's configuration in two ways:
 
 Both views edit the same underlying configuration. Changes in one are
 reflected in the other.
+
+If someone else saves the configuration while you have unsaved edits, or you
+save it from another browser tab, **Save** is replaced by **Config out of
+date** with **Review** and **Discard**. Fragment configurations work the same
+way. Click **Discard** to drop your edits and load the latest saved
+configuration, or click **Review** to open the **Configuration out of date**
+dialog. The dialog shows how the saved configuration differs from your edits
+(and who changed it, when known), and offers these choices:
+
+- **Merge changes**: combine your edits with the latest saved configuration.
+  The dialog offers this, on its **Merge** tab, only when the two can be
+  merged safely.
+- **Save anyway**: keep your edits and overwrite the other change. When the
+  dialog shows tabs, this is on the **Overwrite** tab.
+- **Discard changes and reload**: drop your edits and load the latest saved
+  configuration.
 
 In either view, you can also describe a change in plain language and have the
 [AI assistant](/hardware/ai-assistant/) stage it for you to review and save.

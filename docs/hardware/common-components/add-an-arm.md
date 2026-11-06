@@ -42,7 +42,7 @@ It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
 
 ### Built-in models
 
-- [`fake`](/reference/components/arm/fake/) — A model used for testing, with no physical hardware.
+- [`fake`](/reference/components/arm/fake/): a model used for testing, with no physical hardware.
 
 ### Registry modules
 
@@ -118,7 +118,7 @@ To attach a gripper, camera, or other tool to the end effector, set the attached
 See [Add a gripper](/hardware/common-components/add-a-gripper/#3-configure-a-frame) for a worked example.
 
 If you're writing a driver module for an arm that isn't in the registry, the module implements the arm's `Kinematics` method to return the arm's kinematic model.
-See [Kinematics](/motion-planning/reference/kinematics/) for the URDF and SVA JSON formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
+See [Kinematics](/motion-planning/reference/kinematics/) for the URDF, SVA, and kinematic model formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
 
 See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
 
@@ -126,7 +126,9 @@ See [Frame System](/motion-planning/frame-system/) for the full frame configurat
 
 Click **Save**, then expand the **Test** section.
 
-- Use the joint position controls to move individual joints.
+- Under **MoveToJointPositions**, which opens in **Jogging** mode, tap the
+  **+** or **−** button next to a joint to move it by the **Jog step**. To set
+  exact angles instead, switch to **Joint Positions** mode and press **Execute**.
 - Verify each joint moves in the expected direction.
 - Start with slow speeds until you're confident in the configuration.
 - If the arm supports manual mode, a **ManualMode** row appears at the top

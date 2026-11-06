@@ -1,15 +1,16 @@
 ---
-title: "Tutorials"
-linkTitle: "Tutorials"
+title: "Workshops"
+linkTitle: "Workshops"
 capabilities: ["section-index", "docs"]
 diataxis: overview
 weight: 300
 type: docs
 layout: "tutorials"
-description: "Browse tutorials that walk through building complete robots and smart machines with Viam."
-summary: "Browse tutorials that walk through building complete robots and smart machines with Viam."
+description: "Browse workshops that walk through building complete robots and smart machines with Viam."
+summary: "Browse workshops that walk through building complete robots and smart machines with Viam."
 aliases:
   - /dev/tools/tutorials/
+  - /tutorials/projects/guardian/
 toc_hide: true
 # do not remove hide children - it causes a layout issue
 no_list: true

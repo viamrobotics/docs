@@ -34,7 +34,7 @@ The workshop is structured as six sequential phases, each ending with checkpoint
 
 <!-- ASSET P0 hero-hardware-overview (PHOTO): complete rig staged (xArm6 + gripper + wrist RealSense + blocks + bin + Meerkat). See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-{{<imgproc src="/tutorials/pick-and-place/hero-hardware-overview.jpeg" resize="1200x" declaredimensions=true alt="The staged pick-and-place workstation: a uFactory xArm6 arm with a two-finger gripper and a wrist-mounted RealSense camera, colored blocks, and a bin.">}}
+{{<imgproc src="/tutorials/pick-and-place/hero-hardware-overview.jpeg" resize="1200x" declaredimensions=true alt="The pick-and-place workstation: a uFactory xArm6 arm mounted at the edge of a desk, with a two-finger gripper and a wrist-mounted camera, reaching over colored blocks and a wooden board.">}}
 
 You will configure an xArm6 robotic arm fitted with a two-finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks, and the motion service plans collision-free picks that place each block in the bin. By the end, you will have a Python script you run from your laptop and a deployable module that drives the full detect-pick-place loop.
 
