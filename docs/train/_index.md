@@ -1,12 +1,12 @@
 ---
-linkTitle: "Train ML models"
-title: "Train ML models"
+linkTitle: "Train and deploy ML models"
+title: "Train and deploy ML models"
 weight: 50
 layout: "docs"
 type: "docs"
 no_list: true
 manualLink: "/train/overview/"
-description: "Create datasets and train ML models from captured data."
+description: "Create datasets from captured data, then train, evaluate, and deploy ML models."
 capabilities: ["section-index", "ml-training"]
 aliases:
   - /build/train/
