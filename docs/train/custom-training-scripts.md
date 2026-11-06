@@ -434,7 +434,7 @@ Note that training scripts may emit log lines at the error level and still succe
 A custom training job needs a cloud GPU before your script can start. Viam tries each GPU type it supports in turn:
 
 - If no GPU type has room when you submit the job, the job fails right away with `no available GPUs at this moment`.
-- Otherwise, the job waits in a queue for a GPU and shows as in progress. If none frees up, Viam moves the job to another GPU type and waits longer each time. After about two hours with no GPU, the job fails with `no available GPUs after waiting for capacity`.
+- Otherwise, the job waits in a queue for a GPU and shows as **Waiting for GPU** in the Viam app. If none frees up, Viam moves the job to another GPU type and waits longer each time. After about two hours with no GPU, the job fails with `no available GPUs after waiting for capacity`.
 
 Neither error means your script is broken. Submit the job again later.
 

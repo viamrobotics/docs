@@ -98,8 +98,9 @@ The command returns a training job ID that you can use to check status.
 1. In the Viam app, click the **DATA** tab.
 2. Click the **MODELS** subtab, then expand **Active Training**.
 3. You will see a list of training jobs with their status:
-   - **Pending** -- the job is queued
-   - **In Progress** -- training is running
+   - **Preparing** -- the job is being set up
+   - **Waiting for GPU** -- the job is queued for a cloud GPU
+   - **Training** -- training is running
    - **Completed** -- the model is ready
    - **Failed** -- something went wrong
    - **Canceled** -- the job was canceled before completing
@@ -274,8 +275,8 @@ for _, job := range jobs {
   hour or more. This is normal.
 - **TF models take longer than TFLite.** If training time is a concern, switch
   to TFLite.
-- **Training is queued.** If the status stays at "Pending", the training
-  infrastructure may be busy. Jobs are processed in order.
+- **Training is queued.** If the status stays at **Waiting for GPU**, no
+  cloud GPU is free yet. Jobs are processed in order.
 
 {{< /expand >}}
 
