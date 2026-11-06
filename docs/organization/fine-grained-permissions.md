@@ -118,7 +118,7 @@ In that grant, name the resource by its plain name, such as `cam2`, or as `<sub-
 
 <!-- TODO(verify, DOCS-4936): multi-part behavior is read from the activation PR's code (app#13426, `renderUserPermissions`), not tested. Test plan: "Cloud, multi-part" in the description of PR 5429, including whether a forwarded call is checked against the sub-part's policy. Ask the engineers before describing how the two policies interact. -->
 
-<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org (the flag is on in the viam-dev org). Test plan: "Cloud, single part" in the description of PR 5429. The schema is read from the app's data/access_policy.go on main as of 2026-11-06. Decide with engineering whether this section states a minimum viam-server version: per the RDK PR 6711 description, the app emits `users` entries unconditionally, so a machine below v1.15.0 skips them and denies every inbound call while a policy is attached; ask how the app's older-version banner handles v1.8 to v1.14. Delete this comment when the items pass. -->
+<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org (the flag is on in the viam-dev org). Test plan: "Cloud, single part" in the description of PR 5429. The schema is read from the app's data/access_policy.go on main as of 2026-11-06. Version behavior, from the app source (access_policy_render.go) and seen in the app UI on 2026-11-06: a part below viam-server v1.14.0, or with an unknown version, is sent no rules and stays unrestricted, and the Create API key form warns that a Member key then has full access until the part is upgraded. This section doesn't state that minimum or warning yet; decide whether it should (I recommend yes, since a Member key on an older machine is unrestricted). Delete this comment when the items pass. -->
 
 ## Define permissions in a local configuration file
 
@@ -184,7 +184,7 @@ Leave out the `id` of a `default` entry.
 To give the same permissions to several users, list them in `users` instead of `user`.
 If an entry has both, only `users` applies.
 A user can appear in only one entry, counting both fields.
-`users` needs `viam-server` v1.15.0 or later: an older version skips an entry that has only `users`.
+`users` needs `viam-server` v1.14.0 or later: an older version skips an entry that has only `users`.
 
 Resources and methods work as in an access policy, except that `user_permissions` takes exact names only: it has no wildcards.
 See [Find a method name](#find-a-method-name) for how to look up exact names.
