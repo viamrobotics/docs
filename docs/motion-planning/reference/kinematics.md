@@ -217,7 +217,7 @@ Here is the first link and joint of a UR5e in this format:
 - **`joints[].limits`**: `min` and `max`, in degrees for revolute joints or mm for prismatic joints
 
 A mesh geometry can point to a mesh file instead of embedding its contents, for example `{"mesh": {"original_file_source_path_diagnostic": "../meshes/base.ply"}}`; the content type comes from the file extension.
-Mesh file paths are relative to the kinematics file and use forward slashes. `..` is allowed, but URI schemes such as `package://` are not.
+Mesh file paths are relative to the kinematics file and use forward slashes. `..` is allowed, but absolute paths and URI schemes such as `package://` are not.
 Collision meshes must be STL or PLY files; visual meshes can be any format with a file extension, such as GLB.
 Mesh file references work only when the kinematics file is loaded from disk by its path, for example through a fake arm's `model-path` attribute.
 A kinematic model read from bytes, such as a file embedded in a module's binary, has no directory to resolve paths against, so it must carry its mesh contents; a file reference there fails with `mesh "<path>" cannot be read without the directory of the model file`.
@@ -270,9 +270,13 @@ from viam.proto.common import KinematicsFileFormat
 arm = Arm.from_robot(machine, "my-arm")
 kinematics = await arm.get_kinematics()
 
-# On viam-server v1.14.0 and later, the fourth element is the kinematic model.
-model = kinematics[3]
-print(f"Kinematic model: {len(model.links)} links, {len(model.joints)} joints")
+# With viam-server v1.14.0 and later and Python SDK v0.85.0 and later, a
+# fourth element holds the kinematic model when the response has one.
+if len(kinematics) > 3:
+    model = kinematics[3]
+    print(f"Kinematic model: {len(model.links)} links, {len(model.joints)} joints")
+else:
+    print("No kinematic model")
 
 # The first two elements are the deprecated format and file fields.
 print(f"Deprecated format field: {KinematicsFileFormat.Name(kinematics[0])}")
@@ -305,7 +309,7 @@ On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a 
 
 By default, the response also includes three deprecated fields for clients that predate the typed model. New code should read the model instead.
 
-- `format`: the file format, `SVA` or `URDF`.
+- `format`: the file format, `SVA` or `URDF`, or `UNSPECIFIED` when there is no file.
 - `kinematics_data`: the contents of the kinematics file, as bytes.
 - `meshes_by_urdf_filepath`: for a URDF file, the mesh files it references, keyed by path.
 
