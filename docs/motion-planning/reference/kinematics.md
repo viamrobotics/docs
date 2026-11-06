@@ -309,7 +309,7 @@ On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a 
 
 By default, the response also includes three deprecated fields for clients that predate the typed model. New code should read the model instead.
 
-- `format`: the file format, `SVA` or `URDF`, or `UNSPECIFIED` when there is no file.
+- `format`: the file format, `SVA` or `URDF`, or `UNSPECIFIED` when the component has no kinematics.
 - `kinematics_data`: the contents of the kinematics file, as bytes.
 - `meshes_by_urdf_filepath`: for a URDF file, the mesh files it references, keyed by path.
 
