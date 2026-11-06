@@ -107,7 +107,7 @@ Tags are optional.
 
 1. Connect a data client.
    See [Set up a connection](/data/query-data-from-code/#set-up-a-connection) for the setup code.
-   `CreateSequence` only needs an API key with access to the machine part. The other sequence methods, such as `ListSequences` and `AddSequencesToDataset`, need an organization API key.
+   `CreateSequence` only needs an API key with access to the machine part. `ListSequences` returns only the sequences the API key can read: a location API key lists that location's sequences, and a machine API key lists that machine's. `AddSequencesToDataset`, `RemoveSequencesFromDataset`, and `SequencesByDatasetID` need an organization API key. The other sequence methods work with any API key that can access the sequence's machine.
 2. Find the part ID.
    At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
 3. Find when the data was captured.
@@ -180,6 +180,8 @@ To copy a sequence's ID, click the **Sequence actions** menu on its row and sele
 
 From code, `ListSequences` lists the sequences in an organization and `GetSequence` returns one by ID. The Python, TypeScript, and Go SDKs have these methods.
 `ListSequences` returns one page at a time, 50 sequences by default, with a token for the next page. To list every sequence, pass that token back until it comes back empty.
+Sequences come back newest first, by start time.
+A machine API key also lists the sequences that machine recorded while it was in an earlier location.
 `GetSequenceBinaryData` returns the images inside a sequence, from Python or TypeScript.
 There is no API for a sequence's readings. View them in the Viam app, or [export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 See the [data client API](/reference/apis/data-client/).

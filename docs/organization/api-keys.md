@@ -215,6 +215,16 @@ _, _, err := client.RenameKey(ctx, "<api-key-id>", "new-descriptive-name")
 ## Delete a key
 
 {{< tabs >}}
+{{% tab name="CLI" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam locations api-key delete --key-id=<api-key-id>
+```
+
+`viam machines api-key delete --key-id=<api-key-id>` does the same.
+Both commands delete the key with the given ID, whatever its scope.
+
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python

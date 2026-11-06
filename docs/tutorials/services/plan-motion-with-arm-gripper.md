@@ -5,7 +5,7 @@ type: "docs"
 weight: 40
 description: "Use the motion service to move a robot arm and gripper."
 capabilities: ["motion-planning", "hw-arm", "docs"]
-diataxis: tutorial
+diataxis: workshop
 videos:
   [
     "/tutorials/videos/motion_armmoving.webm",
