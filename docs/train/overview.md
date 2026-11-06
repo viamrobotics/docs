@@ -48,6 +48,8 @@ What goes in it depends on the model: images you [label](/train/annotate-data/) 
 **3. Train.**
 A training job reads the dataset in the cloud and publishes the result as a new model version in your organization's registry.
 [Built-in training](/train/train-a-model/) needs no code; a [custom training script](/train/custom-training-scripts/) runs your own code.
+When the job starts, Viam snapshots the dataset, so the model trains on exactly the data and labels the dataset held at that moment.
+You can keep changing the dataset without affecting jobs already running or models already trained.
 
 **4. Evaluate.**
 Before you deploy a classification or detection model, [evaluate it](/train/evaluate-a-model/) on labeled images it wasn't trained on.
@@ -64,7 +66,8 @@ Other models are used through the module that runs them.
 While the model runs, the machine keeps capturing data, including the cases where the model gets it wrong.
 
 **Retrain.**
-You add data from the cases where the model struggles to the dataset, train a new version, and machines configured to use the model pick it up.
+In cases where the model struggles, you add data to the dataset and train a new version.
+A machine whose configuration uses the model's `latest` version downloads the new version automatically, with no manual download or restart.
 For vision models, [auto-predictions](/train/automate-annotation/) let an existing model draft labels for new images, so each round takes less hand-labeling.
 Evaluating each version on the same test dataset shows whether the new one is better.
 

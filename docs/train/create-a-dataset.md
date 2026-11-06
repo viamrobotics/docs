@@ -172,6 +172,8 @@ viam organizations api-key create --org-id=YOUR-ORGANIZATION-ID --name=training
 You can also find your organization ID by clicking your organization name in
 the top navigation bar and then clicking **Settings**.
 
+To find an existing dataset's ID, open it in the [**DATASETS** tab](https://app.viam.com/data/datasets), run `viam dataset list`, or call [`ListDatasetsByOrganizationID`](/reference/apis/data-client/#listdatasetsbyorganizationid).
+
 ## Add data
 
 How you add data depends on the dataset type.

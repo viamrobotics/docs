@@ -30,7 +30,8 @@ A model's [framework](/train/overview/#framework) decides which resource runs it
 | **Registry**   | The module the training script names                                     | The resource the training script names | Whatever the module supports                         |
 
 The first four are ML model services (API `rdk:service:mlmodel`).
-To run a TensorFlow, PyTorch or ONNX model on an Nvidia GPU, configure the [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) ML model service instead.
+To run a TensorFlow, PyTorch or ONNX model on an Nvidia Jetson GPU, configure the [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) ML model service instead.
+You can configure `triton` to use either the CPU or the GPU at runtime.
 Each module's README lists the model files and tensor shapes it expects.
 
 A **Registry** model runs in the module resources its training script named when the script was uploaded to the registry.

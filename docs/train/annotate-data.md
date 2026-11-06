@@ -182,6 +182,8 @@ await data_client.update_sequence(
 )
 ```
 
+The SDK builds the field mask from the arguments you pass, so you don't set it yourself.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -191,7 +193,7 @@ if err != nil {
     logger.Fatal(err)
 }
 err = dataClient.UpdateSequence(ctx, "<sequence-id>", &app.UpdateSequenceOptions{
-    SequenceTags: append(sequence.SequenceTags, "pick-up-cup"),
+    SequenceTags: append(slices.Clone(sequence.SequenceTags), "pick-up-cup"),
     FieldMask:    []string{"sequence_tags"},
 })
 if err != nil {
@@ -208,10 +210,10 @@ The field mask is required. It names the fields to change.
 const sequence = await dataClient.getSequence("<sequence-id>");
 await dataClient.updateSequence(
   "<sequence-id>",
-  undefined,
+  undefined, // resources
   [...sequence.sequenceTags, "pick-up-cup"],
-  undefined,
-  undefined,
+  undefined, // startTime
+  undefined, // endTime
   { paths: ["sequence_tags"] },
 );
 ```
