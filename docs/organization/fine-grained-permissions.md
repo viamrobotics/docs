@@ -49,6 +49,13 @@ If a change to the rules removes a caller's access, `viam-server` also closes th
 
 ## Define an access policy
 
+{{< alert title="Caution" color="caution" >}}
+Access policies need `viam-server` v1.14.0 or later.
+On an older version, the app sends the machine no rules, so nothing is enforced and a Member API key has full access to the machine.
+The app warns you when a part runs an older version.
+Upgrade `viam-server` before you rely on a policy.
+{{< /alert >}}
+
 Add an `access_policy` section at the top level of the machine's JSON configuration, next to `components` and `services`.
 It holds a list of grants.
 Each grant gives a set of subjects permission to call a set of methods on a set of resources:
@@ -97,6 +104,10 @@ Set `basic_connection` to `true` on a grant for every member, or the member can'
 A member named in no grant can't call anything.
 Resource names aren't checked when you save, so a mistyped name saves and grants nothing.
 
+If a member's SDK can't connect and reports only a generic connection error, check the machine's logs for `unauthorized request` warnings.
+The warning names the method and the key.
+The usual cause is a member in no grant, or a grant without basic connection.
+
 ### Cameras
 
 Streaming video from a camera uses methods on the stream service, not the camera service.
@@ -131,7 +142,7 @@ Because a sub-part's policy doesn't limit what the main part forwards, control a
 
 <!-- TODO(verify, DOCS-4936): the multi-part behavior above was observed on one test machine on 2026-11-06 (viam-server v1.15.0, a main part and a sub-part): a member with a grant only in the main part's policy reached the sub-part's camera through the main part and could not connect directly to the sub-part. A grant on `<sub-part>:<name>` also saved and compiled but matched nothing, since the main part exposes the sub-part's resources by plain name. Still open: two parts with the same resource name, a remote configured by hand with a prefix, and a fragment imported with a prefix. Test plan: "Cloud, multi-part" in the description of PR 5429. -->
 
-<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org (the flag is on in the viam-dev org). Test plan: "Cloud, single part" in the description of PR 5429. The schema is read from the app's data/access_policy.go on main as of 2026-11-06. Version behavior, from the app source (access_policy_render.go) and seen in the app UI on 2026-11-06: a part below viam-server v1.14.0, or with an unknown version, is sent no rules and stays unrestricted, and the Create API key form warns that a Member key then has full access until the part is upgraded. This section doesn't state that minimum or warning yet; decide whether it should (I recommend yes, since a Member key on an older machine is unrestricted). Delete this comment when the items pass. -->
+<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org (the flag is on in the viam-dev org). Test plan: "Cloud, single part" in the description of PR 5429. The schema is read from the app's data/access_policy.go on main as of 2026-11-06. Version behavior, from the app source (access_policy_render.go) and seen in the app UI on 2026-11-06: a part below viam-server v1.14.0, or with an unknown version, is sent no rules and stays unrestricted, and the Create API key form warns that a Member key then has full access until the part is upgraded. The Caution at the top of this section states that minimum and warning; still unchecked is that a v1.14.0 release candidate counts as too old. Delete this comment when the items pass. -->
 
 ## Define permissions in a local configuration file
 
