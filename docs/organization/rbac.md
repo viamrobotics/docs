@@ -15,6 +15,7 @@ no_list: true
 
 Role-Based Access Control (RBAC) is a way to enforce security by assigning users in your organization or [API keys](/organization/api-keys/) roles that confer permissions.
 You can assign an owner or an operator role for an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
+You can also give users the Member role at the organization or location level, and give an API key the Member role on a machine.
 
 - **Owner**: Can see and edit every tab on the machine page and perform equivalent operations from the APIs.
 - **Operator**: Can see and use only the **CONTROL** tab and perform equivalent operations from the APIs.
@@ -25,7 +26,7 @@ You can assign an owner or an operator role for an {{< glossary_tooltip term_id=
 
 An access policy never limits owners or operators; it only limits members.
 
-<!-- TODO(verify, DOCS-4936): which levels offer Member and the role picker wording. The sentence above the role list ("You can assign an owner or an operator role...") names only two roles and needs updating once the levels are known; test plan "App" in the description of PR 5429. Checked 2026-10-20: CLI 1.13.0 has no way to create invites or pick a role for an API key; `viam machines api-key create` makes an Owner key on the machine, so the app UI is the only path to a Member once it ships. Decided 2026-10-15: no Member columns in the permission tables below; a member's permissions are whatever its grants say, so the tables link to Fine-grained permissions instead. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
+<!-- TODO(verify, DOCS-4936): the role picker wording. The levels sentence under the intro was written from what the app showed in the viam-dev org on 2026-11-06 with the flag on: invites offer Member at the organization and location levels (no machine-level invite), and an API key can be a Member only on a machine, not at the organization or location level. Confirm when the flag is on generally; test plan "App" in the description of PR 5429. Checked 2026-10-20: CLI 1.13.0 has no way to create invites or pick a role for an API key; `viam machines api-key create` makes an Owner key on the machine, so the app UI is the only path to a Member once it ships. Decided 2026-10-15: no Member columns in the permission tables below; a member's permissions are whatever its grants say, so the tables link to Fine-grained permissions instead. Don't merge until the Member role is selectable in the app (APP-18113, flag in app#13426). -->
 
 Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the roles with the three levels to create access patterns:
 

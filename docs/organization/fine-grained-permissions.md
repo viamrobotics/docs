@@ -22,10 +22,11 @@ Viam compiles it into rules that `viam-server` enforces on every request from a 
 
 Owners and operators have machine-wide permission: they can call every method on every resource of the machine, and an access policy never limits them.
 A member has no machine-wide permission.
-A member can call only the methods that a grant allows, on the resources the grant names, plus the methods needed to connect, described below.
+A member can call only the methods that a grant allows, on the resources the grant names, plus the methods needed to connect if the grant turns on basic connection, described below.
 
 To let a user or API key make specific calls, give it the **Member** role, then name it in a grant.
 A grant that names anyone who isn't a member is ignored.
+A policy has no effect until the machine has a member: a machine with no members gets no rules from the app, so no one is restricted.
 See [Role-based access control](/organization/rbac/) for how roles are assigned.
 
 ## How a call is evaluated
@@ -57,10 +58,16 @@ Each grant gives a set of subjects permission to call a set of methods on a set 
   "access_policy": {
     "grants": [
       {
+        "name": "Image viewer",
         "subjects": [{ "type": "api-key-id", "id": "<API-KEY-ID>" }],
-        "resources": ["cam1"],
-        "allowed_methods": [
-          "/viam.component.camera.v1.CameraService/GetImages"
+        "basic_connection": true,
+        "permissions": [
+          {
+            "resources": ["cam1"],
+            "allowed_methods": [
+              "/viam.component.camera.v1.CameraService/GetImages"
+            ]
+          }
         ],
         "notes": "Image viewer key reads cam1 only."
       }
@@ -72,18 +79,23 @@ Each grant gives a set of subjects permission to call a set of methods on a set 
 <!-- prettier-ignore -->
 | Field | Description |
 | ----- | ----------- |
+| `name` | Optional label for the grant. A name must be unique within the policy. |
 | `subjects[].type` | `api-key-id` for an API key, or `app-user-id` for a Viam user. |
 | `subjects[].id` | The API key ID (not the key itself), or the user ID. The subject must hold the **Member** role for the grant to take effect. |
-| `resources` | Resource names the methods may be called on, such as `cam1`. Use `_machine` for methods that don't address a single resource, such as `RobotService` methods. Use `*` for every resource. |
-| `allowed_methods` | Fully qualified method names, such as `/viam.component.camera.v1.CameraService/GetImages`. Use `/viam.component.camera.v1.CameraService/*` for every method of one service, or `*` for every method. |
+| `basic_connection` | Set to `true` to give the grant's subjects the methods a client needs to connect to the machine and read its status. Without it, an SDK can't connect. |
+| `permissions[].resources` | Resource names the methods may be called on, such as `cam1`. Use `_machine` for methods that don't address a single resource, such as `RobotService` methods. Use `*` for every resource. |
+| `permissions[].allowed_methods` | Fully qualified method names, such as `/viam.component.camera.v1.CameraService/GetImages`. Use `/viam.component.camera.v1.CameraService/*` for every method of one service, or `*` for every method. |
 | `notes` | Optional free text explaining why the grant exists. Ignored when the policy is compiled. |
 
-A wildcard must be a whole segment.
-`cam*` and `/viam.component.camera.v1.CameraService/Get*` are rejected when you save.
-A grant needs at least one subject and one resource, and a field the section doesn't define is rejected, so a typo fails at save instead of silently doing nothing.
+A grant can have several `permissions`, each with its own resources and methods.
+A resource, `*`, or `_machine` can appear in only one permission of a grant.
+A wildcard must be a whole segment: `cam*` and `/viam.component.camera.v1.CameraService/Get*` are rejected when you save.
+A field the section doesn't define is rejected too, so a typo fails at save instead of silently doing nothing.
+A grant with no subjects or no permissions saves, but grants nothing.
 
-A member named in a grant can also call the methods an SDK needs to connect to the machine and read its status, so you don't grant them.
-A member named in no grant can't call anything, including those.
+Set `basic_connection` to `true` on a grant for every member, or the member can't connect.
+A member named in no grant can't call anything.
+Resource names aren't checked when you save, so a mistyped name saves and grants nothing.
 
 ### Find a method name
 
@@ -106,7 +118,7 @@ In that grant, name the resource by its plain name, such as `cam2`, or as `<sub-
 
 <!-- TODO(verify, DOCS-4936): multi-part behavior is read from the activation PR's code (app#13426, `renderUserPermissions`), not tested. Test plan: "Cloud, multi-part" in the description of PR 5429, including whether a forwarded call is checked against the sub-part's policy. Ask the engineers before describing how the two policies interact. -->
 
-<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org. Test plan: "Cloud, single part" in the description of PR 5429. The compiler (app#13423) and activation (app#13426) had not merged when this was drafted. Delete this comment when those items pass. -->
+<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org (the flag is on in the viam-dev org). Test plan: "Cloud, single part" in the description of PR 5429. The schema is read from the app's data/access_policy.go on main as of 2026-11-06. Decide with engineering whether this section states a minimum viam-server version: per the RDK PR 6711 description, the app emits `users` entries unconditionally, so a machine below v1.15.0 skips them and denies every inbound call while a policy is attached; ask how the app's older-version banner handles v1.8 to v1.14. Delete this comment when the items pass. -->
 
 ## Define permissions in a local configuration file
 
@@ -168,6 +180,12 @@ Each entry has a `user` and a list of `permissions`:
 
 The `user` types are `api-key-id`, `app-user-id`, and `default`.
 Leave out the `id` of a `default` entry.
+
+To give the same permissions to several users, list them in `users` instead of `user`.
+If an entry has both, only `users` applies.
+A user can appear in only one entry, counting both fields.
+`users` needs `viam-server` v1.15.0 or later: an older version skips an entry that has only `users`.
+
 Resources and methods work as in an access policy, except that `user_permissions` takes exact names only: it has no wildcards.
 See [Find a method name](#find-a-method-name) for how to look up exact names.
 
