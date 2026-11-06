@@ -221,7 +221,7 @@ Add images to a dataset using filter criteria:
 ```bash
 viam dataset data add filter \
   --dataset-id=YOUR-DATASET-ID \
-  --location-id=YOUR-LOCATION-ID \
+  --location-ids=YOUR-LOCATION-ID \
   --tags=label1,label2
 ```
 

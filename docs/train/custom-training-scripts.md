@@ -294,19 +294,24 @@ If the container fails to start, check that Docker Desktop has Rosetta emulation
 
 ### Run without Docker {#run-without-docker}
 
-To check the script quickly, or to test a script for a sequence dataset, run it directly with Python, from inside `my-training/`.
+To check the script quickly, or to test a script for a sequence dataset, run it directly with Python.
 This doesn't use the training container, so install your dependencies locally first.
 
 {{< tabs >}}
 {{% tab name="Binary dataset" %}}
 
+The image paths in `dataset.jsonl` are relative to the directory you ran `viam dataset export` from, so run the script from there:
+
 ```sh {class="command-line" data-prompt="$"}
-python3 -m model.training --dataset_file=<path/to/dataset.jsonl> \
+PYTHONPATH=my-training python3 -m model.training \
+    --dataset_file=<destination>/dataset.jsonl \
     --model_output_directory=<output-dir> --num_epochs=1
 ```
 
 {{% /tab %}}
 {{% tab name="Sequence dataset" %}}
+
+Run the script from inside `my-training/`:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m model.training \
