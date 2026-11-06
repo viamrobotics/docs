@@ -26,9 +26,11 @@ A simulated machine appears in the Viam app like any other machine: you configur
 2. In the setup wizard, choose to simulate your machine instead of installing Viam on a device.
 3. Read the notes about billing and limits, then click **Start simulation**.
 
-The wizard shows the simulation's progress as it starts, including how long it has waited for a GPU-enabled machine.
-When many simulations start at once, that wait can take 10 to 20 minutes, and Viam keeps trying for up to an hour before the start fails.
-If the start takes longer than three minutes, Viam emails you once the simulation's container is up, so you don't need to keep the page open.
+The wizard shows the simulation's progress as it starts.
+Most simulations are ready in a minute or two.
+When many people start simulations at once, there can be a wait for a GPU-enabled machine, and the wizard shows how long it has waited.
+That wait can take 10 to 20 minutes, and Viam keeps trying for up to an hour before the start fails.
+If the start takes longer than three minutes, Viam emails you once the simulation is ready, so you don't need to keep the page open.
 When it's ready, the machine comes online and you can configure it like any other machine.
 See [Configure hardware](/hardware/configure-hardware/) for how to add components.
 If a simulation fails to start, the wizard shows the error and lets you try again.
