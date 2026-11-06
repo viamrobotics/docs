@@ -435,21 +435,24 @@ invocations; the DoCommand payload can vary with each call.
 
 ### 6. Save and deploy
 
-Each save creates a new version in your module's history. You can switch between
-versions using the version dropdown in the editor toolbar.
+Edit your code in the module's code card on the machine's **CONFIGURE** tab,
+then save the machine's configuration. Each save creates a new version in your
+module's history. You can switch between versions using the version dropdown in
+the editor toolbar.
 
-What happens after you save depends on the module's language:
+What happens next depends on the module's language:
 
-- **Go:** Click **Save & Deploy** in the code editor toolbar. Viam uploads your
-  code as a new version and starts a cloud build. Builds typically take 2-5
-  minutes. You can continue editing while a build runs -- your next save
-  creates a new version. If the build fails, click **View Logs** to see what
-  went wrong.
-- **Python:** There is no cloud build. When you save the machine's
-  configuration on its **CONFIGURE** tab, Viam uploads your source and the
-  machine restarts the module with the new code. Saving from the standalone
-  code editor (**Save & Deploy**) stores a new version but doesn't deploy it to
-  a machine. Saved Python code isn't deployed to Windows machines.
+- **Go:** The save starts a cloud build. Builds typically take 2-5 minutes. You
+  can continue editing while a build runs -- your next save creates a new
+  version. If the build fails, click **View Logs** to see what went wrong.
+- **Python:** There is no cloud build. Viam uploads your source, and the
+  machine restarts the module with the new code. Python code isn't deployed to
+  Windows machines.
+
+The standalone code editor has a **Save & Deploy** button that also saves a new
+version. For a Go module, it starts the same cloud build. For a Python module,
+it only stores the version: the code reaches the machine the next time you save
+an edit to the module from the **CONFIGURE** tab.
 
 ### 7. Test on a machine
 
@@ -546,7 +549,7 @@ Only Go modules are built in the cloud.
   code editor, or that the module appears in the machine's configuration.
 - The module version defaults to `latest`. After a successful build, the machine
   picks up the new version of a Go module automatically within a few minutes.
-- A Python module is deployed when you save the machine's configuration on its
+- A Python module is deployed when you save an edit to it from the machine's
   **CONFIGURE** tab, not when you save in the standalone code editor.
 
 {{< /expand >}}
@@ -565,12 +568,14 @@ Only Go modules are built in the cloud.
 
 - For a Go module, make sure the build completed successfully. Check the build
   progress bar in the code editor.
-- For a Python module, save the machine's configuration on its **CONFIGURE**
-  tab. Saving in the standalone code editor doesn't deploy the new code.
+- For a Python module, make your edits in the module's code card on the
+  machine's **CONFIGURE** tab and save there. Code saved in the standalone code
+  editor reaches the machine only after another edit is saved from
+  **CONFIGURE**.
 - The machine must be online to receive the updated module. Check the machine's
   status in the Viam app.
 - By default, modules are configured with version `latest`, which means every
-  new build deploys automatically. If the version is pinned, update it manually.
+  new Go build deploys automatically. If the version is pinned, update it manually.
 
 {{< /expand >}}
 

@@ -107,13 +107,13 @@ in your own git repository, and deploy through the Viam CLI or GitHub Actions.
 Use externally managed modules when you need your own source control, public
 distribution, or custom build pipelines.
 
-|                          | Inline                            | Externally managed                           |
-| ------------------------ | --------------------------------- | -------------------------------------------- |
-| **Where you write code** | Browser editor in the Viam app    | Your own IDE, locally or in a repo           |
-| **Source control**       | Managed by Viam                   | Your own git repository                      |
-| **Build system**         | Cloud build on save (Go only)     | Cloud build (GitHub Actions) or local builds |
-| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...) | You choose semantic versions                 |
-| **Visibility**           | Private to your organization      | Private or public                            |
+|                          | Inline                                 | Externally managed                           |
+| ------------------------ | -------------------------------------- | -------------------------------------------- |
+| **Where you write code** | Browser editor in the Viam app         | Your own IDE, locally or in a repo           |
+| **Source control**       | Managed by Viam                        | Your own git repository                      |
+| **Build system**         | Cloud build on save (Go only)          | Cloud build (GitHub Actions) or local builds |
+| **Versioning**           | Automatic (each save is a new version) | You choose semantic versions                 |
+| **Visibility**           | Private to your organization           | Private or public                            |
 
 Both types run identically at runtime, as child processes communicating with
 `viam-server` over gRPC.

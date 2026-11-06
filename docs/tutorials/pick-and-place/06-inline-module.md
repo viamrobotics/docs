@@ -199,9 +199,9 @@ Saving an inline Python module doesn't start a cloud build. Viam uploads your so
 
 With the code in place, save the machine's configuration. The Viam app packages your code and deploys it to the machine, and the **Logs** tab shows the module restarting the same way it showed module downloads back in Phase 2.
 
-<!-- ASSET P1 logs-cloud-build (UI): Logs showing the ~1 min cloud build + module start -->
+<!-- ASSET P1 logs-cloud-build (UI): Logs showing the module restarting after a save (recapture: Python inline modules no longer cloud-build) -->
 
-{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module cloud build.">}}
+{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module starting on the machine.">}}
 
 {{< checkpoint >}}
 The module starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the module fails to start, read the error in the **Logs** tab; a missing import or a syntax error carried over from the script is the most common cause.
