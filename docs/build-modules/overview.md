@@ -99,7 +99,7 @@ There are two ways to develop and deploy modules:
 browser-based editor. Viam manages source code, builds, versioning, and
 deployment. When you save, Viam deploys the module to your machine
 automatically: Go modules are built in the cloud first, and Python modules run
-from source with no build step. Inline modules are the fastest way
+from source with no build step when you save the machine's configuration. Inline modules are the fastest way
 to get started, especially for prototyping and simple control logic.
 
 **Externally managed modules** are modules you develop in your own IDE, manage

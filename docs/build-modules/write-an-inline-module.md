@@ -452,7 +452,9 @@ What happens next depends on the module's language:
 The standalone code editor has a **Save & Deploy** button that also saves a new
 version. For a Go module, it starts the same cloud build. For a Python module,
 it only stores the version: the code reaches the machine the next time you save
-an edit to the module from the **CONFIGURE** tab.
+an edit to the module from the **CONFIGURE** tab. Saving a Python module in a
+fragment also stores a new version without deploying it to machines that use
+the fragment.
 
 ### 7. Test on a machine
 
