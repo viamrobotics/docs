@@ -87,14 +87,15 @@ Each grant gives a set of subjects permission to call a set of methods on a set 
 | Field | Description |
 | ----- | ----------- |
 | `name` | Optional label for the grant. A name must be unique within the policy. |
-| `subjects[].type` | `api-key-id` for an API key, or `app-user-id` for a Viam user. |
+| `subjects[].type` | `api-key-id` for an API key, or `app-user-id` for a Viam user. Any other type is rejected when you save. |
 | `subjects[].id` | The API key ID (not the key itself), or the user ID. The subject must hold the **Member** role for the grant to take effect. |
 | `basic_connection` | Set to `true` to give the grant's subjects the methods a client needs to connect to the machine and read its status. Without it, an SDK can't connect. |
-| `permissions[].resources` | Resource names the methods may be called on, such as `cam1`. Use `_machine` for methods that don't address a single resource, such as `RobotService` methods. Use `*` for every resource. |
+| `permissions[].resources` | Resource names the methods may be called on, such as `cam1`. Use `_machine` for methods that don't address a single resource, such as `RobotService` methods. Use `*` for every resource, which includes `_machine`. |
 | `permissions[].allowed_methods` | Fully qualified method names, such as `/viam.component.camera.v1.CameraService/GetImages`. Use `/viam.component.camera.v1.CameraService/*` for every method of one service, or `*` for every method. |
 | `notes` | Optional free text explaining why the grant exists. Ignored when the policy is compiled. |
 
 A grant can have several `permissions`, each with its own resources and methods.
+A permission needs at least one resource.
 A resource, `*`, or `_machine` can appear in only one permission of a grant.
 A wildcard must be a whole segment: `cam*` and `/viam.component.camera.v1.CameraService/Get*` are rejected when you save.
 A field the section doesn't define is rejected too, so a typo fails at save instead of silently doing nothing.
@@ -136,13 +137,16 @@ Callers usually reach a sub-part's resources through the machine's main part, an
 A sub-part's policy applies only to calls made directly to the sub-part.
 
 To let a member call a sub-part's resource through the main part, put the grant in the main part's access policy and name the resource by its plain name, such as `cam2`.
-Don't use the `<sub-part>:<name>` form for a sub-part: it saves, and the editor warns that it can't find the resource, but it never matches a call.
+The app adds a sub-part to the main part without a prefix, so a grant on the `<sub-part>:<name>` form saves, and the editor warns that it can't find the resource, but it matches no call.
 The main part's policy editor doesn't list a sub-part's resources, so add that grant in JSON mode.
 Because a sub-part's policy doesn't limit what the main part forwards, control access to a sub-part's resources in the main part's policy.
 
-<!-- TODO(verify, DOCS-4936): the multi-part behavior above was observed on one test machine on 2026-11-06 (viam-server v1.15.0, a main part and a sub-part): a member with a grant only in the main part's policy reached the sub-part's camera through the main part and could not connect directly to the sub-part. A grant on `<sub-part>:<name>` also saved and compiled but matched nothing, since the main part exposes the sub-part's resources by plain name. Still open: two parts with the same resource name, a remote configured by hand with a prefix, and a fragment imported with a prefix. Test plan: "Cloud, multi-part" in the description of PR 5429. -->
+Give resources on different parts different names.
+If the main part and a sub-part both have a resource with the same name, the main part logs a name collision error, and the sub-part's resource is hidden behind the main part's own.
 
-<!-- TODO(verify, DOCS-4936): everything in this section is unverified until it runs on a flag-enabled org (the flag is on in the viam-dev org). Test plan: "Cloud, single part" in the description of PR 5429. The schema is read from the app's data/access_policy.go on main as of 2026-11-06. Version behavior, from the app source (access_policy_render.go) and seen in the app UI on 2026-11-06: a part below viam-server v1.14.0, or with an unknown version, is sent no rules and stays unrestricted, and the Create API key form warns that a Member key then has full access until the part is upgraded. The Caution at the top of this section states that minimum and warning; still unchecked is that a v1.14.0 release candidate counts as too old. Delete this comment when the items pass. -->
+<!-- TODO(verify, DOCS-4936): the multi-part behavior above was observed on a test machine on 2026-11-06 (viam-server v1.15.0, a main part and a sub-part; see the "Cloud, multi-part" items in the test plan in PR 5429). A name collision was observed too: the main part logged "Resource name collision with a remote resource; the remote resource will be hidden until the collision is fixed. Rename the resource or add a prefix to the remote", and which camera answered a call was inferred, not proven. Still open: a remote configured by hand with a prefix, where `<sub-part>:<name>` could be the real name, and a fragment imported with a prefix. -->
+
+<!-- TODO(verify, DOCS-4936): the cloud behavior in this section was checked on 2026-11-06 in the viam-dev org (flag on); the checked items are in the test plan in PR 5429. The schema is read from the app's data/access_policy.go on main. Version behavior is from the app source (access_policy_render.go) and the app UI: a part below viam-server v1.14.0, or with an unknown version, is sent no rules, and the Caution at the top of this section says so. Still unchecked: that a v1.14.0 release candidate counts as too old, that grants from fragments combine as the page says, operators as distinct from owners, a member viewing video, removing a grant closing open streams, and turning the flag off. Delete this comment when those pass. -->
 
 ## Define permissions in a local configuration file
 
@@ -253,6 +257,6 @@ A `default` entry covers any authenticated caller that has no entry of its own:
 A caller's own entry replaces the `default` entry, it doesn't add to it.
 The Viam app's access policy has no `default` entry.
 
-<!-- TODO(verify, DOCS-4936): the handler sample comes from a code comment in RDK config.go and the ID match from authorization.go, neither tested live, and neither is the claim that an entry without the six connection methods stops an SDK from connecting. Test plan: "Local config file" in the description of PR 5429. -->
+<!-- TODO(verify, DOCS-4936): the local-config behavior was checked on 2026-11-06 against a local viam-server v1.15.0 (see the "Local config file" items in the test plan in PR 5429). Still unverified: whether an `app-user-id` entry matches an app user, the signaling and reflection exemptions, that `user_permissions` takes no wildcards, and that an older viam-server skips an entry that has only `users`. -->
 
 <!-- TODO(DOCS-4936): content from the closed docs PR 5389 not carried over yet. (1) Where to find the IDs a grant needs: an API key ID from the API keys page, a user ID from the `user_id` field of `ListOrganizationMembers` (`GetUserIDByEmail` is Viam-staff only). (2) A caution that app pages such as the CONTROL tab connect as your user, so a member opening them needs grants for the methods those pages call; the `unauthorized request` logs list them. (3) The claim that calls from modules running on the machine aren't checked, which was never verified. -->
