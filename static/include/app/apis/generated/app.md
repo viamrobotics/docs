@@ -2894,6 +2894,9 @@ Set individual properties in a machine {{< glossary_tooltip term_id="part" text=
 
 Paths are dot-separated, such as `network.bind_address`.
 In `components`, `services`, `jobs`, `remotes`, `triggers`, `modules`, and `packages`, the second segment names the resource by name or ID, such as `components.my-camera.attributes.width_px`.
+In `fragments` and `fragment_mods`, the second segment is the fragment ID, such as `fragments.<fragment-id>.version`.
+If the part imports the same fragment more than once, name one import in `fragments` as `<fragment-id>@<prefix>`. A fragment mod applies to every import of its fragment, so `fragment_mods` paths can't name a prefix.
+Fragment imports and fragment mods are always set in the part's own configuration, even if a fragment the part imports also imports that fragment.
 
 **Where a change is saved:**
 
