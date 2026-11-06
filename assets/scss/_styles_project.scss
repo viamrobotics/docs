@@ -35,9 +35,9 @@ div.footnotes > ol > li > p {
 }
 
 @media (max-width: 991.98px) {
-    .td-navbar .td-navbar-nav-scroll {
-      margin: 0;
-    }
+  .td-navbar .td-navbar-nav-scroll {
+    margin: 0;
+  }
 }
 
 .td-navbar .navbar-brand {
@@ -137,10 +137,6 @@ html {
 .td-content {
   min-height: 92%;
   max-width: 1000px;
-}
-
-.frontpage > h2 {
-  margin-top: 1rem;
 }
 
 h3,
@@ -2777,12 +2773,6 @@ h3.body-header[style] {
   margin-right: 1rem;
 }
 
-// Front page styling START
-
-.frontpage h2 {
-  margin-bottom: 1rem;
-}
-
 // Image and text START
 
 .front-card-container {
@@ -3813,34 +3803,10 @@ footer {
   margin-right: 0rem !important;
 }
 
-@media (min-width: 768px) {
-  aside.td-sidebar.frontpage {
-    border-right: unset;
-    display: none;
-  }
-}
-
 @media (max-width: 767px) {
   .row.flex-xl-nowrap {
     flex-direction: column;
   }
-}
-
-.td-main main.frontpage {
-  padding-bottom: 0 !important;
-  margin: auto;
-  margin-top: 2rem;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
-  display: flex;
-  flex-direction: column-reverse;
-  align-content: center;
-  flex-wrap: wrap;
-}
-
-.frontpage .col.hover-card {
-  margin-left: auto !important;
-  margin-right: auto !important;
 }
 
 .copied {
@@ -4662,3 +4628,5 @@ footer {
   color: #9c9ca4;
   margin-left: 0.25rem;
 }
+
+@import "homepage";

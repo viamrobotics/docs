@@ -896,11 +896,12 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 ## `locations`
 
 The `locations` command allows you to manage the [locations](/reference/) that you have access to.
-With it, you can list available locations, filter locations by organization, or create a new location API key.
+With it, you can list available locations, filter locations by organization, or create and delete location API keys.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [--organization=<organization>]
 viam locations api-key create [--location-id=<location-id>] [--name=<name>] [--org-id=<org-id>]
+viam locations api-key delete --key-id=<key-id>
 ```
 
 ### `locations list`
@@ -930,6 +931,22 @@ viam locations api-key create --location-id=<location-id>
 | `--location-id` | The location to create an API key for. Default: the default location set with `viam defaults set-location`. | Optional |
 | `--name` | The name of the API key. Default: your login info with the current time. | Optional |
 | `--org-id` | The organization ID to attach the key to. Default: attempts to attach the key to the org of the location if only one org is attached to the location. | Optional |
+
+### `locations api-key delete`
+
+Delete an API key by its ID.
+
+```sh {class="command-line" data-prompt="$"}
+viam locations api-key delete --key-id=<key-id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--key-id` | The ID of the API key to delete. | **Required** |
+
+The command deletes the key with this ID and does not check that the key belongs to a location.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ## `login`
 
@@ -1003,6 +1020,7 @@ viam machines list
 viam machines status --machine=<machine id>
 viam machines logs --machine=<machine id> [...named args]
 viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
+viam machines api-key delete --key-id=<key id>
 viam machines part list --machine=<machine id>
 viam machines part logs --part=<part id> [...named args]
 viam machines part status --part=<part id>
@@ -1116,7 +1134,7 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago, unless `--range` is set. | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours before `--end` when `--end` is set, otherwise 24 hours ago. Not applied when `--range` is set. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
 | `--range` | Duration string in minutes, hours, or days (for example, `10m`, `10h`, `10d`) that sets a relative time window. Resolved against whichever of `--start` and `--end` is present: with only `--end`, the window is `[end - range, end]`; with only `--start`, the window is `[start, start + range]`; with neither, the window is `[now - range, now]`. Cannot be used together with both `--start` and `--end`. | Optional |
 | `--order` | Order in which logs are returned by time. Accepted values: `asc` (oldest first), `desc` (newest first). Default: `desc`. | Optional |
@@ -1140,6 +1158,23 @@ viam machines api-key create --machine-id=123 --name=MyKey
 | -------- | ----------- | --------- |
 | `--machine-id` | The ID of the machine to create an API key for. | **Required** |
 | `--name` | The optional name of the API key. If omitted, a name will be auto-generated. | Optional |
+
+### `machines api-key delete`
+
+Delete an API key by its ID.
+
+```sh {class="command-line" data-prompt="$"}
+# delete an API key
+viam machines api-key delete --key-id=abcdef12-3456-7890-abcd-ef1234567890
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--key-id` | The ID of the API key to delete. | **Required** |
+
+The command deletes the key with this ID and does not check that the key belongs to a machine.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ### `machines part list`
 
@@ -2707,7 +2742,7 @@ viam packages upload --path=./the_package.tar.gz --org-id=123 --name=MyMLModel -
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
 | `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | Required if `--type=ml_model` |
 | `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--model-framework=registry`, and not allowed with any other framework. | Optional |
-| `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | Required if `--type=ml_model` |
+| `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`. | Required if `--type=ml_model` |
 
 ### `packages export`
 
@@ -3046,7 +3081,7 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--container-id` | The ID of the training container to run the job in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
 | `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`. | **Required** |
 | `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
-| `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | Optional |
+| `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`, or `unspecified`. | Optional |
 | `--version` | The version of the ML training script to upload. Default: current timestamp. | Optional |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
@@ -3192,7 +3227,7 @@ viam training-script upload --framework=tflite --org-id=123 --path=. --script-na
 | `--framework` | Framework of the ML training script to upload, can be `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | **Required** |
 | `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 | `--url` | URL of GitHub repository associated with the training script. | Optional |
-| `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | Optional |
+| `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, `object_detection`, or `robot_policy`. | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | Optional |
 | `--visibility` | Visibility of the training script. Options: `public`, `private`. | Optional |
 

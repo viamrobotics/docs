@@ -287,14 +287,12 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-cpuprofile string` | Write CPU profile to file. |
 | `-debug` | Enable debug level logs. |
 | `-disable-mdns` | Disable server discovery through multicast DNS. |
-| `-dump-resources <filepath>` | Dump all resource registrations as JSON to the provided file path. |
 | `-ftdc` | Enable fulltime data capture for diagnostics. Default: `true`. |
 | `-log-file <filename>` | Write logs to a file with log rotation. |
 | `-network-check` | Only runs normal network checks. |
 | `-no-tls` | Starts an insecure HTTP server without TLS certificates even if one exists. |
 | `-output-telemetry` | Print out telemetry data (metrics and spans). |
 | `-reveal-sensitive-config-diffs` | Show config diffs. |
-| `-shareddir <directory-name>` | The location of the static web assets. |
 | `-untrusted-env` | Disable processes and shell from running in an untrusted environment. |
 | `-version` | Print version. |
 | `-webprofile` | Include profiler in HTTP server. |

@@ -139,7 +139,8 @@ Training is billed by usage; see [pricing](https://www.viam.com/product/pricing)
 
 ## 2. Monitor the training job {#monitor-the-training-job}
 
-A job's status is **Pending** while it waits to start, then **In Progress**, and ends as **Completed**, **Failed**, or **Canceled**.
+In the Viam app, a job's status is **Preparing** while it's set up, **Waiting for GPU** while it's queued for a cloud GPU, then **Training**, and it ends as **Completed**, **Failed**, or **Canceled**.
+The CLI and SDKs report **Preparing** as `pending`, and both **Waiting for GPU** and **Training** as `in_progress`.
 You get an email when it finishes.
 
 {{< tabs >}}
@@ -235,7 +236,7 @@ To see how the model does on images it hasn't seen, [evaluate it on a labeled te
 
 - **Large datasets take longer.** A dataset with thousands of images can take an hour or more.
 - **TensorFlow takes longer than TFLite.** If training time matters, use TFLite.
-- **The job is waiting to start.** A job stays **Pending** while the training infrastructure is busy; jobs run in order.
+- **The job is waiting for a GPU.** A job stays **Waiting for GPU** until a cloud GPU is free.
 
 {{< /expand >}}
 
