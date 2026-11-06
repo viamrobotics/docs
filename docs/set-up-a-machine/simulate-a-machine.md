@@ -27,7 +27,7 @@ A simulated machine appears in the Viam app like any other machine: you configur
 3. Read the notes about billing and limits, then click **Start simulation**.
 
 The wizard shows the simulation's progress as it starts.
-Most simulations are ready in a minute or two.
+Most simulations are ready in a few minutes.
 When many people start simulations at once, there can be a wait for a GPU-enabled machine, and the wizard shows how long it has waited.
 That wait can take 10 to 20 minutes, and Viam keeps trying for up to an hour before the start fails.
 If the start takes longer than three minutes, Viam emails you once the simulation is ready, so you don't need to keep the page open.
