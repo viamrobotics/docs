@@ -1,317 +1,249 @@
 ---
-linkTitle: "Train a model"
-title: "Train a model"
+linkTitle: "Built-in training"
+title: "Train a vision model with built-in training"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Train a classification or object detection model from a labeled dataset."
+description: "Train an image classification or object detection model from a labeled image dataset with built-in training."
 capabilities: ["ml-training"]
 diataxis: how-to
 date: "2025-01-30"
+updated: "2026-10-29"
 aliases:
   - /build/train/train-a-model/
   - /data-ai/ai/train/
 ---
 
-Submit a training job from your labeled dataset. Viam runs the job on
-GPU-backed cloud infrastructure -- no framework installation or GPU
-provisioning needed on your part. Training is part of the Viam platform;
-see [pricing](https://www.viam.com/product/pricing) for plan details.
-Training logs are available for 7 days after the job completes.
+Train an image classification or object detection model from a dataset of labeled images, with no training code.
+Viam runs the job on cloud GPUs and saves the trained model in your organization's registry.
+<span id="upload-your-training-script"></span><span id="click-for-more-information-on-parsing-command-line-inputs"></span>To train any other kind of model, such as a robot policy or a PyTorch model, use a [custom training script](/train/custom-training-scripts/); to choose between the two, see [Built-in or custom training](/train/overview/#training-method).
 
-For background on model frameworks (TFLite and TensorFlow), task types, and
-how deployment works, see the [overview](/train/overview/).
+## Prerequisites {#prerequisites}
 
-Managed training uses a fixed internal train/validation split and does not
-currently expose loss curves or a separate test-dataset option. To evaluate
-a trained model, see [Test your model](#4-test-your-model) below.
+- A dataset of labeled images: tags for classification, or bounding boxes for object detection.
+  To make one, see [Create a dataset](/train/create-a-dataset/) and [Annotate data](/train/annotate-data/).
+  For tips on making it a good one, see [Prepare a dataset for training](/train/create-a-dataset/#prepare-a-dataset-for-training).
 
-{{< alert title="Managed training doesn't support sequence datasets" color="note" >}}
-Managed training accepts only binary datasets. To train on a
-[sequence dataset](/train/create-a-dataset/), use a
-[custom training script](/train/custom-training-scripts/).
-{{< /alert >}}
+Built-in training rejects a job if the dataset doesn't meet these minimums:
 
-Managed training uses only the images in a binary dataset. If the dataset also
-holds other files, such as video or audio, training skips them. The web UI
-notes this in a **Built-in training uses only images** banner after you select
-the **TFLite** or **TF** framework.
-The [platform requirements](/train/create-a-dataset/#platform-requirements) count images only. To train on other file types,
-use a [custom training script](/train/custom-training-scripts/).
+| Requirement        | Minimum                                                             |
+| ------------------ | ------------------------------------------------------------------- |
+| Labeled images     | 80% of the dataset                                                  |
+| Examples per label | 10 images (classification) or 10 bounding boxes (object detection)  |
+| Total images       | 15 (object detection only; classification has no total-image floor) |
 
-## 1. Start a training job from the web UI
+Built-in training uses only the images in a dataset and skips any other files, such as video or audio.
+It can't train on a [sequence dataset](/train/create-a-dataset/).
 
-1. Go to [app.viam.com](https://app.viam.com).
-2. Click the **DATA** tab in the top navigation.
-3. Click the **DATASETS** subtab.
-4. Click the dataset you want to train on.
-5. Click **Train model**.
-6. Select the model framework:
-   - **TFLite** for edge devices (recommended for most use cases)
-   - **TF** for general-purpose models requiring more compute
-7. Enter a name for your model. Use a descriptive name like
-   `part-inspector-v1` or `package-detector-v1`. This name identifies the model
-   in your organization's registry.
-8. Select the task type:
-   - **Single Label Classification** if each image has one tag
-   - **Multi Label Classification** if images have multiple tags
-   - **Object Detection** if you used bounding box annotations
-9. Select which labels to include in training. You can exclude labels that have
-   too few examples or that you do not want the model to learn.
-10. Click **Train model**.
+## Choose a framework {#choose-a-framework}
 
-The training job starts. You will see a confirmation message with the job ID.
+The framework sets which software runs the model on your machine.
+Built-in training produces either one:
 
-## 2. Start a training job from the CLI
+|                        | TFLite                                                                                        | TensorFlow                                                                                                                                                          |
+| ---------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Choose it when         | You aren't sure, or the model runs on a small computer such as a Raspberry Pi                 | Your machine has an NVIDIA GPU you want the model to use                                                                                                            |
+| Runs on the machine in | [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu), on the CPU of almost any machine | [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu), or [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) on an NVIDIA GPU |
+| Resources              | Made for devices with little memory and compute                                               | Needs more memory and compute, and takes longer to train                                                                                                            |
 
-If you prefer the command line, use the Viam CLI:
+For the platforms each service supports, see [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 
-```bash
+## 1. Start a training job {#start-a-training-job}
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+1. In the Viam app, go to **DATA** > **DATASETS** and click the dataset you want to train on.
+1. Click **Train model**.
+1. Select **New model**.
+   To retrain a model you already have, select **New version** and pick the model instead.
+1. Select **Built-in (TensorFlow Lite)** or **Built-in (TensorFlow)**.
+1. Enter a **Name** for the model, such as `part-inspector`.
+   The name identifies the model in your organization's registry.
+1. Select the task type: **Single label classification**, **Multi label classification**, or **Object detection**.
+   It must match how you labeled the dataset.
+1. Select the labels to train on.
+   Multi label classification needs at least two. Leave out labels with too few examples or that you don't want the model to learn.
+1. Click **Train model**.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+```sh {class="command-line" data-prompt="$"}
 viam train submit managed \
-  --dataset-id=YOUR-DATASET-ID \
-  --model-org-id=YOUR-ORG-ID \
-  --model-name=part-inspector-v1 \
+  --dataset-id=<dataset-id> \
+  --model-org-id=<org-id> \
+  --model-name=part-inspector \
   --model-type=single_label_classification \
   --model-framework=tflite \
   --model-labels=good-part,defective-part
 ```
 
-**Required flags:**
-
-| Flag                | Description                       | Accepted values                                                                                                                                                                                      |
-| ------------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--dataset-id`      | Dataset to train on               | Your dataset ID                                                                                                                                                                                      |
-| `--model-org-id`    | Organization to save the model in | Your organization ID                                                                                                                                                                                 |
-| `--model-name`      | Name for the trained model        | A name not already used by another registry item in the organization, such as a module or training script. Reusing an existing model's name adds a new version of that model with the same framework |
-| `--model-type`      | Task type                         | `single_label_classification`, `multi_label_classification`, `object_detection`                                                                                                                      |
-| `--model-framework` | Model framework                   | `tflite`, `tensorflow`                                                                                                                                                                               |
-| `--model-labels`    | Labels to train on                | Comma-separated list of labels from your dataset                                                                                                                                                     |
-
+Set `--model-type` to `single_label_classification`, `multi_label_classification`, or `object_detection`, and `--model-framework` to `tflite` or `tensorflow`.
 `--model-version` is optional and defaults to the current timestamp.
+If `--model-name` is already a model in your organization, the job adds a new version of it.
 
-The command returns a training job ID that you can use to check status.
+{{% /tab %}}
+{{% tab name="Python" %}}
 
-## 3. Monitor training progress
+The SDKs can't choose a framework: a job submitted from code always trains a TFLite model.
 
-**Web UI:**
+```python
+from viam.proto.app.mltraining import ModelType
 
-1. In the Viam app, click the **DATA** tab.
-2. Click the **MODELS** subtab, then expand **Active Training**.
-3. You will see a list of training jobs with their status:
-   - **Preparing** -- the job is being set up
-   - **Waiting for GPU** -- the job is queued for a cloud GPU
-   - **Training** -- training is running
-   - **Completed** -- the model is ready
-   - **Failed** -- something went wrong
-   - **Canceled** -- the job was canceled before completing
-4. Click a job ID to view detailed logs.
+# viam_client is a connected ViamClient
+ml_training_client = viam_client.ml_training_client
 
-**CLI:**
-
-Check the status of a training job:
-
-```bash
-viam train get --job-id=YOUR-JOB-ID
+job_id = await ml_training_client.submit_training_job(
+    org_id="<org-id>",
+    dataset_id="<dataset-id>",
+    model_name="part-inspector",
+    model_version="1",
+    model_type=ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION,
+    tags=["good-part", "defective-part"],
+)
+print(f"Training job: {job_id}")
 ```
 
-View training logs:
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-```bash
-viam train logs --job-id=YOUR-JOB-ID
+The SDKs can't choose a framework: a job submitted from code always trains a TFLite model.
+
+```go
+// viamClient is a connected *app.ViamClient
+mlTrainingClient := viamClient.MLTrainingClient()
+
+jobID, err := mlTrainingClient.SubmitTrainingJob(
+    ctx,
+    app.SubmitTrainingJobArgs{
+        DatasetID:      "<dataset-id>",
+        OrganizationID: "<org-id>",
+        ModelName:      "part-inspector",
+        ModelVersion:   "1",
+    },
+    app.ModelTypeSingleLabelClassification,
+    []string{"good-part", "defective-part"},
+)
+if err != nil {
+    logger.Fatal(err)
+}
+fmt.Printf("Training job: %s\n", jobID)
 ```
 
-Training logs expire after 7 days. If you need to retain logs for longer,
-copy them before they expire.
+{{% /tab %}}
+{{< /tabs >}}
+
+The job starts, and you get its job ID.
+Training is billed by usage; see [pricing](https://www.viam.com/product/pricing).
+
+## 2. Monitor the training job {#monitor-the-training-job}
+
+In the Viam app, a job's status is **Preparing** while it's set up, **Waiting for GPU** while it's queued for a cloud GPU, then **Training**, and it ends as **Completed**, **Failed**, or **Canceled**.
+The CLI and SDKs report **Preparing** as `pending`, and both **Waiting for GPU** and **Training** as `in_progress`.
+You get an email when it finishes.
 
 {{< tabs >}}
+{{% tab name="Viam app" %}}
+
+1. In the Viam app, go to **DATA** > **MODELS** and expand **Active Training**.
+   It lists your organization's training jobs with their status.
+1. Click a job ID to see its details and logs.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+Check one job, and read its logs:
+
+```sh {class="command-line" data-prompt="$"}
+viam train get --job-id=<job-id>
+viam train logs --job-id=<job-id>
+```
+
+List your organization's training jobs:
+
+```sh {class="command-line" data-prompt="$"}
+viam train list --org-id=<org-id> --job-status=unspecified
+```
+
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python
-async def main():
-    viam_client = await connect()
-    ml_training_client = viam_client.ml_training_client
+job = await ml_training_client.get_training_job(id="<job-id>")
+print(f"Status: {job.status}")
 
-    job = await ml_training_client.get_training_job(
-        id="YOUR-TRAINING-JOB-ID",
-    )
-    print(f"Status: {job.status}")
-    print(f"Model name: {job.model_name}")
-    print(f"Created: {job.created_on}")
-
-    viam_client.close()
+# List your organization's training jobs
+for job in await ml_training_client.list_training_jobs(org_id="<org-id>"):
+    print(f"{job.id}: {job.status}, model {job.model_name}")
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
-job, err := mlTrainingClient.GetTrainingJob(ctx, "YOUR-TRAINING-JOB-ID")
+job, err := mlTrainingClient.GetTrainingJob(ctx, "<job-id>")
 if err != nil {
     logger.Fatal(err)
 }
-fmt.Printf("Status: %s\n", job.Status)
-fmt.Printf("Model name: %s\n", job.ModelName)
-fmt.Printf("Created: %s\n", job.CreatedOn)
-```
+fmt.Printf("Status: %v\n", job.Status)
 
-{{% /tab %}}
-{{< /tabs >}}
-
-## 4. Test your model
-
-You can evaluate a trained model two ways: offline against a held-out test
-dataset, or live on a machine.
-
-### Test offline against a test dataset
-
-Run the model against images it has not seen using auto-predictions. This
-lets you evaluate performance without configuring a machine.
-
-1. [Create a test dataset](/train/create-a-dataset/) with images that were
-   not used for training.
-2. Go to the dataset's page and click **Get auto-predictions**.
-3. Select your trained model and a confidence threshold.
-4. Click **Get predictions**, then **Review predictions** once they finish.
-5. For each prediction, **Accept (A)** or **Reject (R)**.
-
-The accept/reject tally tells you how the model performs on unseen data.
-
-### Test live on a machine
-
-Deploy the model to a machine with a camera to see its predictions on live or
-captured data.
-
-1. [Deploy the model](/train/deploy-a-model/) to a machine with a camera.
-2. [Configure a vision service](/vision/configure/) that uses the model.
-3. On the machine's **CONTROL** tab, open the vision service panel to see live classifications or detections.
-4. Evaluate the results against a variety of conditions:
-   - Images that clearly belong to each class (should get high confidence)
-   - Ambiguous images (helps you understand the model's decision boundary)
-   - Images from conditions not in the training set (reveals generalization gaps)
-
-## 5. Deploy and iterate
-
-When training completes, the model is stored in your organization's registry.
-See [Deploy a model to a machine](/train/deploy-a-model/) to configure the
-module, ML model service, and vision service on your machine.
-
-After deploying, improve your model by collecting targeted data where it
-struggles (edge cases, counterexamples, varied conditions), using
-[auto-annotation](/train/automate-annotation/) to label efficiently, and
-retraining. If your machine is configured to use the model, the new version
-deploys automatically.
-
-To review past training jobs:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-async def main():
-    viam_client = await connect()
-    ml_training_client = viam_client.ml_training_client
-
-    jobs = await ml_training_client.list_training_jobs(
-        org_id=ORG_ID,
-    )
-    for job in jobs:
-        print(f"Job: {job.id}, Status: {job.status}, "
-              f"Model: {job.model_name}, Created: {job.created_on}")
-
-    viam_client.close()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-jobs, err := mlTrainingClient.ListTrainingJobs(
-    ctx, orgID, app.TrainingStatusUnspecified)
+// List your organization's training jobs
+jobs, err := mlTrainingClient.ListTrainingJobs(ctx, "<org-id>", app.TrainingStatusUnspecified)
 if err != nil {
     logger.Fatal(err)
 }
-for _, job := range jobs {
-    fmt.Printf("Job: %s, Status: %d, Model: %s, Created: %s\n",
-        job.ID, job.Status, job.ModelName, job.CreatedOn)
+for _, j := range jobs {
+    fmt.Printf("%s: %v, model %s\n", j.ID, j.Status, j.ModelName)
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Troubleshooting
+Training logs are kept for 7 days after the job finishes.
+Copy them before then if you need them longer.
 
-{{< expand "Training job fails" >}}
+## 3. Verify the trained model {#verify-the-trained-model}
 
-- **Check the training logs.** In the **MODELS** tab, expand **Active Training**
-  and click the failed job ID to view logs. The error message usually indicates
-  the problem.
-- **Dataset too small.** Training requires at least 15 images with at least 80%
-  labeled. Check your dataset in the **DATASETS** tab.
-- **No labels selected.** You must select at least two labels. A model cannot
-  learn to classify if there is only one category.
-- **Bounding box format issue.** For object detection, verify that bounding box
-  coordinates are normalized between 0.0 and 1.0, and `x_min` is less than
-  `x_max`.
+<span id="test-the-model"></span><span id="evaluate-against-a-test-dataset"></span><span id="test-on-a-machine"></span>When the job's status is **Completed**, the model is in your organization's registry.
+In the Viam app, go to **DATA** > **MODELS** and click the model's name to open its details page, which lists its versions.
 
-{{< /expand >}}
+Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
+To see how the model does on images it hasn't seen, [evaluate it on a labeled test dataset](/train/evaluate-a-model/) before you deploy it.
 
-{{< expand "Low confidence scores" >}}
+## Troubleshooting {#troubleshooting}
 
-- **Add more training data.** Low confidence usually means the model has not seen
-  enough examples. More diverse images of each class will help.
-- **Check label balance.** If one label dominates the dataset, the model may
-  assign low confidence to minority labels. Balance the dataset and retrain.
-- **Verify image quality.** Blurry, dark, or low-resolution images make it
-  harder for the model to learn distinctive features.
-- **Lower the confidence threshold.** If the model is correct but with scores
-  around 0.4-0.6, your threshold may be set too high.
+{{< expand "The training job fails" >}}
+
+- **Check the training logs.** The error message usually says what went wrong.
+- **The dataset is too small.** Check it against the minimums in [Prerequisites](#prerequisites).
+- **Fewer than two labels are selected for multi label classification.** Multi label classification needs at least two labels.
+- **Bounding boxes are out of range.** For object detection, box coordinates must be between 0.0 and 1.0, with `x_min` less than `x_max`.
 
 {{< /expand >}}
 
-{{< expand "Training takes too long" >}}
+{{< expand "The model gives low confidence scores" >}}
 
-- **Large datasets take longer.** A dataset with thousands of images may take an
-  hour or more. This is normal.
-- **TF models take longer than TFLite.** If training time is a concern, switch
-  to TFLite.
-- **Training is queued.** If the status stays at **Waiting for GPU**, no
-  cloud GPU is free yet. Jobs are processed in order.
+- **Add more training images.** Low confidence usually means the model hasn't seen enough varied examples of each label.
+- **Balance the labels.** If one label dominates the dataset, the model may give low confidence to the others.
+- **Check image quality.** Blurry, dark, or low-resolution images make it harder for the model to learn.
+- **Lower the confidence threshold.** If the model is right but scores around 0.4 to 0.6, your threshold may be too high.
 
 {{< /expand >}}
 
-## Upload your training script {#upload-your-training-script}
+{{< expand "Training takes a long time" >}}
 
-To use your own training script instead of a built-in training type:
+- **Large datasets take longer.** A dataset with thousands of images can take an hour or more.
+- **TensorFlow takes longer than TFLite.** If training time matters, use TFLite.
+- **The job is waiting for a GPU.** A job stays **Waiting for GPU** until a cloud GPU is free.
 
-1. Package your script with a `setup.py` or `pyproject.toml`. Viam invokes it as `python3 -m model.training`.
-2. Upload with the CLI:
+{{< /expand >}}
 
-   ```sh {class="command-line" data-prompt="$"}
-   viam training-script upload --path=<path-to-script> --org-id=<org-id> --script-name=<name> --framework=<framework>
-   ```
+## What's next {#whats-next}
 
-3. Submit a training job that references your script (from the web UI or CLI).
-
-For the full walkthrough including local testing with Docker, see [Custom training scripts](/train/custom-training-scripts/).
-
-## Parse command line inputs {#click-for-more-information-on-parsing-command-line-inputs}
-
-When you submit a training job with custom arguments, Viam passes them to your training script as command-line flags. Your script receives:
-
-- `--dataset_file`: path to the dataset manifest (default: `dataset.jsonl`)
-- `--model_output_directory`: where to write the trained model (fixed: `/model_output`)
-- Any custom arguments you defined, as `--key=value` pairs
-
-Argument keys must be alphanumeric with underscores or hyphens. For full details on writing and testing training scripts, see [Custom training scripts](/train/custom-training-scripts/).
-
-## What's next
-
-- [Deploy a model to a machine](/train/deploy-a-model/) -- configure the module,
-  ML model service, and vision service to run your model.
-- [Add computer vision](/vision/configure/) -- the full guide to configuring
-  vision services and cloud inference.
-- [Detect objects (2D)](/vision/object-detection/detect/) -- use your
-  object detection model to find and locate objects in camera images.
-- [Classify images](/vision/classify/) -- use your
-  classification model to categorize images from your machine's camera.
+- [Evaluate a model](/train/evaluate-a-model/): measure the model's precision and recall on a labeled test dataset.
+- [Deploy a model to a machine](/train/deploy-a-model/): add the model, an ML model service, and a vision service to your machine.
+- [Detect objects (2D)](/vision/object-detection/detect/): use an object detection model to find objects in camera images.
+- [Classify images](/vision/classify/): use a classification model to sort what your camera sees.
+- [Automate annotation](/train/automate-annotation/): label new images faster with your trained model.

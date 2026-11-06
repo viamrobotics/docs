@@ -14,7 +14,7 @@ aliases:
 
 Use this guide when you have a trained model file that is not already in the Viam [registry](https://app.viam.com/registry). That covers three cases:
 
-- You trained the model on Viam data using [managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
+- You trained the model on Viam data using [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
 - You trained it entirely outside Viam (local, another cloud, a notebook).
 - You found it elsewhere (GitHub, Hugging Face) and want to run it on your machines.
 

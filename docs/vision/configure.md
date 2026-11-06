@@ -13,7 +13,7 @@ aliases:
   - /vision-detection/add-computer-vision/
 ---
 
-You have a camera on your machine, and you have an ML model. The model could have come from the [registry](https://app.viam.com/registry), from the [Train ML Models section](/train/) through [managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), or from elsewhere entirely: GitHub, Hugging Face, or your own training run outside Viam. This how-to wires the pieces together: an ML model service loads the model, and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
+You have a camera on your machine, and you have an ML model. The model could have come from the [registry](https://app.viam.com/registry), from the [Train ML Models section](/train/) through [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), or from elsewhere entirely: GitHub, Hugging Face, or your own training run outside Viam. This how-to wires the pieces together: an ML model service loads the model, and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
 
 Downstream how-tos ([detect](/vision/object-detection/detect/), [classify](/vision/classify/), [track](/vision/object-detection/track/), [measure depth](/vision/3d-vision/measure-depth/)) assume the pipeline described here is running.
 
@@ -35,11 +35,11 @@ Three resources (camera, vision service, ML model service) plus the model file i
 
 ## 1. Add an ML model service
 
-The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. The framework-support table in [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support) lists which implementations support which frameworks and hardware paths.
+The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. [What runs the model](/train/deploy-a-model/#what-runs-the-model) lists which services support which frameworks and hardware.
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Blocks**.
-3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
+3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result.
 4. Click **Add to machine**, name the service `my-ml-model`, and click **Add to machine** again to confirm.
 
 ## 2. Configure the ML model service
@@ -48,8 +48,8 @@ Point the service at your model file. The Builder flow populates the config for 
 
 Two things matter here:
 
-- **The model file itself** (`model_path` in the JSON) — the weights the service loads.
-- **The label file** (`label_path`) — a plain text file that maps the numeric class IDs the model outputs to human-readable names. A detector that outputs class `3` doesn't mean anything on its own; the label file translates that to `dog` or whatever class 3 was at training time. Registry models ship with this file; for local models you provide your own.
+- **The model file itself** (`model_path` in the JSON): the weights the service loads.
+- **The label file** (`label_path`): a plain text file that maps the numeric class IDs the model outputs to human-readable names. A detector that outputs class `3` doesn't mean anything on its own; the label file translates that to `dog` or whatever class 3 was at training time. Registry models ship with this file; for local models you provide your own.
 
 Both paths resolve to whatever you give them: a package reference like `${packages.ml_model.my-model}/labels.txt` for registry models, or an absolute path on the machine for local files. You can inspect a registry model's bundled `labels.txt` by looking in `${packages.ml_model.my-model}/` after first deploy, or by opening the model's detail view on [app.viam.com/models](https://app.viam.com/models).
 
