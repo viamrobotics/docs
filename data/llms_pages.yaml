@@ -39,6 +39,8 @@ sections:
     pages:
       - path: /build-apps/use-viam-from-an-agent/
         full: true
+      - path: /cli/configure-machines/
+        full: true
       - path: /cli/drive-a-machine/
         full: true
       - path: /cli/reference/
