@@ -40,22 +40,7 @@ Maintenance windows use a sensor-based approach: you configure a sensor that ret
    - `maintenance_allowed_key`: the key in the sensor's readings that contains the boolean value.
 1. Click **Save**.
 
-While the maintenance window is closed (sensor returns `false`), `viam-server` continues running with its current configuration. When the window opens, all pending changes are applied at once.
-
-### When viam-server checks the sensor
-
-For a configuration update, `viam-server` reads the maintenance sensor twice:
-
-1. **At the start of the update**, before it does any work. If the sensor returns `false`, `viam-server` defers the update.
-1. **Just before it stops or restarts modules**, after it has synced packages and run module first-run scripts. These steps can take a while, so the window may have closed since the first read.
-
-If the second read returns `false` (or the sensor can't be read), `viam-server` defers the update. It keeps the packages it already downloaded, applies none of the configuration changes, and tries again on the next config poll. Because the packages are already downloaded, the retry doesn't need to fetch them again, so it can proceed as soon as the sensor returns `true`.
-
-Both checks apply only to configuration updates, not to `viam-agent` updating itself.
-
-{{< alert title="Version note" color="note" >}}
-Reading the sensor a second time applies from `viam-server` v1.12.0. Earlier versions read the sensor once, at the start of the update.
-{{< /alert >}}
+While the maintenance window is closed (sensor returns `false`), `viam-server` continues running with its current configuration. This includes a window that closes partway through an update: in `viam-server` v1.12.0 and later, `viam-server` re-checks the sensor before it restarts anything, and if the sensor no longer returns `true` it holds the update and tries again on the next config poll. When the window opens, all pending changes are applied at once.
 
 ## Staged rollouts with fragment tags
 
