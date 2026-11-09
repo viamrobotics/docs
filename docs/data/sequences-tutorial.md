@@ -451,7 +451,7 @@ python inspect_export.py demos/<dataset-id>.zip
 
 You should see three sequences, each with roughly 30 images and about as many readings: two per second of recording, for about 15 seconds.
 The rows in the two data files link to a sequence through `sequence_id`.
-See [Sequence dataset format](/train/sequence-dataset-format/) for every column.
+See [Sequence dataset format](/train/dataset-formats/#sequence-datasets) for every column.
 
 ## What you learned
 
@@ -466,5 +466,5 @@ You built the whole path from capture to training data:
 
 - [Capture on demand](/data/capture-sync/capture-on-demand/): all of the `capture-control` module's commands, and how to write your own capture control sensor.
 - [Sequences](/data/sequences/): recording, viewing, and creating sequences from code.
-- [Sequence dataset format](/train/sequence-dataset-format/): the columns in each Parquet file.
+- [Sequence dataset format](/train/dataset-formats/#sequence-datasets): the columns in each Parquet file.
 - [Custom training scripts](/train/custom-training-scripts/): train a model on the exported data.

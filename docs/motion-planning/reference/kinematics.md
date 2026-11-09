@@ -4,7 +4,7 @@ title: "Kinematics"
 weight: 25
 layout: "docs"
 type: "docs"
-description: "Set up the kinematic model that describes how your arm's joints and links create motion."
+description: "Reference for the SVA, URDF, and kinematic model file formats, the GetKinematics method, and providing a kinematics file for your arm."
 capabilities: ["frame-system", "motion-planning"]
 diataxis: reference
 aliases:
@@ -68,20 +68,6 @@ Every joint has limits that define its range of motion:
 Joint limits prevent the motion planner from computing solutions that would
 require the arm to bend past its physical limits.
 
-### Kinematics file formats
-
-Viam supports two kinematics file formats at the API level:
-
-| Format                           | Description                                   | When to use                                                  |
-| -------------------------------- | --------------------------------------------- | ------------------------------------------------------------ |
-| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | When writing a Viam kinematics file directly.                |
-| **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer ships a URDF and you want to reuse it. |
-
-On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry. A request that sets neither `include_collision_meshes` nor `include_visual_meshes` gets the file contents of every mesh. The response's older fields, which hold the kinematics file itself in one of these two formats, are deprecated. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
-
-Most registry arm modules use SVA internally. You rarely need to write a
-kinematics file from scratch unless you are building a custom arm.
-
 ### Tool center point (TCP)
 
 The tool center point is the reference point on the end effector. By default,
@@ -91,56 +77,22 @@ example, the tip of a gripper or the center of a suction cup). This offset is
 configured through the [frame system](/motion-planning/frame-system/), not the
 kinematics file.
 
-## Steps
+## Kinematics file formats
 
-### 1. Check if your arm has a built-in kinematics file
+Viam supports these kinematics file formats:
 
-Most arm modules in the Viam Registry include a kinematics file built into
-the module. The module loads and applies the kinematics automatically when
-`viam-server` starts.
+| Format                           | Description                                                                                             | When to use                                                                                                                                                          |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SVA** (Spatial Vector Algebra) | Viam's JSON format for links and joints. Also accepts DH parameters.                                    | When writing a Viam kinematics file directly.                                                                                                                        |
+| **URDF**                         | XML format used by ROS and many manufacturers                                                           | When the manufacturer ships a URDF and you want to reuse it.                                                                                                         |
+| **Kinematic model**              | The JSON encoding of the kinematic model that `GetKinematics` returns (`viam-server` v1.15.0 and later) | When you need visual geometry, which SVA can't carry, or want the file to match what `GetKinematics` returns. See [Kinematic model format](#kinematic-model-format). |
 
-Verify this by calling `GetKinematics`:
+Each format is a way to write the same model. Viam parses every format into one kinematic model, and that model is what `GetKinematics` returns. See [The `GetKinematics` method](#the-getkinematics-method).
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+Most registry arm modules use SVA internally. You rarely need to write a
+kinematics file from scratch unless you are building a custom arm.
 
-```python
-from viam.components.arm import Arm
-
-arm = Arm.from_robot(machine, "my-arm")
-kinematics = await arm.get_kinematics()
-# kinematics[0] and kinematics[1] are the deprecated format and file fields,
-# which viam-server still fills in
-print(f"Kinematics format: {kinematics[0]}")
-# kinematics[1] contains the raw kinematics data
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-myArm, err := arm.FromProvider(machine, "my-arm")
-if err != nil {
-    logger.Fatal(err)
-}
-
-model, err := myArm.Kinematics(ctx)
-if err != nil {
-    logger.Fatal(err)
-}
-fmt.Printf("Arm model: %s with %d DoF\n", model.Name(), len(model.DoF()))
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-If this call succeeds and returns data, your arm module has kinematics built in.
-Proceed to step 4 to read joint and end effector data.
-
-If the call fails or returns empty data, the module does not include kinematics.
-You will need to provide a kinematics file (steps 2-3).
-
-### 2. Understand the SVA kinematics format
+### SVA format
 
 The SVA format describes the arm as a sequence of links and joints in JSON. Here
 is a simplified example for a two-joint arm:
@@ -222,7 +174,58 @@ Each field:
   1.0. Mimic joints must not declare their own `min`/`max`; the source joint's
   limits apply.
 
-### 3. Import a URDF file
+The SVA format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
+
+### Kinematic model format
+
+On `viam-server` v1.15.0 and later, a `.json` kinematics file can use the JSON encoding of the kinematic model that `GetKinematics` returns.
+Viam tells the two JSON formats apart by their fields. A file with a top-level `properties`, a link `pose`, `collision`, or `visual`, a joint `limits`, or a `JOINT_TYPE_` joint type is read as a kinematic model. Otherwise, SVA or DH markers such as `kinematic_param_type`, `dhParams`, a link-level `translation`, a joint-level `min`, or a lowercase joint type make it SVA or DH. A file with neither set of markers is read as a kinematic model.
+Here is the first link and joint of a UR5e in this format:
+
+```json
+{
+  "name": "UR5e",
+  "links": [
+    {
+      "id": "base_link",
+      "parent": "world",
+      "pose": { "translation": { "z": 162.5 } },
+      "collision": [
+        {
+          "center": { "z": 130, "o_z": 1 },
+          "capsule": { "radius_mm": 60, "length_mm": 260 },
+          "label": "base_link"
+        }
+      ]
+    }
+  ],
+  "joints": [
+    {
+      "id": "shoulder_pan_joint",
+      "parent": "base_link",
+      "type": "JOINT_TYPE_REVOLUTE",
+      "axis": { "z": 1 },
+      "limits": { "min": -360, "max": 360 }
+    }
+  ]
+}
+```
+
+- **`links[].pose`**: offset from the parent, as a `translation` in mm and an optional orientation in degrees
+- **`links[].collision`** and **`links[].visual`**: lists of geometries; visual geometries are for display only and are not used for collision checking
+- **`joints[].type`**: `JOINT_TYPE_REVOLUTE`, `JOINT_TYPE_PRISMATIC`, or `JOINT_TYPE_CONTINUOUS` (a revolute joint with no position limits)
+- **`joints[].limits`**: `min` and `max`, in degrees for revolute joints or mm for prismatic joints
+
+A mesh geometry can point to a mesh file instead of embedding its contents, for example `{"mesh": {"original_file_source_path_diagnostic": "../meshes/base.ply"}}`; the content type comes from the file extension.
+Mesh file paths are relative to the kinematics file and use forward slashes. `..` is allowed, but absolute paths and URI schemes such as `package://` are not.
+Collision meshes must be STL or PLY files; visual meshes can be any format with a file extension, such as GLB.
+Mesh file references work only when the kinematics file is loaded from disk by its path, for example through a fake arm's `model-path` attribute.
+A kinematic model read from bytes, such as a file embedded in a module's binary, has no directory to resolve paths against, so it must carry its mesh contents; a file reference there fails with `mesh "<path>" cannot be read without the directory of the model file`.
+
+Viam parses this format strictly.
+An unknown field, a `NaN` or `Infinity` value, a parent that is not in the model, a cycle, a duplicate `id`, a missing mesh file, or a mimic joint that sets its own limits fails the load, and the error names the file.
+
+### URDF format
 
 If your arm manufacturer provides a URDF file, you can reference it in your arm
 module's configuration. URDF (Unified Robot Description Format) is an XML format
@@ -234,49 +237,91 @@ A typical URDF structure:
 <robot name="my_arm">
   <link name="base_link">
     <visual>
-      <geometry><cylinder length="0.1" radius="0.05"/></geometry>
+      <geometry><box size="0.1 0.1 0.1"/></geometry>
     </visual>
     <collision>
-      <geometry><cylinder length="0.1" radius="0.05"/></geometry>
+      <geometry><box size="0.1 0.1 0.1"/></geometry>
     </collision>
   </link>
+  <link name="upper_arm"/>
   <joint name="shoulder_pan" type="revolute">
     <parent link="base_link"/>
     <child link="upper_arm"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
     <limit lower="-3.14" upper="3.14" velocity="1.0"/>
   </joint>
 </robot>
 ```
 
-To use a URDF file with your arm module, place the file in a location accessible
-to `viam-server` and reference it in the module's configuration. The exact
-configuration depends on the module. Consult the module's documentation for the
-specific attribute name.
+## The `GetKinematics` method
 
-### 4. Verify kinematics in the 3D SCENE tab
+`GetKinematics` returns a component's kinematics. For the method signature and usage in each SDK, see [`GetKinematics`](/reference/apis/components/arm/#getkinematics) in the arm API reference.
 
-The Viam app can render a 3D visualization of your arm based on its kinematic
-model:
+For example, to check whether your arm has kinematics:
 
-1. Navigate to your machine in the Viam app.
-2. Click the **3D SCENE** tab.
-3. The arm should appear as a 3D model with joints and links.
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-Verify the visualization by comparing it to the physical arm:
+```python
+from viam.components.arm import Arm
+from viam.proto.common import KinematicsFileFormat
 
-1. Move a joint using the **CONTROL** tab.
-2. Switch to the **3D SCENE** tab and confirm the visualization updated.
-3. Check that the joint rotated in the correct direction and by the correct
-   amount.
-4. Repeat for each joint.
+arm = Arm.from_robot(machine, "my-arm")
+kinematics = await arm.get_kinematics()
 
-If the visualization does not match the physical arm, the kinematics file may
-have incorrect link lengths, joint axes, or joint limits.
+# With viam-server v1.14.0 and later and Python SDK v0.85.0 and later, a
+# fourth element holds the kinematic model when the response has one.
+if len(kinematics) > 3:
+    model = kinematics[3]
+    print(f"Kinematic model: {len(model.links)} links, {len(model.joints)} joints")
+else:
+    print("No kinematic model")
 
-For reading joint positions and controlling the arm directly, see
-[Add an arm](/hardware/common-components/add-an-arm/) and the
-[Arm API reference](/reference/apis/components/arm/).
+# The first two elements are the deprecated format and file fields.
+print(f"Deprecated format field: {KinematicsFileFormat.Name(kinematics[0])}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+myArm, err := arm.FromProvider(machine, "my-arm")
+if err != nil {
+    logger.Fatal(err)
+}
+
+model, err := myArm.Kinematics(ctx)
+if err != nil {
+    logger.Fatal(err)
+}
+fmt.Printf("Arm model: %s with %d DoF\n", model.Name(), len(model.DoF()))
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+If the call succeeds and returns data, your arm module has kinematics built in. If it fails or returns empty data, the module does not include them. See [Provide a kinematics file](#provide-a-kinematics-file).
+
+### Response
+
+On `viam-server` v1.14.0 and later, `GetKinematics` returns the kinematics as a structured kinematic model: the links, the joints and their limits, mimic joints, and collision and visual geometry. By default, the response includes the file contents of every mesh. On v1.15.0 and later, a request can instead ask for the contents of only the collision meshes, only the visual meshes, or both. The response then contains the kinematic model alone, without the deprecated fields described below, and every other mesh carries only its path and content type. Check your SDK's method reference for how to make that request.
+
+By default, the response also includes three deprecated fields for clients that predate the typed model. New code should read the model instead.
+
+- `format`: the file format, `SVA` or `URDF`, or `UNSPECIFIED` when the component has no kinematics.
+- `kinematics_data`: the contents of the kinematics file, as bytes.
+- `meshes_by_urdf_filepath`: for a URDF file, the mesh files it references, keyed by path.
+
+For an SVA, DH, or URDF file, `kinematics_data` holds the original file. For a kinematic model file, the field holds an SVA derived from the original, without visual geometry.
+
+## Provide a kinematics file
+
+Most arm modules in the Viam Registry include a kinematics file built into the module. The module loads and applies it automatically when `viam-server` starts. If you are building a custom arm, or your module has none, provide a file in any of the [formats above](#kinematics-file-formats).
+
+Place the file in a location accessible to `viam-server` and reference it in the module's configuration. The exact configuration depends on the module. Consult the module's documentation for the specific attribute name.
+
+To check the result, open the **3D SCENE** tab for your machine and compare the arm's visualization with the physical arm. Move a joint in the **CONTROL** tab and confirm that the visualization follows, in the right direction and by the right amount. If it doesn't match, the file may have incorrect link lengths, joint axes, or joint limits.
 
 ## Troubleshooting
 
@@ -313,6 +358,7 @@ For reading joint positions and controlling the arm directly, see
 
 ## What's next
 
+- [Add an arm](/hardware/common-components/add-an-arm/): read joint positions and control the arm directly.
 - [Define obstacles](/motion-planning/obstacles/): add collision geometry to
   your workspace so the motion planner avoids collisions.
 - [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/):

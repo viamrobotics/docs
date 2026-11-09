@@ -1,51 +1,108 @@
 ---
-linkTitle: "Custom training scripts"
-title: "Custom training scripts"
+linkTitle: "Custom training"
+title: "Train a model with a custom training script"
 tags: ["data management", "ml", "model training"]
-weight: 30
+weight: 25
 layout: "docs"
 type: "docs"
 languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
-description: "Use or write custom training scripts to train ML models on the Viam platform with any framework or logic."
+description: "Find or write a training script, test it locally, upload it to the registry, and run it on a dataset to train an ML model."
 capabilities: ["ml-training"]
 diataxis: how-to
 date: "2024-12-04"
-updated: "2026-10-12"
+updated: "2026-11-05"
 ---
 
-Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.
-Custom training scripts are available for other use cases like a different framework, custom preprocessing, time-series data from a [sequence dataset](/train/create-a-dataset/), or a training pipeline you want to share with your organization.
-Managed training doesn't accept sequence datasets, so training on one always requires a custom training script.
+A custom training script is Python code that Viam runs in a cloud container to train a model on one of your datasets.
+Use one when [built-in training](/train/train-a-model/) can't train the model you need: for example, a robot policy, a model trained on a [sequence dataset](/train/create-a-dataset/#choose-a-dataset-type), a PyTorch or ONNX model, or an image model where you control the architecture, preprocessing, or hyperparameters.
+To compare the two, see [Built-in or custom training](/train/overview/#training-method).
 
-Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
-If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).
+## Prerequisites {#prerequisites}
 
-## How custom training scripts work
+- A dataset to train on, either binary or sequence.
+  See [Create a dataset](/train/create-a-dataset/).
+- The [Viam CLI](/cli/overview/), logged in, for testing, uploading and submitting from the command line.
+  Uploading a script with the robot policy task type needs CLI version 1.15.0 or later.
+- [Docker](https://docs.docker.com/get-docker/), to test the script locally in its training container.
 
-When you submit a custom training job, Viam:
+## 1. Find an existing training script {#find-an-existing-training-script}
 
-1. Pulls your dataset and writes it into the container:
-   - For a binary dataset, a JSONLines metadata file plus the image files.
-   - For a sequence dataset, three Parquet files plus the image files.
-2. Runs your script inside a Docker container with GPU access: either a
-   Viam-managed container with a framework version you select, or a
-   [custom training container](/train/custom-containers/) your organization
-   registered.
-3. Packages the artifacts your script writes to the output directory and
-   publishes them as a new model version in your organization's registry.
+Before writing your own, check whether a training script in the registry already does what you need.
+The registry also has [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy without training.
 
-Because the script runs in a known container and receives standardized
-inputs, you can retrain on new datasets without changing the script or
-redeploying code.
+1. Open the [registry, filtered to training scripts](https://app.viam.com/registry?type=Training+Script).
+   You can also filter by owner, to see scripts from Viam, the community, or your own organization.
+2. Search by keyword, such as the task (`classification`, `detection`, `policy`) or the framework (`pytorch`, `onnx`).
+3. Open a script and read its description to check:
+   - the task type and framework of the model it produces
+   - whether it trains on a binary or a sequence dataset, and what labels it expects
+   - which arguments it accepts, such as the number of epochs
 
-## Write a training script
+If a script fits, note its name in `<namespace>:<script-name>` form and skip ahead to [step 6](#submit-a-training-job).
+To list training scripts from code, call [`list_registry_items`](/reference/apis/fleet/#listregistryitems) with the `PACKAGE_TYPE_ML_TRAINING` type.
 
-A training script is a Python project that the Viam platform runs in the cloud.
-The platform provides your script with a dataset and an output directory; your script produces a trained model.
+## 2. Plan your script {#plan-your-script}
 
-### File structure
+Make three decisions before you write code.
+Each one shapes the script, and you need all three to test and upload it.
+
+### Which dataset type it reads {#which-dataset-type-it-reads}
+
+A script reads either a binary dataset or a sequence dataset, and Viam passes it different files for each:
+
+- **Binary dataset:** a JSONLines file listing each file and its labels or bounding boxes, plus the files themselves.
+  Use it for models that learn from individual images.
+- **Sequence dataset:** three Parquet files holding images and sensor readings grouped into time-windowed sequences, plus the images.
+  Use it for models that learn from what happened over time, such as robot policies.
+  Built-in training can't read a sequence dataset.
+
+For the file formats and the arguments that point to them, see [Training dataset formats](/train/dataset-formats/).
+
+### What model it produces {#match-your-output-to-an-ml-model-service}
+
+A script declares a task type and a framework when you upload it:
+
+- The **task type** says what the model does: single label classification, multi label classification, object detection, robot policy, or **Other**.
+  See [Types of models](/train/overview/#types-of-models).
+- The **framework** decides what runs the model on your machine.
+  See [Built-in or custom training](/train/overview/#framework), and check that something for your framework runs on your machines' hardware before you write the script.
+
+{{% alert title="Note" color="note" %}}
+Viam's built-in [evaluation](/train/evaluate-a-model/) supports only single label classification, multi label classification, and object detection models in the TFLite, TensorFlow, or ONNX framework.
+There's no built-in evaluation for models trained on a sequence dataset.
+{{% /alert %}}
+
+Your script must write the files that the service or module loads.
+For example, the `tflite_cpu` ML model service loads a `model.tflite` file and a `labels.txt` file listing each label on its own line, which is what the [classification-tflite example](https://github.com/viam-modules/classification-tflite) writes.
+For other frameworks, the module's README lists the files and tensor shapes it expects: for example, [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu), [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu), or [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu).
+Use **Registry** when the model needs a module to run it, such as a robot policy.
+The README of the module that runs it lists the files.
+If no module exists for your model, [write one](/build-modules/overview/).
+
+### Which container it runs in {#choose-a-container}
+
+Every custom training job runs in a container on GPU-backed cloud infrastructure, and you pick the container when you test and when you submit:
+
+- **A Viam-managed container:** Python with a machine learning framework, such as TensorFlow, pre-installed.
+  Viam adds and retires versions over time, so list them with the command below.
+  Viam installs any other packages your script lists in `setup.py`, such as PyTorch or scikit-learn, before it runs the script.
+- **A [custom training container](/train/custom-containers/)** your organization registered, with your dependencies built in.
+  Use one when your dependencies take a long time to install, so each job starts training right away, or when you need a different Python version or system libraries.
+
+To list the containers available to your organization, with their IDs, framework versions, and end-of-life dates, run:
+
+```sh {class="command-line" data-prompt="$"}
+viam train containers list --org-id=<org-id>
+```
+
+Note the ID of the container you choose.
+
+## 3. Write the script {#write-the-script}
+
+A training script is a Python package.
+Viam installs it in the container and runs it as `python3 -m model.training`, so it needs this layout:
 
 ```treeview
 my-training/
@@ -67,29 +124,17 @@ setup(
     include_package_data=True,
     install_requires=[
         # Add your dependencies here, for example:
-        # "tensorflow>=2.11",
-        # "numpy",
+        # "torch",
+        # "pandas",
     ],
 )
 ```
 
-### training.py
+`training.py` parses its arguments, reads the dataset, trains a model, and writes the model to `--model_output_directory`.
+The arguments that point to the dataset depend on its type:
 
-Your script always receives `--model_output_directory`.
-The arguments that point to the dataset depend on the dataset type.
-A job on a binary dataset passes these arguments:
-
-| Argument                   | Description                                                                                                                     |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `--dataset_file`           | Path to a [JSONLines](https://jsonlines.org/) file containing dataset metadata: file paths and annotations for each data point. |
-| `--model_output_directory` | Directory where your script must save its model artifacts.                                                                      |
-
-A job on a sequence dataset passes three Parquet file paths instead of `--dataset_file`.
-See [Sequence dataset inputs](#sequence-dataset-inputs).
-
-You can add custom arguments (like `--num_epochs` or `--labels`) and pass them when you submit the training job.
-
-Here is the overall shape of a training script for a binary dataset:
+{{< tabs >}}
+{{% tab name="Binary dataset" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import argparse
@@ -103,272 +148,225 @@ def parse_args():
                         type=str, required=True)
     parser.add_argument("--model_output_directory", dest="model_dir",
                         type=str, required=True)
-    # Add custom arguments as needed:
+    # Add your own arguments as needed:
     parser.add_argument("--num_epochs", dest="num_epochs",
                         type=int, default=200)
     return parser.parse_args()
 
 
 def load_dataset(data_json):
-    """Parse the JSONLines dataset file."""
-    entries = []
+    """Read one JSON object per line of the dataset file."""
     with open(data_json, "r") as f:
-        for line in f:
-            entries.append(json.loads(line))
-    return entries
+        return [json.loads(line) for line in f]
 
 
 if __name__ == "__main__":
     args = parse_args()
-    dataset = load_dataset(args.data_json)
+    entries = load_dataset(args.data_json)
 
     # --- Your training logic goes here ---
-    # Use the dataset entries to train a model with
-    # whatever framework fits your use case.
+    # Each entry has an image_path and its classification_annotations
+    # or bounding_box_annotations.
     model = ...
     labels = ...
 
-    # Save model artifacts to the output directory.
-    # The format must match what your ML model service expects.
-    # For example, tflite_cpu expects a .tflite file and labels.txt.
+    # Write the files that what runs the model loads.
+    # For example, tflite_cpu loads model.tflite and labels.txt.
     with open(os.path.join(args.model_dir, "model.tflite"), "wb") as f:
         f.write(model)
     with open(os.path.join(args.model_dir, "labels.txt"), "w") as f:
         f.write("\n".join(labels))
 ```
 
-The critical parts:
+{{% /tab %}}
+{{% tab name="Sequence dataset" %}}
 
-- **Parse arguments**: Accept `--model_output_directory` plus the dataset arguments for your dataset type: `--dataset_file` for a binary dataset, or the three [sequence file arguments](#sequence-dataset-inputs) for a sequence dataset.
-- **Read the dataset**: For a binary dataset, each line in the JSONLines file is a JSON object with an `image_path` and either `classification_annotations`, `bounding_box_annotations`, or both. For a sequence dataset, read the three Parquet files instead.
-- **Save to the output directory**: When the job completes, Viam packages everything in this directory and publishes it to the registry as a new model version. Files in a `tmp/` subdirectory are excluded: use it for intermediate work.
-
-If the script exits with a non-zero status or produces no files in the output directory, the training job is marked as failed.
-
-### Binary dataset file format
-
-Each line of the `--dataset_file` file is a JSON object like this:
-
-```json
-{
-  "image_path": "/path/to/data/img1.jpeg",
-  "classification_annotations": [{ "annotation_label": "blue_star" }],
-  "bounding_box_annotations": [
-    {
-      "annotation_label": "blue_star",
-      "x_min_normalized": 0.382,
-      "x_max_normalized": 0.51,
-      "y_min_normalized": 0.356,
-      "y_max_normalized": 0.527
-    }
-  ]
-}
-```
-
-Bounding box coordinates are normalized to the range 0.0-1.0 relative to image dimensions.
-For classification, read `classification_annotations`.
-For object detection, read `bounding_box_annotations`.
-See the [example training script](https://github.com/viam-modules/classification-tflite) for complete parsing functions that handle both annotation types.
-
-### Sequence dataset inputs
-
-A job on a [sequence dataset](/train/create-a-dataset/) doesn't get a `--dataset_file`.
-Instead, your script receives three Parquet files: `--binary_data_file`, `--tabular_data_file`, and `--sequences_file`.
-It still receives `--model_output_directory`.
-The images are files on disk, and the Parquet files hold their metadata and your readings.
-Join the three files on `sequence_id`.
-See [Sequence dataset format](/train/sequence-dataset-format/) for the columns.
-To record and export a sequence dataset to test your script on, follow the [sequences tutorial](/data/sequences-tutorial/).
-
-### Accessing Viam APIs
-
-The platform provides `API_KEY` and `API_KEY_ID` environment variables if your script needs to call [Viam APIs](/reference/apis/) during training, for example, to query additional data:
-
-```python
+```python {class="line-numbers linkable-line-numbers"}
+import argparse
 import os
-from viam.rpc.dial import DialOptions
-from viam.app.viam_client import ViamClient
+
+import pandas as pd
 
 
-async def connect() -> ViamClient:
-    dial_options = DialOptions.with_api_key(
-        os.environ.get("API_KEY"), os.environ.get("API_KEY_ID")
-    )
-    return await ViamClient.create_from_dial_options(dial_options)
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--binary_data_file", type=str, required=True)
+    parser.add_argument("--tabular_data_file", type=str, required=True)
+    parser.add_argument("--sequences_file", type=str, required=True)
+    parser.add_argument("--model_output_directory", dest="model_dir",
+                        type=str, required=True)
+    # Add your own arguments as needed:
+    parser.add_argument("--num_epochs", dest="num_epochs",
+                        type=int, default=200)
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    images = pd.read_parquet(args.binary_data_file)
+    readings = pd.read_parquet(args.tabular_data_file)
+    sequences = pd.read_parquet(args.sequences_file)
+
+    # In an export, image paths are relative to the export directory.
+    # In a training job, they're absolute. Resolve them so the script
+    # runs in both places.
+    export_dir = os.path.dirname(os.path.abspath(args.binary_data_file))
+    images["path"] = images["path"].apply(
+        lambda p: p if os.path.isabs(p) else os.path.join(export_dir, p))
+
+    # --- Your training logic goes here ---
+    # Join images and readings to sequences on sequence_id, and use each
+    # sequence's tags to select the examples to train on.
+    model = ...
+
+    # Write the files that what runs the model loads.
+    ...
 ```
 
-### Match your output to an ML model service
+Add `pandas` and `pyarrow` to `install_requires` in `setup.py`.
+If you unzip the export somewhere other than the export directory, resolve the paths against the export directory instead.
 
-After training, Viam packages your output directory and publishes it as a
-model version in your organization's registry. To run the model on a
-machine, the [ML model service](/train/deploy-a-model/) you deploy with it
-must be able to load the files your script wrote.
+{{% /tab %}}
+{{< /tabs >}}
 
-For TFLite models loaded with `tflite_cpu`, save a `model.tflite` file and
-a `labels.txt` listing each label on its own line. This is what the
-[classification-tflite example](https://github.com/viam-modules/classification-tflite)
-produces.
+As you write the script:
 
-For other frameworks, consult the module's README on the registry -- for
-example, [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu),
-[`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu), or
-[`torch-cpu`](https://app.viam.com/module/viam/torch-cpu) -- for the file
-format and tensor shape expectations. Write your output in that format so
-the deployed model loads correctly.
+- **Accept only the arguments you need.** Viam passes each argument you set at submit time as `--<key>=<value>`, so your parser must accept every one you plan to pass.
+  For the full list of arguments Viam passes, see [Training script arguments](/train/dataset-formats/#training-script-arguments).
+- **Write only the model to the output directory.** Viam publishes everything in it except a `tmp/` subdirectory, which you can use for checkpoints and other intermediate files.
+- **Exit with an error when training fails.** The job fails if the script exits with a non-zero status or writes nothing to the output directory.
+- **Fall back to the CPU.** Cloud jobs run on a GPU, but local tests don't, so detect the GPU rather than assuming one.
+- **Write a `labels.txt` file if you want to evaluate the model.** [Evaluation](/train/evaluate-a-model/) reads the labels the model can predict from a `labels.txt` file in the output directory, one label per line, and fails without one.
+  The model also needs a task type and framework that evaluation supports; see [What model it produces](#match-your-output-to-an-ml-model-service).
 
-After uploading, follow [Deploy a model to a machine](/train/deploy-a-model/)
-to add the matching ML model service and vision service to your machine.
+If your script needs to call Viam APIs during training, for example to query more data, see [Viam API credentials](/train/dataset-formats/#viam-api-credentials).
 
-### Complete example
+## 4. Test the script locally {#test-locally}
 
-For a full working training script, see the [classification-tflite example](https://github.com/viam-modules/classification-tflite) on GitHub.
-It trains a TFLite single-label classification model using TensorFlow and Keras.
+Run your script against an exported dataset before you submit a cloud job.
+Testing locally is free, while a cloud job bills GPU time from the moment it starts.
 
-## Test and upload
-
-Before submitting a cloud training job, test your script locally against an exported dataset.
-
-### Export a dataset
+### Export a dataset {#export-a-dataset}
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=<destination> --dataset-id=<dataset-id>
 ```
 
-For a binary dataset, this downloads the image files and a `dataset.jsonl` metadata file.
-To download only the JSONL file without the images, add `--only-jsonl`.
+A binary dataset exports as a `dataset.jsonl` file plus the files it lists.
+A sequence dataset exports as a zip of three Parquet files plus the images; unzip it before you test.
+See [Export a dataset](/train/create-a-dataset/#export-a-dataset).
 
-For a sequence dataset, this downloads a zip of three Parquet files plus the images.
-To download only the zip without the images, add `--only-parquet`.
-See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
+To keep tests fast, export a small dataset, or pass a low epoch count.
 
-You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
-
-### Test locally with Docker
-
-The `test-local` command runs your training script inside the same Docker container that cloud training uses.
-This catches problems that plain Python testing misses: missing system dependencies, Python version differences, and package conflicts.
-Testing locally is free, while a cloud training job bills GPU time from the moment it starts, so it's a cheap way to find a broken script.
-
-`test-local` runs the container without a GPU, so your script runs on the CPU.
-Use a small dataset or a low epoch count, and make sure your script can fall back to the CPU.
-It's a quick check that the script runs, not a substitute for the cloud training job.
-
-`test-local` passes your script only `--dataset_file`, so it works only with scripts for binary datasets.
-To test a script for a sequence dataset, [run it directly](#run-without-docker).
-
-```sh {class="command-line" data-prompt="$"}
-viam training-script test-local \
-  --training-script-directory=my-training/ \
-  --dataset-file=dataset.jsonl \
-  --dataset-root=<destination> \
-  --container-id=<container-id> \
-  --model-output-directory=<output-dir>
-```
-
-The `--dataset-file` path is relative to `--dataset-root`.
-The command mounts your script, dataset, and output directories into the container.
-
-The `--container-id` flag selects the container to run in, either a Viam-managed container or a [custom training container](/train/custom-containers/), so you test in the same environment the cloud training job uses.
-To find container IDs, see [Submit a training job](#submit-a-training-job).
-
-You can pass custom arguments with `--custom-args`:
-
-```sh {class="command-line" data-prompt="$"}
-viam training-script test-local \
-  --training-script-directory=my-training/ \
-  --dataset-file=dataset.jsonl \
-  --dataset-root=<destination> \
-  --container-id=<container-id> \
-  --model-output-directory=<output-dir> \
-  --custom-args=num_epochs=5,labels="label1 label2"
-```
+### Test locally with Docker {#test-locally-with-docker}
 
 {{% alert title="Note" color="note" %}}
-The training containers are built for linux/x86_64 (amd64).
-On ARM systems like Apple Silicon Macs, Docker uses Rosetta 2 emulation automatically, which may be slower but ensures your script runs in the same environment as cloud training.
+`test-local` passes your script only `--dataset_file`, so it works only for a script that reads a binary dataset.
+To test a script for a sequence dataset, [run it directly](#run-without-docker).
 {{% /alert %}}
 
-### Run without Docker
+`viam training-script test-local` runs your script inside the container you chose, the same one the cloud job uses.
+This catches problems that running the script directly misses: missing system dependencies, a different Python version, and package conflicts.
+Because a local test runs on the CPU instead of a GPU, you are only checking that the script runs, not how well it trains.
 
-For a quick check without Docker, run your script directly.
-For a binary dataset:
+Run it from the directory you ran `viam dataset export` from:
 
 ```sh {class="command-line" data-prompt="$"}
-python3 -m model.training --dataset_file=<path/to/dataset.jsonl> \
-    --model_output_directory=<output-dir>
+viam training-script test-local \
+  --training-script-directory=my-training/ \
+  --dataset-root=. \
+  --dataset-file=<destination>/dataset.jsonl \
+  --container-id=<container-id> \
+  --model-output-directory=<output-dir> \
+  --custom-args=num_epochs=1
 ```
 
-For a sequence dataset, unzip the export first, then pass the three Parquet files:
+`--dataset-file` is relative to `--dataset-root`, and the container's working directory is the dataset root, so the image paths in `dataset.jsonl` resolve.
+`--custom-args` takes your own arguments as `key=value` pairs, separated by commas.
+
+When it finishes, check that `<output-dir>` holds the files your framework needs.
+
+{{% alert title="Note" color="note" %}}
+Training containers are built for linux/x86_64 (amd64).
+On ARM systems, such as Apple Silicon Macs, Docker runs them through Rosetta 2 emulation, which is slower.
+If the container fails to start, check that Docker Desktop has Rosetta emulation turned on.
+{{% /alert %}}
+
+### Run without Docker {#run-without-docker}
+
+To check the script quickly, or to test a script for a sequence dataset, run it directly with Python.
+This doesn't use the training container, so install your dependencies locally first.
+
+{{< tabs >}}
+{{% tab name="Binary dataset" %}}
+
+The image paths in `dataset.jsonl` are relative to the directory you ran `viam dataset export` from, so run the script from there:
+
+```sh {class="command-line" data-prompt="$"}
+PYTHONPATH=my-training python3 -m model.training \
+    --dataset_file=<destination>/dataset.jsonl \
+    --model_output_directory=<output-dir> --num_epochs=1
+```
+
+{{% /tab %}}
+{{% tab name="Sequence dataset" %}}
+
+Run the script from inside `my-training/`:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m model.training \
-    --binary_data_file=<unzipped-dir>/binary_data.parquet \
-    --tabular_data_file=<unzipped-dir>/tabular_data.parquet \
-    --sequences_file=<unzipped-dir>/sequences.parquet \
-    --model_output_directory=<output-dir>
+    --binary_data_file=<export-dir>/binary_data.parquet \
+    --tabular_data_file=<export-dir>/tabular_data.parquet \
+    --sequences_file=<export-dir>/sequences.parquet \
+    --model_output_directory=<output-dir> --num_epochs=1
 ```
 
-In an export, the `path` column in `binary_data.parquet` is relative to the export directory.
-In a cloud training job, `path` is an absolute path.
-Resolve relative paths against the export directory so the same script works in both places.
+{{% /tab %}}
+{{< /tabs >}}
 
-### Package and upload
+## 5. Package and upload the script {#package-and-upload}
+
+Package the script as a tarball and upload it to your organization's registry:
 
 ```sh {class="command-line" data-prompt="$"}
 tar -czvf my-training.tar.gz my-training/
 viam training-script upload --path=my-training.tar.gz \
   --org-id=<org-id> --script-name=my-training-script \
-  --framework=<framework>
+  --framework=<framework> --type=<task-type>
 ```
 
-`--framework` is required: set it to the framework of the model your script produces (`tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`, or `unspecified`).
-With `registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
-You can also specify `--type`, `--visibility`, and `--description` when uploading.
-Scripts default to private (visible only within your organization). Set `--visibility=public` to share with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script).
-See the [CLI reference](/cli/overview/) for the full list of flags.
+The `--framework` and `--type` flags declare [what model the script produces](#match-your-output-to-an-ml-model-service): for example, `--framework=tflite --type=single_label_classification`.
+With `--framework=registry`, also pass `--module-resource=<namespace:module:model>` for each module resource to deploy with the trained model.
+`--type=unspecified` is the task type the Viam app shows as **Other**.
 
+Scripts are private to your organization by default.
+To share one with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script), add `--visibility=public` and a `--description`.
 To find your organization ID, run `viam organization list`.
+For every flag, see the [CLI reference](/cli/datasets-and-training/).
 
 After uploading, your script appears in the [registry](https://app.viam.com/registry?type=Training+Script).
 
-## Submit a training job
+## 6. Submit a training job {#submit-a-training-job}
 
-Once a training script is in the registry, whether you uploaded it or are using someone else's, submit a training job to run it against a dataset.
+Once a training script is in the registry, whether you uploaded it or found it there, submit a job to run it on a dataset.
+The dataset must be the type the script reads.
 
-Every custom training job runs inside a container on GPU-backed
-cloud infrastructure. Viam-managed containers are based on Python 3.10 with TensorFlow
-pre-installed. The currently supported versions are `tf:2.16`, `tf:2.17`, and `tf:2.21`.
-To use a different framework (PyTorch, scikit-learn, or anything installable
-with pip), add it to the `install_requires` list in `setup.py`; Viam
-installs the packages in the container before running your script.
-
-If your dependencies take a long time to install, build them into a
-[custom training container](/train/custom-containers/) instead so each job
-starts training right away.
-
-Custom training jobs run on premium GPUs and are billed at a higher rate than
-[managed training](/train/train-a-model/) jobs; see [pricing](https://www.viam.com/product/pricing)
-for plan details.
-
-To list available containers with their IDs, framework versions, and
-end-of-life dates, including your organization's custom containers, run:
-
-```sh {class="command-line" data-prompt="$"}
-viam train containers list --org-id=<org-id>
-```
+{{% alert title="Note" color="note" %}}
+Custom training jobs run on premium GPUs and are billed at a higher rate than built-in training jobs.
+See [pricing](https://www.viam.com/product/pricing).
+{{% /alert %}}
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 1. Go to your [**DATASETS**](https://app.viam.com/data/datasets) and select the dataset you want to train on.
 2. Click **Train model**.
 3. Select **Train on a custom training script** and follow the prompts.
-4. In the **Container version** dropdown, select a container that matches the framework your training script uses.
+4. In the **Container version** dropdown, select the [container you chose](#choose-a-container).
    The dropdown lists Viam-managed containers, marked **(Viam)**, followed by your organization's custom containers, marked **(Custom:** _image_**)**.
-   The UI shows a warning if the selected Viam-managed container is approaching its end-of-life date.
-5. Optionally, in the **Arguments** section, add arguments to pass to your training script, such as the number of epochs.
-   Viam passes each key and value to the script as a command-line argument, so `num_epochs` and `20` become `--num_epochs=20`.
-   Your script must be written to accept each argument, as `--num_epochs` is in the [example training script](#trainingpy).
+   The Viam app shows a warning if the selected Viam-managed container is approaching its end-of-life date.
+5. Optionally, in the **Arguments** section, add arguments to pass to your script, such as the number of epochs.
+   Viam passes each key and value as a command-line argument, so `num_epochs` and `20` become `--num_epochs=20`.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
@@ -384,7 +382,14 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --args=num_epochs=100,labels="'label1 label2'"
 ```
 
+`--version` is the version of the training script to run.
 You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
+
+{{% alert title="Tip" color="tip" %}}
+After you've tested the script locally, `viam train submit custom with-upload` uploads the tarball and submits a training job in one command.
+It takes the `upload` flags, except that the task type flag is `--model-type`, plus the job's flags, such as `--dataset-id` and `--container-id`, and it always uploads the script as private.
+See [Train with a custom training script](/cli/datasets-and-training/#train-with-a-custom-training-script).
+{{% /alert %}}
 
 {{% /tab %}}
 {{% tab name="API" %}}
@@ -395,10 +400,16 @@ Pass the container ID as `container_id`.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Monitor and debug
+## 7. Verify the training job succeeded {#verify-the-training-job-succeeded}
+
+<span id="monitor-and-debug"></span>A job ends with the status **Completed**, **Failed**, or **Canceled**.
+
+When a training job succeeds or fails, Viam emails the user who submitted it.
+Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
+Training logs expire after 7 days.
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 In the Viam app, go to the **DATA** page, click the [**MODELS** tab](https://app.viam.com/models), and expand **Active Training**.
 Click a job ID to view its logs.
@@ -422,21 +433,43 @@ viam train logs --job-id=<job-id>
 {{% /tab %}}
 {{< /tabs >}}
 
-Training logs expire after 7 days.
-When a training job succeeds or fails, Viam emails the user who submitted it.
-Jobs submitted with an API key send no email, so check the job status with `viam train list` or `viam train get` instead.
+When the job's status is **Completed**, the trained model is in your organization's registry: it's listed on the **MODELS** tab, and its details page lists its versions.
+A script can log lines at the error level and still succeed, so check the job's final status rather than individual log lines.
 
-If a job fails, check the logs first: the error message usually indicates the problem.
-Note that training scripts may emit log lines at the error level and still succeed; check the final job status rather than individual log lines.
+## Troubleshooting {#troubleshooting}
 
-### Jobs that fail waiting for a GPU
+If a job fails, read its logs first: the error message usually names the problem.
 
+{{% expand "The job fails before training starts" %}}
+A package in `install_requires` failed to install, or the script failed on an argument.
+Check that the job's arguments match what your parser accepts, and that the dependencies install in the container you chose: run [`test-local`](#test-locally-with-docker) with the same container.
+{{% /expand %}}
+
+{{% expand "The job fails waiting for a GPU" %}}
 A custom training job needs a cloud GPU before your script can start. Viam tries each GPU type it supports in turn:
 
 - If no GPU type has room when you submit the job, the job fails right away with `no available GPUs at this moment`.
-- Otherwise, the job waits in a queue for a GPU and shows as in progress. If none frees up, Viam moves the job to another GPU type and waits longer each time. After about two hours with no GPU, the job fails with `no available GPUs after waiting for capacity`.
+- Otherwise, the job waits in a queue for a GPU and shows as **Waiting for GPU** in the Viam app. If none frees up, Viam moves the job to another GPU type and waits longer each time. After about two hours with no GPU, the job fails with `no available GPUs after waiting for capacity`.
 
 Neither error means your script is broken. Submit the job again later.
 
 Because a job can run on more than one GPU type, the number of GPUs can differ between jobs.
 If your script splits work across GPUs, read the device count at run time instead of assuming a fixed number.
+{{% /expand %}}
+
+{{% expand "The job fails after training finishes" %}}
+The script wrote nothing to `--model_output_directory`, or wrote only to its `tmp/` subdirectory.
+Check the path your script writes to.
+{{% /expand %}}
+
+{{% expand "The job succeeds but the model won't load on the machine" %}}
+The files your script wrote don't match what the ML model service or module expects, or the script was uploaded with the wrong `--framework`.
+See [What model it produces](#match-your-output-to-an-ml-model-service).
+{{% /expand %}}
+
+## What's next {#whats-next}
+
+- [Evaluate a model](/train/evaluate-a-model/): for a classification or object detection model, measure how well it does on labeled images it wasn't trained on before you deploy it.
+- [Deploy a model to a machine](/train/deploy-a-model/): add the trained model and the resource that runs it to your machine.
+- [Custom training containers](/train/custom-containers/): build your script's dependencies into a container so jobs start training right away.
+- [Training dataset formats](/train/dataset-formats/): every column and field your script can read.

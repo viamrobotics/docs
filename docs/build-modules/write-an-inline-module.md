@@ -20,8 +20,9 @@ application-specific logic. Modules let you add that support yourself.
 
 An inline module is the fastest way to get started. You write your module code
 directly in the Viam app's browser-based editor -- no IDE, terminal, or GitHub
-account required. When you click **Save & Deploy**, Viam builds your module in
-the cloud and deploys it to your machine automatically.
+account required. When you save, Viam deploys your module to your machine
+automatically. Go modules are built in the cloud first. Python modules run from
+source, with no build step.
 
 Inline modules implement the Generic service API -- a single `DoCommand`
 method for arbitrary control logic. To write a hardware driver or use a more
@@ -434,14 +435,26 @@ invocations; the DoCommand payload can vary with each call.
 
 ### 6. Save and deploy
 
-1. Click **Save & Deploy** in the code editor toolbar.
-2. Viam uploads your code as a new version and starts a cloud build.
-3. Builds typically take 2-5 minutes. You can continue editing while a build
-   runs -- your next save creates a new version.
-4. If the build fails, click **View Logs** to see what went wrong.
+Edit your code in the module's code card on the machine's **CONFIGURE** tab,
+then save the machine's configuration. Each save creates a new version in your
+module's history. You can switch between versions using the version dropdown in
+the editor toolbar.
 
-Each save creates a new version in your module's history. You can switch between
-versions using the version dropdown in the editor toolbar.
+What happens next depends on the module's language:
+
+- **Go:** The save starts a cloud build. Builds typically take 2-5 minutes. You
+  can continue editing while a build runs -- your next save creates a new
+  version. If the build fails, click **View Logs** to see what went wrong.
+- **Python:** There is no cloud build. Viam uploads your source, and the
+  machine restarts the module with the new code. Python code isn't deployed to
+  Windows machines.
+
+The standalone code editor has a **Save & Deploy** button that also saves a new
+version. For a Go module, it starts the same cloud build. For a Python module,
+it only stores the version: the code reaches the machine the next time you save
+an edit to the module from the **CONFIGURE** tab. Saving a Python module in a
+fragment also stores a new version without deploying it to machines that use
+the fragment.
 
 ### 7. Test on a machine
 
@@ -514,7 +527,7 @@ it run automatically:
 
 1. Create a new inline module from the **+** menu.
 2. Implement `validate_config`, the constructor, and `do_command`.
-3. Click **Save & Deploy** and wait for the build to complete.
+3. Save the module. For a Go module, wait for the build to complete.
 4. Add the module to a machine and configure the service with dependencies.
 5. Execute a DoCommand and verify the response.
 6. Set up a scheduled job to run the logic continuously.
@@ -522,6 +535,8 @@ it run automatically:
 ## Troubleshooting
 
 {{< expand "Build fails after saving" >}}
+
+Only Go modules are built in the cloud.
 
 - Click **View Logs** in the build progress bar to see the error.
 - Common causes: syntax errors, missing imports, incompatible dependencies.
@@ -535,7 +550,9 @@ it run automatically:
 - Check that you added the module using the **Add to machine** button in the
   code editor, or that the module appears in the machine's configuration.
 - The module version defaults to `latest`. After a successful build, the machine
-  picks up the new version automatically within a few minutes.
+  picks up the new version of a Go module automatically within a few minutes.
+- A Python module is deployed when you save an edit to it from the machine's
+  **CONFIGURE** tab, not when you save in the standalone code editor.
 
 {{< /expand >}}
 
@@ -551,12 +568,16 @@ it run automatically:
 
 {{< expand "Changes to code not taking effect" >}}
 
-- Make sure the build completed successfully. Check the build progress bar in
-  the code editor.
+- For a Go module, make sure the build completed successfully. Check the build
+  progress bar in the code editor.
+- For a Python module, make your edits in the module's code card on the
+  machine's **CONFIGURE** tab and save there. Code saved in the standalone code
+  editor reaches the machine only after another edit is saved from
+  **CONFIGURE**.
 - The machine must be online to receive the updated module. Check the machine's
   status in the Viam app.
 - By default, modules are configured with version `latest`, which means every
-  new build deploys automatically. If the version is pinned, update it manually.
+  new Go build deploys automatically. If the version is pinned, update it manually.
 
 {{< /expand >}}
 

@@ -78,8 +78,9 @@ To get started, see [App scaffolding](/build-apps/setup/overview/) and [Connect 
 ## Inline modules {#inline-modules}
 
 You write an inline module in Python or Go, in an editor in the Viam web app.
-When you click **Save & Deploy**, Viam stores your source, builds it in the cloud, and deploys it to your machine.
-Each save is a new version (`0.0.1`, `0.0.2`, and so on) and starts a cloud build that typically takes a few minutes, and you can keep editing while it runs.
+When you save, Viam stores your source as a new version and deploys it to your machine.
+For a Go module, each save starts a cloud build that typically takes a few minutes, and you can keep editing while it runs.
+A Python module runs from source: there is no build, and the machine restarts the module with the new code when you save the machine's configuration.
 There's nothing else to set up: no repository, no build tooling, no release process.
 
 Use an inline module when your code needs to run on the machine without your laptop, and you don't need to share it outside your organization.

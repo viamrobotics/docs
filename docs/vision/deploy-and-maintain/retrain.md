@@ -42,6 +42,9 @@ Signs that a model needs new training data:
 
 A simple approach: log detection results alongside camera frames for a day, then review a sample. Any class with precision or recall below your target threshold is a candidate for retraining.
 
+To measure precision and recall instead of estimating them, label a sample of those frames in a dataset and [evaluate the model](/train/evaluate-a-model/) on it.
+The per-class breakdown shows which classes fall below your target.
+
 ## 2. Capture failing images
 
 The image that made your model fail is the single most valuable training example you can add. Use the [data management service](/data/capture-sync/capture-and-sync-data/) to save camera frames to the Viam Cloud so they become available for labeling.
@@ -55,7 +58,7 @@ Both strategies are configured on the data management service. The images sync t
 
 ## 3. Label the new images
 
-Open the [**DATA** tab](https://app.viam.com/data/all) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate images](/train/annotate-images/) for the UI walkthrough.
+Open the [**DATA** tab](https://app.viam.com/data/all) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate data](/train/annotate-data/) for the UI walkthrough.
 
 If you have a lot of images, use [automatic annotation](/train/automate-annotation/) to generate initial labels from an existing model, then review and correct them. Correction is usually faster than labeling from scratch.
 
@@ -129,7 +132,8 @@ Pinning is safer for production fleets. "Latest" is useful during active develop
 Accuracy monitoring is not automatic on Viam today. There is no dashboard that reports "your model's precision has dropped 5% this week." Practical approaches:
 
 - **Log confidence scores** from your detector to a time-series store and watch for trends.
-- **Sample review**: capture a periodic snapshot of production detections and review them against ground truth.
+- **Sample review**: periodically label a sample of production images in a test dataset and [evaluate the model](/train/evaluate-a-model/) on it.
+  Compare precision and recall with the previous evaluation to see whether accuracy has dropped.
 - **Alert on low confidence**: configure a [trigger](/vision/object-detection/alert-on-detections/) that fires when detections below a threshold exceed a rate, so you know to pull more training data.
 
 When drift shows up again, the cycle repeats. The first retraining cycle is the slowest; subsequent cycles reuse the same dataset, labeling workflow, and deployment procedure.
@@ -137,7 +141,7 @@ When drift shows up again, the cycle repeats. The first retraining cycle is the 
 ## Next steps
 
 - [Data capture and sync](/data/capture-sync/capture-and-sync-data/): set up production image capture
-- [Annotate images](/train/annotate-images/): label captured data
+- [Annotate data](/train/annotate-data/): label captured data
 - [Train a model](/train/train-a-model/): produce a new model version
 - [Deploy a model](/vision/deploy-and-maintain/deploy-from-registry/): wire the new version into the ML model service
 - [Act on detections](/vision/object-detection/act-on-detections/) and [alert on detections](/vision/object-detection/alert-on-detections/): use the new version in production logic
