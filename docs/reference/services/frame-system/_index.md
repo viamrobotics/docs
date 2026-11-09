@@ -199,7 +199,7 @@ The frame system uses the supplemental transform to determine where the arm shou
 
 ### Transform usage
 
-- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/reference/apis/services/motion/#getpose) method.
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to the machine client's [`GetPose`](/reference/apis/robot/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
 - [`TransformPose`](/reference/apis/robot/#transformpose) has the option to take in these additional transforms.
 

@@ -21,4 +21,4 @@ The vision service has three built-in models with distinct configuration shapes:
 {{% card link="/reference/services/vision/detections-to-segments/" %}}
 {{< /cards >}}
 
-For API method reference (`GetDetections`, `GetClassifications`, `GetObjectPointClouds`, `CaptureAllFromCamera`, `GetProperties`), see [Vision service API](/reference/apis/services/vision/).
+For API method reference (`GetDetections`, `GetClassifications`, `GetObjectPointClouds`, `GetDetections3D`, `CaptureAllFromCamera`, `GetProperties`), see [Vision service API](/reference/apis/services/vision/).

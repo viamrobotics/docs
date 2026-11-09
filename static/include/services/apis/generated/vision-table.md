@@ -6,6 +6,7 @@
 | [`GetClassificationsFromCamera`](/reference/apis/services/vision/#getclassificationsfromcamera) | Get a list of classifications from the next image from a specified camera using a configured classifier. |
 | [`GetClassifications`](/reference/apis/services/vision/#getclassifications) | Get a list of classifications from a given image using a configured classifier. |
 | [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) | Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified segmenter). |
+| [`GetDetections3D`](/reference/apis/services/vision/#getdetections3d) | Get the objects the vision service perceives through a camera, each as a tree of named transforms that carries the object's shapes and class hypotheses. |
 | [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera) | Get the next image, detections, classifications, and objects all together, given a camera name. |
 | [`Reconfigure`](/reference/apis/services/vision/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/services/vision/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |

@@ -12,6 +12,8 @@ date: "2026-04-14"
 
 Computer vision on Viam turns camera frames into structured results your code can act on: bounding boxes, class labels, or 3D point cloud objects. Three built-in vision service models cover the common tasks, and the [registry](https://app.viam.com/registry) has more for specialized cases.
 
+{{< course id="viam-103" eyebrow="New to computer vision? Start with a free course" >}}
+
 ## What the vision service does
 
 The vision service exposes a single API. Your code calls the same methods whether the underlying detector is an ML model, a color heuristic, or a 3D segmenter. The implementation you pick decides what the service recognizes; the code you write does not change.
@@ -20,7 +22,8 @@ Available methods:
 
 - [`GetDetections`](/reference/apis/services/vision/#getdetections) and [`GetDetectionsFromCamera`](/reference/apis/services/vision/#getdetectionsfromcamera) return 2D bounding boxes with labels and confidence.
 - [`GetClassifications`](/reference/apis/services/vision/#getclassifications) and [`GetClassificationsFromCamera`](/reference/apis/services/vision/#getclassificationsfromcamera) return top-N label-confidence pairs for the whole image.
-- [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) returns 3D point cloud objects, each with a label.
+- [`GetDetections3D`](/reference/apis/services/vision/#getdetections3d) returns each detected object as a tree of named transforms carrying its shapes, plus class hypotheses. This is the recommended method for 3D results. You can pass the transforms into a frame system or a motion `WorldState`.
+- [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) returns one point cloud and geometry per object, each with a label. This is the older format.
 - [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera) returns an image, its detections, classifications, and point clouds in a single round trip. Use this when you need more than one kind of result.
 - [`GetProperties`](/reference/apis/services/vision/#getproperties) reports which result types the service supports at runtime.
 
@@ -44,7 +47,7 @@ These three task types answer different questions.
 
 **Classification** asks _what_ the image contains. A classifier returns a small number of labels with confidence scores for the whole image or a region of it. Use classification when you just need to categorize the scene. "Is this picture of a cat or a dog?" and "is the conveyor belt clear or blocked?" are classification questions.
 
-**3D segmentation** asks _where in 3D space_ objects are. A 3D segmenter returns a point cloud per object with coordinates in the camera frame. Use it when a robot needs physical positions. Planning an arm motion to an object or feeding obstacle positions into a navigation stack both need 3D segmentation.
+**3D segmentation** asks _where in 3D space_ objects are. A 3D segmenter returns each object with coordinates in the camera frame, as a tree of named transforms with `GetDetections3D` or as a point cloud with `GetObjectPointClouds`. Use it when a robot needs physical positions. Planning an arm motion to an object or feeding obstacle positions into a navigation stack both need 3D segmentation.
 
 ## Verify that it works
 
@@ -62,7 +65,7 @@ Accuracy almost always drops when a model moves from the lab to production. The 
 
 1. Capture failing images from deployed machines with [data capture](/data/capture-sync/capture-and-sync-data/).
 2. Label the new images in the [**DATA** tab](https://app.viam.com/data/all) and update a dataset.
-3. Retrain the model with [managed training](/train/train-a-model/) or a custom script.
+3. Retrain the model with [built-in training](/train/train-a-model/) or a custom script.
 4. Deploy the new model version through the ML model service and push it to your fleet.
 
 This capture, label, train, deploy, monitor cycle is often called CVOps (computer-vision operations). Viam's data, training, fleet, and vision sections are the tools. The vision section is where your code meets the model.

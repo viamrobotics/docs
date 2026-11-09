@@ -14,7 +14,7 @@ Set up a project for writing a Viam app in Go: a backend service, a fleet orches
 
 ## Prerequisites
 
-- Go 1.21 or later
+- Go `1.26.10` or later, the version the current RDK release requires. With Go 1.21 or later, the `go` command downloads that toolchain automatically unless `go env GOTOOLCHAIN` reports `local` or `path`.
 - A configured Viam machine
 - The machine's address, an API key, and an API key ID
 
@@ -106,7 +106,7 @@ The example above reads credentials from environment variables set inline on the
 
 ## Troubleshooting
 
-- **`go mod tidy` errors.** The RDK has many transitive dependencies. If `go mod tidy` fails with version conflicts, check that your Go version is 1.21 or later and that you are not inside another module's directory.
+- **`go mod tidy` errors.** The RDK has many transitive dependencies. If `go mod tidy` fails with version conflicts, check that `go version` reports `go1.26.10` or later (or that `go env GOTOOLCHAIN` reports neither `local` nor `path`) and that you are not inside another module's directory.
 - **Connection hangs or times out.** Verify the machine address matches the **CONNECT** tab exactly. Verify the machine is online in the Viam app.
 - **Credentials wrong.** The `client.WithEntityCredentials` call takes the API key ID as the first argument and the API key secret as `Payload`. Reversing them causes an authentication failure with a generic error message.
 

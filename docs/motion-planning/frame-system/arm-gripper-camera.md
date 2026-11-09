@@ -194,6 +194,12 @@ toward the gripper jaws. Viam normalizes the vector for you.
 
 Click **Save**.
 
+If the camera's cable runs along the arm, you can keep the motion service from
+winding it up: turn on the
+[cable twist constraint](/motion-planning/reference/motion-service/#cable-twist-constraint),
+which keeps each of the arm's rotational joints within a set range while it
+plans a `Move` request.
+
 ### 6. Visualize the frame system
 
 1. Navigate to the **3D SCENE** tab in the Viam app.

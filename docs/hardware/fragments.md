@@ -29,7 +29,7 @@ Someone has already figured out the right configuration for those components wor
 
 For example, if you're setting up a UFactory xArm 6 with a wrist-mounted Intel RealSense camera, a fragment for that combination configures both components and their spatial relationship in one step, rather than adding and configuring each one individually.
 
-You can browse every fragment in your organization on the [FRAGMENTS page](https://app.viam.com/fragments), and search community fragments from the configuration block search in the Viam app.
+You can browse every fragment in your organization on the [FRAGMENTS page](https://app.viam.com/fragments), and find community fragments by choosing **Fragments** in the **Type** filter on the [registry](https://app.viam.com/registry) or by using the configuration block search in the Viam app.
 
 ## Save your own configurations
 

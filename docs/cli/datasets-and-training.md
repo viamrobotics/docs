@@ -196,6 +196,8 @@ viam train submit custom from-registry \
   --container-id=<container-id>
 ```
 
+`--version` is the version of the training script, not of the model. To set the model version, pass `--model-version`; it defaults to the current timestamp. To pass arguments to the training script, use `--args` with a comma-separated list of `key=value` pairs, for example `--args=num_epochs=3,model_type=multi_label`.
+
 Submit a custom script by uploading it directly:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -261,6 +263,7 @@ viam training-script update \
 ```
 
 Test a training script locally before uploading (use `viam train containers list --org-id=<org-id>` to find container IDs).
+Run it from the directory you ran `viam dataset export` from, so the image paths in `dataset.jsonl` resolve.
 Local testing runs in a Docker container that mirrors the cloud training environment.
 The container validates that your script directory contains `setup.py` and `model/training.py`.
 
@@ -271,9 +274,9 @@ On ARM Macs, Docker runs them through Rosetta emulation, which may be slower.
 
 ```sh {class="command-line" data-prompt="$"}
 viam training-script test-local \
-  --dataset-root=./my-dataset/ \
+  --dataset-root=. \
+  --dataset-file=my-dataset/dataset.jsonl \
   --training-script-directory=./my-training-script/ \
-  --dataset-file=dataset.jsonl \
   --container-id=<container-id> \
   --model-output-directory=./output/
 ```

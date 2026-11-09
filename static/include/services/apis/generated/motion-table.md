@@ -4,7 +4,7 @@
 | [`Move`](/reference/apis/services/motion/#move) | The `Move` method is the primary way to move multiple components, or to move any object to any other location. |
 | [`MoveOnMap`](/reference/apis/services/motion/#moveonmap) | Move a base component to a destination pose on a SLAM map. |
 | [`MoveOnGlobe`](/reference/apis/services/motion/#moveonglobe) | Move a base component to a destination GPS point, represented in geographic notation _(latitude, longitude)_. |
-| [`GetPose`](/reference/apis/services/motion/#getpose) | `GetPose` gets the location and orientation of a component within the frame system. |
+| [`GetPose`](/reference/apis/services/motion/#getpose) | **Deprecated.** Use the machine client's `GetPose` instead, which takes the same parameters and returns the same result: `machine.get_pose` in Python (SDK v0.83.0 and later), `machine.GetPose` in Go, and `machine.getPose` in TypeScript. |
 | [`StopPlan`](/reference/apis/services/motion/#stopplan) | Stop a base component being moved by an in progress `MoveOnGlobe` or `MoveOnMap` call. |
 | [`ListPlanStatuses`](/reference/apis/services/motion/#listplanstatuses) | Returns the statuses of plans created by `MoveOnGlobe` or `MoveOnMap` calls that meet at least one of the following conditions since the motion service initialized:  - the plan's status is in progress - the plan's status changed state within the last 24 hours  All repeated fields are in chronological order. |
 | [`GetPlan`](/reference/apis/services/motion/#getplan) | By default, returns the plan history of the most recent `MoveOnGlobe` or `MoveOnMap` call to move a base component. |

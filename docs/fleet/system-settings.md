@@ -20,6 +20,8 @@ Control which versions of `viam-agent` and `viam-server` run on each machine.
 Manage version selection in the Viam app, not in your machine's JSON configuration. In the machine settings card, open **Settings** and expand **Software Updates**:
 
 - **Agent version**: choose a release channel, a specific semver release such as `1.4.0`, or a URL to a custom binary.
+  To use a binary already on the machine, give its path as a `file://` URL, such as `file:///home/myuser/viam-agent` or `file://C:\Users\myuser\viam-agent.exe`.
+  The Viam app won't save a bare path such as `/home/myuser/viam-agent`.
 - **viam-server version**: same options as agent.
 
 The available release channels are:
@@ -167,7 +169,7 @@ In the machine settings card, open **Settings** and expand **System**:
 
 | Field                                        | Type    | Default        | Description                                                                                                                                                                                                                                                                                                                                  |
 | -------------------------------------------- | ------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `forward_system_logs`                        | string  | `""`           | Which system logs to forward. Empty string disables forwarding.                                                                                                                                                                                                                                                                              |
+| `forward_system_logs`                        | string  | `""`           | Which system logs to forward. When unset, `viam-agent` v1.2.0 and later forward error-level logs only. Set `"disable"` to turn off forwarding. See [Log forwarding filter syntax](#log-forwarding-filter-syntax).                                                                                                                            |
 | `logging_journald_storage`                   | string  | `"persistent"` | Controls how system logs (`journald`) are stored locally. Options: `"persistent"` (store on disk in `/var/log/journal`, persists across reboots), `"volatile"` (store in memory in `/run/log/journal`, deleted on reboot), `"auto"` (persistent if `/var/log/journal` exists, otherwise volatile), `"none"` (do not store any logs locally). |
 | `logging_journald_runtime_max_use_megabytes` | integer | `512`          | Maximum temporary log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                                                                                                       |
 | `logging_journald_system_max_use_megabytes`  | integer | `512`          | Maximum persistent log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                                                                                                      |
@@ -179,6 +181,15 @@ The `forward_system_logs` field accepts:
 - `"all"`: forward all system logs
 - A comma-separated list of service identifiers: forward only those services (for example, `"kernel,NetworkManager,tailscaled"`)
 - Prefix a service with `-` to exclude it: `"all,-gdm,-tailscaled"` forwards everything except gdm and tailscaled
+- `"disable"` or `"disabled"`: forward nothing
+
+When you set a filter, `viam-agent` forwards log entries of every level from the services it selects.
+
+When `forward_system_logs` is unset or an empty string, `viam-agent` v1.2.0 and later forward only error-level entries from `kernel`, `systemd`, `bluetoothd`, `dbus-daemon`, and `dbus-broker`.
+These cover driver and storage errors, failed systemd units (for example, a watchdog restart), and Bluetooth and D-Bus errors.
+Earlier `viam-agent` versions forward nothing when the field is empty.
+
+Forwarded entries appear in the **LOGS** tab under the logger name `viam-agent.system.<identifier>`, for example `viam-agent.system.kernel`, with the process ID in a `pid` field.
 
 ## Verify settings changes
 

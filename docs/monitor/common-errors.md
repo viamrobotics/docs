@@ -229,7 +229,7 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 
 1. If you are using a registry-provided models, ensure that your machine's configuration includes the module that provides the model.
    On your machine page, find the module and navigate to it's module page in the registry.
-   You can find the correct model triplet (for example `viam:camera:csi-pi`) in the **Components & services** section of the registry page.
+   You can find the correct model triplet (for example `viam:camera:csi`) in the **Components & services** section of the registry page.
 1. Check for typos in the model triplet.
    It must exactly match the model registered with `viam-server`.
 1. Ensure the model supports the requested API.
@@ -358,7 +358,9 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
 1. Check networking:
 
    1. Check if your machine is showing as online on Viam and [check its logs](/monitor/troubleshoot/#check-logs).
-      When `viam-server` starts it runs a set of network checks which you can view in the logs.
+      `viam-server` runs a set of network checks when it starts and every 5 minutes after, which you can view in the logs.
+      The **LOGS** tab hides network check lines below error level by default; turn on **Show internal logs** in the log view options to see them.
+      With `viam-server` v1.12.0 or later, the machine's **status** dropdown also shows the latest result for each part. See [Inspect a specific machine](/monitor/monitor/#inspect-a-specific-machine).
 
    ```sh {class="command-line" data-prompt="$"}
    2025-07-16T16:50:57.727Z    INFO    rdk.network-checks    networkcheck/network-check.go:28    Starting network checks

@@ -12,6 +12,7 @@
         @supports (position: sticky) {
             max-height: calc(100vh - 4rem);
             overflow-y: auto;
+            padding-bottom: 4rem;
         }
     }
 

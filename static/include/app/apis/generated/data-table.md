@@ -3,7 +3,7 @@
 | ----------- | ----------- |
 | [`GetLatestTabularData`](/reference/apis/data-client/#getlatesttabulardata) | Gets the most recent tabular data captured from the specified data source, as long as it was synced within the last year. |
 | [`ExportTabularData`](/reference/apis/data-client/#exporttabulardata) | Obtain unified tabular data and metadata from the specified data source. |
-| [`TabularDataByFilter`](/reference/apis/data-client/#tabulardatabyfilter) | Retrieve optionally filtered tabular data from Viam. |
+| [`TabularDataByFilter`](/reference/apis/data-client/#tabulardatabyfilter) | **Deprecated.** Use `TabularDataByMQL` or `TabularDataBySQL` to query tabular data, or `ExportTabularData` to stream all data from one data source. |
 | [`TabularDataBySQL`](/reference/apis/data-client/#tabulardatabysql) | Obtain unified tabular data and metadata, queried with SQL. Make sure your API key has permissions at the organization level in order to use this. |
 | [`TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) | Obtain unified tabular data and metadata, queried with MQL. |
 | [`BinaryDataByFilter`](/reference/apis/data-client/#binarydatabyfilter) | Retrieve optionally filtered binary data from Viam. |
@@ -13,10 +13,10 @@
 | [`DeleteBinaryDataByIDs`](/reference/apis/data-client/#deletebinarydatabyids) | Filter and delete binary data by ids. |
 | [`AddTagsToBinaryDataByIDs`](/reference/apis/data-client/#addtagstobinarydatabyids) | Add tags to binary data by ids. |
 | [`RemoveTagsFromBinaryDataByIDs`](/reference/apis/data-client/#removetagsfrombinarydatabyids) | Remove tags from binary by ids. |
-| [`TagsByFilter`](/reference/apis/data-client/#tagsbyfilter) | Get a list of tags using a filter. |
+| [`TagsByFilter`](/reference/apis/data-client/#tagsbyfilter) | **Deprecated.** Collect tags from binary data with `BinaryDataByFilter`, and from tabular data with `TabularDataByMQL`. |
 | [`AddBoundingBoxToImageByID`](/reference/apis/data-client/#addboundingboxtoimagebyid) | Add a bounding box to an image specified by its BinaryID. |
 | [`RemoveBoundingBoxFromImageByID`](/reference/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its BinaryID. |
-| [`BoundingBoxLabelsByFilter`](/reference/apis/data-client/#boundingboxlabelsbyfilter) | Get a list of bounding box labels using a Filter. |
+| [`BoundingBoxLabelsByFilter`](/reference/apis/data-client/#boundingboxlabelsbyfilter) | **Deprecated.** Use `BinaryDataByFilter` instead, and collect the unique `label` values from each result's `metadata.annotations.bboxes`. |
 | [`GetDatabaseConnection`](/reference/apis/data-client/#getdatabaseconnection) | Get a connection to access a MongoDB Atlas Data federation instance. |
 | [`ConfigureDatabaseUser`](/reference/apis/data-client/#configuredatabaseuser) | Configure a database user for the Viam organization’s MongoDB Atlas Data Federation instance. |
 | [`AddBinaryDataToDatasetByIDs`](/reference/apis/data-client/#addbinarydatatodatasetbyids) | Add the `BinaryData` to the provided dataset. |
@@ -27,12 +27,12 @@
 | [`DeleteDataPipeline`](/reference/apis/data-client/#deletedatapipeline) | Delete a data pipeline, its execution history, and all of its output data. |
 | [`ListDataPipelineRuns`](/reference/apis/data-client/#listdatapipelineruns) | Get information about individual executions of a data pipeline. |
 | [`RenameDataPipeline`](/reference/apis/data-client/#renamedatapipeline) | Rename a data pipeline. |
-| [`AddTagsToBinaryDataByFilter`](/reference/apis/data-client/#addtagstobinarydatabyfilter) | Add tags to binary data by filter. |
+| [`AddTagsToBinaryDataByFilter`](/reference/apis/data-client/#addtagstobinarydatabyfilter) | **Deprecated.** Use `AddTagsToBinaryDataByIDs` instead. |
 | [`CreateBinaryDataSignedURL`](/reference/apis/data-client/#createbinarydatasignedurl) | Create a signed URL for accessing binary data without authentication. The URL expires after the specified duration. |
 | [`CreateIndex`](/reference/apis/data-client/#createindex) | Create a custom index on your data to speed up queries. You specify the organization, the collection type (tabular or binary), and the fields to index. |
 | [`DeleteIndex`](/reference/apis/data-client/#deleteindex) | Delete a custom index from your data. |
 | [`ListIndexes`](/reference/apis/data-client/#listindexes) | List all custom indexes for an organization. |
-| [`RemoveTagsFromBinaryDataByFilter`](/reference/apis/data-client/#removetagsfrombinarydatabyfilter) | Remove tags from binary data by filter. |
+| [`RemoveTagsFromBinaryDataByFilter`](/reference/apis/data-client/#removetagsfrombinarydatabyfilter) | **Deprecated.** Use `RemoveTagsFromBinaryDataByIDs` instead. |
 | [`UpdateBoundingBox`](/reference/apis/data-client/#updateboundingbox) | Update an existing bounding box on an image. You can change the label, position, or dimensions of the bounding box. |
 | [`CreateSequence`](/reference/apis/data-client/#createsequence) | Create a sequence: a saved time window of one machine part's captured data, with tags. You provide the part ID, the resources to include, and the start and end times. |
 | [`GetSequence`](/reference/apis/data-client/#getsequence) | Get a sequence by its ID. |

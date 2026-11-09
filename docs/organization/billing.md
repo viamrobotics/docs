@@ -17,7 +17,8 @@ aliases:
 The billing page shows your organization's current usage, payment method, and invoice history.
 You must be an organization owner to access it.
 
-To open the billing page, click the organization name in the top navigation bar and select **Payment and billing**.
+To open the billing page, click the organization name in the top navigation bar and select **Payment & Billing**.
+The page has two tabs: **Overview**, which holds every section on this page except data usage, and [**Data usage**](#check-data-usage).
 
 ## Understand your usage
 
@@ -39,6 +40,15 @@ Resource types include:
 | Other         | Remote control sessions, per-machine charges, trigger notifications                                                        |
 
 For pricing details, see [Viam pricing](https://www.viam.com/product/pricing).
+
+## Check data usage
+
+The **Data usage** tab shows how much data the machines in your organization have synced to Viam in the last 48 hours:
+
+- **Binary Upload - 48hr** and **Tabular Upload - 48hr**: the total binary and tabular data uploaded, in MB.
+- **Binary data sync - 48 hours** and **Tabular data sync - 48 hours**: hourly charts of the same uploads.
+
+The statistics update every hour.
 
 ## Manage your payment method
 

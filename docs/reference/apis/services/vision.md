@@ -3,7 +3,7 @@ title: "Vision service API"
 linkTitle: "Vision"
 weight: 80
 type: "docs"
-description: "Give commands to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
+description: "Give commands to get 2D detections, classifications, 3D detections, or point cloud objects, depending on the model the vision service is using."
 capabilities: ["sdks", "vision-service"]
 diataxis: reference
 aliases:
@@ -18,13 +18,13 @@ date: "2026-04-14"
 The vision service enables your machine to use its on-board [cameras](/hardware/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
-The vision service {{< glossary_tooltip term_id="api" text="API" >}} allows you to get detections, classifications, or point cloud objects, depending on the {{< glossary_tooltip term_id="ml" text="ML" >}} model the vision service is using.
+The vision service {{< glossary_tooltip term_id="api" text="API" >}} allows you to get detections, classifications, 3D detections, or point cloud objects, depending on the model the vision service is using.
 
 The vision service supports the following kinds of operations:
 
 - [Detections](#detections)
 - [Classifications](#classifications)
-- [Segmentations](#segmentations)
+- [3D detections and segmentation](#3d-detections-and-segmentation)
 
 ## Detections
 
@@ -69,23 +69,31 @@ The returned classifications consist of the image's class label and confidence s
 - [GetClassifications()](/reference/apis/services/vision/#getclassifications)
 - [GetClassificationsFromCamera()](/reference/apis/services/vision/#getclassificationsfromcamera)
 
-## Segmentations
+## 3D detections and segmentation
 
-_3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
-The "objects" are usually a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
+_3D detection_ is the process of finding the distinct "objects" in a 3D scene and returning where they are in space.
+Any camera that can return 3D point clouds can use it.
 
-3D object segmentation is useful for obstacle detection.
+`GetDetections3D` is the recommended method.
+It returns each object as a tree of named transforms that carries the object's shapes and class hypotheses.
+Because the result is already a set of transforms, you can pass it directly into a frame system or a motion `WorldState`.
 
-Any camera that can return 3D pointclouds can use 3D object segmentation.
+`GetObjectPointClouds` is the older format.
+It returns one flat geometry and one merged point cloud per object, along with a label.
+It is useful for obstacle detection when you need the raw points of each object.
+
+Not every vision service model supports `GetDetections3D`.
+Call `GetProperties` to see which result types a model supports.
 
 {{% alert title="Tip" color="tip" %}}
-3D segmentation operations require [frame system](/motion-planning/frame-system/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
+3D operations require [frame system](/motion-planning/frame-system/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
 This enables the vision service to provide meaningful 3D coordinates and spatial relationships.
 {{% /alert %}}
 
 **Supported API methods:**
 
-- [GetObjectPointClouds()](/reference/apis/services/vision/#getobjectpointclouds)
+- [GetDetections3D()](/reference/apis/services/vision/#getdetections3d): recommended. Returns each object as a tree of named transforms carrying its shapes, plus class hypotheses.
+- [GetObjectPointClouds()](/reference/apis/services/vision/#getobjectpointclouds): the older format. Returns one geometry and one point cloud per object.
 
 The [vision service](/vision/) supports the following methods:
 
