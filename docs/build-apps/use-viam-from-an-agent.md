@@ -160,10 +160,9 @@ On a machine managed in the Viam app, you do not write that list: the app reject
 
 Users without a matching entry are fully restricted unless a `default` entry exists, so a permission error on a key that is otherwise valid may mean it is not listed.
 A denied call returns `PermissionDenied`, and `viam-server` logs an `unauthorized request` warning that names the method, the resource, and the caller.
-If an SDK can't connect and reports only a generic connection error, the cause can be the same denial on a connection method, so ask your human operator to check the machine's logs.
-If you hit a denial, report the method and resource named in the error, and the key you used, to your human operator, who can adjust it.
-You may not be able to read the machine's config with a restricted key.
-Do not try to write `auth.user_permissions` on a cloud-managed machine.
+If an SDK can't connect and reports only a generic connection error, the cause can be the same denial on a machine-level method the SDK calls when it connects, such as `ResourceNames`, so ask your human operator to check the machine's logs.
+If you hit a denial, report the method and resource named in the error, and the ID of the key you used (never the key itself), to your human operator, who can adjust it.
+Do not try to write `auth.user_permissions` or `access_policy` on a cloud-managed machine; the machine owner manages access.
 You have no way to resolve key and user IDs to a person, add a new entry, or change the config yourself.
 
 ## Remembering across sessions
