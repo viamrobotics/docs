@@ -100,6 +100,7 @@ There are a few updates that may make your machine temporarily unavailable:
 To avoid performing these updates until your machine is ready for maintenance, you can define a maintenance window.
 A maintenance window consists of one or multiple conditions that determine if maintenance is currently allowed.
 To configure a maintenance window, you need to create a sensor that returns true when your maintenance conditions are met and false otherwise.
+For configuration updates, `viam-server` reads the sensor twice; see [When viam-server checks the sensor](/fleet/manage-versions/#when-viam-server-checks-the-sensor).
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
