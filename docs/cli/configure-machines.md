@@ -4,7 +4,7 @@ title: "Configure machines with the CLI"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "Create machines, add components and services, and manage fragments from the command line."
+description: "Create machines, view or save a machine's config, add components and services, and manage fragments from the command line."
 capabilities: ["cli", "machine-config"]
 diataxis: how-to
 ---
@@ -78,6 +78,29 @@ List all machines across your entire organization:
 ```sh {class="command-line" data-prompt="$"}
 viam machines list --organization=<org-id> --all
 ```
+
+## View or save a config
+
+Print a machine part's current config as JSON, with keys sorted so that diffs stay clean.
+To save the config to a file, redirect the output:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part config --part=<part-id> > machine-config.json
+```
+
+To get the config that was in effect at an earlier time, pass `--at` with an RFC 3339 timestamp:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part config --part=<part-id> --at=2025-01-15T14:00:00Z
+```
+
+To see who changed the config and when, list the part's configuration history:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part history --part=<part-id>
+```
+
+See the CLI reference for [`machines part config`](/cli/reference/#machines-part-config) and [`machines part history`](/cli/reference/#machines-part-history) for all flags.
 
 ## Add a component or service
 
@@ -217,6 +240,14 @@ viam fragment history --fragment=<fragment-id>
 
 See [Reuse machine configuration](/fleet/reuse-configuration/) for details on creating and managing fragments.
 See the [fragment CLI reference](/cli/reference/#fragment-alias-fragments) for full flag details.
+
+## Add jobs and triggers
+
+Scheduled jobs and triggers are part of a machine part's config.
+Add them with `viam machines part add-job` and `viam machines part add-trigger`.
+Run either command without `--config` to use an interactive builder, or pass `--config` with inline JSON or a path to a JSON file.
+See the CLI reference for [`machines part add-job`](/cli/reference/#machines-part-add-job) and [`machines part add-trigger`](/cli/reference/#machines-part-add-trigger) for the config fields.
+To remove one, use `machines part delete-job` or `machines part delete-trigger`.
 
 ## Rename or move a machine
 
