@@ -36,6 +36,7 @@
 # not a string, and breaks the build.
 sections:
   - title: "Start here for agents"
+    description: "Pick the path that matches what you have: with a shell and an API key, use the CLI pages; as an MCP client, use the MCP server. Both can create machines and edit their configuration. The MCP server does not expose every CLI command, for example config history and deleting a machine."
     pages:
       - path: /build-apps/use-viam-from-an-agent/
         full: true
