@@ -25,7 +25,7 @@ To export a dataset of sequences, see [Export a sequence dataset](/train/create-
 
 ## Download selected items from the DATA page
 
-To download a few images or files without the CLI:
+To download a few images or files:
 
 1. Go to the [**DATA**](https://app.viam.com/data/all) page and open the **Images**, **Media**, **Files**, or **Point clouds** tab.
 1. Select the items to download, or click **Select all** to select every item loaded on the tab.
