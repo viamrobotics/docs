@@ -4,7 +4,7 @@ title: "Deploy a custom ML model"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Deploy a model you trained outside Viam (or trained yourself on Viam data) through an ML model service and use it with the vision service."
+description: "Use a classification or detection model you trained or brought from elsewhere with the vision service: match its tensors, deploy it, and verify it."
 capabilities: ["ml-models", "vision-service"]
 diataxis: how-to
 date: "2026-04-14"
@@ -12,28 +12,15 @@ aliases:
   - /vision/deploy-custom-model/
 ---
 
-Use this guide when you have a trained model file that is not already in the Viam [registry](https://app.viam.com/registry). That covers three cases:
+Use this guide when you have a classification or detection model that is not already in the Viam [registry](https://app.viam.com/registry), and you want a vision service to use it. That covers three cases:
 
 - You trained the model on Viam data using [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
 - You trained it entirely outside Viam (local, another cloud, a notebook).
 - You found it elsewhere (GitHub, Hugging Face) and want to run it on your machines.
 
-If you just want to pick a ready-made model from the [registry](https://app.viam.com/registry), see [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) instead.
+If you just want to pick a ready-made model from the [registry](https://app.viam.com/registry), see [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) instead. For a model that a vision service doesn't use, such as a robot policy, see [Upload a model](/train/upload-a-model/) and [Deploy a model to a machine](/train/deploy-a-model/).
 
-## 1. Confirm the model format is supported
-
-Viam's ML model services support four model formats through module implementations. Your model must be in one of them:
-
-- **TensorFlow Lite** (`.tflite`): uses [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu). Broadest hardware support; quantized models run on almost any CPU.
-- **ONNX** (`.onnx`): uses [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu) or, for GPU on Jetson, [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack).
-- **TensorFlow SavedModel**: uses [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu).
-- **PyTorch** (`.pt`): uses [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu).
-
-If your training workflow produces a different format (for example, Keras HDF5), convert to one of the supported formats before proceeding. TensorFlow Lite and ONNX are the most common targets because their runtimes are the lightest.
-
-Use the **Registry** framework instead only if a module's instructions tell you to upload your model with it. That module loads the model itself, so it decides the format. Skip to [step 3](#3-add-the-model-to-your-organization).
-
-## 2. Meet the tensor shape and name requirements
+## 1. Meet the tensor shape and name requirements
 
 The `mlmodel` vision service expects specific tensor conventions from the model it wraps. If the model does not match, the vision service fails to come up as a detector or classifier, or it comes up but produces garbled output.
 
@@ -57,84 +44,23 @@ If your model disagrees with any of these assumptions, retraining is not require
 
 **Tensor names:** if your model does not use the exact names above, you can remap them on the vision service without retouching the model. See [Tune detection quality](/vision/object-detection/tune/#tensor-names-do-not-match).
 
-## 3. Add the model to your organization
+## 2. Add the model to your organization
 
-Models live at the organization level in Viam. Uploading a model is a one-time action per model version.
+<span id="3-add-the-model-to-your-organization"></span><span id="deploy-a-registry-framework-model"></span>A model you trained on Viam is already in your organization. For any other model, [upload it](/train/upload-a-model/). The upload page lists the supported model formats and what to convert if yours isn't one of them.
 
-1. Navigate to the [**MODELS** tab](https://app.viam.com/models) in the Viam app.
-2. Click **Upload**.
-3. Choose **New model** (or **New version** if you are replacing an existing model). Under **Visibility**, choose **Private** for internal use or **Public** to publish to the [registry](https://app.viam.com/registry). Click **Next steps**.
-4. Fill in the upload form:
-   - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX). Select **Registry** only if a module's instructions tell you to (see [Deploy a Registry framework model](#deploy-a-registry-framework-model)).
-   - **Module resources to deploy** (**Registry** framework only): with **Search the registry** selected, click **Select Modular Resource** to pick one or more component or service models from the registry. To enter a model by name instead, select **Type the model name**, type the model triple in the format `namespace:module-name:model-name`, and click **Add**. Deploying the model adds each of these resources to the machine.
-   - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID). For the **Registry** framework, click **Upload files** and pick the files the module loads at runtime, such as model weights and configuration files. Which files those are depends on the module, so check the module's documentation in the registry. Viam stores them together as one package, and the module reads them from the directory that `model_path` points to.
-   - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config. For the **Registry** framework, it is also the package name in `model_path`. Registry item names are unique within an organization, so the upload fails if another registry item in your organization, such as a module or training script, already uses the name.
-   - **Task type**: pick what the model predicts:
-     - **Single label classification**: one label for each image.
-     - **Multi label classification**: any number of labels for each image.
-     - **Object detection**: labels for objects in an image, and where each object is.
-     - **Robot policy**: actions for a robot to take, computed from inputs such as camera images and joint states. For example, a model that controls an arm.
-     - **Other**: none of these.
-   - **Description**: one sentence describing the model.
-5. Click **Upload model**.
+## 3. Deploy the model to a machine
 
-The model is now available in your organization. You can change visibility between **Private** and **Public** later through the model's settings.
+Follow [Deploy a model to a machine](/train/deploy-a-model/). When you deploy from the model's page, keep **Include Vision service** on so the deployment adds a `vision/mlmodel` service that uses the model and an existing camera.
 
-### Deploy a Registry framework model
+If the model file lives on the machine's disk and you do not want to upload it, see [Run a model file stored on the machine](/train/deploy-a-model/#local-model-file).
 
-If you chose the **Registry** framework, deploy the model from its page on the **MODELS** tab instead of following [steps 4 through 6](#4-configure-the-ml-model-service): click **Deploy** and pick a machine. Viam adds the model's package, the module behind each resource you listed, and one resource per model triple, with `model_path` set to `${packages.ml_model.<package-name>}`. The package name is the model name, unless the machine already has a resource with that name, in which case Viam adds a numeric suffix such as `-2`. It does not add a vision service or connect the resources to each other, so configure any other attributes the module needs yourself.
+## 4. Check the vision service
 
-## 4. Configure the ML model service
-
-On the machine you want the model to run on:
-
-1. Open the **CONFIGURE** tab.
-2. Click the **+** icon and select **Blocks**.
-3. In the search field, type the ML model service name matching your model's framework (for example, `tflite_cpu` for TFLite models) and select the matching result.
-4. Click **Add to machine**, name the service (for example, `my-ml-model`), and click **Add to machine** again to confirm.
-5. In the ML model service panel, click **Select model** and pick the model you just uploaded. Choose a version (or **Latest** during development).
-6. Save.
-
-Alternatively, if your model file lives on the machine's disk and you do not want to upload it to the cloud, point the ML model service directly at the local path:
-
-```json
-{
-  "name": "my-ml-model",
-  "api": "rdk:service:mlmodel",
-  "model": "tflite_cpu",
-  "attributes": {
-    "model_path": "/home/viam/models/my_model.tflite",
-    "label_path": "/home/viam/models/labels.txt"
-  }
-}
-```
-
-`model_path` and `label_path` are the file paths on the machine running `viam-server`. Local files work well for offline machines and air-gapped setups.
-
-## 5. Wrap the model in a vision service
-
-The ML model service now loads and runs your model. The vision service turns its output into detections or classifications:
-
-1. Add a `vision/mlmodel` service.
-2. Set `mlmodel_name` to the ML model service name from step 4.
-3. Set `camera_name` to the default camera.
-4. Save.
-
-```json
-{
-  "name": "my-detector",
-  "api": "rdk:service:vision",
-  "model": "mlmodel",
-  "attributes": {
-    "mlmodel_name": "my-ml-model",
-    "camera_name": "camera-1"
-  }
-}
-```
+If the deployment didn't add a vision service, add one yourself: see [Configure a vision pipeline](/vision/configure/#3-add-a-vision-service). The service's `mlmodel_name` is the name of the ML model service, and `camera_name` is the default camera.
 
 If the model does not produce detections right away, its input preprocessing or output tensor layout is probably non-standard. See [Tune detection quality](/vision/object-detection/tune/).
 
-## 6. Verify
+## 5. Verify
 
 1. Open the **CONTROL** tab.
 2. Click the vision service.
@@ -158,4 +84,4 @@ Convert the model itself only when its format is unsupported (for example, expor
 - [Tune detection quality](/vision/object-detection/tune/): fix specific detection failure modes
 - [mlmodel reference](/reference/services/vision/mlmodel/): full attribute reference
 - [Detect objects](/vision/object-detection/detect/): use detections in code
-- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): maintain quality in production
+- [Retrain a model](/train/retrain-a-model/): maintain quality in production

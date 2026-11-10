@@ -338,4 +338,4 @@ For the three kinds of registry entries a vision pipeline uses (ML model service
 - [Classify images](/vision/classify/): use classification results in code
 - [Tune detection quality](/vision/object-detection/tune/): fix mis-configured or miscalibrated detectors
 - [Run batch inference](/vision/deploy-and-maintain/batch-inference/): run a model against stored images instead of live frames
-- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): close the loop when your model drifts
+- [Retrain when accuracy drops](/train/retrain-a-model/): close the loop when your model drifts

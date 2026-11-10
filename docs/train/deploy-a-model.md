@@ -14,7 +14,7 @@ The machine downloads the model and starts the resource.
 
 ## Prerequisites
 
-- A model in your organization or the registry, trained on Viam or [uploaded](/vision/deploy-and-maintain/deploy-custom-model/).
+- A model in your organization or the registry, trained on Viam or [uploaded](/train/upload-a-model/).
 - A machine running on a platform that a module for your model's framework supports. See [What runs the model](#what-runs-the-model).
 
 ## What runs the model {#what-runs-the-model}
@@ -64,6 +64,10 @@ Both add the same configuration.
    To configure it yourself later, or for any other model, turn it off.
    See [Configure a vision pipeline](/vision/configure/).
 1. Click **Deploy**.
+
+For a **Registry** model, the deployment adds the model's package, the module behind each resource, and one resource for each, with `model_path` set to `${packages.ml_model.<package-name>}`.
+The package name is the model name, unless the machine already has a resource with that name, in which case Viam adds a numeric suffix such as `-2`.
+The deployment doesn't add a vision service or connect the resources to each other, so configure any other attributes the module needs yourself.
 
 **From the machine's CONFIGURE tab:**
 
@@ -198,6 +202,26 @@ The entries are the same as in the **Python** tab, which also covers **Registry*
 To deploy the same model to many machines, add these entries to a fragment instead.
 See [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 
+## Run a model file stored on the machine {#local-model-file}
+
+If the model file is on the machine's disk and you don't want to upload it to the cloud, point an ML model service at the file instead of at a package:
+
+```json
+{
+  "name": "my-ml-model",
+  "api": "rdk:service:mlmodel",
+  "model": "tflite_cpu",
+  "attributes": {
+    "model_path": "/home/viam/models/my_model.tflite",
+    "label_path": "/home/viam/models/labels.txt"
+  }
+}
+```
+
+`model_path` and `label_path` are file paths on the machine running `viam-server`.
+`label_path` is optional but recommended: a plain text file with one label on each line, in class ID order.
+Local files work well for offline machines and air-gapped setups.
+
 ## Choose a model version {#choose-a-model-version}
 
 Each time you train or upload a model under the same name, the registry gets a new version of it.
@@ -269,3 +293,4 @@ To update many machines at once, or in stages, see [Deploy ML models across your
 - Classification and detection models: [Configure a vision pipeline](/vision/configure/), then [Detect objects](/vision/object-detection/detect/) or [Classify images](/vision/classify/).
 - Any model in an ML model service: run it with `infer` from the [ML model service API](/reference/apis/services/ml/).
 - Many machines: [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
+- When accuracy drops: [Retrain a model](/train/retrain-a-model/).

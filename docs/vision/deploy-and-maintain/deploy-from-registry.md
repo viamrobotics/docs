@@ -4,7 +4,7 @@ title: "Deploy an ML model from the registry"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "Pick a pre-trained ML model from the Viam registry, deploy it to your machine, and wire it through an ML model service so a vision service can use it."
+description: "Pick a pre-trained ML model from the Viam registry, deploy it to your machine, and verify that a vision service can use it."
 capabilities: ["ml-models", "vision-service"]
 diataxis: how-to
 date: "2026-04-14"
@@ -30,7 +30,7 @@ aliases:
   - /vision/deploy-from-registry/
 ---
 
-The fastest way to get a working vision pipeline is to pick a pre-trained model from the Viam [registry](https://app.viam.com/registry). Select a model, pick a framework-matching ML model service, and save the config. `viam-server` downloads the model to the machine and the vision service can use it immediately.
+The fastest way to get a working vision pipeline is to pick a pre-trained model from the Viam [registry](https://app.viam.com/registry). Pick a model and deploy it to your machine. `viam-server` downloads the model to the machine and the vision service can use it immediately.
 
 Use this guide when a general-purpose or community-shared model already handles your task (people detection, common objects, COCO-class recognition). If you need a custom model trained on your data, see [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
 
@@ -48,40 +48,21 @@ When picking, match the model to:
 
 For which ML model service runs each framework, and on what hardware, see [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 
-## 2. Add the ML model service
+## 2. Deploy the model
 
-The ML model service loads the model file and exposes it for inference. It does not interpret the output; that is the vision service's job.
+Deploy the model from its page or from your machine's **CONFIGURE** tab: see [Deploy a model to a machine](/train/deploy-a-model/#deploy-the-model). Deploying adds an ML model service, which loads the model file and exposes it for inference. It does not interpret the output; that is the vision service's job.
 
-1. Open your machine in the Viam app and go to the **CONFIGURE** tab.
-2. Click the **+** icon next to your machine part and select **Blocks**.
-3. In the search field, type the ML model service name (for example, `tflite_cpu` for TFLite models) and select the matching result.
-4. Click **Add to machine**, give it a name (for example, `my-ml-model`), and click **Add to machine** again to confirm.
+When you select a version, pin a specific version in production; see [Choose a model version](/train/deploy-a-model/#choose-a-model-version).
 
-## 3. Select the model
+## 3. Check the vision service
 
-In the ML model service panel:
+The ML model service is a building block. To get detections, classifications, or point cloud objects from your code, you need a vision service that wraps it.
 
-1. Click **Select model**. A dialog opens showing models from your organization and the public [registry](https://app.viam.com/registry).
-2. Filter or search for the model you picked in step 1.
-3. Click the model to select it.
-4. In the **Version** dropdown, choose **Latest** or a specific version. Pin a specific version in production; see [Choose a model version](/train/deploy-a-model/#choose-a-model-version).
-
-Save the configuration. `viam-server` downloads the model package to the machine and reports the service as ready.
-
-## 4. Add a vision service that wraps the model
-
-The ML model service is a building block. To get detections, classifications, or point cloud objects from your code, add a vision service that wraps it.
-
-1. Click the **+** icon and select **Blocks**.
-2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
-3. Click **Add to machine**, name the service (for example, `my-detector`), and click **Add to machine** again to confirm.
-4. In the vision service panel's **ML MODEL** section, select the ML model service from step 3.
-5. In the **DEFAULT CAMERA** section, pick the camera the vision service should use by default.
-6. Save.
+For a classification or detection model, the deployment adds a `vision/mlmodel` service unless you turn **Include Vision service** off. To add or change one yourself, including its default camera, see [Configure a vision pipeline](/vision/configure/#3-add-a-vision-service). In the vision service panel, the **ML MODEL** section selects the ML model service and the **DEFAULT CAMERA** section selects the camera the service uses by default.
 
 If the underlying model uses non-standard tensor names or preprocessing conventions, additional configuration is required. See the [`mlmodel` reference](/reference/services/vision/mlmodel/) for every attribute, and [Tune detection quality](/vision/object-detection/tune/) for a symptom-to-attribute map.
 
-## 5. Verify
+## 4. Verify
 
 Open the **CONTROL** tab, click the vision service, and select the camera from the **Camera** dropdown. If the model is working, bounding boxes or classifications appear as an overlay on the live camera feed and refresh automatically. Make sure you pick the same camera your vision service is configured to use.
 
@@ -102,4 +83,4 @@ To move a machine to a newer version of the model, or roll back, see [Update or 
 - [Configure a vision pipeline](/vision/configure/): the broader end-to-end setup
 - [Tune detection quality](/vision/object-detection/tune/): fine-tune mlmodel vision service attributes
 - [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): bring your own trained model
-- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): close the loop on drift
+- [Retrain a model](/train/retrain-a-model/): close the loop on drift

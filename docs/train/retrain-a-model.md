@@ -1,20 +1,23 @@
 ---
 linkTitle: "Retrain a model"
 title: "Retrain a model"
-weight: 30
+weight: 33
 layout: "docs"
 type: "docs"
-description: "Close the loop when a vision model's accuracy drops in production: capture the failing images, label them, retrain, and redeploy a new model version to one or many machines."
+description: "Close the loop when a model's accuracy drops in production: capture the cases it gets wrong, label them, retrain, and redeploy a new model version to one or many machines."
 capabilities: ["ml-training", "fleet-deployment"]
 diataxis: how-to
 date: "2026-04-14"
 aliases:
+  - /vision/deploy-and-maintain/retrain/
   - /vision/retrain/
 ---
 
 Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. The fix is never a one-time deployment. It is a loop.
 
 Viam's data, training, and fleet tools are the pieces of that loop. This guide walks through the end-to-end cycle from production machine back to production machine.
+
+The guide uses a vision model as its example. The cycle is the same for any model you train on Viam, but [evaluation](/train/evaluate-a-model/) and [auto-predictions](/train/automate-annotation/) support only classification and detection models. For how the stages fit together, see [How training works](/train/overview/#how-training-works).
 
 ## The cycle
 
@@ -66,7 +69,7 @@ Add the newly labeled images to an existing dataset or [create a new one](/train
 
 ## 4. Train a new model version
 
-With the updated dataset, start a new training job. See [Train a model](/train/train-a-model/) for the full flow. Key choices:
+With the updated dataset, start a new training job. See [built-in training](/train/train-a-model/) or [custom training](/train/custom-training-scripts/) for the full flow. Key choices:
 
 - **Same architecture, same hyperparameters** if you are just correcting drift or adding examples. Retraining with a known-good setup is predictable and easy to compare.
 - **New architecture** if the task has changed (for example, you are adding a new class that the previous model could not detect). Expect to tune more.
@@ -76,24 +79,7 @@ Viam runs training jobs on cloud infrastructure. You do not need to provision a 
 
 ### Schedule automatic retraining
 
-Instead of manually starting a training job each time you add new data, you can set a retraining schedule on a model.
-Viam evaluates retraining schedules once per day at midnight UTC and submits a new training job when the model is due.
-
-To set a retraining schedule:
-
-1. Navigate to the [**MODELS** tab](https://app.viam.com/models) and open the model you want to retrain automatically.
-1. Click the context menu on the model details page and select **Retraining schedule**.
-1. Choose a frequency: **Daily**, **Weekly** (pick a day of the week), or **Monthly** (pick a day from 1 through 28).
-1. Click **Save schedule**.
-
-Viam retrains the model using the same dataset and labels from the most recent model version.
-Each retraining run produces a new version named `retrain-<timestamp>`.
-Annotate new images as you add them to the dataset, or retraining may not complete successfully.
-
-To turn off a schedule, reopen the dialog and click **Disable**.
-
-Scheduled retraining is available for models trained through Viam's built-in training flow with a linked dataset.
-Models trained with [custom training scripts](/train/custom-training-scripts/) do not support scheduled retraining yet.
+For a model trained with built-in training, you can have Viam start a new training job on a schedule instead of starting each one yourself. See [Schedule retraining](/train/train-a-model/#schedule-retraining).
 
 ## 5. Deploy the new version
 
@@ -127,5 +113,5 @@ When drift shows up again, the cycle repeats. The first retraining cycle is the 
 - [Data capture and sync](/data/capture-sync/capture-and-sync-data/): set up production image capture
 - [Annotate data](/train/annotate-data/): label captured data
 - [Train a model](/train/train-a-model/): produce a new model version
-- [Deploy a model](/vision/deploy-and-maintain/deploy-from-registry/): wire the new version into the ML model service
+- [Deploy a model](/train/deploy-a-model/): choose which version a machine runs, and update or roll it back
 - [Act on detections](/vision/object-detection/act-on-detections/) and [alert on detections](/vision/object-detection/alert-on-detections/): use the new version in production logic

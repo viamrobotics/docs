@@ -100,7 +100,7 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 - [What's in the registry for vision](/vision/deploy-and-maintain/available-models/): the three kinds of registry entries and how to pick among them
 - [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): pick a pre-trained model and run it on a machine
 - [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): bring your own trained model
-- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): the CVOps loop for model maintenance
+- [Retrain when accuracy drops](/train/retrain-a-model/): the CVOps loop for model maintenance
 - [Deploy ML models across your fleet](/fleet/deploy-ml-models/): staged model rollouts
 - [Run batch inference](/vision/deploy-and-maintain/batch-inference/): run a model against stored images with `viam infer`
 
