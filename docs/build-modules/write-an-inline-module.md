@@ -24,9 +24,12 @@ account required. When you save, Viam deploys your module to your machine
 automatically. Go modules are built in the cloud first. Python modules run from
 source, with no build step.
 
-Inline modules implement the Generic service API -- a single `DoCommand`
-method for arbitrary control logic. To write a hardware driver or use a more
-specific API, see
+When you create an inline module, you choose the component or service API it
+implements. The default is the Generic service API, which has a single
+`DoCommand` method for arbitrary control logic, and this page uses it. You can
+also choose a component API, such as sensor or motor, to write a driver, or
+another service API, such as vision. To manage your own source code and build
+pipeline, see
 [Write a driver module](/build-modules/write-a-driver-module/) or
 [Write a logic module](/build-modules/write-a-logic-module/).
 
@@ -50,7 +53,8 @@ substitute your own attributes, dependencies, and command behavior.
    click **Choose**.
 4. Name your module (for example, `servo-distance-control`) and choose a language
    (**Python** or **Go**).
-5. Click **Create module**.
+5. Under **Choose component or service**, keep **Generic service**, the default.
+6. Click **Create module**.
 
 You can also reach this dialog from your machine's **CONNECT** tab by selecting
 **Control code sample** from the sidebar and clicking **Create inline module**.
@@ -74,13 +78,11 @@ includes three methods you need to fill in:
 {{% tab name="Python" %}}
 
 The editable file is `src/models/generic_service.py`. It contains a class that
-extends `GenericService` and `EasyResource`:
+extends `Generic` and `EasyResource`:
 
 ```python
-class MyGenericService(GenericService, EasyResource):
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("my-org", "servo-distance-control"), "generic-service"
-    )
+class GenericService(Generic, EasyResource):
+    MODEL: ClassVar[Model] = "my-org:servo-distance-control:generic-service"
 ```
 
 The three methods to implement:
@@ -89,6 +91,9 @@ The three methods to implement:
   declare dependencies.
 - **`new`** -- initialize your service with attributes and dependencies.
 - **`do_command`** -- your control logic.
+
+A module created before November 2026 names the class `MyGenericService` and
+extends `GenericService`. The steps below work the same way with those names.
 
 {{< alert title="Important" color="caution" >}}
 Do not change the class name or the `MODEL` triplet. Viam uses these
@@ -110,8 +115,8 @@ var (
 
 func init() {
     resource.RegisterService(genericservice.API, GenericService,
-        resource.Registration[resource.Resource, *Config]{
-            Constructor: newGenericService,
+        resource.Registration[resource.Resource, Config]{
+            Constructor: newInlineGenericService,
         },
     )
 }
@@ -127,11 +132,15 @@ The areas you'll edit:
   service accepts.
 - **`Validate`** on the `Config` struct -- check attributes, return
   dependencies.
-- **`genericService` struct** -- add fields to hold runtime state
+- **`inlineGenericService` struct** -- add fields to hold runtime state
   (resolved dependencies, parsed config values).
 - **`NewGenericService`** -- populate the struct fields from attributes
   and dependencies.
 - **`DoCommand`** -- your control logic.
+
+A module created before November 2026 uses the names `genericService` and
+`newGenericService` and a `*Config` pointer. Keep the names your module already
+has when you copy the examples below.
 
 {{< alert title="Important" color="caution" >}}
 Do not change the model name triplet, struct names, or public function names.
@@ -232,7 +241,7 @@ type Config struct {
     Sensor           string  `json:"sensor"`
 }
 
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
+func (cfg Config) Validate(path string) ([]string, []string, error) {
     if cfg.SensorRangeStart == 0 {
         return nil, nil, fmt.Errorf(
             "%s: 'sensor_range_start' is required and must be non-zero",
@@ -312,7 +321,7 @@ def new(
 ```go
 func NewGenericService(
     ctx context.Context, deps resource.Dependencies,
-    name resource.Name, conf *Config, logger logging.Logger,
+    name resource.Name, conf Config, logger logging.Logger,
 ) (resource.Resource, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
@@ -340,7 +349,7 @@ func NewGenericService(
         return nil, err
     }
 
-    return &genericService{
+    return &inlineGenericService{
         name:             name,
         logger:           logger,
         cfg:              conf,
@@ -357,9 +366,9 @@ func NewGenericService(
 }
 ```
 
-The scaffold contains both a private constructor, `newGenericService`, and a
-public constructor, `NewGenericService`. The private constructor converts the
-raw `resource.Config` into a typed `*Config` and delegates to the public
+The scaffold contains both a private constructor, `newInlineGenericService`,
+and a public constructor, `NewGenericService`. The private constructor converts
+the raw `resource.Config` into a typed `Config` and delegates to the public
 constructor. Leave the private constructor alone -- put your logic in
 `NewGenericService`.
 
@@ -403,7 +412,7 @@ async def do_command(
 {{% tab name="Go" %}}
 
 ```go
-func (s *genericService) DoCommand(
+func (s *inlineGenericService) DoCommand(
     ctx context.Context, cmd map[string]interface{},
 ) (map[string]interface{}, error) {
     readings, _ := s.sensor.Readings(ctx, nil)
@@ -450,11 +459,15 @@ What happens next depends on the module's language:
   Windows machines.
 
 The standalone code editor has a **Save & Deploy** button that also saves a new
-version. For a Go module, it starts the same cloud build. For a Python module,
-it only stores the version: the code reaches the machine the next time you save
-an edit to the module from the **CONFIGURE** tab. Saving a Python module in a
-fragment also stores a new version without deploying it to machines that use
-the fragment.
+version and starts a cloud build, for Python modules as well as Go modules. A
+Python build targets Linux and macOS, not Windows. Saving a Python module in a
+fragment stores a new version without building it or deploying it to machines
+that use the fragment.
+
+If the newest saved version of a module hasn't been built, for example because
+you saved a Python module only from a machine's **CONFIGURE** tab, the module's
+menu on the **FLEET** > **Modules** page shows **Publish latest version**. Click
+it to start a cloud build of that version.
 
 ### 7. Test on a machine
 
@@ -536,7 +549,9 @@ it run automatically:
 
 {{< expand "Build fails after saving" >}}
 
-Only Go modules are built in the cloud.
+Go modules are built in the cloud on every save. Python modules are built when
+you click **Save & Deploy** in the standalone code editor or **Publish latest
+version** on the **FLEET** > **Modules** page.
 
 - Click **View Logs** in the build progress bar to see the error.
 - Common causes: syntax errors, missing imports, incompatible dependencies.
@@ -551,8 +566,9 @@ Only Go modules are built in the cloud.
   code editor, or that the module appears in the machine's configuration.
 - The module version defaults to `latest`. After a successful build, the machine
   picks up the new version of a Go module automatically within a few minutes.
-- A Python module is deployed when you save an edit to it from the machine's
-  **CONFIGURE** tab, not when you save in the standalone code editor.
+- A Python module reaches a machine right away when you save an edit to it from
+  the machine's **CONFIGURE** tab. Saving in the standalone code editor starts a
+  cloud build instead.
 
 {{< /expand >}}
 
