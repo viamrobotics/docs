@@ -471,7 +471,7 @@ Use the CLI.
 - [Built-in training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
 - Exporting a sequence dataset, or running a custom training job on one, reads the dataset's tabular data.
-  That data counts toward your organization's usage as tabular data egress, the same as exporting tabular data, and only when the export succeeds.
+  That data counts toward your organization's usage as tabular data egress, the same as exporting tabular data.
   See [Billing](/organization/billing/).
 
 ## Troubleshooting
