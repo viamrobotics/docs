@@ -388,7 +388,7 @@ and populates it from your answers to the generator prompts.
     "setup": "./setup.sh",
     "build": "./build.sh",
     "path": "dist/archive.tar.gz",
-    "arch": ["linux/amd64", "linux/arm64"]
+    "arch": ["linux/amd64", "linux/arm64", "darwin/arm64"]
   }
 }
 ```

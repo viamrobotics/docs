@@ -75,7 +75,7 @@ The target machine must be online (visible in the Viam app). The CLI connects ov
 **Useful flags:**
 
 - `--file <path>` uploads a pre-built tarball without running the build step or requiring `build.path` in `meta.json`. Use this when you build the archive outside the CLI (for example, in CI or with a custom script).
-- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`. Unlike `--file`, this still requires `build.path` in `meta.json` to locate the archive.
+- `--no-build` skips the build step if you already built the archive manually (for example, with `bash build.sh` or `make module.tar.gz`). Unlike `--file`, this still requires `build.path` in `meta.json` to locate the archive.
 - `--local` runs the module from source files on your laptop instead of shipping a tarball. Use this only when the target machine is your laptop. In `--local` mode, `viam module restart` picks up Python source edits without a rebuild.
 
 For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
@@ -343,7 +343,7 @@ That's the first deploy. To release new versions, pin a machine to a specific ve
 
 - Check the **Actions** tab in your GitHub repository for the build log.
 - If your repository's default branch is not `main` (for example, it uses `master`), pass `--ref master` to `viam module build start`.
-- Verify your `setup.sh` and `build.sh` scripts work locally.
+- Verify your build works locally (`./setup.sh && ./build.sh` for Python, `make setup && make module.tar.gz` for Go).
 - Confirm the `build.path` in `meta.json` matches the actual output location.
 - Ensure the GitHub secrets are set and not expired.
 
