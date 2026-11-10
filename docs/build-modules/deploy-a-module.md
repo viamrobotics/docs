@@ -112,27 +112,24 @@ For the full `meta.json` field reference, see [Module reference](/build-modules/
 
 ### Review the build scripts
 
-The generator creates build and setup scripts. The defaults work for typical Python and Go modules. Review and customize them if you need additional build steps (for example, compiling native extensions or installing system packages).
+The generator creates build and setup files. The defaults work for typical Python and Go modules. Review and customize them if you need additional build steps (for example, compiling native extensions or installing system packages).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File       | Purpose                                              |
-| ---------- | ---------------------------------------------------- |
-| `setup.sh` | Installs Python dependencies from `requirements.txt` |
-| `build.sh` | Packages the module into a `.tar.gz` archive         |
-| `run.sh`   | Entrypoint script that starts the module             |
+| File       | Purpose                                                                                  |
+| ---------- | ---------------------------------------------------------------------------------------- |
+| `setup.sh` | Installs Python dependencies from `requirements.txt`                                     |
+| `build.sh` | Builds a standalone executable with PyInstaller and packages it into a `.tar.gz` archive |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File       | Purpose                                                               |
-| ---------- | --------------------------------------------------------------------- |
-| `setup.sh` | Installs build dependencies (Go modules are typically self-contained) |
-| `build.sh` | Cross-compiles the binary and packages it into a `.tar.gz` archive    |
-| `Makefile` | Local build targets                                                   |
+| File       | Purpose                                                                                                         |
+| ---------- | --------------------------------------------------------------------------------------------------------------- |
+| `Makefile` | `make setup` runs `go mod tidy`; `make module.tar.gz` cross-compiles the binary and packages it into an archive |
 
-The generated `build.sh` uses `GOOS` and `GOARCH` environment variables to cross-compile for the target platform. Cloud build sets these automatically.
+The generated `meta.json` runs `make setup` and `make module.tar.gz` as its build commands. The `Makefile` passes `VIAM_BUILD_OS` and `VIAM_BUILD_ARCH` to `go build` as `GOOS` and `GOARCH`. Cloud build sets these automatically.
 
 {{% /tab %}}
 {{< /tabs >}}
