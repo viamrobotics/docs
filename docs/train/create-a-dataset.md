@@ -470,7 +470,8 @@ Use the CLI.
   You can't add images to it, and you can't [merge](/cli/datasets-and-training/#merge-datasets) sequence datasets.
 - [Built-in training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
-- Sequence exports query your organization's tabular data, and those queries count toward your organization's usage.
+- Exporting a sequence dataset, or running a custom training job on one, reads the dataset's tabular data.
+  That data counts toward your organization's usage as tabular data egress, the same as exporting tabular data.
   See [Billing](/organization/billing/).
 
 ## Troubleshooting
