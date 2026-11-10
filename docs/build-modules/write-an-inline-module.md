@@ -21,8 +21,8 @@ application-specific logic. Modules let you add that support yourself.
 An inline module is the fastest way to get started. You write your module code
 directly in the Viam app's browser-based editor -- no IDE, terminal, or GitHub
 account required. When you save, Viam deploys your module to your machine
-automatically. Go modules are built in the cloud first. Python modules run from
-source, with no build step.
+automatically. Go modules are built in the cloud first. When you save from a
+machine, Python modules run from source, with no build step.
 
 When you create an inline module, you choose the component or service API it
 implements. The default is the Generic service API, which has a single
@@ -92,7 +92,7 @@ The three methods to implement:
 - **`new`** -- initialize your service with attributes and dependencies.
 - **`do_command`** -- your control logic.
 
-A module created before November 2026 names the class `MyGenericService` and
+A module created from an earlier template names the class `MyGenericService` and
 extends `GenericService`. The steps below work the same way with those names.
 
 {{< alert title="Important" color="caution" >}}
@@ -138,7 +138,7 @@ The areas you'll edit:
   and dependencies.
 - **`DoCommand`** -- your control logic.
 
-A module created before November 2026 uses the names `genericService` and
+A module created from an earlier template uses the names `genericService` and
 `newGenericService` and a `*Config` pointer. Keep the names your module already
 has when you copy the examples below.
 
@@ -460,7 +460,7 @@ What happens next depends on the module's language:
 
 The standalone code editor has a **Save & Deploy** button that also saves a new
 version and starts a cloud build, for Python modules as well as Go modules. A
-Python build targets Linux and macOS, not Windows. Saving a Python module in a
+Python build targets Linux and Apple silicon Macs, not Windows or Intel Macs. Saving a Python module in a
 fragment stores a new version without building it or deploying it to machines
 that use the fragment.
 
