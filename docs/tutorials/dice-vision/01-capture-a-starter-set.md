@@ -19,7 +19,7 @@ next: "/tutorials/dice-vision/label-the-starter-set/"
 toc_hide: true
 ---
 
-At the end of this phase, your webcam streams in the `camera` card's **TEST** section and a dataset named `dice-starter` holds about 30 images of dice.
+At the end of this phase, your webcam streams in the `camera` card's **Test** section and a dataset named `dice-starter` holds about 30 images of dice.
 You start small on purpose.
 In the next two phases you label these 30 images by hand and train a rough starter model on them, which then labels the rest of your images for you.
 
@@ -33,7 +33,7 @@ A steep angle, closer to straight down, makes the top face of each die easier to
 1. Mount the webcam about 30 cm above the background, aimed at it.
 1. Plug the webcam into your computer.
 
-{{< imgproc src="/tutorials/dice-vision/hero-yahtzee-roll.jpg" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="A webcam clipped to the top of a purple post on a white desk, with dice rolled out on the desk in front of it and the USB cable taped down along the desk." >}}
+{{< imgproc src="/tutorials/dice-vision/workspace-setup.jpg" resize="600x" declaredimensions=true class="imgzoom shadow" alt="A webcam clipped to the top of a tall purple post on a white desk, angled down toward five dice on a sheet of white paper in front of the post, with the USB cable taped to the desk." >}}
 
 ## Configure your webcam {#configure-your-webcam}
 
@@ -48,12 +48,15 @@ That way you get your webcam, not a laptop's built-in camera.
    It lists the cameras connected to your computer.
    The same camera can appear more than once, once for each resolution and frame rate it supports.
 1. Find your webcam and click **Add component** next to one of its entries.
-1. Rename the new camera component `camera`, and click **Save**.
+   The new camera component is named after the device.
+1. On the new camera component's card, click the **...** menu and select **Rename**.
+   Enter `camera` as the new name.
+1. Click **Save**.
 
 You can delete the discovery service from your machine once the camera is working; you don't need it for the rest of the workshop.
 
 {{< checkpoint >}}
-On the **CONFIGURE** tab, the **TEST** section of the `camera` card shows a live view of the background, and the dice are sharp.
+On the **CONFIGURE** tab, the **Test** section of the `camera` card shows a live view of the background, and the dice are sharp.
 If the image is from your laptop's own camera, delete the `camera` component and add a different entry from the discovery service's **Test** section.
 If the dice are blurry, raise the camera a little until the webcam can focus.
 {{< /checkpoint >}}
@@ -80,7 +83,7 @@ If the name is taken, another dataset in your organization already uses it; pick
 
 Each image you add here is one you'll label in [Phase 2](/tutorials/dice-vision/label-the-starter-set/), so aim for variety rather than volume.
 
-1. On the **CONFIGURE** tab, open the **TEST** section of the `camera` card.
+1. On the **CONFIGURE** tab, open the **Test** section of the `camera` card.
 1. Roll one to five dice onto the background.
 1. Click **Add to dataset**, select `dice-starter`, and confirm.
 1. Roll again and repeat until you've added 30 images.

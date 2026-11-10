@@ -53,7 +53,7 @@ They go in a new dataset, `dice-train`, so `dice-starter` stays fully labeled.
 
 1. On the **DATA** tab, click **DATASETS**, then click **Create dataset**.
 1. Name it `dice-train`, leave **Data type** set to **Binary Data**, and click **Create dataset**.
-1. On the **CONFIGURE** tab, open the **TEST** section of the `camera` card.
+1. On the **CONFIGURE** tab, open the **Test** section of the `camera` card.
 1. Roll, click **Add to dataset**, select `dice-train`, and confirm.
 1. Repeat until you've added about 70 images.
 
@@ -70,7 +70,7 @@ If an image shows no dice or a blurry roll, remove it from the dataset.
 ## Troubleshooting {#troubleshooting}
 
 {{% expand "The training job shows Failed" %}}
-On the **MODELS** tab, expand **Active Training**, click the job, and read its logs.
+On the **DATA** tab, click **MODELS**, expand **Active Training**, click the job, and read its logs.
 The most common cause is a label with fewer than 10 boxes.
 See [Train a model](/train/train-a-model/#troubleshooting) for other causes.
 {{% /expand %}}

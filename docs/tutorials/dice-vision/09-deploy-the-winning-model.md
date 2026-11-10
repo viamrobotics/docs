@@ -46,7 +46,7 @@ For more, see [How a vision service works](/vision/how-it-works/).
 
 ## Deploy the model {#deploy-the-model}
 
-1. In the Viam app, go to **Models** and click the winning model, `dice-tflite` or `dice-yolo`.
+1. On the **DATA** tab, click **MODELS** and click the winning model, `dice-tflite` or `dice-yolo`.
 1. Click **Deploy**.
 1. Select the latest version, your location, your machine and its part, then click **Continue**.
 1. Name the ML model service `dice-model`, then click **Continue**.

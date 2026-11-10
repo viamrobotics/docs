@@ -26,9 +26,10 @@ The labels in these datasets are the answer key, so they need to be right.
 ## Capture and label the clean test dataset {#capture-and-label-the-clean-test-dataset}
 
 1. Create a dataset named `dice-test-clean`.
-1. Add about 20 images to it from the **TEST** section of the `camera` card on the **CONFIGURE** tab, with the same dice, camera height and light as your training images.
+1. Add about 20 images to it from the **Test** section of the `camera` card on the **CONFIGURE** tab, with the same dice, camera height and light as your training images.
 1. Add three images of the empty background, with no dice.
 1. Open `dice-test-clean`, click **Run model**, then **Get auto-predictions**, and get predictions from `dice-starter-model` at a confidence threshold of `0.25`, as in [Phase 4](/tutorials/dice-vision/auto-label-the-training-set/#get-predictions-from-the-starter-model).
+   As in Phase 4, this is billed as compute time for each image.
 1. Review every prediction, and draw a box on every die that has none.
 
 Check every box here, not just the ones that look wrong.

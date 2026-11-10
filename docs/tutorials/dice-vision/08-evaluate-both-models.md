@@ -36,8 +36,8 @@ Evaluation runs in the cloud, so nothing needs to be deployed yet.
 The IoU threshold sets how closely a predicted box must overlap the box you drew to count as a match.
 At `0.5`, the two boxes must overlap by at least half.
 
-Each image in an evaluation is billed as one cloud inference.
-Four evaluations on about 50 test images is about 100 inferences.
+Like auto-predictions in [Phase 4](/tutorials/dice-vision/auto-label-the-training-set/#get-predictions-from-the-starter-model), an evaluation runs the model once on each image and is billed as compute time.
+These four evaluations run a model about 92 times, and the threshold evaluation later in this phase adds about 23 more.
 
 {{< checkpoint >}}
 On each test dataset's **Evaluations** page, two evaluations are listed, one per model, each showing **Precision** and **Recall**.
@@ -66,10 +66,13 @@ Each bar is green at 85% and above, yellow from 70%, and red below 70%.
 
 In this example, two models were scored on the same 20 images:
 
-- In the first breakdown, label `5` has 100% precision but 7.1% recall. Every time the model said `5`, it was right, but it found only 1 of the 14 fives. Label `4` is 0% across the board: the model never read a 4 correctly. High precision with low recall means this model mostly misses dice rather than misreading them.
+- In the first breakdown, label `5` has 100% precision but 7.1% recall. Every time the model said `5`, it was right, but it found only 1 of the 14 fives. Label `4` is 0% across the board: the model never read a 4 correctly. Low recall alone doesn't tell you whether the model missed the other 13 fives or read them as another value; a five read as a `6` would lower the precision of label `6`, not `5`.
 - In the second breakdown, every label scores at least 70%. The weakest is recall for label `2`, at 71.4%: the model missed or misread 4 of the 14 twos.
 
 ### Fill in the comparison {#fill-in-the-comparison}
+
+Before you look at the numbers, write down a prediction: which model will drop more from `dice-test-clean` to `dice-test-hard`, and why?
+Check it against your results when the table is filled in.
 
 Each **Evaluations** page shows only one test dataset, so to compare both models on both datasets, write down the four overall results in a table like this one:
 
@@ -87,12 +90,12 @@ Look at three things:
 1. How much each model drops from `dice-test-clean` to `dice-test-hard`. A small drop means the model copes with conditions it didn't train on.
 1. The **Per-class breakdown** for each model. A face with low recall is one the model often misses or misreads. The breakdown doesn't show which face the model mistook a die for, only that it got that face wrong.
 
-Pick the model with the better results on `dice-test-hard`, unless it's far worse on `dice-test-clean`.
+Pick the model with the higher recall on `dice-test-hard`, unless its precision on `dice-test-hard` is more than 5 points lower than the other model's.
 The rest of this workshop calls it the winning model.
 
 {{< checkpoint >}}
-Your table has four rows filled in, and you've picked a winning model.
-If you can't choose because the results are mixed, go with the higher recall on `dice-test-hard`.
+Your table has four rows filled in, you've picked a winning model, and you've checked your prediction.
+If both models have the same recall on `dice-test-hard`, pick the one with the higher precision there.
 If both models score close to 100% on both test datasets, your hard test dataset isn't hard enough to separate them; either model works for Yahtzee.
 {{< /checkpoint >}}
 
@@ -103,7 +106,7 @@ A lower threshold keeps more boxes, so recall goes up and precision usually goes
 
 1. Run one more evaluation of the winning model on `dice-test-hard`, with **Confidence threshold** set to `0.25` and **IoU threshold** at `0.5`.
 1. Compare it with the `0.5` result.
-1. Pick the threshold with the higher recall, unless its precision drops by more than a few points.
+1. Pick the threshold with the higher recall, unless its precision is more than 5 points lower.
 
 {{< checkpoint title="Milestone" >}}
 You have a measured answer to which model reads dice better, and the threshold to run it at.
@@ -121,7 +124,7 @@ Most fixes add training images and train a new version of the model:
 
 To retrain:
 
-1. Add the new images to `dice-train` from the **TEST** section of the `camera` card, as in [Phase 3](/tutorials/dice-vision/train-a-starter-model/#capture-the-rest-of-the-training-set).
+1. Add the new images to `dice-train` from the **Test** section of the `camera` card, as in [Phase 3](/tutorials/dice-vision/train-a-starter-model/#capture-the-rest-of-the-training-set).
 1. Label them with auto-predictions from your winning model, as in [Phase 4](/tutorials/dice-vision/auto-label-the-training-set/). It's more accurate than the starter model, so you fix fewer boxes.
 1. On the **DATASETS** page, open `dice-train` and click **Train model**.
 1. Select **New version**, select the model under **Existing model**, and train as before.
@@ -129,6 +132,10 @@ To retrain:
 
 Never add test images to `dice-train`.
 A model scored on images it trained on looks better than it really is.
+
+Choosing has a similar, smaller effect.
+Once you've used the test datasets to pick a model and a threshold, their scores overstate how well that model reads rolls it's never seen, and each round of retraining against them adds to that.
+If you retrain more than once or twice, capture fresh test datasets for your final comparison.
 
 In the next phase, you deploy the winning model to your machine and see it read dice live.
 

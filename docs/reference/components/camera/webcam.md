@@ -95,7 +95,7 @@ The [`viam:find-webcams:webcam-discovery`](https://app.viam.com/module/viam/find
 To add and use the service:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 1. Search for `find-webcams` and select the `discovery / find-webcams:webcam-discovery` service.
 1. Click **Add module**.
 1. Enter a name or use the suggested name for your camera and click **Add to machine**.

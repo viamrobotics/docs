@@ -26,12 +26,12 @@ This is where your model stops being a number on an evaluation page and starts d
 ## What you're building {#what-youre-building}
 
 You write the scorer as an inline module.
-A module is code that `viam-server` runs as part of your machine, the same way it runs the webcam driver and the ML model service you deployed in [Phase 9](/tutorials/dice-vision/deploy-the-winning-model/).
+A module is code that `viam-server` runs as part of your machine, the same way it runs the ML model service module you deployed in [Phase 9](/tutorials/dice-vision/deploy-the-winning-model/).
 An inline module is one you write in a code editor in the Viam app.
 When you save, Viam stores your code and deploys it to your machine, so you don't need a terminal, a local Python install or an API key.
 
 Your module is a generic service: a service with no fixed set of methods of its own.
-You run it by sending it a command, a small piece of JSON such as `{"score": {}}`, from the **TEST** section of its card.
+You run it by sending it a command, a small piece of JSON such as `{"score": {}}`, from the **Test** section of its card.
 Its `do_command` method reads the command and decides what to do.
 
 The module doesn't connect to the machine; it's already part of it.
@@ -41,16 +41,17 @@ Instead, you tell it which resources to use in its configuration, and `viam-serv
 
 1. On the **CONFIGURE** tab, click **+** and select **Code**.
 1. Select **Viam-hosted** and click **Choose**.
-1. Read the **Before you write code** checklist and click **Proceed**.
-   You've already done both things it lists: configured the camera and the vision service, and tested them.
+1. Click **Proceed**.
 1. Name the module `yahtzee`, select **Python**, and click **Create module**.
+   The Viam app adds a generic service to your machine, with a name such as `code-1`, and opens its card with a code editor.
+1. On the new service's card, click the **...** menu and select **Rename**.
+   Enter `yahtzee-scorer` as the new name.
 
-The Viam app adds a generic service to your machine and opens its card with a code editor.
 The editor holds a template with three methods to fill in: `validate_config`, `new` and `do_command`.
 
 {{< checkpoint >}}
-The **CONFIGURE** tab shows a new service with a code editor, and the code starts with `from typing import ClassVar`.
-If you don't see the editor, click the new service in the list on the left.
+The **CONFIGURE** tab shows a service named `yahtzee-scorer` with a code editor, and the code starts with `from typing import ClassVar`.
+If you don't see the editor, click `yahtzee-scorer` in the list on the left.
 {{< /checkpoint >}}
 
 ## Write the scorer {#write-the-scorer}
@@ -66,8 +67,8 @@ from collections import Counter
 
 from viam.services.vision import VisionClient
 
-SETTLED_READS = 4  # matching reads in a row, about one second
-MAX_READS = 40  # give up after about 10 seconds
+SETTLED_READS = 4  # matching reads in a row
+TIMEOUT_SECONDS = 10  # give up if the dice haven't settled by then
 UPPER = ["Ones", "Twos", "Threes", "Fours", "Fives", "Sixes"]
 
 
@@ -121,8 +122,10 @@ Select everything after the `MODEL` line, to the end of the file, and replace it
         return sorted(int(d.class_name) for d in detections)
 
     async def read_settled_roll(self):
+        loop = asyncio.get_running_loop()
+        deadline = loop.time() + TIMEOUT_SECONDS
         last, matches = None, 0
-        for _ in range(MAX_READS):
+        while loop.time() < deadline:
             dice = await self.read_dice()
             matches = matches + 1 if dice == last else 1
             last = dice
@@ -160,12 +163,12 @@ Here's what each part does:
 - `validate_config` checks the module's configuration for two names: `detector`, the vision service to read from, and `camera`, the camera it reads. It returns `detector` as a dependency, so `viam-server` starts the module only after `dice-detector` is running.
 - `new` runs when the module starts. It looks up `dice-detector` in the dependencies `viam-server` passes in, and keeps it for later.
 - `read_dice` asks the vision service to take an image from the camera and run the model on it. Each detection's `class_name` is the label you drew in [Phase 2](/tutorials/dice-vision/label-the-starter-set/), `1` through `6`, and the vision service has already dropped boxes below your confidence threshold.
-- `read_settled_roll` handles dice that are still rolling, which read differently in each image. It reads the dice every quarter of a second and returns a roll only when four reads in a row agree. If the dice don't settle within about 10 seconds, it gives up.
+- `read_settled_roll` handles dice that are still rolling, which read differently in each image. It reads the dice again a quarter of a second after each read finishes, and returns a roll only when four reads in a row agree. Each read also waits for the model to run, so four reads take at least one second, and longer on a slower model. If the dice don't settle within 10 seconds, it gives up.
 - `do_command` runs a command. `{"read": {}}` returns what the model sees right now. `{"score": {}}` waits for a settled roll and, if it sees exactly five dice, returns their scores. A sixth box usually means a misread or an extra die in view.
 
 ## Configure and save {#configure-and-save}
 
-1. In the module's service card, find its attributes and replace them with:
+1. In the `yahtzee-scorer` card, find its attributes and replace them with:
 
    ```json
    {
@@ -180,7 +183,7 @@ Saving deploys your code to the machine.
 Python inline modules run from source, so there's no build step; the module starts as soon as the machine receives it.
 
 {{< checkpoint >}}
-After a few seconds, the service shows no error on the **CONFIGURE** tab.
+After a few seconds, `yahtzee-scorer` shows no error on the **CONFIGURE** tab.
 If it shows an error, open the **LOGS** tab and read it.
 An error about an attribute being required means the attributes don't match the JSON above.
 A Python error with a line number usually means part of the code was pasted in the wrong place; check that the `MODEL` line is still there and that the pasted methods are indented under the class.
@@ -188,8 +191,8 @@ A Python error with a line number usually means part of the code was pasted in t
 
 ## Score a roll {#score-a-roll}
 
-1. Roll five dice onto the background.
-1. In the module's service card, open the **TEST** section and expand **DoCommand**.
+1. Roll five dice onto the background, and move any other dice out of the camera's view.
+1. In the `yahtzee-scorer` card, open the **Test** section and expand **DoCommand**.
 1. Enter `{"read": {}}` and click **Execute**.
 1. Check that the five values match the dice.
 1. Enter `{"score": {}}` and click **Execute**.

@@ -64,12 +64,8 @@ The script takes its settings as arguments, which you enter in the training form
 This workshop sets one of them, `num_epochs`.
 
 An epoch is one full pass through the training images.
-In each epoch, the model looks at every image, compares its guesses with your boxes, and adjusts itself to make better guesses next time.
-One pass isn't enough to learn much, so training runs many epochs, and the model improves a little each time.
-
-More epochs give the model more chances to learn, but the job takes longer.
-Past a point, the model also starts memorizing your training images instead of learning what dice look like in general, and it gets worse at reading new images.
-The script guards against this: after each epoch it scores the model on its validation images, keeps the version that scored best, and stops early if the model hasn't improved for half of the epochs you set.
+More epochs give the model more chances to learn, but the job takes longer, and past a point the model starts memorizing your training images instead of learning what dice look like in general.
+The script guards against this: it keeps the version that scored best on its validation images, and stops early if the model hasn't improved for half of the epochs you set.
 
 If you don't set `num_epochs`, the script runs up to 200 epochs.
 This workshop uses 100 to keep the job shorter.

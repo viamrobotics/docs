@@ -33,7 +33,7 @@ Use the labels `1`, `2`, `3`, `4`, `5` and `6`, for the number of pips on the to
 1. Hold **Cmd** (macOS) or **Ctrl** (Linux) and drag a rectangle tightly around the die.
 1. Repeat for every die in the image, then move to the next image.
 
-For more on the annotation tools, see [Annotate images](/train/annotate-images/).
+For more on the annotation tools, see [Annotate images](/train/annotate-data/).
 
 Follow these rules on every image, here and in later phases:
 
@@ -59,11 +59,12 @@ If you find a die with no box, go back and box it; otherwise the model learns th
 
 The **Unlabeled** count under **Classifications and tags** counts images with no classification tag.
 This workshop uses bounding boxes, not tags, so that count stays at 30.
+It doesn't affect training: when you train an object detection model, the 20% unlabeled limit counts only images with no box for any label you train on, and classification tags don't count.
 
 {{< checkpoint >}}
 Each label, `1` through `6`, has at least 10 boxes, and **Bounding box labels** shows no **Unlabeled** row.
 If you see a label you didn't mean to create, such as `l` or `six`, relabel its boxes and delete it.
-If a face has fewer, go back to the **TEST** section of the `camera` card on the **CONFIGURE** tab, add a few images where that face is on top, and label them.
+If a face has fewer, go back to the **Test** section of the `camera` card on the **CONFIGURE** tab, add a few images where that face is on top, and label them.
 A training job won't start with fewer than 10 boxes for any label you train on.
 {{< /checkpoint >}}
 

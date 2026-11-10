@@ -34,7 +34,11 @@ Your job is to review its guesses: accept the right ones, reject the wrong ones,
 1. Click **Get predictions**.
 
 A low threshold makes the starter model suggest a box even when it isn't sure.
-You'll reject more wrong guesses, but you'll draw fewer boxes from scratch, which takes longer.
+You'll reject more wrong guesses, but you'll draw fewer boxes from scratch, and drawing is the slow part.
+
+Getting predictions runs the starter model in the cloud once on each image in the dataset, about 70 times here.
+Each run is billed as compute time, by how long the model takes on that image.
+Evaluating a model in [Phase 8](/tutorials/dice-vision/evaluate-both-models/) is billed the same way.
 
 {{< checkpoint >}}
 After a minute or two, the dataset page shows that predictions are ready, with a **Review predictions** button.
@@ -51,7 +55,9 @@ A box's color shows its label, not whether it's right, so check every box agains
 1. For each prediction in the **Predictions** panel, click the check mark to accept it or the **X** to reject it.
    Accept a box that's around one die and has the value on its top face.
    Reject a box that has the wrong value or isn't around a die.
-1. Draw a box on every die that has none, as you did in [Phase 2](/tutorials/dice-vision/label-the-starter-set/#draw-a-box-on-every-die), including dice whose prediction you rejected.
+1. Once every prediction in the image is accepted or rejected, draw a box on every die that has none, including dice whose prediction you rejected.
+   You draw on the same screen, as you did in [Phase 2](/tutorials/dice-vision/label-the-starter-set/#draw-a-box-on-every-die): select the label, hold **Cmd** or **Ctrl**, and drag.
+   You can't draw while the image still has predictions to review.
 1. Move to the next image and repeat until you've reviewed them all.
 
 **Accept all** (**A**) and **Reject all** (**R**) act on every prediction in the image at once.

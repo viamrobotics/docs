@@ -33,8 +33,9 @@ You also know, from measurements rather than a guess, which of two models does t
 - Train an object detection model with built-in training.
 - Train a YOLO model with a training script from the registry.
 - Evaluate models on held-out test datasets and compare the results.
+- Choose a confidence threshold from evaluation results.
 - Deploy a model with the ML model and vision services.
-- Build an inline module that uses your model's detections.
+- Build an inline module that scores rolls from your model's detections.
 
 ## What's next {#whats-next}
 

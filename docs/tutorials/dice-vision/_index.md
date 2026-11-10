@@ -51,6 +51,7 @@ You'll learn how to:
 - Train an object detection model with built-in training
 - Train a YOLO model with a training script from the registry
 - Evaluate models on held-out test datasets and compare the results
+- Choose a confidence threshold from evaluation results
 - Deploy a model with the ML model and vision services
 - Build an inline module that scores rolls from your model's detections
 
@@ -90,7 +91,7 @@ Each training job also runs for some time in the cloud, and the phases tell you 
 
 | Phase                                                                                      | What you end with                                                                                                                                 | Time             |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| 1. [Capture a starter set from your webcam](/tutorials/dice-vision/capture-a-starter-set/) | The webcam streams in the `camera` card's **TEST** section and 30 images of dice are in a dataset.                                                | About 20 minutes |
+| 1. [Capture a starter set from your webcam](/tutorials/dice-vision/capture-a-starter-set/) | The webcam streams in the `camera` card's **Test** section and 30 images of dice are in a dataset.                                                | About 20 minutes |
 | 2. [Label the starter set](/tutorials/dice-vision/label-the-starter-set/)                  | Every die in the starter set has a box and a value.                                                                                               | About 20 minutes |
 | 3. [Train a starter and capture more](/tutorials/dice-vision/train-a-starter-model/)       | A starter model trains while you capture about 70 more images.                                                                                    | About 20 minutes |
 | 4. [Auto-label the training set](/tutorials/dice-vision/auto-label-the-training-set/)      | The starter model labels your training set, you correct it, and you add your starter images. **Milestone:** a model you trained labels your data. | About 20 minutes |

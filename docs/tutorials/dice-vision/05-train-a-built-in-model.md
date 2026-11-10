@@ -21,7 +21,7 @@ toc_hide: true
 
 At the end of this phase, a built-in TFLite model is training on all of `dice-train`.
 It's the first of two models you'll compare.
-Built-in training needs no code and runs well on small machines.
+Built-in training needs no code, and the TFLite model it produces runs well on small machines.
 While this model trains, you can move on to [Phase 6](/tutorials/dice-vision/train-a-yolo-model/) and start the second model.
 
 ## Start the built-in training job {#start-the-built-in-training-job}
