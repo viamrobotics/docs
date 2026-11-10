@@ -143,13 +143,14 @@ You do not need to restart anything.
 
 ### 6. Test the camera
 
-Every component in Viam has a built-in **test panel** in the Configure tab.
-The test panel uses the exact same APIs your code will use, so if the camera works here, it will work in your programs.
+Camera components have a built-in **Test** section on their configuration card in the **CONFIGURE** tab.
+The Test section uses the exact same APIs your code will use, so if the camera works here, it will work in your programs.
+Its controls work only while the machine part is online.
 
 1. Find your camera component in the configuration view.
 2. Expand the **Test** section at the bottom of the component panel.
 3. Open the refresh-interval dropdown and select **Live** to see a live video feed from the camera.
-4. Click **Get image** to capture a single frame.
+4. Click **Screenshot** to download a single frame, or click **Add to dataset** to save the current frame to a dataset.
 
 You should see a live feed from the camera.
 

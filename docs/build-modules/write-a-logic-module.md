@@ -966,7 +966,7 @@ Click **Save**.
 
 **Test with DoCommand:**
 
-On the **CONFIGURE** tab, expand your service's **Test** section and then expand **DoCommand**. Send a command:
+On the **CONFIGURE** tab, expand the **DoCommand** section on your service's configuration card. Generic services have top-level **DoCommand** and **GetStatus** sections instead of a **Test** section, and both work only while the machine part is online. Enter this command and click **Execute**:
 
 ```json
 { "command": "get_alerts" }
