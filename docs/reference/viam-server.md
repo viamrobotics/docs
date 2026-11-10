@@ -291,7 +291,7 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-log-file <filename>` | Write logs to a file with log rotation. |
 | `-network-check` | Only runs normal network checks. |
 | `-no-tls` | Starts an insecure HTTP server without TLS certificates even if one exists. |
-| `-output-telemetry` | Print out telemetry data (metrics and spans). |
+| `-output-telemetry` | Print metrics to the console every 10 seconds. To print traces, set `"console": true` in the machine's [`tracing` configuration](/monitor/tracing/). |
 | `-reveal-sensitive-config-diffs` | Show config diffs. |
 | `-untrusted-env` | Disable processes and shell from running in an untrusted environment. |
 | `-version` | Print version. |
