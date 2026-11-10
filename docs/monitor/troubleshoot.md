@@ -291,7 +291,8 @@ viam traces import-remote --part <part-name-or-id> --endpoint localhost:4317
 1. If your machine was installed with `viam-agent`, click **Restart**.
    Both `viam-server` and `viam-agent` will restart.
 
-   If you do not see a **Restart** button, click the **...** menu on the machine part card and select **Restart part**.
+   The **Restart** button, and the **Restart part** option in the machine part card's **...** menu, only appear when the part is online and running `viam-agent`.
+   If you do not see them, restart `viam-server` from the command line instead.
 
 It takes a few minutes for `viam-server` to shut down and restart.
 
