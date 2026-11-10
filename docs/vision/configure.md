@@ -13,7 +13,7 @@ aliases:
   - /vision-detection/add-computer-vision/
 ---
 
-You have a camera on your machine, and you have an ML model. The model could have come from the [registry](https://app.viam.com/registry), from the [Train ML Models section](/train/) through [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), or from elsewhere entirely: GitHub, Hugging Face, or your own training run outside Viam. This how-to wires the pieces together: an ML model service loads the model, and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
+You have a camera on your machine, and you have an ML model. The model could have come from the [registry](https://app.viam.com/registry), from the [Train and deploy ML models section](/train/) through [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), or from elsewhere entirely: GitHub, Hugging Face, or your own training run outside Viam. This how-to wires the pieces together: an ML model service loads the model, and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
 
 Downstream how-tos ([detect](/vision/object-detection/detect/), [classify](/vision/classify/), [track](/vision/object-detection/track/), [measure depth](/vision/3d-vision/measure-depth/)) assume the pipeline described here is running.
 

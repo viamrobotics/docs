@@ -68,6 +68,7 @@ While the model runs, the machine keeps capturing data, including the cases wher
 **Retrain.**
 In cases where the model struggles, you add data to the dataset and train a new version.
 A machine whose configuration uses the model's `latest` version downloads the new version automatically, with no manual download or restart.
+A machine pinned to a version keeps it until you [update it](/train/deploy-a-model/#update-a-deployed-model).
 For vision models, [auto-predictions](/train/automate-annotation/) let an existing model draft labels for new images, so each round takes less hand-labeling.
 Evaluating each version on the same test dataset shows whether the new one is better.
 

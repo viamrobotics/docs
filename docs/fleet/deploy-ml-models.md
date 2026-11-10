@@ -5,7 +5,7 @@ weight: 32
 layout: "docs"
 type: "docs"
 description: "Roll out trained ML models to machines using fragments and the Viam registry."
-capabilities: ["fleet-deployment"]
+capabilities: ["fleet-deployment", "ml-models"]
 diataxis: how-to
 aliases:
   - /vision/deploy-and-maintain/roll-out-to-fleet/
@@ -22,7 +22,7 @@ Use this page when you have a trained model in the Viam registry and want to dep
 
 - A trained ML model in the Viam registry. See [train a model](/train/train-a-model/).
 - For a classification or detection model, machines with a camera configured. See [add a camera](/hardware/common-components/add-a-camera/).
-- A [fragment](/fleet/reuse-configuration/) for your fleet. If you don't have one yet, [create one](/fleet/reuse-configuration/#create-a-fragment) first.
+- A [fragment](/fleet/reuse-configuration/) for your fleet. If you don't have one yet, [create one](/fleet/reuse-configuration/#create-a-fragment) first. A machine that configures the model directly, without a fragment, is updated on its own, so you can't stage a rollout across such machines.
 
 ## How model deployment works
 
@@ -31,7 +31,7 @@ ML models are deployed as registry packages, the same way modules are. A classif
 1. **ML model service**: loads the model file and runs inference.
 2. **Vision service**: connects the ML model service to a camera and returns detections or classifications.
 
-Other models need only the resource that runs them: an ML model service, or for a **Registry** model, the module resource the model names. See [Framework and what runs the model](/train/overview/#framework).
+Other models need only the resource that runs them: an ML model service, or for a **Registry** model, the module resource the model names. See [What runs the model](/train/deploy-a-model/#what-runs-the-model).
 
 You configure these resources in a fragment, apply the fragment to your machines, and every machine downloads the model and starts running it.
 
@@ -44,7 +44,7 @@ You configure these resources in a fragment, apply the fragment to your machines
 1. For a classification or detection model, click **+** again and add a vision service. Search for `mlmodel` and add the **mlmodel** vision service, then configure it to use the ML model service you just added.
 1. Click **Save**.
 
-For a **Registry** model, add the module resource the model names and the model package instead, as in [Deploy a Registry model manually](/train/deploy-a-model/#deploy-a-registry-model-manually).
+For a **Registry** model, add the module resource the model names and the model package instead. [Deploy the model](/train/deploy-a-model/#deploy-the-model) lists the entries to add.
 
 In the fragment's JSON, the model is an entry in `packages`, and the resource that runs it points into that package:
 
@@ -105,7 +105,7 @@ When you retrain and upload a new model version:
 - **Using fragment tags**: update the fragment configuration with the new model version, save to create a new revision, then move the `stable` tag to the new revision.
 - **Pinned to a version**: update the version string in the fragment and save.
 
-After each stage of a rollout, check the updated machines before you move on. For a vision model, a rise in low-confidence detections suggests the new version does worse than the old one on real camera input.
+After each stage of a rollout, check the updated machines before you move on, and leave the new version running for as long as your monitoring needs to catch problems, which can be hours or days. For a vision model, a rise in low-confidence detections suggests the new version does worse than the old one on real camera input.
 
 Rolling back follows the same pattern in reverse: change the version pin or move the tag back to a previous revision. Viam does not automatically roll back if a new model performs worse, so you change the pin or tag manually.
 

@@ -70,7 +70,7 @@ With the updated dataset, start a new training job. See [Train a model](/train/t
 
 - **Same architecture, same hyperparameters** if you are just correcting drift or adding examples. Retraining with a known-good setup is predictable and easy to compare.
 - **New architecture** if the task has changed (for example, you are adding a new class that the previous model could not detect). Expect to tune more.
-- **Same or new model name.** If you train under the same model name, the result is a new version of that model, and machines that track its latest version pick it up. If you train under a new name, the result is a separate model, and you switch machines to it by changing their configuration.
+- **Same or new model name.** If you train under the same model name, the result is a new version of that model, and machines that track its latest version pick it up. If you train under a new name, the result is a separate model, and you switch machines to it by changing their configuration. A new version must use the same framework as the model's earlier versions.
 
 Viam runs training jobs on cloud infrastructure. You do not need to provision a GPU machine locally. Logs stay available for seven days after the job completes.
 

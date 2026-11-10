@@ -27,7 +27,7 @@ The registry mixes Viam-authored modules, partner contributions, and community w
 - **Read the module's README** for tensor requirements, hardware support, and example configuration. The registry card links to it.
 - **Check recent commits and versions** if maturity matters. A module with a single 2023 release is a different bet than one with continuous releases this quarter.
 - **Prefer framework-specific implementations over the generic `triton`** unless you actually need GPU or multi-framework flexibility. Framework-specific implementations are simpler to configure and debug.
-- **Verify the model task type matches your need.** A model tagged for `object detection` will not give you classifications, and vice versa. See [Deploy an ML model from the registry, step 1](/vision/deploy-and-maintain/deploy-from-registry/#1-pick-a-model) for the task/framework/hardware matching table.
+- **Verify the model task type matches your need.** A model tagged for `object detection` will not give you classifications, and vice versa. See [Deploy an ML model from the registry, step 1](/vision/deploy-and-maintain/deploy-from-registry/#1-pick-a-model) for how to match a model to your task, framework, and hardware.
 
 To browse or search the registry, go to [app.viam.com/registry](https://app.viam.com/registry).
 

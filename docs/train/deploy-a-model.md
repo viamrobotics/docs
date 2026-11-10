@@ -53,6 +53,7 @@ Both add the same configuration.
 1. Go to **DATA** > **MODELS** and click the model, or open a public model's page in the registry.
 1. In the model header, click **Deploy**.
 1. Select a **Version**, **Location**, **Machine** and **Part**, then click **Continue**.
+   The version defaults to **Latest**; see [Choose a model version](#choose-a-model-version).
 1. Name the resource that runs the model.
    For a TFLite, TensorFlow, PyTorch or ONNX model, this is the ML model service.
    For a **Registry** model, there's one name for each module resource the training script specified.
@@ -81,6 +82,7 @@ Read the part's configuration, add the module, the package and the resource, and
 Pass `last_known_update` so the call fails, instead of overwriting, if someone else changed the configuration since you read it.
 
 - In the package entry, `package` is `<org-id>/<model-name>` and `version` is a version or `latest`.
+  See [Choose a model version](#choose-a-model-version).
 - The resource finds the model through `${packages.ml_model.<package-name>}`.
   For a TFLite, PyTorch or ONNX model, `model_path` appends the model file name.
   For a TensorFlow SavedModel, `model_path` is the package directory.
@@ -195,6 +197,51 @@ The entries are the same as in the **Python** tab, which also covers **Registry*
 
 To deploy the same model to many machines, add these entries to a fragment instead.
 See [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
+
+## Choose a model version {#choose-a-model-version}
+
+Each time you train or upload a model under the same name, the registry gets a new version of it.
+When you deploy the model, you choose which version the machine runs:
+
+- **Latest** moves the machine to each new version as soon as it's published, with no change to its configuration.
+  This is the default.
+  Use it during development, so every training run reaches your test machine.
+- **A specific version** keeps the machine on that version until you change it.
+  Use it in production, so a new version reaches your machines only when you decide.
+
+The choice is stored as the `version` of the model's entry in the machine's `packages`, either `latest` or a version name:
+
+```json
+{
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "2026-04-10T12-00-00",
+      "type": "ml_model"
+    }
+  ]
+}
+```
+
+The resource's attributes, such as `model_path`, stay the same across versions.
+
+### Update or roll back a deployed model {#update-a-deployed-model}
+
+A machine on **Latest** updates by itself.
+To move a machine pinned to a specific version, change the version:
+
+1. On the machine's **CONFIGURE** tab, open the ML model service's configuration card.
+1. Select the new version from the **Version** dropdown.
+   For a **Registry** model, switch to **JSON** mode and change `version` on the model's entry in `packages` instead.
+1. Click **Save**.
+
+The machine downloads the new version and reloads the resource that runs it.
+A vision service that uses the model, and your code, don't need to change.
+To roll back, select the previous version the same way.
+
+Test a new version on one machine before you move the rest.
+To update many machines at once, or in stages, see [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 
 ## Verify the model loaded
 
