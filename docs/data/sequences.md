@@ -135,7 +135,8 @@ The CLI prints the new sequence's ID.
 The sequence commands need CLI v1.16.0 or later; to upgrade, run [`viam update`](/cli/reference/#update).
 
 The CLI doesn't check these names against your data.
-If a resource or method doesn't match what was captured, the sequence is still created but returns no images, and the Viam app shows **No images captured for this resource**.
+If a resource or method doesn't match what was captured, the sequence is still created but returns no data for that resource, and the Viam app shows **No images captured for this resource** or **No tabular data captured for this resource**.
+For a resource on a remote, use its name without the remote prefix, for example `cam`, not `my-remote:cam`.
 To fix the names, run `viam data sequence update --sequence-id=<id> --resources=<resource-name>:<method>`.
 
 {{% /tab %}}
