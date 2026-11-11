@@ -18,18 +18,8 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.8
-      - name: Upgrade pip
-        run:
-          pip install --upgrade pip
-      - name: Create virtual environment
-        run:
-          python3 -m venv env
-      - name: Use virtual environment
-        run:
-          source env/bin/activate
+          python-version: "3.12"
       - name: Install Flake8 Markdown linter
-        run:
-          pip install flake8-markdown
+        run: pip install flake8-markdown
       - name: Markdown Lint
         run: flake8-markdown "docs/**/*.md"
