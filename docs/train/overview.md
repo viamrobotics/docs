@@ -14,7 +14,7 @@ updated: "2026-11-02"
 Your machines capture data in the field.
 Training uses that data to produce a model that runs on the machine, whether the model labels what a camera sees, controls an arm, or does something else.
 
-Viam lets you deploy a model from the [registry](/vision/deploy-and-maintain/deploy-from-registry/) or [upload a model you already have](/train/upload-a-model/), such as one from Hugging Face.
+Viam lets you deploy a model from the [registry](/train/deploy-a-model/) or [upload a model you already have](/train/upload-a-model/), such as one from Hugging Face.
 Some registry models need no training at all: [SAM 3](https://app.viam.com/module/viam/sam3-detector) detects whatever you name in a text prompt.
 When no existing model knows your labels or is accurate enough on your data, fine-tune one with [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
 Viam runs training jobs on its own cloud GPUs, and the result deploys to your machines the same way as any other model.
@@ -101,3 +101,4 @@ A custom job's task type and framework come from the training script, which decl
 - [Upload a model](/train/upload-a-model/): add a model you trained or found elsewhere to your organization.
 - [Deploy a model to a machine](/train/deploy-a-model/): add a trained model and what runs it to your machine.
 - [Retrain a model](/train/retrain-a-model/): capture the cases a deployed model gets wrong and train a new version.
+- [Run batch inference](/train/batch-inference/): run a model against images stored in the Viam Cloud with `viam infer`.

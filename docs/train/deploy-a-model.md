@@ -7,6 +7,21 @@ type: "docs"
 description: "Add a trained model and the resource that runs it to a machine's configuration, from the Viam app or with the Fleet API."
 capabilities: ["ml-models", "vision-service"]
 diataxis: how-to
+aliases:
+  - /data-ai/ai/deploy/
+  - /how-tos/train-deploy-ml/
+  - /services/ml/
+  - /registry/ml/
+  - /services/ml/edit/
+  - /ml/edit/
+  - /services/ml/ml-models/
+  - /registry/ml-models/
+  - /manage/ml/
+  - /ml/deploy/
+  - /ml/
+  - /services/ml/deploy/
+  - /how-tos/deploy-ml/
+  - /manage/data/deploy-model/
 ---
 
 Deploy a model to add it to a machine's configuration, along with the resource that runs it and the module that provides that resource.
@@ -19,7 +34,7 @@ The machine downloads the model and starts the resource.
 
 ## What runs the model {#what-runs-the-model}
 
-A model's [framework](/train/overview/#framework) decides which resource runs it:
+<span id="model-framework-support"></span>A model's [framework](/train/overview/#framework) decides which resource runs it:
 
 | Framework      | Module                                                                   | Resource model                         | Hardware                                             |
 | -------------- | ------------------------------------------------------------------------ | -------------------------------------- | ---------------------------------------------------- |

@@ -7,12 +7,18 @@ type: "docs"
 description: "Add a model you trained outside Viam, or found elsewhere, to your organization so you can deploy it to your machines."
 capabilities: ["ml-models"]
 diataxis: how-to
+aliases:
+  - /vision/deploy-and-maintain/deploy-custom-model/
+  - /services/ml/upload-model/
+  - /manage/data/upload-model/
+  - /manage/ml/upload-model/
+  - /ml/upload-model/
 ---
 
 Upload a model when you have model files that aren't in the Viam [registry](https://app.viam.com/registry):
 
 - You trained the model outside Viam, for example locally, in another cloud, or in a notebook.
-- You found the model elsewhere, such as on GitHub or Hugging Face, and want to run it on your machines.
+- You found the model elsewhere, such as on GitHub or Hugging Face, and want to run it on a Viam machine.
 
 A model you train on Viam, with [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), is added to your organization by the training job, so you don't upload it.
 
@@ -36,15 +42,15 @@ For the hardware each service supports, see [What runs the model](/train/deploy-
 If your training workflow produces a different format, such as Keras HDF5, convert the model to one of these formats first.
 TensorFlow Lite and ONNX are the most common targets because their runtimes are the lightest.
 
-Use the **Registry** framework instead only if a module's instructions tell you to upload your model with it.
+<span id="deploy-a-registry-framework-model"></span>Use the **Registry** framework instead only if a module's instructions tell you to upload your model with it.
 That module loads the model itself, so it decides the format.
 
 If a vision service will use the model, also check that the model's tensors match what the vision service expects.
-See [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/#1-meet-the-tensor-shape-and-name-requirements).
+See [Check the model's tensors](/vision/models/#tensor-requirements).
 
 ## 2. Upload the model {#upload-the-model}
 
-Models belong to an organization.
+<span id="3-add-the-model-to-your-organization"></span>Models belong to an organization.
 You upload each version of a model once.
 
 1. In the Viam app, go to the [**MODELS** tab](https://app.viam.com/models).
@@ -87,4 +93,4 @@ You can change a model between **Private** and **Public** later in the model's s
 
 - [Deploy a model to a machine](/train/deploy-a-model/): add the model and the resource that runs it to a machine.
 - [Evaluate a model](/train/evaluate-a-model/): for a classification or object detection model, measure its precision and recall on a labeled test dataset.
-- [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): match a classification or detection model's tensors to what the vision service expects.
+- [Use an ML model with the vision service](/vision/models/): match a classification or detection model's tensors to what the vision service expects.

@@ -114,7 +114,7 @@ For local models, `label_path` is optional but recommended. The file is plain te
 {{% /tab %}}
 {{< /tabs >}}
 
-For more on the deployment flow, see [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
+For more on the deployment flow, see [Deploy a model to a machine](/train/deploy-a-model/). To pick a model or check a custom model's tensors, see [Use an ML model with the vision service](/vision/models/).
 
 ## 3. Add a vision service
 
@@ -329,13 +329,13 @@ Get the placeholder values from the Viam app:
 3. Click the **Include API key** switch. The snippet on the page regenerates with your machine's real API key, API key ID, and machine address in place of the `<API-KEY>`, `<API-KEY-ID>`, and `<MACHINE-ADDRESS>` placeholders. Click the copy icon on the snippet to copy the whole thing.
 4. To view or copy API keys separately, open the **API keys** sidebar item on the same tab.
 
-For the three kinds of registry entries a vision pipeline uses (ML model service implementations, vision service models, public ML models) and how to pick among them, see [What's in the registry for vision](/vision/deploy-and-maintain/available-models/). Browse the registry directly at [app.viam.com/registry](https://app.viam.com/registry).
+For the three kinds of registry entries a vision pipeline uses (ML model service implementations, vision service models, public ML models) and how to pick among them, see [What the registry holds for vision](/vision/models/#registry-entries). Browse the registry directly at [app.viam.com/registry](https://app.viam.com/registry).
 
 ## What's next
 
-- [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): expand on model-picking guidance
+- [Use an ML model with the vision service](/vision/models/): model-picking guidance and tensor requirements
 - [Detect objects](/vision/object-detection/detect/): use detection results in code
 - [Classify images](/vision/classify/): use classification results in code
 - [Tune detection quality](/vision/object-detection/tune/): fix mis-configured or miscalibrated detectors
-- [Run batch inference](/vision/deploy-and-maintain/batch-inference/): run a model against stored images instead of live frames
+- [Run batch inference](/train/batch-inference/): run a model against stored images instead of live frames
 - [Retrain when accuracy drops](/train/retrain-a-model/): close the loop when your model drifts

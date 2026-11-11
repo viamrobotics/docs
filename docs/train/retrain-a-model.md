@@ -13,11 +13,13 @@ aliases:
   - /vision/retrain/
 ---
 
-Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. The fix is never a one-time deployment. It is a loop.
+A model loses accuracy when the conditions it runs in drift away from the data it was trained on. The fix is not a one-time deployment. It is a loop: capture the cases the model gets wrong, label them, train a new version, and deploy it.
 
 Viam's data, training, and fleet tools are the pieces of that loop. This guide walks through the end-to-end cycle from production machine back to production machine.
 
-The guide uses a vision model as its example. The cycle is the same for any model you train on Viam, but [evaluation](/train/evaluate-a-model/) and [auto-predictions](/train/automate-annotation/) support only classification and detection models. For how the stages fit together, see [How training works](/train/overview/#how-training-works).
+The guide uses a vision model as its example. For a vision model, drift looks like this: lighting shifts, new object variations appear, someone moves a camera, or a new SKU shows up on the line. This [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is a common reason a vision system fails after launch.
+
+The cycle is the same for any model you train on Viam, but [evaluation](/train/evaluate-a-model/) and [auto-predictions](/train/automate-annotation/) support only classification and detection models. For how the stages fit together, see [How training works](/train/overview/#how-training-works).
 
 ## The cycle
 
