@@ -61,7 +61,7 @@ jobs:
 
   upsert-tutorials:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.repository_owner == 'viamrobotics'
     steps:
       - name: Checkout Push/Workflow Dispatch
@@ -83,7 +83,7 @@ jobs:
 
   upsert-modular-resources:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.repository_owner == 'viamrobotics'
     steps:
       - name: Checkout Push/Workflow Dispatch
