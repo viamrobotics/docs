@@ -75,9 +75,9 @@ For the script's other arguments, see its [README](https://github.com/viam-devre
 1. On the **DATASETS** page, open `dice-train`.
 1. Click **Train model**.
 1. Select **Train on a custom training script**.
+1. Name the model `dice-yolo`.
 1. In the **Training script** field, search for `yolo-onnx-training` and select the one by `devrel`.
    The latest version is selected for you.
-1. Name the model `dice-yolo`.
 1. In the **Container version** dropdown, select `tf:2.21`.
    The container is the software environment the script runs in, and this script is tested with `tf:2.21`.
 1. In the **Arguments** section, click **Add argument**, enter `num_epochs` as the name, and enter `100` as the value.
