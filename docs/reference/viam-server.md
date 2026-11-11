@@ -313,7 +313,7 @@ You can set the following environment variables to configure `viam-server` behav
 | `VIAM_LOGFILE` | Path to a log file. `viam-server` writes logs to this file in addition to standard output. This differs from the `-log-file` flag, which writes to the file instead of standard output. |
 | `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger and Event Tracing for Windows (ETW). Only relevant on Windows. |
 | `VIAM_ENABLE_DISK_SPACE_BLOCK` | If set to `true` (or any value starting with `t`, `T`, or `1`), `viam-server` refuses to download, copy, or unpack a package or module when doing so would leave less than 10MB free on the target volume. When unset (the default), `viam-server` logs a warning about low disk space and proceeds. `viam-agent` has a separate setting for its own downloads. |
-| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | URL of an OTLP collector, including the scheme, such as `http://localhost:4317`. When set, `viam-server` exports OpenTelemetry metrics to it over OTLP gRPC. A value without a scheme, such as `localhost:4317`, is rejected and nothing is exported. See [Export metrics](/monitor/tracing/#export-metrics). |
+| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | URL of an OTLP collector, including the scheme, such as `http://localhost:4317`. When set, `viam-server` v1.16.0 and later exports OpenTelemetry metrics to it over OTLP gRPC. A value without a scheme, such as `localhost:4317`, is rejected and nothing is exported. See [Export metrics](/monitor/tracing/#export-metrics). |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | Fallback for `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`, used when that variable is unset. Takes the same URL format. |
 
 ## Install `viam-server` without the web UI

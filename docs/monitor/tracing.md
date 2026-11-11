@@ -4,7 +4,7 @@ title: "Trace requests with OpenTelemetry"
 weight: 42
 layout: "docs"
 type: "docs"
-description: "Enable OpenTelemetry tracing on a machine and in your modules to find where requests spend time and where they fail, and export viam-server metrics to an OTLP collector."
+description: "Trace requests on a machine and in your modules with OpenTelemetry, and export viam-server metrics to an OTLP collector."
 capabilities: ["logging", "module-development"]
 diataxis: how-to
 date: "2026-10-13"
@@ -154,7 +154,8 @@ See [Traces](/monitor/troubleshoot/#traces) and [Work with traces](/cli/manage-y
 
 ## Export metrics
 
-`viam-server` can also export OpenTelemetry metrics to an OTLP collector over gRPC.
+`viam-server` v1.16.0 and later can also export OpenTelemetry metrics to an OTLP collector over gRPC.
+Earlier versions ignore the variables below without logging anything.
 Metrics export is separate from the `tracing` config block: you turn it on with an environment variable, not in the machine config, and it does not require tracing to be enabled.
 
 Set `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` to the collector's URL, including the scheme:
@@ -166,6 +167,7 @@ OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:4317 viam-server -config /e
 If `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` is unset, `viam-server` uses `OTEL_EXPORTER_OTLP_ENDPOINT` instead.
 If neither is set, `viam-server` exports no metrics.
 On machines that `viam-agent` manages, set the variable through the agent's [`viam_server_env`](/reference/viam-agent/#set-viam-server-environment-variables) setting.
+`viam-server` passes these variables on to every module, and a module whose OpenTelemetry SDK reads `OTEL_EXPORTER_OTLP_ENDPOINT` starts exporting too, so prefer `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` unless you want that.
 
 The value must be a URL with a scheme and host.
 Use `http://` for a collector without TLS and `https://` for one with TLS.
