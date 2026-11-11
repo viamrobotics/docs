@@ -893,6 +893,44 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 | `--org-id` | The organization ID of the organization that will run the inference. | **Required** |
 | `--model-org-id` | The organization ID of the organization that owns the model. | **Required** |
 
+## `kinematics`
+
+The `kinematics` command converts a URDF, SVA, or DH file into a [kinematic model file](/motion-planning/reference/kinematics/#kinematic-model-format), with the model's meshes written as separate files beside it.
+
+```sh {class="command-line" data-prompt="$"}
+viam kinematics convert --input-file=<file> --output-file=<file>.json [other options]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# convert a URDF
+viam kinematics convert --input-file=arm.urdf --output-file=arm.json
+
+# convert a URDF whose package:// mesh paths resolve under the current directory
+viam kinematics convert --input-file=urdf/arm.urdf --output-file=arm.json --package-root=.
+
+# convert an SVA file and keep 20% of the triangles in each collision mesh
+viam kinematics convert --input-file=arm_sva.json --output-file=arm.json --decimate=0.2
+```
+
+### `kinematics convert`
+
+Convert a URDF, SVA, or DH file to a kinematic model file.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--input-file` | Path to the file to convert: a `.urdf` file, or a `.json` file holding SVA, DH, or a kinematic model. | **Required** |
+| `--output-file` | Path where the kinematic model file will be written. Must end in `.json`. | **Required** |
+| `--package-root` | Directory that `package://` mesh paths resolve under, for a URDF that is not at its package root. URDF input only: the command fails if you pass it with a `.json` input file. | Optional |
+| `--decimate` | Fraction of triangles to keep in each collision mesh, greater than `0` and at most `1`. Each collision mesh, including joint geometry, that has more triangles than the target is replaced with a simplified PLY mesh that encloses the original and keeps at most that fraction of its triangles, with a minimum of 12. Visual meshes are not changed. Default: `1` (no decimation). | Optional |
+
+The command writes the model's meshes under `meshes/<name>/collision/` and `meshes/<name>/visual/` next to the output file, where `<name>` is the output file name without `.json` (`--output-file=arm.json` writes `meshes/arm/collision/` and `meshes/arm/visual/`). The output file refers to them by relative path, so load it from disk with that directory beside it.
+It then reads the output file back and fails if its forward kinematics don't match the input file's.
+It warns when the model carries more than 8 MiB of mesh data, since every `GetKinematics` response for the model includes its meshes.
+For a URDF, collision meshes must be STL or PLY files, and visual DAE meshes and visual cylinders are left out of the output with a warning.
+
 ## `locations`
 
 The `locations` command allows you to manage the [locations](/reference/) that you have access to.
