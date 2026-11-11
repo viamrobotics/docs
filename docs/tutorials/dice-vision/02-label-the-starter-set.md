@@ -9,7 +9,6 @@ description: "Draw a bounding box around every die in the starter dataset and la
 capabilities: ["datasets"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 2
 phase_total: 10

@@ -9,7 +9,6 @@ description: "Start a built-in TFLite object detection training job on the full 
 capabilities: ["ml-training"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 5
 phase_total: 10

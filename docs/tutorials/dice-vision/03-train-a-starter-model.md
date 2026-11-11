@@ -9,7 +9,6 @@ description: "Start a built-in training job on the starter dataset, then capture
 capabilities: ["ml-training", "datasets"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 3
 phase_total: 10

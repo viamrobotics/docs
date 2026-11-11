@@ -9,7 +9,6 @@ description: "Deploy the winning model to your machine with an ML model service 
 capabilities: ["ml-models", "vision-service"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 9
 phase_total: 10

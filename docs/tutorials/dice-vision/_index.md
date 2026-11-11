@@ -16,7 +16,6 @@ capabilities:
   ]
 diataxis: overview
 date: "2026-11-06"
-draft: true
 authors: ["Eliza Farley"]
 level: "Intermediate"
 languages: ["python"]

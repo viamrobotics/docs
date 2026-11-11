@@ -9,7 +9,6 @@ description: "Capture and label a clean test dataset and a hard test dataset tha
 capabilities: ["datasets"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 7
 phase_total: 10

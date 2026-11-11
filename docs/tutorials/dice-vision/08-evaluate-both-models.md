@@ -9,7 +9,6 @@ description: "Evaluate both trained models on the clean and hard test datasets, 
 capabilities: ["ml-models", "datasets"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 8
 phase_total: 10

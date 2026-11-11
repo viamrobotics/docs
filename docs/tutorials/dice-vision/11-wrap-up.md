@@ -9,7 +9,6 @@ description: "Review the dice reader you built and find where to take your model
 capabilities: ["ml-training", "ml-models", "datasets"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 prev: "/tutorials/dice-vision/score-a-yahtzee-roll/"
 toc_hide: true

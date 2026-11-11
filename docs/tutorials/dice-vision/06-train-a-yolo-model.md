@@ -9,7 +9,6 @@ description: "Train a YOLO object detection model on the training dataset with t
 capabilities: ["ml-training", "module-registry"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 6
 phase_total: 10

@@ -9,7 +9,6 @@ description: "Write an inline module in the Viam app that reads a settled roll o
 capabilities: ["inline-modules", "vision-service"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 10
 phase_total: 10

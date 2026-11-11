@@ -9,7 +9,6 @@ description: "Use the starter model to predict boxes on the training dataset, th
 capabilities: ["datasets", "ml-models"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 4
 phase_total: 10

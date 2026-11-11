@@ -9,7 +9,6 @@ description: "Configure a webcam on your machine and add 30 images of dice to a 
 capabilities: ["hw-camera", "datasets"]
 diataxis: workshop
 date: "2026-11-06"
-draft: true
 workshop: "dice-vision"
 phase: 1
 phase_total: 10
