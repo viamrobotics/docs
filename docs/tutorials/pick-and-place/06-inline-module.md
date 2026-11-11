@@ -46,7 +46,7 @@ The detection, the pose math, and the motion calls are the same pick-and-place l
 
 ## Create the module
 
-On the **Configure** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module, click **Proceed**, and select **Python** as the language. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
+On the **Configure** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module and click **Choose**. Select **Python** as the language, keep **Generic service** as the component or service, and click **Create module**. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in Configure with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
