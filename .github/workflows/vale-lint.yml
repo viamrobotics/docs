@@ -11,7 +11,7 @@ on:
 jobs:
   vale:
     name: runner / vale
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
       - uses: errata-ai/vale-action@reviewdog
