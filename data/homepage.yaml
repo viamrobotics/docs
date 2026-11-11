@@ -27,8 +27,8 @@ hero:
 announcement:
   enabled: true
   label: "New"
-  text: "Take the free Viam 103 course: write the computer vision for a simulated robot work cell"
-  url: "https://www.viam.com/education/viam-103"
+  text: "Take the free VLA course: teach a real SO-101 arm a task by showing it what to do"
+  url: "https://www.viam.com/education/vla-training"
   link_text: "Start the course"
 
 # "Ways to learn": a full-width Docs tile with its own links, then one tile

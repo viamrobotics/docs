@@ -31,6 +31,10 @@ Viam runs training jobs on its own cloud GPUs, and the result deploys to your ma
 | **Robot policy**                | Drives a robot to do a task                           | Pick up the cup and put it in the bin.                                   | [SmolVLA](https://app.viam.com/ml-training/viam/smolvla-so101), [NVIDIA Cosmos](https://app.viam.com/ml-training/viam-labs/cosmos-edge-7d) | Custom only        |
 | **Other**                       | Anything the other types don't describe               | Predict a value, such as a motor's temperature, from sensor readings.    | None: a [regression model](https://app.viam.com/ml-training/viam/tabular-data-tensorflow) trained from scratch                             | Custom only        |
 
+To train a robot policy end to end on a real arm, take the free VLA course:
+
+{{< course "so-101-vla" >}}
+
 ## How training works {#how-training-works}
 
 Training is a loop.
