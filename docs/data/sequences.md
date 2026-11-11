@@ -132,6 +132,11 @@ Give each resource as `<resource-name>:<method>`.
 To include more than one, repeat `--resources` or separate the values with commas.
 The start time must be before the end time, and both use RFC 3339 format.
 The CLI prints the new sequence's ID.
+The sequence commands need CLI v1.16.0 or later; to upgrade, run [`viam update`](/cli/reference/#update).
+
+The CLI doesn't check these names against your data.
+If a resource or method doesn't match what was captured, the sequence is still created but returns no images, and the Viam app shows **No images captured for this resource**.
+To fix the names, run `viam data sequence update --sequence-id=<id> --resources=<resource-name>:<method>`.
 
 {{% /tab %}}
 {{% tab name="Python" %}}

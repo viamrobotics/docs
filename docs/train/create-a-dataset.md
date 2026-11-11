@@ -60,6 +60,7 @@ viam dataset create --org-id=YOUR-ORG-ID --name=my-inspection-dataset
 
 To create a sequence dataset, add `--type=sequence`.
 The type defaults to `binary`.
+`--type` needs CLI v1.16.0 or later; to upgrade, run [`viam update`](/cli/reference/#update).
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset create --org-id=YOUR-ORG-ID --name=my-sequence-dataset --type=sequence

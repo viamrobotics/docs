@@ -873,7 +873,7 @@ viam dataset sequence remove --dataset-id=abc --sequence-ids=aaa,bbb
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--dataset-id` | The ID of the sequence dataset to remove sequences from. | **Required** |
-| `--sequence-ids` | The IDs of the sequences to remove. | **Required** |
+| `--sequence-ids` | The IDs of the sequences to remove (accepts comma-separated list). | **Required** |
 
 ### Using the `ids` argument
 
