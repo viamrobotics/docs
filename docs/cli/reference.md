@@ -924,9 +924,9 @@ Convert a URDF, SVA, or DH file to a kinematic model file.
 | `--input-file` | Path to the file to convert: a `.urdf` file, or a `.json` file holding SVA, DH, or a kinematic model. | **Required** |
 | `--output-file` | Path where the kinematic model file will be written. Must end in `.json`. | **Required** |
 | `--package-root` | Directory that `package://` mesh paths resolve under, for a URDF that is not at its package root. URDF input only: the command fails if you pass it with a `.json` input file. | Optional |
-| `--decimate` | Fraction of triangles to keep in each collision mesh, greater than `0` and at most `1`. Each collision mesh is replaced with a simplified PLY mesh that encloses the original and keeps at most that fraction of its triangles, with a minimum of 12. Visual meshes are not changed. Default: `1` (no decimation). | Optional |
+| `--decimate` | Fraction of triangles to keep in each collision mesh, greater than `0` and at most `1`. Each collision mesh, including joint geometry, that has more triangles than the target is replaced with a simplified PLY mesh that encloses the original and keeps at most that fraction of its triangles, with a minimum of 12. Visual meshes are not changed. Default: `1` (no decimation). | Optional |
 
-The command writes the model's meshes under `meshes/<output file name>/collision/` and `meshes/<output file name>/visual/`, next to the output file, and the output file refers to them by relative path.
+The command writes the model's meshes under `meshes/<name>/collision/` and `meshes/<name>/visual/` next to the output file, where `<name>` is the output file name without `.json` (`--output-file=arm.json` writes `meshes/arm/collision/` and `meshes/arm/visual/`). The output file refers to them by relative path, so load it from disk with that directory beside it.
 It then reads the output file back and fails if its forward kinematics don't match the input file's.
 It warns when the model carries more than 8 MiB of mesh data, since every `GetKinematics` response for the model includes its meshes.
 For a URDF, collision meshes must be STL or PLY files, and visual DAE meshes and visual cylinders are left out of the output with a warning.

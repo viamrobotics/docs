@@ -270,6 +270,8 @@ Use `--dry-run` to print the Docker command without running it.
 
 To ship an arm's kinematics as a [kinematic model file](/motion-planning/reference/kinematics/#kinematic-model-format), convert the URDF (or an SVA or DH file) with the CLI.
 The command writes the model's meshes beside the output file and checks the result's forward kinematics against the input file.
+The output must be loaded from disk by its path, with its `meshes/` directory beside it, because the model file holds no mesh data of its own.
+Embedding the file in your module's binary doesn't work: reading it from bytes fails with `mesh "<path>" cannot be read without the directory of the model file`.
 
 ```sh {class="command-line" data-prompt="$"}
 viam kinematics convert \
