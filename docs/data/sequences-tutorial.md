@@ -38,7 +38,7 @@ If you use those tabs, expand **Set up for the CLI and Python path** and finish 
    ```
 
 2. Create an API key for the SDK scripts.
-   The scripts list sequences and manage datasets, which need an organization API key.
+   The script that lists sequences needs an organization API key.
    Creating a sequence on its own only needs a key with access to the machine part.
 
    ```sh {class="command-line" data-prompt="$"}
@@ -353,54 +353,21 @@ The dataset's sidebar now shows 3 sequences.
 {{% /tab %}}
 {{% tab name="CLI and Python" %}}
 
-`viam dataset create` can't set a dataset's type yet, so this step uses the Python SDK.
-Save this as `create_dataset.py`.
-It creates a sequence dataset, adds the sequences you pass it, and prints the dataset's ID.
-The dataset is named `demos` unless you set `DATASET_NAME`:
-
-```python
-import asyncio
-import os
-import sys
-
-from viam.app.viam_client import ViamClient
-from viam.proto.app.dataset import DatasetType
-from viam.rpc.dial import DialOptions
-
-
-async def main():
-    # Split the arguments too, because zsh passes $SEQUENCE_IDS as one argument.
-    sequence_ids = " ".join(sys.argv[1:]).split()
-    client = await ViamClient.create_from_dial_options(
-        DialOptions.with_api_key(
-            os.environ["VIAM_API_KEY"], os.environ["VIAM_API_KEY_ID"]
-        )
-    )
-    data = client.data_client
-    dataset_id = await data.create_dataset(
-        name=os.environ.get("DATASET_NAME", "demos"),
-        organization_id=os.environ["VIAM_ORG_ID"],
-        type=DatasetType.DATASET_TYPE_SEQUENCE_DATA,
-    )
-    await data.add_sequences_to_dataset(
-        dataset_id=dataset_id, sequence_ids=sequence_ids
-    )
-    print(dataset_id)
-    client.close()
-
-
-asyncio.run(main())
-```
-
-Run it with the IDs from step 5:
+Create a sequence dataset, keep its ID, and add the sequences from step 5:
 
 ```sh {class="command-line" data-prompt="$"}
-DATASET_ID=$(python create_dataset.py $SEQUENCE_IDS)
+DATASET_ID=$(viam dataset create --org-id=$VIAM_ORG_ID --name=demos --type=sequence \
+  | grep -oE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
 echo $DATASET_ID
+viam dataset sequence add --dataset-id=$DATASET_ID \
+  --sequence-ids=$(echo "$SEQUENCE_IDS" | paste -sd, -)
 ```
 
+`viam dataset create` prints `Created sequence dataset demos with dataset ID: <id>`, and `grep` keeps only the ID.
+`paste` joins the sequence IDs into the comma-separated list that `--sequence-ids` takes.
+
 Dataset names must be unique in your organization.
-If `demos` already exists, pick another name, for example `export DATASET_NAME=demos-2`, and run the script again.
+If `demos` already exists, pick another name, for example `--name=demos-2`, and run the commands again.
 
 {{% /tab %}}
 {{< /tabs >}}
