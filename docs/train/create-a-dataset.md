@@ -26,7 +26,7 @@ They differ in how you add data and in what you can do with the dataset afterwar
 | ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | Holds             | Individual files, usually images          | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
 | Use it to         | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
-| Create with       | Viam app, CLI, Python, TypeScript, Go     | Viam app, Python                                                                                         |
+| Create with       | Viam app, CLI, Python, TypeScript, Go     | Viam app, CLI, Python                                                                                    |
 | Labeling          | You tag images or draw bounding boxes     | Sequence tags, such as the task a demonstration shows                                                    |
 | Built-in training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
 | Merge datasets    | Yes                                       | No                                                                                                       |
@@ -53,10 +53,17 @@ Your empty dataset now appears in the list.
 {{% tab name="CLI" %}}
 
 This creates a binary dataset. Binary datasets don't support sequences.
-The CLI can't create sequence datasets.
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset create --org-id=YOUR-ORG-ID --name=my-inspection-dataset
+```
+
+To create a sequence dataset, add `--type=sequence`.
+The type defaults to `binary`.
+`--type` needs CLI v1.16.0 or later; to upgrade, run [`viam update`](/cli/reference/#update).
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset create --org-id=YOUR-ORG-ID --name=my-sequence-dataset --type=sequence
 ```
 
 The command returns the dataset ID, which you need for subsequent CLI and
@@ -157,7 +164,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-The TypeScript and Go SDKs and `viam dataset create` can't set a dataset's type yet, so create sequence datasets in the web UI or with Python.
+The TypeScript and Go SDKs can't set a dataset's type yet, so create sequence datasets in the web UI, with the CLI, or with Python.
 
 For the CLI and SDKs, replace all placeholder values (`YOUR-API-KEY`, `YOUR-API-KEY-ID`,
 `YOUR-ORGANIZATION-ID`) with your actual values. The API key must be
@@ -215,8 +222,9 @@ The dataset's sidebar shows how many sequences it holds.
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-The CLI can add images to a binary dataset.
-It has no sequence commands, so use the Viam app or an SDK for sequence datasets.
+The CLI can add data to both dataset types.
+
+**Binary dataset:**
 
 Add images to a dataset using filter criteria:
 
@@ -232,6 +240,17 @@ location, machine, component, tags, or time range.
 To add images by ID instead, see [Datasets and training](/cli/datasets-and-training/).
 
 To remove images, use `viam dataset data remove`.
+
+**Sequence dataset:**
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence add \
+  --dataset-id=YOUR-DATASET-ID \
+  --sequence-ids=YOUR-SEQUENCE-ID
+```
+
+`--sequence-ids` accepts a comma-separated list.
+To remove sequences, use `viam dataset sequence remove` with the same flags.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -470,7 +489,8 @@ Use the CLI.
   You can't add images to it, and you can't [merge](/cli/datasets-and-training/#merge-datasets) sequence datasets.
 - [Built-in training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
-- Sequence exports query your organization's tabular data, and those queries count toward your organization's usage.
+- Exporting a sequence dataset, or running a custom training job on one, reads the dataset's tabular data.
+  That data counts toward your organization's usage as tabular data egress, the same as exporting tabular data.
   See [Billing](/organization/billing/).
 
 ## Troubleshooting
@@ -482,8 +502,9 @@ Use the CLI.
   needed.
 - **Permission denied.** Verify that your API key has organization-level access.
   API keys scoped to a single machine or location cannot create datasets.
-- **Can't create a sequence dataset.** The CLI and the Go and TypeScript SDKs
-  can't set a dataset's type. Use the Viam app or the Python SDK.
+- **Can't create a sequence dataset.** The Go and TypeScript SDKs can't set a
+  dataset's type. Use the Viam app, the CLI with `--type=sequence`, or the
+  Python SDK.
 
 {{< /expand >}}
 

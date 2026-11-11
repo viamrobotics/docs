@@ -164,14 +164,31 @@ A sequence's tags label the whole sequence, such as the task a robot policy demo
 You usually set them when you record, through the `capture-control` module's `start_sequence` command or `CreateSequence`.
 See [Sequences](/data/sequences/).
 
-If you didn't tag sequences while recording, add a tag from code.
-The Viam app and the CLI can't edit a sequence.
+If you didn't tag sequences while recording, add a tag with the CLI or from code.
+The Viam app can't edit a sequence.
 
-<!-- Editing a sequence's tags isn't in the Viam app or the CLI yet. Add Viam app and CLI tabs here when it is. -->
+<!-- Editing a sequence's tags isn't in the Viam app yet. Add a Viam app tab here when it is. -->
 
 The update replaces the sequence's tags, so read the current tags first and pass them back with the new one.
 
 {{< tabs >}}
+{{% tab name="CLI" %}}
+
+Get the sequence and note its current tags on the `Tags:` line:
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence get --sequence-id=<sequence-id>
+```
+
+Pass the current tags back with the new one:
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence update --sequence-id=<sequence-id> --tags=<current-tags>,pick-up-cup
+```
+
+`--tags` changes only the tags. The sequence's resources and time window stay the same.
+
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python

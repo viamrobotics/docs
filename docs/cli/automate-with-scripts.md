@@ -85,7 +85,7 @@ set -euo pipefail
 viam login api-key --key-id=$VIAM_KEY_ID --key=$VIAM_KEY
 
 # Create a dataset from the last 7 days of labeled images.
-# The create command prints: "Created dataset <name> with dataset ID: <uuid>"
+# The create command prints: "Created binary dataset <name> with dataset ID: <uuid>"
 DATASET_ID=$(viam dataset create --org-id=$ORG_ID --name="weekly-$(date +%F)" \
   | grep -oE '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
 

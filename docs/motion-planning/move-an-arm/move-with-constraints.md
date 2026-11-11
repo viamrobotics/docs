@@ -205,10 +205,11 @@ constraints := &motionplan.Constraints{
   straight-line path, no path satisfies both the constraint and the
   collision check, so the planner returns no-path. Widen the constraint
   or move the obstacle.
-- **Orientation is checked against the nearer endpoint.** The planner
-  compares the current orientation to the start and goal, then uses
-  whichever is closer as the reference. This lets the constraint track
-  intent as the motion progresses rather than locking to one endpoint.
+- **Orientation is checked against the direct rotation.** The planner
+  compares the current orientation to the nearest orientation on the
+  direct rotation from the start orientation to the goal orientation.
+  This lets the constraint track intent as the motion progresses rather
+  than locking to one endpoint, so a large reorientation stays plannable.
 
 For tolerance selection guidance and more on planning cost, see the
 [Performance considerations](/motion-planning/move-an-arm/constraints/#performance-considerations)
