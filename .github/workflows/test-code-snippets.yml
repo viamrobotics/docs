@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   test-code-samples:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # Allow trusted PRs and other events
     if: github.repository_owner == 'viamrobotics'
 

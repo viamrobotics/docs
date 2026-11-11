@@ -75,6 +75,10 @@ workshops:
       title: "Vision-guided pick-and-place with the xArm6"
       image: "tutorials/pick-and-place/hero-hardware-overview.jpeg"
       alt: "A uFactory xArm6 arm with a two-finger gripper and a wrist-mounted camera, reaching over colored blocks on a desk."
+    - path: "/tutorials/dice-vision"
+      title: "Train a dice reader and score Yahtzee"
+      image: "tutorials/dice-vision/hero-yahtzee-roll.jpg"
+      alt: "A webcam on a purple post at the back of a white desk, facing eight translucent colored dice rolled out in front of it."
 
 featured:
   title: "Popular guides"

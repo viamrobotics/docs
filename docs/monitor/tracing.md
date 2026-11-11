@@ -4,7 +4,7 @@ title: "Trace requests with OpenTelemetry"
 weight: 42
 layout: "docs"
 type: "docs"
-description: "Enable OpenTelemetry tracing on a machine and in your modules to find where requests spend time and where they fail."
+description: "Trace requests on a machine and in your modules with OpenTelemetry, and export viam-server metrics to an OTLP collector."
 capabilities: ["logging", "module-development"]
 diataxis: how-to
 date: "2026-10-13"
@@ -151,3 +151,31 @@ A method that returns an error marks its span with an error status, so a failed 
 
 Retrieve and inspect traces with the `viam traces` CLI commands.
 See [Traces](/monitor/troubleshoot/#traces) and [Work with traces](/cli/manage-your-fleet/#work-with-traces).
+
+## Export metrics
+
+`viam-server` v1.16.0 and later can also export OpenTelemetry metrics to an OTLP collector over gRPC.
+Earlier versions ignore the variables below without logging anything.
+Metrics export is separate from the `tracing` config block: you turn it on with an environment variable, not in the machine config, and it does not require tracing to be enabled.
+
+Set `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` to the collector's URL, including the scheme:
+
+```sh {class="command-line" data-prompt="$"}
+OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:4317 viam-server -config /etc/viam.json
+```
+
+If `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` is unset, `viam-server` uses `OTEL_EXPORTER_OTLP_ENDPOINT` instead.
+If neither is set, `viam-server` exports no metrics.
+On machines that `viam-agent` manages, set the variable through the agent's [`viam_server_env`](/reference/viam-agent/#set-viam-server-environment-variables) setting.
+`viam-server` passes these variables on to every module, and a module whose OpenTelemetry SDK reads `OTEL_EXPORTER_OTLP_ENDPOINT` starts exporting too, so prefer `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` unless you want that.
+
+The value must be a URL with a scheme and host.
+Use `http://` for a collector without TLS and `https://` for one with TLS.
+Unlike the tracing `otlpendpoint` field, which takes `<collector-host>:4317`, a value without a scheme such as `localhost:4317` does not work: `viam-server` logs `Failed to set up OTLP metrics export` and exports nothing.
+When export starts, `viam-server` logs `Exporting OTLP metrics` with the endpoint.
+
+The exporter also reads the standard OpenTelemetry environment variables, including `OTEL_EXPORTER_OTLP_HEADERS` for authentication headers, `OTEL_EXPORTER_OTLP_TIMEOUT`, and `OTEL_METRIC_EXPORT_INTERVAL` (default 60 seconds).
+Metrics carry the resource attribute `service.name=viam-server` and, on a machine connected to Viam, `viam.part.id` set to the machine part ID.
+`OTEL_SERVICE_NAME` and `OTEL_RESOURCE_ATTRIBUTES` override these attributes.
+
+`viam-server` currently exports the standard gRPC metrics, such as `rpc.server.duration` for requests it serves and `rpc.client.duration` for calls it makes to modules and remote machines.
