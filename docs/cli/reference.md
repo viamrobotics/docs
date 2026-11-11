@@ -57,7 +57,7 @@ For setup instructions, see [Enable shell completion](/cli/overview/#enable-shel
 ## `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, query tabular or binary data with SQL or MQL, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, query tabular or binary data with SQL or MQL, delete data, add or remove tags from all data that matches a given filter, create and manage [sequences](/data/sequences/), or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export binary filter --destination=<output path> [...named args]
@@ -77,6 +77,10 @@ viam data tag filter remove --tags=<tags> [...named args from filter]
 viam data index create --collection-type=<type> --index-path=<file> [--org-id=<org-id>] [--pipeline-name=<name>]
 viam data index delete --collection-type=<type> --index-name=<name> [--org-id=<org-id>] [--pipeline-name=<name>]
 viam data index list --collection-type=<type> [--org-id=<org-id>] [--pipeline-name=<name>]
+viam data sequence create --part-id=<part-id> --resources=<resource-name>:<method> --start=<timestamp> --end=<timestamp> [--tags=<tags>]
+viam data sequence get --sequence-id=<sequence-id>
+viam data sequence update --sequence-id=<sequence-id> [--resources=<resource-name>:<method>] [--tags=<tags>] [--start=<timestamp>] [--end=<timestamp>]
+viam data sequence delete --sequence-ids=<sequence-ids>
 ```
 
 ### `data export tabular`
@@ -445,6 +449,76 @@ viam data index list --collection-type=<type> [--org-id=<org-id>] [--pipeline-na
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 | `--pipeline-name` | Name of the data pipeline (required when `--collection-type` is `pipeline-sink`). | Conditional |
 
+### `data sequence create`
+
+Create a [sequence](/data/sequences/) over a time range of data captured on a machine part.
+The CLI prints the new sequence's ID.
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence create --part-id=abc --resources=my-camera:GetImages,my-sensor:Readings --start=2026-09-29T14:00:00Z --end=2026-09-29T14:00:30Z --tags=demo-1
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part-id` | The ID of the part the sequence's data was captured on. | **Required** |
+| `--resources` | The resources in the sequence, each as `<resource-name>:<method>`, for example `my-camera:GetImages`. Repeat the flag or use a comma-separated list. | **Required** |
+| `--start` | ISO-8601 timestamp in RFC3339 format indicating the start of the sequence. Must be before `--end`. | **Required** |
+| `--end` | ISO-8601 timestamp in RFC3339 format indicating the end of the sequence. | **Required** |
+| `--tags` | Tags to apply to the sequence (accepts comma-separated list). | Optional |
+
+### `data sequence get`
+
+Print a sequence's part ID, resources, tags, datasets, start and end times, and when it was created and last updated.
+The CLI has no command to list sequences.
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence get --sequence-id=abc
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sequence-id` | The ID of the sequence. | **Required** |
+
+### `data sequence update`
+
+Update a sequence.
+Only the fields whose flags you pass change.
+Pass at least one of `--resources`, `--tags`, `--start`, or `--end`.
+
+```sh {class="command-line" data-prompt="$"}
+# replace a sequence's tags
+viam data sequence update --sequence-id=abc --tags=demo-1,pick-up-cup
+
+# clear a sequence's tags
+viam data sequence update --sequence-id=abc --tags=""
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sequence-id` | The ID of the sequence to update. | **Required** |
+| `--resources` | Replaces the sequence's full resource list, each as `<resource-name>:<method>`. Repeat the flag or use a comma-separated list. | Optional |
+| `--tags` | Replaces the sequence's tags. Pass `""` to clear them. | Optional |
+| `--start` | ISO-8601 timestamp in RFC3339 format indicating the new start of the sequence. | Optional |
+| `--end` | ISO-8601 timestamp in RFC3339 format indicating the new end of the sequence. | Optional |
+
+### `data sequence delete`
+
+Delete sequences by ID.
+Deleting a sequence doesn't delete the data in its time range.
+The CLI tries to delete every ID, even after one fails, and then reports all the IDs that failed.
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence delete --sequence-ids=abc,def
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sequence-ids` | The IDs of the sequences to delete (accepts comma-separated list). | **Required** |
+
 ## `datapipelines`
 
 The `datapipelines` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
@@ -565,10 +639,10 @@ viam datapipelines delete --id=abc123
 ## `dataset`
 
 The `dataset` command allows you to manage machine data in datasets.
-With it, you can add or remove images from a dataset, export data from a dataset, or filter a dataset by tags.
+With it, you can add or remove images or sequences from a dataset, export data from a dataset, or filter a dataset by tags.
 
 ```sh {class="command-line" data-prompt="$"}
-viam dataset create --org-id=<org-id> --name=<name>
+viam dataset create --org-id=<org-id> --name=<name> [--type=<binary|sequence>]
 viam dataset rename --dataset-id=<dataset-id> --name=<name>
 viam dataset list --org-id=<org-id>
 viam dataset list --dataset-ids=<dataset-ids>
@@ -579,14 +653,21 @@ viam dataset data add filter --dataset-id=<dataset-id> [...named args]
 viam dataset data remove filter --dataset-id=<dataset-id> [...named args]
 viam dataset data add ids --dataset-id=<dataset-id>  --binary-data-ids=<binary-data-ids>
 viam dataset data remove ids --dataset-id=<dataset-id> --binary-data-ids=<binary-data-ids>
+viam dataset sequence add --dataset-id=<dataset-id> --sequence-ids=<sequence-ids>
+viam dataset sequence remove --dataset-id=<dataset-id> --sequence-ids=<sequence-ids>
 ```
 
 ### `dataset create`
 
 Create a new dataset.
+The CLI prints the dataset's type, name, and ID.
 
 ```sh {class="command-line" data-prompt="$"}
+# create a binary dataset
 viam dataset create --org-id=123 --name=MyDataset
+
+# create a sequence dataset
+viam dataset create --org-id=123 --name=MySequenceDataset --type=sequence
 ```
 
 <!-- prettier-ignore -->
@@ -594,6 +675,7 @@ viam dataset create --org-id=123 --name=MyDataset
 | -------- | ----------- | --------- |
 | `--org-id` | Organization ID of the organization the dataset belongs to. | **Required** |
 | `--name` | The name of the dataset to create. | **Required** |
+| `--type` | The type of data the dataset holds: `binary` or `sequence`. See [Choose a dataset type](/train/create-a-dataset/#choose-a-dataset-type). Default: `binary`. | Optional |
 
 ### `dataset rename`
 
@@ -612,6 +694,7 @@ viam dataset rename --dataset-id=123 --name=MyCoolDataset
 ### `dataset list`
 
 List dataset information from specified IDs or for an org ID.
+Each line shows a dataset's name, ID, organization ID, and type (`binary` or `sequence`).
 
 ```sh {class="command-line" data-prompt="$"}
 # show dataset information for all datasets within a specified org
@@ -762,6 +845,35 @@ viam dataset data remove filter --dataset-id=abc --location-ids=123 --org-ids=45
 | `--mime-types` | Filter data on MIME types. Accepts comma-separated list. | Optional |
 | `--part-id` | Filter data on part ID. | Optional |
 | `--part-name` | Filter data on part name. | Optional |
+
+### `dataset sequence add`
+
+Add [sequences](/data/sequences/) to a sequence dataset.
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence add --dataset-id=abc --sequence-ids=aaa,bbb
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--dataset-id` | The ID of the sequence dataset to add sequences to. | **Required** |
+| `--sequence-ids` | The IDs of the sequences to add (accepts comma-separated list). | **Required** |
+
+### `dataset sequence remove`
+
+Remove sequences from a sequence dataset.
+Removing a sequence from a dataset doesn't delete the sequence.
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence remove --dataset-id=abc --sequence-ids=aaa,bbb
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--dataset-id` | The ID of the sequence dataset to remove sequences from. | **Required** |
+| `--sequence-ids` | The IDs of the sequences to remove. | **Required** |
 
 ### Using the `ids` argument
 
