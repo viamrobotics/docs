@@ -83,9 +83,8 @@ top-level README](../../README.md#continuous-integration).
 - **Blocking:** **Yes**—`fail_on_error: true`, `level: error`. This is the
   prose-style gate referenced in `CLAUDE.md`.
 - **Secrets:** `GITHUB_TOKEN` (automatic).
-- **Notes:** The Python 3.8 / venv setup steps are dead weight—Vale is a Go
-  binary and the venv is never used. Python 3.8 is end-of-life. The action is
-  pinned to the `reviewdog` branch rather than a version.
+- **Notes:** The action is pinned to the `reviewdog` branch rather than a
+  version.
 
 #### `codespell.yml`—_codespell_
 
@@ -120,8 +119,6 @@ top-level README](../../README.md#continuous-integration).
 - **Trigger:** `pull_request`; manual.
 - **Blocking:** Informational (`continue-on-error: true`).
 - **Secrets:** None.
-- **Notes:** Same dead Python-3.8/venv boilerplate as `vale-lint.yml`
-  (`source env/bin/activate` runs in its own shell and has no effect).
 
 ### Scheduled validation against the SDKs and live services
 
@@ -279,8 +276,6 @@ than from the secret itself.
   (`::set-output`) and `pr-labeler.yml` (event/condition mismatch).
 - **Reliance on external HTML scraping and live services** makes the scheduled
   jobs fragile; failures there are often environmental, not docs regressions.
-- **End-of-life Python 3.8** appears in `vale-lint.yml` and `python-lint.yml`
-  (in unused venv steps).
 
 ## TODO: repairs
 
@@ -345,8 +340,6 @@ and the Jira steps were themselves failing—so these jobs ran unmonitored.
       `actions/configure-pages@v2`.
 - [ ] Pin `wjdp/htmltest-action@master` to a released version or commit SHA in
       both htmltest workflows.
-- [ ] Remove the unused Python 3.8 venv steps from `vale-lint.yml` and
-      `python-lint.yml`; move `python-lint` off end-of-life Python.
 - [ ] Delete the commented-out `deploy` job from `docs.yml` (Netlify handles
       deployment).
 - [ ] Decide whether `markdown-lint.yml`, `prettier-lint.yml`, and
