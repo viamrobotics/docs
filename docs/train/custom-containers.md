@@ -65,7 +65,7 @@ You can use any tool that produces a standard Docker image.
 
 ### Give your script access to the GPU
 
-Training jobs run on Google Cloud GPU machines, which mount the NVIDIA driver into your container under `/usr/local/nvidia`.
+Training jobs run on Google Cloud GPU machines, which typically mount the NVIDIA driver into your container under `/usr/local/nvidia`.
 Viam doesn't add that directory to the container's search paths, so your image has to.
 If it doesn't, frameworks such as PyTorch can't find the driver and don't detect the GPU.
 
@@ -73,12 +73,9 @@ Base images from [`nvidia/cuda`](https://hub.docker.com/r/nvidia/cuda) already s
 If you start from a different base image, or your Dockerfile sets `PATH` or `LD_LIBRARY_PATH` and overwrites the base image's values, add them yourself:
 
 ```dockerfile
-ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH} \
     LD_LIBRARY_PATH=/usr/local/nvidia/lib64:/usr/local/nvidia/lib:/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
-
-To use the GPU's hardware video encoder (NVENC), for example to encode video with `ffmpeg`, set `NVIDIA_DRIVER_CAPABILITIES=compute,utility,video` instead.
 
 To confirm your script sees the GPU, log the result of a check such as `torch.cuda.is_available()` at the start of training and read it in the [job logs](/train/custom-training-scripts/#monitor-and-debug).
 
