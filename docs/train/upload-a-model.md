@@ -9,6 +9,7 @@ capabilities: ["ml-models"]
 diataxis: how-to
 aliases:
   - /vision/deploy-and-maintain/deploy-custom-model/
+  - /vision/deploy-custom-model/
   - /services/ml/upload-model/
   - /manage/data/upload-model/
   - /manage/ml/upload-model/
