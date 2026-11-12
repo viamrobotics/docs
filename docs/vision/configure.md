@@ -13,6 +13,7 @@ aliases:
   - /vision/deploy-and-maintain/available-models/
   - /vision/deploy-and-maintain/deploy-from-registry/
   - /vision/deploy-from-registry/
+  - /vision/models/
   - /build/vision-detection/add-computer-vision/
   - /vision-detection/add-computer-vision/
 ---
