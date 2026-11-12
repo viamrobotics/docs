@@ -25,7 +25,7 @@ The camera API gives you `GetImages` (capture frames), `GetPointCloud` (depth da
 
 ### Built-in models
 
-- [**webcam**](/reference/components/camera/webcam/): USB cameras and built-in laptop cameras. Auto-detects available devices.
+- [**webcam**](/reference/components/camera/webcam/): USB cameras and built-in laptop cameras on Linux, macOS, and Windows. Auto-detects available devices.
 - [**ffmpeg**](/reference/components/camera/ffmpeg/): a camera device, video file, or stream that `ffmpeg` can read. For RTSP IP cameras, prefer the `viam:viamrtsp` registry module listed under Registry modules.
 - [**transform**](/reference/components/camera/transform/): applies transformations (crop, resize, rotate, overlay) to another camera's output.
 - [**fake**](/reference/components/camera/fake/): a camera model for testing.
@@ -92,6 +92,12 @@ To find available video devices on Linux:
 ls /dev/video*
 ```
 
+On any platform, you can use the `find-webcams` discovery service to find video paths and generate a working configuration.
+Identical cameras get different names, and on Windows the service sets up the built-in `webcam` model with MJPEG configurations.
+See [Find a video path using a discovery service](/reference/components/camera/webcam/#find-a-video-path-using-a-discovery-service).
+
+On Windows, the built-in `webcam` model works without the `modular-webcam` module.
+
 You can also set resolution and frame rate:
 
 ```json
@@ -101,6 +107,25 @@ You can also set resolution and frame rate:
   "frame_rate": 30
 }
 ```
+
+**For an Intel RealSense camera (`realsense` module):**
+
+{{< alert title="Requirements" color="note" >}}
+The improvements in this section require `viam-server` v1.15.0 or later and RealSense module v0.22.6 or later.
+{{< /alert >}}
+
+Add `color` and `depth` to the `sensors` list to get both image types.
+When you set `align_color_depth` to `true`, the module aligns depth to the color image, and point clouds line up with the color image.
+Alignment works with more than one RealSense camera on the same machine.
+A request for the color image alone skips alignment: on a CM5 at 1280x720, it takes about 4.6ms instead of 26.1ms.
+
+The module recovers on its own:
+
+- If frames go stale after USB transfer errors, it restarts the camera pipeline.
+- If a camera drops off the USB bus, it reattaches the camera.
+- At startup, it logs USB connection diagnostics, so a bad cable or port shows up in the logs.
+
+See the [RealSense module README](https://github.com/viamrobotics/viam-camera-realsense) for all attributes.
 
 ### 4. Configure a frame (recommended)
 
@@ -323,6 +348,21 @@ go run main.go
 - Verify the camera name in your code matches the name in the Viam app exactly (names are case-sensitive).
 - Check that the camera test panel works in the Viam app first. If it doesn't work there, the issue is with the camera configuration, not your code.
 - Ensure `viam-server` is still running and the machine is online.
+
+{{< /expand >}}
+
+{{< expand "CONTROL tab shows \"no stream for\"" >}}
+
+On `viam-server` versions before v1.15.0, a camera that was ready while the machine was starting up, or one you added while the machine was running, could fail to stream on the **CONTROL** tab with `no stream for`.
+Update `viam-server` to v1.15.0 or later.
+
+{{< /expand >}}
+
+{{< expand "RealSense camera stops returning frames" >}}
+
+With RealSense module v0.22.6 or later, the module restarts the camera pipeline when frames go stale and reattaches a camera that drops off the USB bus.
+If the problem repeats, check the machine's logs for the USB connection diagnostics the module writes at startup.
+A bad cable or port shows up there.
 
 {{< /expand >}}
 

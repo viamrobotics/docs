@@ -20,6 +20,12 @@ usage: 999999
 `webcam` is the general camera model.
 If the camera drivers are among those in [this mediadevices repository](https://github.com/pion/mediadevices), the camera will work with the webcam model.
 
+The `webcam` model works on Linux, macOS, and Windows.
+On Windows, the built-in `webcam` model replaces the `modular-webcam` module, so you no longer need to add that module.
+Windows support requires `viam-server` v1.15.0 or later.
+If a webcam is unplugged and plugged back in, it reappears without a restart.
+A webcam driver that crashes doesn't affect the other webcams on the machine.
+
 ## Configuration
 
 {{< tabs name="Configure a Webcam" >}}
@@ -83,7 +89,7 @@ If the camera drivers are among those in [this mediadevices repository](https://
 | `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. Negative values are rejected with a configuration error. <br> Default: Closest possible value to `640` |
 | `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. Negative values are rejected with a configuration error. <br> Default: Closest possible value to `480` |
 | `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
-| `idle_timeout_ms` | int | Optional | How long in milliseconds to wait without an `Images` request before the camera pauses frame reads. The camera driver stays open so exposure settings are preserved, and the next `Images` call resumes reads automatically (with a wake timeout of 15 seconds). Set to `0` to disable idle pausing. Must be non-negative. <br> Default: `0` (disabled) |
+| `idle_timeout_ms` | int | Optional | How long in milliseconds to wait without an `Images` request before the camera pauses frame reads. The camera driver stays open so exposure settings are preserved, and the next `Images` call resumes reads automatically (with a wake timeout of 15 seconds). Pausing reads reduces CPU use: in testing, an idle webcam that kept reading frames used about 55% CPU. Set to `0` to disable idle pausing. Must be non-negative. <br> Default: `0` (disabled) |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 
@@ -105,6 +111,10 @@ To add and use the service:
 1. Paste the copied attributes into the camera card's attributes editor.
 1. Click **Save**.
 1. You can now delete the discovery service and the module that provides it from your machine.
+
+The discovery service gives identical cameras different names, so you can tell two of the same model apart.
+On Windows, it sets up the built-in `webcam` model and offers MJPEG configurations, which you can copy the same way.
+These behaviors require `find-webcams` v0.3.2 or later and `viam-server` v1.15.0 or later.
 
 ### Find a video path using the command line
 
@@ -154,6 +164,13 @@ Viam supports the following pixel formats:
 - YUY2 / YUYV / V422
 - Z16
 
+### Windows
+
+On Windows, webcams stream MJPEG.
+With MJPEG, the built-in `webcam` model works at 1920x1080 and you can run two webcams at the same time.
+Reads from an unplugged webcam time out instead of hanging.
+Use the [`find-webcams` discovery service](#find-a-video-path-using-a-discovery-service) to get a working MJPEG configuration.
+
 On Linux, you can determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
 Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:
 
@@ -162,6 +179,12 @@ v4l2-ctl --list-formats-ext --device /dev/video0
 ```
 
 ## Troubleshooting
+
+{{% expand "Changing the config fails with a device busy error (Linux)" %}}
+Before `viam-server` v1.15.0, changing a webcam's configuration on Linux could fail with a device busy error.
+Update `viam-server` to v1.15.0 or later.
+If you see `Device or resource busy` when running `v4l2-ctl` yourself, stop `viam-server` first.
+{{% /expand%}}
 
 {{% expand "Cannot open webcam or found no webcams" %}}
 When working with a webcam camera on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
