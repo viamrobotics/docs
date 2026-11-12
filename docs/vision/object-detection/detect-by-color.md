@@ -258,7 +258,7 @@ Color detection is sensitive to lighting changes. A system that works under cont
 Fixes, in order of preference:
 
 1. Add consistent artificial lighting so the target color does not shift.
-2. Switch to an [ML-based detector](/vision/models/) trained on images from the actual production environment.
+2. Switch to an [ML-based detector](/vision/configure/) trained on images from the actual production environment.
 
 {{< /expand >}}
 
@@ -266,4 +266,4 @@ Fixes, in order of preference:
 
 - [color_detector reference](/reference/services/vision/color_detector/): every attribute
 - [Detect objects](/vision/object-detection/detect/): write code that uses detection results
-- [Use an ML model with the vision service](/vision/models/): when color detection is too fragile
+- [Configure a vision pipeline](/vision/configure/): an ML-based detector, for when color detection is too fragile

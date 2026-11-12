@@ -47,7 +47,7 @@ Verify the camera reports `supports_pcd: true` by calling [`GetProperties`](/ref
 
 The segmenter reuses an existing 2D detection vision service. Configure one if you do not have it already:
 
-- For ML-based detection, follow [Use an ML model with the vision service](/vision/models/).
+- For ML-based detection, follow [Configure a vision pipeline](/vision/configure/).
 - For color-based detection, see [Detect by color](/vision/object-detection/detect-by-color/).
 
 Name the detector something memorable, for example `person_detector` or `red_block_detector`. You will reference this name from the segmenter config.

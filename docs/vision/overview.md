@@ -97,7 +97,7 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 
 ### Deploy and maintain models
 
-- [Use an ML model with the vision service](/vision/models/): pick a model and check that its tensors match what the vision service expects
+- [Configure a vision pipeline](/vision/configure/): wire a model to a vision service and check its tensors
 - [Deploy a model to a machine](/train/deploy-a-model/): add a model and the resource that runs it to a machine
 - [Retrain when accuracy drops](/train/retrain-a-model/): the CVOps loop for model maintenance
 - [Deploy ML models across your fleet](/fleet/deploy-ml-models/): staged model rollouts

@@ -46,7 +46,7 @@ TensorFlow Lite and ONNX are the most common targets because their runtimes are 
 That module loads the model itself, so it decides the format.
 
 If a vision service will use the model, also check that the model's tensors match what the vision service expects.
-See [Check the model's tensors](/vision/models/#tensor-requirements).
+See [Check the model's tensors](/vision/configure/#tensor-requirements).
 
 ## 2. Upload the model {#upload-the-model}
 
@@ -93,4 +93,4 @@ You can change a model between **Private** and **Public** later in the model's s
 
 - [Deploy a model to a machine](/train/deploy-a-model/): add the model and the resource that runs it to a machine.
 - [Evaluate a model](/train/evaluate-a-model/): for a classification or object detection model, measure its precision and recall on a labeled test dataset.
-- [Use an ML model with the vision service](/vision/models/): match a classification or detection model's tensors to what the vision service expects.
+- [Configure a vision pipeline](/vision/configure/): use the model with a vision service, and check that its tensors match.

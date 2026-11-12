@@ -9,6 +9,10 @@ capabilities: ["vision-service", "ml-models"]
 diataxis: how-to
 date: "2026-04-14"
 aliases:
+  - /vision/deploy-and-maintain/
+  - /vision/deploy-and-maintain/available-models/
+  - /vision/deploy-and-maintain/deploy-from-registry/
+  - /vision/deploy-from-registry/
   - /build/vision-detection/add-computer-vision/
   - /vision-detection/add-computer-vision/
 ---
@@ -114,15 +118,60 @@ For local models, `label_path` is optional but recommended. The file is plain te
 {{% /tab %}}
 {{< /tabs >}}
 
-For more on the deployment flow, see [Deploy a model to a machine](/train/deploy-a-model/). To pick a model or check a custom model's tensors, see [Use an ML model with the vision service](/vision/models/).
+For more on the deployment flow, see [Deploy a model to a machine](/train/deploy-a-model/). To update a deployed model or roll it out across a fleet, see [Update or roll back a deployed model](/train/deploy-a-model/#update-a-deployed-model) and [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 
-## 3. Add a vision service
+## 3. Check the model's tensors {#tensor-requirements}
+
+The `mlmodel` vision service expects specific tensor conventions from the model it wraps.
+If the model does not match, the vision service fails to come up as a detector or classifier, or it comes up but produces garbled output.
+Models trained on Viam already use the expected names, so skip this step for them.
+For a registry model, the module's README lists its tensor requirements.
+
+**Detector models must expose:**
+
+- Input tensor named `image` with shape `[batch, height, width, channels]`.
+  The service feeds one image at a time.
+- Output tensors named `location`, `category`, and `score`.
+  Each is per-detection.
+
+**Classifier models must expose:**
+
+- Input tensor named `image` with the same shape.
+- Output tensor named `probability`, one value per class.
+
+**Preprocessing assumptions:**
+
+- Input pixel values are uint8 in `[0, 255]` by default.
+- Input channel order is RGB by default.
+- Bounding boxes are `[xmin, ymin, xmax, ymax]` normalized to `[0, 1]`.
+
+### Convert the model or bridge the difference {#convert-or-bridge}
+
+If your model disagrees with any of these conventions, you generally do not have to retrain or modify it.
+Set vision service attributes (in [step 5](#5-configure-the-vision-service)) to bridge the gap:
+
+- **Non-standard tensor names**: `remap_input_names` and `remap_output_names`.
+  See [Tensor names do not match](/vision/object-detection/tune/#tensor-names-do-not-match).
+- **Non-standard preprocessing**, such as `[-1, 1]` or `[0, 1]` normalization or BGR channel order: `input_image_mean_value`, `input_image_std_dev`, and `input_image_bgr`.
+  See [Wrong labels or every label fires](/vision/object-detection/tune/#wrong-labels-or-every-label-fires).
+- **Non-standard bounding box coordinate order**: `xmin_ymin_xmax_ymax_order`.
+  See [Bounding boxes appear shifted or mirrored](/vision/object-detection/tune/#bounding-boxes-appear-shifted-or-mirrored).
+- **Class-specific confidence tuning**: `label_confidences`.
+
+The [`mlmodel` reference](/reference/services/vision/mlmodel/) lists every attribute.
+
+Convert the model itself only when its format is unsupported (for example, exporting from Keras HDF5 to TFLite) or when the tensor types are incompatible with the chosen ML model service.
+[Upload a model](/train/upload-a-model/#check-the-format) lists the supported formats.
+
+## 4. Add a vision service
+
+If you deployed the model from its page with **Include Vision service** on, the deployment already added a `vision/mlmodel` service. Skip to [step 6](#6-save) after checking that its `mlmodel_name` and `camera_name` match your resources.
 
 1. Click the **+** icon and select **Blocks**.
 2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
 3. Click **Add to machine**, name the service `my-detector`, and click **Add to machine** again to confirm.
 
-## 4. Configure the vision service
+## 5. Configure the vision service
 
 ```json
 {
@@ -140,11 +189,11 @@ For more on the deployment flow, see [Deploy a model to a machine](/train/deploy
 
 For the full list of `mlmodel` vision service attributes (confidence thresholds, per-label thresholds, tensor remapping, input normalization), see the [mlmodel reference](/reference/services/vision/mlmodel/). If your detections come out shifted, mirrored, or with unexpected labels, see [Tune detection quality](/vision/object-detection/tune/) to find the attribute that fixes your symptom.
 
-## 5. Save
+## 6. Save
 
 Click **Save** in the upper right. `viam-server` reconfigures in place and initializes both services.
 
-## 6. Verify with the control card
+## 7. Verify with the control card
 
 The fastest check is the Viam app's live overlay:
 
@@ -155,11 +204,17 @@ The fastest check is the Viam app's live overlay:
 
 Bounding boxes or classification labels should appear within a second or two. If you are using a COCO-class general-purpose model, point the camera at a person, a cup, or a keyboard.
 
-If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
+If the camera feed appears but no detections are shown:
+
+- Confirm the vision service registered in the expected role by calling [`GetProperties`](/reference/apis/services/vision/#getproperties), as described below. A detection model that registered as a classifier (or a classifier that registered as a detector) returns empty lists.
+- Lower `default_minimum_confidence` on the vision service and try again. The model may be producing detections below the default confidence threshold.
+- Check `viam-server` logs for startup errors mentioning tensor names or label files. See [Check the model's tensors](#tensor-requirements).
+
+If results look wrong (shifted boxes, wrong labels, or zero detections), see [Tune detection quality](/vision/object-detection/tune/).
 
 From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response includes three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime. If a default camera is configured, the response also includes its name.
 
-## 7. Complete configuration
+## 8. Complete configuration
 
 With both services saved, a minimal end-to-end configuration (camera + ML model service + vision service) looks like this:
 
@@ -329,13 +384,11 @@ Get the placeholder values from the Viam app:
 3. Click the **Include API key** switch. The snippet on the page regenerates with your machine's real API key, API key ID, and machine address in place of the `<API-KEY>`, `<API-KEY-ID>`, and `<MACHINE-ADDRESS>` placeholders. Click the copy icon on the snippet to copy the whole thing.
 4. To view or copy API keys separately, open the **API keys** sidebar item on the same tab.
 
-For the three kinds of registry entries a vision pipeline uses (ML model service implementations, vision service models, public ML models) and how to pick among them, see [What the registry holds for vision](/vision/models/#registry-entries). Browse the registry directly at [app.viam.com/registry](https://app.viam.com/registry).
-
 ## What's next
 
-- [Use an ML model with the vision service](/vision/models/): model-picking guidance and tensor requirements
 - [Detect objects](/vision/object-detection/detect/): use detection results in code
 - [Classify images](/vision/classify/): use classification results in code
 - [Tune detection quality](/vision/object-detection/tune/): fix mis-configured or miscalibrated detectors
+- [Update or roll back a deployed model](/train/deploy-a-model/#update-a-deployed-model): move a machine to a new model version without changing the vision service
 - [Run batch inference](/train/batch-inference/): run a model against stored images instead of live frames
 - [Retrain when accuracy drops](/train/retrain-a-model/): close the loop when your model drifts
