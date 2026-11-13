@@ -69,8 +69,14 @@ attributes.
 
 ### 3. Save and test
 
-Click **Save**. Generic components can be tested using `DoCommand` from code
-or the Viam app's test panel.
+Click **Save**.
+
+Generic components don't have a **Test** section on their configuration card.
+Instead, the card has top-level **DoCommand** and **GetStatus** sections.
+To send a command from the Viam app, expand **DoCommand**, enter a JSON command
+in **Input**, and click **Execute**.
+The response appears in **Output**.
+These sections work only while the machine part is online.
 
 ## Try it
 

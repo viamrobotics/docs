@@ -507,8 +507,12 @@ added.
 
 #### Send test commands
 
-1. On the **CONFIGURE** tab, expand your generic service's **Test** section.
-2. Expand **DoCommand**.
+Generic services don't have a **Test** section. Their configuration card has
+top-level **DoCommand** and **GetStatus** sections instead, which work only
+while the machine part is online.
+
+1. On the **CONFIGURE** tab, find your generic service's configuration card.
+2. Expand the **DoCommand** section.
 3. Enter a command (or an empty map `{}` if your DoCommand does not use the
    payload):
 
