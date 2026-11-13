@@ -31,6 +31,16 @@ configuration change that you review before it takes effect.
   assistant opens in a panel on the right side of the page.
 - **What it can change.** From your request, the assistant adds, updates, or
   deletes components, services, modules, remotes, and triggers.
+- **What it can write.** The assistant can create an
+  [inline module](/build-modules/write-an-inline-module/) in Python (the
+  default) or Go. The module can implement any component or service API that
+  the inline module editor offers, such as a sensor, an arm, or a vision
+  service. If you don't name an API, the assistant creates a Generic service.
+  The panel confirms each one with a step such as
+  `Created inline module rdk:component:sensor (python)`. The assistant can also
+  read and edit the code of an existing inline module, including changes not
+  yet saved in the editor. A new module is staged like any other edit and is
+  deployed when you save.
 - **What it can run.** On a machine page (not a fragment), the assistant can
   propose shell commands for diagnostics such as checking network
   connectivity, listing USB devices, or reading system information. Each
