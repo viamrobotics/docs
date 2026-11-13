@@ -132,7 +132,8 @@ To authorize a machine for your custom app:
 
 1. [Create a fragment](/hardware/fragments/#save-your-own-configurations) owned by the organization that uploaded the Firebase config.
    The fragment does not need to contain the trigger config; any fragment owned by that organization satisfies the check.
-1. On the machine's **CONFIGURE** tab, click **+**, select **Blocks**, search for your fragment, and click **Add fragment**.
+1. On the machine's **CONFIGURE** tab, click **+**, select **Blocks**, search for your fragment, and select it.
+   Click **Add to machine**, then click **Add to machine** again in the **Add fragment** dialog, and save the configuration.
 
 For cross-organization deployments, create the fragment in the Firebase-config-owning organization first, then import it on machines in any other organization.
 The check compares the fragment's owning organization, not the machine's.

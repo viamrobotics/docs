@@ -342,8 +342,8 @@ Restart `viam-server`:
 1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.
    Both `viam-server` and `viam-agent` will restart.
 
-   If you do not see the **Restart** button, click the **...** menu on the right side of the machine part's card, and select **Restart part**.
-   If restarting the machine part does not resolve the issue, ssh into the machine and stop and restart `viam-server` manually.
+   The **Restart** button only appears when the part is online and running `viam-agent`.
+   If you do not see it, or if restarting does not resolve the issue, ssh into the machine and stop and restart `viam-server` manually.
 
 If this doesn't work, you can reboot your machine by running the following command on the machine:
 
