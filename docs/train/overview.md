@@ -1,6 +1,6 @@
 ---
 linkTitle: "Overview"
-title: "Train ML models"
+title: "Train and deploy ML models"
 weight: 1
 layout: "docs"
 type: "docs"
@@ -14,7 +14,7 @@ updated: "2026-11-02"
 Your machines capture data in the field.
 Training uses that data to produce a model that runs on the machine, whether the model labels what a camera sees, controls an arm, or does something else.
 
-Viam lets you deploy a model from the [registry](/vision/deploy-and-maintain/deploy-from-registry/) or [upload a model you already have](/vision/deploy-and-maintain/deploy-custom-model/), such as one from Hugging Face.
+Viam lets you deploy a model from the [registry](/train/deploy-a-model/) or [upload a model you already have](/train/upload-a-model/), such as one from Hugging Face.
 Some registry models need no training at all: [SAM 3](https://app.viam.com/module/viam/sam3-detector) detects whatever you name in a text prompt.
 When no existing model knows your labels or is accurate enough on your data, fine-tune one with [built-in training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
 Viam runs training jobs on its own cloud GPUs, and the result deploys to your machines the same way as any other model.
@@ -66,8 +66,9 @@ Other models are used through the module that runs them.
 While the model runs, the machine keeps capturing data, including the cases where the model gets it wrong.
 
 **Retrain.**
-In cases where the model struggles, you add data to the dataset and train a new version.
+In cases where the model struggles, you add data to the dataset and [train a new version](/train/retrain-a-model/).
 A machine whose configuration uses the model's `latest` version downloads the new version automatically, with no manual download or restart.
+A machine pinned to a version keeps it until you [update it](/train/deploy-a-model/#update-a-deployed-model).
 For vision models, [auto-predictions](/train/automate-annotation/) let an existing model draft labels for new images, so each round takes less hand-labeling.
 Evaluating each version on the same test dataset shows whether the new one is better.
 
@@ -97,4 +98,7 @@ A custom job's task type and framework come from the training script, which decl
 - [Create a dataset](/train/create-a-dataset/): collect the images or demonstrations your model trains on.
 - [Train a vision model with built-in training](/train/train-a-model/): train an image classifier or object detector without writing code.
 - [Train a model with a custom training script](/train/custom-training-scripts/): train a robot policy or any other model with your own code.
+- [Upload a model](/train/upload-a-model/): add a model you trained or found elsewhere to your organization.
 - [Deploy a model to a machine](/train/deploy-a-model/): add a trained model and what runs it to your machine.
+- [Retrain a model](/train/retrain-a-model/): capture the cases a deployed model gets wrong and train a new version.
+- [Run batch inference](/train/batch-inference/): run a model against images stored in the Viam Cloud with `viam infer`.
