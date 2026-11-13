@@ -58,6 +58,10 @@ substitute your own attributes, dependencies, and command behavior.
 
 You can also reach this dialog from your machine's **CONNECT** tab by selecting
 **Control code sample** from the sidebar and clicking **Create inline module**.
+
+You can also ask the [AI assistant](/hardware/ai-assistant/) to create the
+module, for example "Create a Python inline module that implements the sensor
+API". It stages the module for you to review and save.
 Both paths open the same dialog and land you in the same editor.
 
 The browser opens the code editor with a working template that includes all
