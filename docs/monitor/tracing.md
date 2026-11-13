@@ -60,7 +60,7 @@ You can combine multiple destinations (for example, `"disk": true` and `"otlpend
 ## Trace your module's methods
 
 When tracing is enabled, each incoming component or service method call in your module opens its own span, nested under the RPC that triggered it.
-Reading a camera, for example, produces a `GetImage` span under the caller's request span, so you can see how long that method takes as part of the whole request.
+Reading a camera, for example, produces a `GetImages` span under the caller's request span, so you can see how long that method takes as part of the whole request.
 
 The Go, Python, and C++ SDKs all create these per-method spans.
 `viam-server` sets the `VIAM_MODULE_TRACING` environment variable on each module process when tracing is enabled in the machine config.

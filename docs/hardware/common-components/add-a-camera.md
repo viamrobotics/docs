@@ -318,7 +318,7 @@ go run main.go
 
 {{< /expand >}}
 
-{{< expand "Code connects but get_image fails" >}}
+{{< expand "Code connects but get_images fails" >}}
 
 - Verify the camera name in your code matches the name in the Viam app exactly (names are case-sensitive).
 - Check that the camera test panel works in the Viam app first. If it doesn't work there, the issue is with the camera configuration, not your code.

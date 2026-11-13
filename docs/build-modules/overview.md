@@ -42,7 +42,7 @@ your hardware:
 | API      | Use when your hardware...                           | Key methods                              |
 | -------- | --------------------------------------------------- | ---------------------------------------- |
 | `sensor` | Produces readings (temperature, distance, humidity) | `GetReadings`                            |
-| `camera` | Produces images or point clouds                     | `GetImage`, `GetPointCloud`              |
+| `camera` | Produces images or point clouds                     | `GetImages`, `GetPointCloud`             |
 | `motor`  | Drives rotational or linear motion                  | `SetPower`, `GoFor`, `Stop`              |
 | `arm`    | Has joints and moves to poses                       | `MoveToPosition`, `MoveToJointPositions` |
 | `base`   | Is a mobile platform (wheeled, tracked, legged)     | `MoveStraight`, `Spin`, `SetVelocity`    |
