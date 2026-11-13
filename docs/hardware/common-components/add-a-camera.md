@@ -96,8 +96,6 @@ On any platform, you can use the `find-webcams` discovery service to find video 
 Identical cameras get different names, and on Windows the service sets up the built-in `webcam` model with MJPEG configurations.
 See [Find a video path using a discovery service](/reference/components/camera/webcam/#find-a-video-path-using-a-discovery-service).
 
-On Windows, the built-in `webcam` model works without the `modular-webcam` module.
-
 You can also set resolution and frame rate:
 
 ```json
@@ -110,22 +108,19 @@ You can also set resolution and frame rate:
 
 **For an Intel RealSense camera (`realsense` module):**
 
-{{< alert title="Requirements" color="note" >}}
-The improvements in this section require `viam-server` v1.15.0 or later and RealSense module v0.22.6 or later.
-{{< /alert >}}
+```json
+{
+  "sensors": ["color", "depth"],
+  "align_color_depth": true
+}
+```
 
-Add `color` and `depth` to the `sensors` list to get both image types.
-When you set `align_color_depth` to `true`, the module aligns depth to the color image, and point clouds line up with the color image.
-Alignment works with more than one RealSense camera on the same machine.
-A request for the color image alone skips alignment: on a CM5 at 1280x720, it takes about 4.6ms instead of 26.1ms.
+List `color` and `depth` in `sensors` to get both image types from `GetImages`.
+With both sensors listed, set `align_color_depth` to `true` to align the depth image to the color image.
+Point clouds from `GetPointCloud` line up with the color image whether or not you set `align_color_depth`.
 
-The module recovers on its own:
-
-- If frames go stale after USB transfer errors, it restarts the camera pipeline.
-- If a camera drops off the USB bus, it reattaches the camera.
-- At startup, it logs USB connection diagnostics, so a bad cable or port shows up in the logs.
-
-See the [RealSense module README](https://github.com/viamrobotics/viam-camera-realsense) for all attributes.
+Recent versions of the module recover on their own when frames go stale or a camera drops off the USB bus, so update to the latest module version.
+See the [RealSense module README](https://github.com/viam-modules/viam-camera-realsense) for all attributes.
 
 ### 4. Configure a frame (recommended)
 
@@ -360,7 +355,8 @@ Update `viam-server` to v1.15.0 or later.
 
 {{< expand "RealSense camera stops returning frames" >}}
 
-With RealSense module v0.22.6 or later, the module restarts the camera pipeline when frames go stale and reattaches a camera that drops off the USB bus.
+Update the RealSense module to the latest version.
+Recent versions restart the camera pipeline when frames go stale and reattach a camera that drops off the USB bus.
 If the problem repeats, check the machine's logs for the USB connection diagnostics the module writes at startup.
 A bad cable or port shows up there.
 
