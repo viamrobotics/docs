@@ -121,6 +121,27 @@ Click the icon or expand the **ERROR LOGS** panel to see resource-specific error
 
 Go to the **LOGS** tab and look for errors.
 
+The status bar under the logs header summarizes the machine's recent activity: how long `viam-server` has been up, when it last reconfigured, and any failure.
+Its color shows the machine's state:
+
+- **Red**: `viam-server` is offline.
+- **Yellow**: `viam-server` is running, but a module, a resource, or the last reconfigure failed.
+  The bar names a single failure, or shows a count such as `2 failures`.
+- **Green**: `viam-server` is running with no failures, and live mode is on.
+- **Gray**: activity is loading, there is no activity in the past 7 days, or live mode is off with no failures.
+
+Click the status bar to open the **Activity** pane, which breaks the summary down by:
+
+- **viam-server**: last start time, process ID and version, or the stop reason if it stopped.
+- **Reconfigure**: the time of the last reconfigure, whether one is in progress, and a **last good config** link to that revision in the machine's configuration history.
+- **Modules**: each module that crashed or isn't running, with its stop reason, or **healthy**.
+- **Resources**: each failing resource with its error, or **healthy**. Click a resource's name to open it on the **CONFIGURE** tab.
+- **Remotes**: whether each remote is connected or disconnected.
+
+The pane reads the activity events that `viam-server` logs through the `rdk.activity` logger.
+To add the activity loggers, such as `rdk.activity`, to the log list's **Source** filter, turn on **Activity log filter** at the bottom of the pane.
+Removed and disabled resources and modules drop out of the summary, and so do resource failures from before `viam-server` last started.
+
 You can filter logs by:
 
 - **Level**: Error, Warn, Info, Debug
