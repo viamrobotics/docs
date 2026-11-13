@@ -19,6 +19,8 @@ It also carries tags that describe the whole window, such as `pick-success` or `
 Sequences exist to feed [sequence datasets](/train/create-a-dataset/), which you train on with a [custom training script](/train/custom-training-scripts/).
 To follow the whole path from capture to exported training files, see the [sequences tutorial](/data/sequences-tutorial/).
 
+{{< course id="so-101-vla" eyebrow="Want to train a robot policy on your own demonstrations?" >}}
+
 ## How a sequence works
 
 A sequence is a saved filter over data you already captured, not a copy of it.
