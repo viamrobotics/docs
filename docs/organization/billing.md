@@ -71,6 +71,22 @@ To replace the payment method on file, remove the existing one and add a new one
 Add the new payment method immediately after removing the old one.
 Organizations without a valid payment method may experience service limitations.
 
+## Apply a promo code
+
+A promo code adds a one-time credit to your organization's balance.
+You can apply each promo code to an organization once.
+
+1. On the billing page, under **Payment method**, enter the code in the **Promo code** field.
+1. Click **Apply**.
+
+A confirmation shows the amount of credit added.
+If the code was already applied to this organization, or does not exist, an error appears under the field instead.
+
+Viam takes the one-time credit off each monthly invoice until the balance runs out.
+The credit applies after any recurring credit and before sales tax.
+If the credit covers the whole invoice, no payment is due for it.
+While you have a balance, the **Current month usage** section shows how much one-time credit applies this month and how much remains, and invoice PDFs list it as a **One-time credit** line.
+
 ## View and download invoices
 
 The **Invoices** section lists all invoices for your organization.
@@ -101,7 +117,7 @@ You can receive an email notification when your monthly spend exceeds a threshol
 1. Click **Set amount**.
 1. Enter a monthly threshold in dollars.
 
-When your current month's usage exceeds this amount, you receive an email notification.
+When your current month's usage, after any one-time credit from a [promo code](#apply-a-promo-code), exceeds this amount, you receive an email notification.
 
 ## Free credits
 
