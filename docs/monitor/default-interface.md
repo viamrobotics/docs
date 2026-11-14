@@ -49,6 +49,14 @@ Each configured component and service appears as a card. What you can do depends
 | Vision service     | Run detections and classifications on camera feeds       |
 | Generic service    | Send custom commands (DoCommand)                         |
 
+A card also has a **MOVE** section when its component's frame can be moved by the motion service: the component has joints, or it is attached to a frame that does, such as a gripper or camera mounted on an arm.
+The section moves the component with the [motion service](/reference/apis/services/motion/)'s `Move`:
+
+- **Motion service**: the motion service to use. This selector appears only when the machine has more than one, counting the default `builtin` service. It defaults to a motion service you configured rather than `builtin`.
+- **Destination frame**: the frame the target pose is expressed in. The default is `world`.
+
+If the machine has no motion service, the section says so instead.
+
 You can switch between machine parts directly from the CONTROL tab using the part selector at the top.
 
 ### Code sandbox
