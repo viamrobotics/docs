@@ -30,7 +30,7 @@ It doesn't report mean average precision (mAP) for detection models.
 ## Prerequisites {#prerequisites}
 
 - A single label classification, multi label classification, or object detection model in your organization's registry, in the TensorFlow, TensorFlow Lite, or ONNX framework.
-  [Train one with built-in training](/train/train-a-model/), [train one with a custom training script](/train/custom-training-scripts/), or [upload one](/vision/deploy-and-maintain/deploy-custom-model/).
+  [Train one with built-in training](/train/train-a-model/), [train one with a custom training script](/train/custom-training-scripts/), or [upload one](/train/upload-a-model/).
 - JPEG or PNG images like the ones the model will see on your machines, that weren't used to train the model.
   See [Capture and sync data](/data/capture-sync/capture-and-sync-data/).
 
@@ -156,4 +156,4 @@ Check that they're spelled exactly the same, including capitalization, and that 
 - [Deploy a model to a machine](/train/deploy-a-model/): run the model on your machine once it does well enough.
 - [Annotate data](/train/annotate-data/): label more training images of the labels the model struggles with.
 - [Automate annotation](/train/automate-annotation/): have a model draft labels for new training images, so each round takes less hand-labeling.
-- [Retrain a model](/vision/deploy-and-maintain/retrain/): keep a deployed model accurate as conditions change.
+- [Retrain a model](/train/retrain-a-model/): keep a deployed model accurate as conditions change.

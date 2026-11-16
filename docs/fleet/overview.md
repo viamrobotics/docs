@@ -59,7 +59,7 @@ Modules and ML models are stored as versioned packages in the Viam registry. Whe
 - **[Get started](/set-up-a-machine/)** covers setting up a single machine. Start there if you haven't created your first machine yet.
 - **[Configure hardware](/hardware/)** covers adding components and services to a machine. Use fragments to templatize those configurations for your fleet.
 - **[Build and deploy modules](/build-modules/)** covers writing and uploading modules. This section covers deploying those modules to machines.
-- **[Train ML models](/train/)** covers training models. This section covers deploying trained models fleet-wide.
+- **[Train and deploy ML models](/train/)** covers training a model and deploying it to a machine. This section covers deploying trained models fleet-wide.
 - **[Monitor and operate](/monitor/)** covers per-machine logs, metrics, and live operation. This section covers fleet-wide rollout state and version management.
 - **[Admin and access](/organization/)** covers organizations, members, and role-based access. This section covers what runs on machines, not who can change it.
 - **[Viam CLI](/cli/manage-your-fleet/)** covers fleet operations from the command line: checking machine status, viewing logs, shell access, and file transfer.
