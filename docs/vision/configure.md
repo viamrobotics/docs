@@ -42,6 +42,15 @@ Three resources (camera, vision service, ML model service) plus the model file i
 
 The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. [What runs the model](/train/deploy-a-model/#what-runs-the-model) lists which services support which frameworks and hardware.
 
+The [registry](https://app.viam.com/registry) mixes Viam-authored modules, partner contributions, and community work at different stages of maturity. Before you pick an ML model service module or a model from the registry:
+
+- **Read the module's README** for tensor requirements, hardware support, and example configuration. The registry card links to it.
+- **Check recent commits and versions** if maturity matters. A module with a single 2023 release is a different bet than one with continuous releases this quarter.
+- **Prefer a framework-specific ML model service over the generic `triton`** unless you need GPU acceleration or multi-framework support. Framework-specific services are simpler to configure and debug.
+- **Check that the model's task type matches what you need.** A model tagged for object detection won't give you classifications, and a classification model won't give you detections.
+
+To add the service:
+
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Blocks**.
 3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result.
