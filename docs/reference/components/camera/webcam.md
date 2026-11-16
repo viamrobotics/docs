@@ -134,6 +134,11 @@ system_profiler SPCameraDataType
 
 The Unique ID displayed for each camera is the `video_path`.
 
+The Unique ID changes when you move the camera to a different USB port.
+If that happens while `viam-server` is running, `viam-server` reconnects to the camera by its device name and logs `camera reconnected under a new path`.
+`viam-server` doesn't reconnect by name if another connected camera has the same device name, because it can't tell the two apart; it logs `another device shares this camera's hardware name; reconnecting by name is disabled` instead.
+In either case, update `video_path` to the camera's new Unique ID so that `viam-server` finds the camera the next time it starts.
+
 If you are using macOS version 15.x.x Sequoia or later, you need to give `viam-server` permissions to access webcams.
 When you run `viam-server` for the first time, a pop-up message will ask for camera access.
 Click **Allow**.
