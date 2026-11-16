@@ -75,6 +75,7 @@ Organizations without a valid payment method may experience service limitations.
 
 A promo code adds a one-time credit to your organization's balance.
 You can apply each promo code to an organization once.
+Codes are not case-sensitive.
 
 1. On the billing page, under **Payment method**, enter the code in the **Promo code** field.
 1. Click **Apply**.
