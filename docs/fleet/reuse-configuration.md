@@ -81,7 +81,7 @@ viam machines part fragments add \
   --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID (in the URL of the page). Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID. To copy the ID, click the **...** menu at the top of the fragment's page, or the **...** menu on a fragment added to a machine's **CONFIGURE** tab, and select **Copy fragment ID**. The ID is also in the URL of the fragment's page. Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
 
 If you omit `--fragment`, the CLI prompts you to pick a fragment interactively from the ones available to you.
 
