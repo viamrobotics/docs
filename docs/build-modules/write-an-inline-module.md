@@ -48,7 +48,7 @@ substitute your own attributes, dependencies, and command behavior.
 
 1. In the [Viam app](https://app.viam.com), navigate to your machine's
    **CONFIGURE** tab.
-2. Click **+** and select **Control code**.
+2. Click **+** and select **Code**.
 3. In the "Choose where to host your code" dialog, select **Viam-hosted** and
    click **Choose**.
 4. Name your module (for example, `servo-distance-control`) and choose a language

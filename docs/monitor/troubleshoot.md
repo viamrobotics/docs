@@ -174,7 +174,7 @@ If a resource you configured is missing or unavailable, search the logs for `Res
 }
 ```
 
-**For individual resources**, click the **...** menu on the resource's configuration card and select **Enable debug logs**.
+**For individual resources**, click the **...** menu on the resource's configuration card, select **Set log level**, and choose **Debug**.
 
 **For resources matching a pattern**, configure the `log` field in the machine configuration:
 
@@ -312,7 +312,9 @@ viam traces import-remote --part <part-name-or-id> --endpoint localhost:4317
 1. If your machine was installed with `viam-agent`, click **Restart**.
    Both `viam-server` and `viam-agent` will restart.
 
-   If you do not see a **Restart** button, click the **...** menu on the machine part card and select **Restart part**.
+   The **Restart** button, and the **Restart part** option in the machine part card's **...** menu, only appear when the part is online and running `viam-agent`, and you have permission to edit the machine.
+   If the part is online but you do not see them, restart `viam-server` from the command line instead.
+   If the part is offline, SSH into the machine and restart `viam-server` manually.
 
 It takes a few minutes for `viam-server` to shut down and restart.
 
@@ -321,6 +323,9 @@ From the command line:
 ```sh {class="command-line" data-prompt="$"}
 viam machines part restart --part <part-name-or-id>
 ```
+
+This command marks the part for restart, and `viam-server` picks up the request the next time it checks in with Viam, so the part must be online.
+Without `viam-agent`, `viam-server` shuts down on this request and comes back only if a service manager such as `systemd` restarts it.
 
 ## Revert to an earlier configuration
 

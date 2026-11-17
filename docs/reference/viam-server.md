@@ -142,9 +142,8 @@ Log messages appear under the **LOGS** tab for a machine.
 The default log level for `viam-server` and any running resources is `"Info"`.
 Logs are stored for 30 days before they are deleted.
 
-If you need more logs for an individual resource, click **Enable debug logs** in the **...** menu on the resource.
-
-To set other log levels for individual resources, add the `log_configuration` option to the resource's JSON configuration:
+To change the log level for an individual resource, click the **...** menu on the resource, select **Set log level**, and choose **Debug**, **Info**, **Warn**, or **Error**.
+This sets the `log_configuration` option in the resource's JSON configuration, which you can also edit directly:
 
 ```json
 "log_configuration": {
