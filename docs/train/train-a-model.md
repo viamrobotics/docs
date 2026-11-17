@@ -149,6 +149,8 @@ You get an email when it finishes.
 1. In the Viam app, go to **DATA** > **MODELS** and expand **Active Training**.
    It lists your organization's training jobs with their status.
 1. Click a job ID to see its details and logs.
+   The **Details** panel shows the **Dataset** the job trained on.
+   Click the dataset's name to open it.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
@@ -159,6 +161,8 @@ Check one job, and read its logs:
 viam train get --job-id=<job-id>
 viam train logs --job-id=<job-id>
 ```
+
+`viam train get` prints the job's metadata, including the `dataset_id` of the dataset it trained on.
 
 List your organization's training jobs:
 
