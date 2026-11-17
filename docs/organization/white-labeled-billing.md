@@ -47,8 +47,8 @@ You must have [owner permissions](/organization/rbac/) on the organization.
 **The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization support-email set --support-email support@logoipsum.com --org-id <org-id>
-Successfully set support email for organization "<org-id>" to "support@logoipsum.com"
+viam organization support-email set --support-email support@example.com --org-id <org-id>
+Successfully set support email for organization "<org-id>" to "support@example.com"
 ```
 
 {{% /tablestep %}}

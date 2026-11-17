@@ -64,16 +64,15 @@ const robot = await VIAM.createRobotClient({
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-```cpp {class="line-numbers linkable-line-numbers" data-line="1,5,7"}
+```cpp {class="line-numbers linkable-line-numbers" data-line="1,4,6"}
 std::string host("MACHINE ADDRESS");
-DialOptions dial_opts;
-dial_opts.set_type("api-key");
+ViamChannel::Options dial_opts;
 // Replace "<API-KEY-ID>" with your machine's API key ID
-dial_opts.set_entity("<API-KEY-ID>");
+dial_opts.set_entity(std::string("<API-KEY-ID>"));
 // Replace "<API-KEY>" with your machine's API key
-Credentials credentials("<API-KEY>");
+Credentials credentials("api-key", "<API-KEY>");
 dial_opts.set_credentials(credentials);
-boost::optional<DialOptions> opts(dial_opts);
+std::optional<ViamChannel::Options> opts(dial_opts);
 Options options(0, opts);
 
 auto robot = RobotClient::at_address(host, options);

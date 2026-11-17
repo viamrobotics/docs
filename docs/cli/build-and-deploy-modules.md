@@ -266,6 +266,23 @@ viam xacro convert \
 
 Use `--dry-run` to print the Docker command without running it.
 
+## Convert a URDF to a kinematic model file
+
+To ship an arm's kinematics as a [kinematic model file](/motion-planning/reference/kinematics/#kinematic-model-format), convert the URDF (or an SVA or DH file) with the CLI.
+The command writes the model's meshes beside the output file and checks the result's forward kinematics against the input file.
+The output must be loaded from disk by its path, with its `meshes/` directory beside it, because the model file holds no mesh data of its own.
+Embedding the file in your module's binary doesn't work: reading it from bytes fails with `mesh "<path>" cannot be read without the directory of the model file`.
+
+```sh {class="command-line" data-prompt="$"}
+viam kinematics convert \
+  --input-file=./robot.urdf \
+  --output-file=./robot.json
+```
+
+If the URDF's `package://` mesh paths resolve under a directory other than the URDF's own, pass it with `--package-root`.
+To shrink large collision meshes, pass `--decimate` with the fraction of triangles to keep, for example `--decimate=0.2`.
+See the [`kinematics` command reference](/cli/reference/#kinematics) for all options.
+
 ## Related pages
 
 - [Write a driver module](/build-modules/write-a-driver-module/) for a complete guide to writing a hardware driver

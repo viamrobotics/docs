@@ -1,20 +1,25 @@
 ---
 linkTitle: "Retrain a model"
 title: "Retrain a model"
-weight: 30
+weight: 33
 layout: "docs"
 type: "docs"
-description: "Close the loop when a vision model's accuracy drops in production: capture the failing images, label them, retrain, and redeploy a new model version to one or many machines."
+description: "Close the loop when a model's accuracy drops in production: capture the cases it gets wrong, label them, retrain, and redeploy a new model version to one or many machines."
 capabilities: ["ml-training", "fleet-deployment"]
 diataxis: how-to
 date: "2026-04-14"
 aliases:
+  - /vision/deploy-and-maintain/retrain/
   - /vision/retrain/
 ---
 
-Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. The fix is never a one-time deployment. It is a loop.
+A model loses accuracy when the conditions it runs in drift away from the data it was trained on. The fix is not a one-time deployment. It is a loop: capture the cases the model gets wrong, label them, train a new version, and deploy it.
 
 Viam's data, training, and fleet tools are the pieces of that loop. This guide walks through the end-to-end cycle from production machine back to production machine.
+
+The guide uses a vision model as its example. For a vision model, drift looks like this: lighting shifts, new object variations appear, someone moves a camera, or a new SKU shows up on the line. This [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is a common reason a vision system fails after launch.
+
+The cycle is the same for any model you train on Viam, but [evaluation](/train/evaluate-a-model/) and [auto-predictions](/train/automate-annotation/) support only classification and detection models. For how the stages fit together, see [How training works](/train/overview/#how-training-works).
 
 ## The cycle
 
@@ -66,45 +71,23 @@ Add the newly labeled images to an existing dataset or [create a new one](/train
 
 ## 4. Train a new model version
 
-With the updated dataset, start a new training job. See [Train a model](/train/train-a-model/) for the full flow. Key choices:
+With the updated dataset, start a new training job. See [built-in training](/train/train-a-model/) or [custom training](/train/custom-training-scripts/) for the full flow. Key choices:
 
 - **Same architecture, same hyperparameters** if you are just correcting drift or adding examples. Retraining with a known-good setup is predictable and easy to compare.
 - **New architecture** if the task has changed (for example, you are adding a new class that the previous model could not detect). Expect to tune more.
-- **Same or new model name.** If you train under the same model name, the new version replaces the last version when deployed. If you train under a new name, both versions exist and you can promote one to production while keeping the old one as a fallback.
+- **Same or new model name.** If you train under the same model name, the result is a new version of that model, and machines that track its latest version pick it up. If you train under a new name, the result is a separate model, and you switch machines to it by changing their configuration. A new version must use the same framework as the model's earlier versions.
 
 Viam runs training jobs on cloud infrastructure. You do not need to provision a GPU machine locally. Logs stay available for seven days after the job completes.
 
 ### Schedule automatic retraining
 
-Instead of manually starting a training job each time you add new data, you can set a retraining schedule on a model.
-Viam evaluates retraining schedules once per day at midnight UTC and submits a new training job when the model is due.
-
-To set a retraining schedule:
-
-1. Navigate to the [**MODELS** tab](https://app.viam.com/models) and open the model you want to retrain automatically.
-1. Click the context menu on the model details page and select **Retraining schedule**.
-1. Choose a frequency: **Daily**, **Weekly** (pick a day of the week), or **Monthly** (pick a day from 1 through 28).
-1. Click **Save schedule**.
-
-Viam retrains the model using the same dataset and labels from the most recent model version.
-Each retraining run produces a new version named `retrain-<timestamp>`.
-Annotate new images as you add them to the dataset, or retraining may not complete successfully.
-
-To turn off a schedule, reopen the dialog and click **Disable**.
-
-Scheduled retraining is available for models trained through Viam's built-in training flow with a linked dataset.
-Models trained with [custom training scripts](/train/custom-training-scripts/) do not support scheduled retraining yet.
+For a model trained with built-in training, you can have Viam start a new training job on a schedule instead of starting each one yourself. See [Schedule retraining](/train/train-a-model/#schedule-retraining).
 
 ## 5. Deploy the new version
 
 ### Test on one machine first
 
-Pick a non-critical machine (or a local test machine). In its ML model service panel:
-
-1. In the **Version** dropdown, select the new model version.
-2. Save the configuration.
-
-The `viam-server` on that machine downloads the new model and restarts the ML model service. No application restart is needed.
+Pick a non-critical machine (or a local test machine) and [update it to the new version](/train/deploy-a-model/#update-a-deployed-model). No application restart is needed.
 
 Let the new version run for a few minutes against real camera input. Watch the vision service's Control tab overlay. Confirm:
 
@@ -114,18 +97,7 @@ Let the new version run for a few minutes against real camera input. Watch the v
 
 ### Roll out to the fleet
 
-Once the new version passes single-machine validation, promote it. If the machines in your fleet share a [fragment](/hardware/fragments/), update the fragment's ML model service to reference the new version. Every machine using the fragment reconfigures in place.
-
-For [staged rollout](/fleet/), update machines in groups. One approach: use machine tags to select a canary group, roll out to canaries, wait, then roll out to the rest.
-
-### Pin the model version, or track "latest"
-
-In the ML model service configuration, you can either:
-
-- **Pin a specific version** (for example, `2026-04-10T12:00:00`). The machine will keep running this version until you explicitly change it.
-- **Track "latest"**. The machine runs whichever version is newest in the [registry](https://app.viam.com/registry), updating automatically when new versions land.
-
-Pinning is safer for production fleets. "Latest" is useful during active development when you are iterating quickly and want every training run to flow through immediately.
+Once the new version passes single-machine validation, promote it to the rest of the fleet. See [Deploy ML models across your fleet](/fleet/deploy-ml-models/) for updating a shared fragment and staging the rollout. Whether machines pick up the new version automatically depends on whether they [track the latest version or pin one](/train/deploy-a-model/#choose-a-model-version).
 
 ## 6. Monitor and repeat
 
@@ -143,5 +115,5 @@ When drift shows up again, the cycle repeats. The first retraining cycle is the 
 - [Data capture and sync](/data/capture-sync/capture-and-sync-data/): set up production image capture
 - [Annotate data](/train/annotate-data/): label captured data
 - [Train a model](/train/train-a-model/): produce a new model version
-- [Deploy a model](/vision/deploy-and-maintain/deploy-from-registry/): wire the new version into the ML model service
+- [Deploy a model](/train/deploy-a-model/): choose which version a machine runs, and update or roll it back
 - [Act on detections](/vision/object-detection/act-on-detections/) and [alert on detections](/vision/object-detection/alert-on-detections/): use the new version in production logic

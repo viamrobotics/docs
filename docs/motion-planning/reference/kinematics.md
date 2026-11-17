@@ -225,6 +225,9 @@ A kinematic model read from bytes, such as a file embedded in a module's binary,
 Viam parses this format strictly.
 An unknown field, a `NaN` or `Infinity` value, a parent that is not in the model, a cycle, a duplicate `id`, a missing mesh file, or a mimic joint that sets its own limits fails the load, and the error names the file.
 
+To convert an existing URDF, SVA, or DH file into a kinematic model file, use [`viam kinematics convert`](/cli/reference/#kinematics) (Viam CLI v1.16.0 and later).
+The command writes the model's meshes as separate files beside the output file, reads the result back, and checks its forward kinematics against the input file.
+
 ### URDF format
 
 If your arm manufacturer provides a URDF file, you can reference it in your arm

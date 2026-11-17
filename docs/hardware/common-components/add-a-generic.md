@@ -27,7 +27,7 @@ Because the API is entirely model-defined, generic components almost always
 come from **modules in the registry** (or modules you write yourself). The
 module author defines what commands are supported and what they do.
 
-Use generic when no other component type fits. If your hardware produces images, use [camera](/hardware/common-components/add-a-camera/). If it produces readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard types give you typed SDK methods like `GetImage` or `GetReadings`, richer test-panel controls tailored to the component, and motion or vision services that know how to work with them. Generic exposes only `DoCommand`, so callers have to know the module-specific command shape.
+Use generic when no other component type fits. If your hardware produces images, use [camera](/hardware/common-components/add-a-camera/). If it produces readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard types give you typed SDK methods like `GetImages` or `GetReadings`, richer test-panel controls tailored to the component, and motion or vision services that know how to work with them. Generic exposes only `DoCommand`, so callers have to know the module-specific command shape.
 
 Search for `generic` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
@@ -35,7 +35,7 @@ The `fake` built-in model echoes commands back for testing.
 
 ### Built-in models
 
-- [`fake`](/reference/components/generic/fake/) — A model used for testing, with no physical hardware.
+- [`fake`](/reference/components/generic/fake/): a model used for testing, with no physical hardware.
 
 ### Registry modules
 

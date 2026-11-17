@@ -45,8 +45,11 @@ goal poses. Use this for straight-line tool paths.
 When `line_tolerance_mm` is set, the planner keeps the end effector within
 that distance of the line segment between start and goal. When
 `orientation_tolerance_degs` is set, the planner keeps the end effector
-orientation within that angular distance of whichever is closer: the start
-orientation or the goal orientation.
+orientation within that angular distance of the direct rotation from the start
+orientation to the goal orientation, measured the same way as in an
+OrientationConstraint (described below) with `ignore_theta` off. The arm can make a reorientation of
+any size between start and goal, as long as it stays close to that direct
+rotation.
 
 A tolerance of 0 means opposite things in the two constraints. In a
 LinearConstraint, 0 turns that check off. In an OrientationConstraint, 0 is the
@@ -78,10 +81,10 @@ while staying close to the most direct way of getting there.
 Like LinearConstraint but uses proportional tolerances instead of fixed values.
 The actual tolerance scales with the distance between start and goal.
 
-| Parameter                      | Type             | Description                                                                                         |
-| ------------------------------ | ---------------- | --------------------------------------------------------------------------------------------------- |
-| `line_tolerance_factor`        | float (optional) | Proportional factor. Actual tolerance = factor x distance(start, goal).                             |
-| `orientation_tolerance_factor` | float (optional) | Proportional factor for orientation. Actual tolerance = factor x orientation_distance(start, goal). |
+| Parameter                      | Type             | Description                                                                                                                                                                                                         |
+| ------------------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `line_tolerance_factor`        | float (optional) | Proportional factor. Actual tolerance = factor x distance(start, goal).                                                                                                                                             |
+| `orientation_tolerance_factor` | float (optional) | Proportional factor for orientation. Actual tolerance = factor x orientation_distance(start, goal). Deviation is measured from the direct rotation between the start and goal orientations, as in LinearConstraint. |
 
 Use this when you want the constraint to adapt to the length of the motion. A
 short move gets a tight tolerance; a long move gets a proportionally larger one.

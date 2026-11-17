@@ -40,7 +40,7 @@ Maintenance windows use a sensor-based approach: you configure a sensor that ret
    - `maintenance_allowed_key`: the key in the sensor's readings that contains the boolean value.
 1. Click **Save**.
 
-While the maintenance window is closed (sensor returns `false`), `viam-server` continues running with its current configuration. When the window opens, all pending changes are applied at once.
+While the maintenance window is closed (sensor returns `false`), `viam-server` continues running with its current configuration. This includes a window that closes partway through an update: in `viam-server` v1.12.0 and later, `viam-server` re-checks the sensor before it restarts anything, and if the sensor no longer returns `true` it holds the update and tries again on the next config poll. When the window opens, all pending changes are applied at once.
 
 ## Staged rollouts with fragment tags
 

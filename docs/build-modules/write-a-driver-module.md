@@ -983,6 +983,9 @@ The directory is created automatically by `viam-server` at
 `$VIAM_HOME/module-data/<machine-id>/<module-name>/` (where `VIAM_HOME`
 defaults to `~/.viam`) and persists across module
 restarts and reconfigurations.
+If you remove the module from the machine's configuration, even temporarily,
+`viam-server` deletes the directory and its contents when it applies the new
+configuration, so keep data that must outlive the module somewhere else.
 
 ### 7. Add multiple models to one module (optional)
 

@@ -47,13 +47,20 @@ Without it, the command lists only Viam-managed containers.
 viam dataset create --org-id=<org-id> --name=my-dataset
 ```
 
-The CLI prints the new dataset's name and ID:
+The CLI prints the new dataset's type, name, and ID:
 
 ```sh {class="command-line" data-prompt="$" data-output="1"}
-Created dataset my-dataset with dataset ID: abcdef12-3456-7890-abcd-ef1234567890
+Created binary dataset my-dataset with dataset ID: abcdef12-3456-7890-abcd-ef1234567890
 ```
 
 Save the dataset ID for subsequent commands.
+
+This creates a binary dataset, which holds images.
+To create a [sequence dataset](/train/create-a-dataset/#choose-a-dataset-type), which holds [sequences](/data/sequences/), add `--type=sequence`:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset create --org-id=<org-id> --name=my-sequence-dataset --type=sequence
+```
 
 ### List datasets
 
@@ -68,6 +75,8 @@ List specific datasets by ID:
 ```sh {class="command-line" data-prompt="$"}
 viam dataset list --dataset-ids=abc,def
 ```
+
+Each line shows the dataset's name, ID, organization ID, and type, `binary` or `sequence`.
 
 ### Add images to a dataset
 
@@ -111,6 +120,28 @@ viam dataset data remove ids \
   --dataset-id=<dataset-id> \
   --binary-data-ids=aaa,bbb
 ```
+
+### Add and remove sequences
+
+A sequence dataset holds sequences, not images.
+Add sequences by ID:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence add \
+  --dataset-id=<dataset-id> \
+  --sequence-ids=aaa,bbb
+```
+
+Remove them:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence remove \
+  --dataset-id=<dataset-id> \
+  --sequence-ids=aaa,bbb
+```
+
+To create, update, and delete sequences, use `viam data sequence`.
+See [Sequences](/data/sequences/) and the [CLI reference](/cli/reference/#data-sequence-create).
 
 ### Export a dataset
 

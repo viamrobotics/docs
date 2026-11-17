@@ -169,7 +169,7 @@ viam machines part run \
   --part=<part-id> \
   --stream=500ms \
   --data='{"name": "my-camera"}' \
-  rdk.component.camera.v1.CameraService.GetImage
+  rdk.component.camera.v1.CameraService.GetImages
 ```
 
 ## Deploy software packages

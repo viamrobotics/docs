@@ -7,6 +7,21 @@ type: "docs"
 description: "Add a trained model and the resource that runs it to a machine's configuration, from the Viam app or with the Fleet API."
 capabilities: ["ml-models", "vision-service"]
 diataxis: how-to
+aliases:
+  - /data-ai/ai/deploy/
+  - /how-tos/train-deploy-ml/
+  - /services/ml/
+  - /registry/ml/
+  - /services/ml/edit/
+  - /ml/edit/
+  - /services/ml/ml-models/
+  - /registry/ml-models/
+  - /manage/ml/
+  - /ml/deploy/
+  - /ml/
+  - /services/ml/deploy/
+  - /how-tos/deploy-ml/
+  - /manage/data/deploy-model/
 ---
 
 Deploy a model to add it to a machine's configuration, along with the resource that runs it and the module that provides that resource.
@@ -14,12 +29,12 @@ The machine downloads the model and starts the resource.
 
 ## Prerequisites
 
-- A model in your organization or the registry, trained on Viam or [uploaded](/vision/deploy-and-maintain/deploy-custom-model/).
+- A model in your organization or the registry, trained on Viam or [uploaded](/train/upload-a-model/).
 - A machine running on a platform that a module for your model's framework supports. See [What runs the model](#what-runs-the-model).
 
 ## What runs the model {#what-runs-the-model}
 
-A model's [framework](/train/overview/#framework) decides which resource runs it:
+<span id="model-framework-support"></span>A model's [framework](/train/overview/#framework) decides which resource runs it:
 
 | Framework      | Module                                                                   | Resource model                         | Hardware                                             |
 | -------------- | ------------------------------------------------------------------------ | -------------------------------------- | ---------------------------------------------------- |
@@ -53,6 +68,7 @@ Both add the same configuration.
 1. Go to **DATA** > **MODELS** and click the model, or open a public model's page in the registry.
 1. In the model header, click **Deploy**.
 1. Select a **Version**, **Location**, **Machine** and **Part**, then click **Continue**.
+   The version defaults to **Latest**; see [Choose a model version](#choose-a-model-version).
 1. Name the resource that runs the model.
    For a TFLite, TensorFlow, PyTorch or ONNX model, this is the ML model service.
    For a **Registry** model, there's one name for each module resource the training script specified.
@@ -63,6 +79,10 @@ Both add the same configuration.
    To configure it yourself later, or for any other model, turn it off.
    See [Configure a vision pipeline](/vision/configure/).
 1. Click **Deploy**.
+
+For a **Registry** model, the deployment adds the model's package, the module behind each resource, and one resource for each, with `model_path` set to `${packages.ml_model.<package-name>}`.
+The package name is the model name, unless the machine already has a resource with that name, in which case Viam adds a numeric suffix such as `-2`.
+The deployment doesn't add a vision service or connect the resources to each other, so configure any other attributes the module needs yourself.
 
 **From the machine's CONFIGURE tab:**
 
@@ -81,6 +101,7 @@ Read the part's configuration, add the module, the package and the resource, and
 Pass `last_known_update` so the call fails, instead of overwriting, if someone else changed the configuration since you read it.
 
 - In the package entry, `package` is `<org-id>/<model-name>` and `version` is a version or `latest`.
+  See [Choose a model version](#choose-a-model-version).
 - The resource finds the model through `${packages.ml_model.<package-name>}`.
   For a TFLite, PyTorch or ONNX model, `model_path` appends the model file name.
   For a TensorFlow SavedModel, `model_path` is the package directory.
@@ -196,6 +217,71 @@ The entries are the same as in the **Python** tab, which also covers **Registry*
 To deploy the same model to many machines, add these entries to a fragment instead.
 See [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 
+## Run a model file stored on the machine {#local-model-file}
+
+If the model file is on the machine's disk and you don't want to upload it to the cloud, point an ML model service at the file instead of at a package:
+
+```json
+{
+  "name": "my-ml-model",
+  "api": "rdk:service:mlmodel",
+  "model": "tflite_cpu",
+  "attributes": {
+    "model_path": "/home/viam/models/my_model.tflite",
+    "label_path": "/home/viam/models/labels.txt"
+  }
+}
+```
+
+`model_path` and `label_path` are file paths on the machine running `viam-server`.
+`label_path` is optional but recommended: a plain text file with one label on each line, in class ID order.
+Local files work well for offline machines and air-gapped setups.
+
+## Choose a model version {#choose-a-model-version}
+
+Each time you train or upload a model under the same name, the registry gets a new version of it.
+When you deploy the model, you choose which version the machine runs:
+
+- **Latest** moves the machine to each new version as soon as it's published, with no change to its configuration.
+  This is the default.
+  Use it during development, so every training run reaches your test machine.
+- **A specific version** keeps the machine on that version until you change it.
+  Use it in production, so a new version reaches your machines only when you decide.
+
+The choice is stored as the `version` of the model's entry in the machine's `packages`, either `latest` or a version name:
+
+```json
+{
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "2026-04-10T12-00-00",
+      "type": "ml_model"
+    }
+  ]
+}
+```
+
+The resource's attributes, such as `model_path`, stay the same across versions.
+
+### Update or roll back a deployed model {#update-a-deployed-model}
+
+A machine on **Latest** updates by itself.
+To move a machine pinned to a specific version, change the version:
+
+1. On the machine's **CONFIGURE** tab, open the ML model service's configuration card.
+1. Select the new version from the **Version** dropdown.
+   For a **Registry** model, switch to **JSON** mode and change `version` on the model's entry in `packages` instead.
+1. Click **Save**.
+
+The machine downloads the new version and reloads the resource that runs it.
+A vision service that uses the model, and your code, don't need to change.
+To roll back, select the previous version the same way.
+
+Test a new version on one machine before you move the rest.
+To update many machines at once, or in stages, see [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
+
 ## Verify the model loaded
 
 1. On the machine's **CONFIGURE** tab, check that the new resource shows no errors.
@@ -222,3 +308,4 @@ See [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
 - Classification and detection models: [Configure a vision pipeline](/vision/configure/), then [Detect objects](/vision/object-detection/detect/) or [Classify images](/vision/classify/).
 - Any model in an ML model service: run it with `infer` from the [ML model service API](/reference/apis/services/ml/).
 - Many machines: [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
+- When accuracy drops: [Retrain a model](/train/retrain-a-model/).

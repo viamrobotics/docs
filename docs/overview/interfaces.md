@@ -31,7 +31,7 @@ Here is what you'll find:
 - **Data and dashboards.** Browse captured data, group it into datasets, train ML models on it, and chart captured sensor data across machines.
 - **The registry.** Browse modules and ML models published by Viam and the community, and add them to your machines.
 - **Organization settings.** Manage who has access, API keys, and billing.
-- **An in-app assistant.** On any tab of a machine's page, ask in plain language for what you need. The assistant reads your machine's configuration, status, and logs, can stage configuration changes, and can propose diagnostic commands. Nothing takes effect until you review and approve it.
+- **An in-app assistant.** On any tab of a machine's page, ask in plain language for what you need. The assistant reads your machine's configuration, status, and logs, can stage configuration changes, and can propose diagnostic commands. It can also write an inline module for any component or service API. Nothing takes effect until you review and approve it.
 
 {{< cards >}}
 {{% card link="/set-up-a-machine/first-machine/" noimage="true" %}}
