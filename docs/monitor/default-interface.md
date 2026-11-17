@@ -59,6 +59,7 @@ Below it, the section moves the component with the [motion service](/reference/a
 - **World state** and **Constraints**: optional JSON that the section passes to `Move`.
 
 Click **Execute** to call `Move` with these values.
+`Move` blocks until the motion completes; to interrupt it, stop the component itself.
 
 You can switch between machine parts directly from the CONTROL tab using the part selector at the top.
 
