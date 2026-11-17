@@ -146,14 +146,14 @@ const machine = await VIAM.createRobotClient({
 
 ```cpp {class="line-numbers linkable-line-numbers" data-line="8"}
 std::string host("guardian-main.vw3iu72d8n.viam.cloud");
-DialOptions dial_opts;
+ViamChannel::Options dial_opts;
 dial_opts.set_entity(std::string("<API-KEY-ID>"));
 /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
 Credentials credentials("api-key", "<API-KEY>");
 /* Replace "<API-KEY>" (including brackets) with your machine's API key */
 dial_opts.set_credentials(credentials);
 dial_opts.set_timeout(std::chrono::duration<float>(10));
-boost::optional<DialOptions> opts(dial_opts);
+std::optional<ViamChannel::Options> opts(dial_opts);
 Options options(0, opts);
 
 auto machine = RobotClient::at_address(host, options);

@@ -546,7 +546,7 @@ main().catch((error) => {
 {{% tab name="C++" %}}
 
 ```cpp
-#include <boost/optional.hpp>
+#include <optional>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -564,14 +564,14 @@ int main() {
     Instance inst;
 
     std::string host("<MACHINE-ADDRESS>");
-    DialOptions dial_opts;
+    ViamChannel::Options dial_opts;
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
     // Replace "<API-KEY-ID>" (including brackets) with your machine's
     // API key ID
     Credentials credentials("api-key", "<API-KEY>");
     // Replace "<API-KEY>" (including brackets) with your machine's API key
     dial_opts.set_credentials(credentials);
-    boost::optional<DialOptions> opts(dial_opts);
+    std::optional<ViamChannel::Options> opts(dial_opts);
     Options options(0, opts);
 
     auto machine = RobotClient::at_address(host, options);
