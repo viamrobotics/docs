@@ -44,6 +44,21 @@ The favorite machine tools (`list_favorite_machines`, `add_favorite_machine`, an
 
 The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) manage a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. Starting a simulation is billed by the minute to the machine's organization, so `stop_simulation` ends the charges.
 
+## Skills
+
+The MCP server also serves skills: Markdown instructions that tell the AI assistant how to complete a multi-step Viam task correctly, such as which configuration entries a task needs, which tools to call in which order, and how to check the result.
+Each skill has a description of when it applies, so the assistant can load the right one for your request without you naming it.
+Clients that support the MCP skills extension discover the skills on their own.
+Other clients read them with the `retrieve_skill` tool.
+
+The server currently serves these skills:
+
+- `deploy-ml-model`: deploys a trained ML model to a machine or fragment: a `packages` entry for the model, an ML model service that reads it, and, for classification and detection models, a vision service. Also covers re-pinning a model to another version and removing it.
+- `set-up-obstacles`: configures static obstacles, such as tables, walls, and bins, for motion planning to avoid.
+- `resource-notes`: sets or clears a resource's notes, the **Scratchpad** on its card in the builder, including on a resource that comes from a fragment.
+
+Skills only guide the assistant. They don't add tools or permissions: every change a skill describes goes through the tools listed below, with the same confirmation prompts.
+
 ## Tools
 
 To learn what a particular tool can do, ask an AI assistant that's connected to the Viam MCP server. See [Connect](#connect).
