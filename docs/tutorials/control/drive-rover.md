@@ -753,13 +753,13 @@ int main() {
 
     // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
     std::string host("<MACHINE-ADDRESS>");
-    DialOptions dial_opts;
+    ViamChannel::Options dial_opts;
     // TODO: Replace "<API-KEY-ID>" with your machine's API key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
     // TODO: Replace "<API-KEY>" with your machine's API key
     Credentials credentials("api-key", "<API-KEY>");
     dial_opts.set_credentials(credentials);
-    boost::optional<DialOptions> opts(dial_opts);
+    std::optional<ViamChannel::Options> opts(dial_opts);
     Options options(0, opts);
 
     auto machine = RobotClient::at_address(host, options);
@@ -1184,7 +1184,7 @@ class _RobotScreenState extends State<RobotScreen> {
 {{% tab name="C++" %}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-#include <boost/optional.hpp>
+#include <optional>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -1220,13 +1220,13 @@ int main() {
 
     // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
     std::string host("<MACHINE-ADDRESS>");
-    DialOptions dial_opts;
+    ViamChannel::Options dial_opts;
     // TODO: Replace "<API-KEY-ID>" with your machine's API key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
     // TODO: Replace "<API-KEY>" with your machine's API key
     Credentials credentials("api-key", "<API-KEY>");
     dial_opts.set_credentials(credentials);
-    boost::optional<DialOptions> opts(dial_opts);
+    std::optional<ViamChannel::Options> opts(dial_opts);
     Options options(0, opts);
 
     auto machine = RobotClient::at_address(host, options);

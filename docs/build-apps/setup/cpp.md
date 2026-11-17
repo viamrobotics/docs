@@ -15,8 +15,10 @@ Set up a project for writing a Viam app in C++: an embedded application, a high-
 ## Prerequisites
 
 - CMake 3.25 or later
-- A C++ compiler with C++17 support
-- The following system libraries, installed through your package manager:
+- A C++ compiler with C++20 support: GCC 10, Clang 12, or Xcode 13 or later.
+  C++ SDK versions before 0.46.0 built with C++14.
+- The following system libraries, installed through your package manager.
+  The SDK needs Boost 1.74 or later and xtensor 0.26 or later. If your distribution packages older versions, see the SDK's [BUILDING.md](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/doc/BUILDING.md).
 
   **Linux (apt):**
 
@@ -65,6 +67,10 @@ Create a `CMakeLists.txt`:
 ```cmake
 cmake_minimum_required(VERSION 3.25)
 project(my-viam-app)
+
+# The C++ SDK requires C++20.
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 find_package(viam-cpp-sdk REQUIRED)
 
