@@ -39,8 +39,8 @@ You must have [owner permissions](/organization/rbac/#organization-settings-and-
 **The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam organization support-email set --support-email=support@logoipsum.com --org-id=<org-id>
-Successfully set support email for organization "<org-id>" to "support@logoipsum.com"
+viam organization support-email set --support-email=support@example.com --org-id=<org-id>
+Successfully set support email for organization "<org-id>" to "support@example.com"
 ```
 
 {{% /tablestep %}}
@@ -64,8 +64,8 @@ enabled auth service for organization "<org-id>":
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
 viam organization auth-service oauth-app create --client-authentication=required \
     --client-name="OAuth Test App" --enabled-grants="password,authorization_code" \
-    --logout-uri="https://logoipsum.com/logout" --origin-uris="https://logoipsum.com,http://localhost:3000" \
-    --pkce=not_required --redirect-uris="https://logoipsum.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
+    --logout-uri="https://example.com/logout" --origin-uris="https://example.com,http://localhost:3000" \
+    --pkce=not_required --redirect-uris="https://example.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
     --url-validation=allow_wildcards --org-id=<org-id>
 Successfully created OAuth app OAuth Test App with client ID <client-id> and client secret <secret-token>
 ```
@@ -103,9 +103,9 @@ OAuth config for client ID <client-id>:
 Client Authentication: required
 PKCE (Proof Key for Code Exchange): not_required
 URL Validation Policy: allow_wildcards
-Logout URL: https://logoipsum.com/logout
-Redirect URLs: https://logoipsum.com/oauth-redirect, http://localhost:3000/oauth-redirect
-Origin URLs: https://logoipsum.com, http://localhost:3000
+Logout URL: https://example.com/logout
+Redirect URLs: https://example.com/oauth-redirect, http://localhost:3000/oauth-redirect
+Origin URLs: https://example.com, http://localhost:3000
 Enabled Grants: authorization_code, password
 ```
 
