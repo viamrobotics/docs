@@ -88,7 +88,6 @@ A multi-machine application receives one cookie named `userToken` containing the
 {
   "access_token": "...",
   "token_type": "Bearer",
-  "refresh_token": "...",
   "expiry": "2026-04-10T12:00:00Z"
 }
 ```
@@ -116,7 +115,7 @@ Use the resulting `ViamClient` to enumerate and connect to specific machines. Se
 
 Machine cookies in single-machine applications have a 30-day maximum age. The platform refreshes them automatically when the user visits the application after 75% of the maximum age has elapsed (approximately 22.5 days). Users who return within the refresh window stay logged in without re-authenticating.
 
-User tokens in multi-machine applications follow the underlying OAuth token lifecycle: the platform refreshes access tokens through the standard OAuth refresh flow without user interaction. The `userToken` cookie is updated with the new access token when it is refreshed.
+User tokens in multi-machine applications are valid until the time in their `expiry` field. The cookie does not include a refresh token, and the platform does not refresh the access token in place. After the token expires, the next page load sends the user through login again. If the user is still signed in to Viam, this happens without a prompt and sets a new `userToken` cookie. A page left open past `expiry` keeps the old token, so reload the page to get a new one.
 
 ## Caching
 
