@@ -28,19 +28,19 @@ Viam provides reusable {{% glossary_tooltip term_id="fragment" text="*fragments*
 
 ## Add the fragment
 
-Follow the appropriate instructions for the model of rover and board you have:
+1. Navigate to your machine's page.
+1. In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
+1. Select **Blocks**.
+1. Search for the fragment for your rover and board, listed in the tabs below, select it, and click **Add to machine**.
+1. In the **Add fragment** dialog, click **Add to machine** again to add the fragment to your machine configuration.
+1. Click **Save** in the upper right corner of the page to save your new configuration.
+
+Use the fragment for the model of rover and board you have:
 
 {{< tabs >}}
 {{% tab name="Viam Rover 2 (RPi 5)" %}}
 
-Navigate to your machine's page.
-In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
-
-Select **Blocks**.
-Search for [`ViamRover2-2024-rpi5`](https://app.viam.com/fragment/11d1059b-eaed-4ad8-9fd8-d60ad7386aa2/json), select it, and click **Add to machine**.
-In the **Add fragment** dialog, click **Add to machine** again to add the fragment to your machine configuration.
-
-Click **Save** in the upper right corner of the page to save your new configuration.
+Fragment: [`ViamRover2-2024-rpi5`](https://app.viam.com/fragment/11d1059b-eaed-4ad8-9fd8-d60ad7386aa2/json)
 
 The fragment adds the following components to your machine's JSON configuration:
 
@@ -62,14 +62,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (RPi 4)" %}}
 
-Navigate to your machine's page.
-In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
-
-Select **Blocks**.
-Search for [`ViamRover2-2024-rpi4-a`](https://app.viam.com/fragment/7c413f24-691d-4ae6-a759-df3654cfe4c8/json), select it, and click **Add to machine**.
-In the **Add fragment** dialog, click **Add to machine** again to add the fragment to your machine configuration.
-
-Click **Save** in the upper right corner of the page to save your new configuration.
+Fragment: [`ViamRover2-2024-rpi4-a`](https://app.viam.com/fragment/7c413f24-691d-4ae6-a759-df3654cfe4c8/json)
 
 The fragment adds the following components to your machine's JSON configuration:
 
@@ -91,14 +84,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 1 (RPi 4)" %}}
 
-Navigate to your machine's page.
-In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
-
-Select **Blocks**.
-Search for [`ViamRover202210b`](https://app.viam.com/fragment/3e8e0e1c-f515-4eac-8307-b6c9de7cfb84/json), select it, and click **Add to machine**.
-In the **Add fragment** dialog, click **Add to machine** again to add the fragment to your machine configuration.
-
-Click **Save** in the upper right corner of the page to save your configuration.
+Fragment: [`ViamRover202210b`](https://app.viam.com/fragment/3e8e0e1c-f515-4eac-8307-b6c9de7cfb84/json)
 
 The fragment adds the following components to your machine's JSON configuration:
 
@@ -127,14 +113,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (Jetson Nano)" %}}
 
-Navigate to your machine's page.
-In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
-
-Select **Blocks**.
-Search for [`ViamRover2-2024-jetson-nano-a`](https://app.viam.com/fragment/747e1f43-309b-4311-b1d9-1dfca45bd097/json), select it, and click **Add to machine**.
-In the **Add fragment** dialog, click **Add to machine** again to add the fragment to your machine configuration.
-
-Click **Save** in the upper right corner of the page to save your new configuration.
+Fragment: [`ViamRover2-2024-jetson-nano-a`](https://app.viam.com/fragment/747e1f43-309b-4311-b1d9-1dfca45bd097/json)
 
 The fragment adds the following components to your machine's JSON configuration:
 
@@ -156,14 +135,7 @@ To see the configured pin numbers and other values specific to this fragment, [v
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (Jetson Orin Nano)" %}}
 
-Navigate to your machine's page.
-In the left-hand menu of the **CONFIGURE** tab, click the **+** (Create) icon next to the machine {{< glossary_tooltip term_id="part" text="part" >}} you want to add the fragment to.
-
-Select **Blocks**.
-Search for [`ViamRover2-2024-nano-orin-a`](https://app.viam.com/fragment/6208e890-8400-4197-bf0f-e8ddeca4e157/json), select it, and click **Add to machine**.
-In the **Add fragment** dialog, click **Add to machine** again to add the fragment to your machine configuration.
-
-Click **Save** in the upper right corner of the page to save your new configuration.
+Fragment: [`ViamRover2-2024-nano-orin-a`](https://app.viam.com/fragment/6208e890-8400-4197-bf0f-e8ddeca4e157/json)
 
 The fragment adds the following components to your machine's JSON configuration:
 
