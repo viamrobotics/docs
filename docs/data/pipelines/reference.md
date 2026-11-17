@@ -96,6 +96,12 @@ When `enable_backfill` is `true`:
 
 - On pipeline creation, Viam processes historical time windows backward from the creation time to the creation date of the organization's oldest location.
 - When data syncs with a delay (machine was offline), the pipeline automatically reruns affected time windows to include the late-arriving data.
+  When those reruns happen depends on the age of the time window:
+  - **Windows that ended less than 7 days ago** rerun as soon as the late data syncs.
+  - **Windows that ended 7 or more days ago** are queued and rerun in a weekly batch, on Tuesdays at 05:00 UTC.
+    Results for these windows can take up to a week to update.
+    If the window's data would pass its [retention period](/data/reference/#platform-managed-capture-settings) before the next batch, the rerun is skipped.
+    Queued reruns for a pipeline that is disabled when the batch runs are also skipped.
 - Backfill processes in batches of up to 10 concurrent time windows with a 1-minute delay between batches.
 - Backfill always queries `standard` storage, even for a `hot-storage` pipeline, because the hot data store keeps only recent data.
 - Backfill results replace any existing results for the same time window.

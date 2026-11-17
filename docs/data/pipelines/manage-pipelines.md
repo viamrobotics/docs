@@ -346,6 +346,15 @@ This is expected. When you disable a pipeline, scheduled runs do not execute. Wh
 
 {{< /expand >}}
 
+{{< expand "Results for an older time window didn't update after late data synced" >}}
+
+This is expected if the time window ended 7 or more days ago.
+Reruns for those windows are queued and run in a weekly batch on Tuesdays at 05:00 UTC, so results can take up to a week to update.
+Reruns for windows that ended less than 7 days ago run as soon as the data syncs.
+See [Backfill behavior](/data/pipelines/reference/#backfill-behavior).
+
+{{< /expand >}}
+
 {{< expand "Hot data store query returns no data" >}}
 
 - Verify the hot data store is enabled on the component. See [Hot data store](/data/hot-data-store/).
