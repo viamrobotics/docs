@@ -59,7 +59,7 @@ Below it, the section moves the component with the [motion service](/reference/a
 - **World state** and **Constraints**: optional JSON that the section passes to `Move`.
 
 Click **Execute** to call `Move` with these values.
-`Move` blocks until the motion completes; to interrupt it, stop the component itself.
+`Move` blocks until the motion completes. To interrupt it, stop the component that's moving: for a gripper or camera mounted on an arm, stop the arm.
 
 You can switch between machine parts directly from the CONTROL tab using the part selector at the top.
 
