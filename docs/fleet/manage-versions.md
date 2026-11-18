@@ -42,15 +42,7 @@ Maintenance windows use a sensor-based approach: you configure a sensor that ret
 
 While the maintenance window is closed (sensor returns `false`), `viam-server` continues running with its current configuration. This includes a window that closes partway through an update: in `viam-server` v1.12.0 and later, `viam-server` re-checks the sensor before it restarts anything, and if the sensor no longer returns `true` it holds the update and tries again on the next config poll. When the window opens, all pending changes are applied at once.
 
-A closed window also blocks module restarts that you request from the CLI.
-On machines running `viam-server` v1.17.0 or later, `viam module restart` and
-hot reloads that restart a running module, such as `viam module reload-local`,
-fail within a second with an error like
-`rpc error: code = FailedPrecondition desc = maintenance window blocking module restart`.
-Earlier versions reported the restart as successful and then timed out after
-5 minutes waiting for the machine to apply it.
-To hot-reload a module on a development machine, open the window or remove the
-maintenance window from the machine's configuration.
+On machines running `viam-server` v1.17.0 or later, a closed window also blocks module restarts that you request from the CLI. `viam module restart` and hot reloads that restart a module already on the machine, such as `viam module reload-local`, fail right away with an error like `rpc error: code = FailedPrecondition desc = maintenance window blocking module restart`, instead of waiting. The first reload of a module onto a machine doesn't restart anything, so it isn't refused: the CLI waits for the machine to apply the new configuration, which the closed window holds back, and times out after 5 minutes. Earlier versions of `viam-server` didn't check the window for these requests: `viam module restart` restarted the module anyway, and a hot reload reported the restart as successful, then timed out after 5 minutes waiting for the machine to apply the new configuration. To hot-reload a module on a development machine, open the window or remove the maintenance window from the machine's configuration.
 
 ## Staged rollouts with fragment tags
 
