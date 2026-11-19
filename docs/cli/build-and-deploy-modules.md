@@ -90,6 +90,8 @@ If a reload is not sufficient, restart the module process:
 viam module restart --part-id=<part-id>
 ```
 
+If the machine has a [maintenance window](/fleet/manage-versions/#maintenance-windows) that is closed, a reload or restart that restarts the module fails with a `maintenance window blocking module restart` error.
+
 ## Update model definitions
 
 After adding or changing models in your module, update the model definitions in `meta.json`.
