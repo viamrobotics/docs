@@ -127,7 +127,15 @@ for i, step := range traj {
 ```
 
 An error means no plan was found within the timeout, which is your feasibility
-answer. A returned trajectory is yours to inspect, log, compare against an
+answer. Since RDK v1.17.0, `PlanMotion` also returns an error before it plans
+when the request itself is invalid: a joint-configuration goal puts a joint
+outside its [joint limits](/motion-planning/reference/kinematics/#joint-limits),
+names a frame that isn't in the frame system, or gives the wrong number of
+joint values for its frame. The limits error names the goal, frame, joint,
+value, and limits, for example
+`goal 0 frame "my-arm" joint 1 is 3.50000, outside its limits [-3.14159, 3.14159]`.
+The start state isn't checked against the limits, so you can still plan for an
+arm that is parked outside them. A returned trajectory is yours to inspect, log, compare against an
 expected path, or hand to the arm for execution once you are satisfied.
 
 ## Plan from a remote client
