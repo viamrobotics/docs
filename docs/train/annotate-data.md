@@ -244,6 +244,22 @@ To confirm, get the sequence again: its `sequence_tags` include the new tag.
 Use the same tag for every demonstration of the same task.
 To check a sequence dataset's tags, see [Verify dataset quality](/train/create-a-dataset/#verify-dataset-quality).
 
+## Label a sequence's frames {#label-a-sequences-frames}
+
+A sequence's tags label the whole sequence.
+To label what's in each frame, annotate the frame images themselves, the same way as any other image.
+The sequence page doesn't have annotation tools, so open the images in the **DATA** tab:
+
+1. Open the sequence from **DATA** > **SEQUENCES**.
+1. Select the camera in the resource dropdown, then click **View in data gallery**.
+   The **DATA** tab opens, filtered to that camera's images from the sequence's time window.
+1. [Tag the images](#tag-images-for-classification) or [draw bounding boxes](#draw-bounding-boxes-for-object-detection) on them.
+
+You can also annotate the images from code with their binary data IDs.
+
+The labels belong to the images, so any sequence that includes an image includes its labels.
+When you export a sequence dataset or train on it, each image's current tags and bounding boxes are in the `classifications` and `bounding_boxes` columns of [`binary_data.parquet`](/train/dataset-formats/#binary-data-parquet).
+
 ## Troubleshooting
 
 {{< expand "Bounding boxes not saving" >}}
