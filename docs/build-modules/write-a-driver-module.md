@@ -652,11 +652,12 @@ You typically do not need to modify it.
 
 ```python
 import asyncio
+
 from viam.module.module import Module
+
 from models.my_sensor import MySensor as MySensorModel  # noqa: F401
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(Module.run_from_registry())
 ```
 
@@ -1015,11 +1016,13 @@ discovers all imported resource classes:
 
 ```python
 import asyncio
-from viam.module.module import Module
-from models.my_sensor import MySensor as MySensorModel  # noqa: F401
-from models.my_camera import MyCamera as MyCameraModel  # noqa: F401
 
-if __name__ == '__main__':
+from viam.module.module import Module
+
+from models.my_camera import MyCamera as MyCameraModel  # noqa: F401
+from models.my_sensor import MySensor as MySensorModel  # noqa: F401
+
+if __name__ == "__main__":
     asyncio.run(Module.run_from_registry())
 ```
 

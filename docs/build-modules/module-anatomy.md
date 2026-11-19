@@ -428,7 +428,9 @@ module.
 
 ```python
 import asyncio
+
 from viam.module.module import Module
+
 from models.temp_monitor import TempMonitor  # noqa: F401
 
 if __name__ == "__main__":
@@ -479,5 +481,5 @@ requirements.
 | `setup.sh`   | (Python) Creates a virtualenv and installs `requirements.txt`.                                                                                                                                                                                                                                                                                                |
 | `build.sh`   | (Python) Builds a standalone executable, `dist/main`, with PyInstaller and packages it into `dist/archive.tar.gz`.                                                                                                                                                                                                                                            |
 | `Makefile`   | (Go) `make setup` runs `go mod tidy`; `make module.tar.gz` builds the binary into `bin/` and packages it into an archive.                                                                                                                                                                                                                                     |
-| `deploy.yml` | GitHub Actions workflow that triggers cloud builds on tagged releases.                                                                                                                                                                                                                                                                                        |
+| `deploy.yml` | GitHub Actions workflow that starts a cloud build when you push a version tag.                                                                                                                                                                                                                                                                                |
 | `ci.yaml`    | GitHub Actions workflow that runs on every pull request and push to `main`. Go: runs `golangci-lint` with `.golangci.yml`, checks that `go.mod` and `go.sum` are tidy, then builds and runs `go test -race`. Python: runs `ruff check` and `ruff format --check` with the settings in `pyproject.toml`, installs `requirements.txt`, and byte-compiles `src`. |

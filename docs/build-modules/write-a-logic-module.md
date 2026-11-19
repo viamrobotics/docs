@@ -897,11 +897,12 @@ The generator also creates the entry point file that `viam-server` launches. You
 
 ```python
 import asyncio
+
 from viam.module.module import Module
-from models.temp_alert import TempAlert as TempAlertModel
 
+from models.temp_alert import TempAlert as TempAlertModel  # noqa: F401
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(Module.run_from_registry())
 ```
 
