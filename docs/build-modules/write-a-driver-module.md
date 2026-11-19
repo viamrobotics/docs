@@ -82,27 +82,31 @@ The generator creates a complete project with the following files:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File                           | Purpose                                       |
-| ------------------------------ | --------------------------------------------- |
-| `src/main.py`                  | Entry point -- starts the module server       |
-| `src/models/my_sensor.py`      | Resource class skeleton -- you will edit this |
-| `requirements.txt`             | Python dependencies                           |
-| `meta.json`                    | Module metadata for the registry              |
-| `setup.sh`                     | Installs dependencies into a virtualenv       |
-| `build.sh`                     | Packages the module for upload                |
-| `.github/workflows/deploy.yml` | CI workflow for cloud builds                  |
+| File                           | Purpose                                                                     |
+| ------------------------------ | --------------------------------------------------------------------------- |
+| `src/main.py`                  | Entry point -- starts the module server                                     |
+| `src/models/my_sensor.py`      | Resource class skeleton -- you will edit this                               |
+| `requirements.txt`             | Python dependencies                                                         |
+| `pyproject.toml`               | Lint settings for `ruff`                                                    |
+| `meta.json`                    | Module metadata for the registry                                            |
+| `setup.sh`                     | Installs dependencies into a virtualenv                                     |
+| `build.sh`                     | Packages the module for upload                                              |
+| `.github/workflows/ci.yaml`    | Lints and byte-compiles the module on every pull request and push to `main` |
+| `.github/workflows/deploy.yml` | Starts a cloud build when you push a version tag                            |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File                           | Purpose                                                |
-| ------------------------------ | ------------------------------------------------------ |
-| `cmd/module/main.go`           | Entry point -- starts the module server                |
-| `module.go`                    | Resource implementation skeleton -- you will edit this |
-| `go.mod`                       | Go module definition                                   |
-| `Makefile`                     | Build targets                                          |
-| `meta.json`                    | Module metadata for the registry                       |
-| `.github/workflows/deploy.yml` | CI workflow for cloud builds                           |
+| File                           | Purpose                                                                      |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `cmd/module/main.go`           | Entry point -- starts the module server                                      |
+| `module.go`                    | Resource implementation skeleton -- you will edit this                       |
+| `go.mod`                       | Go module definition                                                         |
+| `Makefile`                     | Build targets                                                                |
+| `.golangci.yml`                | Lint settings for `golangci-lint`                                            |
+| `meta.json`                    | Module metadata for the registry                                             |
+| `.github/workflows/ci.yaml`    | Lints, builds, and tests the module on every pull request and push to `main` |
+| `.github/workflows/deploy.yml` | Starts a cloud build when you push a version tag                             |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -649,7 +653,7 @@ You typically do not need to modify it.
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor as MySensorModel
+from models.my_sensor import MySensor as MySensorModel  # noqa: F401
 
 
 if __name__ == '__main__':
@@ -678,7 +682,7 @@ import (
 
 func main() {
     // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
-    module.ModularMain(resource.APIModel{sensor.API, mysensormodule.MySensor})
+    module.ModularMain(resource.APIModel{API: sensor.API, Model: mysensormodule.MySensor})
 }
 ```
 
@@ -1012,8 +1016,8 @@ discovers all imported resource classes:
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor as MySensorModel
-from models.my_camera import MyCamera as MyCameraModel
+from models.my_sensor import MySensor as MySensorModel  # noqa: F401
+from models.my_camera import MyCamera as MyCameraModel  # noqa: F401
 
 if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
@@ -1039,8 +1043,8 @@ import (
 func main() {
     // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
     module.ModularMain(
-        resource.APIModel{sensor.API, mysensormodule.MySensor},
-        resource.APIModel{camera.API, mysensormodule.MyCamera},
+        resource.APIModel{API: sensor.API, Model: mysensormodule.MySensor},
+        resource.APIModel{API: camera.API, Model: mysensormodule.MyCamera},
     )
 }
 ```

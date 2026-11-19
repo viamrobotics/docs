@@ -27,13 +27,15 @@ current state.
 temp-monitor/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml            # CI workflow for cloud builds
+│       ├── ci.yaml               # Lints and byte-compiles on pull requests and pushes to main
+│       └── deploy.yml            # Starts a cloud build when you push a version tag
 ├── src/
 │   ├── main.py                   # Entry point
 │   └── models/
 │       └── temp_monitor.py       # Resource implementation
 ├── build.sh                      # Builds an executable and packages it for upload
 ├── meta.json                     # Module metadata for the registry
+├── pyproject.toml                # Lint settings for ruff
 ├── requirements.txt              # Python dependencies
 └── setup.sh                      # Installs dependencies into a virtualenv
 ```
@@ -45,7 +47,9 @@ temp-monitor/
 temp-monitor/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml            # CI workflow for cloud builds
+│       ├── ci.yaml               # Lints, builds, and tests on pull requests and pushes to main
+│       └── deploy.yml            # Starts a cloud build when you push a version tag
+├── .golangci.yml                 # Lint settings for golangci-lint
 ├── cmd/
 │   └── module/
 │       └── main.go               # Entry point
@@ -451,7 +455,7 @@ import (
 
 func main() {
     module.ModularMain(
-        resource.APIModel{generic.API, tempmonitor.Model},
+        resource.APIModel{API: generic.API, Model: tempmonitor.Model},
     )
 }
 ```
@@ -470,9 +474,10 @@ These files handle packaging and deployment. The generator creates working
 defaults. You only need to edit them if your module has unusual build
 requirements.
 
-| File         | Purpose                                                                                                                   |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `setup.sh`   | (Python) Creates a virtualenv and installs `requirements.txt`.                                                            |
-| `build.sh`   | (Python) Builds a standalone executable, `dist/main`, with PyInstaller and packages it into `dist/archive.tar.gz`.        |
-| `Makefile`   | (Go) `make setup` runs `go mod tidy`; `make module.tar.gz` builds the binary into `bin/` and packages it into an archive. |
-| `deploy.yml` | GitHub Actions workflow that triggers cloud builds on tagged releases.                                                    |
+| File         | Purpose                                                                                                                                                                                                                                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `setup.sh`   | (Python) Creates a virtualenv and installs `requirements.txt`.                                                                                                                                                                                                                                                                                                |
+| `build.sh`   | (Python) Builds a standalone executable, `dist/main`, with PyInstaller and packages it into `dist/archive.tar.gz`.                                                                                                                                                                                                                                            |
+| `Makefile`   | (Go) `make setup` runs `go mod tidy`; `make module.tar.gz` builds the binary into `bin/` and packages it into an archive.                                                                                                                                                                                                                                     |
+| `deploy.yml` | GitHub Actions workflow that triggers cloud builds on tagged releases.                                                                                                                                                                                                                                                                                        |
+| `ci.yaml`    | GitHub Actions workflow that runs on every pull request and push to `main`. Go: runs `golangci-lint` with `.golangci.yml`, checks that `go.mod` and `go.sum` are tidy, then builds and runs `go test -race`. Python: runs `ruff check` and `ruff format --check` with the settings in `pyproject.toml`, installs `requirements.txt`, and byte-compiles `src`. |

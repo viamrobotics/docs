@@ -1979,6 +1979,7 @@ viam module add-model --resource-subtype=sensor --model-name=my-sensor
 ```
 
 The command reads module metadata from the `.viam-gen-info` file in the current directory, generates the model source file, registers the model in `meta.json`, and updates the module entry point to import the new model.
+For a Go module, the model file is `<model_name>_model.go` (for example, `my_sensor_model.go`), and the command then runs `go mod tidy`. The command fails rather than overwrite an existing file with that name.
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |

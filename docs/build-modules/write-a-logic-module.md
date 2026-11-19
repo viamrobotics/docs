@@ -80,27 +80,31 @@ The generator creates a complete project. The key files you will edit:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File                           | Purpose                                      |
-| ------------------------------ | -------------------------------------------- |
-| `src/main.py`                  | Entry point -- starts the module server      |
-| `src/models/temp_alert.py`     | Service class skeleton -- you will edit this |
-| `requirements.txt`             | Python dependencies                          |
-| `meta.json`                    | Module metadata for the registry             |
-| `setup.sh`                     | Installs dependencies into a virtualenv      |
-| `build.sh`                     | Packages the module for upload               |
-| `.github/workflows/deploy.yml` | CI workflow for cloud builds                 |
+| File                           | Purpose                                                                     |
+| ------------------------------ | --------------------------------------------------------------------------- |
+| `src/main.py`                  | Entry point -- starts the module server                                     |
+| `src/models/temp_alert.py`     | Service class skeleton -- you will edit this                                |
+| `requirements.txt`             | Python dependencies                                                         |
+| `pyproject.toml`               | Lint settings for `ruff`                                                    |
+| `meta.json`                    | Module metadata for the registry                                            |
+| `setup.sh`                     | Installs dependencies into a virtualenv                                     |
+| `build.sh`                     | Packages the module for upload                                              |
+| `.github/workflows/ci.yaml`    | Lints and byte-compiles the module on every pull request and push to `main` |
+| `.github/workflows/deploy.yml` | Starts a cloud build when you push a version tag                            |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File                           | Purpose                                               |
-| ------------------------------ | ----------------------------------------------------- |
-| `cmd/module/main.go`           | Entry point -- starts the module server               |
-| `module.go`                    | Service implementation skeleton -- you will edit this |
-| `go.mod`                       | Go module definition                                  |
-| `Makefile`                     | Build targets                                         |
-| `meta.json`                    | Module metadata for the registry                      |
-| `.github/workflows/deploy.yml` | CI workflow for cloud builds                          |
+| File                           | Purpose                                                                      |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `cmd/module/main.go`           | Entry point -- starts the module server                                      |
+| `module.go`                    | Service implementation skeleton -- you will edit this                        |
+| `go.mod`                       | Go module definition                                                         |
+| `Makefile`                     | Build targets                                                                |
+| `.golangci.yml`                | Lint settings for `golangci-lint`                                            |
+| `meta.json`                    | Module metadata for the registry                                             |
+| `.github/workflows/ci.yaml`    | Lints, builds, and tests the module on every pull request and push to `main` |
+| `.github/workflows/deploy.yml` | Starts a cloud build when you push a version tag                             |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -921,7 +925,7 @@ import (
 
 func main() {
     // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
-    module.ModularMain(resource.APIModel{generic.API, alertmonitor.TempAlert})
+    module.ModularMain(resource.APIModel{API: generic.API, Model: alertmonitor.TempAlert})
 }
 ```
 
