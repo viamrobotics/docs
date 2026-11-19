@@ -93,6 +93,12 @@ The deployment doesn't add a vision service or connect the resources to each oth
    For a classification or detection model, this also adds a vision service; name it too.
 1. Click **Add to machine**, then click **Save**.
 
+**Where the package appears:** the **CONFIGURE** tab has no section of its own for packages.
+A model's package shows in a **Packages** section on the card of the resource that uses it, such as the ML model service.
+It lists the package's name, type and version and, while the machine is online, its size and status, such as **Downloading**, **Ready** or **Failed**.
+For an ML model, the name links to the model's page.
+The list is read-only: add a model with **+** > **Blocks** or from the model's page, and edit or remove a package entry in **JSON** mode.
+
 {{% /tab %}}
 {{% tab name="Python" %}}
 
@@ -216,6 +222,35 @@ The entries are the same as in the **Python** tab, which also covers **Registry*
 
 To deploy the same model to many machines, add these entries to a fragment instead.
 See [Deploy ML models across your fleet](/fleet/deploy-ml-models/).
+
+## Download a model {#download-a-model}
+
+Download a model version to see the files in its package, such as `labels.txt`, or to run it from a file on the machine.
+The model's page lists the file names in each version but doesn't show their contents.
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+1. Go to **DATA** > **MODELS** and click the model, or open a public model's page in the registry.
+1. Click **...** in the model header, then **Download**.
+1. Select a **Version**.
+   It defaults to the latest version.
+1. Click **Download**.
+   Your browser saves the version as a `.tar.gz` file.
+
+On the **DATA** > **MODELS** page, the **...** menu on a row of the version list downloads that version directly.
+
+{{% /tab %}}
+{{% tab name="CLI" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam packages export --type=ml_model --org-id=<org-id> --name=my-model --version=latest --destination=.
+```
+
+See [`viam packages export`](/cli/reference/#packages-export).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Run a model file stored on the machine {#local-model-file}
 
