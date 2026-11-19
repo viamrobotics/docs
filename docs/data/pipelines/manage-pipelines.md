@@ -350,7 +350,7 @@ This is expected. When you disable a pipeline, scheduled runs do not execute. Wh
 
 This is expected if the time window ended 7 or more days ago.
 Reruns for those windows are queued and run in a weekly batch on Tuesdays at 05:00 UTC, so results can take up to a week to update.
-Reruns for windows that ended less than 7 days ago run as soon as the data syncs.
+Reruns for windows that ended less than 7 days ago run as soon as the data syncs, and so do reruns for older windows whose data would pass its retention period before the next batch.
 See [Backfill behavior](/data/pipelines/reference/#backfill-behavior).
 
 {{< /expand >}}

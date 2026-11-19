@@ -100,8 +100,8 @@ When `enable_backfill` is `true`:
   - **Windows that ended less than 7 days ago** rerun as soon as the late data syncs.
   - **Windows that ended 7 or more days ago** are queued and rerun in a weekly batch, on Tuesdays at 05:00 UTC.
     Results for these windows can take up to a week to update.
-    If the window's data would pass its [retention period](/data/reference/#platform-managed-capture-settings) before the next batch, the rerun is skipped.
-    Queued reruns for a pipeline that is disabled when the batch runs are also skipped.
+    If the window's data would pass its [retention period](/data/reference/#platform-managed-capture-settings) before the next batch, the window reruns right away instead of waiting.
+    A queued rerun is skipped if its data expires while it waits, or if the pipeline is disabled when the batch runs.
 - Backfill processes in batches of up to 10 concurrent time windows with a 1-minute delay between batches.
 - Backfill always queries `standard` storage, even for a `hot-storage` pipeline, because the hot data store keeps only recent data.
 - Backfill results replace any existing results for the same time window.
