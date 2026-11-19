@@ -22,7 +22,8 @@ The general add-a-component process is the same for every type.
 For the universal steps, see [Configure hardware components](/hardware/configure-hardware/).
 
 The **Features** column lists platform integrations the type is part of.
-Every type supports `DoCommand` and shows a test panel on its configuration card, so those aren't repeated in the column; exceptions are called out where they apply.
+Every type supports `DoCommand`, so it isn't repeated in the column.
+Every type except generic also shows a **Test** section on its configuration card for trying its API from the Viam app; generic components get top-level **DoCommand** and **GetStatus** sections instead.
 **Data capture** means the built-in data manager can capture this type's output to the Viam cloud.
 **Readings** means the type returns a flat key-value snapshot through the `GetReadings` method, on top of its type-specific API.
 
@@ -38,14 +39,14 @@ Every type supports `DoCommand` and shows a test panel on its configuration card
 
 Components that read data from the physical world.
 
-| Component                                                             | What it does                                                                                 | Examples                                             | Features                     |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------- |
-| [Camera](/hardware/common-components/add-a-camera/)                   | Capture images or video from a USB webcam, IP camera, or depth sensor.                       | USB webcams, IP cameras, depth cameras, lidar        | Data capture                 |
-| [Sensor](/hardware/common-components/add-a-sensor/)                   | Read environmental data: temperature, humidity, distance, air quality, and more.             | Temperature, humidity, air quality, distance sensors | Data capture · Readings      |
-| [Movement sensor](/hardware/common-components/add-a-movement-sensor/) | Get position, velocity, orientation, or compass heading from a GPS, IMU, or odometry source. | GPS, IMU, accelerometer, gyroscope, odometry         | Data capture · Readings      |
-| [Power sensor](/hardware/common-components/add-a-power-sensor/)       | Monitor voltage, current, and power consumption.                                             | INA219, INA226, current clamps                       | Data capture · Readings      |
-| [Encoder](/hardware/common-components/add-an-encoder/)                | Track how far a motor has turned and how fast it's spinning.                                 | Incremental encoders, absolute encoders              | Data capture                 |
-| [Audio input](/reference/apis/components/audio-in/)                   | Stream audio from a microphone or audio-in device.                                           | USB microphones, Pi audio-in HATs                    | Data capture · No test panel |
+| Component                                                             | What it does                                                                                 | Examples                                             | Features                |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------- |
+| [Camera](/hardware/common-components/add-a-camera/)                   | Capture images or video from a USB webcam, IP camera, or depth sensor.                       | USB webcams, IP cameras, depth cameras, lidar        | Data capture            |
+| [Sensor](/hardware/common-components/add-a-sensor/)                   | Read environmental data: temperature, humidity, distance, air quality, and more.             | Temperature, humidity, air quality, distance sensors | Data capture · Readings |
+| [Movement sensor](/hardware/common-components/add-a-movement-sensor/) | Get position, velocity, orientation, or compass heading from a GPS, IMU, or odometry source. | GPS, IMU, accelerometer, gyroscope, odometry         | Data capture · Readings |
+| [Power sensor](/hardware/common-components/add-a-power-sensor/)       | Monitor voltage, current, and power consumption.                                             | INA219, INA226, current clamps                       | Data capture · Readings |
+| [Encoder](/hardware/common-components/add-an-encoder/)                | Track how far a motor has turned and how fast it's spinning.                                 | Incremental encoders, absolute encoders              | Data capture            |
+| [Audio input](/reference/apis/components/audio-in/)                   | Stream audio from a microphone or audio-in device.                                           | USB microphones, Pi audio-in HATs                    | Data capture            |
 
 ## Drive a mobile robot
 
@@ -73,10 +74,10 @@ Components for physical I/O and user input.
 
 ## Other
 
-| Component                                             | What it does                                                          | Examples                                    | Features      |
-| ----------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------- | ------------- |
-| [Generic](/hardware/common-components/add-a-generic/) | Interface with hardware that doesn't fit any standard component type. | Custom devices with non-standard interfaces | —             |
-| [Audio output](/reference/apis/components/audio-out/) | Play audio on a speaker or audio-out device.                          | USB speakers, audio-out HATs                | No test panel |
+| Component                                             | What it does                                                          | Examples                                    | Features        |
+| ----------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------- | --------------- |
+| [Generic](/hardware/common-components/add-a-generic/) | Interface with hardware that doesn't fit any standard component type. | Custom devices with non-standard interfaces | No Test section |
+| [Audio output](/reference/apis/components/audio-out/) | Play audio on a speaker or audio-out device.                          | USB speakers, audio-out HATs                | —               |
 
 ## Choosing a type
 

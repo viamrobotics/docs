@@ -99,7 +99,7 @@ You declared "this machine has a camera called `inspection-cam`" by editing the 
 
 ## 1.4 Test the Camera
 
-Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view.
+Verify the camera is working. Camera components have a built-in **Test** section right in the configuration view.
 
 ### Open the test panel
 
