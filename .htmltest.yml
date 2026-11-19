@@ -43,6 +43,7 @@ IgnoreURLs:
   - "github.com/viamrobotics/docs"
   - "github.com/viam-devrel/pick-and-place"
   - "github.com/viam-devrel/mini-palletizer"
+  - "github.com/viam-devrel/xarm-act-stacking"
   - "openai.com"
   - "espressif.com"
   - "pinout.xyz"

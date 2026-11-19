@@ -1,0 +1,30 @@
+---
+title: "Phase N: Title in under 70 characters"
+linkTitle: "N. Short title"
+type: "docs"
+slug: "phase-slug"
+weight: 0 # 10, 20, 30, ... in 10s for sidebar order
+description: "One-sentence description of this phase."
+workshop: "xarm-act-stacking"
+toc_hide: true
+phase: 0
+phase_total: 7
+time_estimate: "NN minutes"
+prev: "/tutorials/xarm-act-stacking/previous-slug/"
+next: "/tutorials/xarm-act-stacking/next-slug/"
+languages: ["python"]
+capabilities: [] # REQUIRED once published: one or more tags from data/capabilities.yaml
+diataxis: tutorial # REQUIRED once published: one mode from data/diataxis.yaml
+draft: true # set to false when this phase is ready to publish
+headless: true # REMOVE this line when you copy the template to a real phase page
+---
+
+<!-- One short paragraph: what this phase accomplishes and why it comes here. -->
+
+## Section heading
+
+{{< checkpoint >}}
+What the learner runs, and the expected result that means "continue".
+{{< /checkpoint >}}
+
+{{< workshop-nav >}}
