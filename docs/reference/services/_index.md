@@ -24,11 +24,12 @@ If neither fits, [build your own](/build-modules/overview/).
 Each page below covers available models, configuration attributes, and JSON templates.
 For API method reference, see [Service APIs](/reference/apis/services/).
 
-| Service                                             | Description                                                                                                |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| [Base remote control](/reference/services/base-rc/) | Drive a mobile base with an input controller like a gamepad or joystick                                    |
-| [Discovery](/reference/services/discovery/)         | Detect available hardware on a machine and suggest component configurations                                |
-| [Frame system](/reference/services/frame-system/)   | Store spatial relationships between components so other services can reason about position and orientation |
-| [Generic](/reference/services/generic/)             | A catch-all API for services that don't fit other service types                                            |
-| [Motion](/reference/services/motion/)               | Plan and execute movement for components relative to themselves, other machines, and the world             |
-| [Vision](/reference/services/vision/)               | Add computer vision capabilities like detection, classification, and segmentation to cameras               |
+| Service                                                     | Description                                                                                                |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [Base remote control](/reference/services/base-rc/)         | Drive a mobile base with an input controller like a gamepad or joystick                                    |
+| [Discovery](/reference/services/discovery/)                 | Detect available hardware on a machine and suggest component configurations                                |
+| [Frame system](/reference/services/frame-system/)           | Store spatial relationships between components so other services can reason about position and orientation |
+| [Generic](/reference/services/generic/)                     | A catch-all API for services that don't fit other service types                                            |
+| [Motion](/reference/services/motion/)                       | Plan and execute movement for components relative to themselves, other machines, and the world             |
+| [Vision](/reference/services/vision/)                       | Add computer vision capabilities like detection, classification, and segmentation to cameras               |
+| [World state store](/reference/services/world-state-store/) | Hold transforms in memory for the 3D scene to draw, and change them at runtime with DoCommand              |
