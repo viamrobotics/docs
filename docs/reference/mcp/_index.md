@@ -4,7 +4,7 @@ linkTitle: "MCP server"
 weight: 40
 layout: "docs"
 type: "docs"
-description: "Connect Claude or another MCP client to your Viam fleet, and reference the tools the Viam MCP server exposes."
+description: "Connect Claude or another MCP client to your Viam fleet to list, create, and configure machines, read logs, and operate hardware. Includes a tool reference."
 capabilities: ["mcp"]
 diataxis: reference
 date: "2026-09-21"
