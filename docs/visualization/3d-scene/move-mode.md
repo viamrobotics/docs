@@ -23,22 +23,27 @@ Selecting a frame that nothing moves, such as a fixed obstacle or a target marke
 
 ## The move controls
 
-In Move mode, the Details panel for the selected frame becomes a form for a `Move` request:
+In Move mode, the Details panel for the selected frame becomes a form for a `Move` request. These fields apply to both of the panel's tabs:
 
 - **motion service**: the motion service that plans the move. It defaults to `builtin`, and resets to it when you leave the tab.
-- **world position** and **world orientation**: the target pose, starting at the frame's current pose. Type values, or drag the frame's transform controls in the viewport.
-- **travel**: the straight-line distance and rotation from the current pose to the target.
 - **World state** (optional JSON): obstacles and transforms for this request only, in the same shape as the `WorldState` you pass to `Move` in code. See [World state](/visualization/reference/world-state/).
 - **Constraints** (optional JSON): constraints on the path, such as `{"linear_constraint": [{"line_tolerance_mm": 1, "orientation_tolerance_degs": 2}]}` to keep the frame on a straight line. See [Move with constraints](/motion-planning/move-an-arm/move-with-constraints/).
+
+Below them, the **Move** tab sets the target and runs the move:
+
+- **Target**: the **world position** and **world orientation** of the target pose, starting at the frame's current pose. Type values, or drag the frame's transform controls in the viewport. **Reset** puts the target back at the frame's current pose.
+- **travel**: the straight-line distance and rotation from the current pose to the target.
 - **Collisions**: what the frame is touching now, or would collide with at the target.
+- **Move**: plans the move and runs it in one step.
 
 ## Preview, then run
 
-You can plan and run a move in one step, or preview it first:
+You can plan and run a move in one step with **Move** on the **Move** tab, or preview it first on the **Preview** tab:
 
-- **Preview move** plans the move and shows it in the scene without moving the machine. A translucent copy of the machine appears at its current pose. Once a plan is found, playback controls appear, and playing the preview moves the copy along the plan.
+- **Preview move** plans a move to the target you set on the **Move** tab and shows it in the scene without moving the machine. A translucent copy of the machine appears at its current pose. Once a plan is found, playback controls appear, and playing the preview moves the copy along the plan. To plan again, click **Re-plan preview**.
 - **Execute plan** runs the plan you previewed, without planning again.
-- **Move** plans again and runs the new plan in one step, even if you already previewed one.
+
+**Move** always plans again and runs the new plan, even if you already previewed one.
 
 A plan is a list of waypoints: joint positions the arm passes through. How many waypoints a plan has depends on the move. An unconstrained move often plans as just a start and an end. A move with a linear constraint can have hundreds of closely spaced waypoints.
 
@@ -48,6 +53,14 @@ The preview can show each frame in one of two ways:
 - **Interpolated** adds frames between widely spaced waypoints, so you can see how the arm sweeps from one to the next. For a plan whose waypoints are already close together, the two views look the same.
 
 The preview is an approximation. Plans carry no timing, so playback runs at a fixed rate, and how the arm moves between waypoints is up to the arm's driver, not the planner.
+
+## Save an arm pose
+
+When the selected frame is an arm, the **Move** tab also has **Save current pose**. It saves where the arm is now, not the target you set, as an `erh:vmodutils:arm-position-saver` component in the machine's config, and adds the `erh:vmodutils` module if the machine doesn't already run it. Saving requires permission to edit the machine's config.
+
+Saved poses appear in the **Saved poses** folder of the World tree, and each one draws as a ghost of the arm in the scene. Select a saved pose to move the arm back to it with **Move to pose**, or to remove it from the config with **Delete**. Its **motion service** setting decides how the arm gets there: through a motion service, which plans around obstacles, or with a direct joint move, which doesn't.
+
+Saved poses are the same components that the [pick-and-place tutorial](/tutorials/pick-and-place/03-static-positions/) configures by hand, so you can also run them from code or the **CONTROL** tab.
 
 ## Collisions
 
