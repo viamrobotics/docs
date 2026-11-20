@@ -60,7 +60,7 @@ When the selected frame is an arm, the **Move** tab also has **Save current pose
 
 Saved poses appear in the **Saved poses** folder of the World tree, and each one draws as a ghost of the arm in the scene. Select a saved pose to move the arm back to it with **Move to pose**, or to remove it from the config with **Delete**. Its **motion service** setting decides how the arm gets there: through a motion service, which plans around obstacles, or with a direct joint move, which doesn't.
 
-Saved poses are the same components that the [pick-and-place tutorial](/tutorials/pick-and-place/03-static-positions/) configures by hand, so you can also run them from code or the **CONTROL** tab.
+Saved poses are the same components that the [pick-and-place tutorial](/tutorials/pick-and-place/static-positions/) configures by hand, so you can also run them from code or the **CONTROL** tab.
 
 ## Collisions
 
