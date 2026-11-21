@@ -13,13 +13,13 @@ aliases:
 
 Widgets are floating panels you overlay on the 3D scene so you can drive and read a machine
 without leaving the 3D view. Each widget is draggable and resizable. Two kinds exist: control
-widgets, which you open from the toolbar for any resource on the machine, and the
+widgets, which you open from the scene's **Settings** panel for any resource on the machine, and the
 [frame POV](#frame-pov) widget, which you open from the Details panel.
 
 ## Open a control widget
 
-Click **Control widgets** (joystick icon) in the top-right strip of the scene toolbar. A panel titled **Control
-widgets** opens, listing the machine's resources grouped by type: a heading per resource type
+Click **Settings** (gear icon) in the top-right strip of the scene toolbar, then select the **Widgets** tab. The
+tab lists the machine's resources grouped by type: a heading per resource type
 (**Arm**, **Camera**, **Motor**, and so on), and under it one row per resource of that type,
 each showing the resource's name and how many of its controls are currently open, for example
 `1/2`.
@@ -27,7 +27,7 @@ each showing the resource's name and how many of its controls are currently open
 Click a resource row to expand it, then toggle on a control. Each control you turn on opens
 as its own panel over the viewport, labeled with the resource's API and titled
 `<resource-name> · <control>`. Toggle it off to close the panel. If the machine has no
-resources with controls, the panel reads "No widgets available for this machine."
+resources with controls, the tab reads "No widgets available for this machine."
 
 Which widgets you have open, and where you dragged and sized their panels, are remembered per
 machine part, so the layout you build survives a reload.
@@ -55,8 +55,8 @@ the shell service, and internal resources are left out of the list.
 
 ## Read an arm's joint positions
 
-To watch an arm's joint angles beside the 3D view, expand the arm in the **Control widgets**
-panel and toggle on **GetJointPositions**. The panel lists each joint by index with its
+To watch an arm's joint angles beside the 3D view, expand the arm in **Settings** > **Widgets**
+and toggle on **GetJointPositions**. The panel lists each joint by index with its
 current position and updates on its own as the arm moves:
 
 | Joint | Position (degrees) |
