@@ -59,6 +59,20 @@ Click the **status** dropdown to see details about each {{< glossary_tooltip ter
 On a machine's **CONFIGURE** page, look for a red exclamation icon on any resource card.
 Click the icon or expand the **ERROR LOGS** panel to see errors produced by that resource.
 
+While a module is not ready, the cards for the module and for the resources it provides show the module's state in place of the usual status pill:
+
+- **BUILDING…**: a cloud build of an inline module is running.
+- **DEPLOYING**: the machine has not picked up the module's new version yet.
+- **DOWNLOADING**, **LOADING**, or **STARTING**: the machine is fetching or starting the module. Hover over **DOWNLOADING** to see how much has downloaded.
+- **FAILED**: the module failed. Hover over the pill to see the error, which says how many times the module has failed if `viam-server` is retrying it. The card also shows a banner with the module's error, and on a resource card the banner names the module and has a **Go to module** button.
+
+On a resource card the label names the module, for example **MODULE DEPLOYING**.
+While the module is building, deploying, downloading, loading, or starting, the cards hide their error logs and error count, with a note saying so, because those errors are likely left over from the module's last run.
+Once the module fails, its own errors show again, but a resource card keeps hiding the resource's errors until the module is ready.
+
+When an update to a registry module fails while the previous version keeps running, the module card shows a yellow **UPDATE FAILED** pill, the cards show a warning banner, and errors stay visible.
+The sidebar flags the same states on module and resource rows, for example **module failed** or **build failed**.
+
 For more detailed debugging, see [Troubleshoot problems](/monitor/troubleshoot/).
 
 ## Test a machine remotely
