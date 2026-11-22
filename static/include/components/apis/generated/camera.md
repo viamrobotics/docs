@@ -140,6 +140,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
 The consumer of this call should decode the bytes into the format suggested by the MIME type.
+The points are expressed in the reference frame that `GetProperties` reports as the camera's default reference frame.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -243,6 +244,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetProperties
 
 Get the camera intrinsic parameters and camera distortion, as well as whether the camera supports returning point clouds.
+The response also names the default reference frame: the frame that the points `GetPointCloud` returns are expressed in.
+An empty name means the frame is unknown, and the named frame is not guaranteed to exist in the frame system.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
