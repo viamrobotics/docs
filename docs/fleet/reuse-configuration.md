@@ -81,7 +81,7 @@ viam machines part fragments add \
   --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID (in the URL of the page). Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID. To copy the ID, click the **...** menu at the top of the fragment's page, or the **...** menu on a fragment added to a machine's **CONFIGURE** tab, and select **Copy fragment ID**. The ID is also in the URL of the fragment's page. Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
 
 If you omit `--fragment`, the CLI prompts you to pick a fragment interactively from the ones available to you.
 
@@ -186,6 +186,25 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 - **Latest version**: the machine always uses the newest fragment revision. This is the default.
 - **Pin to version**: the machine stays on a specific revision number and never updates automatically.
 - **Pin to tag**: the machine uses whichever revision the tag currently points to. When you move the tag to a new revision, the machine updates.
+
+### Delete a tag
+
+You can delete a tag only when nothing pins it. Before you delete one, find what uses it and move it to another version or tag:
+
+- **Machines**: on the **Versions** page, the tag's **Org deployments** and **Machine deployments** counts show how many use it, including through nested fragments. To see which machines, open the fragment from the **Fragments in use** tab (see [Find which machines use a fragment](#find-which-machines-use-a-fragment)). The **Source** column shows each machine's pin, and **Nested** marks a pin that comes through another fragment. That list only includes machines in your organization. If **Org deployments** is above 1, machines in other organizations also pin the tag, and they must move off it first.
+- **Fragments**: another fragment can import this one pinned to the tag. The Viam app doesn't list these, so check the imports of fragments that use this one.
+
+Disabled fragment imports don't count.
+
+To delete the tag:
+
+1. Navigate to your fragment's page.
+1. Click **Versions** in the navigation bar.
+1. In the tag's row, click the delete icon.
+   The icon only appears if you have write access to the fragment, and it's disabled while **Org deployments** or **Machine deployments** is above zero.
+1. In the **Delete tag?** dialog, click **Delete tag**. You can't undo this.
+
+If another fragment still pins the tag, Viam rejects the delete with an error like `tag "stable" is pinned by 0 machine part(s) and 1 fragment(s); move them to another version first`. Update that fragment's import, then try again.
 
 ### Staged rollout workflow
 

@@ -87,8 +87,9 @@ Use an inline module when your code needs to run on the machine without your lap
 Inline modules are private to your organization.
 You can add one to several machines, or to a [fragment](/fleet/reuse-configuration/) that configures many machines at once.
 
-An inline module implements the [generic service API](/reference/services/generic/), which has a single method, `DoCommand`.
-That covers control logic, but not a driver for new hardware, which needs a component API.
+An inline module implements one component or service API, which you choose when you create it.
+The default is the [generic service API](/reference/services/generic/), which has a single method, `DoCommand`, for control logic.
+Choose a component API, such as sensor or motor, to write a driver for new hardware.
 You also can't use your own repository or choose version numbers.
 
 To get started, see [Write an inline module](/build-modules/write-an-inline-module/).
@@ -101,7 +102,6 @@ You upload builds from the CLI, or let Viam build from your repository or a loca
 
 Use an externally managed module when:
 
-- you need a component API, for example a driver for hardware Viam doesn't support
 - you want your own source control, code review, and release process
 - you want to share the module beyond your organization
 
@@ -120,7 +120,7 @@ To get started, see [Write a logic module](/build-modules/write-a-logic-module/)
 
 Start with the sandbox or a laptop script while you work out what the code should do.
 Move to a module when it needs to run unattended.
-Choose an inline module when the generic service API and your organization are enough, and an externally managed module when they aren't.
+Choose an inline module when you don't need your own repository or to share the module outside your organization, and an externally managed module when you do.
 
 ## Moving from prototype to production {#moving-from-prototype-to-production}
 

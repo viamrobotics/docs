@@ -15,6 +15,7 @@ Viam's courses are free and self-paced, and each one builds a working
 application from scratch.
 Viam 101, Viam 102, and Viam 103 run entirely in simulation, so you don't need hardware
 or prior robotics experience to start.
+The SO-101 courses run on a real SO-101 arm.
 
 If you're new to Viam, start with Viam 101.
 

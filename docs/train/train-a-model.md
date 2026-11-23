@@ -212,6 +212,29 @@ In the Viam app, go to **DATA** > **MODELS** and click the model's name to open 
 Built-in training holds back part of the dataset to validate the model, but it doesn't report loss curves or test results.
 To see how the model does on images it hasn't seen, [evaluate it on a labeled test dataset](/train/evaluate-a-model/) before you deploy it.
 
+## Schedule retraining {#schedule-retraining}
+
+Instead of manually starting a training job each time you add new data, you can set a retraining schedule on a model.
+Viam evaluates retraining schedules once per day at midnight UTC and submits a new training job when the model is due.
+
+To set a retraining schedule:
+
+1. Navigate to the [**MODELS** tab](https://app.viam.com/models) and open the model you want to retrain automatically.
+1. Click the context menu on the model details page and select **Retraining schedule**.
+1. Choose a frequency: **Daily**, **Weekly** (pick a day of the week), or **Monthly** (pick a day from 1 through 28).
+1. Click **Save schedule**.
+
+Viam retrains the model using the same dataset and labels from the most recent model version.
+Each retraining run produces a new version named `retrain-<timestamp>`.
+Annotate new images as you add them to the dataset, or retraining may not complete successfully.
+
+To turn off a schedule, reopen the dialog and click **Disable**.
+
+Scheduled retraining is available for models trained with built-in training that have a linked dataset.
+Models trained with [custom training scripts](/train/custom-training-scripts/) do not support scheduled retraining yet.
+
+For the rest of the retraining cycle, see [Retrain a model](/train/retrain-a-model/).
+
 ## Troubleshooting {#troubleshooting}
 
 {{< expand "The training job fails" >}}

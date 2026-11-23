@@ -1,7 +1,7 @@
 ---
 linkTitle: "Run batch inference"
 title: "Run batch inference on stored data"
-weight: 50
+weight: 34
 layout: "docs"
 type: "docs"
 description: "Use the viam infer CLI command to run a deployed ML model against images already captured to the Viam Cloud. Useful for labeling assistance, dataset validation, and running large or GPU-only models."
@@ -11,6 +11,7 @@ date: "2026-04-14"
 aliases:
   - /data-ai/ai/run-inference/
   - /vision/batch-inference/
+  - /vision/deploy-and-maintain/batch-inference/
 ---
 
 Use `viam infer` to run a deployed ML model against an image that is already stored in the Viam Cloud. The model runs in Viam's cloud infrastructure, so this is the path to use when:
@@ -151,10 +152,10 @@ Cloud inference consumes Viam cloud compute. Check your organization's billing p
 
 - **Live camera feeds:** use a [vision service](/vision/configure/) on the machine. `viam infer` is not for real-time inference.
 - **Raw tensor outputs for non-vision uses:** use the [ML model service API](/reference/apis/services/ml/) directly; `viam infer` is a CLI wrapper, not a general tensor API.
-- **Modifying or retraining the model:** this command only runs inference. Training happens in the [train section](/train/).
+- **Modifying or retraining the model:** this command only runs inference. To train a model, see [How training works](/train/overview/#how-training-works).
 
 ## Next steps
 
 - [Annotate data](/train/annotate-data/): use batch inference results to pre-label a dataset, then correct labels in the UI
-- [Deploy an ML model](/vision/deploy-and-maintain/deploy-from-registry/): get a model onto a machine for live inference
+- [Deploy a model to a machine](/train/deploy-a-model/): get a model onto a machine for live inference
 - [viam CLI reference](/cli/): every `viam` subcommand

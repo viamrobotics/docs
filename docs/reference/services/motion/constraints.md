@@ -27,14 +27,14 @@ The following constraints are available:
 
 The linear constraint (`LinearConstraint`) forces the path taken by `component_name` to stay within `line_tolerance_mm` of the straight line from the start to the goal.
 If `line_tolerance_mm` is 0, the default, the planner doesn't check the path against the line.
-If `orientation_tolerance_degs` is set, the orientation along the path stays within that angle of the start or goal orientation, whichever is closer.
+If `orientation_tolerance_degs` is set, the orientation along the path stays within that angle of the direct rotation from the start orientation to the goal orientation, the same measurement the [orientation constraint](#orientation-constraint) uses with `ignore_theta` off.
 This has the following sub-options:
 
 <!-- prettier-ignore -->
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
 | line_tolerance_mm | float | 0 | Max linear deviation from straight-line between start and goal, in mm. Only checked when greater than 0, so 0 turns the check off. |
-| orientation_tolerance_degs | float | 0 | Max angular distance, in degrees, between the current orientation and the closer of the start or goal orientation. Only checked when greater than 0, so 0 turns the check off. |
+| orientation_tolerance_degs | float | 0 | Max angular distance, in degrees, between the current orientation and the direct rotation from the start orientation to the goal orientation. Only checked when greater than 0, so 0 turns the check off. |
 
 **Example usage**:
 
@@ -84,7 +84,7 @@ You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.co
 
 The orientation constraint (`OrientationConstraint`) places a restriction on the orientation change during a motion, such that the orientation during the motion does not deviate from the direct rotation between start and goal by more than a set amount.
 The direct rotation is the shortest arc between the two orientations, also known as the [Slerp](https://en.wikipedia.org/wiki/Slerp) path.
-This is similar to the `orientation_tolerance_degs` option in the linear constraint, but without any path restrictions, and with a tolerance that follows the whole arc instead of only the start and goal.
+With `ignore_theta` off, this measures orientation the same way as the `orientation_tolerance_degs` option in the linear constraint, but without any path restrictions.
 If set to zero, any deviation from the direct rotation is rejected, so a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 This differs from the linear constraint, where 0 turns the orientation check off.
 

@@ -27,8 +27,8 @@ hero:
 announcement:
   enabled: true
   label: "New"
-  text: "Take the free Viam 103 course: write the computer vision for a simulated robot work cell"
-  url: "https://www.viam.com/education/viam-103"
+  text: "Take the free VLA course: teach a real SO-101 arm a task by showing it what to do"
+  url: "https://www.viam.com/education/vla-training"
   link_text: "Start the course"
 
 # "Ways to learn": a full-width Docs tile with its own links, then one tile
@@ -75,6 +75,10 @@ workshops:
       title: "Vision-guided pick-and-place with the xArm6"
       image: "tutorials/pick-and-place/hero-hardware-overview.jpeg"
       alt: "A uFactory xArm6 arm with a two-finger gripper and a wrist-mounted camera, reaching over colored blocks on a desk."
+    - path: "/tutorials/dice-vision"
+      title: "Train a dice reader and score Yahtzee"
+      image: "tutorials/dice-vision/hero-yahtzee-roll.jpg"
+      alt: "A webcam on a purple post at the back of a white desk, facing eight translucent colored dice rolled out in front of it."
 
 featured:
   title: "Popular guides"

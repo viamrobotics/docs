@@ -48,6 +48,11 @@ For more, see [Machines and parts](/overview/#machines-and-parts).
 2. Open a location.
 3. Click **Add machine**, enter a name (for example, `my-first-machine`), and click **Add machine** again.
 
+You can also start from the [**Machines**](https://app.viam.com/fleet/machines) page under **FLEET**.
+Click **Add machine**, select a location, and click **Choose**.
+To put the machine in a new location, type the location's name and click **Create location "&lt;name&gt;"** instead.
+Then enter a name for the machine and click **Add machine**.
+
 The app opens your new machine's page on the **CONFIGURE** tab.
 The tab shows a banner titled **Set up your machine**.
 

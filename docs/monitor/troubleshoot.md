@@ -121,6 +121,27 @@ Click the icon or expand the **ERROR LOGS** panel to see resource-specific error
 
 Go to the **LOGS** tab and look for errors.
 
+The status bar under the logs header summarizes the machine's recent activity: how long `viam-server` has been up, when it last reconfigured, and any failure.
+Its color shows the machine's state:
+
+- **Red**: `viam-server` is offline.
+- **Yellow**: `viam-server` is running, but a module, a resource, or the last reconfigure failed.
+  The bar names a single failure, or shows a count such as `2 failures`.
+- **Green**: `viam-server` is running with no failures, and live mode is on.
+- **Gray**: activity is loading, there is no activity in the past 7 days, or live mode is off with no failures.
+
+Click the status bar to open the **Activity** pane, which breaks the summary down by:
+
+- **viam-server**: last start time, process ID and version, or the stop reason if it stopped.
+- **Reconfigure**: the time of the last reconfigure, whether one is in progress, and a **last good config** link to that revision in the machine's configuration history.
+- **Modules**: each module that crashed or isn't running, with its stop reason, or **healthy**.
+- **Resources**: each failing resource with its error, or **healthy**. Click a resource's name to open it on the **CONFIGURE** tab.
+- **Remotes**: whether each remote is connected or disconnected.
+
+The pane reads the activity events that `viam-server` logs through the `rdk.activity` logger.
+To add the activity loggers, such as `rdk.activity`, to the log list's **Source** filter, turn on **Activity log filter** at the bottom of the pane.
+Removed and disabled resources and modules drop out of the summary, and so do resource failures from before `viam-server` last started.
+
 You can filter logs by:
 
 - **Level**: Error, Warn, Info, Debug
@@ -153,7 +174,7 @@ If a resource you configured is missing or unavailable, search the logs for `Res
 }
 ```
 
-**For individual resources**, click the **...** menu on the resource's configuration card and select **Enable debug logs**.
+**For individual resources**, click the **...** menu on the resource's configuration card, select **Set log level**, and choose **Debug**.
 
 **For resources matching a pattern**, configure the `log` field in the machine configuration:
 
@@ -291,7 +312,9 @@ viam traces import-remote --part <part-name-or-id> --endpoint localhost:4317
 1. If your machine was installed with `viam-agent`, click **Restart**.
    Both `viam-server` and `viam-agent` will restart.
 
-   If you do not see a **Restart** button, click the **...** menu on the machine part card and select **Restart part**.
+   The **Restart** button, and the **Restart part** option in the machine part card's **...** menu, only appear when the part is online and running `viam-agent`, and you have permission to edit the machine.
+   If the part is online but you do not see them, restart `viam-server` from the command line instead.
+   If the part is offline, SSH into the machine and restart `viam-server` manually.
 
 It takes a few minutes for `viam-server` to shut down and restart.
 
@@ -300,6 +323,9 @@ From the command line:
 ```sh {class="command-line" data-prompt="$"}
 viam machines part restart --part <part-name-or-id>
 ```
+
+This command marks the part for restart, and `viam-server` picks up the request the next time it checks in with Viam, so the part must be online.
+Without `viam-agent`, `viam-server` shuts down on this request and comes back only if a service manager such as `systemd` restarts it.
 
 ## Revert to an earlier configuration
 
