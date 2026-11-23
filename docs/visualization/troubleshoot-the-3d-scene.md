@@ -76,6 +76,10 @@ If a module implements the service:
    never moves usually means the poll loop stopped or emits no `TransformChange` events.
 3. The UUID is stable across updates. A module that generates a fresh UUID each tick
    piles up duplicates instead of updating one visual.
+4. The module never drops a change. A module that skips changes for a client that falls
+   behind leaves visuals stale with no error. End that client's stream instead; the scene
+   reconnects and reloads everything. Reloading the **3D SCENE** tab shows whether the
+   module's current state is right.
 
 The implementation side of these checks is covered in
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
