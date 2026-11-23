@@ -166,6 +166,8 @@ In JSON mode, overrides use the `fragment_mods` array with [MongoDB update opera
 
 Supported operators: `$set` (change or add a value), `$unset` (remove a value).
 
+If you added the fragment with a [prefix](#avoid-resource-name-conflicts-with-a-prefix), use the prefixed resource name in the path. For example, with the prefix `front`, the path to `motor1`'s `max_rpm` is `components.front-motor1.attributes.max_rpm`.
+
 ## Version and tag fragments for staged rollouts
 
 Every time you save a fragment, Viam creates a new revision. You can pin machines to a specific revision or use tags to control rollouts.
