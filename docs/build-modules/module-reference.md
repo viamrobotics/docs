@@ -217,6 +217,22 @@ Embed these in your resource struct to get default implementations:
 | `module.NewModuleFromArgs(ctx)`  | Create a module from CLI args (for custom entry points).                                                         |
 | `module.NewLoggerFromArgs(name)` | Create a logger that routes to `viam-server`.                                                                    |
 
+#### Composite models {#composite-functions}
+
+These functions build and use [composite models](/build-modules/composite-models/), which serve more than one API.
+They need `go.viam.com/rdk` v1.17.0 or later.
+
+<!-- prettier-ignore -->
+| Function | Description |
+| -------- | ----------- |
+| `resource.RegisterMultiAPI(apis, model, registration)` | Register one model and constructor under every API in `apis`. Panics if `apis` is empty or includes more than one of arm, gantry, and gripper. |
+| `resource.ExpandModel(model)` | Return one `resource.APIModel` for each API the model is registered under, for `module.ModularMain`. |
+| `resource.Compose(subs...)` | Combine one part per API into one composite resource. Errors if no parts are given, two share an API, or their names differ. |
+| `<api>.AsSub(res)` | Tag `res` as the part that serves that API (for example, `camera.AsSub(d)`), checking at compile time that it implements the API. |
+| `resource.NamedFromProvider(provider, name)` | Look up a resource by name alone. For a composite, returns one handle that serves every API. |
+| `resource.APIsOf(res)` | Return the APIs a resource serves. |
+| `resource.AsType[T]` | Called on a resource, return the part of it that serves the API with interface `T`, or a `TypeError` if it doesn't serve that API. |
+
 ## Resource interfaces (Python)
 
 ### Config validation
@@ -463,29 +479,30 @@ The full schema is available at `https://dl.viam.dev/module.schema.json`.
 }
 ```
 
-| Field                        | Type   | Required | Description                                                                                                                                          |
-| ---------------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$schema`                    | string | No       | JSON Schema URL for editor validation.                                                                                                               |
-| `module_id`                  | string | Yes      | `namespace:name` or `org-id:name`.                                                                                                                   |
-| `visibility`                 | string | Yes      | `private`, `public`, or `public_unlisted`.                                                                                                           |
-| `url`                        | string | No       | Source repo URL. Required for cloud builds.                                                                                                          |
-| `description`                | string | Yes      | Short description shown in the registry.                                                                                                             |
-| `models`                     | array  | No       | List of API/model pairs the module provides. Deprecated: models are now inferred from the module binary.                                             |
-| `models[].api`               | string | Yes      | Resource API (for example, `rdk:component:sensor`).                                                                                                  |
-| `models[].model`             | string | Yes      | Model triplet (for example, `my-org:my-module:my-sensor`).                                                                                           |
-| `models[].short_description` | string | No       | Short model description (max 100 chars).                                                                                                             |
-| `models[].markdown_link`     | string | No       | Path to model docs within the repo.                                                                                                                  |
-| `entrypoint`                 | string | Yes      | Path to the executable inside the archive.                                                                                                           |
-| `first_run`                  | string | No       | Path to a one-time setup script. Runs before the entrypoint on first install and after version updates. See [First-run scripts](#first-run-scripts). |
-| `markdown_link`              | string | No       | Path to README used as registry description.                                                                                                         |
-| `build`                      | object | No       | Build configuration for local and cloud builds.                                                                                                      |
-| `build.setup`                | string | No       | One-time setup command (for example, install dependencies).                                                                                          |
-| `build.build`                | string | No       | Build command (for example, `make module.tar.gz`).                                                                                                   |
-| `build.path`                 | string | No       | Path to built artifact. Default: `module.tar.gz`.                                                                                                    |
-| `build.arch`                 | array  | No       | Target platforms. Default: `["linux/amd64", "linux/arm64"]`.                                                                                         |
-| `build.darwin_deps`          | array  | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                                                        |
-| `build.distro`               | string | No       | Linux distribution for cloud builds (for example, `bullseye`). Default: `focal` (Ubuntu 20.04).                                                      |
-| `applications`               | array  | No       | Viam applications provided by the module. See [Applications](#applications).                                                                         |
+| Field                        | Type   | Required | Description                                                                                                                                                                                                  |
+| ---------------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$schema`                    | string | No       | JSON Schema URL for editor validation.                                                                                                                                                                       |
+| `module_id`                  | string | Yes      | `namespace:name` or `org-id:name`.                                                                                                                                                                           |
+| `visibility`                 | string | Yes      | `private`, `public`, or `public_unlisted`.                                                                                                                                                                   |
+| `url`                        | string | No       | Source repo URL. Required for cloud builds.                                                                                                                                                                  |
+| `description`                | string | Yes      | Short description shown in the registry.                                                                                                                                                                     |
+| `models`                     | array  | No       | List of API/model pairs the module provides. Deprecated: models are now inferred from the module binary.                                                                                                     |
+| `models[].api`               | string | Yes      | Resource API (for example, `rdk:component:sensor`). For a model that serves more than one API, one of the values in `apis`.                                                                                  |
+| `models[].apis`              | array  | No       | Every API a [composite model](/build-modules/composite-models/) serves (for example, `["rdk:component:camera", "rdk:component:movement_sensor"]`). The registry rejects a model whose `api` isn't in `apis`. |
+| `models[].model`             | string | Yes      | Model triplet (for example, `my-org:my-module:my-sensor`).                                                                                                                                                   |
+| `models[].short_description` | string | No       | Short model description (max 100 chars).                                                                                                                                                                     |
+| `models[].markdown_link`     | string | No       | Path to model docs within the repo.                                                                                                                                                                          |
+| `entrypoint`                 | string | Yes      | Path to the executable inside the archive.                                                                                                                                                                   |
+| `first_run`                  | string | No       | Path to a one-time setup script. Runs before the entrypoint on first install and after version updates. See [First-run scripts](#first-run-scripts).                                                         |
+| `markdown_link`              | string | No       | Path to README used as registry description.                                                                                                                                                                 |
+| `build`                      | object | No       | Build configuration for local and cloud builds.                                                                                                                                                              |
+| `build.setup`                | string | No       | One-time setup command (for example, install dependencies).                                                                                                                                                  |
+| `build.build`                | string | No       | Build command (for example, `make module.tar.gz`).                                                                                                                                                           |
+| `build.path`                 | string | No       | Path to built artifact. Default: `module.tar.gz`.                                                                                                                                                            |
+| `build.arch`                 | array  | No       | Target platforms. Default: `["linux/amd64", "linux/arm64"]`.                                                                                                                                                 |
+| `build.darwin_deps`          | array  | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                                                                                                                |
+| `build.distro`               | string | No       | Linux distribution for cloud builds (for example, `bullseye`). Default: `focal` (Ubuntu 20.04).                                                                                                              |
+| `applications`               | array  | No       | Viam applications provided by the module. See [Applications](#applications).                                                                                                                                 |
 
 ### Applications
 

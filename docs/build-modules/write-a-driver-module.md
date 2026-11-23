@@ -998,6 +998,8 @@ A single module can provide multiple models, even across different APIs
 (for example, a sensor and a camera). There is no limit on the number of models
 per module.
 
+If one device needs to serve several APIs as a single resource, such as a camera with a built-in IMU, build one [composite model](/build-modules/composite-models/) instead of a model per API.
+
 To add a second model, run [`viam module add-model`](/cli/reference/#module-add-model) from within the module directory:
 
 ```sh {class="command-line" data-prompt="$"}

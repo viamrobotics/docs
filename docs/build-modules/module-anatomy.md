@@ -397,18 +397,18 @@ and populates it from your answers to the generator prompts.
 }
 ```
 
-| Field         | Purpose                                                             |
-| ------------- | ------------------------------------------------------------------- |
-| `module_id`   | Unique ID in the registry. Format: `namespace:name`.                |
-| `visibility`  | Who can install the module: `private`, `public`, `public_unlisted`. |
-| `url`         | Link to the source repository. Required for cloud builds.           |
-| `description` | Shown in registry search results.                                   |
-| `models`      | Resource models the module provides, each with `api` and `model`.   |
-| `entrypoint`  | Command that starts the module inside the archive.                  |
-| `build.setup` | Script that installs build dependencies (runs once).                |
-| `build.build` | Script that compiles and packages the module.                       |
-| `build.path`  | Path to the packaged output archive.                                |
-| `build.arch`  | Target platforms to build for.                                      |
+| Field         | Purpose                                                                                                                                                           |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `module_id`   | Unique ID in the registry. Format: `namespace:name`.                                                                                                              |
+| `visibility`  | Who can install the module: `private`, `public`, `public_unlisted`.                                                                                               |
+| `url`         | Link to the source repository. Required for cloud builds.                                                                                                         |
+| `description` | Shown in registry search results.                                                                                                                                 |
+| `models`      | Resource models the module provides, each with `api` and `model`. A [composite model](/build-modules/composite-models/) also lists every API it serves in `apis`. |
+| `entrypoint`  | Command that starts the module inside the archive.                                                                                                                |
+| `build.setup` | Script that installs build dependencies (runs once).                                                                                                              |
+| `build.build` | Script that compiles and packages the module.                                                                                                                     |
+| `build.path`  | Path to the packaged output archive.                                                                                                                              |
+| `build.arch`  | Target platforms to build for.                                                                                                                                    |
 
 For the full schema, see
 [Module developer reference](/build-modules/module-reference/#metajson-schema).

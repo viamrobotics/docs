@@ -275,7 +275,7 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description |
 | ------------------ | ------ | --------- | ----------- |
-| `name` | string | **Required** | Fully qualified resource name (for example, `rdk:component:sensor/my-sensor`). |
+| `name` | string | **Required** | Fully qualified resource name (for example, `rdk:component:sensor/my-sensor`). For a [composite](/build-modules/composite-models/), the API in `name` sets which of its APIs the method is captured under. See [Capture from a composite](/data/capture-sync/capture-and-sync-data/#capture-from-a-composite). |
 | `method` | string | **Required** | Depends on the component or service type. See [Supported resources](#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time and will not sync to the cloud. |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz. For example, `0.5` = one reading every 2 seconds. |
 | `additional_params` | object | Optional | Method-specific parameters. For example, `DoCommand` requires a `docommand_input` object; `GetImages` accepts a `filter_source_names` list (the **Filter by source names** field in the data capture UI). |

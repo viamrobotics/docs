@@ -20,3 +20,4 @@ Each part has local resources and can also have resources from another {{< gloss
 The capabilities of each resource are exposed through the part’s API.
 
 Each resource on your machine implements either one of the [existing Viam APIs](/reference/apis/), or a [custom interface](/reference/).
+A {{< glossary_tooltip term_id="composite" text="composite" >}} resource implements more than one.

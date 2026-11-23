@@ -54,20 +54,20 @@ The metadata fields (`organization_id` through `additional_parameters`) are the 
 
 ## Column reference
 
-| Column                  | Type      | Description                                                                                                        |
-| ----------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
-| `organization_id`       | String    | Organization UUID. Set automatically from your machine's config.                                                   |
-| `location_id`           | String    | Location UUID. The location this machine belongs to.                                                               |
-| `robot_id`              | String    | Machine UUID. Identifies which machine captured this data.                                                         |
-| `part_id`               | String    | Machine part UUID. Identifies which part of the machine.                                                           |
-| `component_type`        | String    | Resource type as a triplet (for example, `rdk:component:sensor`).                                                  |
-| `component_name`        | String    | The name you gave this component in your config (for example, `my-sensor`). This is what you filter on most often. |
-| `method_name`           | String    | The capture method (for example, `Readings`, `GetImages`, `EndPosition`).                                          |
-| `time_requested`        | Timestamp | When the capture was requested on the machine (machine's clock).                                                   |
-| `time_received`         | Timestamp | When the cloud received and stored the data. Use this for time-range queries since it's indexed.                   |
-| `tags`                  | Array     | User-applied tags from your data management config.                                                                |
-| `additional_parameters` | JSON      | Method-specific parameters you configured (for example, `pin_name`, `reader_name`).                                |
-| `data`                  | JSON      | Your actual captured values. Structure varies by component type and method.                                        |
+| Column                  | Type      | Description                                                                                                               |
+| ----------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `organization_id`       | String    | Organization UUID. Set automatically from your machine's config.                                                          |
+| `location_id`           | String    | Location UUID. The location this machine belongs to.                                                                      |
+| `robot_id`              | String    | Machine UUID. Identifies which machine captured this data.                                                                |
+| `part_id`               | String    | Machine part UUID. Identifies which part of the machine.                                                                  |
+| `component_type`        | String    | Resource type as a triplet (for example, `rdk:component:sensor`). For a composite, the API that owns the captured method. |
+| `component_name`        | String    | The name you gave this component in your config (for example, `my-sensor`). This is what you filter on most often.        |
+| `method_name`           | String    | The capture method (for example, `Readings`, `GetImages`, `EndPosition`).                                                 |
+| `time_requested`        | Timestamp | When the capture was requested on the machine (machine's clock).                                                          |
+| `time_received`         | Timestamp | When the cloud received and stored the data. Use this for time-range queries since it's indexed.                          |
+| `tags`                  | Array     | User-applied tags from your data management config.                                                                       |
+| `additional_parameters` | JSON      | Method-specific parameters you configured (for example, `pin_name`, `reader_name`).                                       |
+| `data`                  | JSON      | Your actual captured values. Structure varies by component type and method.                                               |
 
 {{< alert title="Note" color="note" >}}
 The `readings` table does not include `robot_name` or `part_name` columns. These fields appear in data export responses but are not part of the queryable schema. To filter by machine, use `robot_id` or `part_id`.

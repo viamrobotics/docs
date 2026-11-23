@@ -452,4 +452,69 @@ If your model implements DoCommand, document each supported command.
 
 {{< /expand >}}
 
+{{< expand "Composite model README template" >}}
+
+A [composite model](/build-modules/composite-models/) serves several APIs, so its README also tells users that it's one device, which APIs it serves, and how its shared methods behave.
+`markdown_link` is set per model, so a composite gets one README section, not one per API.
+
+````md
+# Model `my-org:my-device-module:my-device`
+
+A camera with a built-in IMU.
+This model serves two APIs from one device:
+
+- `rdk:component:camera`
+- `rdk:component:movement_sensor`
+
+Requires `viam-server` v1.17.0 or later.
+
+## Configuration
+
+Add this model to your machine once.
+Set `api` to either of the APIs above; the machine serves both.
+Don't add a second entry for the other API: each entry is a separate instance that opens the same hardware.
+
+```json
+{
+  "name": "my-device",
+  "api": "rdk:component:camera",
+  "model": "my-org:my-device-module:my-device",
+  "attributes": {}
+}
+```
+
+### Attributes
+
+| Name | Type | Required | Description |
+| ---- | ---- | -------- | ----------- |
+
+## Methods
+
+| API             | Implemented methods                                     |
+| --------------- | ------------------------------------------------------- |
+| Camera          | `GetImages`, `GetProperties`                            |
+| Movement sensor | `GetOrientation`, `GetAngularVelocity`, `GetProperties` |
+
+Methods not listed return an error.
+`GetProperties` returns the camera's properties through the camera API and the IMU's through the movement sensor API.
+`DoCommand` is handled by the camera API.
+
+## Frame
+
+The device has one frame, set in this entry's `frame` field.
+
+## Data capture
+
+Capture `GetImages` and the movement sensor methods from this one entry.
+Each captured method is tagged with the API that owns it.
+To capture `DoCommand` under the movement sensor API, set the capture method's `name` to `rdk:component:movement_sensor/<name>`.
+
+## Use from code
+
+Get the device with each API's usual method, for example the camera and movement sensor getters in any SDK.
+In Go, `resource.NamedFromProvider` returns one handle that serves both APIs.
+````
+
+{{< /expand >}}
+
 You can point your module's registry page to a README by setting the `markdown_link` field in `meta.json` to a file path (for example, `README.md`) or a section anchor (for example, `README.md#my-sensor`).
