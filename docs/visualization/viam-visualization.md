@@ -135,8 +135,6 @@ arrows, so the export leaves those out, along with hidden objects. Read
 <file>export-notes.txt</file> for anything else, such as components with
 Denavit-Hartenberg kinematics, whose links the export welds in place.
 
-The export button is part of Viam Visualization, not the **3D SCENE** tab in the Viam app.
-
 ## How updates reach the browser
 
 The app runs a **draw service** that the client API calls. Each push becomes an
