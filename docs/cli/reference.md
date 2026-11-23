@@ -57,7 +57,7 @@ For setup instructions, see [Enable shell completion](/cli/overview/#enable-shel
 ## `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, query tabular or binary data with SQL or MQL, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, query tabular or binary data with SQL or MQL, delete data, add or remove tags from all data that matches a given filter, create and manage [sequences](/data/sequences/), or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export binary filter --destination=<output path> [...named args]
@@ -77,6 +77,10 @@ viam data tag filter remove --tags=<tags> [...named args from filter]
 viam data index create --collection-type=<type> --index-path=<file> [--org-id=<org-id>] [--pipeline-name=<name>]
 viam data index delete --collection-type=<type> --index-name=<name> [--org-id=<org-id>] [--pipeline-name=<name>]
 viam data index list --collection-type=<type> [--org-id=<org-id>] [--pipeline-name=<name>]
+viam data sequence create --part-id=<part-id> --resources=<resource-name>:<method> --start=<timestamp> --end=<timestamp> [--tags=<tags>]
+viam data sequence get --sequence-id=<sequence-id>
+viam data sequence update --sequence-id=<sequence-id> [--resources=<resource-name>:<method>] [--tags=<tags>] [--start=<timestamp>] [--end=<timestamp>]
+viam data sequence delete --sequence-ids=<sequence-ids>
 ```
 
 ### `data export tabular`
@@ -445,6 +449,76 @@ viam data index list --collection-type=<type> [--org-id=<org-id>] [--pipeline-na
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 | `--pipeline-name` | Name of the data pipeline (required when `--collection-type` is `pipeline-sink`). | Conditional |
 
+### `data sequence create`
+
+Create a [sequence](/data/sequences/) over a time range of data captured on a machine part.
+The CLI prints the new sequence's ID.
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence create --part-id=abc --resources=my-camera:GetImages,my-sensor:Readings --start=2026-09-29T14:00:00Z --end=2026-09-29T14:00:30Z --tags=demo-1
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part-id` | The ID of the part the sequence's data was captured on. | **Required** |
+| `--resources` | The resources in the sequence, each as `<resource-name>:<method>`, for example `my-camera:GetImages`. Repeat the flag or use a comma-separated list. | **Required** |
+| `--start` | ISO-8601 timestamp in RFC3339 format indicating the start of the sequence. Must be before `--end`. | **Required** |
+| `--end` | ISO-8601 timestamp in RFC3339 format indicating the end of the sequence. | **Required** |
+| `--tags` | Tags to apply to the sequence (accepts comma-separated list). | Optional |
+
+### `data sequence get`
+
+Print a sequence's part ID, resources, tags, datasets, start and end times, and when it was created and last updated.
+The CLI has no command to list sequences.
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence get --sequence-id=abc
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sequence-id` | The ID of the sequence. | **Required** |
+
+### `data sequence update`
+
+Update a sequence.
+Only the fields whose flags you pass change.
+Pass at least one of `--resources`, `--tags`, `--start`, or `--end`.
+
+```sh {class="command-line" data-prompt="$"}
+# replace a sequence's tags
+viam data sequence update --sequence-id=abc --tags=demo-1,pick-up-cup
+
+# clear a sequence's tags
+viam data sequence update --sequence-id=abc --tags=""
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sequence-id` | The ID of the sequence to update. | **Required** |
+| `--resources` | Replaces the sequence's full resource list, each as `<resource-name>:<method>`. Repeat the flag or use a comma-separated list. | Optional |
+| `--tags` | Replaces the sequence's tags. Pass `""` to clear them. | Optional |
+| `--start` | ISO-8601 timestamp in RFC3339 format indicating the new start of the sequence. | Optional |
+| `--end` | ISO-8601 timestamp in RFC3339 format indicating the new end of the sequence. | Optional |
+
+### `data sequence delete`
+
+Delete sequences by ID.
+Deleting a sequence doesn't delete the data in its time range.
+The CLI tries to delete every ID, even after one fails, and then reports all the IDs that failed.
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence delete --sequence-ids=abc,def
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sequence-ids` | The IDs of the sequences to delete (accepts comma-separated list). | **Required** |
+
 ## `datapipelines`
 
 The `datapipelines` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
@@ -565,10 +639,10 @@ viam datapipelines delete --id=abc123
 ## `dataset`
 
 The `dataset` command allows you to manage machine data in datasets.
-With it, you can add or remove images from a dataset, export data from a dataset, or filter a dataset by tags.
+With it, you can add or remove images or sequences from a dataset, export data from a dataset, or filter a dataset by tags.
 
 ```sh {class="command-line" data-prompt="$"}
-viam dataset create --org-id=<org-id> --name=<name>
+viam dataset create --org-id=<org-id> --name=<name> [--type=<binary|sequence>]
 viam dataset rename --dataset-id=<dataset-id> --name=<name>
 viam dataset list --org-id=<org-id>
 viam dataset list --dataset-ids=<dataset-ids>
@@ -579,14 +653,21 @@ viam dataset data add filter --dataset-id=<dataset-id> [...named args]
 viam dataset data remove filter --dataset-id=<dataset-id> [...named args]
 viam dataset data add ids --dataset-id=<dataset-id>  --binary-data-ids=<binary-data-ids>
 viam dataset data remove ids --dataset-id=<dataset-id> --binary-data-ids=<binary-data-ids>
+viam dataset sequence add --dataset-id=<dataset-id> --sequence-ids=<sequence-ids>
+viam dataset sequence remove --dataset-id=<dataset-id> --sequence-ids=<sequence-ids>
 ```
 
 ### `dataset create`
 
 Create a new dataset.
+The CLI prints the dataset's type, name, and ID.
 
 ```sh {class="command-line" data-prompt="$"}
+# create a binary dataset
 viam dataset create --org-id=123 --name=MyDataset
+
+# create a sequence dataset
+viam dataset create --org-id=123 --name=MySequenceDataset --type=sequence
 ```
 
 <!-- prettier-ignore -->
@@ -594,6 +675,7 @@ viam dataset create --org-id=123 --name=MyDataset
 | -------- | ----------- | --------- |
 | `--org-id` | Organization ID of the organization the dataset belongs to. | **Required** |
 | `--name` | The name of the dataset to create. | **Required** |
+| `--type` | The type of data the dataset holds: `binary` or `sequence`. See [Choose a dataset type](/train/create-a-dataset/#choose-a-dataset-type). Default: `binary`. | Optional |
 
 ### `dataset rename`
 
@@ -612,6 +694,7 @@ viam dataset rename --dataset-id=123 --name=MyCoolDataset
 ### `dataset list`
 
 List dataset information from specified IDs or for an org ID.
+Each line shows a dataset's name, ID, organization ID, and type (`binary` or `sequence`).
 
 ```sh {class="command-line" data-prompt="$"}
 # show dataset information for all datasets within a specified org
@@ -763,6 +846,35 @@ viam dataset data remove filter --dataset-id=abc --location-ids=123 --org-ids=45
 | `--part-id` | Filter data on part ID. | Optional |
 | `--part-name` | Filter data on part name. | Optional |
 
+### `dataset sequence add`
+
+Add [sequences](/data/sequences/) to a sequence dataset.
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence add --dataset-id=abc --sequence-ids=aaa,bbb
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--dataset-id` | The ID of the sequence dataset to add sequences to. | **Required** |
+| `--sequence-ids` | The IDs of the sequences to add (accepts comma-separated list). | **Required** |
+
+### `dataset sequence remove`
+
+Remove sequences from a sequence dataset.
+Removing a sequence from a dataset doesn't delete the sequence.
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset sequence remove --dataset-id=abc --sequence-ids=aaa,bbb
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--dataset-id` | The ID of the sequence dataset to remove sequences from. | **Required** |
+| `--sequence-ids` | The IDs of the sequences to remove (accepts comma-separated list). | **Required** |
+
 ### Using the `ids` argument
 
 When you use the `viam dataset data add` and `viam dataset data remove` commands, you specify images to add or remove using their binary data IDs as a comma-separated list.
@@ -893,14 +1005,53 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 | `--org-id` | The organization ID of the organization that will run the inference. | **Required** |
 | `--model-org-id` | The organization ID of the organization that owns the model. | **Required** |
 
+## `kinematics`
+
+The `kinematics` command converts a URDF, SVA, or DH file into a [kinematic model file](/motion-planning/reference/kinematics/#kinematic-model-format), with the model's meshes written as separate files beside it.
+
+```sh {class="command-line" data-prompt="$"}
+viam kinematics convert --input-file=<file> --output-file=<file>.json [other options]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# convert a URDF
+viam kinematics convert --input-file=arm.urdf --output-file=arm.json
+
+# convert a URDF whose package:// mesh paths resolve under the current directory
+viam kinematics convert --input-file=urdf/arm.urdf --output-file=arm.json --package-root=.
+
+# convert an SVA file and keep 20% of the triangles in each collision mesh
+viam kinematics convert --input-file=arm_sva.json --output-file=arm.json --decimate=0.2
+```
+
+### `kinematics convert`
+
+Convert a URDF, SVA, or DH file to a kinematic model file.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--input-file` | Path to the file to convert: a `.urdf` file, or a `.json` file holding SVA, DH, or a kinematic model. | **Required** |
+| `--output-file` | Path where the kinematic model file will be written. Must end in `.json`. | **Required** |
+| `--package-root` | Directory that `package://` mesh paths resolve under, for a URDF that is not at its package root. URDF input only: the command fails if you pass it with a `.json` input file. | Optional |
+| `--decimate` | Fraction of triangles to keep in each collision mesh, greater than `0` and at most `1`. Each collision mesh, including joint geometry, that has more triangles than the target is replaced with a simplified PLY mesh that encloses the original and keeps at most that fraction of its triangles, with a minimum of 12. Visual meshes are not changed. Default: `1` (no decimation). | Optional |
+
+The command writes the model's meshes under `meshes/<name>/collision/` and `meshes/<name>/visual/` next to the output file, where `<name>` is the output file name without `.json` (`--output-file=arm.json` writes `meshes/arm/collision/` and `meshes/arm/visual/`). The output file refers to them by relative path, so load it from disk with that directory beside it.
+It then reads the output file back and fails if its forward kinematics don't match the input file's.
+It warns when the model carries more than 8 MiB of mesh data, since every `GetKinematics` response for the model includes its meshes.
+For a URDF, collision meshes must be STL or PLY files, and visual DAE meshes and visual cylinders are left out of the output with a warning.
+
 ## `locations`
 
 The `locations` command allows you to manage the [locations](/reference/) that you have access to.
-With it, you can list available locations, filter locations by organization, or create a new location API key.
+With it, you can list available locations, filter locations by organization, or create and delete location API keys.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [--organization=<organization>]
 viam locations api-key create [--location-id=<location-id>] [--name=<name>] [--org-id=<org-id>]
+viam locations api-key delete --key-id=<key-id>
 ```
 
 ### `locations list`
@@ -930,6 +1081,22 @@ viam locations api-key create --location-id=<location-id>
 | `--location-id` | The location to create an API key for. Default: the default location set with `viam defaults set-location`. | Optional |
 | `--name` | The name of the API key. Default: your login info with the current time. | Optional |
 | `--org-id` | The organization ID to attach the key to. Default: attempts to attach the key to the org of the location if only one org is attached to the location. | Optional |
+
+### `locations api-key delete`
+
+Delete an API key by its ID.
+
+```sh {class="command-line" data-prompt="$"}
+viam locations api-key delete --key-id=<key-id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--key-id` | The ID of the API key to delete. | **Required** |
+
+The command deletes the key with this ID and does not check that the key belongs to a location.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ## `login`
 
@@ -1003,6 +1170,7 @@ viam machines list
 viam machines status --machine=<machine id>
 viam machines logs --machine=<machine id> [...named args]
 viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
+viam machines api-key delete --key-id=<key id>
 viam machines part list --machine=<machine id>
 viam machines part logs --part=<part id> [...named args]
 viam machines part status --part=<part id>
@@ -1116,7 +1284,7 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago, unless `--range` is set. | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours before `--end` when `--end` is set, otherwise 24 hours ago. Not applied when `--range` is set. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
 | `--range` | Duration string in minutes, hours, or days (for example, `10m`, `10h`, `10d`) that sets a relative time window. Resolved against whichever of `--start` and `--end` is present: with only `--end`, the window is `[end - range, end]`; with only `--start`, the window is `[start, start + range]`; with neither, the window is `[now - range, now]`. Cannot be used together with both `--start` and `--end`. | Optional |
 | `--order` | Order in which logs are returned by time. Accepted values: `asc` (oldest first), `desc` (newest first). Default: `desc`. | Optional |
@@ -1140,6 +1308,23 @@ viam machines api-key create --machine-id=123 --name=MyKey
 | -------- | ----------- | --------- |
 | `--machine-id` | The ID of the machine to create an API key for. | **Required** |
 | `--name` | The optional name of the API key. If omitted, a name will be auto-generated. | Optional |
+
+### `machines api-key delete`
+
+Delete an API key by its ID.
+
+```sh {class="command-line" data-prompt="$"}
+# delete an API key
+viam machines api-key delete --key-id=abcdef12-3456-7890-abcd-ef1234567890
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--key-id` | The ID of the API key to delete. | **Required** |
+
+The command deletes the key with this ID and does not check that the key belongs to a machine.
+On success, it prints `Successfully deleted key: <key-id>`.
 
 ### `machines part list`
 
@@ -1794,6 +1979,7 @@ viam module add-model --resource-subtype=sensor --model-name=my-sensor
 ```
 
 The command reads module metadata from the `.viam-gen-info` file in the current directory, generates the model source file, registers the model in `meta.json`, and updates the module entry point to import the new model.
+For a Go module, the model file is `<model_name>_model.go` (for example, `my_sensor_model.go`), and the command then runs `go mod tidy`. The command fails rather than overwrite an existing file with that name.
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
@@ -2383,8 +2569,8 @@ viam organizations billing-service disable --org-id=<org-id>
 viam organization auth-service [enable | disable] --org-id=<org-id>
 viam organization auth-service oauth-app [create | update] --client-authentication [required | unspecified | not_required | not_required_when_using_pkce] \
     --client-name <client-name> --enabled-grants [password | unspecified | refresh_token | implicit | device_code | authorization_code] \
-    --logout-uri=https://logoipsum.com --origin-uris=https://logoipsum.com \
-    --pkce=[required | not_required | unspecified] --redirect-uris=https://logoipsum.com/callback \
+    --logout-uri=https://example.com --origin-uris=https://example.com \
+    --pkce=[required | not_required | unspecified] --redirect-uris=https://example.com/callback \
     --url-validation=[allow_wildcards | unspecified | exact_match] --org-id=<org-id>
 viam organization auth-service oauth-app [list] --org-id=<org-id>
 viam organization auth-service oauth-app [read | delete] --org-id=<org-id> --client-id=<client-id>
@@ -2707,7 +2893,7 @@ viam packages upload --path=./the_package.tar.gz --org-id=123 --name=MyMLModel -
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
 | `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | Required if `--type=ml_model` |
 | `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--model-framework=registry`, and not allowed with any other framework. | Optional |
-| `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | Required if `--type=ml_model` |
+| `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`. | Required if `--type=ml_model` |
 
 ### `packages export`
 
@@ -3046,7 +3232,7 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--container-id` | The ID of the training container to run the job in: a Viam-managed container or one of your organization's [custom training containers](/train/custom-containers/). Use `viam train containers list --org-id=<org-id>` to see available container IDs. | **Required** |
 | `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, `registry`. | **Required** |
 | `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
-| `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | Optional |
+| `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, `robot_policy`, or `unspecified`. | Optional |
 | `--version` | The version of the ML training script to upload. Default: current timestamp. | Optional |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
@@ -3192,7 +3378,7 @@ viam training-script upload --framework=tflite --org-id=123 --path=. --script-na
 | `--framework` | Framework of the ML training script to upload, can be `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`, or `registry`. | **Required** |
 | `--module-resource` | A module resource to deploy with the ML model, as a model triple (`namespace:module:model`). Repeat the flag for each resource. Required if `--framework=registry`, and not allowed with any other framework. | Optional |
 | `--url` | URL of GitHub repository associated with the training script. | Optional |
-| `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | Optional |
+| `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, `object_detection`, or `robot_policy`. | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | Optional |
 | `--visibility` | Visibility of the training script. Options: `public`, `private`. | Optional |
 

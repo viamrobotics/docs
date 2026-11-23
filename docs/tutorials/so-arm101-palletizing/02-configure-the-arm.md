@@ -6,7 +6,7 @@ slug: "configure-the-arm"
 weight: 20
 description: "Add the arm and gripper with the discovery service, verify them with test cards, and place the arm in the frame system."
 capabilities: ["discovery", "hw-arm", "hw-actuation", "frame-system", "docs"]
-diataxis: tutorial
+diataxis: workshop
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 2

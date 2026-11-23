@@ -142,9 +142,8 @@ Log messages appear under the **LOGS** tab for a machine.
 The default log level for `viam-server` and any running resources is `"Info"`.
 Logs are stored for 30 days before they are deleted.
 
-If you need more logs for an individual resource, click **Enable debug logs** in the **...** menu on the resource.
-
-To set other log levels for individual resources, add the `log_configuration` option to the resource's JSON configuration:
+To change the log level for an individual resource, click the **...** menu on the resource, select **Set log level**, and choose **Debug**, **Info**, **Warn**, or **Error**.
+This sets the `log_configuration` option in the resource's JSON configuration, which you can also edit directly:
 
 ```json
 "log_configuration": {
@@ -287,14 +286,12 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-cpuprofile string` | Write CPU profile to file. |
 | `-debug` | Enable debug level logs. |
 | `-disable-mdns` | Disable server discovery through multicast DNS. |
-| `-dump-resources <filepath>` | Dump all resource registrations as JSON to the provided file path. |
 | `-ftdc` | Enable fulltime data capture for diagnostics. Default: `true`. |
 | `-log-file <filename>` | Write logs to a file with log rotation. |
 | `-network-check` | Only runs normal network checks. |
 | `-no-tls` | Starts an insecure HTTP server without TLS certificates even if one exists. |
-| `-output-telemetry` | Print out telemetry data (metrics and spans). |
+| `-output-telemetry` | Print metrics to the console every 10 seconds. To print traces, set `"console": true` in the machine's [`tracing` configuration](/monitor/tracing/). To export OpenTelemetry metrics to an OTLP collector, see [Export metrics](/monitor/tracing/#export-metrics). |
 | `-reveal-sensitive-config-diffs` | Show config diffs. |
-| `-shareddir <directory-name>` | The location of the static web assets. |
 | `-untrusted-env` | Disable processes and shell from running in an untrusted environment. |
 | `-version` | Print version. |
 | `-webprofile` | Include profiler in HTTP server. |
@@ -315,6 +312,8 @@ You can set the following environment variables to configure `viam-server` behav
 | `VIAM_LOGFILE` | Path to a log file. `viam-server` writes logs to this file in addition to standard output. This differs from the `-log-file` flag, which writes to the file instead of standard output. |
 | `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger and Event Tracing for Windows (ETW). Only relevant on Windows. |
 | `VIAM_ENABLE_DISK_SPACE_BLOCK` | If set to `true` (or any value starting with `t`, `T`, or `1`), `viam-server` refuses to download, copy, or unpack a package or module when doing so would leave less than 10MB free on the target volume. When unset (the default), `viam-server` logs a warning about low disk space and proceeds. `viam-agent` has a separate setting for its own downloads. |
+| `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | URL of an OTLP collector, including the scheme, such as `http://localhost:4317`. When set, `viam-server` v1.16.0 and later exports OpenTelemetry metrics to it over OTLP gRPC. A value without a scheme, such as `localhost:4317`, is rejected and nothing is exported. See [Export metrics](/monitor/tracing/#export-metrics). |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | Fallback for `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`, used when that variable is unset. Takes the same URL format. |
 
 ## Install `viam-server` without the web UI
 

@@ -4,7 +4,7 @@ linkTitle: "Claw Game"
 type: "docs"
 description: "Create your own version of the famous arcade claw machine using a robotic arm and a claw grabber."
 capabilities: ["hw-arm", "hw-actuation", "hw-compute", "docs"]
-diataxis: tutorial
+diataxis: workshop
 tags: ["app", "board", "motor", "gripper"]
 videos:
   ["/tutorials/claw-game/preview.webm", "/tutorials/claw-game/preview.mp4"]
@@ -818,7 +818,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your machine's location secret and host address by navigating to the **CONNECT** tab.
+1. Find your machine's API key, API key ID, and host address on the **CONNECT** tab.
    Use the host address of your main machine part, as it will reference all parts of your machine.
 
    {{% snippet "show-secret.md" %}}

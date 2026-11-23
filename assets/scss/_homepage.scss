@@ -1,0 +1,431 @@
+// Docs homepage (layouts/shortcodes/homepage.html).
+//
+// Mobile first: the base rules are a single phone-width column, and every
+// multi-column rule is added in a min-width @container query. Container
+// queries (not @media) size the grids by the width the homepage actually
+// has next to the sidebar, which varies with the sidebar's own breakpoints.
+
+$vh-ink: #1c1c1f;
+$vh-muted: #4e4f52;
+$vh-line: #e4e4e6;
+$vh-wash: #f6f6f7;
+$vh-radius: 8px;
+$vh-tap: 44px;
+
+.vh {
+  container-type: inline-size;
+  color: $vh-ink;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a:focus-visible {
+    outline: 2px solid $vh-ink;
+    outline-offset: 2px;
+  }
+
+  // The site script adds a hidden anchor icon after every heading. Here it
+  // only wraps onto its own line and adds height.
+  .anchor-link {
+    display: none;
+  }
+
+  // Undo the site-wide `nav { flex-direction: column }`.
+  nav {
+    flex-direction: row;
+  }
+}
+
+.vh-eyebrow {
+  display: block;
+  margin: 0 0 0.5rem;
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $vh-muted;
+}
+
+// Hero
+.vh-hero {
+  padding-top: 0.5rem;
+}
+
+.vh-hero__title {
+  margin: 0 0 0.75rem;
+  font-size: 1.875rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+.vh-hero__desc {
+  margin: 0;
+  font-size: 1.0625rem;
+  color: $vh-muted;
+}
+
+// Sections
+.vh-section {
+  margin-top: 2.5rem;
+}
+
+.vh-section__title {
+  margin: 0 0 1rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+// Grids: one column until the container is wide enough.
+.vh-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+
+  > li {
+    display: flex;
+  }
+}
+
+// Cards
+.vh-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+  padding: 1.125rem 1.25rem;
+  border: 1px solid $vh-line;
+  border-radius: $vh-radius;
+  background: #fff;
+  color: $vh-ink;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus {
+    border-color: $vh-ink;
+    box-shadow: 0 8px 24px -16px rgba(20, 20, 25, 0.35);
+    color: $vh-ink;
+    text-decoration: none;
+  }
+}
+
+.vh-card__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.vh-card__desc {
+  color: $vh-muted;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+// Keep long page descriptions from stretching tiles.
+.vh-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.vh-card__more {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.vh-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.vh-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  background: $vh-wash;
+  color: $vh-muted;
+  font-size: 0.8125rem;
+}
+
+.vh-card--media {
+  padding: 0;
+  overflow: hidden;
+}
+
+.vh-card__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: $vh-wash;
+}
+
+.vh-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 0.875rem 1rem 1rem;
+}
+
+// The "all workshops" / "all courses" tile at the end of a row.
+.vh-card--all {
+  justify-content: center;
+  border-style: dashed;
+  background: $vh-wash;
+}
+
+// Docs tile: full width, with its three links as sub-tiles. The tile
+// itself isn't a link, since links can't nest.
+.vh-docs {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid $vh-line;
+  border-radius: $vh-radius;
+  background: #fff;
+
+  // An h3 here, so undo the site-wide h3 font.
+  .vh-card__title {
+    margin: 0 0 0.375rem;
+    font-family: inherit;
+    font-size: 1.25rem;
+  }
+
+  .vh-card__desc {
+    margin: 0;
+  }
+}
+
+.vh-docs__links {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+}
+
+.vh-docs__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  height: 100%;
+  min-height: $vh-tap;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: $vh-wash;
+  color: $vh-ink;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover,
+  &:focus {
+    border-color: $vh-ink;
+    background: #fff;
+    color: $vh-ink;
+    text-decoration: none;
+  }
+}
+
+.vh-docs__label {
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $vh-muted;
+}
+
+.vh-docs__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.vh-docs__desc {
+  color: $vh-muted;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+// Announcement banner: lime (#c4f400, the viam.com call-to-action color)
+// with dark text, directly below the hero.
+.vh-banner {
+  margin-top: 1.25rem;
+}
+
+// Less space between the banner and the next section than between sections.
+.vh-banner + .vh-section {
+  margin-top: 2rem;
+}
+
+.vh-banner__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem 0.75rem;
+  min-height: $vh-tap;
+  padding: 0.625rem 1rem;
+  border-radius: $vh-radius;
+  background: #c4f400;
+  color: $vh-ink;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+
+  &:hover,
+  &:focus {
+    color: $vh-ink;
+    text-decoration: none;
+    filter: brightness(0.94);
+  }
+}
+
+.vh-banner__label {
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vh-banner__text {
+  flex: 1 1 14rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.vh-banner__cta {
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+// Popular guides and reference: plain link lists.
+.vh-columns .vh-section {
+  min-width: 0;
+}
+
+.vh-links {
+  border-top: 1px solid $vh-line;
+
+  a {
+    display: flex;
+    align-items: center;
+    min-height: $vh-tap;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid $vh-line;
+    color: $vh-ink;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $vh-ink;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+.vh-links__all {
+  gap: 0.375rem;
+}
+
+// Community links: quiet, at the end.
+.vh-community {
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $vh-line;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 1.5rem;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: $vh-tap;
+    color: $vh-muted;
+    font-size: 0.9375rem;
+    text-decoration: none;
+
+    &:hover {
+      color: $vh-ink;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Wider containers
+@container (min-width: 640px) {
+  .vh-hero__title {
+    font-size: 2.25rem;
+  }
+
+  .vh-section {
+    margin-top: 3rem;
+  }
+
+  .vh-banner + .vh-section {
+    margin-top: 2.5rem;
+  }
+
+  .vh-grid {
+    gap: 1rem;
+  }
+
+  .vh-grid--2,
+  .vh-grid--tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vh-docs {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+  }
+
+  .vh-docs__links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vh-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.5rem;
+  }
+}
+
+@container (min-width: 880px) {
+  .vh-hero__title {
+    font-size: 2.5rem;
+  }
+
+  .vh-grid--tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

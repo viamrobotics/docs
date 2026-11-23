@@ -12,6 +12,8 @@ date: "2026-04-14"
 
 Computer vision on Viam turns camera frames into structured results your code can act on: bounding boxes, class labels, or 3D point cloud objects. Three built-in vision service models cover the common tasks, and the [registry](https://app.viam.com/registry) has more for specialized cases.
 
+{{< course id="viam-103" eyebrow="New to computer vision? Start with a free course" >}}
+
 ## What the vision service does
 
 The vision service exposes a single API. Your code calls the same methods whether the underlying detector is an ML model, a color heuristic, or a 3D segmenter. The implementation you pick decides what the service recognizes; the code you write does not change.
@@ -63,7 +65,7 @@ Accuracy almost always drops when a model moves from the lab to production. The 
 
 1. Capture failing images from deployed machines with [data capture](/data/capture-sync/capture-and-sync-data/).
 2. Label the new images in the [**DATA** tab](https://app.viam.com/data/all) and update a dataset.
-3. Retrain the model with [managed training](/train/train-a-model/) or a custom script.
+3. Retrain the model with [built-in training](/train/train-a-model/) or a custom script.
 4. Deploy the new model version through the ML model service and push it to your fleet.
 
 This capture, label, train, deploy, monitor cycle is often called CVOps (computer-vision operations). Viam's data, training, fleet, and vision sections are the tools. The vision section is where your code meets the model.
@@ -95,12 +97,11 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 
 ### Deploy and maintain models
 
-- [What's in the registry for vision](/vision/deploy-and-maintain/available-models/): the three kinds of registry entries and how to pick among them
-- [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): pick a pre-trained model and run it on a machine
-- [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): bring your own trained model
-- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): the CVOps loop for model maintenance
-- [Roll out a new model to a fleet](/vision/deploy-and-maintain/roll-out-to-fleet/): staged model rollouts
-- [Run batch inference](/vision/deploy-and-maintain/batch-inference/): run a model against stored images with `viam infer`
+- [Configure a vision pipeline](/vision/configure/): wire a model to a vision service and check its tensors
+- [Deploy a model to a machine](/train/deploy-a-model/): add a model and the resource that runs it to a machine
+- [Retrain when accuracy drops](/train/retrain-a-model/): the CVOps loop for model maintenance
+- [Deploy ML models across your fleet](/fleet/deploy-ml-models/): staged model rollouts
+- [Run batch inference](/train/batch-inference/): run a model against stored images with `viam infer`
 
 ### Reference
 

@@ -24,3 +24,4 @@ diataxis:
 
   # ---------------------------------------------------------------- structural
   overview: Not a Diataxis mode. Section index or navigational hub whose job is to route the reader onward. Applied to real hub pages (_index.md, overview.md) that render content of their own; redirect stubs carry no diataxis field at all.
+  workshop: Not a Diataxis mode. A guided project in the Workshops section (docs/tutorials/) that builds one whole project on real hardware or a full simulation, over one to three hours. Kept separate from tutorial, which is a short lesson on one feature in that feature's own section. Workshop hubs use overview.

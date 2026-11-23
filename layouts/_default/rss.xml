@@ -34,7 +34,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ if eq .Title .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ .Site.Title }}{{ end }}</title>
-    <link>https://docs.viam.com/{{- if eq .Title "Tutorials" }}tutorials/{{else}}{{if eq .Title "Changelog"}}appendix/changelog/{{end}}{{end}}</link>
+    <link>https://docs.viam.com/{{- if eq .RelPermalink "/tutorials/" }}tutorials/{{else}}{{if eq .Title "Changelog"}}appendix/changelog/{{end}}{{end}}</link>
     <description>Recent content {{ if ne .Title .Site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ .Site.Title }}</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>{{ site.Language.LanguageCode }}</language>{{ with $authorEmail }}
@@ -44,7 +44,7 @@
     {{- with .OutputFormats.Get "RSS" }}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
-    {{- if eq .Title "Tutorials" }}
+    {{- if eq .RelPermalink "/tutorials/" }}
       {{ $pctx := .Site }}
       {{- $pages := slice }}
       {{- $pages = (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page")  -}}

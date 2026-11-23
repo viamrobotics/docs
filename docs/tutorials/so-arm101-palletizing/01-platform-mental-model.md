@@ -6,7 +6,7 @@ slug: "platform-mental-model"
 weight: 10
 description: "How your computer and Viam fit together, and the three robotics concepts this workshop is built on."
 capabilities: ["machine-config", "motion-planning", "frame-system", "docs"]
-diataxis: tutorial
+diataxis: workshop
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 1

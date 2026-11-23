@@ -243,7 +243,7 @@ const addInkeepWidget = ({
           ) {
             tabs = ["SDK Docs"];
           } else if (source.url.includes("https://docs.viam.com/tutorials/")) {
-            tabs = ["Tutorials"];
+            tabs = ["Workshops"];
           } else {
             tabs = ["Docs"];
             openInNewTab = false;
@@ -315,7 +315,7 @@ const addInkeepWidget = ({
         "Modules",
         "SDK Docs",
         "GitHub",
-        "Tutorials",
+        "Workshops",
         "Codelab",
         "Blog",
         "viam.com",

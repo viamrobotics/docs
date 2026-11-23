@@ -40,13 +40,18 @@ You'll create a machine in the Viam app, install Viam on your compute device, an
 A **machine** is the combination of your compute resources and hardware that you want to control using Viam.
 Every machine has at least one **part**: the computer that runs Viam's software and is connected to one or more physical devices.
 A part can be almost any computer, including your own Mac or PC.
-For more, see [Machines and parts](/what-is-viam/#machines-and-parts).
+For more, see [Machines and parts](/overview/#machines-and-parts).
 
 ## 1. Create a machine in the Viam app
 
 1. Go to [app.viam.com](https://app.viam.com) and log in (or create an account).
 2. Open a location.
 3. Click **Add machine**, enter a name (for example, `my-first-machine`), and click **Add machine** again.
+
+You can also start from the [**Machines**](https://app.viam.com/fleet/machines) page under **FLEET**.
+Click **Add machine**, select a location, and click **Choose**.
+To put the machine in a new location, type the location's name and click **Create location "&lt;name&gt;"** instead.
+Then enter a name for the machine and click **Add machine**.
 
 The app opens your new machine's page on the **CONFIGURE** tab.
 The tab shows a banner titled **Set up your machine**.

@@ -42,7 +42,7 @@ your hardware:
 | API      | Use when your hardware...                           | Key methods                              |
 | -------- | --------------------------------------------------- | ---------------------------------------- |
 | `sensor` | Produces readings (temperature, distance, humidity) | `GetReadings`                            |
-| `camera` | Produces images or point clouds                     | `GetImage`, `GetPointCloud`              |
+| `camera` | Produces images or point clouds                     | `GetImages`, `GetPointCloud`             |
 | `motor`  | Drives rotational or linear motion                  | `SetPower`, `GoFor`, `Stop`              |
 | `arm`    | Has joints and moves to poses                       | `MoveToPosition`, `MoveToJointPositions` |
 | `base`   | Is a mobile platform (wheeled, tracked, legged)     | `MoveStraight`, `Spin`, `SetVelocity`    |
@@ -97,8 +97,9 @@ There are two ways to develop and deploy modules:
 
 **Inline modules** let you write code directly in the Viam app's
 browser-based editor. Viam manages source code, builds, versioning, and
-deployment. When you click **Save & Deploy**, the module builds in the cloud
-and deploys to your machine automatically. Inline modules are the fastest way
+deployment. When you save, Viam deploys the module to your machine
+automatically: Go modules are built in the cloud first, and Python modules run
+from source with no build step when you save the machine's configuration. Inline modules are the fastest way
 to get started, especially for prototyping and simple control logic.
 
 **Externally managed modules** are modules you develop in your own IDE, manage
@@ -106,13 +107,13 @@ in your own git repository, and deploy through the Viam CLI or GitHub Actions.
 Use externally managed modules when you need your own source control, public
 distribution, or custom build pipelines.
 
-|                          | Inline                            | Externally managed                           |
-| ------------------------ | --------------------------------- | -------------------------------------------- |
-| **Where you write code** | Browser editor in the Viam app    | Your own IDE, locally or in a repo           |
-| **Source control**       | Managed by Viam                   | Your own git repository                      |
-| **Build system**         | Automatic cloud builds on save    | Cloud build (GitHub Actions) or local builds |
-| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...) | You choose semantic versions                 |
-| **Visibility**           | Private to your organization      | Private or public                            |
+|                          | Inline                                 | Externally managed                           |
+| ------------------------ | -------------------------------------- | -------------------------------------------- |
+| **Where you write code** | Browser editor in the Viam app         | Your own IDE, locally or in a repo           |
+| **Source control**       | Managed by Viam                        | Your own git repository                      |
+| **Build system**         | Cloud build on save (Go only)          | Cloud build (GitHub Actions) or local builds |
+| **Versioning**           | Automatic (each save is a new version) | You choose semantic versions                 |
+| **Visibility**           | Private to your organization           | Private or public                            |
 
 Both types run identically at runtime, as child processes communicating with
 `viam-server` over gRPC.

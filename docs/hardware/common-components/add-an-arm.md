@@ -118,7 +118,7 @@ To attach a gripper, camera, or other tool to the end effector, set the attached
 See [Add a gripper](/hardware/common-components/add-a-gripper/#3-configure-a-frame) for a worked example.
 
 If you're writing a driver module for an arm that isn't in the registry, the module implements the arm's `Kinematics` method to return the arm's kinematic model.
-See [Kinematics](/motion-planning/reference/kinematics/) for the URDF and SVA JSON formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
+See [Kinematics](/motion-planning/reference/kinematics/) for the URDF, SVA, and kinematic model formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
 
 See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
 
@@ -150,7 +150,7 @@ model:
 }
 ```
 
-The fake arm simulates kinematics for the specified model. Set `arm-model` to `ur5e`, `ur20`, `xarm6`, `xarm7`, or `lite6`. It responds to all API calls and reports joint positions, but doesn't move anything physical.
+The fake arm simulates kinematics for the specified model. Set `arm-model` to `ur5e`, `ur7e`, `ur20`, `xarm6`, `xarm7`, `lite6`, or `dofbot`. It responds to all API calls and reports joint positions, but doesn't move anything physical.
 
 ## Control your arm from code
 

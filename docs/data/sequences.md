@@ -19,6 +19,8 @@ It also carries tags that describe the whole window, such as `pick-success` or `
 Sequences exist to feed [sequence datasets](/train/create-a-dataset/), which you train on with a [custom training script](/train/custom-training-scripts/).
 To follow the whole path from capture to exported training files, see the [sequences tutorial](/data/sequences-tutorial/).
 
+{{< course id="so-101-vla" eyebrow="Want to train a robot policy on your own demonstrations?" >}}
+
 ## How a sequence works
 
 A sequence is a saved filter over data you already captured, not a copy of it.
@@ -48,7 +50,7 @@ Sequences sit between captured data and training:
 2. **Mark sequences.** A capture control sensor on the machine opens and closes sequences while the machine runs. You can also create a sequence afterward, from code, over data you already have.
 3. **Sync.** The data manager uploads captured data, and uploads each sequence after it closes.
 4. **Collect.** You add sequences to a sequence dataset. See [Create a dataset](/train/create-a-dataset/).
-5. **Export and train.** You export the dataset as Parquet files, or run a custom training script on it. See [Sequence dataset format](/train/sequence-dataset-format/).
+5. **Export and train.** You export the dataset as Parquet files, or run a custom training script on it. See [Sequence dataset format](/train/dataset-formats/#sequence-datasets).
 
 ## When to use a sequence
 
@@ -101,13 +103,13 @@ For every field the sensor can return, see the [capture control sensor readings 
 
 ### From existing data
 
-To mark a window of data you already captured, create the sequence from code.
+To mark a window of data you already captured, create the sequence with the CLI or from code.
 Give it the machine part's ID, the resources and methods to include, and a start and end time.
 Tags are optional.
 
-1. Connect a data client.
+1. To use an SDK, connect a data client.
    See [Set up a connection](/data/query-data-from-code/#set-up-a-connection) for the setup code.
-   `CreateSequence` only needs an API key with access to the machine part. The other sequence methods, such as `ListSequences` and `AddSequencesToDataset`, need an organization API key.
+   `CreateSequence` only needs an API key with access to the machine part. `ListSequences` returns only the sequences the API key can read: a location API key lists that location's sequences, and a machine API key lists that machine's. `AddSequencesToDataset`, `RemoveSequencesFromDataset`, and `SequencesByDatasetID` need an organization API key. The other sequence methods work with any API key that can access the sequence's machine.
 2. Find the part ID.
    At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
 3. Find when the data was captured.
@@ -117,6 +119,29 @@ Tags are optional.
    The examples give both times in UTC. If the times you noted are in another time zone, convert them to UTC first.
 
 {{< tabs >}}
+{{% tab name="CLI" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam data sequence create \
+  --part-id=<PART-ID> \
+  --resources=my-camera:GetImages \
+  --start=2026-09-29T14:00:00Z \
+  --end=2026-09-29T14:00:30Z \
+  --tags=demo-1
+```
+
+Give each resource as `<resource-name>:<method>`.
+To include more than one, repeat `--resources` or separate the values with commas.
+The start time must be before the end time, and both use RFC 3339 format.
+The CLI prints the new sequence's ID.
+The sequence commands need CLI v1.16.0 or later; to upgrade, run [`viam update`](/cli/reference/#update).
+
+The CLI doesn't check these names against your data.
+If a resource or method doesn't match what was captured, the sequence is still created but returns no data for that resource, and the Viam app shows **No images captured for this resource** or **No tabular data captured for this resource**.
+For a resource on a remote, use its name without the remote prefix, for example `cam`, not `my-remote:cam`.
+To fix the names, run `viam data sequence update --sequence-id=<id> --resources=<resource-name>:<method>`.
+
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python
@@ -178,27 +203,35 @@ sequenceID, err := dataClient.CreateSequence(
 
 To copy a sequence's ID, click the **Sequence actions** menu on its row and select **Copy sequence ID**.
 
+To show one sequence by ID from the CLI, run `viam data sequence get --sequence-id=<sequence-id>`.
+The CLI can't list sequences.
 From code, `ListSequences` lists the sequences in an organization and `GetSequence` returns one by ID. The Python, TypeScript, and Go SDKs have these methods.
 `ListSequences` returns one page at a time, 50 sequences by default, with a token for the next page. To list every sequence, pass that token back until it comes back empty.
+Sequences come back newest first, by start time.
+A machine API key also lists the sequences that machine recorded while it was in an earlier location.
 `GetSequenceBinaryData` returns the images inside a sequence, from Python or TypeScript.
 There is no API for a sequence's readings. View them in the Viam app, or [export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 See the [data client API](/reference/apis/data-client/).
 
 ## Edit and delete sequences
 
-The Viam app can't edit or delete a sequence, and the CLI has no sequence commands.
-Use the Python, TypeScript, or Go SDK.
+The Viam app can't edit or delete a sequence.
+Use the CLI or the Python, TypeScript, or Go SDK.
 
-- **Edit:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change, and the field mask is required.
+- **Edit from the CLI:** `viam data sequence update --sequence-id=<sequence-id>` changes only the fields whose flags you pass: `--resources`, `--tags`, `--start`, or `--end`. Pass at least one.
+  `--resources` and `--tags` replace the whole list. Pass `--tags=""` to clear a sequence's tags.
+- **Delete from the CLI:** `viam data sequence delete --sequence-ids=<id1>,<id2>` tries every ID, and reports the ones that failed together at the end.
+- **Edit from code:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change, and the field mask is required.
   The Python SDK's `update_sequence` builds the field mask for you from the arguments you pass, and raises an error if you pass none of them. Pass `sequence_tags=[]` to clear a sequence's tags.
-- **Delete:** `DeleteSequence` deletes a sequence by its ID. The images and readings in its window aren't deleted.
+  To add a task tag to a sequence you've already recorded, see [Tag sequences](/train/annotate-data/#tag-sequences).
+- **Delete from code:** `DeleteSequence` deletes a sequence by its ID. The images and readings in its window aren't deleted.
 
-See the [data client API](/reference/apis/data-client/) for each method's parameters.
+See the [CLI reference](/cli/reference/#data-sequence-update) for each command's flags, and the [data client API](/reference/apis/data-client/) for each method's parameters.
 
 ## Add sequences to a dataset
 
 To train on sequences, collect them into a sequence dataset.
-On a sequence's detail page, click **Add to dataset**, or call `AddSequencesToDataset` from code.
+On a sequence's detail page, click **Add to dataset**, run `viam dataset sequence add`, or call `AddSequencesToDataset` from code.
 See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequences, and export it.
 
 ## Limitations {#limits}
@@ -206,12 +239,12 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 - **Images are the only binary data.** See [How a sequence works](#how-a-sequence-works).
 - **A sequence belongs to one machine part.** It can include resources on that part's remotes. Name them without the remote prefix, for example `cam`, not `my-remote:cam`. To combine data from several parts, record a sequence on each part and add them all to one dataset.
 - **A crash loses the open sequence.** If `viam-server` stops uncleanly while a sequence is open, the data manager can't tell when the sequence ended. It moves the sequence to `failed/sequences/` in the capture directory and doesn't upload it. A normal shutdown closes open sequences so they upload on the next sync.
-- **Editing and deleting need an SDK.** The Viam app and the CLI can't edit or delete a sequence.
-- **Managed training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).
+- **Editing and deleting need the CLI or an SDK.** The Viam app can't edit or delete a sequence.
+- **Built-in training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).
 
 ## Next steps
 
 - [Sequences tutorial](/data/sequences-tutorial/): record three sequences, collect them into a dataset, and export it.
 - [Create a sequence dataset](/train/create-a-dataset/): collect sequences for training.
 - [Capture on demand](/data/capture-sync/capture-on-demand/): start and stop capture, and record sequences, with the `capture-control` module.
-- [Sequence dataset format](/train/sequence-dataset-format/): the Parquet files a training script receives.
+- [Sequence dataset format](/train/dataset-formats/#sequence-datasets): the Parquet files a training script receives.

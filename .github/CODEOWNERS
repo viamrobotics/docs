@@ -1,0 +1,4 @@
+# Request the docs team on every pull request, including Dependabot's, so
+# automation (e.g. viam-overwatch escalations) sees a reviewer already assigned.
+# Requires @viamrobotics/docs to have Write access on this repo.
+* @viamrobotics/docs

@@ -4,7 +4,7 @@ linkTitle: "Mouse Mover"
 type: "docs"
 description: "Use the Python SDK to move a continuous servo to keep a computer screen from sleeping."
 capabilities: ["hw-actuation", "hw-compute", "docs"]
-diataxis: tutorial
+diataxis: workshop
 videos:
   [
     "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.webm",

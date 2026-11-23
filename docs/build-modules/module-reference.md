@@ -144,6 +144,9 @@ Every module receives a persistent data directory at
 `~/.viam/module-data/<robot-id>/<module-name>/`. The path is available inside
 the module through the `VIAM_MODULE_DATA` environment variable. This directory
 persists across module restarts and reconfigurations.
+Removing the module from the machine's configuration, even temporarily, deletes
+the directory and everything in it when `viam-server` applies the new
+configuration. Store data that must outlive the module somewhere else.
 
 ### Timeouts
 

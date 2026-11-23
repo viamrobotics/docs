@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .layer-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+      .box-label { font-size: 13px; font-weight: 600; }
+      .sub { font-size: 10px; fill: #808080; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="640" height="420" fill="#fff"/>
+
+  <!-- ==================== LOOP ==================== -->
+  <circle cx="320" cy="214" r="175" fill="none" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="-5,-5 6,0 -5,5" fill="#252525" transform="translate(407.5,62.4) rotate(30)"/>
+  <polygon points="-5,-5 6,0 -5,5" fill="#252525" transform="translate(495.0,214.0) rotate(90)"/>
+  <polygon points="-5,-5 6,0 -5,5" fill="#252525" transform="translate(407.5,365.6) rotate(150)"/>
+  <polygon points="-5,-5 6,0 -5,5" fill="#252525" transform="translate(232.5,365.6) rotate(210)"/>
+  <polygon points="-5,-5 6,0 -5,5" fill="#252525" transform="translate(145.0,214.0) rotate(270)"/>
+  <polygon points="-5,-5 6,0 -5,5" fill="#252525" transform="translate(232.5,62.4) rotate(330)"/>
+
+  <!-- ==================== CENTER ==================== -->
+  <text x="320" y="202" text-anchor="middle" class="layer-label" fill="#252525">Each round</text>
+  <text x="320" y="220" text-anchor="middle" class="sub">a new model version,</text>
+  <text x="320" y="234" text-anchor="middle" class="sub">trained on more data</text>
+
+  <!-- ==================== STAGES ==================== -->
+  <rect x="246.0" y="16.0" width="148" height="46" rx="4" fill="#fff" stroke="#252525" stroke-width="1.2"/>
+  <text x="320.0" y="36.0" text-anchor="middle" class="box-label" fill="#252525">Capture data</text>
+  <text x="320.0" y="52.0" text-anchor="middle" class="sub">on your machines</text>
+  <rect x="397.6" y="103.5" width="148" height="46" rx="4" fill="#fff" stroke="#252525" stroke-width="1.2"/>
+  <text x="471.6" y="123.5" text-anchor="middle" class="box-label" fill="#252525">Build a dataset</text>
+  <text x="471.6" y="139.5" text-anchor="middle" class="sub">images or demonstrations</text>
+  <rect x="397.6" y="278.5" width="148" height="46" rx="4" fill="#f7f6f3" stroke="#252525" stroke-width="1.2"/>
+  <text x="471.6" y="298.5" text-anchor="middle" class="box-label" fill="#252525">Train</text>
+  <text x="471.6" y="314.5" text-anchor="middle" class="sub">built-in or custom</text>
+  <rect x="246.0" y="366.0" width="148" height="46" rx="4" fill="#fff" stroke="#252525" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="320.0" y="386.0" text-anchor="middle" class="box-label" fill="#252525">Evaluate</text>
+  <text x="320.0" y="402.0" text-anchor="middle" class="sub">on a test dataset</text>
+  <rect x="94.4" y="278.5" width="148" height="46" rx="4" fill="#fff" stroke="#252525" stroke-width="1.2"/>
+  <text x="168.4" y="298.5" text-anchor="middle" class="box-label" fill="#252525">Deploy</text>
+  <text x="168.4" y="314.5" text-anchor="middle" class="sub">to a machine</text>
+  <rect x="94.4" y="103.5" width="148" height="46" rx="4" fill="#fff" stroke="#252525" stroke-width="1.2"/>
+  <text x="168.4" y="123.5" text-anchor="middle" class="box-label" fill="#252525">Run</text>
+  <text x="168.4" y="139.5" text-anchor="middle" class="sub">on the machine</text>
+</svg>

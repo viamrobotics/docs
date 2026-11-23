@@ -12,4 +12,5 @@ aliases:
 
 ML stands for machine learning, a field of artificial intelligence that focuses on building systems that can learn from and make decisions based on data.
 
-Viam provides tools for [training ML models](/train/custom-training-scripts/), [deploying them to machines](/vision/configure/), [running inference](/vision/object-detection/detect/), and [interpret visual data from cameras](/vision/object-detection/alert-on-detections/) to enable intelligent behavior in robotic systems.
+Viam provides tools for [training ML models](/train/overview/), [deploying them to machines](/train/deploy-a-model/), and running them there.
+A vision model runs through a [vision service](/vision/configure/) to [detect objects](/vision/object-detection/detect/) or classify what a camera sees; other models, such as robot policies that control an arm, run in the module they name.

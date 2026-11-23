@@ -1,7 +1,7 @@
 ---
 linkTitle: "Automate annotation"
 title: "Automate annotation"
-weight: 17
+weight: 35
 layout: "docs"
 type: "docs"
 description: "Use ML models to auto-label images and programmatically build annotated datasets."
@@ -26,7 +26,7 @@ then review each prediction. This works with both classification models
 (which generate tags) and object detection models (which generate bounding boxes).
 
 1. Navigate to your [dataset's page](https://app.viam.com/datasets/).
-1. Click **Get auto-predictions**.
+1. Click **Run model**, then **Get auto-predictions**.
 1. **Select** a model to generate predictions with.
 1. Set the **confidence threshold** above which to create a label prediction.
 1. Click **Get predictions**.

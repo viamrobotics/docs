@@ -19,7 +19,7 @@ The SQL and MQL query editor is read-only: you cannot run `DELETE`, `DROP TABLE`
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
-- **Images and binary data**: on the **DATA** page, select one or more items and click **Delete selected**, or use **Delete all** with the current filters applied. Point clouds, video, and file uploads can be deleted the same way.
+- **Images and binary data**: on the **DATA** page, select one or more items and click the **Delete** button (for example, **Delete 3 images**), or use **Delete all** with the current filters applied. Point clouds, video, and file uploads can be deleted the same way.
 - **Tabular data (sensor readings)**: the Sensors tab does not have a delete button. Use the CLI or the SDK instead.
 
 {{% /tab %}}
