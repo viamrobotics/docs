@@ -24,7 +24,7 @@ The machines table shows every machine in your organization with its current sta
 
 To organize a large fleet, click **Group by** above the table and choose **Location** or **Status**.
 Grouping by location shows one table per location.
-Grouping by status shows one table each for **Online**, **Partially online**, **Offline**, and **Awaiting setup** machines, so you can find every machine that needs attention in one place.
+Grouping by status shows one table for each status that has machines (**Online**, **Partially online**, **Offline**, and **Awaiting setup**), so you can find every machine that needs attention in one place.
 A machine is **Partially online** when some of its parts are online and others aren't.
 The grouping is saved in the page URL's `group` parameter, so you can share a link to a grouped view.
 When you come back to the page without table parameters in the URL, your browser restores the grouping and filters you last used for that organization.
