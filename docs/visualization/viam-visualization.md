@@ -116,6 +116,25 @@ Name the output file with a `visualization_snapshot` prefix, for example
 <file>visualization_snapshot_grasp_test.json</file>: the drag-and-drop loader accepts
 only files that match that prefix.
 
+## Export a scene for simulation
+
+Viam Visualization can export the current scene as URDF and MJCF, so you can load it into
+a simulator such as Gazebo, Isaac Sim, or MuJoCo. Click **Export scene as URDF and MJCF**
+(download icon) in the toolbar. The app downloads <file>scene-urdf-mjcf.zip</file>, which
+contains:
+
+- <file>urdf/</file>: <file>scene.urdf</file>, its meshes, and a <file>model.config</file>
+  that lets Gazebo load the folder as a model.
+- <file>mjcf/</file>: <file>scene.xml</file> and its meshes, for MuJoCo.
+- <file>export-notes.txt</file>: everything the export left out or approximated.
+
+Each folder holds its own meshes, so you can move either one on its own. The export
+includes what the scene draws, with arms articulated from their kinematics and joints set to
+their current positions. URDF and MJCF have no way to describe point clouds, lines, or
+arrows, so the export leaves those out, along with hidden objects. Read
+<file>export-notes.txt</file> for anything else, such as components with
+Denavit-Hartenberg kinematics, whose links the export welds in place.
+
 ## How updates reach the browser
 
 The app runs a **draw service** that the client API calls. Each push becomes an
