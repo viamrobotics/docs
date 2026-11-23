@@ -62,8 +62,6 @@ When the selected frame is an arm, the **Move** tab also has **Save current pose
 
 In Move mode, saved poses appear in the **Saved poses** folder of the World tree. Selecting one draws a ghost of the arm at that pose. From there, **Move to pose** moves the arm back to it, and **Delete** removes it from the config. A saved pose's **motion service** setting picks the motion service that plans the move around obstacles. A new saved pose uses the same default service as the move controls. If a saved pose has no motion service set and the machine has one, choose a service before **Move to pose** is available. On a machine with no motion service, the setting reads **none (direct joint move)**, and the arm moves straight to the saved joint positions without planning around obstacles.
 
-Saved poses are the same components that the [pick-and-place tutorial](/tutorials/pick-and-place/static-positions/) configures by hand, so you can also run them from code or the **CONTROL** tab.
-
 ## Collisions
 
 The **Collisions** readout checks for overlapping geometry in the scene, and lists each colliding pair. It shows what the frame is currently touching, and after a preview, what it would collide with at the target. It checks only visible boxes, capsules, cylinders, and spheres, not meshes or point clouds, and it never checks an arm against its own links or against a gripper mounted on it. Hiding an entity removes it from the check.
