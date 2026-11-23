@@ -187,6 +187,15 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 - **Pin to version**: the machine stays on a specific revision number and never updates automatically.
 - **Pin to tag**: the machine uses whichever revision the tag currently points to. When you move the tag to a new revision, the machine updates.
 
+### Delete a tag
+
+1. Navigate to your fragment's page.
+1. Click **Versions** in the navigation bar.
+1. In the tag's row, click the delete icon.
+1. In the **Delete tag?** dialog, click **Delete tag**. You can't undo this.
+
+You can't delete a tag while anything is pinned to it. The delete icon is disabled while the tag's **Org deployments** or **Machine deployments** count is above zero. Viam also rejects the delete if another fragment pins the tag in its imports, with an error like `tag "stable" is pinned by 0 machine part(s) and 1 fragment(s); move them to another version first`. Pins through nested fragments count too. Disabled fragment imports don't. Move every machine and fragment that uses the tag to another version or tag, then delete it.
+
 ### Staged rollout workflow
 
 1. Create two tags on your fragment: `stable` and `development`.
