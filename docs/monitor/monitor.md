@@ -59,6 +59,23 @@ Click the **status** dropdown to see details about each {{< glossary_tooltip ter
 On a machine's **CONFIGURE** page, look for a red exclamation icon on any resource card.
 Click the icon or expand the **ERROR LOGS** panel to see errors produced by that resource.
 
+While a module is not ready, the cards for the module and for the resources it provides show the module's state in place of the usual status pill:
+
+- **BUILDING…**: a cloud build of an inline module is running.
+- **DEPLOYING**: the machine has not picked up the module's new version yet.
+- **PENDING**, **DOWNLOADING**, **LOADING**, **FIRST RUN**, **STARTING**, or **CLOSING**: the machine is fetching, setting up, starting, or stopping the module. Hover over **DOWNLOADING** to see how much has downloaded.
+- **FAILED**: the module failed. Hover over the pill to see the error, which says how many times the module has failed if `viam-server` is retrying it. The card also shows a banner with the module's error, and on a resource card the banner names the module and has a **Go to module** button.
+
+On `viam-server` versions before v1.17.0, a registry module's card doesn't show **FIRST RUN**, or **FAILED** when the module's first-run setup fails.
+
+On a resource card the label names the module, for example **MODULE DEPLOYING**.
+While the module is in one of these in-progress states, the cards hide their error logs and error count, with a note saying so, because those errors are likely left over from the module's last run.
+The exception is a registry module updating to a new version while its previous version keeps running: its errors stay visible, because they come from the running version.
+Once the module fails, its own errors show again, but a resource card keeps hiding the resource's errors until the module is ready.
+
+When an update to a registry module fails while the previous version keeps running, the module card shows a yellow **UPDATE FAILED** pill, the cards show a warning banner, and errors stay visible.
+The sidebar flags the same states on module and resource rows, for example **module failed** or **build failed**.
+
 For more detailed debugging, see [Troubleshoot problems](/monitor/troubleshoot/).
 
 ## Test a machine remotely
