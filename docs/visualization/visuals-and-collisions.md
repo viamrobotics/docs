@@ -16,9 +16,12 @@ custom visual in the 3D scene, and telling the motion planner about an obstacle.
 To create a custom visual, you attach a geometry to a transform's `physical_object`
 field and provide
 that transform to a [world state store service](/reference/apis/services/world-state-store/).
-This service holds the transforms you publish and streams them to the 3D scene. This
-page covers what a transform contains, the difference between planner geometry and
-visualization geometry, and how to build each geometry type.
+This service holds the transforms you publish and streams them to the 3D scene. You can
+implement it in a module or configure the
+[built-in world state store](/reference/services/world-state-store/), which holds
+transforms in memory and changes them through DoCommand. This page covers what a
+transform contains, the difference between planner geometry and visualization geometry,
+and how to build each geometry type.
 
 ## Anatomy of a transform
 
@@ -80,8 +83,9 @@ the other is planned around. The same shape can take both paths.
 If you want a geometry to appear in the scene _and_ be avoided by the planner,
 you do both, separately:
 
-- **For the scene**: publish it as a transform through the world state store
-  service (see [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)).
+- **For the scene**: publish it as a transform through a world state store
+  service: send it to the [built-in store](/reference/services/world-state-store/), or
+  see [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
 - **For planning**: add it to the frame system, or include it in the
   `WorldState` you pass to `Move`.
 

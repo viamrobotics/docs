@@ -6,6 +6,6 @@ layout: "docs"
 type: "docs"
 no_list: true
 manualLink: "/visualization/overview/"
-description: "See your machine in 3D: frames, geometries, point clouds, and custom visuals your modules publish."
+description: "See your machine in 3D: frames, geometries, point clouds, and custom visuals from a world state store service."
 capabilities: ["scene-3d", "section-index"]
 ---
