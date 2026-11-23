@@ -83,9 +83,13 @@ path, straight from a script or test. For every call and option, see the generat
 ## Connect to a live machine
 
 The visualizer can also connect to a Viam machine and render its frame system, arms, and
-cameras, the way the in-app **3D SCENE** tab does. Put the machine's credentials in a
-<file>.env.local</file> file at the repository root, run `make up`, then pick the machine
-in the machine config panel (lower right). For the credential format, see the
+cameras, the way the in-app **3D SCENE** tab does. Run `make up`, open the machine config
+panel (lower right), and click **Log in with Viam**. After you approve the login in your
+browser, the panel lists the machines in your organizations, and you pick one.
+
+To connect without logging in, put the machine's credentials in a <file>.env.local</file>
+file at the repository root before you run `make up`, then pick the machine under
+**Manual configs** in the same panel. For the credential format, see the
 [Running locally guide](https://viamrobotics.github.io/visualization/guides/local-usage/#connecting-to-a-viam-machine).
 
 ## Save and load scene snapshots
