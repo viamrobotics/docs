@@ -62,6 +62,7 @@ settings, see [3D scene controls and settings](/visualization/3d-scene/controls-
   - Tune a 3D segmenter against the live view: [Vision services in the 3D scene](/visualization/perception/vision-services/)
   - See what a camera or end effector sees from its mount: [Frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov)
 - **Draw your own visuals**
+  - Put shapes in the scene from a script or another resource, with no module: [Built-in world state store](/reference/services/world-state-store/)
   - Draw your module's visuals in the scene: [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)
   - Preview spatial data from a Go script without deploying: [Viam Visualization](/visualization/viam-visualization/)
 
@@ -91,24 +92,25 @@ The scene draws four kinds of element, each with its own appearance:
 - **Geometries** render as translucent shapes (a box, sphere, or capsule) at the frame they
   are attached to.
 - **Point clouds** from depth cameras render as colored point sets.
-- **Custom visuals** render as whatever a module draws them as: markers, arrows, lines,
+- **Custom visuals** render as whatever their transforms describe: markers, arrows, lines,
   meshes, or extra geometries, published while the machine runs.
 
 ## Where each element comes from
 
 Every element of your machine's state in the scene traces back to one source. Select an
-entity in the **World** panel to follow it back to the component or module that produced it.
+entity in the **World** panel to follow it back to the component or service that produced it.
 
-| Element in the scene | Comes from                                                  |
-| -------------------- | ----------------------------------------------------------- |
-| Component frame      | The frame system, from each component's frame configuration |
-| Attached geometry    | A component's `frame.geometry` in configuration             |
-| Point cloud          | A depth camera, streamed live when the machine is online    |
-| Custom visual        | A module, published through a world state store service     |
+| Element in the scene | Comes from                                                                  |
+| -------------------- | --------------------------------------------------------------------------- |
+| Component frame      | The frame system, from each component's frame configuration                 |
+| Attached geometry    | A component's `frame.geometry` in configuration                             |
+| Point cloud          | A depth camera, streamed live when the machine is online                    |
+| Custom visual        | A world state store service: the built-in store, or one a module implements |
 
 Frames and geometry appear because they are part of the machine's configuration, which the
 scene reads whenever you open the tab. Point clouds stream from depth cameras while the
-machine is online, and custom visuals appear only while a module publishes them.
+machine is online, and custom visuals appear only while a world state store service holds
+them.
 
 The scene also draws things that aren't your machine's reported state: a Move mode preview,
 a replayed plan and its obstacles, and Build mode edits you haven't saved yet.
@@ -120,21 +122,26 @@ The distinction between the sources matters because it tells you _where to make 
 - **Built-in content** is the frame system and configured geometry. The scene shows it with
   no code. To change a frame's position or a geometry's shape, edit the component's
   configuration.
-- **Custom visuals** are everything a module computes or senses at runtime: a detection, a
-  planned path, a sensor's obstacle readings. The scene shows them only while the module
-  publishes them. To change a custom visual, change the module's code.
+- **Custom visuals** are everything computed or sensed at runtime: a detection, a planned
+  path, a sensor's obstacle readings. The scene shows them only while a world state store
+  service holds them. To change a custom visual, change whatever produces it: the code that
+  sends commands to the [built-in store](/reference/services/world-state-store/), or the
+  module that implements the service.
 
 If an element looks wrong, this split tells you where to look: a misplaced frame or geometry
-is a configuration problem, while a missing or stale custom visual is a module problem.
+is a configuration problem, while a missing or stale custom visual is a problem with whatever
+produces it.
 
 ## How the scene stays current
 
 Built-in content reflects your configuration and, when the machine is online, each
-component's live pose. Custom visuals stay current a different way: a module publishes them
-to a [world state store service](/reference/apis/services/world-state-store/), and the scene
-subscribes to that service's stream of transform changes. As the module adds, updates, and
-removes transforms, the scene applies each change to the one affected visual instead of
-redrawing everything, so a busy scene keeps up as the underlying data changes.
+component's live pose. Custom visuals stay current a different way: they live in a
+[world state store service](/reference/apis/services/world-state-store/), and the scene
+subscribes to that service's stream of transform changes. As transforms are added, updated,
+and removed, the scene applies each change to the one affected visual instead of redrawing
+everything, so a busy scene keeps up as the underlying data changes.
 
-To publish your own custom visuals this way, see
+To publish your own custom visuals, either send them to the
+[built-in world state store](/reference/services/world-state-store/) from a script or another
+resource, or implement the service yourself; see
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).

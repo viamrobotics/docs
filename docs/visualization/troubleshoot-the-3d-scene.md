@@ -53,12 +53,25 @@ frame, see
 
 ## A custom visual is missing or stale
 
-Custom visuals come from a module through a
-[world state store service](/reference/apis/services/world-state-store/), so a missing or
-stale one is a module problem. Check the module's output at the service boundary:
+Custom visuals come from a
+[world state store service](/reference/apis/services/world-state-store/), so start by
+checking what the service holds: `ListUUIDs` should return the visual's UUID. What to check
+next depends on where the service comes from.
 
-1. `ListUUIDs` returns the visual's UUID. An empty list means the module publishes
-   nothing; check the module's logs and its dependencies.
+If you use the [built-in world state store](/reference/services/world-state-store/):
+
+1. Check the response of each `DoCommand` you send. A call that returns an error changed
+   nothing, even the items in it that were valid.
+2. A visual that disappeared after a restart or a configuration change was lost because the
+   store keeps runtime changes in memory only. Send it again, or add it to the store's
+   `transforms` attribute.
+3. To change a visual, send an `update` with the UUID it was added under. Adding it again
+   under a new UUID draws a second copy instead of moving the first.
+
+If a module implements the service:
+
+1. An empty `ListUUIDs` list means the module publishes nothing; check the module's logs
+   and its dependencies.
 2. The module emits a change event when the data changes. A visual that appears once and
    never moves usually means the poll loop stopped or emits no `TransformChange` events.
 3. The UUID is stable across updates. A module that generates a fresh UUID each tick
@@ -86,6 +99,8 @@ same geometry as a custom visual; see
 
 - [Debug a motion plan](/motion-planning/debug-motion-plan/): the frame, obstacle, and
   reach checks for planning failures.
+- [Built-in world state store](/reference/services/world-state-store/): configure the
+  store and change its transforms with DoCommand.
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/): the
   service methods and poll loop behind custom visuals.
 - [3D scene controls and settings](/visualization/3d-scene/controls-and-settings/):
