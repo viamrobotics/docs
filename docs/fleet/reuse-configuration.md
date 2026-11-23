@@ -189,12 +189,22 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 
 ### Delete a tag
 
+You can delete a tag only when nothing pins it. Before you delete one, find what uses it and move it to another version or tag:
+
+- **Machines**: on the **Versions** page, the tag's **Org deployments** and **Machine deployments** counts show how many use it, including through nested fragments. To see which machines, open the fragment from the **Fragments in use** tab (see [Find which machines use a fragment](#find-which-machines-use-a-fragment)). The **Source** column shows each machine's pin, and **Nested** marks a pin that comes through another fragment. That list only includes machines in your organization. If **Org deployments** is above 1, machines in other organizations also pin the tag, and they must move off it first.
+- **Fragments**: another fragment can import this one pinned to the tag. The Viam app doesn't list these, so check the imports of fragments that use this one.
+
+Disabled fragment imports don't count.
+
+To delete the tag:
+
 1. Navigate to your fragment's page.
 1. Click **Versions** in the navigation bar.
 1. In the tag's row, click the delete icon.
+   The icon only appears if you have write access to the fragment, and it's disabled while **Org deployments** or **Machine deployments** is above zero.
 1. In the **Delete tag?** dialog, click **Delete tag**. You can't undo this.
 
-You can't delete a tag while anything is pinned to it. The delete icon is disabled while the tag's **Org deployments** or **Machine deployments** count is above zero. Viam also rejects the delete if another fragment pins the tag in its imports, with an error like `tag "stable" is pinned by 0 machine part(s) and 1 fragment(s); move them to another version first`. Pins through nested fragments count too. Disabled fragment imports don't. Move every machine and fragment that uses the tag to another version or tag, then delete it.
+If another fragment still pins the tag, Viam rejects the delete with an error like `tag "stable" is pinned by 0 machine part(s) and 1 fragment(s); move them to another version first`. Update that fragment's import, then try again.
 
 ### Staged rollout workflow
 
