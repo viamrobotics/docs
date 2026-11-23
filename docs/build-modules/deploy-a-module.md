@@ -456,6 +456,7 @@ If your model implements DoCommand, document each supported command.
 
 A [composite model](/build-modules/composite-models/) serves several APIs, so its README also tells users that it's one device, which APIs it serves, and how its shared methods behave.
 `markdown_link` is set per model, so a composite gets one README section, not one per API.
+In the **Data capture** table, list every method of every API that users can capture from your model, including shared methods such as `GetWorldPose` and `DoCommand`.
 
 ````md
 # Model `my-org:my-device-module:my-device`
@@ -497,7 +498,19 @@ Don't add a second entry for the other API: each entry is a separate instance th
 
 Methods not listed return an error.
 `GetProperties` returns the camera's properties through the camera API and the IMU's through the movement sensor API.
-`DoCommand` is handled by the camera API.
+
+## DoCommand
+
+`DoCommand` behaves the same whether you call it through the camera or the movement sensor API.
+
+### Example DoCommand
+
+```json
+{
+  "command": "set_exposure",
+  "exposure_ms": 10
+}
+```
 
 ## Frame
 
@@ -505,13 +518,20 @@ The device has one frame, set in this entry's `frame` field.
 
 ## Data capture
 
-Capture `GetImages` and the movement sensor methods from this one entry.
-Each captured method is tagged with the API that owns it.
-To capture `DoCommand` under the movement sensor API, set the capture method's `name` to `rdk:component:movement_sensor/<name>`.
+Configure capture on this one entry.
+Each captured method is tagged with the API in the **Captured under** column.
+
+| Method                           | Captured under                            |
+| -------------------------------- | ----------------------------------------- |
+| `GetImages`                      | Camera                                    |
+| `Orientation`, `AngularVelocity` | Movement sensor                           |
+| `GetWorldPose`, `DoCommand`      | The API in the config entry's `api` field |
+
+To capture `GetWorldPose` or `DoCommand` under another API, set the capture method's `name` to that API and the resource name, for example `rdk:component:movement_sensor/my-device`.
 
 ## Use from code
 
-Get the device with each API's usual method, for example the camera and movement sensor getters in any SDK.
+Get the device with each API's usual getter, for example the camera and movement sensor getters in the Go and Python SDKs.
 In Go, `resource.NamedFromProvider` returns one handle that serves both APIs.
 ````
 

@@ -14,7 +14,9 @@ A composite model is one model that serves more than one resource API.
 A device that is both a camera and a movement sensor can be a single composite: one config entry, one name, one running instance, reachable as a camera and as a movement sensor.
 
 Without composites, a module author has two choices for a multi-capability device: pick one API and expose the rest through `DoCommand`, or ship one model per API and ask users to configure each one separately.
-This page explains how a composite behaves on a machine, which API handles methods that more than one of its APIs share, and when to build one instead of separate models.
+For a depth camera with a built-in IMU, the second choice means two config entries, such as `my-cam` (camera) and `my-cam-imu` (movement sensor), that both open the same USB device.
+As a composite, it's one entry, `my-cam`, that serves both APIs.
+This page explains how a composite behaves on a machine, which API handles shared methods, and when to build one.
 
 ## One model, several APIs {#one-model-several-apis}
 
@@ -35,7 +37,7 @@ Because resource names are unique across a machine, clients use the shared name 
 
 ## How clients reach each API {#how-clients-reach-each-api}
 
-Every SDK can reach a composite through each API's usual getter, with no changes to client code.
+In the Go and Python SDKs, each API's usual getter reaches a composite, with no changes to client code.
 In Go, `camera.FromProvider(machine, "combo")` returns the camera, and `movementsensor.FromProvider(machine, "combo")` returns the movement sensor of the same device.
 
 The Go SDK also has helpers for working with the device as one handle:
@@ -51,8 +53,10 @@ Other SDKs don't have these helpers yet, and composite models can only be writte
 ## Which API handles shared methods {#which-api-handles-shared-methods}
 
 Some methods belong to every API, such as `DoCommand` and `Status`.
-A composite routes these to its canonical API: the API that sorts first alphabetically.
+A call through one API, such as `DoCommand` on the composite's movement sensor client, goes to the part that serves that API.
+A call on the composite's own handle, such as the one `resource.NamedFromProvider` returns, goes to its canonical API, the API that sorts first alphabetically.
 For a model serving `rdk:component:camera` and `rdk:component:movement_sensor`, that's the camera.
+When every part is built from one struct, as in most composites, each of these calls reaches the same method.
 
 Data capture assigns each captured method to the API that owns it.
 A method only one of the composite's APIs captures, such as `Readings` on a sensor, is tagged with that API, whichever API the config entry names.
@@ -67,21 +71,23 @@ Either way, each copy can be configured, restarted, and fail on its own, while t
 
 A composite keeps one owner for that state.
 The module builds one object, `viam-server` manages one lifecycle for it, and the user configures it once.
-Separate models are still the right choice when the capabilities are physically separable.
+Separate models are still the right choice for some devices:
 
-## Composites versus separate models {#composites-versus-separate-models}
-
-| The device                                                                        | Build                                                       |
-| --------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Is one physical unit with one connection, such as a camera with a built-in IMU    | A composite                                                 |
-| Has parts that users mount, place, or replace separately                          | Separate models in one module                               |
-| Needs a separate frame for each capability, such as a camera offset from a sensor | Separate models: a composite has one frame                  |
-| Has capabilities some users won't want                                            | Separate models: a composite serves all of its APIs or none |
-| Serves more than one of arm, gantry, and gripper                                  | Separate models: a composite can serve at most one of these |
+| The device                                                                                                        | Build                                                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Is one physical unit with one connection, such as a depth camera with a built-in IMU                              | A composite                                                                                                                                      |
+| Has parts that users mount, move, or replace on their own, such as a mobile base and the lidar bolted to it       | Separate models in one module                                                                                                                    |
+| Needs a separate frame for each capability, such as a camera offset from a sensor                                 | Separate models: a composite has one frame                                                                                                       |
+| Has optional capabilities, such as a sensor board with a GPS receiver that many users don't connect an antenna to | Separate models: a composite always serves all of its APIs, so users without an antenna still get a movement sensor that can't report a position |
+| Combines more than one kinematic API, such as an arm with a built-in gripper                                      | Separate models: a composite can serve at most one of the arm, gantry, and gripper APIs                                                          |
 
 ## What composites don't do {#what-composites-dont-do}
 
-- **Serve more than one kinematic API.** The frame system handles one kinematic part per resource, so a model that registers more than one of arm, gantry, or gripper panics when the module starts.
+- **Serve more than one kinematic API.** The arm, gantry, and gripper APIs are kinematic: their resources have moving parts that the frame system models with [kinematics](/motion-planning/reference/kinematics/).
+  These three are the only kinematic APIs.
+  The frame system handles one kinematic part per resource, so a composite can include at most one of them.
+  An arm with a built-in gripper is two models, an arm and a gripper.
+  A model that registers more than one panics when the module starts.
 - **Have a frame per API.** A composite has one frame in the frame system, set in its config entry.
 - **Let users turn off one API.** Every config entry for the model serves all of its APIs, whether or not the user calls them.
 - **Run on older `viam-server` versions.** Composites need `viam-server` v1.17.0 or later.

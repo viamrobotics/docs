@@ -11,17 +11,16 @@ date: "2026-11-23"
 ---
 
 Build a model that serves several resource APIs from one instance, such as a device that is both a sensor and a button.
-Users configure it once, and every SDK reaches it through each API's usual getter.
-For when a composite fits better than separate models, see [Composite models](/build-modules/composite-models/).
+Users configure it once, and client code reaches it through each API's usual getter.
+To decide between a composite and separate models, see [Composite models](/build-modules/composite-models/).
 
 ## Prerequisites {#prerequisites}
 
 - A Go module that builds and runs one model. See [Write a driver module](/build-modules/write-a-driver-module/).
+  - You can only write composite models in Go.
+  - `viam module generate` and `viam module add-model` don't create composite models, so you change the generated code by hand.
 - `go.viam.com/rdk` v1.17.0 or later in your module's `go.mod`. Update it with `go get go.viam.com/rdk@latest`.
 - `viam-server` v1.17.0 or later on the machine you test on, and the Viam CLI v1.17.0 or later. See [Update viam-server](/set-up-a-machine/viam-agent-and-server/) and [Install the CLI](/cli/overview/).
-
-You can only write composite models in Go.
-`viam module generate` and `viam module add-model` don't create composite models, so you change the generated code by hand.
 
 ## How composite registration works {#how-composite-registration-works}
 
@@ -64,7 +63,9 @@ func main() {
 ```
 
 Use your own config type in place of `resource.NoNativeConfig` if the model has attributes, as in a single-API model.
-`RegisterMultiAPI` replaces the `resource.RegisterComponent` call in the model's `init()` function; don't register the model both ways.
+In a module from `viam module generate`, the model's `init()` function calls `resource.RegisterComponent`, and `main` passes a `resource.APIModel` to `ModularMain`.
+Replace the `RegisterComponent` call with `RegisterMultiAPI`, and the `APIModel` argument with `resource.ExpandModel(...)...`, passing the same model variable.
+Don't register the model both ways.
 
 A model can serve at most one of the arm, gantry, and gripper APIs.
 If you list more than one, `RegisterMultiAPI` panics and the module exits at startup.
@@ -104,13 +105,17 @@ func (d *myCombo) Push(ctx context.Context, extra map[string]interface{}) error 
 Add `context` and `go.viam.com/rdk/logging` to the imports from step 1.
 If the struct is missing a method of one of the APIs, the module doesn't compile.
 
-`DoCommand` and `Status` belong to every API, so the composite routes them to the API that sorts first alphabetically.
-In this example, that's the button API.
+`DoCommand` and `Status` belong to every API.
+Because both parts are the same struct, a call through either API, or on the composite's own handle, reaches the same method.
 When the composite closes, `Close` runs once on each distinct object you passed to `Compose`.
 
 ## 3. Add a facade for each colliding method {#add-a-facade-for-each-colliding-method}
 
 Skip this step if your APIs share no method names; the compiler tells you in step 2 if they do.
+
+The sensor and button APIs in step 2 share no method names.
+The camera and movement sensor APIs do: both have a `Properties` method, with different signatures, so one struct can't implement both.
+This step uses a device that serves both APIs, with its state on a shared struct named `myDevice`.
 
 For APIs that collide, remove the colliding method from the shared struct.
 Then define one facade type per API that embeds the shared struct and implements that API's version of the method:
@@ -200,7 +205,8 @@ A second entry with a different name creates a second instance, which opens the 
 ## 6. Test each API {#test-each-api}
 
 Connect to the machine with the Go SDK and reach the composite through each API.
-Start from the Go code sample on your machine's **CONNECT** tab, which connects with your API key, and replace its body with:
+Start from the Go code sample on your machine's **CONNECT** tab, which connects with your API key.
+In its `realMain` function, after `defer machine.Close(ctx)`, add:
 
 ```go
 for _, name := range machine.ResourceNames() {
@@ -234,6 +240,8 @@ if err := b.Push(context.Background(), nil); err != nil {
 }
 logger.Info("button pushed")
 ```
+
+Add any of `go.viam.com/rdk/components/button`, `go.viam.com/rdk/components/sensor`, and `go.viam.com/rdk/resource` that the sample doesn't already import.
 
 The output lists `my-combo` once per API, `serves` lists both APIs, and both the sensor and button calls succeed.
 
