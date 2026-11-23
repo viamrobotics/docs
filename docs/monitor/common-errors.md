@@ -369,13 +369,13 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
    ```
 
    1. Verify your machine's internet connection is stable and working properly.
-   1. Install [`netcat`](https://nc110.sourceforge.io/) and check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
+   1. Install [`netcat`](https://nc110.sourceforge.io/) and check if you can access `turn.viam.com:443` and `turn.viam.com:3478`:
 
       ```sh {class="command-line" data-prompt="$" data-output="2,4"}
       nc -zv turn.viam.com 443
       Connection to turn.viam.com port 443 [tcp/https] succeeded!
-      nc -zv global.turn.twilio.com 3478
-      Connection to global.turn.twilio.com port 3478 [tcp/nat-stun-port] succeeded!
+      nc -zv turn.viam.com 3478
+      Connection to turn.viam.com port 3478 [tcp/nat-stun-port] succeeded!
       ```
 
    1. Check if UDP traffic is restricted in any way.
