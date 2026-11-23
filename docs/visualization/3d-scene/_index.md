@@ -16,11 +16,11 @@ aliases:
 
 The **3D SCENE** tab renders your machine in an interactive 3D view: the frames of every
 component, the geometry attached to them, point clouds from depth cameras, and any custom
-visuals a module publishes while the machine runs. It turns configuration you would
-otherwise read as JSON numbers into a picture you can inspect, so you can confirm a gripper
-sits where its frame configuration places it or watch a motion plan against the obstacles
-around it. In Build and Move modes, the scene does more than show your machine: you can edit
-its configuration and command it to move.
+visuals that a world state store service holds while the machine runs. It turns
+configuration you would otherwise read as JSON numbers into a picture you can inspect, so
+you can confirm a gripper sits where its frame configuration places it or watch a motion
+plan against the obstacles around it. In Build and Move modes, the scene does more than show
+your machine: you can edit its configuration and command it to move.
 
 This page covers the scene's modes, where to start for common tasks, and how the scene gets
 what it draws.

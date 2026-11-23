@@ -4,16 +4,17 @@ title: "Troubleshoot the 3D scene"
 weight: 80
 layout: "docs"
 type: "docs"
-description: "Trace a wrong or missing element in the 3D scene to its source: the machine configuration, a module, or the connection."
+description: "Trace a wrong or missing element in the 3D scene to its source: the machine configuration, a depth camera, a world state store service, or the connection."
 capabilities: ["scene-3d", "logging"]
 diataxis: how-to
 ---
 
-Every element in the 3D scene comes from one of three layers: the machine's saved
-configuration (frames and geometry), a module publishing at runtime (custom visuals and
-point clouds), or the live connection that streams poses and data. When something looks
-wrong, identify the layer first; the fix lives there, and edits to the wrong layer waste
-time.
+Each kind of element in the 3D scene has its own source. Frames and attached geometry come
+from the machine's saved configuration. Point clouds come from depth cameras, which the
+scene polls while the machine is online. Custom visuals come from a world state store
+service. Live poses, point clouds, and custom visuals all need the machine online and
+connected. When something looks wrong, find its source first; the fix lives there, and
+edits to the wrong source waste time.
 
 ## Read the scene's own signals first
 
@@ -95,8 +96,9 @@ Match your conclusion to what the scene renders:
   polling rates you set.
 
 A plan's obstacles are a separate case: `WorldState` obstacles passed to a single `Move`
-call are planner input for that request and are never drawn. To see them, publish the
-same geometry as a custom visual; see
+call are planner input for that request, and the live scene never draws them.
+[Replay mode](/visualization/3d-scene/replay-mode/) draws the obstacles a saved plan
+recorded. To see them in the live scene, publish the same geometry as a custom visual; see
 [Visuals and collisions](/visualization/visuals-and-collisions/).
 
 ## What's next
