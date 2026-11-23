@@ -111,7 +111,8 @@ plan, _, err := armplanning.PlanMotion(ctx, logger, &armplanning.PlanRequest{
 If `PlanMotion` returns without an error, the goal is feasible from the start
 state: the planner found a complete, collision-free trajectory. `plan.Trajectory()`
 is that trajectory, a sequence of joint configurations the arm would pass
-through.
+through. It's yours to inspect, log, compare against an expected path, or hand
+to the arm for execution once you are satisfied.
 
 ```go
 if err != nil {
@@ -126,17 +127,31 @@ for i, step := range traj {
 }
 ```
 
-An error means no plan was found within the timeout, which is your feasibility
-answer. Since RDK v1.17.0, `PlanMotion` also returns an error before it plans
-when the request itself is invalid: a joint-configuration goal puts a joint
-outside its [joint limits](/motion-planning/reference/kinematics/#joint-limits),
-names a frame that isn't in the frame system, or gives the wrong number of
-joint values for its frame. The limits error names the goal, frame, joint,
-value, and limits, for example
-`goal 0 frame "my-arm" joint 1 is 3.50000, outside its limits [-3.14159, 3.14159]`.
-The start state isn't checked against the limits, so you can still plan for an
-arm that is parked outside them. A returned trajectory is yours to inspect, log, compare against an
-expected path, or hand to the arm for execution once you are satisfied.
+If `PlanMotion` returns an error, one of two things happened:
+
+- **No plan was found within the timeout.** This is your feasibility answer.
+- **The request is invalid.** Since RDK v1.17.0, `PlanMotion` checks each
+  joint-configuration goal before it plans. It returns an error if a goal names
+  a frame that isn't in the frame system, gives the wrong number of joint values
+  for its frame, or puts a joint outside its
+  [joint limits](/motion-planning/reference/kinematics/#joint-limits).
+
+### Joint limit errors
+
+A joint limit error names the goal, frame, and joint, counting from 0, and shows
+the goal's value and the limits it falls outside:
+
+```text
+goal 0 frame "my-arm" joint 1 is 3.50000, outside its limits [-3.14159, 3.14159]
+```
+
+The values are in the planner's internal units: radians for revolute joints and
+millimeters for prismatic joints. Kinematics files set revolute limits in
+degrees, so this example is the second joint of the first goal, limited to -180
+to 180 degrees, with a goal value of about 200.5 degrees.
+
+Only goals are checked against the limits, not the start state, so you can
+still plan for an arm that is parked outside them.
 
 ## Plan from a remote client
 
