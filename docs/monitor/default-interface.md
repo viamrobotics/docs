@@ -99,6 +99,8 @@ The Viam mobile app provides similar access from your phone:
 - Switch between components
 - Restart, rename, and delete machines
 - Move an arm by moving your phone (arm controller)
+- See the latest data a resource captured to the cloud, such as a camera's latest image or a sensor's latest readings, in the **Latest Capture** section of its card (Viam mobile app 1.30.0 or later)
+- Request a data sync with the **Sync** button on the data manager's card (Viam mobile app 1.30.0 or later)
 - View a machine's configuration as read-only JSON, and copy it
 - Apply organization control layouts, which set which resource cards a machine shows and in what order (users with permission can also create and edit them)
 - [View machine logs](/monitor/troubleshoot/#check-logs)
