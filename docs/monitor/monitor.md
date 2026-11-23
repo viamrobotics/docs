@@ -53,6 +53,10 @@ Click the **status** dropdown to see details about each {{< glossary_tooltip ter
 - Network health (`viam-server` v1.12.0 or later): an overall verdict (**Network good**, **Network degraded**, or **Network down**) followed by the **Internet**, **DNS**, **Peer-to-peer**, and **Local network** checks.
   Hover over a check to see its readings.
   The row shows how long ago the checks ran, and users with write access to the machine get a **Logs** link that opens the network check log lines.
+- Network (`viam-agent` v1.2.1 or later, Linux): the part's active network connections, with the primary connection, the one internet traffic leaves on, listed first and marked **primary** when there is more than one.
+  Each row names the connection: a Wi-Fi network as `<SSID> (<interface>)`, a wired link as **Ethernet (`<interface>`)**, a Bluetooth link as **Bluetooth (`<interface>`)**, or the provisioning **Setup hotspot**.
+  `viam-agent` reports connections every 5 minutes and on any change. If an online part's last report is more than 11 minutes old, the field adds **last reported** with how long ago.
+  Parts without a report, such as those running an older `viam-agent` or a non-Linux OS, show **–**.
 
 ## Check resource health
 
