@@ -22,6 +22,14 @@ The machines table shows every machine in your organization with its current sta
 - **Offline** (red): the machine is not connected. The table shows when it was last online.
 - **Awaiting setup**: the machine has been created but has not yet connected to Viam.
 
+To organize a large fleet, click **Group by** above the table and choose **Location** or **Status**.
+Grouping by location shows one table per location.
+Grouping by status shows one table for each status that has machines (**Online**, **Partially online**, **Offline**, and **Awaiting setup**), so you can find every machine that needs attention in one place.
+A machine is **Partially online** when some of its parts are online and others aren't.
+The grouping is saved in the page URL's `group` parameter, so you can share a link to a grouped view.
+When you come back to the page without table parameters in the URL, your browser restores the grouping and filters you last used for that organization.
+Choose **None** to show all machines in one table again.
+
 To see how much binary and tabular data your fleet has synced in the last 48 hours, organization owners can open the **Data usage** tab of the billing page. See [Check data usage](/organization/billing/#check-data-usage).
 
 ### Favorite machines
