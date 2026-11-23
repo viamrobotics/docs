@@ -48,7 +48,7 @@ The panel header can open a [frame POV widget](/visualization/3d-scene/3d-scene-
 
 ## Settings
 
-**Settings** controls how the scene fetches and draws data, such as refresh rates, point cloud display, and which vision services render. Pages that rely on a particular setting name it where it matters. Toggle the rest to see what they do.
+**Settings** controls how the scene fetches and draws data, such as refresh rates, point cloud display, and which vision services render. Its **Widgets** tab opens [control widgets](/visualization/3d-scene/3d-scene-widgets/#open-a-control-widget) for the machine's resources. Pages that rely on a particular setting name it where it matters. Toggle the rest to see what they do.
 
 ## Import files
 
