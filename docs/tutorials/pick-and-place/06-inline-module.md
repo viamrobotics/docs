@@ -46,7 +46,7 @@ The detection, the pose math, and the motion calls are the same pick-and-place l
 
 ## Create the module
 
-On the **Configure** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module and click **Choose**. Select **Python** as the language, keep **Generic service** as the component or service, and click **Create module**. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
+On the **CONFIGURE** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module and click **Choose**. Select **Python** as the language, keep **Generic service** as the component or service, and click **Create module**. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in Configure with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
@@ -194,7 +194,7 @@ async def do_command(self, command, *, timeout=None, **kwargs):
 ```
 
 {{< alert title="No build step for Python" color="note" >}}
-Saving an inline Python module doesn't start a cloud build. Viam uploads your source, and the machine restarts the module with the new code. Save from the **Configure** tab: that is the save that deploys the code to the machine.
+Saving an inline Python module doesn't start a cloud build. Viam uploads your source, and the machine restarts the module with the new code. Save from the **CONFIGURE** tab: that is the save that deploys the code to the machine.
 {{< /alert >}}
 
 With the code in place, save the machine's configuration. The Viam app packages your code and deploys it to the machine, and the **Logs** tab shows the module restarting the same way it showed module downloads back in Phase 2.
@@ -204,7 +204,7 @@ With the code in place, save the machine's configuration. The Viam app packages 
 {{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module starting on the machine.">}}
 
 {{< checkpoint >}}
-The module starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the module fails to start, read the error in the **Logs** tab; a missing import or a syntax error carried over from the script is the most common cause.
+The module starts without errors in the **Logs** tab, and its resource shows online on the **CONFIGURE** tab. If the module fails to start, read the error in the **Logs** tab; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
 From the **Control** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.

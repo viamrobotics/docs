@@ -21,7 +21,7 @@ You configured the arm in Phase 1. In this phase you add the two resources that 
 
 ## The target state
 
-By the end of this phase your Configure tab holds all three components: `arm-1` from Phase 1, plus the gripper and camera you add here.
+By the end of this phase your **CONFIGURE** tab holds all three components: `arm-1` from Phase 1, plus the gripper and camera you add here.
 
 | Name        | API                     | Model                   |
 | ----------- | ----------------------- | ----------------------- |
@@ -31,7 +31,7 @@ By the end of this phase your Configure tab holds all three components: `arm-1` 
 
 ## Configure the gripper
 
-Start with the gripper. On the **Configure** tab, click the **+** icon and select **Blocks**. Search for `gripper` and select the `ufactory/gripper` result. Name it `gripper-1`.
+Start with the gripper. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `gripper` and select the `ufactory/gripper` result. Name it `gripper-1`.
 
 {{< alert title="One module, two models" color="note" >}}
 The `viam:ufactory` module you downloaded in Phase 1 provides both the arm model and this gripper model, so `viam-server` already has the code it needs. No second download happens here.
@@ -108,7 +108,7 @@ world
 
 ### Frame the arm
 
-Open the `arm-1` card on the **Configure** tab and select **Frame**. The default frame already describes what you want: parent `world`, translation `(0, 0, 0)`, no rotation. That places the arm's base at the origin of the world, and every other frame is measured from there. Leave the defaults and save.
+Open the `arm-1` card on the **CONFIGURE** tab and select **Frame**. The default frame already describes what you want: parent `world`, translation `(0, 0, 0)`, no rotation. That places the arm's base at the origin of the world, and every other frame is measured from there. Leave the defaults and save.
 
 <!-- ASSET P1 configure-arm-frame (UI): arm-1 card Frame editor, parent world, translation 0,0,0 -->
 
@@ -193,7 +193,7 @@ The arm card shows the arm's current joint positions, and provides two different
 {{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm Control card with MoveToJointPositions in Jogging mode, showing minus and plus 5 degree buttons for each joint, and MoveToPosition with its Current position and Execute buttons.">}}
 
 {{< checkpoint >}}
-Tapping a joint's jog button moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values. If nothing moves or you see an error message, confirm `arm-1` shows as online in the Configure tab and that the Logs tab has no connection errors for it.
+Tapping a joint's jog button moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values. If nothing moves or you see an error message, confirm `arm-1` shows as online in the **CONFIGURE** tab and that the Logs tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ### Control the gripper
@@ -205,7 +205,7 @@ The gripper test card lets you open and close a gripper, check whether the gripp
 {{<imgproc src="/tutorials/pick-and-place/control-gripper-grab.jpeg" resize="1200x" declaredimensions=true alt="The two-finger gripper holding a block.">}}
 
 {{< checkpoint >}}
-With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. If nothing moves, confirm `gripper-1` shows as online in the Configure tab and that the Logs tab has no connection errors for it.
+With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. If nothing moves, confirm `gripper-1` shows as online in the **CONFIGURE** tab and that the Logs tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ## The 3D scene tab

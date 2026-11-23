@@ -70,7 +70,7 @@ If your bin is a rectangle or box shape and it's visible in home pose, the visio
 
 You configure pose saving by hand, the same way you configured the arm, gripper, and camera in Phases 1 and 2.
 
-On the **Configure** tab, click the **+** icon and select **Blocks**. Search for `arm-position-saver`, select the `vmodutils/arm-position-saver` result, and name it `home-pose`. This is the first model you use from the `erh:vmodutils` module, so `viam-server` downloads that module now; the same module also provides the `vmodutils/obstacle` model you configure later in this phase, so it downloads only once.
+On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `arm-position-saver`, select the `vmodutils/arm-position-saver` result, and name it `home-pose`. This is the first model you use from the `erh:vmodutils` module, so `viam-server` downloads that module now; the same module also provides the `vmodutils/obstacle` model you configure later in this phase, so it downloads only once.
 
 The `arm-position-saver` is a **switch**: a resource whose numbered positions each trigger an action instead of reporting a value. You use two of its positions, one to save the arm's current joint positions ("update config") and one to replay them ("go to"). Throughout this phase, "the switch" refers to this pose-saver resource.
 
@@ -100,11 +100,11 @@ You have three ways to jog the arm on its Control card, and you can mix them:
 Depending on the model, an arm in manual mode either holds its own weight or releases its joints entirely. An arm that releases its joints can drop as soon as manual mode turns on. Until you know how your arm behaves, hold it before you press **Enter**.
 {{< /alert >}}
 
-Run these four steps to save and verify the pose:
+Run these four steps from the **CONFIGURE** tab to save and verify the pose:
 
 1. On the arm test card, jog the arm into position using joint control, end-effector control, manual mode, or a mix of the three.
 2. Under **MoveToPosition**, click **Current position** and note the x, y, and z values to confirm the arm is where you expect it.
-3. On the switch test card, click **update config** to save the current joint positions.
+3. On the switch test card, click **update config** to save the current joint positions. Note: If you're on the **CONTROL** tab, the JSON config doesn't update automatically. Switch to the **CONFIGURE** tab.
 4. To validate, move the arm away to a different position. From the switch test card, click **go to** and confirm the arm returns to the saved pose.
 
 Setting the switch to **update config** writes the current joint positions straight into the switch's own configuration. Unlike the components you added in Phases 1 and 2, there is no separate **Save** step here: the pose is persisted as soon as you trigger
@@ -130,7 +130,7 @@ The `joints` array holds the six joint angles, in radians, captured the moment y
 
 {{<imgproc src="/tutorials/pick-and-place/control-armsaver-switch.png" resize="1200x" declaredimensions=true alt="The arm-position-saver switch test card with its update config and go to positions.">}}
 
-Now that `home-pose` is saved, open its resource card on the **Configure** tab and use the **Duplicate** feature to create a copy. Rename the copy to `approach-pose`, and its `arm` attribute carries over automatically since it is already set to `"arm-1"`. Duplicate three more times for `grasp-pose`, `travel-pose`, and `place-pose`. This is faster than adding five switches from scratch and less error-prone, since you only type the `arm` attribute once.
+Now that `home-pose` is saved, open its resource card on the **CONFIGURE** tab and use the **Duplicate** feature to create a copy. Rename the copy to `approach-pose`, and its `arm` attribute carries over automatically since it is already set to `"arm-1"`. Duplicate three more times for `grasp-pose`, `travel-pose`, and `place-pose`. This is faster than adding five switches from scratch and less error-prone, since you only type the `arm` attribute once.
 
 <!-- ASSET P1 configure-duplicate-feature (UI+): the resource Duplicate control highlighted -->
 
@@ -154,7 +154,7 @@ In this workshop you configure two types of obstacles: the table surface and two
 
 ## Obstacles as components
 
-An obstacle can be configured as a `vmodutils/obstacle` component you add on the **Configure** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle has the same control UI as a gripper. This is purely as a resource container for geometry.
+An obstacle can be configured as a `vmodutils/obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle has the same control UI as a gripper. This is purely as a resource container for geometry.
 
 The obstacle geometry is then automatically included in the world state the motion service uses to plan a safe path for the arm to a target position in 3D space. This is one of two ways to get obstacle geometry into that world state: configuring it here, as a component, means it persists on the machine and applies to every move, which is what a fixed table and fixed walls call for. The other way, passing a `WorldState` directly on a single `motion.move` call in code, suits geometry that only matters for one move and should not persist, and is out of scope for this workshop; see [Move an arm](/motion-planning/move-an-arm/overview/) if you need that pattern later.
 

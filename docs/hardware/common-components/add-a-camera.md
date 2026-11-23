@@ -163,7 +163,7 @@ You do not need to restart anything.
 
 ### 6. Test the camera
 
-Every component in Viam has a built-in **test panel** in the Configure tab.
+Every component in Viam has a built-in **test panel** in the **CONFIGURE** tab.
 The test panel uses the exact same APIs your code will use, so if the camera works here, it will work in your programs.
 
 1. Find your camera component in the configuration view.
