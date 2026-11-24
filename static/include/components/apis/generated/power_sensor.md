@@ -285,6 +285,62 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetBatteryPercent
+
+Return the remaining charge of the battery the power sensor monitors, as a percentage from 0 to 100.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const powerSensor = new VIAM.PowerSensorClient(machine, 'my_power_sensor');
+const percent = await powerSensor.getBatteryPercent();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getbatterypercent).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetProperties
+
+Return whether the power sensor supports `GetBatteryPercent`.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[powerSensorApi](https://ts.viam.dev/modules/powerSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/powerSensorApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const powerSensor = new VIAM.PowerSensorClient(machine, 'my_power_sensor');
+const { isBatteryPercentSupported } = await powerSensor.getProperties();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getproperties).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetReadings
 
 Get the measurements or readings that this power sensor provides.

@@ -4,6 +4,8 @@
 | [`GetVoltage`](/reference/apis/components/power-sensor/#getvoltage) | Return the voltage reading of a specified device and whether it is AC or DC. |
 | [`GetCurrent`](/reference/apis/components/power-sensor/#getcurrent) | Return the current of a specified device and whether it is AC or DC. |
 | [`GetPower`](/reference/apis/components/power-sensor/#getpower) | Return the power reading in watts. |
+| [`GetBatteryPercent`](/reference/apis/components/power-sensor/#getbatterypercent) | Return the remaining charge of the battery the power sensor monitors, as a percentage from 0 to 100. |
+| [`GetProperties`](/reference/apis/components/power-sensor/#getproperties) | Return whether the power sensor supports `GetBatteryPercent`. |
 | [`GetReadings`](/reference/apis/components/power-sensor/#getreadings) | Get the measurements or readings that this power sensor provides. |
 | [`Reconfigure`](/reference/apis/components/power-sensor/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/components/power-sensor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |

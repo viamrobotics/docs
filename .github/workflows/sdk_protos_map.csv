@@ -224,6 +224,8 @@ movement_sensor,Close,No,close,Close,,
 power_sensor,GetVoltage,,get_voltage,Voltage,voltage,getVoltage
 power_sensor,GetCurrent,,get_current,Current,current,getCurrent
 power_sensor,GetPower,,get_power,Power,power,getPower
+power_sensor,GetBatteryPercent,,,,,getBatteryPercent
+power_sensor,GetProperties,,,,,getProperties
 power_sensor,GetReadings,,get_readings,Readings,readings,getReadings
 ## HACK:  GetGeometries proto for power sensor component, adding 1 pseudo-entry:
 ## TED: But t for Go SDK:
