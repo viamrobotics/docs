@@ -12,7 +12,7 @@ date: "2026-11-24"
 
 Make a second machine that runs a simulation of one you already have, with the same resource names and frames as the original.
 Your code then connects to the simulated copy by changing only the address and credentials, so you can test it without risk to the real hardware.
-To learn why only the models change, see [How simulated and real configs map](/set-up-a-machine/simulate/how-simulation-works/#how-simulated-and-real-configs-map).
+To learn why only the models change, see [What's different from real hardware](/set-up-a-machine/simulate/how-simulation-works/#whats-different-from-real-hardware).
 
 ## Prerequisites {#prerequisites}
 

@@ -12,7 +12,7 @@ date: "2026-11-24"
 
 Run the code you wrote against a simulated machine on your real robot, without rewriting it.
 You copy the simulated machine's config to the real machine, swap each simulated model for its hardware model, and keep every resource name and frame your code depends on.
-To learn why only the models change, see [How simulated and real configs map](/set-up-a-machine/simulate/how-simulation-works/#how-simulated-and-real-configs-map).
+To learn why only the models change, see [What's different from real hardware](/set-up-a-machine/simulate/how-simulation-works/#whats-different-from-real-hardware).
 
 ## Prerequisites {#prerequisites}
 
