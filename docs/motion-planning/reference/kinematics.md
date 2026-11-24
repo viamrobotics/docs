@@ -68,6 +68,30 @@ Every joint has limits that define its range of motion:
 Joint limits prevent the motion planner from computing solutions that would
 require the arm to bend past its physical limits.
 
+A module can narrow the joint limits its arm's model serves, but never widen
+them. For example, a module might keep a joint away from a fixture in the work
+cell. In a module built with the Go SDK from RDK v1.17.0 or later, call
+[`NarrowJointLimits`](https://pkg.go.dev/go.viam.com/rdk/referenceframe#SimpleModel.NarrowJointLimits)
+on the model while constructing the resource. It takes limits keyed by joint
+ID, in the kinematics file's units. Each joint can set `min`, `max`,
+`max_velocity`, and `max_acceleration`. The module chooses which attribute of
+its resource config to read them from. No built-in model reads one. This is
+the shape the method's documentation suggests:
+
+```json
+"joint_limits": {
+  "joint_2": { "min": -31, "max": -29 },
+  "joint_3": { "max_velocity": 30, "max_acceleration": 380 }
+}
+```
+
+Each value must fall inside the limit the model already has. A value that
+would widen a limit returns an error that names the joint, and so does a limit
+on a mimic joint or on a DH model. On an error, nothing changes. A `min` equal
+to `max` locks a joint in place. Motion planning uses the narrowed limits, and the
+kinematic model that `GetKinematics` returns carries them. `NarrowJointLimits` replaces the deprecated
+`referenceframe.SetJointLimits` function.
+
 ### Tool center point (TCP)
 
 The tool center point is the reference point on the end effector. By default,

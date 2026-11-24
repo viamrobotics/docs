@@ -83,9 +83,13 @@ path, straight from a script or test. For every call and option, see the generat
 ## Connect to a live machine
 
 The visualizer can also connect to a Viam machine and render its frame system, arms, and
-cameras, the way the in-app **3D SCENE** tab does. Put the machine's credentials in a
-<file>.env.local</file> file at the repository root, run `make up`, then pick the machine
-in the machine config panel (lower right). For the credential format, see the
+cameras, the way the in-app **3D SCENE** tab does. Run `make up`, open the machine config
+panel (lower right), and click **Log in with Viam**. After you approve the login in your
+browser, the panel lists the machines in your organizations, and you pick one.
+
+To connect without logging in, put the machine's credentials in a <file>.env.local</file>
+file at the repository root before you run `make up`, then pick the machine under
+**Manual configs** in the same panel. For the credential format, see the
 [Running locally guide](https://viamrobotics.github.io/visualization/guides/local-usage/#connecting-to-a-viam-machine).
 
 ## Save and load scene snapshots
@@ -115,6 +119,25 @@ data, err := snapshot.MarshalJSON()
 Name the output file with a `visualization_snapshot` prefix, for example
 <file>visualization_snapshot_grasp_test.json</file>: the drag-and-drop loader accepts
 only files that match that prefix.
+
+## Export a scene for simulation
+
+Viam Visualization can export the current scene as URDF and MJCF, so you can load it into
+a simulator such as Gazebo, Isaac Sim, or MuJoCo. Click **Export scene as URDF and MJCF**
+(download icon) in the toolbar. The app downloads <file>scene-urdf-mjcf.zip</file>, which
+contains:
+
+- <file>urdf/</file>: <file>scene.urdf</file>, its meshes, and a <file>model.config</file>
+  that lets Gazebo load the folder as a model.
+- <file>mjcf/</file>: <file>scene.xml</file> and its meshes, for MuJoCo.
+- <file>export-notes.txt</file>: everything the export left out or approximated.
+
+Each folder holds its own meshes, so you can move either one on its own. The export
+includes what the scene draws, with arms articulated from their kinematics and joints set to
+their current positions. URDF and MJCF have no way to describe point clouds, lines, or
+arrows, so the export leaves those out, along with hidden objects. Read
+<file>export-notes.txt</file> for anything else, such as components with
+Denavit-Hartenberg kinematics, whose links the export welds in place.
 
 ## How updates reach the browser
 

@@ -590,6 +590,9 @@ version** on the **FLEET** > **Modules** page.
 
 - For a Go module, make sure the build completed successfully. Check the build
   progress bar in the code editor.
+- On the machine's **CONFIGURE** tab, the module's card shows **BUILDING…** while
+  the build runs and **DEPLOYING** until the machine picks up the new version.
+  See [Check resource health](/monitor/monitor/#check-resource-health).
 - For a Python module, make your edits in the module's code card on the
   machine's **CONFIGURE** tab and save there. Code saved in the standalone code
   editor reaches the machine only after another edit is saved from

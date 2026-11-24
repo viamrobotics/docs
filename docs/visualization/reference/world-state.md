@@ -40,7 +40,23 @@ The names are similar, but the two are different things, and only one affects a 
   planner computes for one `Move` call.
 - The [world state store service](/reference/apis/services/world-state-store/) is
   visualization output. It holds transforms that the 3D scene draws, and the planner never
-  reads it.
+  reads it. It can be the [built-in store](/reference/services/world-state-store/) or one a
+  module implements.
 
-The same geometry can take both paths, but they are separate: put it in a `WorldState` for
-the planner to avoid, and publish it to the world state store service for the scene to draw.
+## Where spatial state lives
+
+A machine's spatial state lives in three places, and the planner and the 3D scene each read
+only some of them:
+
+| Source                                                 | The planner uses it | The live 3D scene draws it | Lasts                              |
+| ------------------------------------------------------ | ------------------- | -------------------------- | ---------------------------------- |
+| Frame system: component frames and configured geometry | Yes                 | Yes                        | Until you change the configuration |
+| `WorldState` passed to `Move`                          | For that call only  | No                         | Until the call returns             |
+| World state store service                              | No                  | Yes                        | As long as the service holds it    |
+
+Nothing copies geometry from one source to another. For something permanent, such as a
+table or a wall, configure it as frame geometry, and both the planner and the scene use it.
+For something that changes at runtime, such as a detected object, put it in a `WorldState`
+for the planner to avoid, and publish it to a world state store service if you also want to
+see it. A `WorldState`'s obstacles never appear in the live scene, but a saved plan records
+them, and [Replay mode](/visualization/3d-scene/replay-mode/) draws them.
