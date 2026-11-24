@@ -46,6 +46,13 @@ configuration change that you review before it takes effect.
   connectivity, listing USB devices, or reading system information. Each
   command requires your explicit approval before it runs. See
   [Run shell commands for diagnostics](#run-shell-commands-for-diagnostics).
+- **What it can simulate.** On a machine page, the assistant can check
+  whether a machine part has a simulation running, and start or stop an
+  [Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/) when you ask.
+  Before it starts one, the panel shows an **Approve** button that notes the
+  simulation is billed per minute; nothing starts until you approve. A
+  simulation runs from the part's saved configuration, so save staged edits
+  first.
 - **What it reads.** The assistant reads your current configuration (including
   unsaved edits and resolved fragments), your machine's status, its logs,
   validation errors, Viam documentation, the module registry, and your

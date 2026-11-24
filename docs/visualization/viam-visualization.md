@@ -139,6 +139,9 @@ arrows, so the export leaves those out, along with hidden objects. Read
 <file>export-notes.txt</file> for anything else, such as components with
 Denavit-Hartenberg kinematics, whose links the export welds in place.
 
+To load the MJCF export into a MuJoCo simulation on Viam, see
+[Import a scene from Viam visualization](/set-up-a-machine/simulate/build-a-scene/#import-a-scene-from-viam-visualization).
+
 ## How updates reach the browser
 
 The app runs a **draw service** that the client API calls. Each push becomes an

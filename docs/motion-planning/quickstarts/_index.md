@@ -18,6 +18,9 @@ Everything else in this section builds on that tree.
 Both quickstarts run on fake components, so you can do them on any
 laptop without hardware. When you swap in a real arm or camera later,
 the machine configuration changes; your code stays the same.
+To add physics and camera images before you have hardware, replace the fake
+components with simulated ones: see
+[Simulate a machine you already have](/set-up-a-machine/simulate/simulate-an-existing-machine/#replace-fake-components-with-simulated-ones).
 
 {{< cards >}}
 {{% card link="/motion-planning/quickstarts/first-arm/" noimage="true" %}}
