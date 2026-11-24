@@ -14,6 +14,12 @@ Make a second machine that runs a simulation of one you already have, with the s
 Your code then connects to the simulated copy by changing only the address and credentials, so you can test it without risk to the real hardware.
 To learn why only the models change, see [What's different from real hardware](/set-up-a-machine/simulate/how-simulation-works/#whats-different-from-real-hardware).
 
+{{< alert title="Tip" color="tip" >}}
+For MuJoCo, the module's Claude Code plugin can make the copy for you and check its resource names, frames, and arm kinematics against the original's.
+Ask it for a sim twin of your machine.
+See [Build a cell with an agent](https://github.com/viam-labs/viam-mujoco-sim#build-a-cell-with-an-agent).
+{{< /alert >}}
+
 ## Prerequisites {#prerequisites}
 
 - A configured Viam machine to copy, with real hardware or with fake components.
@@ -58,8 +64,11 @@ Each simulator has its own models for the arm, gripper, and camera:
 {{< tabs >}}
 {{% tab name="MuJoCo" %}}
 
+- **World:** if the original's frames put the origin above the floor, such as at an arm's base on a table, set the world's `floor_z` to the floor's height below the origin, in meters, such as `-0.9` for a workbench.
+  Otherwise the simulated floor cuts through the table.
 - **Arm:** `viam-labs:mujoco-sim:arm`, with `asset` set to `lite6` for a UFactory Lite6 or `ur5e` for a Universal Robots UR5e.
   Its frame parent must be `world` or a simulated base, so an arm mounted on another component needs `world` as its parent and its pose relative to the world.
+  The simulated arm starts in its home pose, not the real arm's current pose; if that puts the gripper into a table, set `home_joints` to the real arm's stow pose, as [Use your own robot model](/set-up-a-machine/simulate/build-a-scene/#use-your-own-robot-model) shows.
 - **Gripper:** `viam-labs:mujoco-sim:gripper`, with `mount` set to the arm's name, and `asset` set to `lite6_gripper` for the Lite6's gripper or `robotiq_2f85` for a Robotiq 2F-85.
 - **Camera:** `viam-labs:mujoco-sim:camera`.
   Set `width`, `height`, and `fov_deg` (the vertical field of view) to match the real camera, and `depth` to `true` for a depth camera.
@@ -115,12 +124,17 @@ For other robots, and every attribute of each model, see the [Isaac Sim module R
    Paste the components into its `components` array after `sim-world`, and the services into its `services` array.
 4. If the original's JSON has a `fragments` array, the copy holds only a reference to each fragment, not its resources.
    Copy the resources from each fragment's own **JSON** view instead, and replace any fragment variables with their values.
-   Don't copy the `fragments` array, or the new machine would load the real hardware's config.
+   If the original's JSON has a `fragment_mods` array, apply each of its overrides to the resources you copied.
+   Don't copy the `fragments` or `fragment_mods` arrays, or the new machine would load the real hardware's config.
 5. For each arm, gripper, and camera, change `model` to the simulated model and replace `attributes` with the simulated attributes, as the tab for your simulator shows.
 6. For each other hardware component, such as a motor or a sensor, change `model` to `rdk:builtin:fake` and set `attributes` to `{}`, so code that calls it still finds it.
-7. Remove each service whose model comes from a hardware driver module, the data manager service, and every component's `service_configs`.
+7. Remove each service whose model comes from a hardware driver module, the data manager service, any shell service, and every component's `service_configs`.
    Without data capture, simulated images never mix with the original machine's data.
-8. Click **Save**.
+8. Remove any module `env` value or attribute that holds an API key, token, password, or webhook URL.
+   If the copy needs one, give it its own value rather than the original's.
+9. If no camera sees the whole cell, add a simulated camera that does, so you can watch the copy.
+   For MuJoCo, see [Add a camera](/set-up-a-machine/simulate/mujoco/#add-a-camera).
+10. Click **Save**.
 
 Obstacle components carry over unchanged, so the motion planner avoids the same shapes it does on the original.
 To make the simulated arm collide with them too, and to add tables and objects the original's config doesn't describe, see [Build a simulated scene](/set-up-a-machine/simulate/build-a-scene/).

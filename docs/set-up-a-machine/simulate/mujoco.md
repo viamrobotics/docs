@@ -20,6 +20,7 @@ To learn how a simulated machine works and how MuJoCo compares with Isaac Sim, s
   The MuJoCo module is built for these two platforms only.
 - `viam-server` running on that computer as a Viam machine, online in the Viam app.
   See [Set up your first machine](/set-up-a-machine/first-machine/).
+- To configure the simulation from an AI client instead of the Viam app, the [Viam MCP server](/reference/mcp/) connected to that client.
 
 ## 1. Add the MuJoCo world {#add-the-mujoco-world}
 
@@ -45,8 +46,6 @@ With the [Viam MCP server](/reference/mcp/) connected, ask your MCP client somet
 > On my machine `<machine-name>`, add a generic component named `sim-world` with the model `viam-labs:mujoco-sim:world` from the `viam-labs:mujoco-sim` module, with no attributes.
 
 The client calls the `add_machine_config_item` tool, which saves the change right away and adds the `viam-labs:mujoco-sim` module along with the component.
-
-The Viam CLI can't add a registry module to a machine, so use the Viam app or the MCP server for this page's config steps.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -164,14 +163,18 @@ Ask your MCP client something like:
 
 ## 4. Verify the cell {#verify-the-cell}
 
-1. On the **CONTROL** tab, open the `scene-cam` card and turn on its stream.
-   The image shows the arm standing on the floor.
-2. Open the **3D SCENE** tab.
-   The arm appears at the origin, with the gripper on its end.
-3. On the **CONTROL** tab, open the `pick-arm` card and change the first joint's position by 30 degrees.
-   In the `scene-cam` stream, the arm turns about its base.
+Check each simulated component from the Viam app, watching through the camera.
 
-If all three checks pass, the simulation is running and responds to the same arm, gripper, and camera APIs as real hardware.
+1. On the **CONTROL** tab, open the camera's card and turn on its stream.
+   The image shows your simulated hardware in the scene.
+   In the example, `scene-cam` shows the arm standing on the floor.
+2. Open the **3D SCENE** tab.
+   Each component appears where its frame puts it.
+   In the example, the arm is at the origin, with the gripper on its end.
+3. On the **CONTROL** tab, move a component from its card, and watch it move in the camera stream.
+   In the example, open the `pick-arm` card and change the first joint's position by 30 degrees; the arm turns about its base.
+
+If all three checks pass, the simulation is running and responds to the same component APIs as real hardware.
 
 ## Troubleshooting {#troubleshooting}
 
