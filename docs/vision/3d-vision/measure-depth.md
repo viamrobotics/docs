@@ -78,7 +78,7 @@ Go to [app.viam.com](https://app.viam.com), navigate to your machine, and verify
 
 Common depth-capable cameras and the modules that wrap them:
 
-- Intel RealSense D400 series, through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)
+- Intel RealSense D415, D435 and D435i, through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)
 - Luxonis OAK-D series, through the [OAK camera module](https://github.com/viamrobotics/viam-camera-oak)
 - Orbbec cameras, through the [Orbbec module](https://github.com/viam-modules/orbbec)
 - The `fake` camera model, for development without hardware (returns synthetic but structurally correct point clouds)

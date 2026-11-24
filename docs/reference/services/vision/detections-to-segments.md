@@ -19,7 +19,7 @@ aliases:
 
 The `viam:vision:detections-to-segments` vision service wraps an existing 2D detector and projects its bounding boxes into 3D point cloud objects using a depth camera's intrinsic parameters. Each 2D detection produces a corresponding 3D segment that carries the original label and whose point cloud contains the projected pixels from inside the 2D box.
 
-The camera you reference must provide both 2D images and point cloud data (for example, an Intel RealSense D400-series camera configured with the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)). A plain 2D camera will not work.
+The camera you reference must provide both 2D images and point cloud data (for example, an Intel RealSense D435 configured with the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)). A plain 2D camera will not work.
 
 This model previously shipped with core RDK as `detector_3d_segmenter`. It now ships as a module at [`viam-modules/detections-to-segments`](https://github.com/viam-modules/detections-to-segments).
 

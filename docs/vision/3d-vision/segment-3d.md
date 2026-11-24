@@ -36,7 +36,7 @@ The segmenter returns results through the vision service's [`GetObjectPointCloud
 
 You need a camera that returns both images and point clouds. Common choices:
 
-- Intel RealSense D400 series (through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense))
+- Intel RealSense D415, D435 and D435i (through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense))
 - Luxonis OAK-D series (through the [OAK camera module](https://github.com/viamrobotics/viam-camera-oak))
 - Orbbec cameras (through the [Orbbec module](https://github.com/viam-modules/orbbec))
 - The `fake` camera for testing (returns synthetic but structurally correct point clouds)
