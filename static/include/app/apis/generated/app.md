@@ -738,7 +738,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The id of the organization to create the invite for.
 - `email` (string) (required): The email address of the user to generate an invite for.
-- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The authorizations to associate with the new invite.
+- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): The authorizations to associate with the new invite.
 - `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or automatically add a
   user. Defaults to true.
 
@@ -862,8 +862,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The id of the organization.
 - `email` (string) (required): The email address associated with the invite.
-- `addAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): List of authorizations to add to the invite.
-- `removeAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): List of authorizations to remove from the invite.
+- `addAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): List of authorizations to add to the invite.
+- `removeAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): List of authorizations to remove from the invite.
 
 **Returns:**
 
@@ -1248,7 +1248,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the organization.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
@@ -2139,7 +2139,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the location.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
@@ -2543,7 +2543,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `id` (string) (required): The ID of the requested robot part.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `levels` (string) (optional): Optional array of log levels to return. Defaults to returning all log levels.
+- `levels` (string[]) (optional): Optional array of log levels to return. Defaults to returning all log levels.
 - `start` (Date) (optional): Optional start time for log retrieval. Only logs created after this time will be
   returned.
 - `end` (Date) (optional): Optional end time for log retrieval. Only logs created before this time will be
@@ -2682,7 +2682,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the requested robot part.
-- `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
+- `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)[]) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
 - `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level logs should be
   returned. Defaults to true.
@@ -2963,7 +2963,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `robotPartId` (string) (required): The ID of the robot part to update.
-- `propertyChanges` (string) (required): The properties to set, each a path into the config (for example
+- `propertyChanges` ({ path: string; value: [JsonValue](https://ts.viam.dev/types/JsonValue.html) }[]) (required): The properties to set, each a path into the config (for example
   "components.my-arm.frame") and the value to set it to. Changes are applied in order.
 
 **Returns:**
@@ -4023,7 +4023,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the robot.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
@@ -4102,7 +4102,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the robot part.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
@@ -4182,7 +4182,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `organizationId` (string) (required): The ID of the organization to list fragments for.
 - `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities instead. If true then
   only public fragments will be listed. Defaults to true.
-- `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional)
+- `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)[]) (optional)
 
 **Returns:**
 
@@ -4232,14 +4232,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `machineId` (string) (required): The machine ID used to filter fragments defined in a machine's parts. Also
   returns any fragments nested within the fragments defined in parts.
-- `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the response. Useful when
+- `additionalFragmentIds` (string[]) (optional): Additional fragment IDs to append to the response. Useful when
   needing to view fragments that will be provisionally added to the machine alongside existing
   fragments.
 
 **Returns:**
 
 - (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well as additionally
-specified fragment IDs.
+  specified fragment IDs.
 
 **Example:**
 
@@ -4262,8 +4262,8 @@ List summary information for the machines in an organization, optionally filtere
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization.
-- `fragmentIds` (string) (optional): Optional list of fragment IDs to filter machines.
-- `locationIds` (string) (optional): Optional list of location IDs to filter machines.
+- `fragmentIds` (string[]) (optional): Optional list of fragment IDs to filter machines.
+- `locationIds` (string[]) (optional): Optional list of location IDs to filter machines.
 - `limit` (number) (optional): Optional max number of machines to return.
 
 **Returns:**
@@ -5030,7 +5030,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to list authorizations for.
-- `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations for. If not
+- `resourceIds` (string[]) (optional): Optional list of IDs of resources to list authorizations for. If not
   provided, all resources will be included.
 
 **Returns:**
@@ -5171,7 +5171,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `permissions` ([AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)) (required): A list of permissions to check.
+- `permissions` ([AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]) (required): A list of permissions to check.
 
 **Returns:**
 
@@ -5520,11 +5520,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to query registry items for.
-- `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
-- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not filter on
+- `types` (PackageType[]) (required): A list of types to query. If empty, will not filter on type.
+- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)[]) (required): A list of visibilities to query for. If empty, will not filter on
   visibility.
-- `platforms` (string) (required): A list of platforms to query for. If empty, will not filter on platform.
-- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter on status.
+- `platforms` (string[]) (required): A list of platforms to query for. If empty, will not filter on platform.
+- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)[]) (required): A list of statuses to query for. If empty, will not filter on status.
 - `searchTerm` (string) (optional): Optional search term to filter on.
 - `pageToken` (string) (optional): Optional page token for results. If not provided, will return all results.
 
@@ -5987,7 +5987,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): The visibility to set for the module.
 - `url` (string) (required): The url to reference for documentation, code, etc.
 - `description` (string) (required): A short description of the module.
-- `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)) (required): A list of models available in the module.
+- `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)[]) (required): A list of models available in the module.
 - `entrypoint` (string) (required): The executable to run to start the module program.
 
 **Returns:**
@@ -6278,7 +6278,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
+- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): The list of authorizations to provide for the API key.
 - `name` (string) (optional): An optional name for the key. If none is passed, defaults to present timestamp.
 
 **Returns:**

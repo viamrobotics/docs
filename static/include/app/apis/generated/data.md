@@ -73,12 +73,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `resourceSubtype` (string) (required): The subtype of the requested resource that captured the data. Ex:
   "rdk:component:sensor".
 - `methodName` (string) (required): The data capture method name. Ex: "Readings".
-- `additionalParams` (Record) (optional)
+- `additionalParams` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (optional)
 
 **Returns:**
 
 - (Promise<[Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>] | null>): A tuple containing [timeCaptured, timeSynced, payload] or null if no data has been
-synced for the specified resource OR the most recently captured data was over a year ago.
+  synced for the specified resource OR the most recently captured data was over a year ago.
 
 **Example:**
 
@@ -206,7 +206,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `methodName` (string) (required): The data capture method name.
 - `startTime` (Date) (optional): Optional start time (`Date` object) for requesting a specific range of data.
 - `endTime` (Date) (optional): Optional end time (`Date` object) for requesting a specific range of data.
-- `additionalParams` (Record) (optional)
+- `additionalParams` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (optional)
 
 **Returns:**
 
@@ -367,7 +367,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Returns:**
 
 - (Promise<{ count: bigint; data: TabularData[]; last: string }>): An array of data objects, the count (number of entries), and the last-returned page
-ID.
+  ID.
 
 **Example:**
 
@@ -598,7 +598,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization that owns the data.
-- `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
+- `query` (Uint8Array<ArrayBufferLike>[] | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html) | Date>[]) (required): The MQL query to run as a list of BSON documents.
 - `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data store. Defaults to
   false. Deprecated - use dataSource instead.
 - `tabularDataSource` ([TabularDataSource](https://ts.viam.dev/classes/dataApi.TabularDataSource.html)) (optional)
@@ -783,7 +783,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Returns:**
 
 - (Promise<{ count: bigint; data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]; last: string }>): An array of data objects, the count (number of entries), and the last-returned page
-ID.
+  ID.
 
 **Example:**
 
@@ -910,7 +910,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `ids` (string) (required): The IDs of the requested binary data.
+- `ids` (string[] | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)[]) (required): The IDs of the requested binary data.
 - `includeBinary` (boolean) (optional): Whether to include binary file data with each retrieved file.
 
 **Returns:**
@@ -1041,9 +1041,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `deleteOlderThanDays` (number) (required): Delete data that was captured more than this many days ago. For
   example, a value of 10 deletes any data that was captured more than 10 days ago. A value of 0
   deletes all existing data.
-- `filter` (PartialMessage) (optional): Optional filter to further constrain which data is deleted. If provided, only
+- `filter` (PartialMessage<[DeleteTabularFilter](https://ts.viam.dev/classes/dataApi.DeleteTabularFilter.html)>) (optional): Optional filter to further constrain which data is deleted. If provided, only
   data matching the filter will be deleted. If omitted, data is deleted based on
-  organization\_id and delete\_older\_than\_days.
+  organization_id and delete_older_than_days.
 
 **Returns:**
 
@@ -1285,7 +1285,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `ids` (string) (required): The IDs of the data to be deleted. Must be non-empty.
+- `ids` (string[] | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)[]) (required): The IDs of the data to be deleted. Must be non-empty.
 
 **Returns:**
 
@@ -1407,8 +1407,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `tags` (string) (required): The list of tags to add to specified binary data. Must be non-empty.
-- `ids` (string) (required): The IDs of the data to be tagged. Must be non-empty.
+- `tags` (string[]) (required): The list of tags to add to specified binary data. Must be non-empty.
+- `ids` (string[] | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)[]) (required): The IDs of the data to be tagged. Must be non-empty.
 
 **Returns:**
 
@@ -1540,8 +1540,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `tags` (string) (required): List of tags to remove from specified binary data. Must be non-empty.
-- `ids` (string) (required): The IDs of the data to be edited. Must be non-empty.
+- `tags` (string[]) (required): List of tags to remove from specified binary data. Must be non-empty.
+- `ids` (string[] | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)[]) (required): The IDs of the data to be edited. Must be non-empty.
 
 **Returns:**
 
@@ -1769,7 +1769,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `binaryId` (string) (required): The ID of the image to add the bounding box to.
+- `binaryId` (string | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)) (required): The ID of the image to add the bounding box to.
 - `label` (string) (required): A label for the bounding box.
 - `xMinNormalized` (number) (required): The min X value of the bounding box normalized from 0 to 1.
 - `yMinNormalized` (number) (required): The min Y value of the bounding box normalized from 0 to 1.
@@ -1893,7 +1893,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `binId` (string) (required): The ID of the image to remove the bounding box from.
+- `binId` (string | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)) (required): The ID of the image to remove the bounding box from.
 - `bboxId` (string) (required): The ID of the bounding box to remove.
 
 **Returns:**
@@ -2327,7 +2327,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `ids` (string) (required): The IDs of binary data to add to dataset.
+- `ids` (string[] | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)[]) (required): The IDs of binary data to add to dataset.
 - `datasetId` (string) (required): The ID of the dataset to be added to.
 
 **Returns:**
@@ -2453,7 +2453,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `ids` (string) (required): The IDs of the binary data to remove from dataset.
+- `ids` (string[] | [BinaryID](https://ts.viam.dev/interfaces/BinaryID.html)[]) (required): The IDs of the binary data to remove from dataset.
 - `datasetId` (string) (required): The ID of the dataset to be removed from.
 
 **Returns:**
@@ -2702,7 +2702,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The ID of the organization.
 - `name` (string) (required): The name of the data pipeline.
-- `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
+- `query` (Uint8Array<ArrayBufferLike>[] | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html) | Date>[]) (required): The MQL query to run as a list of BSON documents.
 - `schedule` (string) (required): The schedule to run the query on (cron expression).
 - `enableBackfill` (boolean) (required): Whether to enable backfill for the data pipeline.
 - `dataSourceType` ([TabularDataSourceType](https://ts.viam.dev/enums/dataApi.TabularDataSourceType.html)) (optional): The type of data source to use for the data pipeline.
@@ -3168,8 +3168,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `partId` (string) (required): The ID of the part that owns the sequence.
-- `resources` (PartialMessage) (required): The resource filters for the sequence.
-- `sequenceTags` (string) (optional): Optional tags for the sequence.
+- `resources` (PartialMessage<[SequenceResourceFilter](https://ts.viam.dev/interfaces/SequenceResourceFilter.html)>[]) (required): The resource filters for the sequence.
+- `sequenceTags` (string[]) (optional): Optional tags for the sequence.
 - `startTime` (Date) (optional): Optional start time of the sequence.
 - `endTime` (Date) (optional): Optional end time of the sequence.
 
@@ -3299,11 +3299,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the sequence to update.
-- `resources` (PartialMessage) (optional): The updated resource filters.
-- `sequenceTags` (string) (optional): The updated tags.
+- `resources` (PartialMessage<[SequenceResourceFilter](https://ts.viam.dev/interfaces/SequenceResourceFilter.html)>[]) (optional): The updated resource filters.
+- `sequenceTags` (string[]) (optional): The updated tags.
 - `startTime` (Date) (optional): The updated start time.
 - `endTime` (Date) (optional): The updated end time.
-- `fieldMask` (PartialMessage) (optional): Optional field mask specifying which fields to update.
+- `fieldMask` (PartialMessage<FieldMask>) (optional): Optional field mask specifying which fields to update.
 
 **Returns:**
 
@@ -3597,7 +3597,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `sequenceIds` (string) (required): The IDs of the sequences to add to the dataset.
+- `sequenceIds` (string[]) (required): The IDs of the sequences to add to the dataset.
 - `datasetId` (string) (required): The ID of the dataset to add the sequences to.
 
 **Returns:**
@@ -3656,7 +3656,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `sequenceIds` (string) (required): The IDs of the sequences to remove from the dataset.
+- `sequenceIds` (string[]) (required): The IDs of the sequences to remove from the dataset.
 - `datasetId` (string) (required): The ID of the dataset to remove the sequences from.
 
 **Returns:**

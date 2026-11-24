@@ -117,11 +117,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 - `destination` ([PoseInFrame](https://ts.viam.dev/types/PoseInFrame.html)) (required): Destination to move to, which can a pose in the reference frame of any
   frame in the robot's frame system.
 - `componentName` (string) (required): Component on the robot to move to the specified destination.
-- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Avoid obstacles by specifying their geometries in the world state. Augment
+- `worldState` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[WorldState](https://ts.viam.dev/classes/commonApi.WorldState.html)>) (optional): Avoid obstacles by specifying their geometries in the world state. Augment
   the frame system of the robot by specifying additional transforms to add to it for the
   duration of the Move.
-- `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Constrain the way the robot will move.
-- `extra` (None) (optional)
+- `constraints` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[motionApi](https://ts.viam.dev/modules/motionApi.html).[Constraints](https://ts.viam.dev/classes/motionApi.Constraints.html)>) (optional): Constrain the way the robot will move.
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -332,9 +332,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
   map's origin.
 - `componentName` (string) (required): Component on the robot to move to the specified destination.
 - `slamServiceName` (string) (required): Name of the `SLAM` service from which the SLAM map is requested.
-- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
-- `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Optional obstacles to be considered for motion planning.
-- `extra` (None) (optional)
+- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[motionApi](https://ts.viam.dev/modules/motionApi.html).[MotionConfiguration](https://ts.viam.dev/classes/motionApi.MotionConfiguration.html)>) (optional)
+- `obstacles` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)>[]) (optional): Optional obstacles to be considered for motion planning.
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -548,10 +548,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 - `movementSensorName` (string) (required): The name of the `Movement Sensor` used to check the robot's
   location.
 - `heading` (number) (optional): Compass heading, in degrees, to achieve at destination.
-- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional): Obstacles to consider when planning the motion of the component.
-- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
-- `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (optional)
-- `extra` (None) (optional)
+- `obstaclesList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[GeoGeometry](https://ts.viam.dev/classes/commonApi.GeoGeometry.html)>[]) (optional): Obstacles to consider when planning the motion of the component.
+- `motionConfig` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[motionApi](https://ts.viam.dev/modules/motionApi.html).[MotionConfiguration](https://ts.viam.dev/classes/motionApi.MotionConfiguration.html)>) (optional)
+- `boundingRegionsList` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[GeoGeometry](https://ts.viam.dev/classes/commonApi.GeoGeometry.html)>[]) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -744,8 +744,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `componentName` (string) (required)
 - `destinationFrame` (string) (required)
-- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
-- `extra` (None) (optional)
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)>[]) (required)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -849,7 +849,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `componentName` (string) (required): The component to stop.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -957,7 +957,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `onlyActivePlans` (boolean) (optional): If true, the response will only return plans which are executing.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1083,7 +1083,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 - `componentName` (string) (required): The component to query.
 - `lastPlanOnly` (boolean) (optional)
 - `executionId` (string) (optional)
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1253,7 +1253,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 

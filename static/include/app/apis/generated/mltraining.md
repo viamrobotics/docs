@@ -62,7 +62,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `modelName` (string) (required): The model name.
 - `modelVersion` (string) (required): The model version.
 - `modelType` ([ModelType](https://ts.viam.dev/enums/ModelType.html)) (required): The model type.
-- `tags` (string) (required): The tags.
+- `tags` (string[]) (required): The tags.
 
 **Returns:**
 

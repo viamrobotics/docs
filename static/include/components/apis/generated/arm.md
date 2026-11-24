@@ -56,7 +56,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -162,7 +162,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `pose` ([Pose](https://ts.viam.dev/types/Pose.html)) (required): The destination pose for the arm.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -291,8 +291,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `jointPositionsList` (number) (required): List of angles (0-360) to move each joint to.
-- `extra` (None) (optional)
+- `jointPositionsList` (number[]) (required): List of angles (0-360) to move each joint to.
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -417,13 +417,13 @@ Unlike `MoveThroughJointPositions`, the full trajectory does not have to be know
 
 **Parameters:**
 
-- `batches` ([AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryPoint)) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
+- `batches` (AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryUpdate)): :   the arm’s updates, yielded as they arrive.
+- (AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]): :   the arm’s updates, yielded as they arrive.
 
 **Example:**
 
@@ -520,7 +520,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -611,7 +611,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -706,7 +706,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 - `manualMode` (boolean) (required): Whether to enter (true) or exit (false) manual mode.
 - `enabledFor` (number) (optional): How long to stay in manual mode, in seconds. 0 or undefined means no time
   limit.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -795,7 +795,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -848,7 +848,7 @@ Get which features the arm supports, such as manual mode and direct Cartesian co
 
 **Returns:**
 
-- ([viam.components.arm.Arm.Properties](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.Properties)): :   The arm’s properties; whether it supports software-enabled manual mode
+- (viam.components.arm.Arm.Properties): :   The arm’s properties; whether it supports software-enabled manual mode
     and whether it supports direct cartesian commands (`move_to_position`).
 
 **Example:**
@@ -882,7 +882,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -950,6 +950,8 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Parameters:**
 
+- `include_collision_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Include collision mesh bytes in the response. Otherwise meshes carry only their path.
+- `include_visual_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Include visual mesh bytes in the response.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -961,6 +963,7 @@ Get the kinematics information associated with the arm as the format and byte co
     and the second [1] value represents the byte contents of the file.
     If available, a third [2] value provides meshes keyed by URDF filepath.
     See `get_3d_models` for meshes keyed by model name instead.
+    If available, a fourth [3] value provides the structured `KinematicModel` (links, joints, output frames, and properties).
 
 **Example:**
 
@@ -999,13 +1002,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
-map of URDF mesh file paths to mesh data.
+  map of URDF mesh file paths to mesh data.
 
 **Example:**
 
@@ -1015,7 +1018,7 @@ const kinematics = await arm.getKinematics();
 console.log(kinematics);
 
 For more information, see [Arm
-API](https://docs.viam.com/dev/reference/apis/components/arm/#getkinematics).
+API](https://docs.viam.com/reference/apis/components/arm/#getkinematics).
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getkinematics).
@@ -1025,6 +1028,8 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
+- `includeCollisionMeshes` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
+- `includeVisualMeshes` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
 - `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
@@ -1193,7 +1198,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1296,7 +1301,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1420,7 +1425,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 

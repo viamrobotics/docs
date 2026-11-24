@@ -54,7 +54,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `audioData` (Uint8Array) (required): The audio data to play.
 - `audioInfo` ([AudioInfo](https://ts.viam.dev/classes/commonApi.AudioInfo.html)) (optional): Information about the audio format (optional, required for raw pcm data).
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -144,8 +144,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `audioInfo` ([AudioInfo](https://ts.viam.dev/classes/commonApi.AudioInfo.html)) (required): Information about the audio format (codec, sample rate, channels) that
   applies to every chunk.
-- `chunks` (AsyncIterable) (required): Async iterable of audio byte chunks to play in order.
-- `extra` (None) (optional)
+- `chunks` (AsyncIterable<Uint8Array<ArrayBufferLike>>) (required): Async iterable of audio byte chunks to play in order.
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -234,12 +234,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise< { numChannels: number; sampleRateHz: number; supportedCodecs: string[] }, >)
+- (Promise<{ numChannels: number; sampleRateHz: number; supportedCodecs: string[] }>)
 
 **Example:**
 
@@ -301,7 +301,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -424,7 +424,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 

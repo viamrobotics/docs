@@ -65,14 +65,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `filterSourceNames` (string) (optional): A list of source names to filter the images by. If empty or
+- `filterSourceNames` (string[]) (optional): A list of source names to filter the images by. If empty or
   undefined, all images will be returned.
-- `extra` (None) (optional): Extra parameters to pass to the camera.
+- `extra` ({}) (optional): Extra parameters to pass to the camera.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise< { images: { image: Uint8Array<ArrayBufferLike>; mimeType: string; sourceName: string; }[]; metadata: ResponseMetadata; }, >)
+- (Promise<{ images: { image: Uint8Array<ArrayBufferLike>; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata }>)
 
 **Example:**
 
@@ -203,7 +203,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -387,7 +387,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
@@ -574,7 +574,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**

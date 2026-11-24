@@ -204,7 +204,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)[]>)
+- (Promise<[PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)>[]>)
 
 **Example:**
 
@@ -364,7 +364,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `transforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)) (required)
+- `transforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)[]) (required)
 
 **Returns:**
 
@@ -430,7 +430,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `source` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)) (required)
 - `destination` (string) (required): The name of the reference frame to transform the given.
-- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)) (required): Pose information on any additional reference frames that are
+- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)[]) (required): Pose information on any additional reference frames that are
   needed to perform the transform.
 - `callOptions` (CallOptions) (optional)
 
@@ -482,7 +482,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `componentName` (string) (required)
 - `destinationFrame` (string) (required)
-- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)) (required)
+- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html).[Transform](https://ts.viam.dev/classes/commonApi.Transform.html)[]) (required)
 
 **Returns:**
 
@@ -745,7 +745,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `moduleId` (string) (optional): The id matching the module\_id field of the registry module in your part
+- `moduleId` (string) (optional): The id matching the module_id field of the registry module in your part
   configuration.
 - `moduleName` (string) (optional): The name matching the name field of the local/registry module in your part
   configuration.

@@ -446,7 +446,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `ids` (string) (required): The list of IDs of the datasets.
+- `ids` (string[]) (required): The list of IDs of the datasets.
 
 **Returns:**
 
