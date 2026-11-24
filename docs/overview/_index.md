@@ -39,9 +39,10 @@ aliases:
 date: "2026-09-23"
 ---
 
-{{< course id="viam-101" eyebrow="New to Viam? Start with a free course" >}}
-
 Viam is a software platform for building, deploying, and managing robotics applications.
+
+The core concepts are **machines** and the **parts** they run on, the **components** and **services** a machine's configuration declares, the **models** that implement each one, and the **modules** that package models you install from the registry or write yourself.
+The [core concepts](#core-concepts) section explains each one.
 
 You tell Viam what hardware and software capabilities your machine needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your machine actually does.
 
@@ -49,9 +50,10 @@ It is the development workflow you already know, applied to physical devices: ve
 
 <img src="/what-is-viam-technical.svg" alt="How a Viam machine fits together: your code runs on any computer and reaches the machine over WebRTC and gRPC. app.viam.com holds the module registry, data and ML, and fleet management, and sends configuration, modules, and ML models down to the machine, which sends data, logs, and status back up. On the machine's compute (the part), viam-agent supervises viam-server, which exposes resources: components for physical hardware and services for software capabilities. Components connect to cameras, motors, arms, sensors, boards, grippers, and other hardware over USB, GPIO, Ethernet, serial, or CAN." style="width:100%;max-width:720px;height:auto;display:block" >
 
-## Platform mental model
+## Core concepts
 
-This section covers the building blocks you'll see throughout Viam: what a machine is, how you describe its hardware, and where the software that controls it comes from.
+This section covers the building blocks you'll see throughout Viam: machines and parts, components and services, models, and modules.
+It explains what a machine is, how you describe its hardware, and where the software that controls it comes from.
 
 ### Machines and parts
 
@@ -91,6 +93,8 @@ Beyond builtins, the [Viam registry](https://app.viam.com/registry) has modules 
 Before building something yourself, check the registry and the built-in services to see if your use case already exists.
 
 If nothing in the registry fits, you can [write and publish your own module](/build-modules/overview/).
+
+{{< course id="viam-101" eyebrow="New to Viam? Start with a free course" >}}
 
 ## What you can do with Viam
 
