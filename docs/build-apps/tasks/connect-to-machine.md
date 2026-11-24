@@ -38,6 +38,8 @@ const machine = await VIAM.createRobotClient({
 
 `createRobotClient` returns a `RobotClient` connected to your machine. The `await` resolves once the WebRTC connection is established and the session has started.
 
+In Node.js, first complete the [Node.js setup](/build-apps/setup/node/). The snippet above does not connect from Node without its WebRTC polyfill and gRPC transport.
+
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
