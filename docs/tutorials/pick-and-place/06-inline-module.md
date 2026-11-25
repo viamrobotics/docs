@@ -137,21 +137,20 @@ async def run_pick_cycle(self) -> bool:
     await self.home_pose.set_position(2)
     # 2. Detect. vision-segment fuses the 2D shape detections with depth into
     #    3D objects, each with a point cloud and a label.
-    objects = await self.vision.get_object_point_clouds(self.camera_name)
-    if not objects:
+    detections = await self.vision.get_detections_3d(self.camera_name)
+    if not detections:
         print("No objects detected")
         return False
-    # Largest object by point-cloud byte size (a proxy for point count).
-    # point_cloud is raw PCD bytes, so use len(point_cloud), not .size.
-    obj = max(objects, key=lambda o: len(o.point_cloud))
-    geometry = obj.geometries.geometries[0]
-    label = geometry.label
-    print(f"Detected: {label}")
+
+    detection = detections[0]  # just pick the first one for this demo
+    main_part_of_detection = detection.transforms[0]
+
+    print(f"Detected: {main_part_of_detection.physical_object.label}")
     # 3. Derive the approach pose from the object center, in the camera
     #    frame. cam-1 is wrist-mounted, but the approach move is resolved
     #    from the camera frame while the arm is still at home, so it lands
     #    accurately above the block.
-    obj_in_cam = PoseInFrame(reference_frame=self.camera_name, pose=geometry.center)
+    obj_in_cam = main_part_of_detection.pose_in_observer_frame
     approach_pose = offset_pose(obj_in_cam.pose, APPROACH_MM)
     # 4. Pick: move above in the camera frame, open, then descend the
     #    remaining distance straight down in the gripper's own frame, grab,
