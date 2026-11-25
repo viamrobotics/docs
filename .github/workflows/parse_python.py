@@ -1,4 +1,6 @@
 import re as regex
+import zlib
+from urllib.request import urlopen, Request
 
 from parser_utils import make_soup
 from markdownify import markdownify as md
@@ -65,50 +67,16 @@ python_datatype_links = {
     "viam.services.vision.vision.Vision.Properties": "https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties"
 }
 
-## Link any matching data types to their reference links, based on {sdk}_datatype_links[] array,
-## used in parse() for both param and return data types. Handles data types syntax that includes
-## multiple data types (and therefore requires multiple data type links), such as
-## ListOrganizationMembers: Tuple[List[viam.proto.app.OrganizationMember], List[viam.proto.app.OrganizationInvite]
+## Type-string tokens that are never linked: typing/collections generics and literals.
 ## DESIGN DECISION: Ignore well-known, usually leading (containing) data types like List, Tuple, Dict.
-## NOTE: Only used in PySDK parsing, for now (but should work for all with minor tweak to support per-language links array):
-def link_data_types(sdk, data_type_string):
+python_unlinked_types = {
+    "List", "list", "Dict", "dict", "Tuple", "tuple", "Set", "set", "Sequence", "Mapping", "Iterable", "Iterator",
+    "AsyncIterator", "AsyncGenerator", "Generator", "Optional", "Union", "Callable", "Awaitable", "Type", "Self",
+    "Any", "None", "collections.abc.Mapping", "typing.Any", "typing.Optional",
+}
 
-    linked_data_type_string = ""
-
-    ## If the passed data_type_string matches exactly to a data type defined in python_datatype_links, use that:
-    if data_type_string in python_datatype_links.keys():
-        shorter_data_type = shorten_data_type(data_type_string)
-        linked_data_type_string = '[' + shorter_data_type + '](' + python_datatype_links[data_type_string] + ')'
-    else:
-
-        ## Assemble all encountered data types that match to python_datatype_links keys into array.
-        ## This match is a little too greedy, and will match, say, 'int' to 'JointPositions'. To counter
-        ## this, we additionally check for leading and trailing alphanumeric characters further in:
-        matching_data_types = list(key for key in python_datatype_links if key in data_type_string)
-
-        if len(matching_data_types) > 0:
-
-            ## Ugly hack to allow us to append within the for loop below, sorry:
-            linked_data_type_string = data_type_string
-
-            for data_type_found in matching_data_types:
-
-                ## Discard string matches that are substrings of other data type strings:
-                if not regex.search(r'[A-Za-z0-9]' + data_type_found, data_type_string) and not regex.search(data_type_found + r'[A-Za-z0-9]', data_type_string):
-
-                    shorter_data_type = shorten_data_type(data_type_found)
-                    data_type_linked = '[' + shorter_data_type + '](' + python_datatype_links[data_type_found] + ')'
-                    linked_data_type_string = regex.sub(data_type_found, data_type_linked, linked_data_type_string)
-                else:
-                    ## If we get here, this data_type is actually a substring of another data type. Take no action:
-                    pass
-
-    ## If we didn't find any matching links, return an empty string so we can know to look elsewhere,
-    ## otherwise return linked data type string:
-    if linked_data_type_string == data_type_string:
-        return ""
-    else:
-        return linked_data_type_string
+## Matches one (possibly dotted) identifier in a type string, like `viam.proto.common.ResourceName` or `List`:
+type_token_pattern = regex.compile(r'[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*')
 
 
 def shorten_data_type(t):
@@ -130,6 +98,97 @@ class PythonParser:
             self.scrape_url = "https://python.viam.dev"
             self.staging = False
         self.python_methods = {}
+        self.object_index = None
+
+
+    ## Load the Sphinx object inventory (objects.inv) of the Python SDK docs site, mapping each documented
+    ## Python name (like `viam.components.arm.arm.Arm.TrajectoryPoint`) to its page anchor URL.
+    ## Used to link types the signature itself leaves unlinked. For example, the SDK annotates arm methods with
+    ## `viam.components.arm.Arm.Properties`, a re-export path Sphinx does not document, so the signature has no link
+    ## even though the type is documented under its defining module:
+    def load_object_index(self):
+        if self.object_index is not None:
+            return self.object_index
+        self.object_index = {}
+        try:
+            req = Request(self.scrape_url + '/objects.inv', headers={'User-Agent': 'Mozilla/5.0'})
+            data = urlopen(req, timeout=30).read()
+            ## Header is four text lines, followed by a zlib-compressed body:
+            pos = 0
+            for _ in range(4):
+                pos = data.index(b'\n', pos) + 1
+            for line in zlib.decompress(data[pos:]).decode('utf-8').splitlines():
+                match = regex.match(r'^(\S+)\s+py:(\w+)\s+-?\d+\s+(\S+)', line)
+                if match and match.group(2) in ('class', 'type', 'data', 'exception', 'attribute'):
+                    name, uri = match.group(1), match.group(3)
+                    self.object_index[name] = self.sdk_url + '/' + uri.replace('$', name)
+        except Exception as err:
+            print(f'WARNING: could not load Python objects.inv ({type(err).__name__}: {err}); unlinked types will stay unlinked')
+        return self.object_index
+
+
+    ## Find the documented anchor for a dotted type name that the signature did not link:
+    def resolve_type_link(self, name):
+        index = self.load_object_index()
+        if name in index:
+            return index[name]
+
+        ## Protobuf enums are annotated as `<Enum>.ValueType`, but the site documents the enum itself:
+        if name.endswith('.ValueType') and name[:-len('.ValueType')] in index:
+            return index[name[:-len('.ValueType')]]
+
+        ## Match on the trailing segments: `viam.components.arm.Arm.Properties` -> `viam.components.arm.arm.Arm.Properties`.
+        ## Qualified names must share their leading lowercase (package) segments; bare class names must match exactly one entry.
+        segments = name.split('.')
+        class_start = next((i for i, seg in enumerate(segments) if seg[:1].isupper()), None)
+        if class_start is None:
+            return None
+        package = '.'.join(segments[:class_start]) + '.' if class_start > 0 else ''
+        tail = '.' + '.'.join(segments[class_start:])
+        candidates = [url for key, url in index.items() if key.startswith(package) and key.endswith(tail)]
+        if len(candidates) == 1:
+            return candidates[0]
+        return None
+
+
+    ## Link each data type in a type string separately, leaving containers (List, Tuple, Mapping...) as plain text.
+    ## Link sources, in priority order:
+    ##   1. python_datatype_links: manually-mapped types (built-ins, and Viam types the site does not link),
+    ##   2. anchors: links scraped from this signature or parameter description, matched by the type's exact text,
+    ##   3. the site's objects.inv, for types the signature leaves unlinked.
+    ## Returns the type string with Markdown links inserted. A type with no known link is left as plain text.
+    def link_type(self, type_string, anchors):
+        def link_token(match):
+            token = match.group(0)
+            if token in python_unlinked_types:
+                return token
+            if token in python_datatype_links:
+                return '[' + shorten_data_type(token) + '](' + python_datatype_links[token] + ')'
+            href = anchors.get(token)
+            if href is None and ('.' in token or token[:1].isupper()):
+                href = self.resolve_type_link(token)
+            if href:
+                return '[' + token + '](' + href + ')'
+            return token
+
+        return type_token_pattern.sub(link_token, type_string)
+
+
+    ## Collect {link text: URL} for every internal reference link inside a scraped tag:
+    def collect_anchors(self, *tags):
+        anchors = {}
+        for tag in tags:
+            if tag is None:
+                continue
+            for link in tag.find_all('a', class_='reference internal'):
+                href = link.get('href')
+                text = link.text.strip()
+                if href and text:
+                    ## When staging locally, point at the public site rather than localhost:
+                    if self.staging:
+                        href = href.replace(self.scrape_url, self.sdk_url)
+                    anchors.setdefault(text, href)
+        return anchors
 
 
     def parse(self, type, viam_resources):
@@ -232,14 +291,14 @@ class PythonParser:
                             else:
                                 param_default = None
 
-                            if param_default == "''":  # Check for empty string default
-                                this_method_parameters_dict["optional"] = True
-                            ## Determine if this parameter is optional, and strip off ' | None' syntax if so:
-                            elif param_type.endswith(' | None'):
-                                this_method_parameters_dict["optional"] = True
+                            ## A parameter is optional if and only if its signature gives it a default value
+                            ## (for example `= False`, `= 0`, `= None`, `= ''`), whether positional or keyword-only.
+                            ## A parameter typed `X | None` with no default is still required: the caller must pass it.
+                            this_method_parameters_dict["optional"] = param_default is not None
+
+                            ## Strip off ' | None' syntax for display, regardless of whether the parameter is optional:
+                            if param_type.endswith(' | None'):
                                 param_type = param_type.replace(' | None', "")
-                            else:
-                                this_method_parameters_dict["optional"] = False
 
                             ## 'Extra' params do not appear in "Parameters" section (Except for PySDK > Motion Service),
                             ## so we must populate this param's content manually:
@@ -267,20 +326,12 @@ class PythonParser:
 
                             else:
 
-                                ## First, check python_datatype_links array for manually-mapped data type links.
-                                ## These will override all other ways of determining data type links:
-                                linked_param_type = ""
-                                linked_param_type = link_data_types('python', param_type)
-
-                                ## If link_data_types() returns a linked data type string, use that.
-                                ## Otherwise, check the scraped parameter_tag for the link:
-                                if linked_param_type != "":
-                                    this_method_parameters_dict["param_type"] = linked_param_type
-                                elif parameter_tag.find('a', class_="reference internal"):
-                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + parameter_tag.find('a', class_="reference internal").get("href") + ')'
-
-                                else:
-                                    this_method_parameters_dict["param_type"] = param_type
+                                ## Link each data type in the type string separately (see link_type()). Link sources are the
+                                ## manual python_datatype_links, then any links scraped from this parameter's signature or from
+                                ## its entry in the "Parameters" section, then the site's objects.inv:
+                                parameter_entry_tags = [strong_tag.parent for strong_tag in tag.find_all('strong') if strong_tag.text == param_name]
+                                anchors = self.collect_anchors(parameter_tag, *parameter_entry_tags)
+                                this_method_parameters_dict["param_type"] = self.link_type(param_type, anchors)
 
                                 ## Get parameter usage and description, if method contains a "Parameters" section. Otherwise omit.
                                 ## NOTE: We can't just use the initial param content as found above, because it does not contain descriptions,
@@ -302,17 +353,7 @@ class PythonParser:
                                         ## NOTE: Currently unused.
                                         this_method_parameters_dict['param_usage'] = strong_tag.parent.text.replace("\n", " ")
 
-                                        ## Some params provide data type links in Parameters section only, not initial usage.
-                                        ## Get that here if so:
-                                        if strong_tag.parent.find('a', class_="reference internal"):
-                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + strong_tag.parent.find('a', class_="reference internal").get("href") + ')'
-
-                                        ## Unable to determine parameter description, neither timeout or extra, nor matching to any
-                                        ## param in initial method usage string. Usually this means a non-param (like error raised),
-                                        ## but if we are missing expected param descriptions, expand this section to catch them.
-                                        else:
-                                            ## No-op:
-                                            pass
+                                        ## NOTE: Data type links from this Parameters entry were already collected above.
 
                             this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
@@ -331,15 +372,9 @@ class PythonParser:
                         return_type = return_tag.find('span', class_="sig-return-typehint").text
                         this_method_dict["return"]["return_type"] = return_type
 
-                        linked_return_type = ""
-                        linked_return_type = link_data_types('python', return_type)
-
-                        if linked_return_type:
-                            this_method_dict["return"]["return_type"] = linked_return_type
-                        elif return_tag.find('a', class_="reference internal"):
-                            this_method_dict["return"]["return_type"] = '[' + return_type + '](' + return_tag.find('a', class_="reference internal").get("href") + ')'
-                            ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two linked data types.
-                            ## Handling those via link_data_types() with manual entries in python_datatype_links for now,
+                        ## Link each data type in the return type separately (see link_type()), using links scraped
+                        ## from the return signature, then the manual python_datatype_links and the site's objects.inv:
+                        this_method_dict["return"]["return_type"] = self.link_type(return_type, self.collect_anchors(return_tag))
 
                         ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
                         ## NOTE: Currently unused.
@@ -357,6 +392,9 @@ class PythonParser:
                                     or tag.get('class') == ['field-even']))
 
                             description_md = md(str(return_description_raw[0])).strip()
+                            ## markdownify renders the <dd> wrapper as a Markdown definition, prefixing ':   ',
+                            ## which would otherwise show up in the page as a stray ': :   ' after the type:
+                            description_md = regex.sub(r'^:\s+', '', description_md)
                             description_md_stripped = description_md.replace("\n\n", "\n").replace("> *", "    *")
                             this_method_dict["return"]["return_description"] = description_md_stripped
 
