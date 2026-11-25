@@ -126,7 +126,7 @@ Now when we are changing that to code we have to use functions and the correct i
 
 {{<imgproc src="/tutorials/pick-and-place/switch-test-panel.png" resize="1200x" declaredimensions=true alt="A small screenshot of the test panel of the switch trying to show the three options">}}
 
-So the above them becomes:
+The sequence above then becomes:
 
 ```text
 home-pose(2)
