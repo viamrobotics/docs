@@ -37,6 +37,9 @@ TYPEDOC_VERSION = "0.28.19"
 SDK_PACKAGE = "@viamrobotics/sdk"
 
 ## TypeDoc "kind" numbers, and the folder TypeDoc puts each kind's HTML page in.
+## Escaped so that Markdown doesn't read a type argument like <FieldMask> as an HTML tag.
+LT = "\\<"
+
 KIND_NAMESPACE = 4
 KIND_METHOD = 2048
 KIND_PROPERTY = 1024
@@ -131,6 +134,15 @@ class TypeDocModel:
             pid = self.parent.get(pid)
         return name
 
+    def namespace_prefix(self, node_id):
+        """The dotted namespace chain a node lives in (for example 'appApi'), or ''."""
+        names = []
+        pid = self.parent.get(node_id)
+        while pid is not None and self.by_id[pid].get("kind") == KIND_NAMESPACE:
+            names.insert(0, self.by_id[pid]["name"])
+            pid = self.parent.get(pid)
+        return ".".join(names)
+
     def url(self, node_id):
         node = self.by_id[node_id]
         folder = KIND_FOLDERS.get(node["kind"])
@@ -164,8 +176,7 @@ class TypeDocModel:
             if isinstance(t.get("target"), int) and t["target"] in self.by_id:
                 link = self.url(t["target"])
                 if name in self.ambiguous:
-                    qualified = self.qualified_name(t["target"])
-                    prefix = qualified[: -len(name)] .rstrip(".")
+                    prefix = self.namespace_prefix(t["target"])
                     if prefix:
                         ns = self.sdk_url + "/modules/" + prefix + ".html"
                         text = "[" + prefix + "](" + ns + ")." + ("[" + name + "](" + link + ")" if link else name)
@@ -224,7 +235,7 @@ class TypeDocModel:
 
     def _type_args(self, t):
         if t.get("typeArguments"):
-            return "<" + ", ".join(self.type_md(a) for a in t["typeArguments"]) + ">"
+            return LT + ", ".join(self.type_md(a) for a in t["typeArguments"]) + ">"
         return ""
 
     def comment_md(self, parts):
@@ -307,15 +318,16 @@ class TypeScriptParser:
                 continue
             page = f"{self.sdk_url}/{KIND_FOLDERS[client['kind']]}/{client['name']}.html"
 
-            ## The robot client groups its methods into categories. Only these are documented:
-            allowed = None
+            ## Only the Methods and Properties groups are documented. The robot client also
+            ## files methods under category groups (TypeDoc lists them in `groups`):
+            keep = ["Methods", "Properties"]
             if resource == 'robot':
-                keep = ["Methods", "App/Cloud", "ComponentConfig", "Discovery", "Frame System",
-                        "Operations", "Resources", "Sessions", "Modules"]
-                allowed = {i for g in client.get("groups", []) if g["title"] in keep for i in g["children"]}
+                keep += ["App/Cloud", "ComponentConfig", "Discovery", "Frame System",
+                         "Operations", "Resources", "Sessions", "Modules"]
+            allowed = {i for g in client.get("groups", []) if g["title"] in keep for i in g["children"]}
 
             for member in client.get("children", []):
-                if allowed is not None and member["id"] not in allowed:
+                if member["id"] not in allowed:
                     continue
                 name = member["name"]
                 if name == 'callOptions':
@@ -342,6 +354,8 @@ class TypeScriptParser:
                     }
                 elif member["kind"] == KIND_METHOD:
                     sig = member["signatures"][0]
+                    if len(member["signatures"]) > 1:
+                        print(f"WARNING: typescript {resource} {name} has {len(member['signatures'])} overloads; documenting only the first")
                     param_object = {}
                     for param in sig.get("parameters", []):
                         param_description = model.comment_md((param.get("comment") or {}).get("summary")).strip()

@@ -237,8 +237,9 @@ These Python files are invoked by the workflows above, not run on their own:
   site. `parse_typescript.py` instead installs the latest
   `@viamrobotics/sdk` release from npm and runs TypeDoc on it to get a JSON
   model of the API (needs `node` and `npm`; set `TYPESCRIPT_TYPEDOC_JSON` to
-  the path of a prebuilt model to skip the install). In `--coverage` mode it instead reports method gaps
-  (used by `check-methods.yml`). `sdk_protos_map.csv` is the hand-maintained
+  the path of a prebuilt model to skip the install). In `--coverage` mode
+  `update_sdk_methods.py` instead reports method gaps (used by
+  `check-methods.yml`). `sdk_protos_map.csv` is the hand-maintained
   proto-to-method mapping it reads.
 - **`get_modular_resources.py`**—reads the modular-resources Typesense
   artifact and the Viam app registry and upserts models into the search

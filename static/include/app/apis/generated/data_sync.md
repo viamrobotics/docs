@@ -67,7 +67,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>): The binary data ID of the uploaded data.
+- (Promise\<string>): The binary data ID of the uploaded data.
 
 **Example:**
 
@@ -203,7 +203,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `tabularData` (Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>[]) (required): The list of data to be uploaded, represented tabularly as an array.
+- `tabularData` (Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>[]) (required): The list of data to be uploaded, represented tabularly as an array.
 - `partId` (string) (required): The part ID of the component used to capture the data.
 - `componentType` (string) (required): The type of the component used to capture the data (for example,
   "movementSensor").
@@ -217,7 +217,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>): The file ID of the uploaded data.
+- (Promise\<string>): The file ID of the uploaded data.
 
 **Example:**
 

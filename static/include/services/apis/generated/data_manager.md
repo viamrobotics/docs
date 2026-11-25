@@ -40,7 +40,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -110,7 +110,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -243,13 +243,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -326,7 +326,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 

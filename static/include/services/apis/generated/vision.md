@@ -78,7 +78,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): The list of Detections.
+- (Promise\<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): The list of Detections.
 
 **Example:**
 
@@ -210,7 +210,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): The list of Detections.
+- (Promise\<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): The list of Detections.
 
 **Example:**
 
@@ -331,7 +331,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): The list of Classifications.
+- (Promise\<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): The list of Classifications.
 
 **Example:**
 
@@ -461,7 +461,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): The list of Classifications.
+- (Promise\<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): The list of Classifications.
 
 **Example:**
 
@@ -591,7 +591,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): The list of PointCloudObjects.
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): The list of PointCloudObjects.
 
 **Example:**
 
@@ -703,7 +703,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection3D](https://ts.viam.dev/classes/visionApi.Detection3D.html)[]>): The list of Detection3Ds.
+- (Promise\<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection3D](https://ts.viam.dev/classes/visionApi.Detection3D.html)[]>): The list of Detection3Ds.
 
 **Example:**
 
@@ -831,7 +831,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<{ classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; detections3d: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection3D](https://ts.viam.dev/classes/visionApi.Detection3D.html)[]; extra: [Struct](https://ts.viam.dev/classes/Struct.html) | undefined; image: [Image](https://ts.viam.dev/classes/cameraApi.Image.html) | undefined; objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[] }>): The requested image, classifications, detections, and 3d point cloud objects.
+- (Promise\<{ classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; detections3d: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection3D](https://ts.viam.dev/classes/visionApi.Detection3D.html)[]; extra: [Struct](https://ts.viam.dev/classes/Struct.html) | undefined; image: [Image](https://ts.viam.dev/classes/cameraApi.Image.html) | undefined; objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[] }>): The requested image, classifications, detections, and 3d point cloud objects.
 
 **Example:**
 
@@ -937,13 +937,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -1039,7 +1039,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getstatus).
 
@@ -1196,7 +1196,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<{ classificationsSupported: boolean; defaultCamera: string | undefined; detections3dSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean }>): The properties of the vision service.
+- (Promise\<{ classificationsSupported: boolean; defaultCamera: string | undefined; detections3dSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean }>): The properties of the vision service.
 
 **Example:**
 

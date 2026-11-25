@@ -48,7 +48,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<GetCurrentMonthUsageResponse>)
+- (Promise\<GetCurrentMonthUsageResponse>)
 
 **Example:**
 
@@ -110,7 +110,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetOrgBillingInformationResponse](https://ts.viam.dev/classes/billingApi.GetOrgBillingInformationResponse.html)>)
+- (Promise\<[GetOrgBillingInformationResponse](https://ts.viam.dev/classes/billingApi.GetOrgBillingInformationResponse.html)>)
 
 **Example:**
 
@@ -173,7 +173,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetInvoicesSummaryResponse](https://ts.viam.dev/classes/billingApi.GetInvoicesSummaryResponse.html)>)
+- (Promise\<[GetInvoicesSummaryResponse](https://ts.viam.dev/classes/billingApi.GetInvoicesSummaryResponse.html)>)
 
 **Example:**
 
@@ -239,7 +239,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Uint8Array<ArrayBuffer>>)
+- (Promise\<Uint8Array\<ArrayBuffer>>)
 
 **Example:**
 

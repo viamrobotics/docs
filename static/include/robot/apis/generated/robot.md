@@ -30,7 +30,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[Operation](https://ts.viam.dev/classes/robotApi.Operation.html)[]>)
+- (Promise\<[Operation](https://ts.viam.dev/classes/robotApi.Operation.html)[]>)
 
 **Example:**
 
@@ -95,7 +95,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
+- (Promise\<[GetMachineStatusResponse](https://ts.viam.dev/classes/robotApi.GetMachineStatusResponse.html)>)
 
 **Example:**
 
@@ -140,7 +140,7 @@ Get the list of sessions currently connected to the robot.
 
 **Returns:**
 
-- (Promise<[Session](https://ts.viam.dev/classes/robotApi.Session.html)[]>)
+- (Promise\<[Session](https://ts.viam.dev/classes/robotApi.Session.html)[]>)
 
 **Example:**
 
@@ -204,7 +204,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[PlainMessage](https://ts.viam.dev/types/PlainMessage.html)<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)>[]>)
+- (Promise\<[PlainMessage](https://ts.viam.dev/types/PlainMessage.html)\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[ResourceName](https://ts.viam.dev/classes/commonApi.ResourceName.html)>[]>)
 
 **Example:**
 
@@ -230,7 +230,7 @@ Get a list of all resource types.
 
 **Returns:**
 
-- (Promise<[ResourceRPCSubtype](https://ts.viam.dev/classes/robotApi.ResourceRPCSubtype.html)[]>)
+- (Promise\<[ResourceRPCSubtype](https://ts.viam.dev/classes/robotApi.ResourceRPCSubtype.html)[]>)
 
 **Example:**
 
@@ -275,7 +275,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -321,7 +321,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -368,7 +368,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[FrameSystemConfig](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html)[]>)
+- (Promise\<[FrameSystemConfig](https://ts.viam.dev/classes/robotApi.FrameSystemConfig.html)[]>)
 
 **Example:**
 
@@ -436,7 +436,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#transformpose).
 
@@ -486,7 +486,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getpose).
 
@@ -537,7 +537,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<Uint8Array<ArrayBufferLike>>)
+- (Promise\<Uint8Array\<ArrayBufferLike>>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#transformpcd).
 
@@ -599,7 +599,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
+- (Promise\<[ModuleModel](https://ts.viam.dev/classes/robotApi.ModuleModel.html)[]>)
 
 **Example:**
 
@@ -685,7 +685,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -752,7 +752,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -901,7 +901,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[GetCloudMetadataResponse](https://ts.viam.dev/classes/robotApi.GetCloudMetadataResponse.html)>)
+- (Promise\<[GetCloudMetadataResponse](https://ts.viam.dev/classes/robotApi.GetCloudMetadataResponse.html)>)
 
 **Example:**
 
@@ -982,7 +982,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[GetVersionResponse](https://ts.viam.dev/classes/robotApi.GetVersionResponse.html)>)
+- (Promise\<[GetVersionResponse](https://ts.viam.dev/classes/robotApi.GetVersionResponse.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getversion).
 

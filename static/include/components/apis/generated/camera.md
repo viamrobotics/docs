@@ -72,7 +72,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<{ images: { image: Uint8Array<ArrayBufferLike>; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata }>)
+- (Promise\<{ images: { image: Uint8Array\<ArrayBufferLike>; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata }>)
 
 **Example:**
 
@@ -208,7 +208,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<Uint8Array<ArrayBufferLike>>)
+- (Promise\<Uint8Array\<ArrayBufferLike>>)
 
 **Example:**
 
@@ -292,7 +292,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
+- (Promise\<[cameraApi](https://ts.viam.dev/modules/cameraApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/cameraApi.GetPropertiesResponse.html)>)
 
 **Example:**
 
@@ -387,13 +387,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -489,7 +489,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getstatus).
 
@@ -579,7 +579,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getgeometries).
 

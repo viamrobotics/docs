@@ -61,7 +61,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
 
 **Example:**
 
@@ -167,7 +167,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -297,7 +297,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -417,13 +417,13 @@ Unlike `MoveThroughJointPositions`, the full trajectory does not have to be know
 
 **Parameters:**
 
-- `batches` (AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
+- `batches` ([AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryPoint)) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]): :   the arm’s updates, yielded as they arrive.
+- ([AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryUpdate)): :   the arm’s updates, yielded as they arrive.
 
 **Example:**
 
@@ -525,7 +525,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
+- (Promise\<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
 
 **Example:**
 
@@ -616,7 +616,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<Record<string, [Mesh](https://ts.viam.dev/classes/commonApi.Mesh.html)>>)
+- (Promise\<Record\<string, [Mesh](https://ts.viam.dev/classes/commonApi.Mesh.html)>>)
 
 **Example:**
 
@@ -711,7 +711,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -800,7 +800,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise\<boolean>)
 
 **Example:**
 
@@ -848,7 +848,7 @@ Get which features the arm supports, such as manual mode and direct Cartesian co
 
 **Returns:**
 
-- (viam.components.arm.Arm.Properties): :   The arm’s properties; whether it supports software-enabled manual mode
+- ([viam.components.arm.Arm.Properties](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.Properties)): :   The arm’s properties; whether it supports software-enabled manual mode
     and whether it supports direct cartesian commands (`move_to_position`).
 
 **Example:**
@@ -887,7 +887,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<[armApi](https://ts.viam.dev/modules/armApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/armApi.GetPropertiesResponse.html)>)
+- (Promise\<[armApi](https://ts.viam.dev/modules/armApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/armApi.GetPropertiesResponse.html)>)
 
 **Example:**
 
@@ -950,8 +950,6 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Parameters:**
 
-- `include_collision_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Include collision mesh bytes in the response. Otherwise meshes carry only their path.
-- `include_visual_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Include visual mesh bytes in the response.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -963,7 +961,6 @@ Get the kinematics information associated with the arm as the format and byte co
     and the second [1] value represents the byte contents of the file.
     If available, a third [2] value provides meshes keyed by URDF filepath.
     See `get_3d_models` for meshes keyed by model name instead.
-    If available, a fourth [3] value provides the structured `KinematicModel` (links, joints, output frames, and properties).
 
 **Example:**
 
@@ -1007,7 +1004,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
+- (Promise\<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
   map of URDF mesh file paths to mesh data.
 
 **Example:**
@@ -1028,8 +1025,6 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `includeCollisionMeshes` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
-- `includeVisualMeshes` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
 - `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
@@ -1109,7 +1104,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise\<boolean>)
 
 **Example:**
 
@@ -1203,7 +1198,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1306,7 +1301,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 **Example:**
 
@@ -1425,13 +1420,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -1527,7 +1522,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getstatus).
 

@@ -53,7 +53,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>): The ID of the dataset.
+- (Promise\<string>): The ID of the dataset.
 
 **Example:**
 
@@ -152,7 +152,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -251,7 +251,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -351,7 +351,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Dataset[]>): The list of datasets in the organization.
+- (Promise\<Dataset[]>): The list of datasets in the organization.
 
 **Example:**
 
@@ -450,7 +450,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Dataset[]>): The list of datasets.
+- (Promise\<Dataset[]>): The list of datasets.
 
 **Example:**
 
@@ -522,7 +522,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>): The job ID of the export job.
+- (Promise\<string>): The job ID of the export job.
 
 **Example:**
 
@@ -568,7 +568,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[GetSequenceDatasetExportResponse](https://ts.viam.dev/interfaces/GetSequenceDatasetExportResponse.html)>): The current status of the export job.
+- (Promise\<[GetSequenceDatasetExportResponse](https://ts.viam.dev/interfaces/GetSequenceDatasetExportResponse.html)>): The current status of the export job.
 
 **Example:**
 

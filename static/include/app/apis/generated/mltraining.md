@@ -66,7 +66,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise\<string>)
 
 **Example:**
 
@@ -155,7 +155,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>)
+- (Promise\<string>)
 
 **Example:**
 
@@ -223,7 +223,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html) | undefined>)
+- (Promise\<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html) | undefined>)
 
 **Example:**
 
@@ -289,7 +289,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)[]>)
+- (Promise\<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)[]>)
 
 **Example:**
 
@@ -356,7 +356,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<null>)
+- (Promise\<null>)
 
 **Example:**
 
@@ -416,7 +416,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<null>)
+- (Promise\<null>)
 
 **Example:**
 
