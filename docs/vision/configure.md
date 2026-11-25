@@ -65,7 +65,7 @@ Two things matter here:
 - **The model file itself** (`model_path` in the JSON): the weights the service loads.
 - **The label file** (`label_path`): a plain text file that maps the numeric class IDs the model outputs to human-readable names. A detector that outputs class `3` doesn't mean anything on its own; the label file translates that to `dog` or whatever class 3 was at training time. Registry models ship with this file; for local models you provide your own.
 
-Both paths resolve to whatever you give them: a package reference like `${packages.ml_model.my-model}/labels.txt` for registry models, or an absolute path on the machine for local files. The model's page on [app.viam.com/models](https://app.viam.com/models) lists the files in each version, but not their contents. To read a registry model's `labels.txt`, [download the model](/train/deploy-a-model/#download-a-model).
+Both paths resolve to whatever you give them: a package reference like `${packages.ml_model.my-model}/labels.txt` for registry models, or an absolute path on the machine for local files. The model's page on [app.viam.com/models](https://app.viam.com/models) lists the files in each version, but not their contents. To read a registry model's `labels.txt`, [download the model](/train/deploy-a-model/#download-a-model), or look in `${packages.ml_model.my-model}/` on the machine after the first deploy.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}

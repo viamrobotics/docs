@@ -238,7 +238,7 @@ The model's page lists the file names in each version but doesn't show their con
 1. Click **Download**.
    Your browser saves the version as a `.tar.gz` file.
 
-On the **DATA** > **MODELS** page, the **...** menu on a row of the version list downloads that version directly.
+On the model's page, the **...** menu on a row of the version list downloads that version directly.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
