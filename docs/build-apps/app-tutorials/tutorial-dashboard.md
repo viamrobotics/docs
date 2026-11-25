@@ -24,10 +24,10 @@ The tutorial uses vanilla TypeScript and Vite without any frontend framework. Th
 ## What you need
 
 - A configured Viam machine with a camera, a sensor, and a motor. Any models work. If you do not have the physical hardware, add fake components in the Viam app's **CONFIGURE** tab: `fake:camera`, `fake:sensor`, and `fake:motor`. The fake components respond to SDK calls the same way real ones do.
-- A completed [TypeScript setup](/build-apps/setup/typescript/). You should have a project directory with `@viamrobotics/sdk` installed, a `.env` file holding your machine credentials, and `index.html` plus `src/main.ts` files from the setup page.
+- A completed [Web app setup](/build-apps/setup/typescript/). You should have a project directory with `@viamrobotics/sdk` installed, a `.env` file holding your machine credentials, and `index.html` plus `src/main.ts` files from the setup page.
 - Two browser windows side by side, or two tabs you can switch between. One window runs your dashboard; the other opens the Viam app's **CONTROL** tab for the same machine so you can see server-side state change when your code runs.
 
-Before continuing, confirm your setup by running `npx vite` and verifying that the page from the setup step shows `Connected. Found N resources.` in the browser. If it does not, go back to [TypeScript setup](/build-apps/setup/typescript/) and fix the connection before continuing.
+Before continuing, confirm your setup by running `npx vite` and verifying that the page from the setup step shows `Connected. Found N resources.` in the browser. If it does not, go back to [Web app setup](/build-apps/setup/typescript/) and fix the connection before continuing.
 
 ## Step 1: Replace the HTML
 

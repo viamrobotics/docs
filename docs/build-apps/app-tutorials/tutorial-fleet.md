@@ -26,7 +26,7 @@ The tutorial uses the air-quality use case as a concrete example: each machine h
 - A Viam organization with at least two machines configured. Any machines work as long as each has a sensor you can capture data from. For the tutorial's air-quality framing, each machine has a sensor that returns a PM2.5 value under a field named `pm_2_5`, but you can use any field name as long as you update the MQL query in step 4 to match.
 - Data capture configured on the sensors, with enough data synced to the cloud that there are recent readings to aggregate. See [Capture and sync data](/data/capture-sync/capture-and-sync-data/) if you need to set this up.
 - An organization-scoped or location-scoped API key and its ID. Create one in [Admin and access](/organization/access/). A machine-scoped key will not work for this tutorial because you need access to multiple machines.
-- A completed [TypeScript setup](/build-apps/setup/typescript/) with Vite, the Viam TypeScript SDK, a `.env` file, and an `index.html` plus `src/main.ts` from the setup page.
+- A completed [Web app setup](/build-apps/setup/typescript/) with Vite, the Viam TypeScript SDK, a `.env` file, and an `index.html` plus `src/main.ts` from the setup page.
 - Your organization ID. Find it in the Viam app by clicking your organization name and selecting **Settings**.
 
 Before continuing, update your `.env` file to use an organization-scoped API key instead of a machine-scoped one, and add your organization ID:

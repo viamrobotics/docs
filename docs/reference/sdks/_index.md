@@ -22,13 +22,13 @@ Pick the one that fits where your code runs and what you are building.
 
 ## Choose an SDK
 
-| SDK        | Runs                    | Setup                                                                                                                   | Reference docs                                   |
-| ---------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| Python     | Backend, or as a module | [Python setup](/build-apps/setup/python/)                                                                               | [python.viam.dev](https://python.viam.dev/)      |
-| Go         | Backend, or as a module | [Go setup](/build-apps/setup/go/)                                                                                       | [pkg.go.dev](https://pkg.go.dev/go.viam.com/rdk) |
-| TypeScript | Web and Node.js         | [TypeScript setup](/build-apps/setup/typescript/) for the browser, [Node.js setup](/build-apps/setup/node/) for Node.js | [ts.viam.dev](https://ts.viam.dev/)              |
-| Flutter    | Mobile, desktop, web    | [Flutter setup](/build-apps/setup/flutter/)                                                                             | [flutter.viam.dev](https://flutter.viam.dev/)    |
-| C++        | Backend, or as a module | [C++ setup](/build-apps/setup/cpp/) (source build or Conan)                                                             | [cpp.viam.dev](https://cpp.viam.dev/)            |
+| SDK        | Runs                    | Setup                                                                                                                | Reference docs                                   |
+| ---------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| Python     | Backend, or as a module | [Python setup](/build-apps/setup/python/)                                                                            | [python.viam.dev](https://python.viam.dev/)      |
+| Go         | Backend, or as a module | [Go setup](/build-apps/setup/go/)                                                                                    | [pkg.go.dev](https://pkg.go.dev/go.viam.com/rdk) |
+| TypeScript | Web and Node.js         | [Web app setup](/build-apps/setup/typescript/) for the browser, [Node.js setup](/build-apps/setup/node/) for Node.js | [ts.viam.dev](https://ts.viam.dev/)              |
+| Flutter    | Mobile, desktop, web    | [Flutter setup](/build-apps/setup/flutter/)                                                                          | [flutter.viam.dev](https://flutter.viam.dev/)    |
+| C++        | Backend, or as a module | [C++ setup](/build-apps/setup/cpp/) (source build or Conan)                                                          | [cpp.viam.dev](https://cpp.viam.dev/)            |
 
 If your team already has a React Native codebase, see [React Native setup](/build-apps/setup/react-native/). For new mobile projects, use Flutter. Flutter also builds for the web, with the same limitations as other Flutter web apps. If a web app is your only target, TypeScript is the better fit.
 
