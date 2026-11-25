@@ -23,7 +23,7 @@ For the universal steps, see [Configure hardware components](/hardware/configure
 
 The **Features** column lists platform integrations the type is part of.
 Every type supports `DoCommand`, so it isn't repeated in the column.
-Every type except generic also shows a **Test** section on its configuration card for trying its API from the Viam app; generic components get top-level **DoCommand** and **GetStatus** sections instead.
+Every type listed here except generic also shows a **Test** section on its configuration card for trying its API from the Viam app; generic components get top-level **DoCommand** and **GetStatus** sections instead.
 **Data capture** means the built-in data manager can capture this type's output to the Viam cloud.
 **Readings** means the type returns a flat key-value snapshot through the `GetReadings` method, on top of its type-specific API.
 
