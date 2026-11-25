@@ -59,7 +59,7 @@ The default configuration options for the data service are correct for our appli
 Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.
 
 {{< alert title="Tip" color="tip" >}}
-Click **JSON** in the Configure tab to see how data capture settings appear in the raw configuration. Each component and service with data capture enabled has a `service_configs` entry containing `capture_methods`.
+Click **JSON** in the **CONFIGURE** tab to see how data capture settings appear in the raw configuration. Each component and service with data capture enabled has a `service_configs` entry containing `capture_methods`.
 {{< /alert >}}
 
 ## 2.2 View Captured Data
