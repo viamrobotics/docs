@@ -10,12 +10,8 @@
 
 ## Build the docs locally
 
-To be able to build the docs locally, you need to install the following:
-
-- [`npm`](https://nodejs.org/en/download/)
-- Hugo
-  - macOS/Linux: `brew install hugo`
-  - Windows: [https://gohugo.io/getting-started/installing/](https://gohugo.io/getting-started/installing/)
+For Mac Users: We have an [onboarding script](./onboarding.sh) that you can run with `make onboard`
+For windows users you will want to go through the onboarding script as that will have the most up to date list of what needs to be installed.
 
 You can build the docs for local development using the following command:
 
@@ -53,20 +49,33 @@ python3 -m http.server 9000 --directory public
 To ensure all Python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown):
 
 ```console
-brew install flake8
+brew install flake8 #added to onboarding script
 ```
 
 Then, add the following lines to the `.git/hooks/pre-commit` file in your local repository:
 
 ```sh
-if [ "git diff --diff-filter=d --name-only HEAD | grep '\.md$' | wc -l" ];
-then
-list= $(git diff --diff-filter=d --name-only HEAD | grep '\.md$')
-for item in $list
-do
-flake8-markdown $item
-done
+#!/bin/sh
+# Run flake8-markdown on staged Markdown files (lints Python code blocks).
+
+if ! command -v flake8-markdown >/dev/null 2>&1; then
+  echo "pre-commit: flake8-markdown not found. Install it with: uv tool install flake8-markdown" >&2
+  exit 1
 fi
+
+files=$(git diff --cached --diff-filter=d --name-only -- '*.md')
+if [ -z "$files" ]; then
+  exit 0
+fi
+
+status=0
+for item in $files; do
+  echo "Running flake8-markdown on $item"
+  flake8-markdown "$item" || status=1
+done
+
+echo "Done running flake8-markdown on all markdown files"
+exit $status
 ```
 
 If you don't already have a `.git/hooks/pre-commit` file in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
@@ -77,7 +86,7 @@ If you create a new file, you must also make it executable with: `chmod +x /path
 To ensure your markdown is properly formatted, run:
 
 ```console
-make markdowntest docs/**/*`
+make markdowntest docs/**/*
 ```
 
 ### Check for broken links
@@ -85,7 +94,7 @@ make markdowntest docs/**/*`
 To check locally for broken links, install [`htmltest`](https://github.com/wjdp/htmltest):
 
 ```console
-brew install htmltest
+brew install htmltest #added to onboarding script
 ```
 
 Then, and run `make htmltest`.

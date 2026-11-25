@@ -4,6 +4,9 @@ git:
 setup: git package.json
 	npm install
 
+onboard:
+	bash ./onboarding.sh
+
 setupnpm:
 	npm install
 
