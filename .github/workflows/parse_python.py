@@ -123,7 +123,15 @@ class PythonParser:
                     name, uri = match.group(1), match.group(3)
                     self.object_index[name] = self.sdk_url + '/' + uri.replace('$', name)
         except Exception as err:
-            print(f'WARNING: could not load Python objects.inv ({type(err).__name__}: {err}); unlinked types will stay unlinked')
+            ## Fail the run rather than continue: without the index, every link that comes from it silently
+            ## disappears from the regenerated pages, and the script would still exit 0.
+            self.object_index = None
+            raise RuntimeError(f'Could not load {self.scrape_url}/objects.inv ({type(err).__name__}: {err}). '
+                               'Python type links depend on it; discard any generated output and rerun.') from err
+        if not self.object_index:
+            self.object_index = None
+            raise RuntimeError(f'{self.scrape_url}/objects.inv contained no Python objects. '
+                               'Python type links depend on it; discard any generated output and rerun.')
         return self.object_index
 
 
@@ -148,6 +156,14 @@ class PythonParser:
         candidates = [url for key, url in index.items() if key.startswith(package) and key.endswith(tail)]
         if len(candidates) == 1:
             return candidates[0]
+
+        ## The reverse case: the annotation names the defining module (`viam.components.audio_out.audio_out.AudioInfo`)
+        ## but the site documents the type at the package level (`viam.components.audio_out.AudioInfo`).
+        ## Retry with the last module segment dropped:
+        if class_start >= 2:
+            shorter = '.'.join(segments[:class_start - 1] + segments[class_start:])
+            if shorter in index:
+                return index[shorter]
         return None
 
 
@@ -172,6 +188,12 @@ class PythonParser:
             return token
 
         return type_token_pattern.sub(link_token, type_string)
+
+
+    ## `ValueTypes` as written in the hand-written do_command `command` type, linked when the site documents it:
+    def link_value_types(self):
+        url = self.resolve_type_link('viam.utils.ValueTypes')
+        return '[ValueTypes](' + url + ')' if url else 'ValueTypes'
 
 
     ## Collect {link text: URL} for every internal reference link inside a scraped tag:
@@ -322,7 +344,7 @@ class PythonParser:
 
                                 this_method_parameters_dict["param_description"] = "The command to execute"
                                 this_method_parameters_dict["param_usage"] = "command (Mapping[str, ValueTypes]) – The command to execute"
-                                this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]"
+                                this_method_parameters_dict["param_type"] = "Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), " + self.link_value_types() + "]"
 
                             else:
 
