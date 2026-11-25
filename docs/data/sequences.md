@@ -195,10 +195,20 @@ sequenceID, err := dataClient.CreateSequence(
 ## View sequences
 
 1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **SEQUENCES**.
-   The list shows each sequence's time range, machine part, resources, and tags.
-2. Click a sequence to open it.
-3. Pick a resource, shown as `<resource name> · <method>`, to see its images or readings during the window.
-4. To work with that resource's data in the rest of the **DATA** tab, click **View in data gallery** for images or **View in query page** for readings.
+   The list shows each sequence's time range, machine part, resources, and tags, newest first by start time.
+2. To narrow the list, use the **Filters** panel on the left:
+
+   - **Machine part:** show only one part's sequences.
+   - **Resources:** show sequences that include any of the resources you add, each shown as `<resource name> · <method>`.
+   - **Tags:** show sequences that have any of the tags you add.
+   - **Start and end dates:** show sequences whose time window overlaps the range. You can set either date alone. **Time zone** sets the zone the dates are read in, and defaults to your browser's.
+
+   A sequence must match every filter you set. To clear them all, click **Reset** at the top of the panel.
+   The filters are saved in the page URL, so you can bookmark a filtered list or share its link, and the browser's back and forward buttons step through your filter changes.
+
+3. Click a sequence to open it.
+4. Pick a resource, shown as `<resource name> · <method>`, to see its images or readings during the window.
+5. To work with that resource's data in the rest of the **DATA** tab, click **View in data gallery** for images or **View in query page** for readings.
    Each opens the resource's data, filtered to the sequence's part and time window.
 
 To copy a sequence's ID, click the **Sequence actions** menu on its row and select **Copy sequence ID**.
@@ -215,8 +225,9 @@ See the [data client API](/reference/apis/data-client/).
 
 ## Edit and delete sequences
 
-The Viam app can't edit or delete a sequence.
-Use the CLI or the Python, TypeScript, or Go SDK.
+To delete a sequence in the Viam app, open the **SEQUENCES** list, click the **Sequence actions** menu on its row, and select **Delete**.
+Deleting a sequence doesn't delete the images and readings in its window.
+The Viam app can't edit a sequence. To edit one, use the CLI or the Python, TypeScript, or Go SDK.
 
 - **Edit from the CLI:** `viam data sequence update --sequence-id=<sequence-id>` changes only the fields whose flags you pass: `--resources`, `--tags`, `--start`, or `--end`. Pass at least one.
   `--resources` and `--tags` replace the whole list. Pass `--tags=""` to clear a sequence's tags.
@@ -232,6 +243,8 @@ See the [CLI reference](/cli/reference/#data-sequence-update) for each command's
 
 To train on sequences, collect them into a sequence dataset.
 On a sequence's detail page, click **Add to dataset**, run `viam dataset sequence add`, or call `AddSequencesToDataset` from code.
+To add several at once in the Viam app, select their rows in the **SEQUENCES** list, or click **Select all visible**, then click **Add to dataset**.
+If any selected sequence is already in a dataset, **Remove from dataset** also appears, to take the selection out of that dataset.
 See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequences, and export it.
 
 ## Limitations {#limits}
@@ -239,7 +252,7 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 - **Images are the only binary data.** See [How a sequence works](#how-a-sequence-works).
 - **A sequence belongs to one machine part.** It can include resources on that part's remotes. Name them without the remote prefix, for example `cam`, not `my-remote:cam`. To combine data from several parts, record a sequence on each part and add them all to one dataset.
 - **A crash loses the open sequence.** If `viam-server` stops uncleanly while a sequence is open, the data manager can't tell when the sequence ended. It moves the sequence to `failed/sequences/` in the capture directory and doesn't upload it. A normal shutdown closes open sequences so they upload on the next sync.
-- **Editing and deleting need the CLI or an SDK.** The Viam app can't edit or delete a sequence.
+- **Editing needs the CLI or an SDK.** The Viam app can delete a sequence but can't edit one.
 - **Built-in training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).
 
 ## Next steps
