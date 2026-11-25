@@ -18,7 +18,7 @@ Pick the one that fits where your code runs and what you are building.
 - To write a module, use Python, Go, or C++.
 - To build a backend application or script, use Python, Go, or TypeScript (Node.js).
 - To build a web app, use TypeScript.
-- To build a mobile or desktop app, or a cross-platform app from one codebase, use Flutter.
+- To build a mobile or desktop app, or a multi-platform app from one codebase, use Flutter.
 
 ## Choose an SDK
 
