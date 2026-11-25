@@ -12,6 +12,7 @@ date: "2026-04-17"
 
 When you install Viam on a Linux or Windows computer, two programs land on the machine: `viam-agent` and `viam-server`. They have distinct jobs.
 On macOS you install `viam-server` on its own, as `viam-agent` does not support macOS.
+A [cloud Isaac Sim simulation](/simulate/isaac-sim/) also runs `viam-server` without `viam-agent`, in a container that Viam manages.
 
 ## viam-server
 

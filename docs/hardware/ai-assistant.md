@@ -46,6 +46,18 @@ configuration change that you review before it takes effect.
   connectivity, listing USB devices, or reading system information. Each
   command requires your explicit approval before it runs. See
   [Run shell commands for diagnostics](#run-shell-commands-for-diagnostics).
+- **What it can simulate.** On a machine page, the assistant can set up a
+  simulation in your configuration as it sets up any other resource. For
+  example, ask it to add a
+  [MuJoCo simulation](/simulate/mujoco/) to a machine
+  running on your own computer, and it proposes the world, arm, gripper, and
+  camera for you to review and save. For a cloud
+  [Isaac Sim simulation](/simulate/isaac-sim/), it can also
+  check whether a machine part has one running, and start or stop one when you
+  ask. Before it starts one, the panel shows an **Approve** button that notes
+  the simulation is billed per minute; nothing starts until you approve. A
+  cloud simulation runs from the part's saved configuration, so save staged
+  edits first.
 - **What it reads.** The assistant reads your current configuration (including
   unsaved edits and resolved fragments), your machine's status, its logs,
   validation errors, Viam documentation, the module registry, and your

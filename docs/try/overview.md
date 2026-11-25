@@ -37,6 +37,7 @@ aliases:
 Viam enables you to build and manage real robotics applications, but you don't need any hardware to start learning it.
 
 Each pathway below teaches practical Viam skills through a hands-on project. Choose whichever matches your learning goals.
+To simulate a robot of your own instead, see [Simulate a machine](/simulate/).
 
 | Pathway                                                                      | Description                                                                                                                                                                                                                           | Hardware required                                | Time                                                           |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------------- |
@@ -52,6 +53,6 @@ Each pathway below teaches practical Viam skills through a hands-on project. Cho
 {{< alert title="Viam Rover discontinued" color="caution" >}}
 As of September 2026, the Viam Rover has been discontinued and is no longer available to rent or purchase.
 If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/education) to try Viam in a simulation environment, no hardware required.
-You can also try the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation.
+You can also try the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation, or [simulate a machine](/simulate/) of your own.
 If you already own a Viam Rover, the [rover setup guides](/reference/device-setup/viam-rover/) are still available as reference.
 {{< /alert >}}

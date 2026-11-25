@@ -48,7 +48,18 @@ The training tools (`list_training_scripts`, `list_training_containers`, `submit
 
 The machine and fragment config item tools also add, re-pin, and remove entries in a configuration's `packages` section, such as an ML model at a pinned version. They check that the package exists and that the version is published or `latest`, and they refuse to remove or rename a package that a resource or module still uses.
 
-The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) manage a [cloud simulation](/set-up-a-machine/simulate-a-machine/) of a machine part. Starting a simulation is billed by the minute to the machine's organization, so `stop_simulation` ends the charges.
+### Simulation tools {#simulation-tools}
+
+The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) check on, start, and stop a [cloud Isaac Sim simulation](/simulate/isaac-sim/) of a machine part.
+A simulation runs in place of a machine part, which is normally a computer running `viam-server`.
+
+- `read_simulation` reports each part's latest simulation state: `pending` or `provisioning` while it starts, `started` once it runs, or `failed`, `terminated`, or `none`. It reports every part of the machine if you omit the part name.
+- `start_simulation` starts a simulation from the part's saved configuration. If a simulation is already starting or running for the part, it returns that one instead of starting another. It doesn't wait for the part to come online; check with `read_part_status`.
+- `stop_simulation` stops the part's simulation, including one that's still waiting for a GPU (`provisioning`). It returns an error if the part has no simulation starting or running, or if the simulation was only just requested (`pending`); try again a moment later.
+
+The start and stop tools take an optional part name and use the machine's main part if you omit it.
+Starting a simulation this way is billed by the minute to the machine's organization, the same as starting one in the Viam app, so stop it with `stop_simulation` when you're done.
+The Config AI assistant asks you to approve before it starts a simulation; the MCP server doesn't ask, though your MCP client may ask for confirmation before it runs a write tool.
 
 ## Skills
 

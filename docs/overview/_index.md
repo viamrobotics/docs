@@ -47,6 +47,7 @@ The [core concepts](#core-concepts) section explains each one.
 You tell Viam what hardware and software capabilities your machine needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your machine actually does.
 
 It is the development workflow you already know, applied to physical devices: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
+You can also build and test against a simulated machine, with the same config and code you'll run on the real one.
 
 <img src="/what-is-viam-technical.svg" alt="How a Viam machine fits together: your code runs on any computer and reaches the machine over WebRTC and gRPC. app.viam.com holds the module registry, data and ML, and fleet management, and sends configuration, modules, and ML models down to the machine, which sends data, logs, and status back up. On the machine's compute (the part), viam-agent supervises viam-server, which exposes resources: components for physical hardware and services for software capabilities. Components connect to cameras, motors, arms, sensors, boards, grippers, and other hardware over USB, GPIO, Ethernet, serial, or CAN." style="width:100%;max-width:720px;height:auto;display:block" >
 
@@ -98,21 +99,22 @@ If nothing in the registry fits, you can [write and publish your own module](/bu
 
 ## What you can do with Viam
 
-| To do this                                                              | Go here                                                           |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Get a camera, motor, arm, or sensor running                             | [Configure hardware](/hardware/)                                  |
-| Capture data on the machine and sync it to the cloud                    | [Manage data](/data/)                                             |
-| Train machine learning models on what you captured                      | [Train and deploy ML models](/train/)                             |
-| Detect and classify objects in a camera feed                            | [Computer vision](/vision/)                                       |
-| Plan and execute motion for arms and mobile robots                      | [Motion planning](/motion-planning/)                              |
-| Write code that controls a machine over the network                     | [Viam SDKs](/reference/sdks/)                                     |
-| Control a machine from an AI agent or LLM                               | [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/)  |
-| Package your own logic and deploy it to machines                        | [Build and deploy modules](/build-modules/)                       |
-| Build a web or mobile app for your customers                            | [Build apps](/build-apps/overview/)                               |
-| Monitor machine status and receive alerts, stream data, and teleoperate | [Monitor and operate](/monitor/)                                  |
-| Configure and update many machines at once                              | [Fleet deployment](/fleet/)                                       |
-| Configure and reuse a configuration across machines                     | [Reuse configuration with fragments](/fleet/reuse-configuration/) |
-| Organize machines and control who can reach them                        | [Admin and access](/organization/overview/)                       |
+| To do this                                                                   | Go here                                                           |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Get a camera, motor, arm, or sensor running                                  | [Configure hardware](/hardware/)                                  |
+| Simulate a robot before you have the hardware, or test code on a copy of one | [Simulate a machine](/simulate/)                 |
+| Capture data on the machine and sync it to the cloud                         | [Manage data](/data/)                                             |
+| Train machine learning models on what you captured                           | [Train and deploy ML models](/train/)                             |
+| Detect and classify objects in a camera feed                                 | [Computer vision](/vision/)                                       |
+| Plan and execute motion for arms and mobile robots                           | [Motion planning](/motion-planning/)                              |
+| Write code that controls a machine over the network                          | [Viam SDKs](/reference/sdks/)                                     |
+| Control a machine from an AI agent or LLM                                    | [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/)  |
+| Package your own logic and deploy it to machines                             | [Build and deploy modules](/build-modules/)                       |
+| Build a web or mobile app for your customers                                 | [Build apps](/build-apps/overview/)                               |
+| Monitor machine status and receive alerts, stream data, and teleoperate      | [Monitor and operate](/monitor/)                                  |
+| Configure and update many machines at once                                   | [Fleet deployment](/fleet/)                                       |
+| Configure and reuse a configuration across machines                          | [Reuse configuration with fragments](/fleet/reuse-configuration/) |
+| Organize machines and control who can reach them                             | [Admin and access](/organization/overview/)                       |
 
 ## Next steps
 

@@ -28,6 +28,7 @@ capabilities:
   machine-config: Machine configuration, fragments, config reuse, AI config assistant.
   machine-connectivity: Machine-to-machine comms, remote parts, network config.
   device-provisioning: Per-board OS installation and device preparation, provisioning to multiple devices.
+  simulation: Simulated machines - MuJoCo and Isaac Sim modules, cloud simulation, moving between simulation and real hardware.
   fleet-deployment: Fleet-wide software deployment, version pinning, scheduled jobs, system settings, metadata.
   discovery: Discovery service - enumerate attached hardware and generate config.
   logging: Logs, troubleshooting, common errors.

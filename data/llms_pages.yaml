@@ -71,6 +71,10 @@ sections:
   - title: "Guides"
     pages:
       - path: /set-up-a-machine/first-machine/
+      - path: /simulate/
+      - path: /simulate/mujoco/
+      - path: /simulate/isaac-sim/
+      - path: /simulate/simulate-an-existing-machine/
       - path: /build-apps/overview/
       - path: /motion-planning/
       - path: /build-modules/overview/

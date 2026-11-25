@@ -38,7 +38,7 @@ You will learn:
 
 {{< alert title="No hardware?" color="alert" >}}
 If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/education) to try Viam in a simulation environment, no hardware required.
-You can also try the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation.
+You can also try the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation, or [simulate a machine](/simulate/) of your own.
 {{< /alert >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
