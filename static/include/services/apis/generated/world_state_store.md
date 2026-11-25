@@ -58,12 +58,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` (None) (optional): Additional arguments to the method.
+- `extra` ({}) (optional): Additional arguments to the method.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<string[]>)
+- (Promise\<string[]>)
 
 **Example:**
 
@@ -140,12 +140,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `uuid` (string) (required): The UUID of the transform to retrieve.
-- `extra` (None) (optional): Additional arguments to the method.
+- `extra` ({}) (optional): Additional arguments to the method.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[TransformWithUUID](https://ts.viam.dev/interfaces/TransformWithUUID.html)>)
+- (Promise\<[TransformWithUUID](https://ts.viam.dev/interfaces/TransformWithUUID.html)>)
 
 **Example:**
 
@@ -241,12 +241,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` (None) (optional): Additional arguments to the method.
+- `extra` ({}) (optional): Additional arguments to the method.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (AsyncGenerator<[TransformChangeEvent](https://ts.viam.dev/types/TransformChangeEvent.html), void>)
+- (AsyncGenerator\<[TransformChangeEvent](https://ts.viam.dev/types/TransformChangeEvent.html), void>)
 
 **Example:**
 
@@ -334,13 +334,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -415,7 +415,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/WorldStateStoreClient.html#getstatus).
 

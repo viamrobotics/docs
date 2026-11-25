@@ -56,12 +56,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 - `codec` (string) (required)
 - `durationSeconds` (number) (required)
 - `previousTimestamp` (bigint) (optional)
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (AsyncIterable<[AudioChunk](https://ts.viam.dev/interfaces/AudioChunk.html)>)
+- (AsyncIterable\<[AudioChunk](https://ts.viam.dev/interfaces/AudioChunk.html)>)
 
 **Example:**
 
@@ -135,12 +135,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise< { numChannels: number; sampleRateHz: number; supportedCodecs: string[] }, >)
+- (Promise\<{ numChannels: number; sampleRateHz: number; supportedCodecs: string[] }>)
 
 **Example:**
 
@@ -202,12 +202,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 **Example:**
 
@@ -325,13 +325,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -427,7 +427,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioInClient.html#getstatus).
 

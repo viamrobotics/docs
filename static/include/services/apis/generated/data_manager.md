@@ -35,12 +35,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `extra` (None) (optional): Extra arguments to pass to the sync request.
+- `extra` ({}) (optional): Extra arguments to pass to the sync request.
 - `callOptions` (CallOptions) (optional): Call options for the sync request.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -102,15 +102,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Parameters:**
 
 - `binaryData` (Uint8Array) (required): The binary data to upload.
-- `tags` (string) (required): Tags to associate with the binary data.
-- `datasetIds` (string) (required): IDs of the datasets to associate the binary data with.
+- `tags` (string[]) (required): Tags to associate with the binary data.
+- `datasetIds` (string[]) (required): IDs of the datasets to associate the binary data with.
 - `mimeType` (MimeType) (required): The MIME type of the binary data.
-- `extra` (None) (optional): Extra arguments to pass to the upload request.
+- `extra` ({}) (optional): Extra arguments to pass to the upload request.
 - `callOptions` (CallOptions) (optional): Call options for the upload request.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -243,13 +243,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -326,7 +326,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
