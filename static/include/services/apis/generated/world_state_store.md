@@ -175,7 +175,7 @@ Stream changes to world state transforms.
 
 **Returns:**
 
-- ([AsyncGenerator[viam.proto.service.worldstatestore.StreamTransformChangesResponse, None]](https://python.viam.dev/autoapi/viam/proto/service/worldstatestore/index.html#viam.proto.service.worldstatestore.StreamTransformChangesResponse))
+- (AsyncGenerator[[viam.proto.service.worldstatestore.StreamTransformChangesResponse](https://python.viam.dev/autoapi/viam/proto/service/worldstatestore/index.html#viam.proto.service.worldstatestore.StreamTransformChangesResponse), None])
 
 **Example:**
 
@@ -283,12 +283,12 @@ If you are implementing your own vision service and want to add features that ha
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes])
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)])
 
 **Example:**
 
@@ -374,7 +374,7 @@ Get the current status of the world state store service as a map of key-value pa
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the service.
 
 **Example:**
 
@@ -435,7 +435,7 @@ Get the ResourceName for this Resource with the given name.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

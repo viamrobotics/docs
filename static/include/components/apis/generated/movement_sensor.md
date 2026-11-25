@@ -15,7 +15,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([viam.components.movement_sensor.Vector3](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3)): :   The linear velocity in m/sec.
+- ([viam.components.movement_sensor.Vector3](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3)): The linear velocity in m/sec.
 
 **Example:**
 
@@ -111,7 +111,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([viam.components.movement_sensor.Vector3](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3)): :   The angular velocity in degrees/sec.
+- ([viam.components.movement_sensor.Vector3](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3)): The angular velocity in degrees/sec.
 
 **Example:**
 
@@ -213,7 +213,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The compass heading in degrees.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The compass heading in degrees.
 
 **Example:**
 
@@ -308,7 +308,7 @@ Supported by IMU models.
 
 **Returns:**
 
-- ([viam.components.movement_sensor.Orientation](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation)): :   The orientation.
+- ([viam.components.movement_sensor.Orientation](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation)): The orientation.
 
 **Example:**
 
@@ -413,7 +413,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Tuple[viam.components.movement_sensor.GeoPoint, [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): :   The current lat/long, along with the altitude in m.
+- (Tuple[[viam.components.movement_sensor.GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): The current lat/long, along with the altitude in m.
 
 **Example:**
 
@@ -511,7 +511,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([viam.components.movement_sensor.movement_sensor.MovementSensor.Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Properties)): :   The properties.
+- ([viam.components.movement_sensor.movement_sensor.MovementSensor.Properties](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Properties)): The properties.
 
 **Example:**
 
@@ -606,7 +606,7 @@ Supported by GPS models and `imu-wit`.
 
 **Returns:**
 
-- ([MovementSensor.Accuracy](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy)): :   The accuracies of the movement sensor.
+- ([MovementSensor.Accuracy](https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy)): The accuracies of the movement sensor.
 
 **Example:**
 
@@ -717,7 +717,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([viam.components.movement_sensor.Vector3](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3)): :   The linear acceleration in m/sec^2.
+- ([viam.components.movement_sensor.Vector3](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3)): The linear acceleration in m/sec^2.
 
 **Example:**
 
@@ -814,7 +814,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -889,7 +889,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): :   The readings for the MovementSensor. Can be of any type.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.SensorReading](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.SensorReading)]): The readings for the MovementSensor. Can be of any type.
 
 **Example:**
 
@@ -1004,12 +1004,12 @@ Supported by `viam-micro-server`.
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -1115,7 +1115,7 @@ Get the current status of the movement sensor as a map of key-value pairs descri
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -1189,7 +1189,7 @@ Get the `ResourceName` for this movement sensor.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

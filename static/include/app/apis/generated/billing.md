@@ -14,7 +14,7 @@ You can also find your usage data on the [**Payment and billing** page](/organiz
 
 **Returns:**
 
-- ([viam.proto.app.billing.GetCurrentMonthUsageResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetCurrentMonthUsageResponse)): :   the current month usage information.
+- ([viam.proto.app.billing.GetCurrentMonthUsageResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetCurrentMonthUsageResponse)): the current month usage information.
 
 **Example:**
 
@@ -76,7 +76,7 @@ You can also find this information on the [**Payment and billing** page](/organi
 
 **Returns:**
 
-- ([viam.proto.app.billing.GetOrgBillingInformationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetOrgBillingInformationResponse)): :   the organization billing information.
+- ([viam.proto.app.billing.GetOrgBillingInformationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetOrgBillingInformationResponse)): the organization billing information.
 
 **Example:**
 
@@ -138,7 +138,7 @@ This includes both monthly and annual invoices depending on the organization's b
 
 **Returns:**
 
-- ([viam.proto.app.billing.GetInvoicesSummaryResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetInvoicesSummaryResponse)): :   the summaries of all organization invoices.
+- ([viam.proto.app.billing.GetInvoicesSummaryResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetInvoicesSummaryResponse)): the summaries of all organization invoices.
 
 **Example:**
 
@@ -254,6 +254,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 ### CreateInvoiceAndChargeImmediately
 
+{{% alert title="Deprecated" color="caution" %}}
+
+Use [`ChargeOrganization`](/reference/apis/billing-client/#chargeorganization) instead.
+
+{{% /alert %}}
+
 Create a flat fee invoice and charge the organization immediately. The caller must be an owner of the organization being charged. This function blocks until payment is confirmed, but will time out after 2 minutes if there is no confirmation.
 
 {{< tabs >}}
@@ -265,7 +271,7 @@ Create a flat fee invoice and charge the organization immediately. The caller mu
 - `amount` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required)
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional)
 - `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional)
-- `disable_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
+- `disable_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional)
 
 **Returns:**
 
@@ -289,11 +295,11 @@ Charge an organization for usage.
 - `tax` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): the tax amount in dollars to add to the subtotal.
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a short description of the charge to display on the invoice PDF (must be 1000 characters or less).
 - `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the organization whose branding to use in the invoice PDF and confirmation email.
-- `disable_confirmation_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): whether or not to disable sending an email confirmation for the invoice.
+- `disable_confirmation_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): whether or not to disable sending an email confirmation for the invoice.
 
 **Returns:**
 
-- ([viam.proto.app.billing.ChargeOrganizationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.ChargeOrganizationResponse)): :   the invoice id.
+- ([viam.proto.app.billing.ChargeOrganizationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.ChargeOrganizationResponse)): the invoice id.
 
 **Example:**
 

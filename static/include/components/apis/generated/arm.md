@@ -12,7 +12,7 @@ Get the current position of the arm as a [pose](/motion-planning/reference/orien
 
 **Returns:**
 
-- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): :   A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose.
+- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose.
     The `Pose` is composed of values for location and orientation with respect to the origin.
     Location is expressed as distance, which is represented by x, y, and z coordinate values.
     Orientation is expressed as an orientation vector, which is represented by o\_x, o\_y, o\_z, and theta values.
@@ -233,7 +233,7 @@ Collision checks are not enabled when doing direct joint control with MoveToJoin
 
 **Parameters:**
 
-- `positions` ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions)) (required): The destination JointPositions for the arm.
+- `positions` ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)) (required): The destination JointPositions for the arm.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -347,8 +347,8 @@ This will block until done or a new operation cancels this one.
 
 **Parameters:**
 
-- `positions` ([List[viam.proto.component.arm.JointPositions]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions)) (required): The waypoints to move through, in order.
-- `options` ([viam.proto.component.arm.MoveOptions](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.MoveOptions)) (optional): Optional kinematic ceilings obeyed at every point along the trajectory. None means no limits are requested.
+- `positions` (List[[viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)]) (required): The waypoints to move through, in order.
+- `options` ([viam.proto.component.arm.MoveOptions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.MoveOptions)) (optional): Optional kinematic ceilings obeyed at every point along the trajectory. None means no limits are requested.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -417,13 +417,13 @@ Unlike `MoveThroughJointPositions`, the full trajectory does not have to be know
 
 **Parameters:**
 
-- `batches` ([AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryPoint)) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
+- `batches` (AsyncIterator[List[[viam.components.arm.Arm.TrajectoryPoint](https://python.viam.dev/autoapi/viam/components/arm/arm/index.html#viam.components.arm.arm.Arm.TrajectoryPoint)]]) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryUpdate)): :   the arm’s updates, yielded as they arrive.
+- (AsyncIterator[[viam.components.arm.Arm.TrajectoryUpdate](https://python.viam.dev/autoapi/viam/components/arm/arm/index.html#viam.components.arm.arm.Arm.TrajectoryUpdate)]): the arm’s updates, yielded as they arrive.
 
 **Example:**
 
@@ -476,7 +476,7 @@ Get the current position of each joint on the arm.
 
 **Returns:**
 
-- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): :   The current `JointPositions` for the arm.
+- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current `JointPositions` for the arm.
     `JointPositions` can have one attribute, `values`, a list of joint positions with rotational values (degrees)
     and translational values (mm).
 
@@ -572,7 +572,7 @@ Get the 3D models of the arm.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.proto.common.Mesh]): :   The arm’s 3D models keyed by name. Each `Mesh` carries a
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.proto.common.Mesh](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Mesh)]): The arm’s 3D models keyed by name. Each `Mesh` carries a
     `content_type` (for example `"ply"`) and the raw `mesh` bytes in that format.
     This is distinct from `get_kinematics`’s third return value, which keys meshes
     by URDF filepath rather than by model name.
@@ -660,7 +660,7 @@ Enter or exit manual mode on an arm that supports it, optionally for a limited t
 **Parameters:**
 
 - `manual_mode` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to enter (True) or exit (False) manual mode.
-- `enabled_for` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): How long to stay in manual mode, in seconds. 0 means no time limit.
+- `enabled_for` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): How long to stay in manual mode, in seconds. 0 means no time limit.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -762,7 +762,7 @@ Get whether the arm is currently in manual mode.
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Whether the arm is in manual mode.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Whether the arm is in manual mode.
 
 **Example:**
 
@@ -848,7 +848,7 @@ Get which features the arm supports, such as manual mode and direct Cartesian co
 
 **Returns:**
 
-- ([viam.components.arm.Arm.Properties](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.Properties)): :   The arm’s properties; whether it supports software-enabled manual mode
+- ([viam.components.arm.Arm.Properties](https://python.viam.dev/autoapi/viam/components/arm/arm/index.html#viam.components.arm.arm.Arm.Properties)): The arm’s properties; whether it supports software-enabled manual mode
     and whether it supports direct cartesian commands (`move_to_position`).
 
 **Example:**
@@ -950,17 +950,20 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Parameters:**
 
+- `include_collision_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Include collision mesh bytes in the response. Otherwise meshes carry only their path.
+- `include_visual_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Include visual mesh bytes in the response.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.components.KinematicsReturn](https://python.viam.dev/autoapi/viam/components/index.html#viam.components.KinematicsReturn)): :   A tuple containing two values; the first [0] value represents the format of the
+- ([viam.components.KinematicsReturn](https://python.viam.dev/autoapi/viam/components/index.html#viam.components.KinematicsReturn)): A tuple containing two values; the first [0] value represents the format of the
     file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
     Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
     and the second [1] value represents the byte contents of the file.
     If available, a third [2] value provides meshes keyed by URDF filepath.
     See `get_3d_models` for meshes keyed by model name instead.
+    If available, a fourth [3] value provides the structured `KinematicModel` (links, joints, output frames, and properties).
 
 **Example:**
 
@@ -1055,7 +1058,7 @@ Get if the arm is currently moving.
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Whether the arm is moving.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Whether the arm is moving.
 
 **Example:**
 
@@ -1246,7 +1249,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -1370,12 +1373,12 @@ If you are implementing your own arm and want to add features that have no corre
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -1481,7 +1484,7 @@ Get the current status of the arm as a map of key-value pairs describing its sta
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -1555,7 +1558,7 @@ Get the `ResourceName` for this arm.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

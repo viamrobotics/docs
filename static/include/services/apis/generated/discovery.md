@@ -12,7 +12,7 @@ Get a list of component configs of all resources available to configure on a mac
 
 **Returns:**
 
-- ([List[viam.proto.app.robot.ComponentConfig]](https://python.viam.dev/autoapi/viam/proto/app/robot/index.html#viam.proto.app.robot.ComponentConfig)): :   A list of ComponentConfigs that describe
+- (List[[viam.proto.app.robot.ComponentConfig](https://python.viam.dev/autoapi/viam/proto/app/robot/index.html#viam.proto.app.robot.ComponentConfig)]): A list of ComponentConfigs that describe
     the components found by a discover service.
 
 **Example:**
@@ -109,7 +109,7 @@ Get the `ResourceName` for this instance of the service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 
@@ -185,12 +185,12 @@ If you are implementing your own generic service and want to add features that h
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Example:**
 
@@ -297,7 +297,7 @@ Get the current status of the discovery service as a map of key-value pairs desc
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the service.
 
 **Example:**
 

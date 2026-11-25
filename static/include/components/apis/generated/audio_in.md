@@ -104,7 +104,7 @@ Get the audio device’s properties.
 
 **Returns:**
 
-- ([viam.components.audio_in.audio_in.AudioIn.Properties](https://python.viam.dev/autoapi/viam/components/audio_in/audio_in/index.html#viam.components.audio_in.audio_in.AudioIn.Properties)): :   The properties of the audio in device.
+- ([viam.components.audio_in.audio_in.AudioIn.Properties](https://python.viam.dev/autoapi/viam/components/audio_in/audio_in/index.html#viam.components.audio_in.audio_in.AudioIn.Properties)): The properties of the audio in device.
 
 **Example:**
 
@@ -182,7 +182,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -275,12 +275,12 @@ If you are implementing your own arm and want to add features that have no corre
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -386,7 +386,7 @@ Get the current status of the audio input component as a map of key-value pairs 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -460,7 +460,7 @@ Get the `ResourceName` for this audio in component.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

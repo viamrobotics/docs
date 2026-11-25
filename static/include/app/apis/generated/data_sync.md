@@ -26,7 +26,7 @@ Viam requires both the time the data was requested and the time it was received 
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The binary data ID of the uploaded data.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The binary data ID of the uploaded data.
 
 **Raises:**
 
@@ -171,7 +171,7 @@ Viam enforces a maximum size of 4MB for any single reading for tabular data.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The file ID of the uploaded data.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The file ID of the uploaded data.
 
 **Raises:**
 
@@ -333,7 +333,7 @@ All other types of uploaded files can be found under the **Files** subtab of the
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   Binary data ID of the new file.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Binary data ID of the new file.
 
 **Raises:**
 
@@ -448,7 +448,7 @@ Uploaded files can be found under the **Files** subtab of the [**Data** tab](htt
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   Binary data ID of the new file.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Binary data ID of the new file.
 
 **Raises:**
 
@@ -499,7 +499,7 @@ Viam requires both the time the data was requested and the time it was received 
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The binary data ID of the uploaded data.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The binary data ID of the uploaded data.
 
 **Raises:**
 

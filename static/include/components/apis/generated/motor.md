@@ -527,7 +527,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   Number of revolutions the motor is away from zero/home.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Number of revolutions the motor is away from zero/home.
 
 **Example:**
 
@@ -628,7 +628,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([viam.components.motor.motor.Motor.Properties](https://python.viam.dev/autoapi/viam/components/motor/motor/index.html#viam.components.motor.motor.Motor.Properties)): :   Map of feature names to supported status.
+- ([viam.components.motor.motor.Motor.Properties](https://python.viam.dev/autoapi/viam/components/motor/motor/index.html#viam.components.motor.motor.Motor.Properties)): Map of feature names to supported status.
 
 **Example:**
 
@@ -734,7 +734,7 @@ Stepper motors will report `true` if they are being powered while holding a posi
 
 **Returns:**
 
-- (Tuple[[bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): :   A tuple containing two values; the first [0] value indicates whether the motor is currently powered, and
+- (Tuple[[bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): A tuple containing two values; the first [0] value indicates whether the motor is currently powered, and
     the second [1] value indicates the current power percentage of the motor.
 
 **Example:**
@@ -843,7 +843,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Whether the motor is moving.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Whether the motor is moving.
 
 **Example:**
 
@@ -1039,7 +1039,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -1132,12 +1132,12 @@ If you are implementing your own motor and want to add features that have no cor
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -1243,7 +1243,7 @@ Get the current status of the motor as a map of key-value pairs describing its s
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -1317,7 +1317,7 @@ Get the `ResourceName` for this motor.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

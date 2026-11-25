@@ -12,7 +12,7 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): :   A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC
     (false).
 
 **Example:**
@@ -109,7 +109,7 @@ Return the current of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): :   A tuple which includes a float representing the current reading in amps, and a bool indicating whether the
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the
     current is AC (true) or DC (false).
 
 **Example:**
@@ -206,7 +206,7 @@ Return the power reading in watts.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The power reading in watts.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The power reading in watts.
 
 **Example:**
 
@@ -300,7 +300,7 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): :   The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current in
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.SensorReading](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.SensorReading)]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current in
     amperes (float), is\_ac (bool), and power in watts (float).
 
 **Example:**
@@ -414,12 +414,12 @@ If you are implementing your own power sensor and want to add features that have
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -525,7 +525,7 @@ Get the current status of the power sensor as a map of key-value pairs describin
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -599,7 +599,7 @@ Get the `ResourceName` for this power sensor.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

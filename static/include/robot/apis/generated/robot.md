@@ -11,7 +11,7 @@ Get the list of operations currently running on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): :   The list of operations currently running on a given machine.
+- (List[[viam.proto.robot.Operation](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)]): The list of operations currently running on a given machine.
 
 **Example:**
 
@@ -56,7 +56,7 @@ Get status information about the machine including the status of the machine and
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): :   current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]), the revision of the config of the machine, the status of modules (List[ModuleStatus]), and the status of packages (List[PackageStatus]).
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]), the revision of the config of the machine, the status of modules (List[ModuleStatus]), and the status of packages (List[PackageStatus]).
 
 **Example:**
 
@@ -343,11 +343,11 @@ Get the configuration of the frame system of a given machine.
 
 **Parameters:**
 
-- `additional_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): Any additional transforms.
+- `additional_transforms` (List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]) (optional): Any additional transforms.
 
 **Returns:**
 
-- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): :   The configuration of a given machine’s frame system.
+- (List[[viam.proto.robot.FrameSystemConfig](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)]): The configuration of a given machine’s frame system.
 
 **Example:**
 
@@ -392,11 +392,11 @@ Transform a given source Pose from the original reference frame to a new destina
 
 - `query` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): The pose that should be transformed.
 - `destination` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the reference frame to transform the given pose to.
-- `additional_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): Any additional transforms.
+- `additional_transforms` (List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]) (optional): Any additional transforms.
 
 **Returns:**
 
-- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): :   The pose and the reference frame for the new destination.
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): The pose and the reference frame for the new destination.
 
 **Example:**
 
@@ -454,13 +454,13 @@ Get the pose of a component in the frame system of the machine, relative to a sp
 
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the component whose pose should be returned.
 - `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The name of the reference frame to express the pose in. An empty string defaults to world.
-- `supplemental_transforms` ([List[viam.proto.common.Transform]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (optional): Transforms used to augment the machine’s frame system while computing the pose.
+- `supplemental_transforms` (List[[viam.proto.common.Transform](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)]) (optional): Transforms used to augment the machine’s frame system while computing the pose.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): :   The pose of the component and the reference frame it is expressed in.
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): The pose of the component and the reference frame it is expressed in.
 
 **Example:**
 
@@ -509,7 +509,7 @@ Do not move the robot between the generation of the initial pointcloud and the r
 
 **Returns:**
 
-- ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)): :   The point cloud data relative to the destination reference frame.
+- ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)): The point cloud data relative to the destination reference frame.
 
 **Example:**
 
@@ -558,7 +558,7 @@ This includes models that are not currently configured on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): :   A list of discovered models.
+- (List[[viam.proto.robot.ModuleModel](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)]): A list of discovered models.
 
 **Example:**
 
@@ -640,7 +640,7 @@ Cancel all current and outstanding operations for the machine and stop all actua
 
 **Parameters:**
 
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): Extra options to pass to the underlying RPC call.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -819,13 +819,13 @@ Upload data from a file or folder path on the machine to the Viam cloud.
 **Parameters:**
 
 - `path` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): File or folder path on the robot to upload.
-- `upload_metadata` ([viam.proto.app.datasync.UploadMetadata](https://python.viam.dev/autoapi/viam/gen/app/datasync/v1/data_sync_pb2/index.html#viam.gen.app.datasync.v1.data_sync_pb2.UploadMetadata)) (optional): Optional metadata to apply to uploaded files.
+- `upload_metadata` ([viam.proto.app.datasync.UploadMetadata](https://python.viam.dev/autoapi/viam/proto/app/datasync/index.html#viam.proto.app.datasync.UploadMetadata)) (optional): Optional metadata to apply to uploaded files.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.robot.UploadDataFromPathResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.UploadDataFromPathResponse)): :   Response containing files\_uploaded, files\_failed, bytes\_uploaded, bytes\_total, and ids.
+- ([viam.proto.robot.UploadDataFromPathResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.UploadDataFromPathResponse)): Response containing files\_uploaded, files\_failed, bytes\_uploaded, bytes\_total, and ids.
 
 **Example:**
 
@@ -854,7 +854,7 @@ Get app-related information about the robot.
 
 **Returns:**
 
-- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): :   App-related metadata.
+- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): App-related metadata.
 
 **Example:**
 
@@ -946,7 +946,7 @@ Return version information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): :   Machine version related information.
+- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): Machine version related information.
 
 **Example:**
 
@@ -1004,7 +1004,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Returns:**
 
-- (Self): :   the RobotClient.Options.
+- (Self): the RobotClient.Options.
 
 **Raises:**
 
@@ -1111,7 +1111,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Parameters:**
 
-- `channel` ([grpclib.client.Channel | viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel)) (required): The channel that is connected to a machine, obtained by viam.rpc.dial.
+- `channel` (grpclib.client.Channel | [viam.rpc.dial.ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel)) (required): The channel that is connected to a machine, obtained by viam.rpc.dial.
 - `options` ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options)) (required): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**

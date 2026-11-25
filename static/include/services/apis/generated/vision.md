@@ -13,7 +13,7 @@ Get a list of detections from the next image from a specified camera using a con
 
 **Returns:**
 
-- ([list[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): :   A list of 2D bounding boxes, their labels, and the
+- (list[[viam.proto.service.vision.Detection](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)]): A list of 2D bounding boxes, their labels, and the
     confidence score of the labels, around the found objects in the next 2D image
     from the given camera, with the given detector applied to it.
 
@@ -122,13 +122,13 @@ Get a list of detections from a given image using a configured [detector](/refer
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections for.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage)) (required): The image to get detections for.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([list[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): :   A list of 2D bounding boxes, their labels, and the
+- (list[[viam.proto.service.vision.Detection](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)]): A list of 2D bounding boxes, their labels, and the
     confidence score of the labels, around the found objects in the next 2D image
     from the given camera, with the given detector applied to it.
 
@@ -270,7 +270,7 @@ Get a list of classifications from the next image from a specified camera using 
 
 **Returns:**
 
-- ([list[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): :   The list of Classifications.
+- (list[[viam.proto.service.vision.Classification](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)]): The list of Classifications.
 
 **Example:**
 
@@ -376,14 +376,14 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Parameters:**
 
-- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage)) (required): The image to get detections for.
+- `image` ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage)) (required): The image to get detections for.
 - `count` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): The number of classifications desired.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([list[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): :   The list of Classifications.
+- (list[[viam.proto.service.vision.Classification](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)]): The list of Classifications.
 
 **Example:**
 
@@ -526,7 +526,7 @@ Prefer `GetDetections3D` when the vision service supports it. Call `GetPropertie
 
 **Returns:**
 
-- ([list[viam.proto.common.PointCloudObject]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject)): :   The pointcloud objects with metadata.
+- (list[[viam.proto.common.PointCloudObject](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject)]): The pointcloud objects with metadata.
 
 **Example:**
 
@@ -641,7 +641,7 @@ Get the objects the vision service perceives through a camera, each as a tree of
 
 **Returns:**
 
-- ([list[viam.proto.service.vision.Detection3D]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection3D)): :   A list of 3D detections, each described as a tree of
+- (list[[viam.proto.service.vision.Detection3D](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection3D)]): A list of 3D detections, each described as a tree of
     transforms along with the class hypotheses for the detected object.
 
 **Example:**
@@ -751,17 +751,17 @@ Objects are in the camera's frame, with geometry centers in millimeters and poin
 **Parameters:**
 
 - `camera_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the camera to use for detection.
-- `return_image` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return the camera’s latest image.
-- `return_classifications` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest classifications.
-- `return_detections` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest detections.
-- `return_object_point_clouds` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest 3D segmentations.
-- `return_detections_3d` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Ask the vision service to return its latest 3D detections.
+- `return_image` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Ask the vision service to return the camera’s latest image.
+- `return_classifications` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Ask the vision service to return its latest classifications.
+- `return_detections` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Ask the vision service to return its latest detections.
+- `return_object_point_clouds` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Ask the vision service to return its latest 3D segmentations.
+- `return_detections_3d` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Ask the vision service to return its latest 3D detections.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): :   A class that stores all potential returns from the vision service.
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service.
     It can return the image from the camera along with its associated detections, classifications,
     and objects, as well as any extra info the model may provide.
 
@@ -886,12 +886,12 @@ If you are implementing your own vision service and want to add features that ha
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Example:**
 
@@ -998,7 +998,7 @@ Get the current status of the vision service as a map of key-value pairs describ
 
 **Returns:**
 
-- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the service.
 
 **Example:**
 
@@ -1072,7 +1072,7 @@ Get the `ResourceName` for this instance of the vision service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 
@@ -1158,7 +1158,7 @@ Fetch information about which vision methods a given vision service supports.
 
 **Returns:**
 
-- ([Vision.Properties](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties)): :   The properties of the vision service.
+- ([Vision.Properties](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties)): The properties of the vision service.
 
 **Example:**
 

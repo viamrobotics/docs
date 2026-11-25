@@ -12,7 +12,7 @@ Get a list of the [Controls](/reference/apis/components/input-controller/#contro
 
 **Returns:**
 
-- ([List[viam.components.input.input.Control]](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)): :   List of controls provided by the Controller.
+- (List[[viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)]): List of controls provided by the Controller.
 
 **Example:**
 
@@ -71,7 +71,7 @@ This method returns the current state of the controller as a map of [Event Objec
 
 **Returns:**
 
-- ([Dict[viam.components.input.input.Control, viam.components.input.input.Event]](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)): :   The most recent event for each input.
+- (Dict[[viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control), [viam.components.input.input.Event](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Event)]): The most recent event for each input.
 
 **Example:**
 
@@ -153,7 +153,7 @@ This method is currently only supported for input controllers of model `webgamep
 
 **Parameters:**
 
-- `event` ([viam.components.input.input.Event](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Event)) (required): The event to trigger.
+- `event` ([viam.components.input.input.Event](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Event)) (required): The event to trigger.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -243,7 +243,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -301,9 +301,9 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 
 **Parameters:**
 
-- `control` ([viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control)) (required): The control to register the function for.
-- `triggers` ([List[viam.components.input.input.EventType]](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType)) (required): The events that will trigger the function.
-- `function` ([viam.components.input.input.ControlFunction](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.ControlFunction)) (optional): The function to run on specific triggers.
+- `control` ([viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)) (required): The control to register the function for.
+- `triggers` (List[[viam.components.input.input.EventType](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.EventType)]) (required): The events that will trigger the function.
+- `function` ([viam.components.input.input.ControlFunction](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.ControlFunction)) (required): The function to run on specific triggers.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -436,12 +436,12 @@ If you are implementing your own input controller and want to add features that 
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -497,7 +497,7 @@ Get the current status of the input controller as a map of key-value pairs descr
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -558,7 +558,7 @@ Get the `ResourceName` for this input controller.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

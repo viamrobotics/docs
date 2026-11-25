@@ -122,7 +122,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Indicates if the state of the pin is high.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Indicates if the state of the pin is high.
 
 **Example:**
 
@@ -236,7 +236,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The duty cycle.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The duty cycle.
 
 **Example:**
 
@@ -453,7 +453,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The PWM frequency.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The PWM frequency.
 
 **Example:**
 
@@ -673,7 +673,7 @@ The value is the number of times the interrupt has been interrupted with a tick.
 
 **Returns:**
 
-- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The current value.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The current value.
 
 **Example:**
 
@@ -781,7 +781,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([viam.components.board.board.Board.Analog.Value](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog.Value)): :   The current value, including the min, max, and step\_size of the reader.
+- ([viam.components.board.board.Board.Analog.Value](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog.Value)): The current value, including the min, max, and step\_size of the reader.
 
 **Example:**
 
@@ -995,12 +995,12 @@ Start a stream of `DigitalInterrupt` ticks.
 
 **Parameters:**
 
-- `interrupts` ([List[viam.components.board.board.Board.DigitalInterrupt]](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)) (required): list of digital interrupts to receive ticks from.
+- `interrupts` (List[[viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)]) (required): list of digital interrupts to receive ticks from.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
-- ([viam.components.board.board.TickStream](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.TickStream)): :   stream of ticks.
+- ([viam.components.board.board.TickStream](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.TickStream)): stream of ticks.
 
 **Example:**
 
@@ -1127,7 +1127,7 @@ This is expected: the board has been successfully powered down and can no longer
 
 **Parameters:**
 
-- `mode` ([viam.proto.component.board.PowerMode.ValueType](https://python.viam.dev/autoapi/viam/gen/component/board/v1/board_pb2/index.html#viam.gen.component.board.v1.board_pb2.PowerMode)) (required): The desired power mode.
+- `mode` ([viam.proto.component.board.PowerMode.ValueType](https://python.viam.dev/autoapi/viam/proto/component/board/index.html#viam.proto.component.board.PowerMode)) (required): The desired power mode.
 - `duration` ([datetime.timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects)) (optional): Requested duration to stay in power mode.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
@@ -1239,7 +1239,7 @@ Get a configured `Analog` by `name`.
 
 **Returns:**
 
-- ([viam.components.board.board.Board.Analog](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog)): :   The analog reader or writer.
+- ([viam.components.board.board.Board.Analog](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog)): The analog reader or writer.
 
 **Example:**
 
@@ -1290,7 +1290,7 @@ Get a DigitalInterrupt by `name`.
 
 **Returns:**
 
-- ([viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)): :   The digital interrupt.
+- ([viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)): The digital interrupt.
 
 **Example:**
 
@@ -1343,7 +1343,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 
 **Returns:**
 
-- ([viam.components.board.board.Board.GPIOPin](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.GPIOPin)): :   The pin.
+- ([viam.components.board.board.Board.GPIOPin](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.GPIOPin)): The pin.
 
 **Example:**
 
@@ -1397,7 +1397,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -1491,12 +1491,12 @@ Supported by `viam-micro-server`.
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -1602,7 +1602,7 @@ Get the current status of the board as a map of key-value pairs describing its s
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -1676,7 +1676,7 @@ Get the `ResourceName` for this board.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 
