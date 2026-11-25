@@ -94,6 +94,13 @@ section that tells `viam-server` what to download:
 You don't need to write this JSON by hand. When you add a module model
 through the Viam app, the modules section is created automatically.
 
+### Processes (removed)
+
+Older machine configurations can have a `processes` section. `viam-server` v0.74.0 and
+later ignore it and log the error "Processes have been deprecated and are no longer
+supported in viam-server versions v0.74.0+." Remove the `processes` section from the
+configuration.
+
 ## Editing configuration
 
 You can edit your machine's configuration in two ways:
