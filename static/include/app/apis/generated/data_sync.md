@@ -2,6 +2,11 @@
 
 Upload binary data collected on your machine through a specific component and the relevant metadata to [Viam](https://app.viam.com).
 Uploaded binary data can be found under the **Images**, **Point clouds**, or **Files** subtab of the [**Data** tab](https://app.viam.com/data), depending on the type of data that you upload.
+
+{{< alert title="Capture times" color="note" >}}
+Viam requires both the time the data was requested and the time it was received (`data_request_times` in Python, `dataRequestTimes` in TypeScript and Flutter), and rejects the upload with an invalid argument error if the received time is more than 24 hours after the requested time.
+{{< /alert >}}
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -60,14 +65,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   "movementSensor").
 - `componentName` (string) (required): The name of the component used to capture the data.
 - `methodName` (string) (required): The name of the method used to capture the data.
-- `dataRequestTimes` (Date) (required): Tuple containing `Date` objects denoting the times this data was
+- `dataRequestTimes` ([Date, Date]) (required): Tuple containing `Date` objects denoting the times this data was
   requested[0] by the robot and received[1] from the appropriate sensor.
 - `options` ([BinaryDataCaptureUploadOptions](https://ts.viam.dev/interfaces/BinaryDataCaptureUploadOptions.html)) (optional): Optional parameters including `mimeType`, `fileExtension`, `tags`, and
   `datasetIds`.
 
 **Returns:**
 
-- (Promise<string>): The binary data ID of the uploaded data.
+- (Promise\<string>): The binary data ID of the uploaded data.
 
 **Example:**
 
@@ -203,21 +208,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `tabularData` (Record) (required): The list of data to be uploaded, represented tabularly as an array.
+- `tabularData` (Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>[]) (required): The list of data to be uploaded, represented tabularly as an array.
 - `partId` (string) (required): The part ID of the component used to capture the data.
 - `componentType` (string) (required): The type of the component used to capture the data (for example,
   "movementSensor").
 - `componentName` (string) (required): The name of the component used to capture the data.
 - `methodName` (string) (required): The name of the method used to capture the data.
-- `dataRequestTimes` (Date) (required): Array of Date tuples, each containing two `Date` objects denoting the
+- `dataRequestTimes` ([Date, Date][]) (required): Array of Date tuples, each containing two `Date` objects denoting the
   times this data was requested[0] by the robot and received[1] from the appropriate sensor.
   Passing a list of tabular data and Timestamps with length n > 1 will result in n datapoints
   being uploaded, all tied to the same metadata.
-- `tags` (string) (optional): The list of tags to allow for tag-based filtering when retrieving data.
+- `tags` (string[]) (optional): The list of tags to allow for tag-based filtering when retrieving data.
 
 **Returns:**
 
-- (Promise<string>): The file ID of the uploaded data.
+- (Promise\<string>): The file ID of the uploaded data.
 
 **Example:**
 
@@ -470,6 +475,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 Upload the contents of streaming binary data and the relevant metadata to [Viam](https://app.viam.com).
 Uploaded streaming data can be found under the [**Data** tab](https://app.viam.com/data).
+
+{{< alert title="Capture times" color="note" >}}
+Viam requires both the time the data was requested and the time it was received (`data_request_times` in Python, `dataRequestTimes` in TypeScript and Flutter), and rejects the upload with an invalid argument error if the received time is more than 24 hours after the requested time.
+{{< /alert >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}

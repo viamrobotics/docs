@@ -413,7 +413,7 @@ Training logs expire after 7 days.
 
 In the Viam app, go to the **DATA** page, click the [**MODELS** tab](https://app.viam.com/models), and expand **Active Training**.
 Click a job ID to view its logs.
-The **Details** panel shows the container the job runs in, under **Container version** and **Container ID**.
+The **Details** panel shows the **Dataset** the job trained on, and the container the job runs in, under **Container version** and **Container ID**.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}

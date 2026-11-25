@@ -1,6 +1,6 @@
 ---
-linkTitle: "TypeScript setup"
-title: "TypeScript setup"
+linkTitle: "Web app setup"
+title: "Web app setup"
 weight: 10
 layout: "docs"
 type: "docs"

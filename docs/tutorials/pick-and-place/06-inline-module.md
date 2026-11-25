@@ -46,7 +46,7 @@ The detection, the pose math, and the motion calls are the same pick-and-place l
 
 ## Create the module
 
-On the **Configure** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module and click **Choose**. Select **Python** as the language, keep **Generic service** as the component or service, and click **Create module**. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
+On the **CONFIGURE** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module and click **Choose**. Select **Python** as the language, keep **Generic service** as the component or service, and click **Create module**. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in Configure with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
@@ -137,21 +137,20 @@ async def run_pick_cycle(self) -> bool:
     await self.home_pose.set_position(2)
     # 2. Detect. vision-segment fuses the 2D shape detections with depth into
     #    3D objects, each with a point cloud and a label.
-    objects = await self.vision.get_object_point_clouds(self.camera_name)
-    if not objects:
+    detections = await self.vision.get_detections_3d(self.camera_name)
+    if not detections:
         print("No objects detected")
         return False
-    # Largest object by point-cloud byte size (a proxy for point count).
-    # point_cloud is raw PCD bytes, so use len(point_cloud), not .size.
-    obj = max(objects, key=lambda o: len(o.point_cloud))
-    geometry = obj.geometries.geometries[0]
-    label = geometry.label
-    print(f"Detected: {label}")
+
+    detection = detections[0]  # just pick the first one for this demo
+    main_part_of_detection = detection.transforms[0]
+
+    print(f"Detected: {main_part_of_detection.physical_object.label}")
     # 3. Derive the approach pose from the object center, in the camera
     #    frame. cam-1 is wrist-mounted, but the approach move is resolved
     #    from the camera frame while the arm is still at home, so it lands
     #    accurately above the block.
-    obj_in_cam = PoseInFrame(reference_frame=self.camera_name, pose=geometry.center)
+    obj_in_cam = main_part_of_detection.pose_in_observer_frame
     approach_pose = offset_pose(obj_in_cam.pose, APPROACH_MM)
     # 4. Pick: move above in the camera frame, open, then descend the
     #    remaining distance straight down in the gripper's own frame, grab,
@@ -194,7 +193,7 @@ async def do_command(self, command, *, timeout=None, **kwargs):
 ```
 
 {{< alert title="No build step for Python" color="note" >}}
-Saving an inline Python module doesn't start a cloud build. Viam uploads your source, and the machine restarts the module with the new code. Save from the **Configure** tab: that is the save that deploys the code to the machine.
+Saving an inline Python module doesn't start a cloud build. Viam uploads your source, and the machine restarts the module with the new code. Save from the **CONFIGURE** tab: that is the save that deploys the code to the machine.
 {{< /alert >}}
 
 With the code in place, save the machine's configuration. The Viam app packages your code and deploys it to the machine, and the **Logs** tab shows the module restarting the same way it showed module downloads back in Phase 2.
@@ -204,7 +203,7 @@ With the code in place, save the machine's configuration. The Viam app packages 
 {{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module starting on the machine.">}}
 
 {{< checkpoint >}}
-The module starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the module fails to start, read the error in the **Logs** tab; a missing import or a syntax error carried over from the script is the most common cause.
+The module starts without errors in the **Logs** tab, and its resource shows online on the **CONFIGURE** tab. If the module fails to start, read the error in the **Logs** tab; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
 From the **Control** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.

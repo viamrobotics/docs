@@ -27,7 +27,7 @@ Everything you did before happened by clicking test cards on the **Control** tab
 
 In the next phase, you package this same logic as a module. For now, a script you run from your own terminal, that you can stop, edit, and rerun in seconds, is the faster path to a working pick-and-place loop.
 
-Every control you clicked in the UI maps directly onto an SDK method: the arm card's joint controls become `Arm` methods, **Grab** and **Open** on the gripper card become `gripper.grab()` and `gripper.open()`, and setting a switch to position 2 becomes `switch.set_position(2)`. Once you can call those methods from code, you can compose them into logic no UI card lets you express by clicking.
+Every control you clicked in the UI maps directly onto an SDK method: the arm card's joint controls become `Arm` methods, **Grab** and **Open** on the gripper card become `gripper.grab()` and `gripper.open()`, and setting a switch to its "go to" function (index 2) becomes `switch.set_position(2)`. Once you can call those methods from code, you can compose them into logic no UI card lets you express by clicking.
 
 ## Get the companion project
 
@@ -108,6 +108,38 @@ print(machine.resource_names)
 
 ### Second run: drive the arm
 
+When we were controlling the arm by hand we had this sequence:
+
+```text
+home-pose:go-to
+approach-pose:go-to
+gripper:open
+grasp-pose:go-to
+gripper:grab
+travel-pose:go-to
+place-pose:go-to
+gripper:open
+home-pose:go-to
+```
+
+Now when we are changing that to code we have to use functions and the correct index of the switches controls.
+
+{{<imgproc src="/tutorials/pick-and-place/switch-test-panel.png" resize="1200x" declaredimensions=true alt="A small screenshot of the test panel of the switch trying to show the three options">}}
+
+The sequence above then becomes:
+
+```text
+home-pose(2)
+approach-pose(2)
+gripper:open
+grasp-pose(2)
+gripper:grab
+travel-pose(2)
+place-pose(2)
+gripper:open
+home-pose(2)
+```
+
 With the connection and resource names confirmed, uncomment the static sequence block in the starter script (the lines under `TODO 4`). This is the same sequence you tested by hand from the **Control** tab at the end of Phase 3, now expressed as code instead of button clicks. On a switch, `set_position(2)` executes the pose it has saved:
 
 ```python
@@ -141,8 +173,8 @@ Most problems fall into one of a few categories:
 
 - **`ResourceNotFoundError: vision-segment`** (or a similar not-found error for the vision service) means you uncommented the vision handle before configuring the vision service. That service is not added until Phase 5, so leave the `vision = VisionClient.from_robot(...)` line commented (it is marked `# Used in Phase 5` in the starter script) until then, and rerun.
 - **Connection failures.** If `connect()` raises an error or hangs, double-check the `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` values against the **Connect** tab. A stale or mistyped API key produces an authentication error immediately; a wrong address usually times out instead. Also confirm the machine shows the green **Live** indicator in the Viam app. A machine that is not live cannot accept a connection no matter how correct your credentials are.
-- **Resource-name mismatches.** If `Gripper.from_robot(machine, "gripper-1")` or a similar call raises a not-found error, the name in your script does not match the name on the **Configure** tab. Names are exact strings, not approximations, so `gripper-1` and `gripper_1` are different resources as far as the SDK is concerned. Open `resource_names` from the connection checkpoint above and compare it character for character against the names your script uses.
-- **A switch does nothing on `set_position(2)`.** This means the pose was never saved. Go back to the **Control** tab, jog the arm to the correct pose, and set that switch to **update config** (position 1) to save it, as you did in Phase 3, then rerun the script.
+- **Resource-name mismatches.** If `Gripper.from_robot(machine, "gripper-1")` or a similar call raises a not-found error, the name in your script does not match the name on the **CONFIGURE** tab. Names are exact strings, not approximations, so `gripper-1` and `gripper_1` are different resources as far as the SDK is concerned. Open `resource_names` from the connection checkpoint above and compare it character for character against the names your script uses.
+- **A switch does nothing on `set_position(2)`.** This means the pose was never saved. Go back to the **CONFIGURE** tab, jog the arm to the correct pose, and set that switch to **update config** (position 1) to save it, as you did in Phase 3, then rerun the script. Saving from the **CONTROL** tab doesn't update the switch's JSON config.
 
 With `resource_names` printing everything you expect and the static sequence running end to end from your own code, you have working proof that your connection, your named resources, and your saved poses all hold up under real code. You are ready to integrate perception in [Phase 5](/tutorials/pick-and-place/perception-guided-picking/).
 

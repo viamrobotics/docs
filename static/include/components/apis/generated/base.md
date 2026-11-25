@@ -64,12 +64,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `distanceMm` (number) (required): Distance to move, in millimeters.
 - `mmPerSec` (number) (required): Movement speed, in millimeters per second.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -171,12 +171,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `angleDeg` (number) (required): Degrees to spin.
 - `degsPerSec` (number) (required): Angular speed, in degrees per second.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -313,12 +313,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `linear` ([Vector3](https://ts.viam.dev/types/Vector3.html)) (required): Desired linear power percentage from -1 to 1.
 - `angular` ([Vector3](https://ts.viam.dev/types/Vector3.html)) (required): Desired angular power percentage from -1 to 1.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -449,12 +449,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 - `linear` ([Vector3](https://ts.viam.dev/types/Vector3.html)) (required): Desired linear velocity in millimeters per second.
 - `angular` ([Vector3](https://ts.viam.dev/types/Vector3.html)) (required): Desired angular velocity in degrees per second.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -571,12 +571,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[baseApi](https://ts.viam.dev/modules/baseApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/baseApi.GetPropertiesResponse.html)>)
+- (Promise\<[baseApi](https://ts.viam.dev/modules/baseApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/baseApi.GetPropertiesResponse.html)>)
 
 **Example:**
 
@@ -669,7 +669,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise\<boolean>)
 
 **Example:**
 
@@ -761,12 +761,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -864,12 +864,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 **Example:**
 
@@ -988,13 +988,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -1090,7 +1090,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#getstatus).
 

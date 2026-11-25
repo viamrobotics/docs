@@ -22,15 +22,15 @@ You can't change it later.
 Both types are created the same way.
 They differ in how you add data and in what you can do with the dataset afterward.
 
-|                   | Binary dataset                            | Sequence dataset                                                                                         |
-| ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Holds             | Individual files, usually images          | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
-| Use it to         | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
-| Create with       | Viam app, CLI, Python, TypeScript, Go     | Viam app, CLI, Python                                                                                    |
-| Labeling          | You tag images or draw bounding boxes     | Sequence tags, such as the task a demonstration shows                                                    |
-| Built-in training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
-| Merge datasets    | Yes                                       | No                                                                                                       |
-| Export            | Files plus a `dataset.jsonl` file         | Three Parquet files plus images                                                                          |
+|                   | Binary dataset                            | Sequence dataset                                                                                            |
+| ----------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Holds             | Individual files, usually images          | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part         |
+| Use it to         | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations    |
+| Create with       | Viam app, CLI, Python, TypeScript, Go     | Viam app, CLI, Python                                                                                       |
+| Labeling          | You tag images or draw bounding boxes     | Sequence tags, such as the task a demonstration shows. Each frame keeps its image's tags and bounding boxes |
+| Built-in training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                         |
+| Merge datasets    | Yes                                       | No                                                                                                          |
+| Export            | Files plus a `dataset.jsonl` file         | Three Parquet files plus images                                                                             |
 
 ## Create a dataset
 
@@ -188,6 +188,9 @@ A binary dataset holds binary files, usually images, and a sequence dataset hold
 
 - **Images** must sync from the machine to the cloud before you can add them to a dataset.
 - **Sequences** must be recorded first. See [Sequences](/data/sequences/), or follow the [sequences tutorial](/data/sequences-tutorial/) to go from recording to export in one pass.
+- **Nothing adds data to a dataset automatically.** Data capture syncs images to the cloud, but no setting adds them to a dataset as they arrive.
+  Add them with the steps below, or script it: [Capture, annotate, and add to dataset in one script](/train/automate-annotation/#capture-annotate-and-add-to-dataset-in-one-script) adds each image it captures to a dataset.
+  Go code running on the machine can also upload an image straight to datasets with the data manager's [`UploadImageToDatasets`](/reference/apis/services/data/#uploadimagetodatasets).
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
@@ -366,6 +369,8 @@ use an existing ML model to speed up the process.
 **Sequence dataset:** tag each sequence with its task.
 You usually set tags while recording.
 If you didn't, see [Tag sequences](/train/annotate-data/#tag-sequences) to add them from code.
+To label objects in a sequence's frames, tag the frame images or draw bounding boxes on them.
+See [Label a sequence's frames](/train/annotate-data/#label-a-sequences-frames).
 
 ### Recommendations for quality
 
