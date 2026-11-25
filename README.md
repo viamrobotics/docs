@@ -10,7 +10,8 @@
 
 ## Build the docs locally
 
-To be able to build the docs locally you can run the [onboarding script](./onboarding.sh)!
+For Mac Users: We have an [onboarding script](./onboarding.sh) that you can run with `make onboard`
+For windows users you will want to go through the onboarding script as that will have the most up to date list of what needs to be installed.
 
 You can build the docs for local development using the following command:
 
