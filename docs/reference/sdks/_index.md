@@ -26,7 +26,7 @@ Pick the one that fits where your code runs and what you are building.
 | ---------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
 | Python     | Backend, or as a module | [Python setup](/build-apps/setup/python/)                                                                               | [python.viam.dev](https://python.viam.dev/)      |
 | Go         | Backend, or as a module | [Go setup](/build-apps/setup/go/)                                                                                       | [pkg.go.dev](https://pkg.go.dev/go.viam.com/rdk) |
-| TypeScript | Browser and Node.js     | [TypeScript setup](/build-apps/setup/typescript/) for the browser, [Node.js setup](/build-apps/setup/node/) for Node.js | [ts.viam.dev](https://ts.viam.dev/)              |
+| TypeScript | Web and Node.js         | [TypeScript setup](/build-apps/setup/typescript/) for the browser, [Node.js setup](/build-apps/setup/node/) for Node.js | [ts.viam.dev](https://ts.viam.dev/)              |
 | Flutter    | Mobile, desktop, web    | [Flutter setup](/build-apps/setup/flutter/)                                                                             | [flutter.viam.dev](https://flutter.viam.dev/)    |
 | C++        | Backend, or as a module | [C++ setup](/build-apps/setup/cpp/) (source build or Conan)                                                             | [cpp.viam.dev](https://cpp.viam.dev/)            |
 
