@@ -242,13 +242,12 @@ Click **Save**.
 **Test the inspector:**
 
 1. In the **CONFIGURE** tab, click on `inspector-service` to open its configuration panel
-2. Expand the **Test** section at the bottom
-3. Expand **DoCommand** and enter `{"detect": true}`
-4. Click **Execute**
-5. You should see a response with `label` and `confidence` values
-6. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam
+2. Expand the **DoCommand** section on the service's configuration card and enter `{"detect": true}` in **Input**
+3. Click **Execute**
+4. You should see a response with `label` and `confidence` values in **Output**
+5. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam
 
-{{<imgproc src="/tutorials/first-project/docommand-test.png" resize="x1100" declaredimensions=true alt="DoCommand test panel showing detection result with label PASS and confidence score." class="imgzoom shadow">}}
+{{<imgproc src="/tutorials/first-project/docommand-test.png" resize="x1100" declaredimensions=true alt="DoCommand section showing detection result with label PASS and confidence score." class="imgzoom shadow">}}
 
 The module is now ready. You'll configure automatic detection in the next section.
 

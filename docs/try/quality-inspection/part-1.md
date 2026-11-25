@@ -99,13 +99,13 @@ You declared "this machine has a camera called `inspection-cam`" by editing the 
 
 ## 1.4 Test the Camera
 
-Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view.
+Verify the camera is working. Camera components have a built-in **Test** section right in the configuration view.
 
-### Open the test panel
+### Open the Test section
 
 1. You should still be on the **CONFIGURE** tab with your `inspection-cam` selected
 2. Look for the **Test** section at the bottom of the camera's configuration panel
-3. Expand the **TEST** section to open the camera's test card
+3. Expand the **Test** section to open the camera's test card
 
 The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 

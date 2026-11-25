@@ -65,7 +65,7 @@ For the full JSON structure and dependencies, see [Machine configuration](/hardw
 
 When you add a component, you search for a **model** that matches your hardware. A model is an implementation of a component API for one piece of hardware (or class of hardware). Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors wired to GPIO pins). Most hardware-specific models (arms, grippers, specialized sensors, motor controllers) come from **modules** in the [Viam registry](https://app.viam.com/registry); a module is a code package that provides one or more models.
 
-You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections, same SDKs.
+You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections in the Viam app, same SDKs.
 
 If no model exists for your hardware, you can [write your own module](/build-modules/write-a-driver-module/) that provides a model implementing the component API.
 
@@ -159,12 +159,14 @@ initializes the new component. You do not need to restart anything.
 
 ### 6. Test the component
 
-Every component in Viam has a **test** section on its component card in the **CONFIGURE** tab. The test section uses the same API your code will use, so if the component works here, it will work in your programs.
+Most component types have a **Test** section on their configuration card in the **CONFIGURE** tab. The Test section uses the same API your code will use, so if the component works here, it will work in your programs.
+
+The Test section's controls work only while the machine part is online and the component is ready. Generic components don't have a Test section; their card has top-level **DoCommand** and **GetStatus** sections instead.
 
 1. Find your component in the configuration view.
-2. Expand the **test** section at the bottom of the component card.
+2. Expand the **Test** section at the bottom of the component card.
 3. Interact with the component:
-   - **Camera**: toggle the stream or capture an image.
+   - **Camera**: start the feed, choose a refresh rate, or take a screenshot.
    - **Motor**: set power or move to a position.
    - **Sensor**: view live readings.
    - **Servo**: move to an angle.
