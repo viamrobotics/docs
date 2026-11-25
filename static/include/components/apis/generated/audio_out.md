@@ -8,7 +8,7 @@ Play the given audio data.
 **Parameters:**
 
 - `data` ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)) (required): audio bytes to play.
-- `info` (viam.components.audio_out.audio_out.AudioInfo) (optional): (optional) information about the audio data such as codec, sample rate, and channel count.
+- `info` ([viam.components.audio_out.audio_out.AudioInfo](https://python.viam.dev/autoapi/viam/components/audio_out/index.html#viam.components.audio_out.AudioInfo)) (optional): (optional) information about the audio data such as codec, sample rate, and channel count.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -99,7 +99,7 @@ Stream audio data in chunks for playback.
 
 **Parameters:**
 
-- `info` (viam.components.audio_out.audio_out.AudioInfo) (required): information about the audio stream such as codec, sample rate, and channel count.
+- `info` ([viam.components.audio_out.audio_out.AudioInfo](https://python.viam.dev/autoapi/viam/components/audio_out/index.html#viam.components.audio_out.AudioInfo)) (required): information about the audio stream such as codec, sample rate, and channel count.
 - `chunks` (AsyncIterable[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): async iterable of audio bytes to play in order.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
@@ -374,7 +374,7 @@ If you are implementing your own arm and want to add features that have no corre
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**

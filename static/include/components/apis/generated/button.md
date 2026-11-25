@@ -129,7 +129,7 @@ Supported by `viam-micro-server`.
 
 **Parameters:**
 
-- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), ValueTypes]) (required): The command to execute.
+- `command` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]) (required): The command to execute.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**

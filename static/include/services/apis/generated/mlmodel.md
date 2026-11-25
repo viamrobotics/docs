@@ -87,7 +87,7 @@ Get the metadata: name, data type, expected tensor/array shape, inputs, and outp
 
 **Returns:**
 
-- (viam.services.mlmodel.mlmodel.Metadata): The metadata.
+- ([viam.services.mlmodel.mlmodel.Metadata](https://python.viam.dev/autoapi/viam/services/mlmodel/index.html#viam.services.mlmodel.Metadata)): The metadata.
 
 **Example:**
 
