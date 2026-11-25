@@ -32,6 +32,7 @@ single coordinate tree. You define where each component sits relative to its
 parent, and Viam computes the transforms between any two frames automatically.
 Once the tree is configured, a single API call answers questions like "where is
 this point in my camera frame, expressed in world coordinates?"
+A [composite model](/build-modules/composite-models/) that serves several APIs is one component with one frame.
 
 Getting the frame system right is a prerequisite for motion planning and
 obstacle avoidance, and for any task where components must agree on where

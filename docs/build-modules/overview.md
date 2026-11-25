@@ -50,6 +50,8 @@ your hardware:
 Viam defines over 15 component APIs and 10 service APIs. For the full list,
 see [Resource APIs](/reference/apis/).
 
+A device with more than one capability, such as a camera with a built-in IMU, can be one [composite model](/build-modules/composite-models/) that serves several APIs.
+
 Each implementation of a resource API is called a **model**. For example,
 the `camera` API has models for USB cameras, CSI cameras, RTSP streams, and
 others. When no existing model supports your hardware,

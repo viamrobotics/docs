@@ -144,6 +144,33 @@ On machines with little storage, such as single-board computers:
 
   Use `/root/.viam/capture` when `viam-server` runs as root through `viam-agent`. See [Capture directories](/data/reference/#capture-directories) for every platform.
 
+## Capture from a composite {#capture-from-a-composite}
+
+A [composite](/build-modules/composite-models/) serves more than one API from one config entry, such as a device that is both a camera and a movement sensor.
+Configure capture on that one entry, with every method you want from any of its APIs.
+
+Each captured method is tagged with the API that owns it, so one device's data appears under more than one component type:
+
+- A method only one of its APIs captures, such as `GetImages` (camera) or `Readings` (sensor), is tagged with that API, whichever API the config entry names.
+- A method more than one of its APIs captures, such as `DoCommand`, is tagged with the API in the config entry.
+
+To capture a shared method under a different API, set the capture method's `name` to that API and the resource name.
+This captures `DoCommand` under the movement sensor API from a composite named `my-device`:
+
+```json
+{
+  "name": "rdk:component:movement_sensor/my-device",
+  "method": "DoCommand",
+  "capture_frequency_hz": 0.2,
+  "additional_params": {
+    "docommand_input": {}
+  }
+}
+```
+
+The API you set must be one the composite serves and must capture that method; otherwise, `viam-server` logs a warning and doesn't capture that method.
+Composites need `viam-server` v1.17.0 or later.
+
 ## Supported resources {#supported-resources}
 
 Any built-in or modular component that implements a capturable method can be configured for data capture. The following table lists the most commonly captured component types and their methods:

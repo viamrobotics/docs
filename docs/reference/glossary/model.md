@@ -9,6 +9,7 @@ aliases:
 ---
 
 A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} [API](/reference/apis/).
+A {{< glossary_tooltip term_id="composite" text="composite" >}} model implements more than one API.
 
 Models allow you to control hardware or software of a similar category, such as motors, with a consistent set of methods as an interface, even if the underlying implementation differs.
 

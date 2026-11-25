@@ -2047,6 +2047,7 @@ viam module update --module=./meta.json
 ### `module update-models`
 
 Update the module's metadata file with the models it provides.
+For a [composite model](/build-modules/composite-models/), the command writes one entry that lists every API the model serves in `apis`, with the API that sorts first alphabetically in `api`.
 
 ```sh {class="command-line" data-prompt="$"}
 # update a module's metadata file based on models it provides

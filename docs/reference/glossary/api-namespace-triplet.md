@@ -18,7 +18,8 @@ The `namespace` for built-in Viam resources is `rdk`, while the `type` is `compo
 One API can have various {{< glossary_tooltip term_id="model" text="models" >}}, custom or built-in, but they all must conform to the same API definition.
 This requirement ensures that when a resource of that model is deployed, you can [interface with it](/reference/sdks/) using the same [client API methods](/reference/apis/) you would when programming resources of the same API with a different model.
 
-Each resource implements one and only one API.
+Most resources implement one API.
+A {{< glossary_tooltip term_id="composite" text="composite" >}} model implements several, and the machine lists it once under each.
 
 For example:
 
