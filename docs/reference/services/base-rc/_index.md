@@ -30,13 +30,20 @@ This uses the [`input` API](/reference/apis/components/input-controller/) to mak
 
 Add the base remote control service after configuring your machine with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
-Control mode is determined by the configuration attribute `"control_mode"`, for which there are five options:
+Control mode is determined by the configuration attribute `"control_mode"`, for which there are five options.
+Each mode reads only the input controller controls listed for it and ignores the rest.
+Which physical button or stick sends each control depends on your input controller model.
 
-1. `"arrowControl"`: Arrow buttons control speed and angle
-2. `"triggerSpeedControl"`: Trigger button controls speed and joystick controls angle
-3. `"buttonControl"`: Four buttons (usually X, Y, A, B) control speed and angle
-4. `"joystickControl"`: One joystick controls speed and angle
-5. `"droneControl"`: Two joysticks control speed and angle
+| `control_mode`             | Controls read                                                     | What they do                                                                                                                                                                                                                                                                                         |
+| -------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"arrowControl"` (default) | `AbsoluteHat0Y`, `AbsoluteHat0X` (arrow pad)                      | `AbsoluteHat0Y` drives forward or backward and `AbsoluteHat0X` turns, each at full speed while held.                                                                                                                                                                                                 |
+| `"triggerSpeedControl"`    | `AbsoluteZ`, `AbsoluteRZ`, `AbsoluteX`                            | Each `AbsoluteRZ` event (usually the right trigger) raises the speed by 5% of the maximum, up to full forward. Each `AbsoluteZ` event (usually the left trigger) lowers it by 5%, down to full reverse. The speed stays where the triggers leave it. `AbsoluteX` (left stick, left and right) turns. |
+| `"buttonControl"`          | `ButtonNorth`, `ButtonSouth`, `ButtonEast`, `ButtonWest`          | While held, `ButtonNorth` drives forward and `ButtonSouth` backward at full speed, and `ButtonEast` turns right and `ButtonWest` left. Holding both buttons of a pair cancels them out.                                                                                                              |
+| `"joystickControl"`        | `AbsoluteY`, `AbsoluteX` (left stick)                             | `AbsoluteY` sets the forward or backward speed and `AbsoluteX` the turn, in proportion to how far the stick is pushed. A stick pushed less than about a quarter of the way counts as centered.                                                                                                       |
+| `"droneControl"`           | `AbsoluteX`, `AbsoluteY`, `AbsoluteRX`, `AbsoluteRY` (two sticks) | Left stick: `AbsoluteX` spins and `AbsoluteY` moves up or down. Right stick: `AbsoluteRY` moves forward or backward and `AbsoluteRX` moves sideways. As with `joystickControl`, a stick pushed less than about a quarter of the way counts as centered.                                              |
+
+When both `max_linear_mm_per_sec` and `max_angular_deg_per_sec` are set, the service sets the base's velocity as a fraction of those maximums.
+Otherwise it sets the base's power as a fraction of full power.
 
 You can monitor the input from these controls in the **CONTROL** tab.
 
