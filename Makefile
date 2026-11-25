@@ -1,8 +1,8 @@
 git:
 	git submodule update --init --recursive
 
-setup: git package.json
-	npm install
+setup:
+	bash ./onboarding.sh
 
 setupnpm:
 	npm install
