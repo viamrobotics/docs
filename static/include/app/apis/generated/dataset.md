@@ -9,11 +9,11 @@ Create a new dataset.
 
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the dataset being created.
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization where the dataset is being created. To find your organization ID, visit the organization settings page.
-- `type` (viam.proto.app.dataset.DatasetType.ValueType) (optional): The membership kind for the new dataset. Defaults to DATASET_TYPE_BINARY_DATA when unset.
+- `type` ([viam.proto.app.dataset.DatasetType.ValueType](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.DatasetType)) (optional): The membership kind for the new dataset. Defaults to DATASET_TYPE_BINARY_DATA when unset.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The dataset ID of the created dataset.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The dataset ID of the created dataset.
 
 **Example:**
 
@@ -309,11 +309,11 @@ Get the datasets in an organization.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization you’d like to retrieve datasets from. To find your organization ID, visit the organization settings page.
-- `dataset_type` (viam.proto.app.dataset.DatasetType.ValueType) (optional): Optional filter on dataset type. If not provided, all dataset types will be returned.
+- `dataset_type` ([viam.proto.app.dataset.DatasetType.ValueType](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.DatasetType)) (optional): Optional filter on dataset type. If not provided, all dataset types will be returned.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   The list of datasets in the organization.
+- (Sequence[[viam.proto.app.dataset.Dataset](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)]): The list of datasets in the organization.
 
 **Example:**
 
@@ -413,7 +413,7 @@ Get a list of datasets using their IDs.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   The list of datasets.
+- (Sequence[[viam.proto.app.dataset.Dataset](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)]): The list of datasets.
 
 **Example:**
 
@@ -509,7 +509,7 @@ Start an asynchronous export of a sequence dataset. Returns a job ID to poll wit
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The job ID of the export job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The job ID of the export job.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.start_sequence_dataset_export).
 
@@ -548,7 +548,7 @@ Get the status of a sequence dataset export job. When the job completes, the res
 
 **Returns:**
 
-- ([viam.proto.app.dataset.GetSequenceDatasetExportResponse](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.GetSequenceDatasetExportResponse)): :   The export job status and details, including:
+- ([viam.proto.app.dataset.GetSequenceDatasetExportResponse](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.GetSequenceDatasetExportResponse)): The export job status and details, including:
     :   * job\_id: The ID of the export job.
         * status: The current status (UNSPECIFIED, RUNNING, COMPLETED, or FAILED).
         * download\_url: A short-lived signed URL for downloading the export (only when COMPLETED).

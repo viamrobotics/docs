@@ -14,13 +14,13 @@ Multiple images returned from `GetImages()` do not represent a time series of im
 
 **Parameters:**
 
-- `filter_source_names` ([Sequence[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)) (optional): The filter_source_names parameter can be used to filter only the images from the specified source names. When unspecified, all images are returned.
+- `filter_source_names` (Sequence[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): The filter_source_names parameter can be used to filter only the images from the specified source names. When unspecified, all images are returned.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Tuple[Sequence[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): :   A tuple containing two values; the first [0] a list of images
+- (Tuple[Sequence[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first [0] a list of images
     returned from the camera system, and the second [1] the metadata associated with this response.
 
 **Example:**
@@ -152,7 +152,7 @@ The points are expressed in the reference frame that `GetProperties` reports as 
 
 **Returns:**
 
-- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing two values; the first [0] the pointcloud data,
+- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first [0] the pointcloud data,
     and the second [1] the mimetype of the pointcloud (for example, PCD).
 
 **Example:**
@@ -256,7 +256,7 @@ An empty name means the frame is unknown, and the named frame is not guaranteed 
 
 **Returns:**
 
-- ([viam.components.camera.Camera.Properties](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): :   The properties of the camera, including intrinsic parameters, distortion parameters,
+- ([viam.components.camera.Camera.Properties](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): The properties of the camera, including intrinsic parameters, distortion parameters,
     supported mime types, and optionally extrinsic parameters (position relative to a reference frame).
 
 **Example:**
@@ -342,7 +342,7 @@ If you are implementing your own camera and want to add features that have no co
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -448,7 +448,7 @@ Get the current status of the camera as a map of key-value pairs describing its 
 
 **Returns:**
 
-- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The status of the component.
+- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The status of the component.
 
 **Example:**
 
@@ -524,7 +524,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   The geometries associated with the Component.
+- (Sequence[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -618,7 +618,7 @@ Get the `ResourceName` for this camera.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

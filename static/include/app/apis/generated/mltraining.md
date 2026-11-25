@@ -11,12 +11,12 @@ Submit a training job.
 - `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to train the ML model on. To retrieve this, navigate to your [dataset's page](https://app.viam.com/data/datasets), click **...** in the left-hand menu, and click **Copy dataset ID**.
 - `model_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the model name.
 - `model_version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The version of the ML model you're training. This string must be unique from any previous versions you've set.
-- `model_type` (viam.proto.app.mltraining.ModelType.ValueType) (required): The type of the ML model. Options: `ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_OBJECT_DETECTION`.
+- `model_type` ([viam.proto.app.mltraining.ModelType.ValueType](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.ModelType)) (required): The type of the ML model. Options: `ModelType.MODEL_TYPE_SINGLE_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_MULTI_LABEL_CLASSIFICATION`, `ModelType.MODEL_TYPE_OBJECT_DETECTION`.
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): the labels to train the model on.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   the ID of the training job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the training job.
 
 **Example:**
 
@@ -106,7 +106,7 @@ Follow the guide to [Train a Model with a Custom Python Training Script](/train/
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   the ID of the training job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the training job.
 
 **Example:**
 
@@ -188,7 +188,7 @@ Get training job metadata.
 
 **Returns:**
 
-- ([viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): :   the training job data.
+- ([viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): the training job data.
 
 **Example:**
 
@@ -246,11 +246,11 @@ Get training job metadata for all jobs within an organization.
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to request training job data from.
-- `training_status` ([viam.proto.app.mltraining.TrainingStatus.ValueType](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus)) (optional): the status to filter the training jobs list by. If unspecified, all training jobs will be returned.
+- `training_status` ([viam.proto.app.mltraining.TrainingStatus.ValueType](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingStatus)) (optional): the status to filter the training jobs list by. If unspecified, all training jobs will be returned.
 
 **Returns:**
 
-- ([List[viam.proto.app.mltraining.TrainingJobMetadata]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): :   the list of training job data.
+- (List[[viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)]): the list of training job data.
 
 **Example:**
 
@@ -442,7 +442,7 @@ List the training containers available to an organization: Viam's public contain
 
 **Returns:**
 
-- ([List[viam.proto.app.mltraining.Container]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.Container)): :   the list of available training containers.
+- (List[[viam.proto.app.mltraining.Container](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.Container)]): the list of available training containers.
 
 **Example:**
 
@@ -469,7 +469,7 @@ Get a training container by its ID.
 
 **Returns:**
 
-- ([viam.proto.app.mltraining.Container](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.Container)): :   the training container.
+- ([viam.proto.app.mltraining.Container](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.Container)): the training container.
 
 **Example:**
 
@@ -498,7 +498,7 @@ Register a publicly readable linux/amd64 Docker Hub image as a custom training c
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   the ID of the registered training container.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the registered training container.
 
 **Example:**
 

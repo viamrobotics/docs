@@ -99,7 +99,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The current position of the switch within the range of available positions.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The current position of the switch within the range of available positions.
 
 **Example:**
 
@@ -194,7 +194,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Tuple[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), Sequence[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]]): :   The number of available positions and their labels.
+- (Tuple[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), Sequence[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]]): The number of available positions and their labels.
 
 **Example:**
 
@@ -275,7 +275,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -360,7 +360,7 @@ Get the current status of the switch as a map of key-value pairs describing its 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -421,7 +421,7 @@ Get the `ResourceName` for this servo.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

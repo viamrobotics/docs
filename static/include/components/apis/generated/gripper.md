@@ -109,7 +109,7 @@ A `false` return means the gripper closed on nothing or could not hold what it c
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Indicates if the gripper grabbed something.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Indicates if the gripper grabbed something.
 
 **Example:**
 
@@ -204,7 +204,7 @@ Returns whether the gripper is actively moving (or attempting to move) under its
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Whether the gripper is moving.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Whether the gripper is moving.
 
 **Example:**
 
@@ -303,7 +303,7 @@ When a client's session ends, viam-server stops every actuator that session comm
 
 **Returns:**
 
-- ([viam.components.gripper.gripper.Gripper.HoldingStatus](https://python.viam.dev/autoapi/viam/components/gripper/gripper/index.html#viam.components.gripper.gripper.Gripper.HoldingStatus)): :   see documentation on HoldingStatus for more information.
+- ([viam.components.gripper.gripper.Gripper.HoldingStatus](https://python.viam.dev/autoapi/viam/components/gripper/gripper/index.html#viam.components.gripper.gripper.Gripper.HoldingStatus)): see documentation on HoldingStatus for more information.
 
 **Example:**
 
@@ -486,7 +486,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- (List[[viam.proto.common.Geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)]): The geometries associated with the Component.
 
 **Example:**
 
@@ -592,7 +592,7 @@ This method is part of the frame system's `InputEnabled` interface and is releva
 
 **Returns:**
 
-- (List[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): :   The current input values of the gripper.
+- (List[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): The current input values of the gripper.
 
 **Example:**
 
@@ -783,7 +783,7 @@ If you are implementing your own gripper and want to add features that have no c
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Raises:**
 
@@ -889,7 +889,7 @@ Get the current status of the gripper as a map of key-value pairs describing its
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the component.
 
 **Example:**
 
@@ -959,16 +959,19 @@ Get the kinematics information associated with the gripper as the format and byt
 
 **Parameters:**
 
+- `include_collision_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Include collision mesh bytes in the response. Otherwise meshes carry only their path.
+- `include_visual_meshes` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Include visual mesh bytes in the response.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.components.KinematicsReturn](https://python.viam.dev/autoapi/viam/components/index.html#viam.components.KinematicsReturn)): :   A tuple containing two values; the first [0] value represents the format of the
+- ([viam.components.KinematicsReturn](https://python.viam.dev/autoapi/viam/components/index.html#viam.components.KinematicsReturn)): A tuple containing two values; the first [0] value represents the format of the
     file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
     Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
     and the second [1] value represents the byte contents of the file.
     If available, a third [2] value provides meshes keyed by URDF filepath.
+    If available, a fourth [3] value provides the structured `KinematicModel` (links, joints, output frames, and properties).
 
 **Example:**
 
@@ -1037,7 +1040,7 @@ Get the `ResourceName` for this gripper.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 

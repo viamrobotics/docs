@@ -11,7 +11,7 @@ Get the current position of the component the SLAM service is configured to sour
 
 **Returns:**
 
-- ([viam.services.slam.Pose](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose)): :   The current position of the specified component.
+- ([viam.services.slam.Pose](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose)): The current position of the specified component.
 
 **Example:**
 
@@ -81,12 +81,12 @@ Get the point cloud map.
 
 **Parameters:**
 
-- `return_edited_map` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): signal to the SLAM service to return an edited map, if the map package contains one and if the SLAM service supports the feature.
+- `return_edited_map` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): signal to the SLAM service to return an edited map, if the map package contains one and if the SLAM service supports the feature.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): :   Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
     GetPointCloudMapResponse.point\_cloud\_pcd\_chunk values.
 
 **Example:**
@@ -156,7 +156,7 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): :   Chunks of the internal state of the SLAM algorithm.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Chunks of the internal state of the SLAM algorithm.
 
 **Example:**
 
@@ -220,7 +220,7 @@ Get information about the current SLAM session.
 
 **Returns:**
 
-- ([viam.services.slam.slam.SLAM.Properties](https://python.viam.dev/autoapi/viam/services/slam/slam/index.html#viam.services.slam.slam.SLAM.Properties)): :   The properties of SLAM.
+- ([viam.services.slam.slam.SLAM.Properties](https://python.viam.dev/autoapi/viam/services/slam/slam/index.html#viam.services.slam.slam.SLAM.Properties)): The properties of SLAM.
 
 **Example:**
 
@@ -372,7 +372,7 @@ If you are implementing your own SLAM service and want to add features that have
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): Result of the executed command.
 
 **Example:**
 
@@ -458,7 +458,7 @@ Get the current status of the SLAM service as a map of key-value pairs describin
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [viam.utils.ValueTypes](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.ValueTypes)]): The status of the service.
 
 **Example:**
 
@@ -519,7 +519,7 @@ Get the `ResourceName` for this instance of the SLAM service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
 
 **Example:**
 
