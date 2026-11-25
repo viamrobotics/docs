@@ -188,7 +188,7 @@ You added a camera component manually and used a fragment to add a complete ML v
 {{< /alert >}}
 
 {{< alert title="Explore the JSON configuration" color="tip" >}}
-Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the Configure tab to see the raw configuration. You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
+Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the **CONFIGURE** tab to see the raw configuration. You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
 {{< /alert >}}
 
 **[Continue to Part 2: Data Capture →](../part-2/)**

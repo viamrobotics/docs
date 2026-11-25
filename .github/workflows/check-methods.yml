@@ -30,6 +30,9 @@ jobs:
           python-version: "3.9"
           cache: "pip" # caching pip dependencies
       - run: pip install beautifulsoup4 markdownify argparse
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24" # parse_typescript.py installs the SDK from npm and runs TypeDoc
 
       - name: Run Coverage test
         run: make coveragetest

@@ -22,6 +22,14 @@ The machines table shows every machine in your organization with its current sta
 - **Offline** (red): the machine is not connected. The table shows when it was last online.
 - **Awaiting setup**: the machine has been created but has not yet connected to Viam.
 
+To organize a large fleet, click **Group by** above the table and choose **Location** or **Status**.
+Grouping by location shows one table per location.
+Grouping by status shows one table for each status that has machines (**Online**, **Partially online**, **Offline**, and **Awaiting setup**), so you can find every machine that needs attention in one place.
+A machine is **Partially online** when some of its parts are online and others aren't.
+The grouping is saved in the page URL's `group` parameter, so you can share a link to a grouped view.
+When you come back to the page without table parameters in the URL, your browser restores the grouping and filters you last used for that organization.
+Choose **None** to show all machines in one table again.
+
 To see how much binary and tabular data your fleet has synced in the last 48 hours, organization owners can open the **Data usage** tab of the billing page. See [Check data usage](/organization/billing/#check-data-usage).
 
 ### Favorite machines
@@ -53,6 +61,10 @@ Click the **status** dropdown to see details about each {{< glossary_tooltip ter
 - Network health (`viam-server` v1.12.0 or later): an overall verdict (**Network good**, **Network degraded**, or **Network down**) followed by the **Internet**, **DNS**, **Peer-to-peer**, and **Local network** checks.
   Hover over a check to see its readings.
   The row shows how long ago the checks ran, and users with write access to the machine get a **Logs** link that opens the network check log lines.
+- Network (`viam-agent` v1.2.1 or later, Linux): the part's active network connections, with the primary connection, the one internet traffic leaves on, listed first and marked **primary** when there is more than one.
+  Each row names the connection: a Wi-Fi network as `<SSID> (<interface>)`, a wired link as **Ethernet (`<interface>`)**, a Bluetooth link as **Bluetooth (`<interface>`)**, or the provisioning **Setup hotspot**.
+  `viam-agent` reports connections every 5 minutes and on any change. If an online part's last report is more than 11 minutes old, the field adds **last reported** with how long ago.
+  Parts without a report, such as those running an older `viam-agent` or a non-Linux OS, show **–**.
 
 ## Check resource health
 

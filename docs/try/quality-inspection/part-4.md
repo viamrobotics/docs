@@ -213,7 +213,7 @@ viam module upload --version 0.0.1 --platform linux/arm64 --upload module.tar.gz
 
 **Add the inspector service:**
 
-1. In the Viam app, go to your machine's **Configure** tab
+1. In the Viam app, go to your machine's **CONFIGURE** tab
 2. Click **+** next to your machine part
 3. Select **Blocks**
 4. Search for your model (for example, `your-namespace:inspection-module:inspector`)

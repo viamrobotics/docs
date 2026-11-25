@@ -152,7 +152,7 @@ Why is this valuable? Traditional embedded development requires: edit code → b
 
 **Get your machine address:**
 
-1. In the Viam app, go to your machine's **Configure** page
+1. In the Viam app, go to your machine's **CONFIGURE** tab
 2. Click the **Live** dropdown
 3. Click **Remote address** to copy your machine address
 

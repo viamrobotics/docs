@@ -25,7 +25,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the shape detector
 
-`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **Configure** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
+`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
 
 ```json
 {
@@ -41,7 +41,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the segmenter
 
-`detections-to-segments` reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
+The `detections-to-segments` vision block works together with the `shape-detector` you just added: it reads the detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
 
 ```json
 {
@@ -78,7 +78,7 @@ vision = VisionClient.from_robot(machine, "vision-segment")
 
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
-The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **Configure** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **CONFIGURE** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
 ```python
 motion = MotionClient.from_robot(machine, "builtin")
@@ -125,7 +125,7 @@ await motion.move(
 Because you move `gripper-1`, every offset you compute later is measured to where you want the gripper's TCP to end up, not the arm's end. Keep that distinction in mind or the offset math will not make sense.
 
 {{< alert title="Seeing a pose in world coordinates" color="note" >}}
-`RobotClient.transform_pose` converts any `PoseInFrame` from one frame into another, which makes it a handy way to eyeball a raw detection: `world_pose = await machine.transform_pose(PoseInFrame(reference_frame="cam-1", pose=geometry.center), "world")` returns the block's center in `world`, where a `z` near the table surface and `x`/`y` over the table confirm the detection landed where you expect. The pick itself does not need this conversion, but it is a useful sanity check while you tune.
+`RobotClient.transform_pose` converts any `PoseInFrame` from one frame into another, which makes it a handy way to eyeball a raw detection. Once you have the detection's `obj_in_cam` from the next section, `world_pose = await machine.transform_pose(obj_in_cam, "world")` returns the block's center in `world`, where a `z` near the table surface and `x`/`y` over the table confirm the detection landed where you expect. The pick itself does not need this conversion, but it is a useful sanity check while you tune.
 {{< /alert >}}
 
 ## Detect from home (the wrist-camera rule)
@@ -144,33 +144,32 @@ One block, fixed on the table
               → motion.move resolves cam-1 the same way every time        (reliable)
 ```
 
-The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_object_point_clouds`. In your script, comment out the `await approach.set_position(2)` and `await grasp.set_position(2)` lines from Phase 4. You replace them with the block below, which detects the block and computes its pose instead of replaying a fixed one:
+The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_detections_3d`. In your script, comment out the `await approach.set_position(2)` and `await grasp.set_position(2)` lines from Phase 4. You replace them with the block below, which detects the block and computes its pose instead of replaying a fixed one:
 
 ```python
 # Observe from home so the wrist-mounted camera frame is in a known position.
 await home.set_position(2)
 
-objects = await vision.get_object_point_clouds("cam-1")
-if not objects:
+detections = await vision.get_detections_3d("cam-1")
+if not detections:
     print("No objects detected")
     return False
 
-# Largest object by point count. Use len(point_cloud).
-obj = max(objects, key=lambda o: len(o.point_cloud))
-geometry = obj.geometries.geometries[0]
-label = geometry.label
-print(f"Detected: {label}")
+detection = detections[0]  # just pick the first one for this demo
+main_part_of_detection = detection.transforms[0]
+
+print(f"Detected: {main_part_of_detection.physical_object.label}")
 
 # The detected pose is already in the cam-1 frame; hand it to motion.move as-is.
-obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
+obj_in_cam = main_part_of_detection.pose_in_observer_frame
 ```
 
-`get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the largest point cloud, ordinarily the block closest to the camera or most fully in view. Each `point_cloud` is the object's pointcloud data (PCD) stored as raw bytes, so `len(o.point_cloud)` measures its encoded size in bytes; that grows with the number of points, which makes it a reliable proxy for object size.
+`get_detections_3d` returns one entry per object `vision-segment` fused together, each carrying its own transforms. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. We are just going to pick the first object.
 
 Add a `print(obj_in_cam.pose)` line right after `obj_in_cam` is set, and run the script. Watch the x, y, and z values it prints as you move a block around the table. Once the values look right, comment out or delete that print line before continuing to the next section: you are about to compute the `approach_pose` from `obj_in_cam.pose`, and the print statement was only there to sanity-check the raw detection.
 
 {{< checkpoint >}}
-`obj_in_cam.pose` prints coordinates in the camera's own frame: a `z` of roughly the camera-to-block distance, a few hundred millimeters, with small `x`/`y` values near the optical center. To check the detection against the workspace instead, use the `transform_pose` tip above to print the pose in `world`. If the numbers look wrong, the most common cause is a detection that was not taken from `home-pose`. Confirm the arm returns to `home-pose` (the `await home.set_position(2)` call) before every `get_object_point_clouds` call.
+`obj_in_cam.pose` prints coordinates in the camera's own frame: a `z` of roughly the camera-to-block distance, a few hundred millimeters, with small `x`/`y` values near the optical center. To check the detection against the workspace instead, use the `transform_pose` tip above to print the pose in `world`. If the numbers look wrong, the most common cause is a detection that was not taken from `home-pose`. Confirm the arm returns to `home-pose` (the `await home.set_position(2)` call) before every `get_detections_3d` call.
 {{< /checkpoint >}}
 
 ## Compute the approach pose and grasp descent
@@ -327,7 +326,7 @@ The full loop runs end to end: approach, open, grasp, grab, travel, place, open,
 
 Work through these in order. The first one causes most of the rest. If you get stuck, compare your loop against the complete [`reference-solution.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/reference-solution.py) in the companion repo.
 
-- **Did you detect from `home-pose`?** This is the first thing to check for nearly every perception symptom below. If the `await home.set_position(2)` guard is missing before a `get_object_point_clouds` call, or if you added a second detection somewhere that skips it, every downstream pose is computed against the wrong camera position.
+- **Did you detect from `home-pose`?** This is the first thing to check for nearly every perception symptom below. If the `await home.set_position(2)` guard is missing before a `get_detections_3d` call, or if you added a second detection somewhere that skips it, every downstream pose is computed against the wrong camera position.
 - **No objects detected.** Open the **Control** tab and run the `vision-segment` card by hand while a block sits in view. If that also returns nothing, check the `shape-detector` card on its own: a detector that finds nothing means the block is out of frame, or lighting has changed enough to affect the shape detection. If `shape-detector` finds the block but `vision-segment` does not, check that a block is close enough and clearly separated from the table surface for the depth fusion step to segment it.
 - **The pick point drifts from cycle to cycle, even for a block that has not moved.** This is almost always the wrist-camera rule again: some code path is detecting from a pose other than `home-pose`. Print `obj_in_cam.pose` on every cycle and confirm the arm is fully settled at `home-pose` before each detection call.
 - **Motion planning fails, or the target looks unreachable.** Open the **3D scene** tab during the failing move and look at where the approach standoff or the grasp descent lands relative to the table and safety-wall geometry from Phase 3. A detected pose near a workspace boundary can place the standoff or the grasp point outside the region the planner is allowed to move through. If you skipped or under-measured the obstacle configuration in Phase 3, this is where it bites: geometry that does not match your physical setup makes the planner reject moves that are perfectly safe, or, worse, accept ones that are not. Revisit [Teach the planner about obstacles](/tutorials/pick-and-place/static-positions/#teach-the-planner-about-obstacles) and recheck your measurements before assuming the pose math is wrong.

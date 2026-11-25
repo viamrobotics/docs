@@ -18,8 +18,10 @@ aliases:
 The world state store service API lets a client list, get, and stream the transforms a
 world state store service publishes. The **3D SCENE** tab uses this API to render a
 machine's [custom visuals](/visualization/visuals-and-collisions/), and a custom
-visualizer you build can consume it the same way. To implement the service in a module,
-see [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
+visualizer you build can consume it the same way. To hold transforms without writing
+code, configure the [built-in world state store](/reference/services/world-state-store/).
+To implement the service in a module, see
+[Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
 
 The world state store service supports the following methods:
 

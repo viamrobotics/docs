@@ -4,16 +4,17 @@ title: "Troubleshoot the 3D scene"
 weight: 80
 layout: "docs"
 type: "docs"
-description: "Trace a wrong or missing element in the 3D scene to its source: the machine configuration, a module, or the connection."
+description: "Trace a wrong or missing element in the 3D scene to its source: the machine configuration, a depth camera, a world state store service, or the connection."
 capabilities: ["scene-3d", "logging"]
 diataxis: how-to
 ---
 
-Every element in the 3D scene comes from one of three layers: the machine's saved
-configuration (frames and geometry), a module publishing at runtime (custom visuals and
-point clouds), or the live connection that streams poses and data. When something looks
-wrong, identify the layer first; the fix lives there, and edits to the wrong layer waste
-time.
+Each kind of element in the 3D scene has its own source. Frames and attached geometry come
+from the machine's saved configuration. Point clouds come from depth cameras, which the
+scene polls while the machine is online. Custom visuals come from a world state store
+service. Live poses, point clouds, and custom visuals all need the machine online and
+connected. When something looks wrong, find its source first; the fix lives there, and
+edits to the wrong source waste time.
 
 ## Read the scene's own signals first
 
@@ -53,16 +54,33 @@ frame, see
 
 ## A custom visual is missing or stale
 
-Custom visuals come from a module through a
-[world state store service](/reference/apis/services/world-state-store/), so a missing or
-stale one is a module problem. Check the module's output at the service boundary:
+Custom visuals come from a
+[world state store service](/reference/apis/services/world-state-store/), so start by
+checking what the service holds: `ListUUIDs` should return the visual's UUID. What to check
+next depends on where the service comes from.
 
-1. `ListUUIDs` returns the visual's UUID. An empty list means the module publishes
-   nothing; check the module's logs and its dependencies.
+If you use the [built-in world state store](/reference/services/world-state-store/):
+
+1. Check the response of each `DoCommand` you send. A call that returns an error changed
+   nothing, even the items in it that were valid.
+2. A visual that disappeared after a restart or a configuration change was lost because the
+   store keeps runtime changes in memory only. Send it again, or add it to the store's
+   `transforms` attribute.
+3. To change a visual, send an `update` with the UUID it was added under. Adding it again
+   under a new UUID draws a second copy instead of moving the first.
+
+If a module implements the service:
+
+1. An empty `ListUUIDs` list means the module publishes nothing; check the module's logs
+   and its dependencies.
 2. The module emits a change event when the data changes. A visual that appears once and
    never moves usually means the poll loop stopped or emits no `TransformChange` events.
 3. The UUID is stable across updates. A module that generates a fresh UUID each tick
    piles up duplicates instead of updating one visual.
+4. The module never drops a change. A module that skips changes for a client that falls
+   behind leaves visuals stale with no error. End that client's stream instead; the scene
+   reconnects and reloads everything. Reloading the **3D SCENE** tab shows whether the
+   module's current state is right.
 
 The implementation side of these checks is covered in
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
@@ -78,14 +96,17 @@ Match your conclusion to what the scene renders:
   polling rates you set.
 
 A plan's obstacles are a separate case: `WorldState` obstacles passed to a single `Move`
-call are planner input for that request and are never drawn. To see them, publish the
-same geometry as a custom visual; see
+call are planner input for that request, and the live scene never draws them.
+[Replay mode](/visualization/3d-scene/replay-mode/) draws the obstacles a saved plan
+recorded. To see them in the live scene, publish the same geometry as a custom visual; see
 [Visuals and collisions](/visualization/visuals-and-collisions/).
 
 ## What's next
 
 - [Debug a motion plan](/motion-planning/debug-motion-plan/): the frame, obstacle, and
   reach checks for planning failures.
+- [Built-in world state store](/reference/services/world-state-store/): configure the
+  store and change its transforms with DoCommand.
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/): the
   service methods and poll loop behind custom visuals.
 - [3D scene controls and settings](/visualization/3d-scene/controls-and-settings/):

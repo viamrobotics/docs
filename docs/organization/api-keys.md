@@ -214,7 +214,21 @@ _, _, err := client.RenameKey(ctx, "<api-key-id>", "new-descriptive-name")
 
 ## Delete a key
 
+Anything that uses a deleted key can no longer authenticate.
+
 {{< tabs >}}
+{{% tab name="Web UI" %}}
+
+You must be an organization owner to delete a key in the Viam app.
+
+- **Machine key**: Navigate to the machine's page, click the **CONNECT** tab, and select **API keys**.
+  In the key's row, click the trash icon (**Delete API key**), then click **Delete** to confirm.
+- **Any key in the organization**: Click the organization name in the top navigation bar, then **Settings**.
+  In the **API keys** section, click **Show details** on the key, click **Remove API key**, and confirm.
+
+To delete your organization's default API key, you must also type `DELETE` to confirm.
+
+{{% /tab %}}
 {{% tab name="CLI" %}}
 
 ```sh {class="command-line" data-prompt="$"}

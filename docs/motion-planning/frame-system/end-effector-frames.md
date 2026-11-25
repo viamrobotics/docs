@@ -277,9 +277,9 @@ same axes drawn in the diagrams on this page.
 A frame you add in code with a `WorldState` transform lasts only for that `Move`
 call, so it stays out of the 3D scene by default. To draw a code-defined frame in
 the [3D scene](/visualization/3d-scene/), publish it through a world state store
-service. A module that implements this service holds your transforms and streams
-them to the scene, which renders a frame with no geometry as a set of coordinate axes
-alongside the static frames.
+service, such as the [built-in world state store](/reference/services/world-state-store/).
+The service holds your transforms and streams them to the scene, which renders a frame with
+no geometry as a set of coordinate axes alongside the static frames.
 
 ## What's next
 

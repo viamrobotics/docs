@@ -17,8 +17,9 @@ poses you care about.
 
 `armplanning.PlanMotion` accepts an ordered list of goals and plans one
 continuous trajectory that hits each in turn. This page shows how to build a
-multi-goal request, mix goal types across waypoints, and recover a partial
-result when a later waypoint is infeasible.
+multi-goal request, mix goal types across waypoints, recover a partial
+result when a later waypoint is infeasible, and plan a sequence of separate
+requests that run back to back.
 
 {{% alert title="Go SDK only" color="note" %}}
 Routing one plan through multiple goals uses `armplanning.PlanMotion`, an
@@ -126,6 +127,11 @@ gripper frame while a configuration waypoint pins the arm's joints. Pose clouds
 work as goals too, which lets you relax the waypoints where close enough is fine.
 See [Pose clouds](/motion-planning/move-an-arm/pose-clouds/) for when to use them.
 
+A configuration waypoint must keep every joint within its
+[joint limits](/motion-planning/reference/kinematics/#joint-limits). Since RDK
+v1.17.0, `PlanMotion` returns an error before it plans if one doesn't, naming
+the goal, frame, joint, value, and limits.
+
 ## Read the trajectory
 
 The returned `Plan` is one continuous trajectory across all segments.
@@ -167,6 +173,49 @@ waypoint is infeasible: if a three-goal request returns a plan that stops at
 waypoint 2, waypoint 3 is the one to investigate. From there, loosen that
 waypoint (for example with a pose cloud), move it, or check that it is reachable
 and collision-free.
+
+## Plan a sequence of requests
+
+A multi-goal `PlanMotion` request uses one set of obstacles, constraints, and
+planner options for every waypoint. When each move needs its own request, for
+example different obstacles after the gripper picks something up, but the moves
+still run back to back, use `armplanning.PlanMotionSequence`. It plans a list of
+`PlanRequest`s in order and returns one plan and one `PlanMeta` per request:
+
+```go
+requests := []*armplanning.PlanRequest{
+    {FrameSystem: fs, StartState: startState, Goals: []*armplanning.PlanState{pickGoal}},
+    {FrameSystem: fs, Goals: []*armplanning.PlanState{placeGoal}, ObstaclesInWorldFrame: obstaclesWhileHolding},
+}
+
+// nil uses armplanning.NewDefaultSequenceOptions()
+plans, metas, err := armplanning.PlanMotionSequence(ctx, logger, requests, nil)
+if err != nil {
+    logger.Fatal(err)
+}
+```
+
+Only the first request's `StartState` is used. Each later request starts from
+the configuration the previous plan ended in, and `PlanMotionSequence`
+overwrites its `StartState`, so don't reuse the requests for another call.
+
+If a request can't be planned from where the previous plan ended,
+`PlanMotionSequence` backtracks: it plans the earlier request again with that
+ending ruled out, then continues from the new ending.
+`SequenceOptions.BacktrackBranchFactor` sets how many endings of a request it
+tries from one start state before it backs up another request. The default is
+3, and values below 1 return an error. The search grows exponentially with how
+far it backs up. Each request's `PlanMeta` counts its re-plans in
+`BacktrackCounter` and lists the endings it ruled out in `RejectedSolutions`.
+
+Each request plans with `ReturnPartialPlan` turned off, so a request that only
+partly plans counts as a failure and the search backtracks. If the context is
+canceled or times out, `PlanMotionSequence` stops and returns an error that
+wraps `ctx.Err()`, for example
+`stopped before planning request 2/3: context deadline exceeded`.
+An error otherwise means no combination of plans was found.
+
+`PlanMotionSequence` takes the `opts` argument since RDK v1.17.0.
 
 ## What's next
 

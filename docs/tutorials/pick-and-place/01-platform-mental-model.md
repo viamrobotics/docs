@@ -66,11 +66,11 @@ Open the **Connect** tab on your machine's page in the Viam app and look at the 
 
 ## Configuration is the source of truth
 
-Whatever you set in the app's **Configure** tab is what the machine runs. When you save an edit, the app updates the config document, and `viam-server` picks up the new config and applies it, typically within seconds, without a restart for most changes.
+Whatever you set in the app's **CONFIGURE** tab is what the machine runs. When you save an edit, the app updates the config document, and `viam-server` picks up the new config and applies it, typically within seconds, without a restart for most changes.
 
-This is why the workshop asks you to make changes in the app rather than by editing a file on the robot directly. The app's Configure tab is the only place you need to look to know what a machine will do.
+This is why the workshop asks you to make changes in the app rather than by editing a file on the robot directly. The app's **CONFIGURE** tab is the only place you need to look to know what a machine will do.
 
-Open the **Configure** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources.
+Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources.
 
 <!-- ASSET P1 configure-json-toggle (UI+): Configure tab JSON view toggle highlighted, near-empty {} config document -->
 
@@ -80,7 +80,7 @@ Open the **Configure** tab now and find the JSON view toggle near the top of the
 
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.
 
-On the **Configure** tab, click the **+** icon and select **Blocks**. Search for `xArm6`, select the `ufactory/xArm6` result, **Add to machine**, and name the component `arm-1`.
+On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `xArm6`, select the `ufactory/xArm6` result, **Add to machine**, and name the component `arm-1`.
 
 <!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
@@ -107,7 +107,7 @@ Save the config, then open the **Logs** tab and watch what happens: a log line f
 
 {{<imgproc src="/tutorials/pick-and-place/logs-xarm-module-start.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the viam:ufactory module downloading and starting.">}}
 
-Back on the **Configure** tab, look at the `arm-1` card. Next to the name, it shows the model as `ufactory/xArm6`, the family and model name, with `from ufactory` marking the module it came from. That is the short form. The model's full name is a **triplet**, `namespace:family:name`, which you can see written out as `viam:ufactory:xArm6` if you switch to the JSON view. The triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`, here `viam`), the family of models it belongs to (`family`, here `ufactory`), and the specific model name (`name`, here `xArm6`).
+Back on the **CONFIGURE** tab, look at the `arm-1` card. Next to the name, it shows the model as `ufactory/xArm6`, the family and model name, with `from ufactory` marking the module it came from. That is the short form. The model's full name is a **triplet**, `namespace:family:name`, which you can see written out as `viam:ufactory:xArm6` if you switch to the JSON view. The triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`, here `viam`), the family of models it belongs to (`family`, here `ufactory`), and the specific model name (`name`, here `xArm6`).
 
 <!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 card showing the ufactory/xArm6 model label and "from ufactory", plus the full viam:ufactory:xArm6 triplet in the JSON model field -->
 
