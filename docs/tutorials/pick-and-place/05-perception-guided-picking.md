@@ -25,7 +25,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the shape detector
 
-`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **Configure** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
+`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
 
 ```json
 {
@@ -41,7 +41,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the segmenter
 
-`detections-to-segments` reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
+The vision block `detections-to-segments` works together with the above `shape-detector` vision block to reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
 
 ```json
 {
@@ -78,7 +78,7 @@ vision = VisionClient.from_robot(machine, "vision-segment")
 
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
-The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **Configure** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **CONFIGURE** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
 ```python
 motion = MotionClient.from_robot(machine, "builtin")
@@ -144,28 +144,27 @@ One block, fixed on the table
               → motion.move resolves cam-1 the same way every time        (reliable)
 ```
 
-The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_object_point_clouds`. In your script, comment out the `await approach.set_position(2)` and `await grasp.set_position(2)` lines from Phase 4. You replace them with the block below, which detects the block and computes its pose instead of replaying a fixed one:
+The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_detections_3d`. In your script, comment out the `await approach.set_position(2)` and `await grasp.set_position(2)` lines from Phase 4. You replace them with the block below, which detects the block and computes its pose instead of replaying a fixed one:
 
 ```python
 # Observe from home so the wrist-mounted camera frame is in a known position.
 await home.set_position(2)
 
-objects = await vision.get_object_point_clouds("cam-1")
-if not objects:
+detections = await vision.get_detections_3d("cam-1")
+if not detections:
     print("No objects detected")
     return False
 
-# Largest object by point count. Use len(point_cloud).
-obj = max(objects, key=lambda o: len(o.point_cloud))
-geometry = obj.geometries.geometries[0]
-label = geometry.label
-print(f"Detected: {label}")
+detection = detections[0]  # just pick the first one for this demo
+main_part_of_detection = detection.transforms[0]
+
+print(f"Detected: {main_part_of_detection.physical_object.label}")
 
 # The detected pose is already in the cam-1 frame; hand it to motion.move as-is.
-obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
+obj_in_cam = main_part_of_detection.pose_in_observer_frame
 ```
 
-`get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the largest point cloud, ordinarily the block closest to the camera or most fully in view. Each `point_cloud` is the object's pointcloud data (PCD) stored as raw bytes, so `len(o.point_cloud)` measures its encoded size in bytes; that grows with the number of points, which makes it a reliable proxy for object size.
+`get_detections_3d` returns one entry per object `vision-segment` fused together, each carrying its own transforms. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. We are just going to pick the first object.
 
 Add a `print(obj_in_cam.pose)` line right after `obj_in_cam` is set, and run the script. Watch the x, y, and z values it prints as you move a block around the table. Once the values look right, comment out or delete that print line before continuing to the next section: you are about to compute the `approach_pose` from `obj_in_cam.pose`, and the print statement was only there to sanity-check the raw detection.
 
