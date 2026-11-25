@@ -173,6 +173,16 @@ Every component in Viam has a **test** section on its component card in the **CO
 If the test section shows expected results, your component is configured
 correctly.
 
+To keep a resource's controls at hand while you work on other cards or tabs, pin them to
+the **Quick test** tray. Click **Add to quick test** in the header of the resource's
+**Control**, **DoCommand**, or **GetStatus** section. When a **Control** section has more
+than one widget, **Add to quick test** opens a menu where you choose which ones to pin.
+
+Pinned controls appear in the **Quick test** tray at the bottom of the machine page, on
+every tab. You can collapse and resize the tray, remove one item, or click **Clear all**.
+The tray's contents are saved in your browser for each machine, so they stay after a page
+refresh.
+
 ## Troubleshooting
 
 {{< expand "Component not initializing (error in logs)" >}}
