@@ -59,6 +59,13 @@ Custom visuals come from a
 checking what the service holds: `ListUUIDs` should return the visual's UUID. What to check
 next depends on where the service comes from.
 
+If the scene reports **World state store: could not load the current transforms**, its
+`ListUUIDs` call to the service failed or took longer than 10 seconds, so the scene has
+nothing to draw from that service. The scene retries on its own, starting 2 seconds later
+and backing off to one attempt every 30 seconds, and reports the error once until a read
+succeeds. Check that the service is running and that its `ListUUIDs` returns without an
+error.
+
 If you use the [built-in world state store](/reference/services/world-state-store/):
 
 1. Check the response of each `DoCommand` you send. A call that returns an error changed
