@@ -45,7 +45,7 @@ You watch a simulated machine in the Viam app in two ways, and they show differe
   A simulation runs without one, but the getting-started pages add one so you can watch the cell on the **CONTROL** tab.
 
 On your own GPU, Isaac Sim can also stream its full viewport to your laptop.
-See [View the Isaac Sim viewport](/set-up-a-machine/simulate/isaac-sim/#advanced-view-the-isaac-sim-viewport).
+See [View the Isaac Sim viewport](/simulate/isaac-sim/#advanced-view-the-isaac-sim-viewport).
 
 ## Where the simulation runs {#where-the-simulation-runs}
 
@@ -63,7 +63,7 @@ For Isaac Sim, Viam can start a container with an NVIDIA GPU that runs as one of
 The container already has Isaac Sim and `viam-server` installed, and reads the part's saved config from the Viam app, as `viam-server` does on any computer.
 You configure, control, and connect to the part as if it were on your desk.
 A cloud simulation is billed per minute while it runs, after any monthly cloud credit your organization has is used, and it stops after 60 minutes in which the machine doesn't actuate.
-Starting, stopping, and billing are covered in [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/).
+Starting, stopping, and billing are covered in [Run an Isaac Sim simulation](/simulate/isaac-sim/).
 
 ## What works the same as on real hardware {#what-works-the-same-as-on-real-hardware}
 
@@ -120,7 +120,7 @@ Isaac Sim can't be restarted inside a running module, which is why its changes w
 
 ## What's next {#whats-next}
 
-- [Run a MuJoCo simulation on your computer](/set-up-a-machine/simulate/mujoco/): start a free simulation on your Mac or Linux computer.
-- [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/): start a simulation with realistic rendering on a Viam cloud GPU or your own.
-- [Simulate a machine you already have](/set-up-a-machine/simulate/simulate-an-existing-machine/): make a simulated copy of an existing machine that keeps its names and frames.
-- [Move a simulated machine to real hardware](/set-up-a-machine/simulate/move-to-real-hardware/): run the code you wrote in simulation on your real robot.
+- [Run a MuJoCo simulation on your computer](/simulate/mujoco/): start a free simulation on your Mac or Linux computer.
+- [Run an Isaac Sim simulation](/simulate/isaac-sim/): start a simulation with realistic rendering on a Viam cloud GPU or your own.
+- [Simulate a machine you already have](/simulate/simulate-an-existing-machine/): make a simulated copy of an existing machine that keeps its names and frames.
+- [Move a simulated machine to real hardware](/simulate/move-to-real-hardware/): run the code you wrote in simulation on your real robot.

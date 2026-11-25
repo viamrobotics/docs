@@ -15,11 +15,11 @@ These tasks change what's in a running simulation so it matches your own workcel
 ## Prerequisites {#prerequisites}
 
 - A running simulation with a world component.
-  See [Run a MuJoCo simulation on your computer](/set-up-a-machine/simulate/mujoco/), [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/), or [Simulate a machine you already have](/set-up-a-machine/simulate/simulate-an-existing-machine/).
+  See [Run a MuJoCo simulation on your computer](/simulate/mujoco/), [Run an Isaac Sim simulation](/simulate/isaac-sim/), or [Simulate a machine you already have](/simulate/simulate-an-existing-machine/).
 - The simulator module's README, which lists every attribute and DoCommand these tasks use: [MuJoCo](https://github.com/viam-labs/viam-mujoco-sim#readme) or [Isaac Sim](https://github.com/viam-modules/viam-isaac-sim#readme).
 
 Most tasks edit a component's JSON on the **CONFIGURE** tab.
-To learn how the world component and the other simulated components fit together, see [How simulation works](/set-up-a-machine/simulate/how-simulation-works/).
+To learn how the world component and the other simulated components fit together, see [How simulation works](/simulate/how-simulation-works/).
 
 ## Place a component {#place-a-component}
 
@@ -420,6 +420,6 @@ Move the prop that's in the way first, with `set_prop_pose` or `park_props`, and
 
 ## What's next {#whats-next}
 
-- [Move a simulated machine to real hardware](/set-up-a-machine/simulate/move-to-real-hardware/): run the code that works against your scene on the real robot.
-- [How simulation works](/set-up-a-machine/simulate/how-simulation-works/): learn how the world, props, and frame system fit together, and how MuJoCo and Isaac Sim differ.
+- [Move a simulated machine to real hardware](/simulate/move-to-real-hardware/): run the code that works against your scene on the real robot.
+- [How simulation works](/simulate/how-simulation-works/): learn how the world, props, and frame system fit together, and how MuJoCo and Isaac Sim differ.
 - [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/): add obstacles the motion planner avoids on a real machine.

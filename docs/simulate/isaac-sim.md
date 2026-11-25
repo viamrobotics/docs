@@ -38,7 +38,7 @@ It's billed per minute after any monthly cloud credit your organization has, and
 On your own GPU, the module installs Isaac Sim the first time it runs.
 Either way, Isaac Sim takes minutes to boot the first time.
 
-For how simulation fits into Viam and how Isaac Sim compares to MuJoCo, see [How simulation works](/set-up-a-machine/simulate/how-simulation-works/).
+For how simulation fits into Viam and how Isaac Sim compares to MuJoCo, see [How simulation works](/simulate/how-simulation-works/).
 
 ## 1. Start the machine {#start-the-machine}
 
@@ -147,7 +147,7 @@ The starter cell is a world, a UR20 arm at the origin, and a camera that looks a
 1. Click **Save**.
 
 For every attribute and the other models, such as grippers, depth cameras, and bases, see the [Isaac Sim module README](https://github.com/viam-modules/viam-isaac-sim#readme).
-To change the scene, see [Build a simulated scene](/set-up-a-machine/simulate/build-a-scene/).
+To change the scene, see [Build a simulated scene](/simulate/build-a-scene/).
 
 ## 3. Wait for the world to start {#wait-for-the-world-to-start}
 
@@ -307,6 +307,6 @@ If the computer has more than one network interface, set `livestream_public_ip` 
 
 ## What's next {#whats-next}
 
-- [Build a simulated scene](/set-up-a-machine/simulate/build-a-scene/): add objects and cameras, use your own robot, and reload the scene after edits.
-- [How simulation works](/set-up-a-machine/simulate/how-simulation-works/): understand what changes between a simulated machine and a real one.
-- [Move a simulated machine to real hardware](/set-up-a-machine/simulate/move-to-real-hardware/): run the code you wrote here on your real robot.
+- [Build a simulated scene](/simulate/build-a-scene/): add objects and cameras, use your own robot, and reload the scene after edits.
+- [How simulation works](/simulate/how-simulation-works/): understand what changes between a simulated machine and a real one.
+- [Move a simulated machine to real hardware](/simulate/move-to-real-hardware/): run the code you wrote here on your real robot.

@@ -153,7 +153,7 @@ model:
 The fake arm simulates kinematics for the specified model. Set `arm-model` to `ur5e`, `ur7e`, `ur20`, `xarm6`, `xarm7`, `lite6`, or `dofbot`. It responds to all API calls and reports joint positions, but doesn't move anything physical.
 
 A fake arm has no physics and nothing for a camera to see.
-To test against a simulated arm in a scene with objects and cameras, see [Simulate a machine you already have](/set-up-a-machine/simulate/simulate-an-existing-machine/#replace-fake-components-with-simulated-ones).
+To test against a simulated arm in a scene with objects and cameras, see [Simulate a machine you already have](/simulate/simulate-an-existing-machine/#replace-fake-components-with-simulated-ones).
 
 ## Control your arm from code
 

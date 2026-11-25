@@ -63,8 +63,15 @@ In the **Set up your machine** banner, click **Install**.
 The setup wizard opens and asks **Does your project have a separate board/computer?**
 Follow the guidance in the setup wizard to set up your machine on Viam.
 
-If you don't have your hardware yet, you can simulate your machine instead: run MuJoCo on your own computer, or start Isaac Sim on a Viam cloud GPU from the setup wizard.
-See [Simulate a machine](/set-up-a-machine/simulate/).
+If you don't have your hardware yet, you can simulate your machine instead:
+
+- To run Isaac Sim on a Viam cloud GPU, choose **No hardware yet • Simulate it** in the setup wizard.
+  Viam runs `viam-server` for the machine in the cloud, so you skip the rest of this page.
+  Continue with [Run an Isaac Sim simulation](/simulate/isaac-sim/#start-the-machine).
+  If the wizard doesn't show this option, simulation isn't turned on for your organization yet.
+- To run MuJoCo on your own Mac or Linux computer, finish this step on that computer, then continue with [Run a MuJoCo simulation on your computer](/simulate/mujoco/).
+
+For how the two simulators compare, see [Simulate a machine](/simulate/).
 
 ## 3. Add hardware in the CONFIGURE tab
 
@@ -80,7 +87,9 @@ For each piece of hardware (camera, motor, sensor, arm, gripper, base):
 5. Fill in the required attributes (pin numbers, device paths, API keys) and click **Save**.
 
 For walkthroughs by component type and the full configuration reference, see [Configure hardware](/hardware/configure-hardware/).
+If you're simulating the machine, add simulated components instead, as described in [Simulate a machine](/simulate/).
 
 ## What's next
 
 - [Set up machines with the CLI](/set-up-a-machine/with-cli/) to provision additional machines from the command line.
+- [Simulate a machine](/simulate/) to develop and test code before your hardware arrives.

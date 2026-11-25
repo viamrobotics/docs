@@ -50,7 +50,7 @@ The machine and fragment config item tools also add, re-pin, and remove entries 
 
 ### Simulation tools {#simulation-tools}
 
-The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) check on, start, and stop a [cloud Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/) of a machine part.
+The simulation tools (`read_simulation`, `start_simulation`, and `stop_simulation`) check on, start, and stop a [cloud Isaac Sim simulation](/simulate/isaac-sim/) of a machine part.
 A simulation runs in place of a machine part, which is normally a computer running `viam-server`.
 
 - `read_simulation` reports each part's latest simulation state: `pending` or `provisioning` while it starts, `started` once it runs, or `failed`, `terminated`, or `none`. It reports every part of the machine if you omit the part name.

@@ -49,10 +49,10 @@ configuration change that you review before it takes effect.
 - **What it can simulate.** On a machine page, the assistant can set up a
   simulation in your configuration as it sets up any other resource. For
   example, ask it to add a
-  [MuJoCo simulation](/set-up-a-machine/simulate/mujoco/) to a machine
+  [MuJoCo simulation](/simulate/mujoco/) to a machine
   running on your own computer, and it proposes the world, arm, gripper, and
   camera for you to review and save. For a cloud
-  [Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/), it can also
+  [Isaac Sim simulation](/simulate/isaac-sim/), it can also
   check whether a machine part has one running, and start or stop one when you
   ask. Before it starts one, the panel shows an **Approve** button that notes
   the simulation is billed per minute; nothing starts until you approve. A

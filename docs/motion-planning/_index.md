@@ -69,7 +69,7 @@ fake components so you can run it on any machine:
 
 To add physics and camera images before you have hardware, replace the fake
 components with simulated ones: see
-[Simulate a machine you already have](/set-up-a-machine/simulate/simulate-an-existing-machine/#replace-fake-components-with-simulated-ones).
+[Simulate a machine you already have](/simulate/simulate-an-existing-machine/#replace-fake-components-with-simulated-ones).
 
 For a guided introduction, the free Viam 101 course walks through building a
 palletizing arm application in simulation:

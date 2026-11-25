@@ -12,12 +12,12 @@ date: "2026-11-24"
 
 Run the code you wrote against a simulated machine on your real robot, without rewriting it.
 You copy the simulated machine's config to the real machine, swap each simulated model for its hardware model, and keep every resource name and frame your code depends on.
-To learn why only the models change, see [What's different from real hardware](/set-up-a-machine/simulate/how-simulation-works/#whats-different-from-real-hardware).
+To learn why only the models change, see [What's different from real hardware](/simulate/how-simulation-works/#whats-different-from-real-hardware).
 
 ## Prerequisites {#prerequisites}
 
 - A simulated machine and code that works against it.
-  See [Run a MuJoCo simulation on your computer](/set-up-a-machine/simulate/mujoco/) or [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/).
+  See [Run a MuJoCo simulation on your computer](/simulate/mujoco/) or [Run an Isaac Sim simulation](/simulate/isaac-sim/).
 - The computer connected to your robot, running `viam-server` as its own Viam machine.
   Use a different machine from the simulated one, so the two configs stay separate.
   See [Set up your first machine](/set-up-a-machine/first-machine/).
@@ -149,7 +149,7 @@ Once the moves are right, raise the speed in steps.
 
 ## What's next {#whats-next}
 
-- [How simulation works](/set-up-a-machine/simulate/how-simulation-works/): what differs between a simulated machine and real hardware.
-- [Simulate a machine you already have](/set-up-a-machine/simulate/simulate-an-existing-machine/): go the other way, and make a simulated copy of the real machine to test new code against.
+- [How simulation works](/simulate/how-simulation-works/): what differs between a simulated machine and real hardware.
+- [Simulate a machine you already have](/simulate/simulate-an-existing-machine/): go the other way, and make a simulated copy of the real machine to test new code against.
 - [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/): add the rest of your cell's fixed geometry so the motion planner avoids it.
 - [Reuse configuration with fragments](/fleet/reuse-configuration/): keep the config the simulated and real machines share in one place.

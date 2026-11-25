@@ -22,15 +22,15 @@ For MuJoCo, the `mujoco-sim` Claude Code plugin in the [MuJoCo module's reposito
 - A computer or GPU to run the simulator:
   - For MuJoCo, an Apple Silicon Mac or a Linux x86_64 computer.
     Check with `uname -sm`, which prints `Darwin arm64` or `Linux x86_64`.
-    See the prerequisites in [Run a MuJoCo simulation on your computer](/set-up-a-machine/simulate/mujoco/#prerequisites).
+    See the prerequisites in [Run a MuJoCo simulation on your computer](/simulate/mujoco/#prerequisites).
   - For Isaac Sim, a Viam cloud GPU, billed per minute, or your own RTX Linux computer.
-    See the prerequisites in [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/#prerequisites).
+    See the prerequisites in [Run an Isaac Sim simulation](/simulate/isaac-sim/#prerequisites).
 
 ## How a simulated copy works {#how-a-simulated-copy-works}
 
 The simulated copy is a separate machine whose config matches the original's, except for each hardware component's `model` and `attributes`.
 Every simulated component names a world component in its `world` attribute, and the world runs the simulator.
-To learn why only the models change, see [What's different from real hardware](/set-up-a-machine/simulate/how-simulation-works/#whats-different-from-real-hardware).
+To learn why only the models change, see [What's different from real hardware](/simulate/how-simulation-works/#whats-different-from-real-hardware).
 
 ## 1. Create the simulated machine {#create-the-simulated-machine}
 
@@ -78,7 +78,7 @@ The machine shows as online in the Viam app, and `read_part_status` returns `onl
 {{% tab name="Isaac Sim" %}}
 
 Start the new machine in the Viam cloud or on your own GPU.
-See step 1 of [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/#start-the-machine).
+See step 1 of [Run an Isaac Sim simulation](/simulate/isaac-sim/#start-the-machine).
 
 A cloud simulation is billed per minute to the machine's organization until it stops or goes idle.
 With the Viam MCP server, `start_simulation` starts it with no confirmation prompt.
@@ -99,16 +99,16 @@ Every simulated component names the world in its `world` attribute, so add the w
 
 Each hardware component in the original maps to one simulated model:
 
-| In the original                                           | In a MuJoCo copy                                                                                                   | In an Isaac Sim copy                                                         |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| (none)                                                    | World: `viam-labs:mujoco-sim:world`                                                                                | World: `viam-labs:isaac-sim:world`                                           |
-| UFactory Lite6 arm                                        | `viam-labs:mujoco-sim:arm`, `asset` `lite6`                                                                        | `viam-labs:isaac-sim:arm`, `asset` `lite6`                                   |
-| Universal Robots UR5e arm                                 | `viam-labs:mujoco-sim:arm`, `asset` `ur5e`                                                                         | `viam-labs:isaac-sim:arm`, `asset` `ur5e`                                    |
-| Another Universal Robots arm, such as a UR20              | Your own model; see [Use your own robot model](/set-up-a-machine/simulate/build-a-scene/#use-your-own-robot-model) | `viam-labs:isaac-sim:arm`, `asset` such as `ur20`                            |
-| UFactory Lite6 gripper                                    | `viam-labs:mujoco-sim:gripper`, `asset` `lite6_gripper`, `mount` the arm's name                                    | `viam-labs:isaac-sim:gripper`, `asset` `lite6_gripper`, `arm` the arm's name |
-| Robotiq 2F-85 gripper                                     | `viam-labs:mujoco-sim:gripper`, `asset` `robotiq_2f85`, `mount` the arm's name                                     | `viam-labs:isaac-sim:gripper`, `asset` `robotiq_2f_85`, `arm` the arm's name |
-| Camera                                                    | `viam-labs:mujoco-sim:camera`                                                                                      | `viam-labs:isaac-sim:camera`                                                 |
-| Any other hardware component, such as a motor or a sensor | `rdk:builtin:fake`, no attributes                                                                                  | `rdk:builtin:fake`, no attributes                                            |
+| In the original                                           | In a MuJoCo copy                                                                                  | In an Isaac Sim copy                                                         |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| (none)                                                    | World: `viam-labs:mujoco-sim:world`                                                               | World: `viam-labs:isaac-sim:world`                                           |
+| UFactory Lite6 arm                                        | `viam-labs:mujoco-sim:arm`, `asset` `lite6`                                                       | `viam-labs:isaac-sim:arm`, `asset` `lite6`                                   |
+| Universal Robots UR5e arm                                 | `viam-labs:mujoco-sim:arm`, `asset` `ur5e`                                                        | `viam-labs:isaac-sim:arm`, `asset` `ur5e`                                    |
+| Another Universal Robots arm, such as a UR20              | Your own model; see [Use your own robot model](/simulate/build-a-scene/#use-your-own-robot-model) | `viam-labs:isaac-sim:arm`, `asset` such as `ur20`                            |
+| UFactory Lite6 gripper                                    | `viam-labs:mujoco-sim:gripper`, `asset` `lite6_gripper`, `mount` the arm's name                   | `viam-labs:isaac-sim:gripper`, `asset` `lite6_gripper`, `arm` the arm's name |
+| Robotiq 2F-85 gripper                                     | `viam-labs:mujoco-sim:gripper`, `asset` `robotiq_2f85`, `mount` the arm's name                    | `viam-labs:isaac-sim:gripper`, `asset` `robotiq_2f_85`, `arm` the arm's name |
+| Camera                                                    | `viam-labs:mujoco-sim:camera`                                                                     | `viam-labs:isaac-sim:camera`                                                 |
+| Any other hardware component, such as a motor or a sensor | `rdk:builtin:fake`, no attributes                                                                 | `rdk:builtin:fake`, no attributes                                            |
 
 Carries over unchanged: every resource's `name` and `api`, frames (with the MuJoCo exceptions in step 3), obstacle components, and services that don't drive hardware, such as the motion service.
 
@@ -131,7 +131,7 @@ Each simulator has its own limits on frames and cameras:
   Otherwise the simulated floor cuts through the table.
 - **Arm frames:** a MuJoCo arm's frame parent must be `world` or a simulated base.
   For an arm mounted on another component, set its parent to `world` and its pose relative to the world.
-- **Home pose:** if the arm's home pose puts the gripper into a table, set `home_joints` to the real arm's stow pose, as [Use your own robot model](/set-up-a-machine/simulate/build-a-scene/#use-your-own-robot-model) shows.
+- **Home pose:** if the arm's home pose puts the gripper into a table, set `home_joints` to the real arm's stow pose, as [Use your own robot model](/simulate/build-a-scene/#use-your-own-robot-model) shows.
 - **Camera frames:** a MuJoCo camera can ride an arm but not a gripper.
   For a camera whose frame parent is a gripper, change the parent to the arm and add the gripper's offset to the camera's translation.
 - **Camera settings:** set `width`, `height`, and `fov_deg` (the vertical field of view) to match the real camera, and `depth` to `true` for a depth camera.
@@ -174,8 +174,8 @@ Copy the config and change it:
 {{% tab name="Viam app" %}}
 
 1. Add the simulator's world component to the new machine, named `sim-world`, and save.
-   For MuJoCo, follow [Add the MuJoCo world](/set-up-a-machine/simulate/mujoco/#add-the-mujoco-world).
-   For Isaac Sim, add only the world from step 2 of [Run an Isaac Sim simulation](/set-up-a-machine/simulate/isaac-sim/#add-the-isaac-sim-world-and-a-starter-cell).
+   For MuJoCo, follow [Add the MuJoCo world](/simulate/mujoco/#add-the-mujoco-world).
+   For Isaac Sim, add only the world from step 2 of [Run an Isaac Sim simulation](/simulate/isaac-sim/#add-the-isaac-sim-world-and-a-starter-cell).
    Adding the world also adds the simulator's module to the config.
 2. On the original machine's **CONFIGURE** tab, click **JSON**, and copy the `components` and `services` arrays.
 3. On the new machine's **CONFIGURE** tab, click **JSON**.
@@ -185,7 +185,7 @@ Copy the config and change it:
    Don't copy the `fragments` or `fragment_mods` arrays.
 5. Change each resource as the table above shows, and remove what doesn't carry over.
 6. If no camera sees the whole cell, add a simulated camera that does, so you can watch the copy.
-   For MuJoCo, see [Add a camera](/set-up-a-machine/simulate/mujoco/#add-a-camera).
+   For MuJoCo, see [Add a camera](/simulate/mujoco/#add-a-camera).
 7. Click **Save**.
 
 {{% /tab %}}
@@ -205,7 +205,7 @@ Alternatively, `set_machine_config` replaces the new machine's whole config in o
 The new machine's config lists every component and service name from the original, plus `sim-world`, and has no `fragments` array.
 Check it on the **CONFIGURE** tab, or with `read_machine_config` on the new machine.
 Obstacle components carry over, so the motion planner avoids the same shapes it does on the original.
-To make the simulated arm collide with them too, and to add tables and objects the original's config doesn't describe, see [Build a simulated scene](/set-up-a-machine/simulate/build-a-scene/).
+To make the simulated arm collide with them too, and to add tables and objects the original's config doesn't describe, see [Build a simulated scene](/simulate/build-a-scene/).
 
 ## 4. Verify the copy {#verify-the-copy}
 
@@ -257,6 +257,6 @@ Check the machine as step 4 of this page does, without the side-by-side comparis
 
 ## What's next {#whats-next}
 
-- [Build a simulated scene](/set-up-a-machine/simulate/build-a-scene/): add the tables, objects, and camera angles of your real cell to the copy.
-- [Move a simulated machine to real hardware](/set-up-a-machine/simulate/move-to-real-hardware/): take code you develop against the copy back to the real machine.
-- [How simulation works](/set-up-a-machine/simulate/how-simulation-works/): what behaves the same in simulation as on real hardware, and what doesn't.
+- [Build a simulated scene](/simulate/build-a-scene/): add the tables, objects, and camera angles of your real cell to the copy.
+- [Move a simulated machine to real hardware](/simulate/move-to-real-hardware/): take code you develop against the copy back to the real machine.
+- [How simulation works](/simulate/how-simulation-works/): what behaves the same in simulation as on real hardware, and what doesn't.

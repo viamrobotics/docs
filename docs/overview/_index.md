@@ -98,7 +98,7 @@ If nothing in the registry fits, you can [write and publish your own module](/bu
 | To do this                                                                   | Go here                                                           |
 | ---------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | Get a camera, motor, arm, or sensor running                                  | [Configure hardware](/hardware/)                                  |
-| Simulate a robot before you have the hardware, or test code on a copy of one | [Simulate a machine](/set-up-a-machine/simulate/)                 |
+| Simulate a robot before you have the hardware, or test code on a copy of one | [Simulate a machine](/simulate/)                 |
 | Capture data on the machine and sync it to the cloud                         | [Manage data](/data/)                                             |
 | Train machine learning models on what you captured                           | [Train and deploy ML models](/train/)                             |
 | Detect and classify objects in a camera feed                                 | [Computer vision](/vision/)                                       |

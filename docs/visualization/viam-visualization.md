@@ -140,7 +140,7 @@ arrows, so the export leaves those out, along with hidden objects. Read
 Denavit-Hartenberg kinematics, whose links the export welds in place.
 
 To load the MJCF export into a MuJoCo simulation on Viam, see
-[Import a scene from Viam visualization](/set-up-a-machine/simulate/build-a-scene/#import-a-scene-from-viam-visualization).
+[Import a scene from Viam visualization](/simulate/build-a-scene/#import-a-scene-from-viam-visualization).
 
 ## How updates reach the browser
 

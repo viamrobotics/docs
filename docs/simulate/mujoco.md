@@ -12,7 +12,7 @@ date: "2026-11-24"
 
 Run a simulated arm, gripper, and camera in MuJoCo on your own computer, and control them from the Viam app and your code as you would real hardware.
 MuJoCo runs on your computer's CPU, so the simulation costs nothing.
-To learn how a simulated machine works and how MuJoCo compares with Isaac Sim, see [How simulation works](/set-up-a-machine/simulate/how-simulation-works/).
+To learn how a simulated machine works and how MuJoCo compares with Isaac Sim, see [How simulation works](/simulate/how-simulation-works/).
 
 ## Prerequisites {#prerequisites}
 
@@ -204,7 +204,7 @@ Wait for the log line `first run script succeeded`; the world and the other comp
 
 ## What's next {#whats-next}
 
-- [Build a simulated scene](/set-up-a-machine/simulate/build-a-scene/): add objects and cameras, use your own robot model, and reload the scene after you change it.
+- [Build a simulated scene](/simulate/build-a-scene/): add objects and cameras, use your own robot model, and reload the scene after you change it.
 - [Move your first arm](/motion-planning/quickstarts/first-arm/): plan arm moves with the motion service, which plans for `pick-arm` as it would for a real arm.
-- [Move a simulated machine to real hardware](/set-up-a-machine/simulate/move-to-real-hardware/): run the code you write against this simulation on a real robot.
+- [Move a simulated machine to real hardware](/simulate/move-to-real-hardware/): run the code you write against this simulation on a real robot.
 - [Build a cell with an agent](https://github.com/viam-labs/viam-mujoco-sim#build-a-cell-with-an-agent): use the module's Claude Code plugin to build and test a MuJoCo cell from a description.
