@@ -237,11 +237,9 @@ The [navigation service API](/reference/apis/services/navigation/) supports the 
 
 ## Control tab usage
 
-After configuring the navigation service for your machine, navigate to the **CONTROL** tab of the machine's page and expand the card matching the name of your service to use an interface for rover navigation.
-
-Here, you can add waypoints and obstacles and view the position of your rover base on a map:
-
-{{<imgproc src="/services/navigation/navigation-control-card.png" resize="900x" style="width: 700px" alt="An example control interface for a navigation service in the  Control Tab.">}}
+The navigation service's card on the **CONTROL** tab has no map or waypoint controls.
+It offers only **Do Command** and **Get Status**.
+To control the service, call the [navigation service API](/reference/apis/services/navigation/) from your code.
 
 ## Navigation concepts
 

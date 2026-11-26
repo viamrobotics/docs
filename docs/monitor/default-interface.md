@@ -44,7 +44,7 @@ Each configured component and service appears as a card. What you can do depends
 | Generic component  | Send custom commands (DoCommand)                         |
 | Discovery service  | View discovery results                                   |
 | ML model service   | Run inference                                            |
-| Navigation service | View and set navigation goals                            |
+| Navigation service | Send custom commands (DoCommand), get status             |
 | SLAM service       | View map and pose                                        |
 | Vision service     | Run detections and classifications on camera feeds       |
 | Generic service    | Send custom commands (DoCommand)                         |
