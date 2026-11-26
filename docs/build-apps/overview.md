@@ -53,7 +53,7 @@ If you are building a browser-based app, Viam can host it for you. Viam Applicat
 
 If you want **a quick operator interface and don't need to write code**, use [teleop workspaces](/monitor/teleop-workspaces/). They are widget-based and live in the monitor section.
 
-If you want **a custom web dashboard or operator interface in a browser**, see [TypeScript setup](/build-apps/setup/typescript/) and the [single-machine dashboard tutorial](/build-apps/app-tutorials/tutorial-dashboard/).
+If you want **a custom web dashboard or operator interface in a browser**, see [Web app setup](/build-apps/setup/typescript/) and the [single-machine dashboard tutorial](/build-apps/app-tutorials/tutorial-dashboard/).
 
 If you want **one app that runs on phones, tablets, and desktops from a single codebase**, see [Flutter setup](/build-apps/setup/flutter/) and the [Flutter widget tutorial](/build-apps/app-tutorials/tutorial-flutter-app/).
 

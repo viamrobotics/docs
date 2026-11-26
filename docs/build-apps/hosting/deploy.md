@@ -16,7 +16,7 @@ Viam Applications are distributed through the Viam module registry, which is why
 
 ## Prerequisites
 
-- A built client app. Any bundler output that produces HTML, JavaScript, and CSS works: a Vite `dist/` directory, a Create React App `build/` directory, a Flutter web build, and so on. See [TypeScript setup](/build-apps/setup/typescript/) for a minimal Vite starting point.
+- A built client app. Any bundler output that produces HTML, JavaScript, and CSS works: a Vite `dist/` directory, a Create React App `build/` directory, a Flutter web build, and so on. See [Web app setup](/build-apps/setup/typescript/) for a minimal Vite starting point.
 - The [Viam CLI](/cli/) installed and authenticated (`viam login`).
 - A public namespace for your organization. Set this in the [organization settings](/organization/) if you have not already. Viam Applications require a public namespace because the app's URL uses it.
 

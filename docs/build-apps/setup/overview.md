@@ -24,7 +24,7 @@ After scaffolding, the next step is [Connect to a machine](/build-apps/tasks/con
 
 | Language             | Page                                                  | Notes                                                                                                                                                   |
 | -------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TypeScript (browser) | [TypeScript setup](/build-apps/setup/typescript/)     | Web app: dashboards, operator interfaces, any browser-based app. The setup page uses Vite; any bundler that handles TypeScript and ESM works.           |
+| TypeScript (browser) | [Web app setup](/build-apps/setup/typescript/)        | Web app: dashboards, operator interfaces, any browser-based app. The setup page uses Vite; any bundler that handles TypeScript and ESM works.           |
 | TypeScript (Node.js) | [Node.js setup](/build-apps/setup/node/)              | Node process for backend services and CLI tools. Requires WebRTC polyfills and a custom gRPC transport.                                                 |
 | Flutter              | [Flutter setup](/build-apps/setup/flutter/)           | Cross-platform project for iOS, Android, and desktop. Includes iOS/Android platform configuration.                                                      |
 | React Native         | [React Native setup](/build-apps/setup/react-native/) | Mobile project for teams with existing React Native codebases. Requires six polyfill packages and a custom transport. For new projects, prefer Flutter. |

@@ -51,7 +51,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>): The user's ID.
+- (Promise\<string>): The user's ID.
 
 **Example:**
 
@@ -120,7 +120,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): The new organization.
+- (Promise\<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): The new organization.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createorganization).
 
@@ -179,7 +179,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html)[]>): The organization list.
+- (Promise\<[Organization](https://ts.viam.dev/classes/appApi.Organization.html)[]>): The organization list.
 
 **Example:**
 
@@ -224,7 +224,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[OrganizationIdentity](https://ts.viam.dev/classes/appApi.OrganizationIdentity.html)[]>): The list of locations with access to the requested location.
+- (Promise\<[OrganizationIdentity](https://ts.viam.dev/classes/appApi.OrganizationIdentity.html)[]>): The list of locations with access to the requested location.
 
 **Example:**
 
@@ -291,7 +291,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[OrgDetails](https://ts.viam.dev/classes/appApi.OrgDetails.html)[]>): The list of locations the requested user has access to.
+- (Promise\<[OrgDetails](https://ts.viam.dev/classes/appApi.OrgDetails.html)[]>): The list of locations the requested user has access to.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listorganizationsbyuser).
 
@@ -355,7 +355,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): Details about the organization, if it exists.
+- (Promise\<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): Details about the organization, if it exists.
 
 **Example:**
 
@@ -426,7 +426,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<boolean>): A boolean indicating whether or not the namespace is available.
+- (Promise\<boolean>): A boolean indicating whether or not the namespace is available.
 
 **Example:**
 
@@ -518,7 +518,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): The updated organization details.
+- (Promise\<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): The updated organization details.
 
 **Example:**
 
@@ -585,7 +585,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -653,7 +653,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>): An object containing organization members, pending invites, and org ID.
+- (Promise\<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>): An object containing organization members, pending invites, and org ID.
 
 **Example:**
 
@@ -738,13 +738,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The id of the organization to create the invite for.
 - `email` (string) (required): The email address of the user to generate an invite for.
-- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The authorizations to associate with the new invite.
+- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): The authorizations to associate with the new invite.
 - `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or automatically add a
   user. Defaults to true.
 
 **Returns:**
 
-- (Promise<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The organization invite.
+- (Promise\<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The organization invite.
 
 **Example:**
 
@@ -862,12 +862,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The id of the organization.
 - `email` (string) (required): The email address associated with the invite.
-- `addAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): List of authorizations to add to the invite.
-- `removeAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): List of authorizations to remove from the invite.
+- `addAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): List of authorizations to add to the invite.
+- `removeAuthsList` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): List of authorizations to remove from the invite.
 
 **Returns:**
 
-- (Promise<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The organization invite.
+- (Promise\<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The organization invite.
 
 **Example:**
 
@@ -956,7 +956,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1031,7 +1031,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1104,7 +1104,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The invite.
+- (Promise\<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The invite.
 
 **Example:**
 
@@ -1175,7 +1175,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the organization.
+- (Promise\<Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the organization.
 
 **Example:**
 
@@ -1248,11 +1248,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the organization.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1338,7 +1338,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1408,7 +1408,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1511,7 +1511,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1580,7 +1580,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1646,7 +1646,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Location](https://ts.viam.dev/classes/appApi.Location.html)[]>): A list of locations under the organization.
 
 **Example:**
 
@@ -1714,7 +1714,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1782,7 +1782,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1852,7 +1852,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html) | undefined>): The `LocationAuth` for the requested location.
+- (Promise\<[LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html) | undefined>): The `LocationAuth` for the requested location.
 
 **Example:**
 
@@ -1922,7 +1922,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html) | undefined>): The newly created `LocationAuth`.
+- (Promise\<[LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html) | undefined>): The newly created `LocationAuth`.
 
 **Example:**
 
@@ -2001,7 +2001,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -2067,7 +2067,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the location.
+- (Promise\<Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the location.
 
 **Example:**
 
@@ -2139,11 +2139,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the location.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -2215,7 +2215,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html) | undefined>): The `Robot` object.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html) | undefined>): The `Robot` object.
 
 **Example:**
 
@@ -2281,7 +2281,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): A list of the robot's API keys.
+- (Promise\<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): A list of the robot's API keys.
 
 **Example:**
 
@@ -2353,7 +2353,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)[]>): The list of `RobotPart` objects associated with the robot.
+- (Promise\<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)[]>): The list of `RobotPart` objects associated with the robot.
 
 **Example:**
 
@@ -2438,7 +2438,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetRobotPartResponse](https://ts.viam.dev/classes/appApi.GetRobotPartResponse.html)>): The robot part and a its json config.
+- (Promise\<[GetRobotPartResponse](https://ts.viam.dev/classes/appApi.GetRobotPartResponse.html)>): The robot part and a its json config.
 
 **Example:**
 
@@ -2543,7 +2543,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `id` (string) (required): The ID of the requested robot part.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `levels` (string) (optional): Optional array of log levels to return. Defaults to returning all log levels.
+- `levels` (string[]) (optional): Optional array of log levels to return. Defaults to returning all log levels.
 - `start` (Date) (optional): Optional start time for log retrieval. Only logs created after this time will be
   returned.
 - `end` (Date) (optional): Optional end time for log retrieval. Only logs created before this time will be
@@ -2553,7 +2553,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>): The robot requested logs and the page token for the next page of logs.
+- (Promise\<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>): The robot requested logs and the page token for the next page of logs.
 
 **Example:**
 
@@ -2602,7 +2602,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetRobotPartByNameAndLocationResponse](https://ts.viam.dev/classes/appApi.GetRobotPartByNameAndLocationResponse.html)>): The robot part.
+- (Promise\<[GetRobotPartByNameAndLocationResponse](https://ts.viam.dev/classes/appApi.GetRobotPartByNameAndLocationResponse.html)>): The robot part.
 
 **Example:**
 
@@ -2682,14 +2682,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the requested robot part.
-- `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
+- `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)[]) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
 - `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level logs should be
   returned. Defaults to true.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -2778,7 +2778,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[RobotPartHistoryEntry](https://ts.viam.dev/classes/appApi.RobotPartHistoryEntry.html)[]>): The list of the robot part's history.
+- (Promise\<[RobotPartHistoryEntry](https://ts.viam.dev/classes/appApi.RobotPartHistoryEntry.html)[]>): The list of the robot part's history.
 
 **Example:**
 
@@ -2877,7 +2877,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html) | undefined>): The updated robot part.
+- (Promise\<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html) | undefined>): The updated robot part.
 
 **Example:**
 
@@ -2963,12 +2963,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `robotPartId` (string) (required): The ID of the robot part to update.
-- `propertyChanges` (string) (required): The properties to set, each a path into the config (for example
+- `propertyChanges` ({ path: string; value: [JsonValue](https://ts.viam.dev/types/JsonValue.html) }[]) (required): The properties to set, each a path into the config (for example
   "components.my-arm.frame") and the value to set it to. Changes are applied in order.
 
 **Returns:**
 
-- (Promise<[ConfigPropertyChangeResult](https://ts.viam.dev/classes/appApi.ConfigPropertyChangeResult.html)[]>): The result of each change, in the same order as the requested changes.
+- (Promise\<[ConfigPropertyChangeResult](https://ts.viam.dev/classes/appApi.ConfigPropertyChangeResult.html)[]>): The result of each change, in the same order as the requested changes.
 
 **Example:**
 
@@ -3048,7 +3048,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>): The ID of the newly-created robot part.
+- (Promise\<string>): The ID of the newly-created robot part.
 
 **Example:**
 
@@ -3119,7 +3119,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -3189,7 +3189,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -3259,7 +3259,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -3332,7 +3332,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html) | undefined>): The robot part object.
+- (Promise\<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html) | undefined>): The robot part object.
 
 **Example:**
 
@@ -3409,7 +3409,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -3479,7 +3479,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)[]>): The list of robot objects.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)[]>): The list of robot objects.
 
 **Example:**
 
@@ -3641,7 +3641,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>): The new robot's ID.
+- (Promise\<string>): The new robot's ID.
 
 **Example:**
 
@@ -3741,7 +3741,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html) | undefined>): The newly-modified robot object.
+- (Promise\<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html) | undefined>): The newly-modified robot object.
 
 **Example:**
 
@@ -3814,7 +3814,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -3882,7 +3882,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot.
+- (Promise\<Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot.
 
 **Example:**
 
@@ -3950,7 +3950,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot part.
+- (Promise\<Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>>): The metadata associated with the robot part.
 
 **Example:**
 
@@ -4023,11 +4023,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the robot.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -4102,11 +4102,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `id` (string) (required): The ID of the robot part.
-- `data` (Record) (required): The metadata to update.
+- `data` (Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The metadata to update.
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -4182,11 +4182,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `organizationId` (string) (required): The ID of the organization to list fragments for.
 - `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities instead. If true then
   only public fragments will be listed. Defaults to true.
-- `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional)
+- `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)[]) (optional)
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of fragment objects.
+- (Promise\<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of fragment objects.
 
 **Example:**
 
@@ -4232,14 +4232,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `machineId` (string) (required): The machine ID used to filter fragments defined in a machine's parts. Also
   returns any fragments nested within the fragments defined in parts.
-- `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the response. Useful when
+- `additionalFragmentIds` (string[]) (optional): Additional fragment IDs to append to the response. Useful when
   needing to view fragments that will be provisionally added to the machine alongside existing
   fragments.
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well as additionally
-specified fragment IDs.
+- (Promise\<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well as additionally
+  specified fragment IDs.
 
 **Example:**
 
@@ -4262,13 +4262,13 @@ List summary information for the machines in an organization, optionally filtere
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization.
-- `fragmentIds` (string) (optional): Optional list of fragment IDs to filter machines.
-- `locationIds` (string) (optional): Optional list of location IDs to filter machines.
+- `fragmentIds` (string[]) (optional): Optional list of fragment IDs to filter machines.
+- `locationIds` (string[]) (optional): Optional list of location IDs to filter machines.
 - `limit` (number) (optional): Optional max number of machines to return.
 
 **Returns:**
 
-- (Promise<[LocationSummary](https://ts.viam.dev/classes/appApi.LocationSummary.html)[]>): The list of location summaries.
+- (Promise\<[LocationSummary](https://ts.viam.dev/classes/appApi.LocationSummary.html)[]>): The list of location summaries.
 
 **Example:**
 
@@ -4343,7 +4343,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The requested fragment.
+- (Promise\<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The requested fragment.
 
 **Example:**
 
@@ -4437,7 +4437,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The newly created fragment.
+- (Promise\<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The newly created fragment.
 
 **Example:**
 
@@ -4544,7 +4544,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The updated fragment.
+- (Promise\<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The updated fragment.
 
 **Example:**
 
@@ -4617,7 +4617,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -4761,7 +4761,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -4845,7 +4845,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -4934,7 +4934,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5030,12 +5030,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to list authorizations for.
-- `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations for. If not
+- `resourceIds` (string[]) (optional): Optional list of IDs of resources to list authorizations for. If not
   provided, all resources will be included.
 
 **Returns:**
 
-- (Promise<[Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]>): The list of authorizations.
+- (Promise\<[Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]>): The list of authorizations.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listauthorizations).
 
@@ -5171,11 +5171,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `permissions` ([AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)) (required): A list of permissions to check.
+- `permissions` ([AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]) (required): A list of permissions to check.
 
 **Returns:**
 
-- (Promise<[AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]>): A filtered list of the authorized permissions.
+- (Promise\<[AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]>): A filtered list of the authorized permissions.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#checkpermissions).
 
@@ -5236,7 +5236,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html) | undefined>): The requested item.
+- (Promise\<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html) | undefined>): The requested item.
 
 **Example:**
 
@@ -5313,7 +5313,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5406,7 +5406,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5520,17 +5520,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to query registry items for.
-- `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
-- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not filter on
+- `types` (PackageType[]) (required): A list of types to query. If empty, will not filter on type.
+- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)[]) (required): A list of visibilities to query for. If empty, will not filter on
   visibility.
-- `platforms` (string) (required): A list of platforms to query for. If empty, will not filter on platform.
-- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter on status.
+- `platforms` (string[]) (required): A list of platforms to query for. If empty, will not filter on platform.
+- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)[]) (required): A list of statuses to query for. If empty, will not filter on status.
 - `searchTerm` (string) (optional): Optional search term to filter on.
 - `pageToken` (string) (optional): Optional page token for results. If not provided, will return all results.
 
 **Returns:**
 
-- (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)[]>): The list of registry items.
+- (Promise\<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)[]>): The list of registry items.
 
 **Example:**
 
@@ -5601,7 +5601,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5648,7 +5648,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5693,7 +5693,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5742,7 +5742,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5793,7 +5793,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -5872,7 +5872,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[CreateModuleResponse](https://ts.viam.dev/classes/appApi.CreateModuleResponse.html)>): The module ID and a URL to its detail page.
+- (Promise\<[CreateModuleResponse](https://ts.viam.dev/classes/appApi.CreateModuleResponse.html)>): The module ID and a URL to its detail page.
 
 **Example:**
 
@@ -5987,12 +5987,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): The visibility to set for the module.
 - `url` (string) (required): The url to reference for documentation, code, etc.
 - `description` (string) (required): A short description of the module.
-- `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)) (required): A list of models available in the module.
+- `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)[]) (required): A list of models available in the module.
 - `entrypoint` (string) (required): The executable to run to start the module program.
 
 **Returns:**
 
-- (Promise<string>): The module URL.
+- (Promise\<string>): The module URL.
 
 **Example:**
 
@@ -6134,7 +6134,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html) | undefined>): The requested module.
+- (Promise\<[Module](https://ts.viam.dev/classes/appApi.Module.html) | undefined>): The requested module.
 
 **Example:**
 
@@ -6201,7 +6201,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html)[]>): The organization's modules.
+- (Promise\<[Module](https://ts.viam.dev/classes/appApi.Module.html)[]>): The organization's modules.
 
 **Example:**
 
@@ -6278,12 +6278,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
+- `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]) (required): The list of authorizations to provide for the API key.
 - `name` (string) (optional): An optional name for the key. If none is passed, defaults to present timestamp.
 
 **Returns:**
 
-- (Promise<[CreateKeyResponse](https://ts.viam.dev/classes/appApi.CreateKeyResponse.html)>): The new key and ID.
+- (Promise\<[CreateKeyResponse](https://ts.viam.dev/classes/appApi.CreateKeyResponse.html)>): The new key and ID.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createkey).
 
@@ -6342,7 +6342,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[DeleteKeyResponse](https://ts.viam.dev/classes/appApi.DeleteKeyResponse.html)>)
+- (Promise\<[DeleteKeyResponse](https://ts.viam.dev/classes/appApi.DeleteKeyResponse.html)>)
 
 **Example:**
 
@@ -6409,7 +6409,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[RotateKeyResponse](https://ts.viam.dev/classes/appApi.RotateKeyResponse.html)>): The updated key and ID.
+- (Promise\<[RotateKeyResponse](https://ts.viam.dev/classes/appApi.RotateKeyResponse.html)>): The updated key and ID.
 
 **Example:**
 
@@ -6475,7 +6475,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): The list of API keys.
+- (Promise\<[APIKeyWithAuthorizations](https://ts.viam.dev/classes/appApi.APIKeyWithAuthorizations.html)[]>): The list of API keys.
 
 **Example:**
 
@@ -6551,7 +6551,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
+- (Promise\<[CreateKeyFromExistingKeyAuthorizationsResponse](https://ts.viam.dev/classes/appApi.CreateKeyFromExistingKeyAuthorizationsResponse.html)>): The new key and ID.
 
 **Example:**
 
@@ -6600,7 +6600,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetAppContentResponse](https://ts.viam.dev/classes/appApi.GetAppContentResponse.html)>): The blob path and entrypoint of the app content.
+- (Promise\<[GetAppContentResponse](https://ts.viam.dev/classes/appApi.GetAppContentResponse.html)>): The blob path and entrypoint of the app content.
 
 **Example:**
 
@@ -6652,7 +6652,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[GetAppBrandingResponse](https://ts.viam.dev/classes/appApi.GetAppBrandingResponse.html)>): The branding information for the app.
+- (Promise\<[GetAppBrandingResponse](https://ts.viam.dev/classes/appApi.GetAppBrandingResponse.html)>): The branding information for the app.
 
 **Example:**
 

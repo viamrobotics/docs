@@ -99,13 +99,13 @@ You declared "this machine has a camera called `inspection-cam`" by editing the 
 
 ## 1.4 Test the Camera
 
-Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view.
+Verify the camera is working. Camera components have a built-in **Test** section right in the configuration view.
 
-### Open the test panel
+### Open the Test section
 
 1. You should still be on the **CONFIGURE** tab with your `inspection-cam` selected
 2. Look for the **Test** section at the bottom of the camera's configuration panel
-3. Expand the **TEST** section to open the camera's test card
+3. Expand the **Test** section to open the camera's test card
 
 The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 
@@ -188,7 +188,7 @@ You added a camera component manually and used a fragment to add a complete ML v
 {{< /alert >}}
 
 {{< alert title="Explore the JSON configuration" color="tip" >}}
-Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the Configure tab to see the raw configuration. You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
+Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the **CONFIGURE** tab to see the raw configuration. You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
 {{< /alert >}}
 
 **[Continue to Part 2: Data Capture →](../part-2/)**

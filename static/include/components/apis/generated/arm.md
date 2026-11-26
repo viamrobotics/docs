@@ -56,12 +56,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Pose](https://ts.viam.dev/classes/commonApi.Pose.html)>)
 
 **Example:**
 
@@ -162,12 +162,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `pose` ([Pose](https://ts.viam.dev/types/Pose.html)) (required): The destination pose for the arm.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -291,13 +291,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `jointPositionsList` (number) (required): List of angles (0-360) to move each joint to.
-- `extra` (None) (optional)
+- `jointPositionsList` (number[]) (required): List of angles (0-360) to move each joint to.
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -520,12 +520,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
+- (Promise\<[JointPositions](https://ts.viam.dev/classes/armApi.JointPositions.html)>)
 
 **Example:**
 
@@ -611,12 +611,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<Record<string, [Mesh](https://ts.viam.dev/classes/commonApi.Mesh.html)>>)
+- (Promise\<Record\<string, [Mesh](https://ts.viam.dev/classes/commonApi.Mesh.html)>>)
 
 **Example:**
 
@@ -706,12 +706,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 - `manualMode` (boolean) (required): Whether to enter (true) or exit (false) manual mode.
 - `enabledFor` (number) (optional): How long to stay in manual mode, in seconds. 0 or undefined means no time
   limit.
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -795,12 +795,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise\<boolean>)
 
 **Example:**
 
@@ -882,12 +882,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[armApi](https://ts.viam.dev/modules/armApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/armApi.GetPropertiesResponse.html)>)
+- (Promise\<[armApi](https://ts.viam.dev/modules/armApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/armApi.GetPropertiesResponse.html)>)
 
 **Example:**
 
@@ -999,13 +999,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
-map of URDF mesh file paths to mesh data.
+- (Promise\<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
+  map of URDF mesh file paths to mesh data.
 
 **Example:**
 
@@ -1015,7 +1015,7 @@ const kinematics = await arm.getKinematics();
 console.log(kinematics);
 
 For more information, see [Arm
-API](https://docs.viam.com/dev/reference/apis/components/arm/#getkinematics).
+API](https://docs.viam.com/reference/apis/components/arm/#getkinematics).
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getkinematics).
@@ -1104,7 +1104,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<boolean>)
+- (Promise\<boolean>)
 
 **Example:**
 
@@ -1193,12 +1193,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<void>)
+- (Promise\<void>)
 
 **Example:**
 
@@ -1296,12 +1296,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+- (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
 
 **Example:**
 
@@ -1420,13 +1420,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html) | Record\<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>) (required): The command to execute. Accepts either a [`Struct`](https://ts.viam.dev/classes/Struct.html) or a plain object,
   which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 **Example:**
 
@@ -1522,7 +1522,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+- (Promise\<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getstatus).
 
