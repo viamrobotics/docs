@@ -566,9 +566,9 @@ robot,ResourceRPCSubtypes,,,,,resourceRPCSubtypes
 # robot,GetService,,get_service,,,
 robot,CancelOperation,,cancel_operation,,,cancelOperation
 robot,BlockForOperation,,block_for_operation,,,blockForOperation
-robot,FrameSystemConfig,,get_frame_system_config,,,frameSystemConfig
+robot,FrameSystemConfig,,get_frame_system_config,,frameSystemConfig,frameSystemConfig
 robot,TransformPose,,transform_pose,,,transformPose
-robot,GetPose,,get_pose,,,getPose
+robot,GetPose,,get_pose,,getPose,getPose
 robot,TransformPCD,,transform_pcd,,,transformPCD
 robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
