@@ -23,7 +23,8 @@ Call these methods directly on the robot or machine client
 The Python, Go, TypeScript, and C++ clients expose all four. Python
 exposes `GetPose` on the machine client from v0.83.0 (see
 [GetPose](#getpose) below), and C++ exposes `transform_pcd` from v0.42.0.
-The Flutter SDK doesn't expose these methods on its robot client.
+The Flutter SDK exposes `frameSystemConfig` and `getPose` on its robot client from v0.25.0,
+but not `TransformPose` or `TransformPCD`.
 
 ## Service names
 
@@ -112,7 +113,7 @@ gripperInWorld, err := machine.GetPose(
 
 ### Robot service and motion service versions
 
-`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK exposes the robot service version as `RobotClient.GetPose`, and the Python SDK exposes it as `RobotClient.get_pose` from v0.83.0. Python SDK versions before v0.83.0 have no robot service version, so callers on those versions use `MotionClient.get_pose` and the deprecated motion service path.
+`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK exposes the robot service version as `RobotClient.GetPose`, and the Python SDK exposes it as `RobotClient.get_pose` from v0.83.0, and the Flutter SDK as `RobotClient.getPose` from v0.25.0. Python SDK versions before v0.83.0 have no robot service version, so callers on those versions use `MotionClient.get_pose` and the deprecated motion service path.
 
 The two paths return equivalent results. The CLI's `print-status`,
 `get-pose`, and `set-pose` commands also invoke the deprecated

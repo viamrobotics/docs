@@ -379,6 +379,25 @@ const frameSystemConfig = await machine.frameSystemConfig();
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#framesystemconfig).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `supplementalTransforms` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[FrameSystemConfig](https://flutter.viam.dev/viam_protos.robot.robot/FrameSystemConfig-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var frameSystem = await machine.frameSystemConfig();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/frameSystemConfig.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### TransformPose
@@ -489,6 +508,29 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - (Promise\<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getpose).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `destinationFrame` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (optional)
+- `supplementalTransforms` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PoseInFrame](https://flutter.viam.dev/viam_sdk/PoseInFrame-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var poseInWorld = await machine.getPose('my_arm');
+var poseInCamera = await machine.getPose('my_arm', destinationFrame: 'my_camera');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/RobotClient/getPose.html).
 
 {{% /tab %}}
 {{< /tabs >}}
