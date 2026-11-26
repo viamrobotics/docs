@@ -287,47 +287,66 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetBatteryPercent
 
-Return the remaining charge of the battery the power sensor monitors, as a percentage from 0 to 100.
+Return the remaining charge of the battery the power sensor monitors, as a percentage from 0 to 100, and whether the battery is charging.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<number>)
+- (Promise\<readonly [number, boolean]>)
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const powerSensor = new VIAM.PowerSensorClient(machine, 'my_power_sensor');
-const percent = await powerSensor.getBatteryPercent();
+const [percent, isCharging] = await powerSensor.getBatteryPercent();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getbatterypercent).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var batteryPercent = await myPowerSensor.batteryPercent();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/batteryPercent.html).
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
 
-Return whether the power sensor supports `GetBatteryPercent`.
+Return whether the power sensor supports `GetBatteryPercent`, and whether its `GetBatteryPercent` reports a meaningful charging state.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
 
-- `extra` (None) (optional)
+- `extra` ({}) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise<[powerSensorApi](https://ts.viam.dev/modules/powerSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/powerSensorApi.GetPropertiesResponse.html)>)
+- (Promise\<[powerSensorApi](https://ts.viam.dev/modules/powerSensorApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/powerSensorApi.GetPropertiesResponse.html)>)
 
 **Example:**
 
@@ -337,6 +356,26 @@ const { isBatteryPercentSupported } = await powerSensor.getProperties();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#getproperties).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PowerSensorProperties](https://flutter.viam.dev/viam_sdk/PowerSensorProperties.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var properties = await myPowerSensor.properties();
+bool batterySupported = properties.isBatteryPercentSupported;
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/PowerSensor/properties.html).
 
 {{% /tab %}}
 {{< /tabs >}}
