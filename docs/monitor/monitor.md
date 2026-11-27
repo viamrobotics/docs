@@ -41,6 +41,7 @@ To turn this on or off, click the star in the table header.
 You can see your favorites from every organization on the **Machine Favorites** tab in your user settings.
 
 Favorites belong to your user account, so other members of your organization can't see them.
+The [Viam mobile app](/monitor/default-interface/#viam-mobile-app) shows the same favorites on its **Favorites** tab.
 A machine that is deleted, or that you can no longer access, is hidden from your favorites.
 If you regain access, it reappears.
 
