@@ -90,6 +90,17 @@ A component named `camera` on that remote becomes `line-cam-3-camera` rather tha
 Within a few seconds of saving, the remote's resources appear in your machine's resource list.
 Unreachable remote resources are marked as such rather than disappearing, so you can tell the difference between a misconfigured connection and a remote that is currently offline.
 
+To check this from code, call [`GetMachineStatus`](/reference/apis/robot/#getmachinestatus).
+Each resource's status has a `remote` field, the name of the remote it is reached through (for a resource on a remote's remote, the first hop), and a `reachability` field:
+
+- `REACHABILITY_REACHABLE`: calls to the resource by name reach it.
+- `REACHABILITY_REMOTE_DISCONNECTED`: the remote the resource is on is disconnected. The resource's `state` is its last known state.
+- `REACHABILITY_SHADOWED_BY_LOCAL`: a local resource has the same name, so calls by name go to the local resource.
+- `REACHABILITY_AMBIGUOUS_REMOTE`: more than one remote has a resource with this name, and no local resource claims it.
+- `REACHABILITY_UNSPECIFIED`: sent by machines running `viam-server` older than v1.14.0. Treat the resource as reachable.
+
+A local resource that depends on a remote resource stays reachable when the remote disconnects.
+
 If resources do not appear:
 
 - Verify the address field matches the remote machine's current address (shown on its **CONNECT** tab).
