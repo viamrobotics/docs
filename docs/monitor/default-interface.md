@@ -98,6 +98,7 @@ The Viam mobile app provides similar access from your phone:
 - Adjust component settings
 - Switch between components
 - Restart, rename, and delete machines
+- Favorite a machine: tap **...** on the machine, then **Add to favorites**, and find it on the **Favorites** tab. Favorites are the same ones you set in the Viam web app (Viam mobile app 1.31.0 or later).
 - Move an arm by moving your phone (arm controller)
 - See the latest data a resource captured to the cloud, such as a camera's latest image or a sensor's latest readings, in the **Latest Capture** section of its card (Viam mobile app 1.30.0 or later)
 - Request a data sync with the **Sync** button on the data manager's card (Viam mobile app 1.30.0 or later)
